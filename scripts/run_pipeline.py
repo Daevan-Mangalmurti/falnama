@@ -219,6 +219,19 @@ def main() -> None:
     parser.add_argument("--skip-guardrails", action="store_true")
     parser.add_argument("--persist-config", action="store_true", help="Do not restore a pre-existing canonical config after execution.")
     args = parser.parse_args()
+    # ---- insert directly after: args = parser.parse_args() ----
+# Allow the runner (workflow) to opt into paper execution via env var.
+# Accepts common truthy values: 1, true, yes
+env_allow_paper = os.environ.get("FALNAMA_ALLOW_PAPER", "").strip().lower()
+if env_allow_paper in {"1", "true", "yes"}:
+    # Force execution mode to the paper IBKR execution so the canonical config
+    # and guardrails are created/validated appropriately.
+    args.execution = "ibkr_paper"
+    print("FALNAMA_ALLOW_PAPER set in environment — switching execution to 'ibkr_paper'", flush=True)
+
+# Also ensure an env var is present for notebooks/sub-processes to read
+os.environ["FALNAMA_ALLOW_PAPER"] = "true" if args.execution == "ibkr_paper" else "false"
+# --------------------------------------------------------------------
 
     project_root = find_project_root()
     run_time = utc_now()
