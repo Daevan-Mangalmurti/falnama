@@ -1,0 +1,276 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Falnama Immutable Index Card",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "card_id",
+    "card_version",
+    "card_hash",
+    "do_not_revise",
+    "created_time_utc",
+    "source",
+    "market_name",
+    "realized_outcome",
+    "conclusion_time_utc",
+    "prediction_window",
+    "predictions",
+    "evidence_used",
+    "uncertainty_notes",
+    "llm_justification"
+  ],
+  "properties": {
+    "card_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "card_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "card_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "do_not_revise": {
+      "const": true
+    },
+    "created_time_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "mock_mode": {
+      "type": "boolean"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "market_id",
+        "market_slug",
+        "market_name",
+        "source_market_file",
+        "market_url"
+      ],
+      "properties": {
+        "market_id": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "market_slug": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "market_name": {
+          "type": "string"
+        },
+        "source_market_file": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "market_url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "market_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "realized_outcome": {
+      "enum": [
+        "Yes",
+        "No",
+        "Unknown",
+        "Other"
+      ]
+    },
+    "conclusion_time_utc": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "prediction_window": {
+      "type": "string",
+      "minLength": 1
+    },
+    "predictions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "asset",
+          "ticker",
+          "tradable_instrument_name",
+          "asset_class",
+          "expected_direction",
+          "expected_return_12h_bps",
+          "confidence",
+          "confidence_interval_bps",
+          "trade_eligibility",
+          "reasoning",
+          "time_plan"
+        ],
+        "properties": {
+          "asset": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ticker": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "tradable_instrument_name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "asset_class": {
+            "enum": [
+              "equity",
+              "etf",
+              "equity_index",
+              "fx_proxy",
+              "commodity",
+              "other"
+            ]
+          },
+          "expected_direction": {
+            "enum": [
+              "up",
+              "down",
+              "mixed",
+              "unclear"
+            ]
+          },
+          "expected_return_12h_bps": {
+            "type": "number"
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "confidence_interval_bps": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "number"
+            }
+          },
+          "trade_eligibility": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "eligible",
+              "reason",
+              "minimum_expected_move_bps"
+            ],
+            "properties": {
+              "eligible": {
+                "type": "boolean"
+              },
+              "reason": {
+                "type": "string"
+              },
+              "minimum_expected_move_bps": {
+                "type": "number"
+              }
+            }
+          },
+          "reasoning": {
+            "type": "string"
+          },
+          "time_plan": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "30m",
+              "1h",
+              "2h",
+              "6h",
+              "12h"
+            ],
+            "properties": {
+              "30m": {
+                "type": "string"
+              },
+              "1h": {
+                "type": "string"
+              },
+              "2h": {
+                "type": "string"
+              },
+              "6h": {
+                "type": "string"
+              },
+              "12h": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "evidence_used": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "uncertainty_notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "llm_justification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "summary",
+        "key_assumptions",
+        "failure_modes",
+        "why_not_ex_post"
+      ],
+      "properties": {
+        "summary": {
+          "type": "string"
+        },
+        "key_assumptions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "failure_modes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "why_not_ex_post": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
