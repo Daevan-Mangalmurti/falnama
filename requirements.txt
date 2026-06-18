@@ -1,0 +1,14 @@
+pandas
+numpy
+pyyaml
+jsonschema
+nbformat
+nbclient
+ipykernel
+jupyter
+openpyxl
+requests
+pytest
+ruff
+mypy
+papermill
