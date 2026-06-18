@@ -57,8 +57,8 @@ jobs:
         run: |
           python scripts/validate_generated_outputs.py \
             --config falnama_config.yaml \
-            --index-card-schema index_card_schema.json \
-            --trade-schema recommended_trade_schema.json
+            --index-card-schema schemas/index_card_schema.json
+            --trade-schema schemas/recommended_trade_schema.json
 
       - name: Build run summary
         run: |
