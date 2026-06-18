@@ -145,6 +145,13 @@ def main() -> None:
     parser.add_argument("--json", action="store_true", help="Print machine-readable result JSON.")
     args = parser.parse_args()
 
+    # Allow opt-in via environment variable if the CLI flag wasn't provided.
+    # This makes it easier to opt into paper execution from CI/workflows by setting
+    # FALNAMA_ALLOW_PAPER instead of changing invocation flags.
+    if not getattr(args, "allow_paper_execution_config", False):
+        if truthy(os.environ.get("FALNAMA_ALLOW_PAPER")):
+            args.allow_paper_execution_config = True
+
     config_path = Path(args.config_flag or args.config_positional or "config/falnama_config.yaml")
     config = load_yaml(config_path)
     errors, warnings = check_guardrails(config, args)
