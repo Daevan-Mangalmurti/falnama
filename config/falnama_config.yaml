@@ -52,11 +52,11 @@ legacy_inputs:
   legacy_price_history_long: "pm_geo_anomaly_pilot/processed/all_price_history_long.csv"
 
 execution:
-  mode: "ibkr_paper"          # allowed: dry_run, ibkr_paper
-  allow_paper_broker_orders: true
+  mode: "dry_run"          # allowed: dry_run, ibkr_paper
+  allow_paper_broker_orders: false
   allow_live_broker_orders: false
-  require_paper_account: true
-  require_account_allowlist: true
+  require_paper_account: false
+  require_account_allowlist: false
   expected_account_id_env_var: "IBKR_PAPER_ACCOUNT_ID"
   kill_switch_env_var: "FALNAMA_KILL_SWITCH"
 
