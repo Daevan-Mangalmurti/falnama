@@ -1,0 +1,79 @@
+name: Scheduled Falnama Research Run
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Run mode"
+        required: true
+        default: "mock"
+        type: choice
+        options:
+          - mock
+          - closed_historical
+          - live_research
+  schedule:
+    - cron: "17 */6 * * *"
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: falnama-research-run
+  cancel-in-progress: false
+
+jobs:
+  run-pipeline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install jupyter nbconvert nbclient papermill jsonschema pyyaml openpyxl pandas
+
+      - name: Validate guardrails before run
+        run: |
+          python scripts/check_guardrails.py falnama_config.yaml
+
+      - name: Run Falnama pipeline
+        env:
+          SCENARIO_ANALYSIS_GPT_API_KEY: ${{ secrets.SCENARIO_ANALYSIS_GPT_API_KEY }}
+          FALNAMA_RUN_MODE: ${{ github.event.inputs.mode || 'mock' }}
+        run: |
+          python scripts/run_pipeline.py --mode "${FALNAMA_RUN_MODE}"
+
+      - name: Validate generated artifacts
+        run: |
+          python scripts/validate_generated_outputs.py \
+            --config falnama_config.yaml \
+            --index-card-schema index_card_schema.json \
+            --trade-schema recommended_trade_schema.json
+
+      - name: Build run summary
+        run: |
+          python scripts/build_run_summary.py --config falnama_config.yaml >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload research artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: falnama-run-${{ github.run_id }}
+          path: |
+            repositories/relevant_markets/
+            repositories/anomalies/
+            repositories/index_cards/
+            repositories/recommended_trades/
+            repositories/rejected_signals/
+            repositories/trade_diagnostics/
+            repositories/run_logs/
+          retention-days: 30

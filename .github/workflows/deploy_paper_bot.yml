@@ -1,0 +1,59 @@
+name: Deploy Paper Bot
+
+on:
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: "Image tag to deploy"
+        required: true
+        default: "latest"
+
+permissions:
+  contents: read
+  packages: read
+
+concurrency:
+  group: falnama-paper-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, linux, falnama-paper]
+    environment: paper-trading
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Preflight paper host
+        env:
+          IBKR_PAPER_ACCOUNT_ID: ${{ secrets.IBKR_PAPER_ACCOUNT_ID }}
+          IBKR_TWS_PORT: ${{ secrets.IBKR_TWS_PORT }}
+        run: |
+          python scripts/check_paper_host.py \
+            --require-gateway-reachable \
+            --require-paper-account-env \
+            --forbid-live-account
+
+      - name: Pull latest paper bot image
+        run: |
+          docker pull ghcr.io/${{ github.repository }}/falnama-paper-bot:${{ inputs.image_tag }}
+
+      - name: Deploy paper bot
+        env:
+          IMAGE_TAG: ${{ inputs.image_tag }}
+          IBKR_PAPER_ACCOUNT_ID: ${{ secrets.IBKR_PAPER_ACCOUNT_ID }}
+          IBKR_TWS_PORT: ${{ secrets.IBKR_TWS_PORT }}
+          IBKR_CLIENT_ID: ${{ secrets.IBKR_CLIENT_ID }}
+          FALNAMA_EXECUTION_MODE: "ibkr_paper"
+          FALNAMA_ALLOW_LIVE_BROKER_ORDERS: "false"
+        run: |
+          docker compose -f docker-compose.paper.yml up -d
+
+      - name: Post-deploy health check
+        run: |
+          python scripts/check_bot_health.py \
+            --url http://127.0.0.1:8080/health \
+            --require-execution-mode ibkr_paper \
+            --require-live-disabled
+            

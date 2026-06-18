@@ -1,0 +1,48 @@
+name: Nightly Calibration
+
+on:
+  schedule:
+    - cron: "23 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  calibrate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run historical calibration
+        env:
+          FALNAMA_RUN_MODE: "closed_historical"
+          FALNAMA_EXECUTION_MODE: "dry_run"
+        run: |
+          python scripts/run_pipeline.py \
+            --mode closed_historical \
+            --execution dry_run \
+            --write-calibration-report
+
+      - name: Upload calibration artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: falnama-calibration-${{ github.run_id }}
+          path: |
+            repositories/anomalies/
+            repositories/rejected_signals/
+            repositories/trade_diagnostics/
+            repositories/run_logs/
+            reports/calibration/
+          retention-days: 45

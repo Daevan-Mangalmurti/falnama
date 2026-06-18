@@ -1,1 +1,29 @@
+execution:
+  mode: "ibkr_paper"          # allowed: dry_run, ibkr_paper
+  allow_paper_broker_orders: true
+  allow_live_broker_orders: false
+  require_paper_account: true
+  require_account_allowlist: true
+  expected_account_id_env_var: "IBKR_PAPER_ACCOUNT_ID"
+  kill_switch_env_var: "FALNAMA_KILL_SWITCH"
 
+ibkr:
+  connection_type: "tws_api"  # tws_api or client_portal
+  host: "127.0.0.1"
+  port_env_var: "IBKR_TWS_PORT"
+  client_id_env_var: "IBKR_CLIENT_ID"
+  readonly_mode: false
+  paper_only: true
+
+risk:
+  max_order_notional_usd: 1000
+  max_daily_notional_usd: 5000
+  max_open_positions: 10
+  max_position_usd: 10000
+  min_expected_move_bps: 700
+  min_confidence: 0.60
+  require_index_card_hash: true
+  require_fresh_signal: true
+  reject_if_card_after_trigger: true
+  reject_duplicate_order_intent: true
+  

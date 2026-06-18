@@ -1,0 +1,44 @@
+name: Generate Scenario Cards
+
+on:
+  schedule:
+    - cron: "12 */6 * * *"
+  workflow_dispatch:
+
+jobs:
+  generate-cards:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run market selector
+        run: python scripts/run_stage.py market_selector
+
+      - name: Generate Scenario Analysis GPT cards
+        env:
+          SCENARIO_ANALYSIS_GPT_API_KEY: ${{ secrets.SCENARIO_ANALYSIS_GPT_API_KEY }}
+        run: |
+          python scripts/run_stage.py ai_communicator \
+            --card-generation-mode all_markets \
+            --exclusive-create-only
+
+      - name: Validate card hashes and schemas
+        run: |
+          python scripts/validate_index_cards.py \
+            --schema index_card_schema.json \
+            --cards repositories/index_cards \
+            --require-immutable
+
+      - name: Upload cards
+        uses: actions/upload-artifact@v4
+        with:
+          name: scenario-cards-${{ github.run_id }}
+          path: repositories/index_cards/

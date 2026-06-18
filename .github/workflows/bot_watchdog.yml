@@ -1,0 +1,48 @@
+name: Paper Bot Watchdog
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+jobs:
+  watchdog:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check bot health endpoint
+        env:
+          BOT_HEALTH_URL: ${{ secrets.FALNAMA_PAPER_BOT_HEALTH_URL }}
+          BOT_HEALTH_TOKEN: ${{ secrets.FALNAMA_PAPER_BOT_HEALTH_TOKEN }}
+        run: |
+          curl -fsS \
+            -H "Authorization: Bearer ${BOT_HEALTH_TOKEN}" \
+            "${BOT_HEALTH_URL}" \
+            > health.json
+
+      - name: Validate health payload
+        run: |
+          python - <<'PY'
+          import json, sys
+          h = json.load(open("health.json"))
+          required = [
+              "status",
+              "last_heartbeat_utc",
+              "execution_mode",
+              "live_broker_orders_enabled",
+              "paper_account_connected",
+              "last_reconciliation_status",
+          ]
+          missing = [k for k in required if k not in h]
+          if missing:
+              raise SystemExit(f"Missing health keys: {missing}")
+          if h["execution_mode"] != "ibkr_paper":
+              raise SystemExit("Wrong execution mode")
+          if h["live_broker_orders_enabled"] is not False:
+              raise SystemExit("Live broker orders appear enabled")
+          if h["paper_account_connected"] is not True:
+              raise SystemExit("Paper account not connected")
+          if h["last_reconciliation_status"] != "ok":
+              raise SystemExit("Reconciliation is not ok")
+          PY

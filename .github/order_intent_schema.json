@@ -1,0 +1,41 @@
+{
+  "type": "object",
+  "required": [
+    "intent_id",
+    "run_id",
+    "created_time_utc",
+    "source_card_id",
+    "source_card_hash",
+    "market_name",
+    "ticker",
+    "asset_class",
+    "action",
+    "order_type",
+    "notional_usd",
+    "time_in_force",
+    "paper_account_id",
+    "idempotency_key",
+    "risk_approved"
+  ],
+  "properties": {
+    "intent_id": { "type": "string" },
+    "run_id": { "type": "string" },
+    "created_time_utc": { "type": "string" },
+    "source_card_id": { "type": "string" },
+    "source_card_hash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "market_name": { "type": "string" },
+    "ticker": { "type": "string" },
+    "asset_class": {
+      "enum": ["equity", "etf", "equity_index", "fx_proxy", "commodity", "other"]
+    },
+    "action": { "enum": ["BUY", "SELL", "SHORT", "COVER"] },
+    "order_type": { "enum": ["MKT", "LMT"] },
+    "limit_price": { "type": ["number", "null"] },
+    "notional_usd": { "type": "number", "minimum": 0 },
+    "quantity": { "type": ["number", "null"] },
+    "time_in_force": { "enum": ["DAY", "GTC"] },
+    "paper_account_id": { "type": "string" },
+    "idempotency_key": { "type": "string" },
+    "risk_approved": { "const": true }
+  }
+}

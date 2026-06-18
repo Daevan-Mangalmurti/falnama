@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install jsonschema pyyaml nbclient nbformat pytest ruff mypy
+
+      - name: Lint
+        run: |
+          ruff check .
+
+      - name: Type check
+        run: |
+          mypy falnama scripts
+
+      - name: Validate schemas
+        run: |
+          python scripts/validate_artifacts.py --schemas-only
+
+      - name: Check broker guardrails
+        run: |
+          python scripts/check_guardrails.py \
+            --config config/falnama_config.yaml \
+            --require-live-disabled \
+            --allow-paper-execution-config
+
+      - name: Run unit tests
+        run: |
+          pytest tests/unit
+
+      - name: Run notebook smoke test
+        env:
+          FALNAMA_RUN_MODE: "smoke"
+          FALNAMA_EXECUTION_MODE: "dry_run"
+        run: |
+          python scripts/run_pipeline.py --mode smoke --execution dry_run
+
+      - name: Validate generated smoke artifacts
+        run: |
+          python scripts/validate_artifacts.py \
+            --config config/falnama_config.yaml \
+            --artifacts repositories/

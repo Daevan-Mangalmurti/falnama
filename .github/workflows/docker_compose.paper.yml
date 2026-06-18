@@ -1,0 +1,20 @@
+services:
+  falnama-paper-bot:
+    image: ghcr.io/YOUR_ORG/YOUR_REPO/falnama-paper-bot:${IMAGE_TAG:-latest}
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      FALNAMA_EXECUTION_MODE: ibkr_paper
+      FALNAMA_ALLOW_LIVE_BROKER_ORDERS: "false"
+      IBKR_PAPER_ACCOUNT_ID: ${IBKR_PAPER_ACCOUNT_ID}
+      IBKR_TWS_HOST: 127.0.0.1
+      IBKR_TWS_PORT: ${IBKR_TWS_PORT}
+      IBKR_CLIENT_ID: ${IBKR_CLIENT_ID}
+    volumes:
+      - ./repositories:/app/repositories
+      - ./config:/app/config:ro
+      - ./logs:/app/logs
+    command: >
+      python scripts/run_paper_bot.py
+      --config config/falnama_config.yaml
+      --execution ibkr_paper
