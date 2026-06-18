@@ -1,6 +1,5 @@
 name: Scheduled Falnama Research Run
 
-on:
   workflow_dispatch:
     inputs:
       mode:
@@ -12,6 +11,11 @@ on:
           - mock
           - closed_historical
           - live_research
+      allow_paper:
+        description: "Opt into paper execution (requires config to allow paper orders)"
+        required: false
+        default: "false"
+        type: boolean
   schedule:
     - cron: "17 */6 * * *"
 
@@ -44,12 +48,17 @@ jobs:
 
       - name: Validate guardrails before run
         run: |
-          python scripts/check_guardrails.py --config config/falnama_config.yaml --allow-paper-execution-config
+          if [ "${{ github.event.inputs.allow_paper }}" = "true" ]; then
+            python scripts/check_guardrails.py --config config/falnama_config.yaml --allow-paper
+          else
+            python scripts/check_guardrails.py --config config/falnama_config.yaml
+          fi
 
       - name: Run Falnama pipeline
         env:
           SCENARIO_ANALYSIS_GPT_API_KEY: ${{ secrets.SCENARIO_ANALYSIS_GPT_API_KEY }}
           FALNAMA_RUN_MODE: ${{ github.event.inputs.mode || 'mock' }}
+          FALNAMA_ALLOW_PAPER: ${{ github.event.inputs.allow_paper || 'false' }}
         run: |
           python scripts/run_pipeline.py --mode "${FALNAMA_RUN_MODE}"
 
