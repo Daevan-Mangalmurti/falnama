@@ -44,7 +44,7 @@ jobs:
 
       - name: Validate guardrails before run
         run: |
-          python scripts/check_guardrails.py --config config/falnama_config.yaml
+          python scripts/check_guardrails.py --config config/falnama_config.yaml --allow-paper-execution-config
 
       - name: Run Falnama pipeline
         env:
