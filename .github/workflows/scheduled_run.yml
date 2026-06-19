@@ -47,12 +47,12 @@ jobs:
           pip install jupyter nbconvert nbclient papermill jsonschema pyyaml openpyxl pandas
 
       - name: Validate guardrails before run
-        run: |
-          if [ "${{ github.event.inputs.allow_paper }}" = "true" ]; then
-            python scripts/check_guardrails.py --config config/falnama_config.yaml --allow-paper
-          else
-            python scripts/check_guardrails.py --config config/falnama_config.yaml
-          fi
+  run: |
+    FLAGS=""
+    if [ "${{ github.event.inputs.allow_paper }}" = "true" ] || [ "${{ github.event_name }}" = "schedule" ]; then
+      FLAGS="--allow-paper-execution-config"
+    fi
+    python scripts/check_guardrails.py --config config/falnama_config.yaml $FLAGS
 
       - name: Run Falnama pipeline
         env:
