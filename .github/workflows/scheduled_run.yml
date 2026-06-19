@@ -49,11 +49,11 @@ jobs:
 
       - name: Validate guardrails before run
         run: |
-          FLAGS=""
-          if [ "${{ github.event.inputs.allow_paper }}" = "true" ] || [ "${{ github.event_name }}" = "schedule" ]; then
+            FLAGS=""
+             if [ "${{ github.event.inputs.allow_paper }}" = "true" ]; then
             FLAGS="--allow-paper-execution-config"
-          fi
-          python scripts/check_guardrails.py --config config/falnama_config.yaml $FLAGS
+            fi
+            python scripts/check_guardrails.py --config config/falnama_config.yaml $FLAGS
 
       - name: Run Falnama pipeline
         env:
