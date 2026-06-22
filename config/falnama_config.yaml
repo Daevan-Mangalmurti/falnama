@@ -53,7 +53,7 @@ legacy_inputs:
 
 execution:
   mode: "dry_run"          # allowed: dry_run, ibkr_paper
-  allow_paper_broker_orders: true
+  allow_paper_broker_orders: false
   allow_live_broker_orders: false
   require_paper_account: false
   require_account_allowlist: false
