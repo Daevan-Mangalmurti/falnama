@@ -232,62 +232,62 @@ if env_allow_paper in {"1", "true", "yes", "y", "on"}:
 # Ensure downstream code (notebooks, subprocesses) can inspect this state
 os.environ["FALNAMA_ALLOW_PAPER"] = "true" if args.execution == "ibkr_paper" else "false"
 
-    project_root = find_project_root()
-    run_time = utc_now()
-    run_id = compact_timestamp(run_time)
-    output_dir = project_root / "repositories" / "run_logs" / "executed_notebooks" / run_id
-    summary_path = project_root / "repositories" / "run_logs" / f"run_pipeline_summary_{run_id}.json"
-    summary_path.parent.mkdir(parents=True, exist_ok=True)
+project_root = find_project_root()
+run_time = utc_now()
+run_id = compact_timestamp(run_time)
+output_dir = project_root / "repositories" / "run_logs" / "executed_notebooks" / run_id
+summary_path = project_root / "repositories" / "run_logs" / f"run_pipeline_summary_{run_id}.json"
+summary_path.parent.mkdir(parents=True, exist_ok=True)
 
-    os.environ["FALNAMA_RUN_MODE"] = args.mode
-    os.environ["FALNAMA_EXECUTION_MODE"] = args.execution
-    os.environ["FALNAMA_ALLOW_LIVE_BROKER_ORDERS"] = "false"
+os.environ["FALNAMA_RUN_MODE"] = args.mode
+os.environ["FALNAMA_EXECUTION_MODE"] = args.execution
+os.environ["FALNAMA_ALLOW_LIVE_BROKER_ORDERS"] = "false"
 
-    canonical_config, backup_text = ensure_canonical_config(project_root, Path(args.config), args.mode, args.execution, args.persist_config)
-    results: list[dict[str, Any]] = []
-    failed = False
+canonical_config, backup_text = ensure_canonical_config(project_root, Path(args.config), args.mode, args.execution, args.persist_config)
+results: list[dict[str, Any]] = []
+failed = False
 
-    try:
-        if not args.skip_guardrails:
-            run_guardrails(project_root, canonical_config, args.mode, args.execution)
+try:
+    if not args.skip_guardrails:
+        run_guardrails(project_root, canonical_config, args.mode, args.execution)
 
-        paths = notebook_paths(project_root, args.stage, args.notebook)
-        for notebook in paths:
-            print(f"\n=== Executing {notebook.relative_to(project_root)} ===", flush=True)
-            try:
-                result = execute_notebook(
-                    notebook,
-                    project_root=project_root,
-                    output_dir=output_dir,
-                    timeout=args.timeout,
-                    kernel_name=args.kernel_name,
-                    allow_errors=args.allow_errors,
-                )
-                results.append(result)
-                print(f"OK: {result['executed_path']}", flush=True)
-            except Exception as exc:
-                failed = True
-                result = {
-                    "notebook": str(notebook.relative_to(project_root)),
-                    "executed_path": str((output_dir / notebook.name.replace(".ipynb", "__executed.ipynb")).relative_to(project_root)),
-                    "started_utc": None,
-                    "finished_utc": utc_now(),
-                    "status": "failed",
-                    "error": repr(exc),
-                }
-                results.append(result)
-                print(f"FAILED: {notebook.relative_to(project_root)}: {exc}", file=sys.stderr, flush=True)
-                if not args.allow_errors:
-                    break
-    finally:
-        summary = {"run_id": run_id, "run_time_utc": run_time, "mode": args.mode, "execution": args.execution, "config": str(canonical_config.relative_to(project_root)), "results": results, "success": not failed}
-        summary_path.write_text(json.dumps(summary, indent=2, default=str) + "\n", encoding="utf-8")
-        print(f"\nPipeline summary: {summary_path.relative_to(project_root)}")
-        if not args.persist_config:
-            restore_config(canonical_config, backup_text)
+    paths = notebook_paths(project_root, args.stage, args.notebook)
+    for notebook in paths:
+        print(f"\n=== Executing {notebook.relative_to(project_root)} ===", flush=True)
+        try:
+            result = execute_notebook(
+                notebook,
+                project_root=project_root,
+                output_dir=output_dir,
+                timeout=args.timeout,
+                kernel_name=args.kernel_name,
+                allow_errors=args.allow_errors,
+            )
+            results.append(result)
+            print(f"OK: {result['executed_path']}", flush=True)
+        except Exception as exc:
+            failed = True
+            result = {
+                "notebook": str(notebook.relative_to(project_root)),
+                "executed_path": str((output_dir / notebook.name.replace(".ipynb", "__executed.ipynb")).relative_to(project_root)),
+                "started_utc": None,
+                "finished_utc": utc_now(),
+                "status": "failed",
+                "error": repr(exc),
+            }
+            results.append(result)
+            print(f"FAILED: {notebook.relative_to(project_root)}: {exc}", file=sys.stderr, flush=True)
+            if not args.allow_errors:
+                break
+finally:
+    summary = {"run_id": run_id, "run_time_utc": run_time, "mode": args.mode, "execution": args.execution, "config": str(canonical_config.relative_to(project_root)), "results": results, "success": not failed}
+    summary_path.write_text(json.dumps(summary, indent=2, default=str) + "\n", encoding="utf-8")
+    print(f"\nPipeline summary: {summary_path.relative_to(project_root)}")
+    if not args.persist_config:
+        restore_config(canonical_config, backup_text)
 
-    if failed and not args.allow_errors:
-        raise SystemExit(1)
+if failed and not args.allow_errors:
+    raise SystemExit(1)
 
 
 if __name__ == "__main__":
