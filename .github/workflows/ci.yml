@@ -1,68 +1,29 @@
+# CI — the "does the code work?" gate. Runs on every push and pull request:
+# lints with ruff and runs the test suite. Fast, deterministic, no network or
+# secrets (everything runs against the committed fixtures).
 name: CI
 
 on:
-  pull_request:
   push:
     branches: [main]
-
-permissions:
-  contents: read
+  pull_request:
 
 jobs:
-  validate:
+  test:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
-
     steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-          cache: "pip"
+          cache: pip
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install jsonschema pyyaml nbclient nbformat pytest ruff mypy
+      - name: Install (with dev tools)
+        run: pip install -e ".[dev]"
 
       - name: Lint
-        run: |
-          ruff check .
+        run: ruff check .
 
-      - name: Type check
-        run: |
-          mypy falnama scripts
-
-      - name: Validate schemas
-        run: |
-          python scripts/validate_generated_outputs.py \
-          --config config/falnama_config.yaml \
-          --index-card-schema schemas/index_card_schema.json \
-          --trade-schema schemas/recommended_trade_schema.json \
-          --allow-empty
-
-      - name: Check broker guardrails
-        run: |
-          python scripts/check_guardrails.py \
-            --config config/falnama_config.yaml \
-            --require-live-disabled \
-            --allow-paper-execution-config
-
-      - name: Run unit tests
-        run: |
-          pytest tests/unit
-
-      - name: Run notebook smoke test
-        env:
-          FALNAMA_RUN_MODE: "smoke"
-          FALNAMA_EXECUTION_MODE: "dry_run"
-        run: |
-          python scripts/run_pipeline.py --mode smoke --execution dry_run
-
-      - name: Validate generated smoke artifacts
-        run: |
-          python scripts/validate_artifacts.py \
-            --config config/falnama_config.yaml \
-            --artifacts repositories/
+      - name: Test
+        run: pytest -q

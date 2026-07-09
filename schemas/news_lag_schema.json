@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Falnama News-Lag Assessment",
+  "description": "Stage 5 output. For one anomaly, records whether public news available STRICTLY BEFORE the trigger time already explained the move. The key distinction Falnama cares about is information STATE: speculation vs. official announcement vs. confirmation are different things. A high public-information score means the move was probably already public (less interesting); a high residual means it was not well explained (more interesting).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "market_name",
+    "anomaly_trigger_time_utc",
+    "lookback_hours",
+    "public_information_score",
+    "residual_anomaly_score",
+    "information_state",
+    "evidence",
+    "uncertainty_note",
+    "mode"
+  ],
+  "properties": {
+    "market_name": {"type": "string", "minLength": 1},
+    "market_id": {"type": ["string", "null"]},
+    "anomaly_trigger_time_utc": {"type": "string", "format": "date-time"},
+    "lookback_hours": {"type": "number", "description": "How far before the trigger news was considered."},
+    "public_information_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "How well pre-trigger public news explains the move (100 = fully explained)."
+    },
+    "residual_anomaly_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "How much of the move remains unexplained after accounting for public news."
+    },
+    "information_state": {
+      "enum": ["none", "speculation", "rumor", "official_announcement", "confirmation", "denial", "market_commentary", "retrospective"],
+      "description": "The strongest pre-trigger information state found. 'speculation' that a strike MIGHT occur is not 'confirmation' that it did."
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["snippet", "published_time_utc"],
+        "properties": {
+          "snippet": {"type": "string"},
+          "source": {"type": ["string", "null"]},
+          "url": {"type": ["string", "null"]},
+          "published_time_utc": {"type": "string", "format": "date-time"},
+          "information_state": {"type": ["string", "null"]}
+        }
+      },
+      "description": "Article snippets considered, each strictly before the trigger time."
+    },
+    "uncertainty_note": {"type": "string"},
+    "mode": {"enum": ["mock", "live"], "description": "Whether this assessment was produced by the mock or the live LLM path."}
+  }
+}

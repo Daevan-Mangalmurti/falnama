@@ -1,0 +1,47 @@
+# Falnama — packaging and tooling configuration.
+#
+# This single file declares the project's dependencies and dev tools. There is
+# no requirements.txt and no setup.py; `pip install -e .` (or `pip install -e
+# ".[dev]"`) reads everything from here.
+
+[project]
+name = "falnama"
+version = "0.1.0"
+description = "Detect anomalous geopolitical prediction-market activity that precedes public news, and turn it into auditable research artifacts."
+readme = "README.md"
+requires-python = ">=3.12"
+
+# Runtime dependencies — deliberately small. Each one earns its place:
+dependencies = [
+    "pandas>=2.0",        # tabular data: markets, price ticks, anomaly tables
+    "numpy>=1.26",        # numeric helpers for the anomaly scores
+    "pyyaml>=6.0",        # read config/falnama.yaml
+    "jsonschema>=4.0",    # validate index cards and recommendations against schemas/
+    "requests>=2.31",     # read-only HTTP to the Polymarket APIs
+    "openpyxl>=3.1",      # write the human-readable recommendation workbook (.xlsx)
+    "anthropic>=0.40",    # the LLM seam for scenario index cards (and later news-lag)
+    "pydantic>=2.0",      # typed schema the LLM fills in, so cards are valid by construction
+]
+
+[project.optional-dependencies]
+# Developer-only tools. Installed with: pip install -e ".[dev]"
+dev = [
+    "pytest>=8.0",        # the test suite in tests/
+    "ruff>=0.6",          # linter + formatter (fast, zero-config)
+]
+
+[project.scripts]
+# Lets you run the whole pipeline as `falnama` from the command line after install.
+falnama = "falnama.cli:main"
+
+[tool.setuptools]
+packages = ["falnama"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# Put the repo root on sys.path so `import falnama` works without installing.
+pythonpath = ["."]

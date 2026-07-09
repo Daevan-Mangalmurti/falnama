@@ -1,0 +1,222 @@
+# =============================================================================
+# Falnama configuration — the single control panel for the entire pipeline.
+#
+# This is the one place tunable behavior lives. Every module reads from here via
+# falnama/config.py, which validates these values and exposes them as a typed
+# Settings object. Edit values here, not in code.
+#
+# Sections, top to bottom, follow the signal chain:
+#   safety → llm → data → select → anomaly → cards → recommend → execution →
+#   newslag → outputs
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Operating mode & safety
+# -----------------------------------------------------------------------------
+# Falnama is a research tool. It writes paper recommendations as files; it never
+# places real orders, and there is no broker code in the repo. `paper_trading_only`
+# is validated to be true at startup — it is a tripwire, not a feature switch.
+paper_trading_only: true
+
+# Anti-ex-post-rationalization tripwire. In normal operation the recommender
+# REJECTS any scenario card created AFTER an anomaly's trigger time (you cannot
+# invent a justifying mapping after seeing the move). Set true only for explicit
+# historical backtests; backfilled outputs are then labeled "non-live".
+backfill_mode: false
+
+# -----------------------------------------------------------------------------
+# LLM seam — used by Stage 3 (scenario cards) and, later, Stage 5 (news-lag).
+# -----------------------------------------------------------------------------
+# How scenario index cards are produced:
+#   mock  → deterministic placeholder cards (no network, no key). Default so the
+#           pipeline is runnable by anyone, anywhere, for free.
+#   live  → real cards from the LLM below (requires the API key env var to be set).
+card_mode: mock
+
+llm:
+  provider: anthropic                 # the only provider wired up today
+  model: claude-opus-4-8              # Anthropic's most capable model (see claude-api reference)
+  api_key_env_var: ANTHROPIC_API_KEY # the env var holding the key; never hardcode the key
+  timeout_seconds: 60
+
+# -----------------------------------------------------------------------------
+# Data source
+# -----------------------------------------------------------------------------
+data:
+  # fixtures → read committed sample data from data/fixtures/ (deterministic; used
+  #            by tests and CI). live → fetch read-only from Polymarket each run.
+  source: fixtures
+
+  # On a live run, the raw response is snapshotted under data/snapshots/<run_id>/
+  # before any processing, so every result is reproducible from frozen inputs.
+  snapshot_raw: true
+
+  # Polymarket read-only endpoints (used only when source: live).
+  gamma_base_url: https://gamma-api.polymarket.com
+  clob_base_url: https://clob.polymarket.com
+  data_api_base_url: https://data-api.polymarket.com  # trades feed for wallet concentration
+  user_agent: "falnama-research/0.1 (read-only)"
+  request_timeout_seconds: 30
+  max_markets: 500                    # cap the universe pulled per run
+
+# -----------------------------------------------------------------------------
+# Stage 1 — market selection
+# Build a SMALL, HIGH-QUALITY geopolitical universe. The goal is not to maximize
+# market count; it is to make every inclusion/exclusion auditable.
+# -----------------------------------------------------------------------------
+selector:
+  min_relevance_score: 60            # keep markets scoring at least this (0-100)
+  closed_only: true                  # historical testing uses resolved markets
+  min_total_volume: 0                # optional liquidity floors (0 = disabled)
+  min_liquidity: 0
+
+  # Topics worth analyzing — events where information may be held by a small,
+  # attentive group before it is public. Higher base score = higher relevance.
+  topic_base_scores:
+    military_conflict: 95
+    sanctions: 90
+    trade_policy: 90
+    technology_controls: 90
+    cabinet_government: 85
+    diplomacy_treaty: 80
+    elections: 75
+    central_bank_macro: 70
+    energy: 70
+    civil_unrest: 70
+    regulatory_policy: 65
+    legal_judicial: 65
+    # Structurally low-relevance / noisy categories — scored near zero:
+    weather: 10
+    sports: 5
+    crypto: 5
+    entertainment: 5
+    other: 20
+
+  # Score adjustments that encode Falnama's thesis.
+  bonuses:
+    small_decision_maker: 10         # outcome hinges on a few people (insider-prone)
+    information_asymmetry: 10        # information likely held unevenly
+    cross_asset: 5                   # has clear public-market implications
+  penalties:
+    public_polling: -20              # poll-driven markets reflect public info, not leaks
+    hard_reject: -50                 # matched a hard-reject term (see below)
+
+  # Hard rejects — markets that are structurally irrelevant to this project.
+  hard_reject_keywords:
+    [esports, gaming, "video game", nba, nfl, mlb, nhl, ufc, soccer, tennis,
+     grammy, oscars, emmys, movie, "box office", celebrity, "taylor swift",
+     "crypto price", bitcoin, ethereum]
+  hard_reject_topics: [sports, crypto, entertainment, weather]
+
+  # Diversity balancing — stop one event family or region from flooding the
+  # universe, while always preserving the strongest few per cluster.
+  diversity:
+    enabled: true
+    max_per_country_or_region: 15
+    max_per_event_family: 10
+    max_per_primary_topic: 50
+    preserve_top_n_per_cluster: 5
+
+# -----------------------------------------------------------------------------
+# Stage 2 — anomaly detection
+# Deterministic, INTERPRETABLE component scores. We deliberately avoid an opaque
+# learned model: at this stage, being able to explain a score matters more than
+# squeezing out accuracy. The output always preserves the component scores.
+# -----------------------------------------------------------------------------
+anomaly:
+  min_price_observations: 20         # markets with too little history are skipped
+  price_history_lookback_days: 14
+  top_n: 100                         # keep the top-N ranked anomalies per run
+  cooldown_hours: 6                  # de-duplicate repeated bursts in the same market
+
+  # Severity thresholds on the 0-100 composite score.
+  strong_threshold: 85
+  medium_threshold: 70
+  weak_threshold: 50
+
+  # Rolling windows over which short-term movement is measured.
+  rolling_windows: ["5min", "15min", "1h", "6h", "24h"]
+
+  # ---- Concentration overlay (an independent RED FLAG, not a core score) ----
+  # Who-traded data (wallet concentration) exists for only a MINORITY of markets,
+  # so it must never be one of the four core sub-scores — that would penalize the
+  # majority of markets where the data is simply missing. Instead it is an
+  # overlay that only ever ESCALATES one specific, thesis-relevant case: a
+  # normally-thick market whose anomaly-window trades were dominated by a few
+  # wallets (the fingerprint of a small, informed group moving a liquid market).
+  # Missing data changes nothing; a thin-but-concentrated market gets no flag.
+  concentration:
+    enabled: true
+    # "Thick" = liquid/busy enough that broad participation is the norm, so
+    # concentration there is genuinely surprising. A market is thick if EITHER
+    # threshold is met.
+    thick_min_volume: 100000
+    thick_min_liquidity: 20000
+    # "Extreme" = ANY one of these holds for the wallets trading around the move:
+    extreme_top1_share: 0.30      # one wallet did >= 30% of the window's volume
+    extreme_top3_share: 0.55      # the top three wallets did >= 55%
+    extreme_gini: 0.80            # highly unequal wallet volumes (0=even, 1=one wallet)
+    # A thick + extreme market gets this capped bonus added to the composite. The
+    # independent red-flag column is surfaced either way, so reviewers can filter
+    # on it even when the bonus doesn't cross a severity threshold.
+    red_flag_bonus: 15
+
+# -----------------------------------------------------------------------------
+# Stage 3 — scenario index cards
+# Immutable, timestamped, content-hashed mappings from a market question to its
+# plausible asset implications. Created BEFORE recommendations, never edited.
+# -----------------------------------------------------------------------------
+cards:
+  generate_for: all_markets          # all_markets | top_n | manual_ids
+  top_n: 20                          # used when generate_for: top_n
+  manual_ids: []                     # used when generate_for: manual_ids
+  immutable: true                    # regeneration writes a NEW card, never overwrites
+  prediction_window: "12h"           # horizon the card reasons over
+  minimum_expected_move_bps: 700     # a card is only "tradable" above this expected move
+  allowed_asset_classes: [equity, etf, equity_index, fx_proxy, commodity, other]
+
+# -----------------------------------------------------------------------------
+# Stage 4 — paper recommendations
+# Reads strong anomalies + pre-existing cards, applies eligibility + timing
+# rules, sizes paper positions. Biased toward NO trade: the desired failure mode
+# is rejecting too many weak signals, not emitting fragile recommendations.
+# -----------------------------------------------------------------------------
+recommend:
+  eligible_anomaly_class: strong     # only act on the strongest class
+  strong_rank_percentile_cutoff: 0.50  # ...and only the top half of that class
+  max_position_usd: 10000            # hard cap on any single paper position
+  # Weights for the position score (each capped, so no single factor dominates).
+  score_weights: {confidence: 1.0, expected_magnitude: 1.0, anomaly_strength: 1.0}
+  score_caps: {confidence: 1.0, expected_magnitude_bps: 2000, anomaly_strength: 100}
+
+# -----------------------------------------------------------------------------
+# Paper-simulation execution seam (NO real broker)
+#   none      → recommendations are the final artifact (default).
+#   paper_sim → additionally write SIMULATED fills to exercise the execution
+#               contract end-to-end. Still no money, no broker, no network.
+# -----------------------------------------------------------------------------
+execution:
+  mode: none
+
+# -----------------------------------------------------------------------------
+# Stage 5 — news-lag (research module, still maturing)
+# Asks whether public news available BEFORE the trigger already explained the
+# move. A deterministic first pass plus an LLM information-state classifier.
+# -----------------------------------------------------------------------------
+newslag:
+  enabled: false                     # off by default until the module matures
+  lookback_hours: 48                 # consider news strictly before the trigger time
+  mode: mock                         # mock | live (live uses the LLM seam above)
+
+# -----------------------------------------------------------------------------
+# Output locations — the durable evidence trail. Paths are relative to the repo.
+# -----------------------------------------------------------------------------
+outputs:
+  base: outputs
+  relevant_markets: outputs/relevant_markets
+  anomalies: outputs/anomalies
+  index_cards: outputs/index_cards
+  recommended_trades: outputs/recommended_trades
+  rejected_signals: outputs/rejected_signals
+  run_logs: outputs/run_logs
+  diagnostics: outputs/diagnostics

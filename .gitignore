@@ -1,0 +1,34 @@
+# Secrets — never commit API keys. The LLM key lives in the environment
+# (ANTHROPIC_API_KEY) or a local .env that stays out of git.
+.env
+*.key
+
+# Python build / cache cruft
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# macOS
+.DS_Store
+
+# NOTE: outputs/ is intentionally NOT ignored. Falnama's artifacts (selected
+# markets, anomaly scores, index cards, recommendations, run logs) are the
+# product — they are committed as a durable, auditable evidence trail.
+# Large raw data snapshots under data/snapshots/ are committed by the scheduled
+# workflow for reproducibility; if you generate very large local snapshots you
+# don't want in git, ignore specific run-id folders by hand.
+
+# The .xlsx workbook is a human-convenience view that is fully regenerable from
+# the committed JSON/CSV and changes every run (binary, no useful diff). It is
+# uploaded as a downloadable CI artifact instead of being committed.
+outputs/**/*.xlsx

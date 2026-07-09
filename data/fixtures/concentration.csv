@@ -1,0 +1,5 @@
+market_id,top1_share,top3_share,top5_share,gini,hhi,wallet_count,trade_count
+taiwan-blockade,0.44,0.7,0.8,0.86,0.28,40,520
+sanc-russia-q3,0.38,0.62,0.74,0.82,0.22,55,610
+trade-china-evs,0.06,0.15,0.24,0.35,0.03,900,4200
+france-snap-election,0.41,0.66,0.78,0.83,0.24,30,300

@@ -1,139 +1,46 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Falnama Paper Recommended Trade Row",
+  "title": "Falnama Paper Recommendation",
+  "description": "A single PAPER recommendation produced by Stage 4. It links back to the anomaly that triggered it and the immutable index card that justified it, so the decision is fully traceable. This is a research artifact, not a trade order.",
   "type": "object",
-  "additionalProperties": true,
+  "additionalProperties": false,
   "required": [
+    "run_id",
     "run_time_utc",
     "market_name",
     "card_id",
     "card_hash",
+    "anomaly_trigger_time_utc",
     "asset",
     "asset_class",
     "expected_direction",
-    "expected_return_12h_bps",
+    "expected_return_bps",
     "confidence",
+    "anomaly_score",
     "position_score",
-    "recommended_notional_usd",
-    "paper_trade_action"
+    "notional_usd",
+    "action",
+    "is_paper",
+    "mock_mode"
   ],
   "properties": {
-    "run_time_utc": {
-      "type": "string"
-    },
-    "trigger_time_utc": {
-      "type": [
-        "string",
-        "null"
-      ]
-    },
-    "market_id": {
-      "type": [
-        "string",
-        "number",
-        "null"
-      ]
-    },
-    "market_slug": {
-      "type": [
-        "string",
-        "null"
-      ]
-    },
-    "market_name": {
-      "type": "string"
-    },
-    "anomaly_class": {
-      "type": [
-        "string",
-        "null"
-      ]
-    },
-    "anomaly_rank_or_score": {
-      "type": [
-        "number",
-        "string",
-        "null"
-      ]
-    },
-    "card_id": {
-      "type": "string"
-    },
-    "card_created_time_utc": {
-      "type": "string"
-    },
-    "card_hash": {
-      "type": "string",
-      "pattern": "^[a-f0-9]{64}$"
-    },
-    "asset": {
-      "type": "string"
-    },
-    "ticker": {
-      "type": [
-        "string",
-        "null"
-      ]
-    },
-    "tradable_instrument_name": {
-      "type": [
-        "string",
-        "null"
-      ]
-    },
-    "asset_class": {
-      "enum": [
-        "equity",
-        "etf",
-        "equity_index",
-        "fx_proxy",
-        "commodity",
-        "other"
-      ]
-    },
-    "expected_direction": {
-      "enum": [
-        "up",
-        "down"
-      ]
-    },
-    "expected_return_12h_bps": {
-      "type": "number"
-    },
-    "confidence": {
-      "type": "number",
-      "minimum": 0,
-      "maximum": 1
-    },
-    "normalized_confidence": {
-      "type": "number",
-      "minimum": 0,
-      "maximum": 1
-    },
-    "normalized_expected_magnitude": {
-      "type": "number",
-      "minimum": 0,
-      "maximum": 1
-    },
-    "normalized_anomaly_strength": {
-      "type": "number",
-      "minimum": 0,
-      "maximum": 1
-    },
-    "position_score": {
-      "type": "number",
-      "minimum": 0,
-      "maximum": 1
-    },
-    "recommended_notional_usd": {
-      "type": "number",
-      "minimum": 0
-    },
-    "paper_trade_action": {
-      "enum": [
-        "PAPER_BUY_OR_LONG",
-        "PAPER_SELL_OR_SHORT"
-      ]
-    }
+    "run_id": {"type": "string", "description": "The run that produced this recommendation."},
+    "run_time_utc": {"type": "string", "format": "date-time"},
+    "market_name": {"type": "string", "minLength": 1},
+    "market_id": {"type": ["string", "null"]},
+    "card_id": {"type": "string", "description": "The index card that justified this recommendation."},
+    "card_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$", "description": "Hash of that card, recorded so tampering is detectable."},
+    "anomaly_trigger_time_utc": {"type": "string", "format": "date-time", "description": "When the triggering anomaly occurred. Must be >= card created_time_utc unless backfill_mode."},
+    "asset": {"type": "string"},
+    "asset_class": {"enum": ["equity", "etf", "equity_index", "fx_proxy", "commodity", "other"]},
+    "expected_direction": {"enum": ["up", "down", "mixed", "unclear"]},
+    "expected_return_bps": {"type": "number"},
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+    "anomaly_score": {"type": "number", "description": "Composite anomaly score (0-100) of the triggering signal."},
+    "position_score": {"type": "number", "description": "Combined score used to size the position."},
+    "notional_usd": {"type": "number", "minimum": 0, "description": "Paper position size in USD, capped by recommend.max_position_usd."},
+    "action": {"enum": ["buy", "sell", "hold", "no_trade"], "description": "Recommended paper action."},
+    "is_paper": {"const": true, "description": "Always true. Falnama produces paper recommendations only."},
+    "mock_mode": {"type": "boolean", "description": "True if the justifying card was a mock card."}
   }
 }

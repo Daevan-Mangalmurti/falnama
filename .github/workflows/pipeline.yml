@@ -1,0 +1,68 @@
+# Scheduled research run — the operational spine of Falnama.
+#
+# It runs the pipeline, uploads the full outputs/ as a downloadable artifact
+# (including the .xlsx workbook), and commits the diffable evidence trail
+# (JSON/CSV/manifests) back to the repo so the audit history lives in git.
+#
+# TODAY it runs the committed config: data.source=fixtures, card_mode=mock — a
+# reliable, deterministic "the daemon is green" run needing no secrets. It
+# becomes a live research daemon by editing config/falnama.yaml
+# (data.source: live, and card_mode: live once the LLM hookup lands — the
+# ANTHROPIC_API_KEY wiring below is already in place for that day).
+name: Falnama research run
+
+on:
+  workflow_dispatch:      # run on demand from the Actions tab
+  schedule:
+    - cron: "17 7 * * *"  # ~07:17 UTC daily (off the :00 mark on purpose)
+
+# Allow the job to commit the evidence trail back to the repo.
+permissions:
+  contents: write
+
+concurrency:
+  group: falnama-research-run
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        run: pip install -e .
+
+      - name: Run the pipeline
+        env:
+          # Read at runtime only when card_mode/newslag is 'live'. Unset today.
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/run.py
+
+      - name: Upload outputs (includes the .xlsx workbook)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: falnama-outputs-${{ github.run_id }}
+          path: outputs/
+          retention-days: 30
+
+      - name: Commit the evidence trail
+        run: |
+          git config user.name "falnama-bot"
+          git config user.email "actions@users.noreply.github.com"
+          # Commit the diffable artifacts + any raw snapshots; the binary .xlsx
+          # is intentionally git-ignored (download it from the artifact above).
+          git add outputs/ data/snapshots/ 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No new artifacts to commit."
+          else
+            git commit -m "Research run ${{ github.run_id }} [skip ci]"
+            git push
+          fi
