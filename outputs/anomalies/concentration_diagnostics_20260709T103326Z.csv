@@ -1,0 +1,7 @@
+market_id,market_name,concentration_available,concentration_tier,concentration_red_flag,top1_wallet_share,top3_wallet_share,wallet_gini,concentration_reason
+mil-iran-strike,Will the US conduct a military strike on Iran before August 2026?,False,unavailable,False,,,,no wallet-level trade data for this market
+taiwan-blockade,Will China impose a naval blockade on Taiwan before 2027?,True,red_flag,True,0.44,0.7,0.86,"THICK market moved by a few wallets (top1=44%, top3=70%, gini=0.86)"
+sanc-russia-q3,Will the EU impose new sanctions on Russia by Q3 2026?,True,red_flag,True,0.38,0.62,0.82,"THICK market moved by a few wallets (top1=38%, top3=62%, gini=0.82)"
+opec-cut-jul,Will OPEC+ announce a production cut in July 2026?,False,unavailable,False,,,,no wallet-level trade data for this market
+trade-china-evs,Will the US raise tariffs on Chinese EVs above 100% in 2026?,True,diffuse,False,0.06,0.15,0.35,wallet participation is diffuse
+france-snap-election,Will there be a snap parliamentary election in France in 2026?,True,concentrated_thin,False,0.41,0.66,0.83,"concentrated, but market is thin where concentration is unremarkable"
