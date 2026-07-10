@@ -1,0 +1,36 @@
+{
+  "run_id": "20260710T103050Z",
+  "run_time_utc": "2026-07-10T10:30:50Z",
+  "card_mode": "mock",
+  "data_source": "fixtures",
+  "market_selector": {
+    "input_markets": 11,
+    "selected_count": 6,
+    "rejected_count": 5,
+    "selected_file": "outputs/relevant_markets/relevant_markets_20260710T103050Z.csv"
+  },
+  "anomaly_detector": {
+    "markets_scored": 6,
+    "strong_count": 2,
+    "concentration_red_flags": 2,
+    "ranked_file": "outputs/anomalies/ranked_anomalies_20260710T103050Z.csv"
+  },
+  "cards": {
+    "card_mode": "mock",
+    "cards_written": 6,
+    "files": [
+      "outputs/index_cards/mil-iran-strike_20260710T103050Z.json",
+      "outputs/index_cards/taiwan-blockade_20260710T103050Z.json",
+      "outputs/index_cards/sanc-russia-q3_20260710T103050Z.json",
+      "outputs/index_cards/trade-china-evs_20260710T103050Z.json",
+      "outputs/index_cards/opec-cut-jul_20260710T103050Z.json",
+      "outputs/index_cards/france-snap-election_20260710T103050Z.json"
+    ]
+  },
+  "recommender": {
+    "recommended_count": 0,
+    "rejected_count": 2,
+    "workbook": "outputs/recommended_trades/paper_recommendations_20260710T103050Z.xlsx",
+    "backfill_mode": false
+  }
+}
