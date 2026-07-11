@@ -45,7 +45,7 @@ llm:
 data:
   # fixtures → read committed sample data from data/fixtures/ (deterministic; used
   #            by tests and CI). live → fetch read-only from Polymarket each run.
-  source: fixtures
+  source: live
 
   # On a live run, the raw response is snapshotted under data/snapshots/<run_id>/
   # before any processing, so every result is reproducible from frozen inputs.
