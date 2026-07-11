@@ -7,6 +7,7 @@ from falnama.config import load_config
 from falnama.schema import validate
 
 S = load_config()
+S.raw["card_mode"] = "mock"  # these tests exercise the mock path regardless of committed config
 
 
 def _context(name: str) -> dict:

@@ -22,7 +22,13 @@ def _isolated(tmp_path: Path):
     (tmp_path / "data" / "fixtures").mkdir(parents=True)
     for csv in (REPO / "data" / "fixtures").glob("*.csv"):
         shutil.copy(csv, tmp_path / "data" / "fixtures" / csv.name)
-    return load_config(tmp_path / "config" / "falnama.yaml")
+    settings = load_config(tmp_path / "config" / "falnama.yaml")
+    # Pin the fixture path so the end-to-end test stays deterministic and offline
+    # no matter what the committed config sets — main may be flipped to live for
+    # real runs, and CI must not depend on the network or on live market counts.
+    settings.raw["data"]["source"] = "fixtures"
+    settings.raw["card_mode"] = "mock"
+    return settings
 
 
 def _manifest(settings, run_id: str) -> dict:
