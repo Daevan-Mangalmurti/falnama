@@ -32,6 +32,14 @@ def test_short_keyword_does_not_leak():
     assert result["primary_topic"] != "military_conflict"
 
 
+def test_boilerplate_according_is_not_diplomacy():
+    # Real-data regression: "resolve according to" must NOT match 'accord'.
+    # Nearly every Polymarket description contains this boilerplate.
+    m = _market("Will Team X win the 2026 championship?",
+                description="This market will resolve according to the official result.")
+    assert classify_market(m, SETTINGS)["primary_topic"] != "diplomacy_treaty"
+
+
 def test_hard_reject_topics():
     for noise in ["Will the Lakers win the NBA Finals?", "Will Bitcoin hit $150k?",
                   "Will this movie win an Oscar?"]:

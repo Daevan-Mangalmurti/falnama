@@ -98,10 +98,14 @@ def _text_blob(market: dict) -> str:
 
 
 def _matches_any(blob: str, terms: list[str]) -> bool:
-    """Whole-word match, tolerant of common English suffixes: 'sanction' matches
-    'sanctions'/'sanctioned', while short words like 'war' still never fire on
-    'warranty' (the suffix is optional and the word boundary is still required)."""
-    return any(re.search(rf"(?<!\w){re.escape(t)}(?:s|es|ed|ing)?(?!\w)", blob) for t in terms)
+    """Whole-word match, tolerant only of PLURAL suffixes ('s'/'es'): 'sanction'
+    matches 'sanctions', 'tariff' matches 'tariffs'. We deliberately do NOT allow
+    'ed'/'ing', because those create damaging false positives against the
+    boilerplate in real market descriptions — e.g. the keyword 'accord' matching
+    'accord·ing' in "this market resolves according to...", which appears in
+    nearly every Polymarket description. Short words like 'war' still never fire
+    on 'warranty' (the word boundary after the optional suffix is required)."""
+    return any(re.search(rf"(?<!\w){re.escape(t)}(?:es|s)?(?!\w)", blob) for t in terms)
 
 
 def _infer_region(blob: str) -> str:
