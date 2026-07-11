@@ -1,0 +1,22 @@
+{
+  "selected_count": 6,
+  "rejected_count": 5,
+  "by_primary_topic": {
+    "military_conflict": 2,
+    "sanctions": 1,
+    "trade_policy": 1,
+    "energy": 1,
+    "elections": 1
+  },
+  "by_country_or_region": {
+    "china_taiwan": 2,
+    "middle_east": 1,
+    "russia_ukraine": 1,
+    "unknown": 1,
+    "europe": 1
+  },
+  "rejection_reasons": {
+    "hard reject (keyword or topic)": 4,
+    "relevance score 0.0 < 60.0": 1
+  }
+}
