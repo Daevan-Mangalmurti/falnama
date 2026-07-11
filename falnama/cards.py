@@ -89,12 +89,14 @@ def _build_card(market_context: dict[str, Any], predictions: list[dict[str, Any]
     flags, provenance, evidence/uncertainty defaults, then stamp the canonical
     hash. Shared by both the mock and live paths so cards are structurally
     identical however they were produced."""
+    # Coerce every id/text field through clean_id so a numeric market_id or a
+    # CSV-round-tripped NaN can't produce a schema-invalid card.
     source = {
-        "market_id": market_context.get("market_id") or None,
-        "market_slug": market_context.get("market_slug") or None,
-        "market_name": str(market_context.get("market_name") or "Unknown market"),
-        "market_url": market_context.get("market_url") or None,
-        "source_market_file": market_context.get("source_market_file"),
+        "market_id": io.clean_id(market_context.get("market_id")),
+        "market_slug": io.clean_id(market_context.get("market_slug")),
+        "market_name": io.clean_id(market_context.get("market_name")) or "Unknown market",
+        "market_url": io.clean_id(market_context.get("market_url")),
+        "source_market_file": io.clean_id(market_context.get("source_market_file")),
     }
     natural_key = source["market_id"] or source["market_slug"] or _safe_slug(source["market_name"])
     card = {
@@ -253,7 +255,7 @@ def run(ctx: RunContext, markets: pd.DataFrame | None = None) -> list[Path]:
     then record the batch in the manifest. Returns the written card paths."""
     settings = ctx.settings
     if markets is None:
-        markets = pd.read_csv(settings.output_dir("relevant_markets") / "relevant_markets_latest.csv")
+        markets = io.read_table(settings.output_dir("relevant_markets") / "relevant_markets_latest.csv")
 
     subset = _card_markets(markets, settings)
     paths: list[Path] = []

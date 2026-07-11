@@ -58,10 +58,11 @@ def evaluate_candidate(anomaly: dict, cards_for_market: list[dict], settings: Se
     Pure: given the same inputs it always returns the same decision, which is
     what makes the pipeline auditable.
     """
-    market_name = anomaly.get("market_name", "unknown")
+    market_name = io.clean_id(anomaly.get("market_name")) or "unknown market"
+    market_id = io.clean_id(anomaly.get("market_id"))  # numeric on live data; keep it a string
     trigger = pd.to_datetime(anomaly.get("anomaly_trigger_time_utc"), utc=True, errors="coerce")
 
-    reject = {"kind": "rejected", "market_name": market_name, "market_id": anomaly.get("market_id"),
+    reject = {"kind": "rejected", "market_name": market_name, "market_id": market_id,
               "anomaly_score": anomaly.get("anomaly_score"),
               "anomaly_trigger_time_utc": anomaly.get("anomaly_trigger_time_utc")}
 
@@ -84,7 +85,7 @@ def evaluate_candidate(anomaly: dict, cards_for_market: list[dict], settings: Se
     return {
         "kind": "recommended",
         "run_id": run_id, "run_time_utc": run_time_utc,
-        "market_name": market_name, "market_id": anomaly.get("market_id"),
+        "market_name": market_name, "market_id": market_id,
         "card_id": card["card_id"], "card_hash": card["card_hash"],
         "anomaly_trigger_time_utc": anomaly.get("anomaly_trigger_time_utc"),
         "asset": prediction["asset"], "asset_class": prediction["asset_class"],
@@ -258,7 +259,7 @@ def run(ctx: RunContext, anomalies: pd.DataFrame | None = None,
     write the workbook + rejection log, and update the manifest."""
     settings = ctx.settings
     if anomalies is None:
-        anomalies = pd.read_csv(settings.output_dir("anomalies") / "strong_anomalies_latest.csv")
+        anomalies = io.read_table(settings.output_dir("anomalies") / "strong_anomalies_latest.csv")
     if cards is None:
         cards = cards_module.load_cards(settings)
     return recommend(anomalies, cards, settings, ctx)

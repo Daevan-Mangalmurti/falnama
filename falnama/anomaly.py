@@ -326,8 +326,8 @@ def run(ctx: RunContext, price_history: pd.DataFrame | None = None) -> AnomalyRe
 
     concentration = None
     if price_history is None:
-        selected = pd.read_csv(ctx.settings.output_dir("relevant_markets") / "relevant_markets_latest.csv")
-        market_ids = [str(m) for m in selected["market_id"].dropna().tolist()]
+        selected = io.read_table(ctx.settings.output_dir("relevant_markets") / "relevant_markets_latest.csv")
+        market_ids = [str(m) for m in selected["market_id"].dropna().tolist()] if "market_id" in selected else []
         price_history = polymarket.fetch_price_history(ctx.settings, market_ids, ctx)
         # Best-effort wallet concentration; returns records only for covered markets.
         concentration = polymarket.fetch_trade_concentration(ctx.settings, market_ids, ctx)

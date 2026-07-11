@@ -51,6 +51,26 @@ def new_run_id(iso_time: str | None = None) -> str:
     return compact_stamp(iso_time or utc_now())
 
 
+def clean_id(value) -> str | None:
+    """Coerce an id / slug / url field to a clean string, or None.
+
+    Guards the schema boundary: our JSON schemas require these fields to be
+    string-or-null, but real Polymarket market ids are NUMERIC, and a CSV
+    round-trip through pandas turns "540843" into an int (or a float, or NaN when
+    the cell is empty). This normalizes all of those back to a plain string/None
+    so artifacts stay schema-valid whatever the data source looks like.
+    """
+    if value is None:
+        return None
+    if isinstance(value, float):
+        if value != value:  # NaN
+            return None
+        if value.is_integer():
+            value = int(value)  # 540843.0 -> 540843, not "540843.0"
+    text = str(value).strip()
+    return None if text.lower() in ("", "nan", "none") else text
+
+
 # ---------------------------------------------------------------------------
 # RunContext — the small bundle of identity that flows through the pipeline
 # ---------------------------------------------------------------------------
@@ -100,6 +120,18 @@ def read_json(path: Path, default: Any = None) -> Any:
     if not path.exists():
         return default
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def read_table(path: Path) -> pd.DataFrame:
+    """Read a CSV artifact, tolerating a missing or empty file (returns an empty
+    DataFrame). Intermediate artifacts can legitimately be empty — e.g. a run
+    that scores no anomalies — and that must never crash the next stage."""
+    if not path.exists():
+        return pd.DataFrame()
+    try:
+        return pd.read_csv(path)
+    except pd.errors.EmptyDataError:
+        return pd.DataFrame()
 
 
 def write_table(df: pd.DataFrame, directory: Path, basename: str, run_id: str,

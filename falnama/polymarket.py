@@ -159,7 +159,12 @@ def _fetch_clob_history(settings: Settings, market_ids: list[str]) -> pd.DataFra
         token_ids = _parse_json(m.get("clob_token_ids"), [])
         if not token_ids:
             continue
-        params = {"market": token_ids[0], "interval": "1h", "fidelity": 60}
+        # CLOB /prices-history: `fidelity` is the resolution in MINUTES (60 = hourly)
+        # and startTs/endTs bound the window. (Do NOT use interval=1h — there
+        # `interval` means the time RANGE, so 1h returns only the last hour.)
+        end_ts = int(time.time())
+        params = {"market": token_ids[0], "startTs": end_ts - lookback_days * 86400,
+                  "endTs": end_ts, "fidelity": 60}
         resp = requests.get(f"{base}/prices-history", params=params, timeout=timeout)
         resp.raise_for_status()
         points = resp.json().get("history", [])

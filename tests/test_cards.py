@@ -27,6 +27,16 @@ def test_hash_detects_tampering():
     assert cards.canonical_hash(tampered) != card["card_hash"]
 
 
+def test_numeric_market_id_produces_valid_card():
+    # Live Polymarket ids are numeric and arrive as ints after a CSV round-trip;
+    # the card must still satisfy the schema (source.market_id is string|null).
+    ctx = {"market_id": 540843, "market_slug": "will-x-happen",
+           "market_name": "Will X happen?", "market_url": None}
+    card = cards.generate_card(ctx, S)
+    assert validate(card, "index_card") == []
+    assert card["source"]["market_id"] == "540843"
+
+
 def test_mock_mapping_is_deterministic():
     iran = cards.generate_card(_context("US strike on Iran / oil?"), S)["predictions"][0]
     china = cards.generate_card(_context("China blockade of Taiwan?"), S)["predictions"][0]
