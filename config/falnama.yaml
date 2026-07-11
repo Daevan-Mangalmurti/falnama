@@ -66,7 +66,7 @@ data:
 # -----------------------------------------------------------------------------
 selector:
   min_relevance_score: 60            # keep markets scoring at least this (0-100)
-  closed_only: true                  # historical testing uses resolved markets
+  closed_only: false                  # historical testing uses resolved markets
   min_total_volume: 0                # optional liquidity floors (0 = disabled)
   min_liquidity: 0
 
