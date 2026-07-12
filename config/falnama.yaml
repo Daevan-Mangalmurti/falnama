@@ -67,7 +67,7 @@ data:
 selector:
   min_relevance_score: 60            # keep markets scoring at least this (0-100)
   closed_only: false                  # false = open/live markets; true = only resolved (historical backtests)
-  min_total_volume: 0                # optional liquidity floors (0 = disabled)
+  min_total_volume: 1000              # optional liquidity floors (0 = disabled)
   min_liquidity: 0
 
   # Topics worth analyzing — events where information may be held by a small,
