@@ -1,0 +1,23 @@
+{
+  "selected_count": 31,
+  "rejected_count": 69,
+  "by_primary_topic": {
+    "elections": 28,
+    "trade_policy": 2,
+    "military_conflict": 1
+  },
+  "by_country_or_region": {
+    "united_states": 15,
+    "unknown": 12,
+    "china_taiwan": 1,
+    "russia_ukraine": 1,
+    "europe": 1,
+    "latin_america": 1
+  },
+  "rejection_reasons": {
+    "diversity cap: country_or_region=united_states": 42,
+    "diversity cap: event_family=presidential-election-winner-2028": 23,
+    "relevance score 20.0 < 60.0": 3,
+    "hard reject (keyword or topic)": 1
+  }
+}
