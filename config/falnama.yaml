@@ -105,7 +105,7 @@ selector:
   hard_reject_keywords:
     [esports, gaming, "video game", nba, nfl, mlb, nhl, ufc, soccer, tennis,
      grammy, oscars, emmys, movie, "box office", celebrity, "taylor swift",
-     "crypto price", bitcoin, ethereum]
+     "crypto price", bitcoin, ethereum, FIFA, "GTA VI"]
   hard_reject_topics: [sports, crypto, entertainment, weather]
 
   # Diversity balancing — stop one event family or region from flooding the
