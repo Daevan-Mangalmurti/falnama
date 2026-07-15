@@ -70,6 +70,7 @@ about a minute, even with only a moderate coding background.
 | `execution.py`  | 4      | Optional **paper-simulation** seam (config-gated). No real broker. |
 | `newslag.py`    | 5      | News-lag assessment: was the move already public? (research module) |
 | `pipeline.py`   | —      | Orchestrator: run the stages in order, write the run manifest and health. |
+| `review.py`     | —      | Load a run's artifacts + the cross-run history for the analyst notebook. |
 
 ## Configuration
 
@@ -79,6 +80,21 @@ is heavily commented. The settings you are most likely to change:
 - `card_mode: mock` → `live` — generate real LLM index cards (needs `ANTHROPIC_API_KEY`).
 - `data.source: fixtures` → `live` — pull live data from Polymarket.
 - `recommend.max_position_usd` — the paper position-size cap.
+
+## Reviewing a run
+
+Rather than reading raw files in an editor, open the analyst notebook:
+
+```bash
+pip install -e ".[viz]"
+jupyter notebook notebooks/analyst_review.ipynb
+```
+
+It loads the latest run (or any past `run_id`) and shows a compiled view: the run
+summary, the selected universe by topic/region, the ranked anomalies and
+concentration flags, recommendations and rejections, and cross-run trends. All
+the parsing is in [`falnama/review.py`](falnama/review.py), so you can also use it
+from a plain script: `from falnama import review; review.run_history()`.
 
 ## What an "index card" is (and the next milestone)
 

@@ -11,6 +11,9 @@ from falnama.config import load_config
 from falnama.select import classify_market, select_markets
 
 SETTINGS = load_config()
+# Pin the volume floor to 0 so these topic-classification tests are independent of
+# whatever liquidity floor production config currently sets.
+SETTINGS.raw["selector"]["min_total_volume"] = 0
 
 
 def _market(name: str, **extra) -> dict:

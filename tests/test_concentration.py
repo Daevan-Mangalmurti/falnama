@@ -12,6 +12,13 @@ from falnama.polymarket import compute_concentration
 
 S = load_config()
 CFG = S.anomaly
+# Pin the concentration thresholds so these overlay-logic tests stay valid even
+# after production thresholds are recalibrated (a planned tuning task).
+CFG["concentration"] = {
+    "enabled": True, "thick_min_volume": 100000, "thick_min_liquidity": 20000,
+    "extreme_top1_share": 0.30, "extreme_top3_share": 0.55, "extreme_gini": 0.80,
+    "red_flag_bonus": 15,
+}
 BONUS = CFG["concentration"]["red_flag_bonus"]
 
 THICK = {"volume": 200000, "liquidity": 40000}

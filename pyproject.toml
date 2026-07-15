@@ -29,6 +29,11 @@ dev = [
     "pytest>=8.0",        # the test suite in tests/
     "ruff>=0.6",          # linter + formatter (fast, zero-config)
 ]
+# Analyst review notebook. Installed with: pip install -e ".[viz]"
+viz = [
+    "jupyter>=1.0",       # run notebooks/analyst_review.ipynb
+    "matplotlib>=3.7",    # charts in the review notebook
+]
 
 [project.scripts]
 # Lets you run the whole pipeline as `falnama` from the command line after install.
@@ -40,6 +45,9 @@ packages = ["falnama"]
 [tool.ruff]
 line-length = 100
 target-version = "py312"
+# Notebooks follow different conventions (semicolons to suppress output, compact
+# plotting cells), so don't lint them with library-code rules.
+exclude = ["notebooks"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
