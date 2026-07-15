@@ -1,0 +1,25 @@
+[
+  {
+    "kind": "recommended",
+    "run_id": "20260715T092325Z",
+    "run_time_utc": "2026-07-15T09:23:25Z",
+    "market_name": "Will Spain win the 2026 FIFA World Cup?",
+    "market_id": "558934",
+    "card_id": "558934_20260714T091916Z",
+    "card_hash": "0c2cac439f016fc58bcf93c7ddaacb118024bd1edcdf6351d2d78f98a8196336",
+    "anomaly_trigger_time_utc": "2026-07-14T22:00:05Z",
+    "asset": "Emerging-market risk proxy",
+    "asset_class": "etf",
+    "expected_direction": "down",
+    "expected_return_bps": -850.0,
+    "confidence": 0.62,
+    "anomaly_score": 100.0,
+    "position_score": 0.6817,
+    "notional_usd": 6816.67,
+    "action": "sell",
+    "is_paper": true,
+    "mock_mode": true,
+    "is_live_timing": true,
+    "concentration_red_flag": true
+  }
+]

@@ -1,0 +1,66 @@
+{
+  "card_id": "544094_20260715T092325Z",
+  "card_version": "v1-mock",
+  "card_hash": "f8c8e07b8a0c7c2de1b4ab9aad6c39f376900922bf4cd55e9b0eae3f4ae7f710",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-15T09:23:25Z",
+  "mock_mode": true,
+  "source": {
+    "market_id": "544094",
+    "market_slug": "will-harvey-weinstein-be-sentenced-to-between-5-and-10-years-in-prison",
+    "market_name": "Will Harvey Weinstein be sentenced to between 5 and 10 years in prison?",
+    "market_url": "https://polymarket.com/market/will-harvey-weinstein-be-sentenced-to-between-5-and-10-years-in-prison",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Harvey Weinstein be sentenced to between 5 and 10 years in prison?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Emerging-market risk proxy",
+      "ticker": "EEM",
+      "tradable_instrument_name": "iShares MSCI Emerging Markets ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -850.0,
+      "confidence": 0.62,
+      "confidence_interval_bps": [
+        -1400.0,
+        -250.0
+      ],
+      "trade_eligibility": {
+        "eligible": true,
+        "reason": "Meets minimum expected move.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Reassess the thesis at T+30m.",
+        "1h": "Reassess the thesis at T+1h.",
+        "2h": "Reassess the thesis at T+2h.",
+        "6h": "Reassess the thesis at T+6h.",
+        "12h": "Reassess the thesis at T+12h."
+      },
+      "reasoning": "MOCK: maps a geopolitical prediction-market signal to a broad liquid proxy. Replace with live LLM reasoning (see the module's NEXT MILESTONE note)."
+    }
+  ],
+  "evidence_used": [
+    "prediction-market question and metadata",
+    "market-to-asset sensitivity mapping",
+    "public information to be checked before any action"
+  ],
+  "uncertainty_notes": [
+    "MOCK card \u2014 not an investment recommendation."
+  ],
+  "llm_justification": {
+    "summary": "Mock scenario card generated for pipeline testing.",
+    "key_assumptions": [
+      "The prediction-market signal contains information not fully in public assets.",
+      "The chosen instrument is a liquid enough proxy for the event risk."
+    ],
+    "failure_modes": [
+      "The prediction-market move reverses.",
+      "Public information already explained the move.",
+      "The proxy asset is weakly exposed to the event."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject cards created after a trigger time."
+  }
+}
