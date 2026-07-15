@@ -14,22 +14,19 @@ ROLE:     Falnama's defense against EX-POST RATIONALIZATION. A card is written
           any card created after an anomaly's trigger time (unless backfill_mode).
 
 Two generation paths, chosen by `card_mode`:
-  * mock → a deterministic placeholder card (no network, no key). Lets anyone run
-           and test the full pipeline for free. IMPLEMENTED here.
-  * live → a real card from the LLM (Claude via the `anthropic` SDK).
+  * mock → a deterministic placeholder card (no network, no key). Lets anyone
+           run and test the full pipeline for free.
+  * live → a real card from Claude (the `anthropic` SDK), using STRUCTURED
+           OUTPUT: the model fills a pydantic schema, so its analysis is valid
+           against index_card_schema.json by construction.
 
-=== NEXT MILESTONE: realize `_live_card` ===
-The live path is the immediate follow-up task. The plan:
-  1. Build a prompt from `market_context` (question, metadata, selector
-     classification) plus the guardrails (paper-only, no ex-post, allowed asset
-     classes, prediction window, minimum expected move).
-  2. Call the model in settings.llm["model"] and have it return a `predictions`
-     array. To make the output valid BY CONSTRUCTION, define the prediction
-     shape as a pydantic model and pass it as a tool / structured-output schema,
-     so the model must fill exactly the fields index_card_schema.json requires.
-  3. Return that list of raw predictions. Everything downstream — normalization,
-     `_build_card`, hashing, the immutable write — is SHARED with the mock path,
-     so realizing the milestone is essentially steps 1-2 plus the API call.
+The split of responsibility is deliberate: the LLM produces the ANALYSIS (which
+assets move, why, and how it could be wrong); the code produces the IDENTITY and
+INTEGRITY (card id, timestamp, immutability flags, canonical hash). Humans and
+the LLM own meaning; code owns the audit guarantees.
+
+To change HOW the model reasons, edit `SCENARIO_SYSTEM_PROMPT` and
+`_build_user_prompt` below — that is the analytical heart of this stage.
 """
 
 from __future__ import annotations
@@ -38,9 +35,10 @@ import hashlib
 import json
 import re
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal
 
 import pandas as pd
+from pydantic import BaseModel, Field
 
 from . import io
 from .config import Settings
@@ -49,6 +47,17 @@ from .schema import validate_or_raise
 
 # The five time-plan checkpoints every prediction must fill (schema-enforced).
 _TIME_PLAN_KEYS = ["30m", "1h", "2h", "6h", "12h"]
+
+# Structural statement, identical on every card: it does not depend on the market,
+# so the code authors it rather than the LLM.
+_WHY_NOT_EX_POST = (
+    "The card is timestamped, content-hashed, and never overwritten. Execution "
+    "must reject any card created after an anomaly's trigger time."
+)
+
+
+class CardGenerationError(RuntimeError):
+    """Raised when the live LLM card generator cannot produce a usable card."""
 
 
 def canonical_hash(card: dict[str, Any]) -> str:
@@ -66,6 +75,95 @@ def canonical_hash(card: dict[str, Any]) -> str:
 
 
 # ---------------------------------------------------------------------------
+# The structured shape the LLM fills (valid-by-construction against the schema)
+# ---------------------------------------------------------------------------
+_ASSET_CLASSES = Literal["equity", "etf", "equity_index", "fx_proxy", "commodity", "other"]
+_DIRECTIONS = Literal["up", "down", "mixed", "unclear"]
+
+
+class LivePrediction(BaseModel):
+    """One asset implication of a market event, as the model returns it."""
+
+    asset: str = Field(description="Plain-language asset, e.g. 'Crude oil' or 'China equity risk'.")
+    ticker: str | None = Field(default=None, description="Symbol of a liquid instrument, e.g. 'USO'. Null if none.")
+    tradable_instrument_name: str | None = Field(default=None, description="The concrete instrument, e.g. 'United States Oil Fund'.")
+    asset_class: _ASSET_CLASSES
+    expected_direction: _DIRECTIONS
+    expected_return_12h_bps: float = Field(description="Expected return over the window in basis points (100 = 1%); sign matches direction.")
+    confidence: float = Field(description="Your calibrated probability the mapping is correct, between 0 and 1.")
+    confidence_interval_low_bps: float = Field(description="Low end of the plausible return range, in bps.")
+    confidence_interval_high_bps: float = Field(description="High end of the plausible return range, in bps.")
+    reasoning: str = Field(description="Why this market move implies this asset move.")
+    plan_30m: str = Field(description="What to re-check 30 minutes after the signal.")
+    plan_1h: str = Field(description="What to re-check at 1 hour.")
+    plan_2h: str = Field(description="What to re-check at 2 hours.")
+    plan_6h: str = Field(description="What to re-check at 6 hours.")
+    plan_12h: str = Field(description="What to re-check at 12 hours (close of the research window).")
+
+
+class ScenarioAnalysis(BaseModel):
+    """The full analytical payload the model produces for one market."""
+
+    predictions: list[LivePrediction] = Field(description="One or two well-supported asset implications.")
+    evidence_used: list[str] = Field(description="The inputs your reasoning rests on.")
+    uncertainty_notes: list[str] = Field(description="Caveats and what would change your view.")
+    summary: str = Field(description="One-paragraph summary of the scenario mapping.")
+    key_assumptions: list[str] = Field(description="Assumptions the thesis depends on.")
+    failure_modes: list[str] = Field(description="Concrete ways this thesis could be wrong (reversal, already public, weak proxy).")
+
+
+# ---------------------------------------------------------------------------
+# The prompt — the analytical heart of this stage. Edit here to change reasoning.
+# ---------------------------------------------------------------------------
+SCENARIO_SYSTEM_PROMPT = """\
+You are the scenario-analysis engine for Falnama, a paper-only research pipeline \
+that studies whether geopolitical prediction markets leak information before it \
+is public. Your job: map ONE prediction-market question to its plausible \
+downstream PUBLIC-MARKET (asset) implications.
+
+This is a PRE-COMMITMENT written BEFORE any market anomaly is acted on. Your card \
+will be timestamped, content-hashed, and never edited. So reason forward — "if \
+this market's implied probability moved sharply, what liquid assets would move, \
+and why?" — not backward from a headline. Do not invent a convenient story.
+
+For each implication, choose a LIQUID, broadly-traded proxy (an ETF, commodity, \
+index, or FX proxy is usually better than a single name). Give the expected \
+direction and 12-hour magnitude in basis points, a calibrated confidence in \
+[0,1], a plausible interval, concrete reasoning, and a checkpoint plan.
+
+Also record the evidence you used, your key assumptions, and — most important — \
+the FAILURE MODES: how this thesis could be wrong (the move reverses, it was \
+already public, the proxy is weakly exposed).
+
+Be skeptical and calibrated. The market is a noisy sensor, not truth. If the \
+mapping is weak, say so: use 'unclear' direction and low confidence rather than \
+manufacturing a signal. Give one or two predictions, not a laundry list. This is \
+research, not investment advice.\
+"""
+
+
+def _build_user_prompt(market_context: dict[str, Any], settings: Settings) -> str:
+    """Assemble the per-market user message from the market's fields + guardrails."""
+    cfg = settings.cards
+    lines = ["Map this prediction market to its public-market implications.", ""]
+    for label, key in [("Market question", "market_name"), ("Description", "description"),
+                       ("Category", "category"), ("Primary topic", "primary_topic"),
+                       ("Region", "country_or_region"), ("URL", "market_url")]:
+        value = market_context.get(key)
+        if value not in (None, "", "nan"):
+            lines.append(f"{label}: {value}")
+    lines += [
+        "",
+        f"Prediction window: {cfg.get('prediction_window', '12h')}.",
+        f"A prediction is only 'tradable' if the expected move is at least "
+        f"{cfg.get('minimum_expected_move_bps', 700)} basis points.",
+        f"Allowed asset classes: {', '.join(cfg.get('allowed_asset_classes', []))}.",
+        "Confidence must be between 0 and 1. Give one or two predictions.",
+    ]
+    return "\n".join(lines)
+
+
+# ---------------------------------------------------------------------------
 # Generating one card
 # ---------------------------------------------------------------------------
 def generate_card(market_context: dict[str, Any], settings: Settings,
@@ -76,21 +174,17 @@ def generate_card(market_context: dict[str, Any], settings: Settings,
     """
     created = created_time_utc or io.utc_now()
     mock = settings.card_mode == "mock"
-    predictions = _mock_card(market_context, settings) if mock else _live_card(market_context, settings)
-    card = _build_card(market_context, predictions, settings, created_time_utc=created, mock_mode=mock)
+    analysis = _mock_card(market_context, settings) if mock else _live_card(market_context, settings)
+    card = _build_card(market_context, analysis, settings, created_time_utc=created, mock_mode=mock)
     validate_or_raise(card, "index_card")  # never write a card that fails its contract
     return card
 
 
-def _build_card(market_context: dict[str, Any], predictions: list[dict[str, Any]],
-                settings: Settings, *, created_time_utc: str, mock_mode: bool,
-                justification: dict[str, Any] | None = None) -> dict[str, Any]:
-    """Assemble raw predictions into a complete card: identity, immutability
-    flags, provenance, evidence/uncertainty defaults, then stamp the canonical
-    hash. Shared by both the mock and live paths so cards are structurally
-    identical however they were produced."""
-    # Coerce every id/text field through clean_id so a numeric market_id or a
-    # CSV-round-tripped NaN can't produce a schema-invalid card.
+def _build_card(market_context: dict[str, Any], analysis: dict[str, Any], settings: Settings,
+                *, created_time_utc: str, mock_mode: bool) -> dict[str, Any]:
+    """Assemble an analysis payload into a complete card: identity, immutability
+    flags, provenance, then stamp the canonical hash. Shared by mock and live so
+    cards are structurally identical however the analysis was produced."""
     source = {
         "market_id": io.clean_id(market_context.get("market_id")),
         "market_slug": io.clean_id(market_context.get("market_slug")),
@@ -99,6 +193,7 @@ def _build_card(market_context: dict[str, Any], predictions: list[dict[str, Any]
         "source_market_file": io.clean_id(market_context.get("source_market_file")),
     }
     natural_key = source["market_id"] or source["market_slug"] or _safe_slug(source["market_name"])
+    justification = analysis.get("llm_justification") or {}
     card = {
         "card_id": f"{_safe_slug(natural_key)}_{io.compact_stamp(created_time_utc)}",
         "card_version": "v1-mock" if mock_mode else "v1",
@@ -109,30 +204,14 @@ def _build_card(market_context: dict[str, Any], predictions: list[dict[str, Any]
         "source": source,
         "market_name": source["market_name"],
         "prediction_window": str(settings.cards.get("prediction_window", "12h")),
-        "predictions": [_normalize_prediction(p, settings) for p in predictions],
-        "evidence_used": [
-            "prediction-market question and metadata",
-            "market-to-asset sensitivity mapping",
-            "public information to be checked before any action",
-        ],
-        "uncertainty_notes": [
-            "MOCK card — not an investment recommendation." if mock_mode
-            else "LLM output; requires downstream news-lag and public-information checks."
-        ],
-        "llm_justification": justification or {
-            "summary": ("Mock scenario card generated for pipeline testing." if mock_mode
-                        else "LLM-generated pre-trade market-to-asset scenario card."),
-            "key_assumptions": [
-                "The prediction-market signal contains information not fully in public assets.",
-                "The chosen instrument is a liquid enough proxy for the event risk.",
-            ],
-            "failure_modes": [
-                "The prediction-market move reverses.",
-                "Public information already explained the move.",
-                "The proxy asset is weakly exposed to the event.",
-            ],
-            "why_not_ex_post": ("The card is timestamped, content-hashed, and never overwritten. "
-                                "Execution must reject cards created after a trigger time."),
+        "predictions": [_normalize_prediction(p, settings) for p in analysis["predictions"]],
+        "evidence_used": [str(x) for x in (analysis.get("evidence_used") or _default_evidence())],
+        "uncertainty_notes": [str(x) for x in (analysis.get("uncertainty_notes") or _default_uncertainty(mock_mode))],
+        "llm_justification": {
+            "summary": str(justification.get("summary") or _default_summary(mock_mode)),
+            "key_assumptions": [str(x) for x in (justification.get("key_assumptions") or _default_assumptions())],
+            "failure_modes": [str(x) for x in (justification.get("failure_modes") or _default_failures())],
+            "why_not_ex_post": _WHY_NOT_EX_POST,
         },
     }
     card["card_hash"] = canonical_hash(card)
@@ -142,8 +221,7 @@ def _build_card(market_context: dict[str, Any], predictions: list[dict[str, Any]
 def _normalize_prediction(raw: dict[str, Any], settings: Settings) -> dict[str, Any]:
     """Coerce a raw prediction into the exact shape index_card_schema.json
     requires: valid enums, a 0-1 confidence, a two-number interval, a complete
-    time plan, and a computed trade-eligibility. Shared by mock and live paths so
-    both are valid by construction."""
+    time plan, and a computed trade-eligibility. A safety net over both paths."""
     cfg = settings.cards
     min_move = float(cfg.get("minimum_expected_move_bps", 700))
     allowed_classes = set(cfg.get("allowed_asset_classes", ["etf", "other"]))
@@ -189,10 +267,10 @@ def _normalize_prediction(raw: dict[str, Any], settings: Settings) -> dict[str, 
     }
 
 
-def _mock_card(market_context: dict[str, Any], settings: Settings) -> list[dict[str, Any]]:
-    """Deterministic placeholder prediction, clearly labeled as mock. Maps the
+def _mock_card(market_context: dict[str, Any], settings: Settings) -> dict[str, Any]:
+    """Deterministic placeholder analysis, clearly labeled as mock. Maps the
     market to a broad, liquid proxy by simple keyword rules — a stand-in for the
-    live LLM's reasoning that keeps the pipeline runnable with no key."""
+    live LLM that keeps the pipeline runnable with no key."""
     name = str(market_context.get("market_name", "")).lower()
     if any(t in name for t in ("iran", "oil", "opec", "israel", "middle east", "strait")):
         asset, ticker, instrument, cls = "Crude oil", "USO", "United States Oil Fund", "commodity"
@@ -205,21 +283,99 @@ def _mock_card(market_context: dict[str, Any], settings: Settings) -> list[dict[
 
     min_move = float(settings.cards.get("minimum_expected_move_bps", 700))
     move = -max(min_move + 150.0, 850.0)  # a downside risk move that clears the threshold
-    return [{
+    return {"predictions": [{
         "asset": asset, "ticker": ticker, "tradable_instrument_name": instrument, "asset_class": cls,
         "expected_direction": "down", "expected_return_12h_bps": move, "confidence": 0.62,
         "confidence_interval_bps": [move - 550, move + 600],
         "reasoning": ("MOCK: maps a geopolitical prediction-market signal to a broad liquid proxy. "
-                      "Replace with live LLM reasoning (see the module's NEXT MILESTONE note)."),
-    }]
+                      "Replace with live LLM reasoning by setting card_mode: live."),
+    }]}
 
 
-def _live_card(market_context: dict[str, Any], settings: Settings) -> list[dict[str, Any]]:
-    """Call the LLM to produce predictions. See the NEXT MILESTONE note above.
-    Intentionally not yet implemented — this is the immediate follow-up task."""
-    raise NotImplementedError(
-        "Live LLM card generation is the next milestone. Set card_mode: mock to run today."
-    )
+def _live_card(market_context: dict[str, Any], settings: Settings) -> dict[str, Any]:
+    """Ask Claude to produce the scenario analysis via structured output, then
+    convert it to the shared analysis dict for `_build_card`."""
+    system = SCENARIO_SYSTEM_PROMPT
+    user = _build_user_prompt(market_context, settings)
+    analysis = _call_scenario_llm(system, user, settings)
+    return _analysis_to_dict(analysis)
+
+
+def _call_scenario_llm(system: str, user: str, settings: Settings) -> ScenarioAnalysis:
+    """The single network boundary. Isolated so tests can mock it and keep CI
+    offline. Uses messages.parse() so the response is a validated pydantic object."""
+    import anthropic  # imported lazily so the mock path needs no SDK / key
+
+    client = anthropic.Anthropic()  # resolves ANTHROPIC_API_KEY from the environment
+    model = str(settings.llm.get("model", "claude-opus-4-8"))
+    timeout = int(settings.llm.get("timeout_seconds", 60))
+    try:
+        response = client.with_options(timeout=timeout).messages.parse(
+            model=model,
+            max_tokens=8000,
+            thinking={"type": "adaptive"},  # let the model reason before committing
+            system=system,
+            messages=[{"role": "user", "content": user}],
+            output_format=ScenarioAnalysis,
+        )
+    except anthropic.AnthropicError as exc:  # auth, rate limit, network, etc.
+        raise CardGenerationError(
+            f"Scenario LLM call failed ({type(exc).__name__}): {exc}. "
+            "Check that ANTHROPIC_API_KEY is set and the anthropic SDK is current."
+        ) from exc
+    if response.parsed_output is None:
+        raise CardGenerationError("Scenario LLM returned no parseable structured output.")
+    return response.parsed_output
+
+
+def _analysis_to_dict(analysis: ScenarioAnalysis) -> dict[str, Any]:
+    """Convert the parsed pydantic analysis into the raw dict `_build_card` consumes."""
+    predictions = [{
+        "asset": p.asset, "ticker": p.ticker, "tradable_instrument_name": p.tradable_instrument_name,
+        "asset_class": p.asset_class, "expected_direction": p.expected_direction,
+        "expected_return_12h_bps": p.expected_return_12h_bps, "confidence": p.confidence,
+        "confidence_interval_bps": [p.confidence_interval_low_bps, p.confidence_interval_high_bps],
+        "reasoning": p.reasoning,
+        "time_plan": {"30m": p.plan_30m, "1h": p.plan_1h, "2h": p.plan_2h, "6h": p.plan_6h, "12h": p.plan_12h},
+    } for p in analysis.predictions]
+    return {
+        "predictions": predictions,
+        "evidence_used": list(analysis.evidence_used),
+        "uncertainty_notes": list(analysis.uncertainty_notes),
+        "llm_justification": {
+            "summary": analysis.summary,
+            "key_assumptions": list(analysis.key_assumptions),
+            "failure_modes": list(analysis.failure_modes),
+        },
+    }
+
+
+# ---------------------------------------------------------------------------
+# Default card-level content (used by the mock path, or as a live-path fallback)
+# ---------------------------------------------------------------------------
+def _default_evidence() -> list[str]:
+    return ["prediction-market question and metadata", "market-to-asset sensitivity mapping",
+            "public information to be checked before any action"]
+
+
+def _default_uncertainty(mock_mode: bool) -> list[str]:
+    return ["MOCK card — not an investment recommendation."] if mock_mode else \
+           ["LLM output; requires downstream news-lag and public-information checks."]
+
+
+def _default_summary(mock_mode: bool) -> str:
+    return ("Mock scenario card generated for pipeline testing." if mock_mode
+            else "LLM-generated pre-trade market-to-asset scenario card.")
+
+
+def _default_assumptions() -> list[str]:
+    return ["The prediction-market signal contains information not fully in public assets.",
+            "The chosen instrument is a liquid enough proxy for the event risk."]
+
+
+def _default_failures() -> list[str]:
+    return ["The prediction-market move reverses.", "Public information already explained the move.",
+            "The proxy asset is weakly exposed to the event."]
 
 
 # ---------------------------------------------------------------------------
