@@ -1,0 +1,59 @@
+{
+  "run_id": "20260716T093132Z",
+  "run_time_utc": "2026-07-16T09:31:32Z",
+  "card_mode": "mock",
+  "data_source": "live",
+  "market_selector": {
+    "input_markets": 100,
+    "selected_count": 29,
+    "rejected_count": 71,
+    "selected_file": "outputs/relevant_markets/relevant_markets_20260716T093132Z.csv"
+  },
+  "anomaly_detector": {
+    "markets_scored": 29,
+    "strong_count": 0,
+    "concentration_red_flags": 27,
+    "ranked_file": "outputs/anomalies/ranked_anomalies_20260716T093132Z.csv"
+  },
+  "cards": {
+    "card_mode": "mock",
+    "cards_written": 29,
+    "files": [
+      "outputs/index_cards/559651_20260716T093132Z.json",
+      "outputs/index_cards/560317_20260716T093132Z.json",
+      "outputs/index_cards/544094_20260716T093132Z.json",
+      "outputs/index_cards/544092_20260716T093132Z.json",
+      "outputs/index_cards/544095_20260716T093132Z.json",
+      "outputs/index_cards/544096_20260716T093132Z.json",
+      "outputs/index_cards/544097_20260716T093132Z.json",
+      "outputs/index_cards/559652_20260716T093132Z.json",
+      "outputs/index_cards/559653_20260716T093132Z.json",
+      "outputs/index_cards/559654_20260716T093132Z.json",
+      "outputs/index_cards/559655_20260716T093132Z.json",
+      "outputs/index_cards/544093_20260716T093132Z.json",
+      "outputs/index_cards/559657_20260716T093132Z.json",
+      "outputs/index_cards/559658_20260716T093132Z.json",
+      "outputs/index_cards/559659_20260716T093132Z.json",
+      "outputs/index_cards/559660_20260716T093132Z.json",
+      "outputs/index_cards/559661_20260716T093132Z.json",
+      "outputs/index_cards/561229_20260716T093132Z.json",
+      "outputs/index_cards/561230_20260716T093132Z.json",
+      "outputs/index_cards/561231_20260716T093132Z.json",
+      "outputs/index_cards/561232_20260716T093132Z.json",
+      "outputs/index_cards/561233_20260716T093132Z.json",
+      "outputs/index_cards/561234_20260716T093132Z.json",
+      "outputs/index_cards/561235_20260716T093132Z.json",
+      "outputs/index_cards/561236_20260716T093132Z.json",
+      "outputs/index_cards/561237_20260716T093132Z.json",
+      "outputs/index_cards/561238_20260716T093132Z.json",
+      "outputs/index_cards/561973_20260716T093132Z.json",
+      "outputs/index_cards/561974_20260716T093132Z.json"
+    ]
+  },
+  "recommender": {
+    "recommended_count": 0,
+    "rejected_count": 0,
+    "workbook": "outputs/recommended_trades/paper_recommendations_20260716T093132Z.xlsx",
+    "backfill_mode": false
+  }
+}
