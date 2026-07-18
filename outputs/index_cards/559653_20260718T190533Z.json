@@ -1,0 +1,71 @@
+{
+  "card_id": "559653_20260718T190533Z",
+  "card_version": "v1",
+  "card_hash": "04a8ef275dc78ef0c57b6e43e2c06ab811c4041ad89622eac6b39c22320a897a",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-18T19:05:33Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "559653",
+    "market_slug": "will-alexandria-ocasio-cortez-win-the-2028-democratic-presidential-nomination-653",
+    "market_name": "Will Alexandria Ocasio-Cortez win the 2028 Democratic presidential nomination?",
+    "market_url": "https://polymarket.com/market/will-alexandria-ocasio-cortez-win-the-2028-democratic-presidential-nomination-653",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Alexandria Ocasio-Cortez win the 2028 Democratic presidential nomination?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US equity market (broad)",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.05,
+      "confidence_interval_bps": [
+        -30.0,
+        30.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any concrete news catalyst (endorsement, candidacy announcement, poll) coincided with the probability move; if none, treat as noise.",
+        "1h": "Compare SPY move to overall market beta and macro data releases to confirm no attributable political signal.",
+        "2h": "Reassess whether the political market move persisted or reverted; a reversion confirms low information content.",
+        "6h": "Scan for media coverage tying the move to any real event; absence supports the null thesis.",
+        "12h": "Confirm no measurable equity impact; log as a non-tradable, low-signal political market."
+      },
+      "reasoning": "A shift in the implied probability of AOC winning the 2028 Democratic nomination is an event roughly three years out, with enormous intervening uncertainty (primary field, incumbency dynamics, policy platform). There is no credible transmission channel from a 12-hour move in this thin political market to broad equities within a 12-hour window. AOC is associated with progressive tax/regulatory policy that could in theory pressure certain sectors, but that is a multi-year story, not an intraday one. The prediction market here is a noisy sensor of long-horizon political sentiment, not of any imminent public information."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves on 2028 Democratic nomination \u2014 a ~3-year horizon event",
+    "No named near-term catalyst in the description",
+    "Resolution depends on party consensus far in the future",
+    "12-hour prediction window vs. multi-year event horizon"
+  ],
+  "uncertainty_notes": [
+    "Long-dated political markets carry essentially no intraday asset-pricing signal",
+    "Even if AOC's odds moved sharply, the policy transmission to specific equities is diffuse and years away",
+    "Proxy exposure (SPY) is extremely weak to this event"
+  ],
+  "llm_justification": {
+    "summary": "This market concerns the 2028 Democratic presidential nomination, an event roughly three years away with vast intervening uncertainty. A 12-hour move in its implied probability has no credible, quantifiable transmission channel to liquid public-market assets within the prediction window. The mapping is weak; we assign 'unclear' direction, near-zero expected move, and very low confidence. This is below the 700bps tradable threshold and should be treated as noise for research purposes.",
+    "key_assumptions": [
+      "No imminent, market-moving catalyst is attached to this political market",
+      "The 2028 horizon dominates any near-term pricing relevance",
+      "Broad equity indices are the least-wrong but still very weak proxy"
+    ],
+    "failure_modes": [
+      "A major real-world catalyst (e.g., AOC announcing a run, major endorsement) could give the move genuine information content we are dismissing",
+      "Specific sectors (energy, financials, healthcare) could react to a credible progressive frontrunner, but not intraday",
+      "The move is almost certainly already-public political sentiment, not leaked information",
+      "Chosen proxy (SPY) has negligible exposure to this specific event, making any signal undetectable"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

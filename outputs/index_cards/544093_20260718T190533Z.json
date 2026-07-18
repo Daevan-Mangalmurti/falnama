@@ -1,0 +1,68 @@
+{
+  "card_id": "544093_20260718T190533Z",
+  "card_version": "v1",
+  "card_hash": "d606caa59f0619df7cb5c017df6072d5f85583a23062dbe6f9dade216faccfb6",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-18T19:05:33Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "544093",
+    "market_slug": "will-harvey-weinstein-be-sentenced-to-less-than-5-years-in-prison",
+    "market_name": "Will Harvey Weinstein be sentenced to less than 5 years in prison?",
+    "market_url": "https://polymarket.com/market/will-harvey-weinstein-be-sentenced-to-less-than-5-years-in-prison",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Harvey Weinstein be sentenced to less than 5 years in prison?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "No liquid public-market proxy",
+      "ticker": null,
+      "tradable_instrument_name": null,
+      "asset_class": "other",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.02,
+      "confidence_interval_bps": [
+        -50.0,
+        50.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm no unexpected corporate or litigation-finance entity is tied to the case; none expected.",
+        "1h": "Check whether any news wire links the sentencing to a broader institutional or media-company liability; unlikely.",
+        "2h": "Re-verify absence of any tradable proxy; monitor for spurious media-ETF moves driven by unrelated catalysts.",
+        "6h": "No action; treat any asset move as unrelated to this market.",
+        "12h": "Close research window; record as a no-signal / non-mappable case for the leakage study."
+      },
+      "reasoning": "This market concerns the criminal sentencing outcome of Harvey Weinstein in his New York retrial. It is a personal legal/judicial event with no material connection to any tradable, liquid financial instrument. The Weinstein Company collapsed and was liquidated years ago; there is no listed equity, index, commodity, or currency whose cash flows or risk premia are exposed to the length of his prison sentence. Even broad media or entertainment ETFs have zero fundamental sensitivity to this outcome. Any observed co-movement would be pure noise. There is no forward-looking economic channel from this prediction market to public asset prices."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns Harvey Weinstein's individual criminal sentence in a NY retrial",
+    "The Weinstein Company was liquidated in 2018 and has no surviving listed security",
+    "No described counterparty, insurer, or public firm has cash flows tied to the sentence length"
+  ],
+  "uncertainty_notes": [
+    "The mapping is intentionally null: no credible economic transmission channel exists",
+    "If a litigation-finance vehicle or insurer with public exposure were involved, the assessment could change, but none is indicated",
+    "'elections' primary-topic tag appears to be a mislabel and does not create any macro/political-market channel"
+  ],
+  "llm_justification": {
+    "summary": "This is a personal criminal-sentencing prediction market with no plausible transmission channel to any liquid public-market asset. The relevant corporate entity (The Weinstein Company) no longer exists as a tradable security, and no index, commodity, or FX proxy has fundamental exposure to the sentence length. The correct research conclusion is 'no tradable signal' \u2014 direction unclear, near-zero expected move, and very low confidence in any mapping.",
+    "key_assumptions": [
+      "No surviving public company or financial instrument is materially exposed to Weinstein's sentence",
+      "Any short-term co-movement in media/entertainment assets would be coincidental noise"
+    ],
+    "failure_modes": [
+      "A hidden litigation-finance or insurance instrument with public exposure could exist, invalidating the null thesis",
+      "The event outcome is largely already public/anticipated, so even a related asset would not move on resolution",
+      "Choosing any concrete proxy (e.g., a media ETF) would be a spurious, weakly-exposed mapping and should be avoided"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

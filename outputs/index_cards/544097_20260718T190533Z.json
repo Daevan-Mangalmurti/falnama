@@ -1,0 +1,69 @@
+{
+  "card_id": "544097_20260718T190533Z",
+  "card_version": "v1",
+  "card_hash": "4451eab432d10bc7e9b365827c5c4eb5e91e5e6aca4ce23165d2c706cde7384a",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-18T19:05:33Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "544097",
+    "market_slug": "will-harvey-weinstein-be-sentenced-to-more-than-30-years-in-prison",
+    "market_name": "Will Harvey Weinstein be sentenced to more than 30 years in prison?",
+    "market_url": "https://polymarket.com/market/will-harvey-weinstein-be-sentenced-to-more-than-30-years-in-prison",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Harvey Weinstein be sentenced to more than 30 years in prison?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "No liquid public-market proxy",
+      "ticker": null,
+      "tradable_instrument_name": null,
+      "asset_class": "other",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.03,
+      "confidence_interval_bps": [
+        -50.0,
+        50.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm no unexpected corporate or settlement news references Weinstein-linked entities; otherwise no action.",
+        "1h": "Re-scan for any headline linking the sentencing to a listed company (e.g., insurers, media firms) that could create exposure; expect none.",
+        "2h": "Check whether market probability moved sharply on a leak; even so, verify there is no tradable proxy before considering anything.",
+        "6h": "Reassess whether any class-action or settlement disclosure emerges that touches a public balance sheet; likely none.",
+        "12h": "Close the window; record that no tradable public-market implication materialized, as expected."
+      },
+      "reasoning": "This market concerns the criminal sentencing of Harvey Weinstein in his New York retrial. There is no publicly traded company, commodity, currency, or index whose cash flows or risk premia are materially exposed to whether his prison term exceeds 30 years. The Weinstein Company already collapsed into bankruptcy years ago; its assets were sold to Lantern Capital/Spyglass and there is no listed equity tied to the outcome. Any movement in the implied probability of this market therefore carries essentially no information about liquid asset prices. Manufacturing a link (e.g., media conglomerates, #MeToo-related sentiment) would be spurious given the idiosyncratic, single-person, backward-looking nature of the event."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves on Weinstein's NY retrial prison sentence length by July 2026",
+    "The Weinstein Company is defunct (bankruptcy, assets sold to Spyglass/Lantern)",
+    "No listed equity, commodity, FX, or index has material cash-flow exposure to this individual sentencing outcome",
+    "Event is idiosyncratic, single-person, and legal in nature"
+  ],
+  "uncertainty_notes": [
+    "If an unforeseen disclosure tied the outcome to a listed insurer or media firm, a weak proxy could emerge, but this is highly unlikely",
+    "The 'elections' primary topic tag appears mislabeled and does not change the analysis"
+  ],
+  "llm_justification": {
+    "summary": "The market tracks Harvey Weinstein's criminal sentencing length, an idiosyncratic legal event with no material exposure to any liquid public-market asset. The relevant corporate entity (The Weinstein Company) is long bankrupt and delisted, so probability moves in this market leak no actionable asset-price information. The correct call is 'unclear' with very low confidence and no tradable signal (expected move far below the 700 bps threshold).",
+    "key_assumptions": [
+      "No publicly traded company's valuation depends materially on this sentencing",
+      "The Weinstein Company has no surviving listed equity",
+      "No large pending settlement flows through a listed insurer's disclosures in this window"
+    ],
+    "failure_modes": [
+      "A listed insurer or media conglomerate could be revealed as financially exposed, creating a weak proxy we currently see none of",
+      "The market could move on genuine leaked information yet still have no tradable counterpart, making any forced trade pure noise",
+      "Mislabeled 'elections' topic could hint at a different underlying event we are misreading"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

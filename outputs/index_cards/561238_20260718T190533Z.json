@@ -1,0 +1,71 @@
+{
+  "card_id": "561238_20260718T190533Z",
+  "card_version": "v1",
+  "card_hash": "a916a835a1913be821dc9265bceef3e2438fa914b278a1f05327b8cfcdceb29e",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-18T19:05:33Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "561238",
+    "market_slug": "will-glenn-youngkin-win-the-2028-us-presidential-election",
+    "market_name": "Will Glenn Youngkin win the 2028 US Presidential Election?",
+    "market_url": "https://polymarket.com/market/will-glenn-youngkin-win-the-2028-us-presidential-election",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Glenn Youngkin win the 2028 US Presidential Election?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US large-cap equities",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.05,
+      "confidence_interval_bps": [
+        -40.0,
+        40.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move coincides with a genuine news catalyst (e.g., Youngkin declaring candidacy) versus thin-market noise.",
+        "1h": "Compare SPY intraday move to macro drivers (rates, data prints); confirm no attributable election-driven move.",
+        "2h": "Re-check Polymarket volume/liquidity to gauge whether the shift is real interest or a single large order.",
+        "6h": "Scan headlines for any 2028 political developments; if none, treat as noise.",
+        "12h": "Close the window; expect no measurable SPY effect attributable to this market."
+      },
+      "reasoning": "This market prices the probability of a specific candidate (Glenn Youngkin) winning an election that is roughly three years away. A short-term swing in this implied probability carries essentially no information that liquid public markets would price over a 12-hour window. There is no policy resolution, no imminent event, and the candidate has not even declared. Any mapping to SPY is speculative at best; even if Youngkin were seen as market-friendly (pro-business Republican governor), the horizon is far too long and the probability too low for a measurable near-term asset move. Included only to state that the honest read is no tradable signal."
+    }
+  ],
+  "evidence_used": [
+    "Market concerns the 2028 US Presidential Election, ~3 years out",
+    "Candidate (Youngkin) is a low-probability, undeclared contender",
+    "Resolution not until Jan 2029",
+    "No imminent catalyst tied to any liquid asset"
+  ],
+  "uncertainty_notes": [
+    "Long-dated political markets are thin and dominated by noise",
+    "No clear transmission channel from a single 2028 candidate's odds to 12h asset prices",
+    "If a major declaration or scandal drove the move, sector-specific effects could emerge, but not within this window reliably"
+  ],
+  "llm_justification": {
+    "summary": "This is a far-dated, low-probability 2028 presidential candidate market with no imminent resolution or policy catalyst. A short-term swing in Youngkin's implied win probability has no reliable transmission to liquid public markets within a 12-hour window. The honest mapping is 'no tradable signal': direction unclear, confidence very low, expected magnitude near zero and well below the 700bps tradable threshold.",
+    "key_assumptions": [
+      "The prediction market move is not accompanied by a market-moving real-world event",
+      "Three-year horizon dominates any equity discounting",
+      "Market is thin and prone to noise"
+    ],
+    "failure_modes": [
+      "A concurrent hard news catalyst (candidacy announcement, major primary shift) could move sector proxies, making the 'no signal' call wrong",
+      "The move may already reflect public information, offering no edge",
+      "SPY is a very weak proxy for any single distant candidate's odds",
+      "Attributing any SPY move to this market would be spurious correlation"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

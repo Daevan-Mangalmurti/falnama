@@ -1,0 +1,70 @@
+{
+  "card_id": "561974_20260718T190533Z",
+  "card_version": "v1",
+  "card_hash": "bc85f638a710f4f958c75ed413f63f3b296b4634cf4373eccbfba1e6855a0f8c",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-18T19:05:33Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "561974",
+    "market_slug": "will-jd-vance-win-the-2028-republican-presidential-nomination",
+    "market_name": "Will J.D. Vance win the 2028 Republican presidential nomination?",
+    "market_url": "https://polymarket.com/market/will-jd-vance-win-the-2028-republican-presidential-nomination",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will J.D. Vance win the 2028 Republican presidential nomination?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US large-cap equities",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.1,
+      "confidence_interval_bps": [
+        -40.0,
+        40.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Vance market move coincided with a concrete news catalyst (e.g., Trump succession news, health event, endorsement) that could actually reprice risk.",
+        "1h": "Compare SPY intraday path to macro drivers (rates, oil, tech leadership) to confirm the political market is not the mover.",
+        "2h": "Reassess if a real political shock is developing that could alter 2026 midterm or policy expectations.",
+        "6h": "Look for follow-through in political-sensitive sectors (defense, energy, healthcare) rather than broad index.",
+        "12h": "Close research window; record that the nomination market had no measurable equity impact absent a concrete catalyst."
+      },
+      "reasoning": "A shift in the implied probability of J.D. Vance winning the 2028 Republican nomination is an ultra-long-dated political signal (roughly three years out) with no clear, immediate policy or earnings channel to broad equities. Even a sharp intraday move in this market carries negligible information relevant to S&P 500 cash flows over the next 12 hours. Any correlation would be spurious noise, so the honest mapping is essentially no directional edge."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves to a 2028 Republican nomination outcome, ~3 years in the future",
+    "No category or macro catalyst attached to the question",
+    "Resolution depends on party sources, not tradable economic data"
+  ],
+  "uncertainty_notes": [
+    "A move in Vance odds could reflect an underlying Trump succession/health event that WOULD move markets \u2014 but that catalyst, not the nomination probability, would be the real driver",
+    "Political prediction markets are thin and prone to idiosyncratic liquidity swings unrelated to fundamentals",
+    "Three-year time horizon makes any 12h asset mapping speculative"
+  ],
+  "llm_justification": {
+    "summary": "This market concerns the 2028 Republican presidential nomination \u2014 an ultra-long-dated political outcome with no clean, immediate transmission channel to liquid public markets over a 12-hour window. A sharp move in Vance's implied probability would most plausibly be noise or reflect an underlying catalyst (e.g., Trump succession news) that itself would be the actual market driver. We therefore assign an unclear direction and low confidence, well below the 700bps tradable threshold.",
+    "key_assumptions": [
+      "No coincident, market-moving catalyst is embedded in the Vance odds move",
+      "Broad equities are the least-weak proxy but still only weakly exposed",
+      "The 12h window is far too short for 2028 political shifts to reprice fundamentals"
+    ],
+    "failure_modes": [
+      "The Vance move is actually driven by a Trump health/succession shock, in which case defense, energy, and volatility (VIX) \u2014 not SPY \u2014 would be the correct proxies and could move materially",
+      "Prediction market move is pure thin-liquidity noise with zero asset relevance",
+      "Any observed SPY co-movement is coincidental and reverses, generating a false signal",
+      "Choosing broad equities as proxy understates sector-specific policy exposure (e.g., energy, immigration-sensitive names)"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

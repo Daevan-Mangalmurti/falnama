@@ -1,0 +1,70 @@
+{
+  "card_id": "561237_20260718T190533Z",
+  "card_version": "v1",
+  "card_hash": "0508f4e512f7ca7d688a02eaff4f49458a68b6b69c62923b06ddfe89ea48b2ca",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-18T19:05:33Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "561237",
+    "market_slug": "will-andy-beshear-win-the-2028-us-presidential-election",
+    "market_name": "Will Andy Beshear win the 2028 US Presidential Election?",
+    "market_url": "https://polymarket.com/market/will-andy-beshear-win-the-2028-us-presidential-election",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Andy Beshear win the 2028 US Presidential Election?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US large-cap equities",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.05,
+      "confidence_interval_bps": [
+        -40.0,
+        40.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the odds move coincided with a concrete news catalyst (announcement, primary poll) versus thin-market noise.",
+        "1h": "Compare SPY intraday move to its normal range; confirm no reaction attributable to this market.",
+        "2h": "Scan for any Beshear policy statements that could hint at sector implications (energy, healthcare).",
+        "6h": "Reassess whether broader 2028 field odds shifted in a correlated way suggesting real information.",
+        "12h": "Close out: confirm no measurable equity impact and log as non-tradable weak mapping."
+      },
+      "reasoning": "This market concerns whether a single, currently low-probability candidate (Andy Beshear) wins an election more than three years away. A shift in his implied probability carries essentially no near-term, actionable information for broad US equities. Policy platforms are undefined this far out, the field is unresolved, and any Beshear-specific odds move is dominated by nomination-jockeying noise rather than macro-relevant news. There is no credible transmission channel to move SPY 700+ bps in 12 hours."
+    }
+  ],
+  "evidence_used": [
+    "Market is about a specific candidate winning an election in November 2028, over three years away",
+    "Andy Beshear is currently a low-probability, non-frontrunner candidate",
+    "No defined policy platform or macro catalyst tied to this market",
+    "Resolution mechanics (AP/Fox/NBC calls) are far-dated and irrelevant to 12h window"
+  ],
+  "uncertainty_notes": [
+    "Prediction markets this far from an election are thinly traded and dominated by noise",
+    "Even a large percentage move in Beshear's odds implies negligible change in expected policy outcomes today",
+    "No sector proxy has clean exposure to a single early-cycle candidate"
+  ],
+  "llm_justification": {
+    "summary": "This is a 2028 single-candidate presidential market for a long-shot contender, more than three years out. There is no credible, liquid public-market proxy that would move materially within a 12-hour window from a shift in Andy Beshear's implied odds. The mapping is weak; direction is unclear and confidence is low. Not tradable under the 700 bps threshold.",
+    "key_assumptions": [
+      "Election is far-dated and Beshear lacks a defined, market-moving policy platform",
+      "Odds moves in this market reflect nomination speculation, not macro-relevant leaks",
+      "Broad equity markets do not price 2028 candidate-specific outcomes at this horizon"
+    ],
+    "failure_modes": [
+      "A genuine catalyst (major announcement, scandal, or macro-linked policy signal) could make the odds move informative, which this null mapping would miss",
+      "The move could reflect information about the broader Democratic field or 2028 environment that has faint sector implications not captured here",
+      "Choosing SPY as proxy is deliberately broad; a specific policy angle (energy, healthcare) could show a small directional effect that a broad-index null would obscure"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

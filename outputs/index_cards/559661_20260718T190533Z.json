@@ -1,0 +1,70 @@
+{
+  "card_id": "559661_20260718T190533Z",
+  "card_version": "v1",
+  "card_hash": "8d79f38fea93ef115bc16147124bdb035b71076445ca0dd0dc4ba4b5b4b045a2",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-18T19:05:33Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "559661",
+    "market_slug": "will-jon-ossoff-win-the-2028-democratic-presidential-nomination-885",
+    "market_name": "Will Jon Ossoff win the 2028 Democratic presidential nomination?",
+    "market_url": "https://polymarket.com/market/will-jon-ossoff-win-the-2028-democratic-presidential-nomination-885",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Jon Ossoff win the 2028 Democratic presidential nomination?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "S&P 500 broad equity index",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.05,
+      "confidence_interval_bps": [
+        -40.0,
+        40.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether any Ossoff-specific news (announcement, scandal, endorsement) is driving the market move; if none, treat as noise.",
+        "1h": "Check whether broader 2028 Democratic field markets moved in tandem, which would suggest a party-level rather than candidate-level signal.",
+        "2h": "Verify SPY and sector ETFs show no correlated response; expect none.",
+        "6h": "Reassess if the move is part of a larger political-news cluster (e.g., an unexpected 2028 development) with genuine policy implications.",
+        "12h": "Close the card; record that no tradable public-market implication materialized, as expected."
+      },
+      "reasoning": "A 2028 Democratic primary market for a low-profile candidate (Jon Ossoff, a first-term senator) carries essentially zero information relevant to asset prices over a 12-hour window. The nomination is roughly three years away, the base rate of any specific named individual winning is very low, and even a sharp implied-probability move would not change fiscal, regulatory, or macro expectations that markets price today. There is no credible, liquid proxy with meaningful exposure to this event on this horizon."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns the 2028 Democratic presidential nomination, ~3 years out.",
+    "Named candidate (Jon Ossoff) is a low-probability, low-salience contender.",
+    "No category or macro-policy linkage specified in the market description.",
+    "12-hour prediction window versus a multi-year event horizon."
+  ],
+  "uncertainty_notes": [
+    "A candidate this far from resolution and this low-profile has negligible price impact on liquid assets.",
+    "Even large implied-probability swings on an obscure primary contender do not move discountable cash-flow or macro expectations.",
+    "If unexpected major news drove the move, the news itself\u2014not this specific market\u2014would be the actionable signal."
+  ],
+  "llm_justification": {
+    "summary": "This market maps to no meaningful, tradable public-market implication over a 12-hour horizon. A 2028 Democratic nomination question for a long-shot candidate is temporally remote and policy-ambiguous; asset prices do not discount such distant, individual-specific political outcomes on an intraday basis. The mapping is weak and the appropriate stance is 'unclear' with very low confidence, well below the 700bps tradable threshold.",
+    "key_assumptions": [
+      "Markets do not price 2028 primary candidate probabilities into current asset valuations.",
+      "No concurrent macro or policy news is embedded in this specific market move.",
+      "Ossoff's platform does not map cleanly to any single liquid sector proxy."
+    ],
+    "failure_modes": [
+      "A move could reflect genuine breaking news (announcement/scandal) whose broader implications are actionable, but the causal signal would be the news, not this market.",
+      "The chosen proxy (SPY) has essentially no exposure to this event, so any correlation would be spurious.",
+      "Thin, illiquid prediction-market pricing could swing on tiny volume, generating false anomaly signals."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

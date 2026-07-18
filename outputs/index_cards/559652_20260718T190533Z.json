@@ -1,0 +1,72 @@
+{
+  "card_id": "559652_20260718T190533Z",
+  "card_version": "v1",
+  "card_hash": "2aa4e64ff48c8c7e8e33e5eebdaa4cfeab9f056130f3f4ab62f68dfe65195235",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-18T19:05:33Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "559652",
+    "market_slug": "will-gavin-newsom-win-the-2028-democratic-presidential-nomination-568",
+    "market_name": "Will Gavin Newsom win the 2028 Democratic presidential nomination?",
+    "market_url": "https://polymarket.com/market/will-gavin-newsom-win-the-2028-democratic-presidential-nomination-568",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Gavin Newsom win the 2028 Democratic presidential nomination?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US equity market (broad)",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.05,
+      "confidence_interval_bps": [
+        -40.0,
+        40.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move coincides with a concrete news catalyst (candidacy announcement, scandal, endorsement) versus thin-market drift.",
+        "1h": "Compare SPY intraday move to macro drivers (rates, data prints) to confirm political news is not the driver.",
+        "2h": "Assess if any sector proxies (healthcare, energy, California munis) react; if none, confirm no signal.",
+        "6h": "Re-evaluate whether the odds move persisted or reverted, indicating information vs. noise.",
+        "12h": "Close out: document that a 2028 nomination odds move produced no measurable, attributable public-market impact."
+      },
+      "reasoning": "A shift in the implied probability that Gavin Newsom wins the 2028 Democratic nomination is a very long-dated political signal with no near-term catalyst. The 2028 election is years away, the general-election outcome is unknown, and a single candidate's primary odds carry no clear, immediate cash-flow or policy implication for broad equities within a 12-hour window. Any mapping to SPY is speculative at best; the market is a noisy sensor here and the linkage is essentially noise over this horizon."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns the 2028 Democratic presidential nomination, resolving years in the future",
+    "No category tag; primary topic elections, region United States",
+    "12-hour prediction window versus a multi-year political event horizon",
+    "Single-candidate primary odds carry no direct near-term policy or earnings implication"
+  ],
+  "uncertainty_notes": [
+    "The event is far in the future, so present-value impact on any tradable asset is negligible over 12 hours",
+    "Even if Newsom's odds moved sharply, the general-election and policy path remain highly uncertain",
+    "Prediction markets for distant elections are often thin and prone to noise/manipulation",
+    "No specific sector (e.g., California-exposed names) has a clear, robust exposure to primary odds"
+  ],
+  "llm_justification": {
+    "summary": "This market asks about the 2028 Democratic nomination \u2014 a multi-year-horizon political question. A short-term move in Newsom's implied probability has no clear, robust transmission channel to liquid public-market assets within a 12-hour window. The best-supported conclusion is that there is no tradable signal here: direction is unclear and confidence is very low. We map it nominally to broad US equities (SPY) only to document the absence of a meaningful implication.",
+    "key_assumptions": [
+      "The 2028 timeline makes any present-value asset impact negligible",
+      "No imminent policy or personnel decision hinges on this specific nomination probability",
+      "Broad equity indices are the least-wrong catch-all proxy given no specific exposure"
+    ],
+    "failure_modes": [
+      "The proxy (SPY) is essentially unexposed to this event, so any observed move is coincidental",
+      "A sharp odds move could reflect a real news catalyst (e.g., Newsom scandal or announcement) that also moves specific names, which this broad mapping would miss",
+      "The move could be pure thin-market noise or manipulation with zero information content",
+      "Backward-fitting a market narrative to political headlines would manufacture a false signal"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

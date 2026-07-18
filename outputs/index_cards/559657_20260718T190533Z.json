@@ -1,0 +1,69 @@
+{
+  "card_id": "559657_20260718T190533Z",
+  "card_version": "v1",
+  "card_hash": "c82fafffa77c05f4a92fd16f0ee7cdc09713292ffe1bde51ef93a8cbf2972a06",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-18T19:05:33Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "559657",
+    "market_slug": "will-stephen-a-smith-win-the-2028-democratic-presidential-nomination-914",
+    "market_name": "Will Stephen A. Smith win the 2028 Democratic presidential nomination?",
+    "market_url": "https://polymarket.com/market/will-stephen-a-smith-win-the-2028-democratic-presidential-nomination-914",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Stephen A. Smith win the 2028 Democratic presidential nomination?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US equity market (broad)",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.03,
+      "confidence_interval_bps": [
+        -30.0,
+        30.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm no genuine 2028 primary news broke; verify market volume is trivial (novelty/joke bets).",
+        "1h": "Check whether any move is isolated to this market vs. broader 2028 Democratic nomination markets.",
+        "2h": "Re-check SPY intraday to confirm no correlation with this market's swings.",
+        "6h": "Assess if any political news cycle is driving broad election-related repricing (unlikely).",
+        "12h": "Close out; confirm the null mapping held and no asset moved on this signal."
+      },
+      "reasoning": "This market concerns a long-shot, novelty candidacy (a sports media personality) for a nomination more than three years away. Movements in its implied probability carry essentially no information about policy, macro, or corporate fundamentals over a 12-hour window. There is no credible transmission mechanism from this question to any liquid asset. Included only to document that the mapping is effectively null."
+    }
+  ],
+  "evidence_used": [
+    "Market question names a sports commentator with no political office, for a 2028 nomination years away",
+    "Prediction window is only 12h; nomination resolves in 2028",
+    "No category/topic linkage to specific policy sectors or companies"
+  ],
+  "uncertainty_notes": [
+    "Novelty candidate markets are dominated by noise, low liquidity, and joke bets",
+    "Even genuine 2028 primary shifts have negligible near-term asset impact",
+    "No plausible sector proxy is meaningfully exposed to this specific name"
+  ],
+  "llm_justification": {
+    "summary": "The market asks whether a sports media personality wins the 2028 Democratic nomination \u2014 a long-shot, novelty question with a resolution horizon years away and no discernible link to any liquid public-market asset over a 12-hour window. There is no credible information-transmission mechanism, so the mapping is effectively null. No tradable prediction (nothing approaches the 700bps threshold), and confidence in any directional asset move is minimal.",
+    "key_assumptions": [
+      "This is a low-liquidity novelty market dominated by noise",
+      "No material policy or macro information leaks through this specific question",
+      "Broad equity indices are unaffected by a single long-shot 2028 primary contender"
+    ],
+    "failure_modes": [
+      "An unexpected major political development could theoretically move broad election markets, but not via this specific name",
+      "Treating any move here as signal would be spurious \u2014 the proxy exposure is essentially zero",
+      "Even a large implied-probability swing likely reflects thin-market noise, not real information"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

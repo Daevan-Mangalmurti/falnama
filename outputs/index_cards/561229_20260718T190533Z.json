@@ -1,0 +1,69 @@
+{
+  "card_id": "561229_20260718T190533Z",
+  "card_version": "v1",
+  "card_hash": "ff403723a7ff1fd92acc70e6a50cc7b4960eee8d8fab9da25aae397d48de690c",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-18T19:05:33Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "561229",
+    "market_slug": "will-jd-vance-win-the-2028-us-presidential-election",
+    "market_name": "Will JD Vance win the 2028 US Presidential Election?",
+    "market_url": "https://polymarket.com/market/will-jd-vance-win-the-2028-us-presidential-election",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will JD Vance win the 2028 US Presidential Election?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US large-cap equity index",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.08,
+      "confidence_interval_bps": [
+        -40.0,
+        40.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether the probability move coincides with an actual news catalyst (candidacy announcement, health event, major poll); if so, attribute the equity move to that, not this market.",
+        "1h": "Check whether policy-sensitive sectors (energy, defense, healthcare) show any coherent rotation; absent a concrete policy signal, treat as noise.",
+        "2h": "Compare SPY move to VIX and rates to see if any macro driver \u2014 not the election market \u2014 explains the tape.",
+        "6h": "Reassess whether the prediction-market move persisted or mean-reverted, indicating a real event vs. thin-liquidity noise.",
+        "12h": "Close out: record whether any equity move materialized and whether it exceeded normal intraday range; expected answer is no."
+      },
+      "reasoning": "A shift in the implied probability of JD Vance winning an election three years out (November 2028) carries essentially no information that liquid US equities would price within a 12-hour window. Election-outcome probabilities this far ahead are dominated by nomination uncertainty, primary dynamics, and long-horizon narrative \u2014 not near-term earnings, rates, or policy catalysts. There is no plausible mechanism for a same-day, 700bps move in a broad index from this market moving. Any correlation would be spurious."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves on the 2028 US Presidential Election (Nov 7, 2028), roughly three years from any near-term signal",
+    "Question concerns a single candidate's win probability, contingent first on nomination",
+    "No specified region/catalyst; category is long-horizon elections"
+  ],
+  "uncertainty_notes": [
+    "Election probabilities this far out are extremely noisy and driven by primary/nomination speculation, not near-term policy",
+    "Even a large probability swing lacks a 12h transmission channel to liquid assets",
+    "Sector-specific effects (defense, energy, crypto given Vance's stances) are speculative and long-dated, not tradable intraday"
+  ],
+  "llm_justification": {
+    "summary": "This market asks about a 2028 presidential outcome three years out. Even a sharp move in JD Vance's implied win probability has no credible 12-hour transmission mechanism to liquid public-market assets. The nomination is far from settled and policy consequences are years away. The best-calibrated answer is that this is a weak/no signal for near-term asset moves: direction unclear, magnitude near zero, and well below the 700bps tradable threshold.",
+    "key_assumptions": [
+      "No imminent, market-moving catalyst (e.g., a candidacy launch during the window) is embedded in the probability move",
+      "Broad equity and macro assets do not price 2028 election odds intraday",
+      "The prediction-market move reflects thin-liquidity speculation rather than leaked material information"
+    ],
+    "failure_modes": [
+      "A genuine catalyst (Vance announcing a run, a rival's withdrawal, or a health/scandal event) could drive both this market and specific assets \u2014 but the asset move would be attributable to the news, already public, not the market itself",
+      "Policy-linked proxies (defense ETFs, crypto, energy) could theoretically respond to a strong Vance surge, but the exposure is weak and multi-year, not intraday",
+      "Any observed 12h correlation with SPY is almost certainly coincidental macro noise, leading to a false-positive signal"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

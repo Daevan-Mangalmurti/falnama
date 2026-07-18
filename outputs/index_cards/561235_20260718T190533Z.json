@@ -1,0 +1,70 @@
+{
+  "card_id": "561235_20260718T190533Z",
+  "card_version": "v1",
+  "card_hash": "c69866a8831c35caf62098aa6c676c48123c5658a5a18635929be3a009695d3b",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-18T19:05:33Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "561235",
+    "market_slug": "will-wes-moore-win-the-2028-us-presidential-election",
+    "market_name": "Will Wes Moore win the 2028 US Presidential Election?",
+    "market_url": "https://polymarket.com/market/will-wes-moore-win-the-2028-us-presidential-election",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Wes Moore win the 2028 US Presidential Election?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US large-cap equities",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.05,
+      "confidence_interval_bps": [
+        -40.0,
+        40.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm no coincident real-world news (major endorsement, campaign launch, scandal) that could give the move a fundamental basis; note the size and liquidity of the probability shift.",
+        "1h": "Check whether the move is idiosyncratic to this single candidate market or part of a broad repricing across all 2028 candidate markets, which would suggest noise/liquidity rather than signal.",
+        "2h": "Compare against SPY/sector ETF price action to confirm no correlation; if flat, treat as non-event.",
+        "6h": "Re-scan headlines for any political catalyst; absent one, maintain unclear/no-trade stance.",
+        "12h": "Close out research window; record that a 2028 long-shot candidate market produced no actionable 12h asset signal, as expected."
+      },
+      "reasoning": "This market asks whether Wes Moore, the Maryland governor and a speculative long-shot, wins the 2028 presidential election \u2014 an event more than three years away. A shift in his implied probability carries essentially no information relevant to any liquid asset over a 12-hour window. Presidential-cycle policy trades (energy, healthcare, defense, tariffs, financials) only begin to price meaningfully in the year of the election, and even then via the eventual nominees and their concrete platforms, not a low-probability aspirant this early. There is no plausible mechanism by which a move in this niche market moves broad equities, and no sector-specific policy signal from a candidate without a defined 2028 platform. I assign near-zero directional expectation and minimal confidence."
+    }
+  ],
+  "evidence_used": [
+    "Market concerns the 2028 US Presidential Election, over three years from now",
+    "Wes Moore is a speculative, low-probability candidate without a defined national platform",
+    "No category or region metadata; primary topic is elections",
+    "12h prediction window with a 700bp tradability threshold"
+  ],
+  "uncertainty_notes": [
+    "A truly dramatic probability spike could accompany a genuine news catalyst (campaign announcement, major endorsement), but even then broad-asset impact within 12h would be negligible",
+    "Election-cycle policy trades do not activate this far in advance",
+    "Prediction-market moves in thin, long-dated candidate markets are dominated by liquidity noise"
+  ],
+  "llm_justification": {
+    "summary": "The market prices a long-shot candidate's odds in an election more than three years away. There is no credible transmission channel from a shift in Wes Moore's 2028 odds to any liquid public-market asset within a 12-hour window. The best-calibrated answer is 'unclear' with very low confidence and no tradable signal.",
+    "key_assumptions": [
+      "Public markets do not price 2028 election policy outcomes this early",
+      "Wes Moore lacks a defined platform that would map to specific sectors",
+      "Any probability move here is more likely noise than leaked information"
+    ],
+    "failure_modes": [
+      "The move coincides with a real catalyst (e.g., campaign launch) that has minor sector relevance \u2014 but still far below the 700bp threshold over 12h",
+      "Treating a thin-market probability twitch as signal when it is liquidity-driven noise",
+      "Assuming a proxy (SPY) has any measurable exposure to a single 2028 long-shot candidate \u2014 it does not"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

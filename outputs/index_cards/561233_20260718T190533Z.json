@@ -1,0 +1,69 @@
+{
+  "card_id": "561233_20260718T190533Z",
+  "card_version": "v1",
+  "card_hash": "e26c5525411ca8fdeb61956f54b1a4d3ee802ae8e1df3e4a428d13f22e7d6834",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-18T19:05:33Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "561233",
+    "market_slug": "will-josh-shapiro-win-the-2028-us-presidential-election",
+    "market_name": "Will Josh Shapiro win the 2028 US Presidential Election?",
+    "market_url": "https://polymarket.com/market/will-josh-shapiro-win-the-2028-us-presidential-election",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Josh Shapiro win the 2028 US Presidential Election?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US large-cap equities",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.05,
+      "confidence_interval_bps": [
+        -40.0,
+        40.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move coincides with an actual news catalyst (e.g., a major candidate announcement) versus thin-market noise; if no headline, treat as noise.",
+        "1h": "Compare SPY intraday move to macro drivers (rates, dollar, sector rotation) to confirm the equity move is unrelated to the political market.",
+        "2h": "Assess whether the Polymarket move persists or reverts; low-liquidity election markets often mean-revert quickly.",
+        "6h": "Re-check for any confirming public reporting; a 2028 primary story rarely has same-day asset impact.",
+        "12h": "Close the window; expect no attributable SPY move and log the non-signal for calibration."
+      },
+      "reasoning": "A shift in one Democratic candidate's nomination/election odds for a race more than three years away (November 2028) carries essentially no information that liquid markets price today. Even a sharp intraday move in Shapiro's implied probability tells us little about macro fundamentals, rates, earnings, or near-term policy. There is no clean, exposed liquid proxy \u2014 any 12h asset move would be dominated by unrelated flow and noise. This mapping is weak by construction."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns the 2028 US Presidential Election, resolving in Jan 2029 \u2014 over three years away.",
+    "No specified region/category detail; single-candidate (Josh Shapiro) probability question.",
+    "Election-outcome markets this far out have minimal, diffuse links to near-term liquid asset prices."
+  ],
+  "uncertainty_notes": [
+    "The 12h window is far too short for a 2028 outcome to transmit to asset prices.",
+    "No identifiable sector- or policy-specific proxy tied to Shapiro specifically at this horizon.",
+    "Polymarket long-dated political markets are often thin and prone to noise-driven probability swings."
+  ],
+  "llm_justification": {
+    "summary": "This is a long-dated 2028 US presidential election market on a single candidate (Josh Shapiro). Even a sharp 12h swing in his implied probability carries no actionable, information-bearing signal for liquid public markets over a 12-hour window: the event is 3+ years out, there is no cleanly exposed proxy, and any concurrent equity move would be driven by unrelated macro flow. The honest mapping is 'unclear' with very low confidence and sub-threshold expected magnitude \u2014 not tradable.",
+    "key_assumptions": [
+      "Markets do not materially reprice equities based on 2028 candidate odds three years in advance.",
+      "There is no candidate-specific liquid instrument that reliably moves with Shapiro's probability.",
+      "Any observed 12h asset move would be coincidental rather than causal."
+    ],
+    "failure_modes": [
+      "The probability move could reflect a genuine, market-moving political shock (e.g., a sitting official's resignation) that does move assets \u2014 but the proxy chosen would still be too broad to capture it.",
+      "The move may already be public and fully discounted, leaving no residual asset reaction.",
+      "SPY is a weak/near-zero-exposure proxy to this specific event, so both direction and magnitude are essentially unknowable at this horizon."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

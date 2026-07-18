@@ -1,0 +1,67 @@
+{
+  "card_id": "544095_20260718T190533Z",
+  "card_version": "v1",
+  "card_hash": "80b6a0d372a589eadf850475ba0083d344e317dea85325b4584795c99deeb36c",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-18T19:05:33Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "544095",
+    "market_slug": "will-harvey-weinstein-be-sentenced-to-between-10-and-20-years-in-prison",
+    "market_name": "Will Harvey Weinstein be sentenced to between 10 and 20 years in prison?",
+    "market_url": "https://polymarket.com/market/will-harvey-weinstein-be-sentenced-to-between-10-and-20-years-in-prison",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Harvey Weinstein be sentenced to between 10 and 20 years in prison?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "No liquid public-market proxy",
+      "ticker": null,
+      "tradable_instrument_name": null,
+      "asset_class": "other",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.02,
+      "confidence_interval_bps": [
+        -50.0,
+        50.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm no unusual news flow tying the case to any media-sector equity; expect none.",
+        "1h": "Re-check whether any credible reporting links sentencing to a specific public company; if not, maintain no-signal stance.",
+        "2h": "Scan media/entertainment ETFs (e.g., PEJ) for idiosyncratic moves; attribute any move to unrelated drivers.",
+        "6h": "Verify that no litigation-finance or insurance-linked instrument is materially exposed; expect none.",
+        "12h": "Close card: confirm no asset moved on this event; document as a null/no-mapping case for the leakage study."
+      },
+      "reasoning": "The sentencing of Harvey Weinstein in a New York criminal retrial is a personal criminal matter with no discernible transmission channel to any liquid, broadly-traded financial asset. Weinstein's former company (The Weinstein Company) went bankrupt years ago and is not publicly traded; there is no listed equity, ETF, commodity, index, or currency whose cash flows depend on this outcome. Any move in prediction-market implied probability would reflect legal/news dynamics, not information that reprices public markets. This is a case where the mapping is essentially non-existent, so the honest answer is no tradable signal."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns an individual criminal sentencing (People v. Harvey Weinstein NY retrial).",
+    "The Weinstein Company is defunct/bankrupt and not publicly listed.",
+    "No commodity, index, FX, or broadly-held equity has cash flows tied to this outcome."
+  ],
+  "uncertainty_notes": [
+    "A sharp move in implied probability would most likely reflect court-schedule or reporting news, not asset-relevant information.",
+    "If some litigation-finance or insurance instrument were unexpectedly exposed, that could create a weak channel, but none is evident."
+  ],
+  "llm_justification": {
+    "summary": "This prediction market concerns the criminal sentencing of an individual (Harvey Weinstein) with no meaningful link to any liquid, publicly traded asset. The former Weinstein Company is bankrupt and unlisted, and no ETF, index, commodity, or currency reprices on this outcome. The mapping is effectively null: direction unclear, confidence near zero, and no tradable signal (far below the 700bps threshold).",
+    "key_assumptions": [
+      "No publicly traded entity's cash flows depend on Weinstein's sentence.",
+      "Prediction-market moves here carry no information that reprices public markets."
+    ],
+    "failure_modes": [
+      "A hidden exposure (e.g., a litigation-finance vehicle or insurer) could exist and create a weak channel we are unaware of.",
+      "Broad media-sentiment effects are far too diffuse and small to register in any liquid proxy.",
+      "The event is high-profile and largely public, so any probability move would be news-driven, not leaked material information."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

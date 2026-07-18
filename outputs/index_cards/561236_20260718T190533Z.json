@@ -1,0 +1,69 @@
+{
+  "card_id": "561236_20260718T190533Z",
+  "card_version": "v1",
+  "card_hash": "cb9e9e400f75c41a0020a296bf82fdfc5630b2b993ce6b058366046b352f9551",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-18T19:05:33Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "561236",
+    "market_slug": "will-gretchen-whitmer-win-the-2028-us-presidential-election",
+    "market_name": "Will Gretchen Whitmer win the 2028 US Presidential Election?",
+    "market_url": "https://polymarket.com/market/will-gretchen-whitmer-win-the-2028-us-presidential-election",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Gretchen Whitmer win the 2028 US Presidential Election?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US large-cap equity index",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.03,
+      "confidence_interval_bps": [
+        -40.0,
+        40.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm no coincident breaking political news (health event, major announcement) that could actually move markets; if none, treat as noise.",
+        "1h": "Check whether the Polymarket move is isolated to this market or part of a broad 2028 field repricing; broad repricing still lacks 12h asset impact.",
+        "2h": "Verify SPY intraday move is within normal range and unrelated to any Whitmer-specific news.",
+        "6h": "Reassess only if a concrete policy or macro catalyst has emerged; otherwise no action.",
+        "12h": "Close out: expect no measurable, attributable asset move from this long-dated election market."
+      },
+      "reasoning": "A shift in the implied probability of a specific candidate winning a US presidential election more than three years away (2028) carries essentially no information relevant to 12-hour public-market pricing. Whitmer is not currently a policy-setting figure whose odds moving would reprice any liquid asset. There is no near-term catalyst, no legislative implication, and no sector she is uniquely tied to that would move on a shift in her long-dated nomination/election odds. Any correlation to SPY over 12 hours would be noise."
+    }
+  ],
+  "evidence_used": [
+    "Market concerns the 2028 US presidential election, over three years from now",
+    "Whitmer holds no current federal policy role that would reprice assets on odds changes",
+    "No specified region, category, or sector linkage in the market metadata",
+    "12-hour prediction window vs. multi-year event horizon"
+  ],
+  "uncertainty_notes": [
+    "A sharp odds move could coincide with genuine breaking news (e.g., a health or scandal event) that has other market effects, but that would be the cause, not this market",
+    "Long-dated election markets are thin and prone to idiosyncratic, non-informative swings"
+  ],
+  "llm_justification": {
+    "summary": "This market maps to a US presidential election more than three years out for a candidate with no current federal policymaking power. A move in her implied odds carries no actionable 12-hour signal for liquid public markets. The only sensible mapping is 'unclear' with very low confidence and sub-threshold expected magnitude \u2014 not tradable.",
+    "key_assumptions": [
+      "No coincident hard-news catalyst is driving the odds move",
+      "2028 election outcome probabilities are not priced into any liquid 12h instrument",
+      "Whitmer's odds are not a proxy for any imminent, market-relevant policy change"
+    ],
+    "failure_modes": [
+      "A Whitmer odds spike could actually reflect breaking news (health, campaign, scandal) that independently moves specific assets, making the true driver the news not the market",
+      "Thin prediction-market liquidity produces large percentage odds swings with zero informational content",
+      "Assuming any equity linkage overstates a nonexistent economic transmission channel over 12 hours"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

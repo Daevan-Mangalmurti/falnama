@@ -1,0 +1,67 @@
+{
+  "card_id": "559654_20260718T190533Z",
+  "card_version": "v1",
+  "card_hash": "dc8002af9981dc1ab3ffac8a7e2608107f3c0f3feeb7a76c182b721c60bb7197",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-18T19:05:33Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "559654",
+    "market_slug": "will-pete-buttigieg-win-the-2028-democratic-presidential-nomination-687",
+    "market_name": "Will Pete Buttigieg win the 2028 Democratic presidential nomination?",
+    "market_url": "https://polymarket.com/market/will-pete-buttigieg-win-the-2028-democratic-presidential-nomination-687",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Pete Buttigieg win the 2028 Democratic presidential nomination?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US broad equity market",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.05,
+      "confidence_interval_bps": [
+        -40.0,
+        40.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether the probability move coincides with a concrete news catalyst (announcement, poll, scandal) rather than illiquid Polymarket churn.",
+        "1h": "Check SPY and sector ETFs for any abnormal move; expect none attributable to this market.",
+        "2h": "Re-verify no policy-relevant news (e.g., Buttigieg cabinet/transportation role) that could actually move a sector.",
+        "6h": "Assess whether broader political-news flow explains any equity drift; attribute to macro, not this market.",
+        "12h": "Close out: record that no tradable asset implication materialized, as expected."
+      },
+      "reasoning": "A shift in the implied probability of Pete Buttigieg winning the 2028 Democratic nomination \u2014 an event more than two years away, with no policy consequences, no vote imminent, and no material change to sector regulation \u2014 carries essentially no near-term information for liquid public markets. Nomination-favorite reshuffling this far out does not move rates, energy, healthcare, or defense pricing in a 12-hour window. Any proxy mapping here is extremely weak and would be indistinguishable from noise."
+    }
+  ],
+  "evidence_used": [
+    "Market concerns the 2028 Democratic nomination, an event >2 years away with no imminent resolution",
+    "No direct policy, regulatory, or fiscal transmission channel to specific sectors from a single candidate's nomination odds",
+    "Prediction window is only 12 hours; long-horizon political odds rarely move liquid assets intraday"
+  ],
+  "uncertainty_notes": [
+    "If the probability spike were driven by a major concrete event (e.g., Buttigieg entering an administration role or a scandal), specific sectors could react, but the market question itself does not specify that",
+    "Polymarket political odds are often thinly traded and prone to non-informative swings"
+  ],
+  "llm_justification": {
+    "summary": "This market maps to no reliable public-market implication within a 12-hour window. The 2028 Democratic nomination is a distant, low-transmission event; even a sharp odds move for one candidate lacks a credible, liquid asset proxy on this horizon. The honest call is 'unclear' with very low confidence and no tradable (>=700 bps) signal.",
+    "key_assumptions": [
+      "The odds move reflects candidate-specific repositioning, not an imminent policy/vote event",
+      "No specific sector (e.g., transportation, EVs) is uniquely levered to Buttigieg in a way that would react intraday"
+    ],
+    "failure_modes": [
+      "A concrete catalyst (administration appointment, scandal) drives both the odds and a real sector move, making the true driver the news, not the market",
+      "Mistaking illiquid Polymarket noise for information",
+      "Over-fitting a spurious sector story (e.g., EV/infrastructure names) to a distant nomination probability"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

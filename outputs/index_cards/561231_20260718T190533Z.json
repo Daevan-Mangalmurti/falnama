@@ -1,0 +1,72 @@
+{
+  "card_id": "561231_20260718T190533Z",
+  "card_version": "v1",
+  "card_hash": "87584360e4b28c9ede25d07d71d3d41895996b663a8fa997998bee6f3da701fe",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-18T19:05:33Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "561231",
+    "market_slug": "will-alexandria-ocasio-cortez-win-the-2028-us-presidential-election",
+    "market_name": "Will Alexandria Ocasio-Cortez win the 2028 US Presidential Election?",
+    "market_url": "https://polymarket.com/market/will-alexandria-ocasio-cortez-win-the-2028-us-presidential-election",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Alexandria Ocasio-Cortez win the 2028 US Presidential Election?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US equity market (broad)",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.08,
+      "confidence_interval_bps": [
+        -60.0,
+        60.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move coincides with a real news catalyst (AOC declaring a run, a major endorsement) versus thin-market noise.",
+        "1h": "Compare SPY and sector ETF (XLE, XLF) moves against the broad tape to see if any co-movement is idiosyncratic or just beta.",
+        "2h": "Assess whether any political-news wires corroborate a genuine shift in 2028 odds; if none, treat as noise.",
+        "6h": "Re-check the Polymarket implied probability for mean-reversion, a hallmark of illiquid long-dated political contracts.",
+        "12h": "Confirm no measurable asset impact materialized; log as a null/weak-mapping case for the leakage study."
+      },
+      "reasoning": "This market concerns who wins the November 2028 US presidential election \u2014 an event more than three years away. AOC is a progressive figure whose platform (higher corporate/wealth taxes, tighter regulation, Green New Deal) would, if she became a serious front-runner, be modestly bearish for broad equities and specific sectors (fossil fuels, banks, healthcare). But a 12-hour swing in a 2028 primary/general implied probability carries essentially no discountable cash-flow information for markets over a 12-hour window. The time horizon is far too long, the candidate is not yet a nominee, and the probability is very low base-rate. There is no reliable mechanism by which a short-term move in this specific contract transmits to liquid asset prices in the next 12 hours."
+    }
+  ],
+  "evidence_used": [
+    "Market question targets the November 2028 US presidential election, ~3+ years from now",
+    "AOC is a progressive with a policy platform that could affect energy, financials, and healthcare sectors if she became a nominee",
+    "Long-dated, low-probability political contracts are typically illiquid and noisy",
+    "No specified near-term catalyst in the market description"
+  ],
+  "uncertainty_notes": [
+    "A 12-hour window cannot plausibly capture a discounting of a 2028 outcome",
+    "The candidate is not a nominee; conditional path to any policy is highly uncertain",
+    "Polymarket long-dated political markets are thin and prone to noise-driven swings",
+    "Even a genuine odds shift would map only diffusely to broad equities"
+  ],
+  "llm_justification": {
+    "summary": "This is a 2028 US presidential election contract on a low-probability progressive candidate. The event horizon (3+ years) and the candidate's non-nominee status make any 12-hour public-market implication effectively unmeasurable. Even a directional guess (mild equity/energy/financials headwind if AOC gained serious front-runner status) fails the tradability threshold and cannot be discounted meaningfully in a half-day window. Treat as an unclear, low-confidence, non-tradable mapping.",
+    "key_assumptions": [
+      "Markets discount cash flows and near-term risk, not distant low-probability political outcomes",
+      "No imminent binding catalyst converts this contract into actionable near-term information",
+      "The contract is thin and its moves are dominated by noise rather than leaked information"
+    ],
+    "failure_modes": [
+      "The move is pure noise in an illiquid long-dated market and reverses within hours",
+      "Any equity co-movement is coincidental beta unrelated to this contract",
+      "The proxy (SPY) is far too broad and weakly exposed to a single 2028 candidate's odds",
+      "A real catalyst (e.g., AOC announcement) could exist but its market impact is still swamped by the multi-year horizon"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

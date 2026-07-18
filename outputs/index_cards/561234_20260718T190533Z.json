@@ -1,0 +1,70 @@
+{
+  "card_id": "561234_20260718T190533Z",
+  "card_version": "v1",
+  "card_hash": "4968da2db3c28caa07fe4349139fd8bfc5a936a5eea1a4303e94f6196e9f37c3",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-18T19:05:33Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "561234",
+    "market_slug": "will-marco-rubio-win-the-2028-us-presidential-election",
+    "market_name": "Will Marco Rubio win the 2028 US Presidential Election?",
+    "market_url": "https://polymarket.com/market/will-marco-rubio-win-the-2028-us-presidential-election",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Marco Rubio win the 2028 US Presidential Election?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US large-cap equities",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.05,
+      "confidence_interval_bps": [
+        -40.0,
+        40.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Rubio market move coincides with a broader 2028 field repricing (e.g., a party nominee shock) rather than idiosyncratic noise; if isolated, treat as no signal.",
+        "1h": "Compare SPY intraday move to macro drivers (rates, oil, econ data); confirm any equity move is unrelated to the political market.",
+        "2h": "Scan headlines for a concrete Rubio-related news catalyst (candidacy announcement, scandal) that could give the market real content.",
+        "6h": "Re-assess whether prediction-market liquidity/volume spiked, indicating informed flow vs thin-market noise.",
+        "12h": "Confirm no durable equity impact; log as null result unless an actual public catalyst emerged."
+      },
+      "reasoning": "A shift in the implied probability that Marco Rubio wins the 2028 presidential election is a very long-dated political signal with no near-term policy or earnings consequence. Even a sharp move in this individual-candidate market carries almost no information that liquid US equities would price within a 12-hour window three years before the vote. Any correlation is dominated by macro noise. There is no credible mechanism translating a Rubio odds change into a same-day S&P move of meaningful size."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves in Nov 2028 / Jan 2029 \u2014 over three years out",
+    "Question is about a single candidate's ultimate victory, not near-term policy",
+    "No specified region-specific asset exposure; category is US elections"
+  ],
+  "uncertainty_notes": [
+    "Individual-candidate 2028 odds rarely map to same-day liquid asset moves",
+    "A 12h window cannot capture multi-year electoral information",
+    "Prediction-market moves this far out are often thin/noisy"
+  ],
+  "llm_justification": {
+    "summary": "The market concerns who wins the 2028 US presidential election, focused on Marco Rubio. This is a very long-dated political question with no plausible mechanism to move liquid public markets within a 12-hour window. Even a large probability swing would carry negligible actionable information for equities, FX, or commodities today. We map this to broad US equities only as a nominal proxy with 'unclear' direction and near-zero expected move \u2014 well below the 700bps tradable threshold. This is a null/weak-signal case.",
+    "key_assumptions": [
+      "No imminent real-world catalyst (announcement, scandal) is driving the move",
+      "Markets do not discount 2028 electoral outcomes in intraday pricing",
+      "Prediction-market probability changes here are largely noise"
+    ],
+    "failure_modes": [
+      "A genuine breaking news event (e.g., Rubio candidacy declaration or major scandal) could give the move real content we mislabel as noise",
+      "Sector-specific bets (defense, immigration-exposed names) could react more than the broad index, making SPY a weak proxy",
+      "The move may simply reflect thin-market repricing with no informational value",
+      "Direction is inherently ambiguous \u2014 a Rubio win could be read as market-neutral or mildly pro-business, so even the sign is unknowable at 12h"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

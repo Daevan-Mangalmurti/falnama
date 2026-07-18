@@ -1,0 +1,70 @@
+{
+  "card_id": "544094_20260718T190533Z",
+  "card_version": "v1",
+  "card_hash": "045bd1e94641163e586d7118f877b69b5055a942b73d9e48722eb2a73e47ffee",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-18T19:05:33Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "544094",
+    "market_slug": "will-harvey-weinstein-be-sentenced-to-between-5-and-10-years-in-prison",
+    "market_name": "Will Harvey Weinstein be sentenced to between 5 and 10 years in prison?",
+    "market_url": "https://polymarket.com/market/will-harvey-weinstein-be-sentenced-to-between-5-and-10-years-in-prison",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Harvey Weinstein be sentenced to between 5 and 10 years in prison?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "No tradable public-market implication",
+      "ticker": null,
+      "tradable_instrument_name": null,
+      "asset_class": "other",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.9,
+      "confidence_interval_bps": [
+        -50.0,
+        50.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm no unexpected corporate news is tied to the sentencing (e.g., media-company statements); expect none.",
+        "1h": "Check whether any entertainment/media ETF (e.g., PEJ, XLC) shows unusual volume \u2014 almost certainly unrelated.",
+        "2h": "Re-verify no spillover narrative into #MeToo-linked corporate liability names; treat as non-signal.",
+        "6h": "Scan headlines for any tangential legal-precedent framing affecting corporate governance sentiment; likely nil.",
+        "12h": "Close out: confirm no measurable asset move attributable to this event and log as null-mapping evidence."
+      },
+      "reasoning": "Harvey Weinstein's individual criminal sentencing in his New York retrial is a personal legal matter with no material connection to any publicly traded company, index, commodity, or currency. The Weinstein Company already collapsed into bankruptcy in 2018 and its assets were sold, so there is no equity exposure. No liquid instrument has meaningful sensitivity to the length of his sentence bracket. Any perceived media/entertainment sector 'sentiment' effect would be negligible and non-directional. This is a noise mapping."
+    }
+  ],
+  "evidence_used": [
+    "Market concerns an individual's criminal sentence, not any corporate entity",
+    "The Weinstein Company already went bankrupt in 2018; no listed equity remains",
+    "No commodity, index, or FX has plausible exposure to this sentencing outcome",
+    "Primary topic tag 'elections' appears to be a mislabel; content is criminal justice"
+  ],
+  "uncertainty_notes": [
+    "Mislabeled category/topic suggests metadata noise, not a hidden market signal",
+    "Even a sharp probability move here would carry no informational content for tradable assets",
+    "Only conceivable channel is diffuse media-sector sentiment, which is not measurable at 700bps threshold"
+  ],
+  "llm_justification": {
+    "summary": "This prediction market tracks the length of Harvey Weinstein's prison sentence in his New York retrial \u2014 a purely individual criminal-justice outcome. The associated company (The Weinstein Company) is defunct via 2018 bankruptcy, leaving no equity, commodity, index, or FX proxy with material exposure. There is no plausible, liquid public-market instrument that would move on this resolution, so the mapping is a null signal with no tradable implication.",
+    "key_assumptions": [
+      "No surviving publicly traded entity is tied to Weinstein's outcome",
+      "Sentencing brackets carry no macro, sector, or precedent-setting market impact within 12h",
+      "Prediction-market probability moves here reflect legal case dynamics, not leaked asset-relevant information"
+    ],
+    "failure_modes": [
+      "A tangential #MeToo/corporate-liability narrative could briefly move a media name, but exposure is too weak and non-directional to trade",
+      "The event may already be fully public via court scheduling, so no leak advantage exists",
+      "Any observed asset move in the window would almost certainly be coincidental (spurious correlation), not causal"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

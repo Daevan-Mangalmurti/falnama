@@ -1,0 +1,69 @@
+{
+  "card_id": "559658_20260718T190533Z",
+  "card_version": "v1",
+  "card_hash": "a9be963cb1ad9d793eea8ac0eb8e49ae36a1889bc8a79089aab8ea10eb7649f0",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-18T19:05:33Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "559658",
+    "market_slug": "will-kamala-harris-win-the-2028-democratic-presidential-nomination-641",
+    "market_name": "Will Kamala Harris win the 2028 Democratic presidential nomination?",
+    "market_url": "https://polymarket.com/market/will-kamala-harris-win-the-2028-democratic-presidential-nomination-641",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Kamala Harris win the 2028 Democratic presidential nomination?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US large-cap equities",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.05,
+      "confidence_interval_bps": [
+        -40.0,
+        40.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether the probability move is a genuine liquidity event or thin-market noise; check volume on the Polymarket contract.",
+        "1h": "Scan for any real-world catalyst (Harris announcement, poll, party statement) that could co-move both the market and assets.",
+        "2h": "Check SPY and sector ETFs for any abnormal move; expect none attributable to this market.",
+        "6h": "Reassess whether any news has emerged tying 2028 politics to near-term policy expectations.",
+        "12h": "Close out: record that no tradable asset implication materialized, as expected."
+      },
+      "reasoning": "A shift in the implied probability of Kamala Harris winning the 2028 Democratic nomination \u2014 an event more than three years away with no policy or governing consequence in the near term \u2014 carries essentially no information that liquid US markets would reprice within a 12-hour window. Primary-nomination odds this far out are dominated by name recognition and speculative churn, not fundamentals. There is no plausible transmission channel to broad equity levels, sectors, or FX on this horizon."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves on 2028 Democratic nomination, an event >3 years out",
+    "Nomination outcome has no near-term governing or policy effect",
+    "No sector or macro variable is directly tied to a single candidate's primary odds at this horizon"
+  ],
+  "uncertainty_notes": [
+    "A candidate primary market this far out is heavily noise-driven and illiquid",
+    "Even a large probability swing would not map to a fundamental asset repricing",
+    "Only an accompanying real-world headline (not the market move itself) could move assets"
+  ],
+  "llm_justification": {
+    "summary": "This market concerns the 2028 Democratic presidential nomination for Kamala Harris \u2014 an event years away with no near-term economic or policy transmission channel. A move in its implied probability has no reliable, tradable implication for liquid public markets over a 12-hour horizon. The most honest mapping is 'unclear' with very low confidence and no tradable signal (well below the 700 bps threshold).",
+    "key_assumptions": [
+      "Nomination odds this far out do not encode actionable near-term macro/policy information",
+      "No simultaneous market-moving real-world event is assumed",
+      "Broad ETFs are the only remotely relevant proxies, and even they are effectively unexposed"
+    ],
+    "failure_modes": [
+      "A sharp probability move could coincide with a genuine breaking headline (health event, scandal, resignation) that itself moves assets \u2014 but then the driver is the news, not this market",
+      "The proxy (SPY) is essentially unexposed to a single candidate's 2028 primary odds, making any inferred signal spurious",
+      "Thin prediction-market liquidity makes any 'move' likely a data artifact rather than information"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

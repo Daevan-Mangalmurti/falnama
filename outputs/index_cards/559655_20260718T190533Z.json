@@ -1,0 +1,71 @@
+{
+  "card_id": "559655_20260718T190533Z",
+  "card_version": "v1",
+  "card_hash": "e55b8fe08d763a279660e677f657f6d3a7c17f7d73780864eeec33bca2e37582",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-18T19:05:33Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "559655",
+    "market_slug": "will-josh-shapiro-win-the-2028-democratic-presidential-nomination-977",
+    "market_name": "Will Josh Shapiro win the 2028 Democratic presidential nomination?",
+    "market_url": "https://polymarket.com/market/will-josh-shapiro-win-the-2028-democratic-presidential-nomination-977",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Josh Shapiro win the 2028 Democratic presidential nomination?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US large-cap equities",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.05,
+      "confidence_interval_bps": [
+        -40.0,
+        40.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the prediction-market move is accompanied by any real news (candidacy announcement, scandal, health event); if none, treat as noise.",
+        "1h": "Compare SPY intraday move to macro drivers (yields, rates data) to confirm no political attribution is warranted.",
+        "2h": "Re-check whether other 2028 candidate markets moved in tandem, indicating a broader political catalyst rather than Shapiro-specific.",
+        "6h": "Assess whether any sector (PA-linked, energy, healthcare) showed idiosyncratic moves that could tie to a Shapiro policy narrative; expect none.",
+        "12h": "Confirm SPY closed within normal daily range and log that the mapping produced no tradable signal."
+      },
+      "reasoning": "A shift in the implied probability of Josh Shapiro winning the 2028 Democratic nomination has essentially no identifiable transmission channel to broad US equities over a 12-hour window. The event is roughly three years away, the nomination is contingent on a primary that has not begun, and there is no policy specificity attached to Shapiro versus other Democrats that would repriced any liquid asset now. Any move in this thin prediction market is far more likely to reflect intra-market noise, low liquidity, or personality-driven speculation than leaked information affecting cash-flow expectations of listed companies. The honest mapping is null."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns the 2028 Democratic nomination, ~3 years from the prediction window",
+    "Nomination is contingent and pre-primary, with no bound policy platform",
+    "No region- or sector-specific policy detail in the market description",
+    "Broad equity ETFs are the most liquid but least sensitive proxy to distant primary odds"
+  ],
+  "uncertainty_notes": [
+    "A sharp, news-driven move (e.g., an actual Shapiro announcement or scandal) could carry marginal signal, but still unlikely to move liquid assets within 12h",
+    "Thin prediction-market liquidity makes implied-probability changes unreliable as an information sensor",
+    "If a specific policy stance emerged (energy, gas exports given Pennsylvania), a commodity or regional proxy could theoretically react, but not on this horizon"
+  ],
+  "llm_justification": {
+    "summary": "This market asks about the 2028 Democratic presidential nomination for Josh Shapiro, an event roughly three years out with no committed policy platform and no clear transmission channel to any liquid public-market instrument within a 12-hour window. The most defensible mapping is essentially null: any move in this thin market is more plausibly noise than actionable leaked information. We flag broad US equities only to state explicitly that no tradable signal exists here (expected move well below the 700bps threshold, very low confidence).",
+    "key_assumptions": [
+      "The nomination remains distant and contingent, with no near-term binding market catalyst",
+      "No specific, market-moving policy is uniquely attached to Shapiro",
+      "Broad equity indices are insensitive to distant primary probability shifts"
+    ],
+    "failure_modes": [
+      "The mapping is genuinely null \u2014 treating any prediction-market move as informative would manufacture a false signal",
+      "The move could reflect a real, public event (announcement/scandal) already priced, offering no edge",
+      "Even if a real catalyst exists, the chosen equity proxy is only weakly (essentially not) exposed to it on this horizon",
+      "Reversal: thin-market probability spikes routinely mean-revert without any asset impact"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

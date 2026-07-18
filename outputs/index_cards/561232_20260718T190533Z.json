@@ -1,0 +1,71 @@
+{
+  "card_id": "561232_20260718T190533Z",
+  "card_version": "v1",
+  "card_hash": "5c0f0edad085b7e9445e4776fc8c0a976773d884323351c7707503e8c123b24c",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-18T19:05:33Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "561232",
+    "market_slug": "will-pete-buttigieg-win-the-2028-us-presidential-election",
+    "market_name": "Will Pete Buttigieg win the 2028 US Presidential Election?",
+    "market_url": "https://polymarket.com/market/will-pete-buttigieg-win-the-2028-us-presidential-election",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Pete Buttigieg win the 2028 US Presidential Election?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US large-cap equities",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.05,
+      "confidence_interval_bps": [
+        -30.0,
+        30.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the odds move coincides with a broader political news catalyst (e.g., a major candidate dropping out or a scandal) that could have real market relevance.",
+        "1h": "Scan for correlated moves in other 2028 candidate markets to distinguish idiosyncratic noise from a genuine political-landscape shift.",
+        "2h": "Verify SPY/sector ETFs show no unusual volume tied to the political news; confirm null mapping.",
+        "6h": "Reassess if any policy-relevant angle (healthcare, energy, transportation given Buttigieg's DOT background) emerges that could touch a sector proxy.",
+        "12h": "Close the card as a non-event unless a concrete, dated policy or macro catalyst materialized; log as weak/no signal."
+      },
+      "reasoning": "A shift in the implied probability of a single Democratic contender winning an election more than three years away carries essentially no incremental information for liquid public markets over a 12-hour window. Buttigieg is not a sitting president or nominee, has no policy platform in force, and 2028 outcomes are far outside any pricing horizon that moves broad equities today. There is no clean sectoral or macro channel from this specific candidate's odds to a tradable proxy on this timeframe."
+    }
+  ],
+  "evidence_used": [
+    "Market concerns the 2028 US Presidential Election, over three years from any near-term trading window",
+    "Question is about a single candidate (Buttigieg), not the overall partisan outcome",
+    "No policy authority or immediate market-moving power attached to the candidate today",
+    "Resolution horizon extends to January 2029"
+  ],
+  "uncertainty_notes": [
+    "The 12h window is far too short for a 2028 election probability to transmit to asset prices",
+    "Even the partisan control question would be a weak short-term signal; a single-candidate question is weaker still",
+    "Any observed asset co-movement would almost certainly be coincidental or driven by an unrelated catalyst"
+  ],
+  "llm_justification": {
+    "summary": "This is a long-dated, single-candidate 2028 election market with no plausible transmission channel to liquid public markets over a 12-hour horizon. A sharp move in Buttigieg's implied odds reflects intra-party political jockeying, not information priced by broad equities, FX, or commodities today. The mapping is intentionally rated 'unclear' with very low confidence; expected move is well below the 700 bps tradable threshold and should be treated as a null result.",
+    "key_assumptions": [
+      "Markets do not price 2028 election candidate specifics into today's asset levels",
+      "No immediate policy or macro catalyst is bundled with this odds move",
+      "The candidate has no current office that would let odds changes affect sectors"
+    ],
+    "failure_modes": [
+      "The odds move actually reflects a major, market-relevant political shock (e.g., a shift in overall partisan control expectations) that a broad-index proxy would capture \u2014 but that would not be attributable to this single-candidate market",
+      "The information is already public and fully discounted",
+      "Any equity/FX co-movement is spurious and would reverse, producing false attribution",
+      "The chosen SPY proxy is essentially unexposed to this specific event, making even a correct directional guess untradable"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

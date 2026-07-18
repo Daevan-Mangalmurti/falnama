@@ -1,0 +1,71 @@
+{
+  "card_id": "561973_20260718T190533Z",
+  "card_version": "v1",
+  "card_hash": "ae5066f3d9bac4b03dec4e3a4f9fedd4a043a127d64a2cb82d93659907b3a28e",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-18T19:05:33Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "561973",
+    "market_slug": "will-donald-trump-win-the-2028-republican-presidential-nomination",
+    "market_name": "Will Donald Trump win the 2028 Republican presidential nomination?",
+    "market_url": "https://polymarket.com/market/will-donald-trump-win-the-2028-republican-presidential-nomination",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Donald Trump win the 2028 Republican presidential nomination?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US equity market (broad)",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.15,
+      "confidence_interval_bps": [
+        -150.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the market move coincides with a real news catalyst (Trump health, legal, constitutional challenge) versus thin-liquidity noise on Polymarket.",
+        "1h": "Compare SPY intraday move to macro drivers (rates, data prints) to confirm no political attribution is warranted.",
+        "2h": "Look for mainstream media confirmation of any underlying event; if none, treat as noise.",
+        "6h": "Reassess whether any policy-sensitive sectors (energy, defense, healthcare) show idiosyncratic moves tied to the political shift.",
+        "12h": "Close out: confirm whether SPY move, if any, is explained by conventional macro rather than the 2028 nomination market."
+      },
+      "reasoning": "A shift in the implied probability of Trump winning the 2028 GOP nomination is a very long-dated political signal with no clear, datable catalyst for near-term cash flows or policy. The 22nd Amendment makes a third Trump term constitutionally barred, so this market is largely speculative/entertainment; a probability move is unlikely to convey actionable information that repriges broad US equities within a 12-hour window. Any correlation to SPY would be weak and noise-dominated."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns 2028 GOP nomination, a 3+ year forward political event",
+    "22nd Amendment bars a third Trump presidential term, undercutting resolution plausibility",
+    "No category/topic tie to a specific near-term policy catalyst",
+    "Polymarket long-dated political markets are often thin and speculative"
+  ],
+  "uncertainty_notes": [
+    "The event horizon (2028) is far outside the 12h window, so information decay is extreme",
+    "A large probability move could reflect a genuine catalyst (health/legal/constitutional) that WOULD move assets, but the direction is ambiguous",
+    "Constitutional impossibility makes the market's economic meaning unclear"
+  ],
+  "llm_justification": {
+    "summary": "This market maps very weakly to any liquid public-market asset. A move in the implied probability of Trump winning the 2028 GOP nomination is a long-dated, constitutionally fraught political signal with no clean 12-hour catalyst. The best-supported view is 'unclear' with low confidence: absent a concrete underlying event (health, legal, or constitutional news), broad equity proxies like SPY would not reprice meaningfully. This is below the 700bp tradable threshold and should be treated as research noise.",
+    "key_assumptions": [
+      "Broad equities are the only plausibly-linked liquid proxy, and even that link is tenuous",
+      "The market move is not accompanied by a datable, market-moving catalyst",
+      "12-hour windows cannot price a 2028 event without a proximate news trigger"
+    ],
+    "failure_modes": [
+      "The probability spike reflects genuine breaking news (e.g., Trump health/legal event) that DOES move markets, in which case direction could be sharply defined and this 'unclear' call would miss it",
+      "Mapping to SPY is a weak proxy; a real catalyst might hit sector ETFs (defense, energy) or FX/Treasuries instead",
+      "The information is already public and fully priced, making any anomaly pure noise",
+      "Thin Polymarket liquidity produces false probability moves with zero asset implication"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
