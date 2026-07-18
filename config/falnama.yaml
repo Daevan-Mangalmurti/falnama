@@ -31,7 +31,7 @@ backfill_mode: false
 #   mock  → deterministic placeholder cards (no network, no key). Default so the
 #           pipeline is runnable by anyone, anywhere, for free.
 #   live  → real cards from the LLM below (requires the API key env var to be set).
-card_mode: mock
+card_mode: live
 
 llm:
   provider: anthropic                 # the only provider wired up today
