@@ -1,0 +1,69 @@
+{
+  "card_id": "559655_20260719T091916Z",
+  "card_version": "v1",
+  "card_hash": "7e42ac814e53a8a6d28fcb9b2c1b3451b36a4ad34988d3014b02d2efe309cd36",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-19T09:19:16Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "559655",
+    "market_slug": "will-josh-shapiro-win-the-2028-democratic-presidential-nomination-977",
+    "market_name": "Will Josh Shapiro win the 2028 Democratic presidential nomination?",
+    "market_url": "https://polymarket.com/market/will-josh-shapiro-win-the-2028-democratic-presidential-nomination-977",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Josh Shapiro win the 2028 Democratic presidential nomination?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US large-cap equities",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.05,
+      "confidence_interval_bps": [
+        -40.0,
+        40.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether the market move coincides with an actual news catalyst (Shapiro announcement, poll) versus thin-market noise.",
+        "1h": "Check if broader political/betting markets show correlated repricing across multiple 2028 candidates.",
+        "2h": "Compare SPY move to macro drivers (rates, oil, tech) to confirm no political attribution.",
+        "6h": "Reassess whether any state-level (Pennsylvania) fiscal or sector story emerged.",
+        "12h": "Close card; expect no attributable equity move from this political signal."
+      },
+      "reasoning": "A shift in the implied probability of Josh Shapiro winning the 2028 Democratic nomination is a very long-dated, intra-party political signal with no near-term policy or fiscal consequence. Nomination odds three-plus years out have essentially no measurable impact on liquid asset prices in a 12-hour window. Any move would be dominated by macro, rates, and earnings noise."
+    }
+  ],
+  "evidence_used": [
+    "Market concerns a 2028 nomination, ~3+ years from resolution",
+    "No policy, fiscal, or regulatory transmission channel in a 12h window",
+    "US equity indices are driven by macro/earnings, not distant primary odds"
+  ],
+  "uncertainty_notes": [
+    "Long-dated political markets are extremely weak proxies for near-term asset moves",
+    "Even a sharp implied-probability move likely reflects illiquid, thin prediction-market flow, not leaked material information",
+    "No sector or single name is cleanly exposed to Shapiro's candidacy"
+  ],
+  "llm_justification": {
+    "summary": "This market tracks Josh Shapiro's odds of winning the 2028 Democratic nomination \u2014 a distant, intra-party political question with no clear transmission to liquid public markets in a 12-hour horizon. There is no credible mechanism by which a probability shift here would move a broad ETF, commodity, or FX proxy by the 700bps tradable threshold. The mapping is weak; I assign 'unclear' direction and very low confidence rather than manufacture a signal.",
+    "key_assumptions": [
+      "No imminent policy or election-day consequence from a 2028 nomination shift",
+      "Prediction-market moves here reflect political sentiment, not material market-relevant information",
+      "Broad liquid assets remain macro-driven over the window"
+    ],
+    "failure_modes": [
+      "A tail scenario (e.g., Shapiro odds spike tied to a major national political shock) could carry genuine macro information, but that would be reflected in the shock itself, not this niche market",
+      "The proxy (SPY) is essentially unexposed to this specific question",
+      "Any observed correlation would almost certainly be spurious coincidence with unrelated macro news"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

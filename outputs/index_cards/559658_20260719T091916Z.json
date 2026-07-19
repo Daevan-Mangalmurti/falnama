@@ -1,0 +1,70 @@
+{
+  "card_id": "559658_20260719T091916Z",
+  "card_version": "v1",
+  "card_hash": "40b6da1daf9a5d52026f3a3c3b72ab753f2a30997359070812aa72b8dfbf569e",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-19T09:19:16Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "559658",
+    "market_slug": "will-kamala-harris-win-the-2028-democratic-presidential-nomination-641",
+    "market_name": "Will Kamala Harris win the 2028 Democratic presidential nomination?",
+    "market_url": "https://polymarket.com/market/will-kamala-harris-win-the-2028-democratic-presidential-nomination-641",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Kamala Harris win the 2028 Democratic presidential nomination?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US equity market broad index",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.05,
+      "confidence_interval_bps": [
+        -30.0,
+        30.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any breaking news (health event, campaign announcement, resignation) is driving the odds move rather than noise/thin liquidity.",
+        "1h": "Compare Polymarket volume/liquidity to confirm the probability shift is real and not a single large order in a thin book.",
+        "2h": "Scan mainstream news wires for any Harris-related political headline that could also carry market-relevant policy signal.",
+        "6h": "Reassess whether any sector (healthcare, energy, defense) shows idiosyncratic movement that could tie to a policy-platform interpretation.",
+        "12h": "Confirm no measurable SPY deviation attributable to the event; log as null/no-signal for a long-dated intra-party political market."
+      },
+      "reasoning": "A shift in the implied probability that Kamala Harris wins the 2028 Democratic nomination is a very long-dated, intra-party political signal with no mechanical link to near-term corporate cash flows, rates, or macro data. The 2028 election is years away, the nominee identity is only one input among many, and party primary positioning does not move broad equities over a 12h window. There is no credible transmission channel that would produce a meaningful, directional move in SPY within hours."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves on 2028 Democratic nomination, years in the future",
+    "Category is US elections / intra-party primary positioning",
+    "No policy or macro variable is directly tied to nominee identity in a 12h horizon",
+    "Note that even a nominee replacement before election day does not change resolution, underscoring the abstract/long-dated nature"
+  ],
+  "uncertainty_notes": [
+    "The primary uncertainty is that this market has essentially no short-horizon asset transmission channel.",
+    "A sharp odds move could reflect a health or scandal event, but even then the equity impact would be negligible and non-directional over 12h.",
+    "Any observed asset move in the window is far more likely driven by unrelated macro news than by this political market."
+  ],
+  "llm_justification": {
+    "summary": "This is a long-dated, intra-party political prediction market about the 2028 Democratic nomination. There is no plausible mechanical or informational channel by which a shift in Harris's nomination odds moves liquid public-market assets within a 12-hour window. The best-supported conclusion is a null signal: broad US equities (SPY) are the only vaguely relevant proxy, and even there the expected move is effectively zero. Confidence in any tradable implication is very low, well below the 700bps tradability threshold.",
+    "key_assumptions": [
+      "The 2028 nomination timeline is too distant to affect near-term valuations.",
+      "Nominee identity alone does not carry decisive, immediate policy information markets would price today.",
+      "No concurrent breaking event (health, legal) transforms this into a market-moving news item."
+    ],
+    "failure_modes": [
+      "The odds move is actually driven by a major breaking news event (e.g., health crisis or withdrawal) that has separate, direct market relevance not captured by the nomination framing.",
+      "Attributing any SPY movement to this market would be spurious correlation; macro/rates news dominates.",
+      "The chosen proxy (SPY) is only weakly, if at all, exposed to intra-party primary dynamics, making any directional call unjustified."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

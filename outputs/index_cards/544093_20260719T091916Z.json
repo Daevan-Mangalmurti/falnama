@@ -1,0 +1,67 @@
+{
+  "card_id": "544093_20260719T091916Z",
+  "card_version": "v1",
+  "card_hash": "2b8c7ffb81d6054cc7cb4ea0934e39ad1cc8ed5528ef72ca69ce08c72ee9362a",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-19T09:19:16Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "544093",
+    "market_slug": "will-harvey-weinstein-be-sentenced-to-less-than-5-years-in-prison",
+    "market_name": "Will Harvey Weinstein be sentenced to less than 5 years in prison?",
+    "market_url": "https://polymarket.com/market/will-harvey-weinstein-be-sentenced-to-less-than-5-years-in-prison",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Harvey Weinstein be sentenced to less than 5 years in prison?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US broad equity market (no linkage)",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.02,
+      "confidence_interval_bps": [
+        -30.0,
+        30.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm no unexpected corporate or media-sector news headlines coincide; otherwise treat as noise.",
+        "1h": "Check whether any media/entertainment ETF (e.g., PEJ, XLC) shows idiosyncratic move \u2014 expected none.",
+        "2h": "Re-verify no linkage; document flat baseline.",
+        "6h": "Confirm broad market drift dominated by unrelated macro factors.",
+        "12h": "Close card as no-signal; the prediction market carries no tradable public-market information."
+      },
+      "reasoning": "A criminal sentencing outcome for an individual defendant in a NY retrial has no material cash-flow, macro, or sector implication for any liquid public-market instrument. Weinstein's former company (The Weinstein Company) is defunct/bankrupt and not publicly traded, so there is no direct equity proxy. No commodity, FX, or index exposure exists. Any observed move in broad markets would be coincidental noise, not causally linked to this market's probability shift."
+    }
+  ],
+  "evidence_used": [
+    "Market concerns an individual's criminal sentencing, not a corporate or macro event",
+    "The Weinstein Company is bankrupt and not publicly traded \u2014 no direct equity proxy exists",
+    "No commodity, index, or FX channel is plausibly affected by a personal sentencing outcome"
+  ],
+  "uncertainty_notes": [
+    "Miscategorized as 'elections' topic but content is purely a legal/criminal case",
+    "Even a sharp probability swing would leak no economically material public-market information"
+  ],
+  "llm_justification": {
+    "summary": "This prediction market tracks the length of Harvey Weinstein's prison sentence in a NY retrial. It is a purely legal/personal outcome with no cash-flow, macro, sector, or commodity linkage to any liquid public-market instrument. The Weinstein Company is defunct and untraded, so there is no direct proxy. This is a clear no-signal case: any coincident asset move would be noise, and confidence in any directional mapping is near zero.",
+    "key_assumptions": [
+      "No publicly traded entity's valuation depends on this sentencing outcome",
+      "Broad markets are driven by macro factors unrelated to this event"
+    ],
+    "failure_modes": [
+      "A weak/absent proxy \u2014 there is genuinely no liquid instrument exposed",
+      "Manufacturing a spurious media-sector link would be an unjustified narrative",
+      "Any correlated move observed would be coincidental, not causal"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

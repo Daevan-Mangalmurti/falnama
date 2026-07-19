@@ -1,0 +1,70 @@
+{
+  "card_id": "561238_20260719T091916Z",
+  "card_version": "v1",
+  "card_hash": "d565577b7f255caf44b5da527abd406ba6a555e184ab3c7f4b8233ebf0dc51e8",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-19T09:19:16Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "561238",
+    "market_slug": "will-glenn-youngkin-win-the-2028-us-presidential-election",
+    "market_name": "Will Glenn Youngkin win the 2028 US Presidential Election?",
+    "market_url": "https://polymarket.com/market/will-glenn-youngkin-win-the-2028-us-presidential-election",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Glenn Youngkin win the 2028 US Presidential Election?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US equity market (broad)",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.05,
+      "confidence_interval_bps": [
+        -30.0,
+        30.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether the probability move coincides with an actual news catalyst (announced candidacy, endorsement) versus thin-market noise; if pure noise, discard.",
+        "1h": "Check breadth of related political markets (other 2028 candidates) for a coordinated repricing that might signal real news.",
+        "2h": "Compare SPY behavior against macro drivers (rates, oil) to confirm no election linkage.",
+        "6h": "Reassess whether any mainstream media coverage has emerged; absent coverage, treat as non-signal.",
+        "12h": "Close out: record that a 2028 election micro-probability produced no tradable public-market implication as expected."
+      },
+      "reasoning": "A shift in the implied probability of Glenn Youngkin winning the 2028 US Presidential Election \u2014 an event more than three years away \u2014 carries essentially no informational content for liquid public markets over a 12-hour window. Presidential election odds this far out are dominated by speculation, name recognition, and thin liquidity, not by imminent policy-relevant catalysts. There is no clear causal transmission channel to any asset within the research window. Any observed move in SPY would reflect unrelated macro drivers, not this market."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves on the 2028 US Presidential Election, over three years from now",
+    "Youngkin is a low-probability, non-declared candidate with a thin, speculative market",
+    "No specified region/catalyst; category metadata largely empty",
+    "12-hour prediction window vs multi-year event horizon"
+  ],
+  "uncertainty_notes": [
+    "If a probability spike coincided with a genuine surprise (e.g., Youngkin declaring a run or a major endorsement), sector-level effects could theoretically emerge but would still be tiny at 12h",
+    "Prediction-market moves this far from an election are typically noise from low liquidity"
+  ],
+  "llm_justification": {
+    "summary": "The question concerns a low-probability candidate in an election over three years away. There is no plausible causal channel by which a 12-hour shift in this market's implied probability moves any liquid public asset by a meaningful magnitude. The mapping is weak; I assign 'unclear' direction and very low confidence, and it is not tradable under the 700 bps threshold.",
+    "key_assumptions": [
+      "2028 election odds this far out have negligible near-term market impact",
+      "No imminent policy or corporate catalyst is tied to Youngkin's candidacy probability",
+      "Prediction market liquidity is thin, making probability moves noisy"
+    ],
+    "failure_modes": [
+      "The probability move may already reflect public news (e.g., a candidacy announcement), removing any leak edge",
+      "The chosen proxy (SPY) is only weakly, if at all, exposed to a single distant-election micro-probability",
+      "A coincidental macro move could be misattributed to this market",
+      "Even a real political development would not transmit to prices within a 12h window at tradable magnitude"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

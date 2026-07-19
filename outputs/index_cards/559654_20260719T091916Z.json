@@ -1,0 +1,70 @@
+{
+  "card_id": "559654_20260719T091916Z",
+  "card_version": "v1",
+  "card_hash": "5b9510054b1929744d67be1f7cab049f6322b13d92e0085412bc7b27c15a18a9",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-19T09:19:16Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "559654",
+    "market_slug": "will-pete-buttigieg-win-the-2028-democratic-presidential-nomination-687",
+    "market_name": "Will Pete Buttigieg win the 2028 Democratic presidential nomination?",
+    "market_url": "https://polymarket.com/market/will-pete-buttigieg-win-the-2028-democratic-presidential-nomination-687",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Pete Buttigieg win the 2028 Democratic presidential nomination?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US broad equity market",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.05,
+      "confidence_interval_bps": [
+        -30.0,
+        30.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether any real news (endorsement, campaign announcement, scandal) drove the market move versus routine noise.",
+        "1h": "Check if political-news outlets are reporting anything material; absent that, treat as noise.",
+        "2h": "Verify SPY and sector ETFs show no abnormal move attributable to 2028 primary speculation.",
+        "6h": "Reassess whether any policy-relevant narrative (e.g., candidate's known stances on energy/healthcare) is being priced anywhere.",
+        "12h": "Close out: confirm no measurable public-market impact materialized, consistent with the null thesis."
+      },
+      "reasoning": "A shift in the probability that Pete Buttigieg wins the 2028 Democratic nomination \u2014 an event years away with no policy platform yet defined and no bearing on near-term legislation, rates, or earnings \u2014 has no plausible mechanism to move liquid public markets within a 12-hour window. Individual-candidate primary odds this far out are pure political speculation and carry essentially zero information content for asset prices."
+    }
+  ],
+  "evidence_used": [
+    "Market concerns the 2028 Democratic nomination, roughly 3 years away",
+    "No policy specifics or legislative implications attached to the event",
+    "Single-candidate primary probability is highly speculative and low-liquidity",
+    "No identified near-term catalyst linking Buttigieg's odds to any tradable asset"
+  ],
+  "uncertainty_notes": [
+    "If a sharp move coincided with a concrete scandal or major endorsement, that underlying news \u2014 not the nomination odds \u2014 could carry sector-specific signal",
+    "Very long horizon to resolution means information decay makes any 12h asset mapping tenuous",
+    "A candidate's known policy leanings (transportation, clean energy) could in principle tilt specific sectors, but not on a 12h basis from primary-odds shifts"
+  ],
+  "llm_justification": {
+    "summary": "This market tracks the 2028 Democratic presidential nomination for a single candidate \u2014 an event years in the future with no defined policy platform and no channel to near-term earnings, rates, or macro. Even a sharp move in the implied probability carries negligible information for liquid public assets over a 12-hour window. The honest mapping is 'unclear' with very low confidence and sub-threshold expected magnitude; this is not a tradable signal.",
+    "key_assumptions": [
+      "Primary odds this far out have no measurable link to asset prices",
+      "No concurrent material news is embedded in the market move",
+      "12h window is far too short for any political-cycle repricing"
+    ],
+    "failure_modes": [
+      "The market move actually reflects breaking news (scandal/endorsement) whose substance could move specific assets, which this null thesis would miss",
+      "A weak-proxy problem: even if 2028 politics eventually matter, SPY is far too broad and too distant to register the effect",
+      "The move is simply illiquid-market noise with no real-world information, making any directional call spurious"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

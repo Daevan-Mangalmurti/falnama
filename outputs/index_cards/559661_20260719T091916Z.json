@@ -1,0 +1,72 @@
+{
+  "card_id": "559661_20260719T091916Z",
+  "card_version": "v1",
+  "card_hash": "bd005df2d28b3e1f426a3d45e2a943835278181ee44c3156a45fcc1d13c2e9fc",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-19T09:19:16Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "559661",
+    "market_slug": "will-jon-ossoff-win-the-2028-democratic-presidential-nomination-885",
+    "market_name": "Will Jon Ossoff win the 2028 Democratic presidential nomination?",
+    "market_url": "https://polymarket.com/market/will-jon-ossoff-win-the-2028-democratic-presidential-nomination-885",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Jon Ossoff win the 2028 Democratic presidential nomination?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US broad equity market",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.05,
+      "confidence_interval_bps": [
+        -30.0,
+        30.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether the odds move is idiosyncratic to this one candidate market or part of a broader repricing across the 2028 field; if isolated, treat as noise.",
+        "1h": "Check for any actual news catalyst (Ossoff announcement, endorsement, scandal) rather than thin-market drift.",
+        "2h": "Compare SPY intraday move to macro drivers (rates, earnings, data) to confirm politics is not the driver.",
+        "6h": "Reassess whether any sector-specific narrative (e.g., Georgia, tech policy) has emerged; otherwise close as no-signal.",
+        "12h": "Log final outcome; expect no attributable asset move and record as a weak-mapping case for calibration."
+      },
+      "reasoning": "A shift in the implied odds of Jon Ossoff winning the 2028 Democratic nomination \u2014 an event more than two years away, contested among many candidates \u2014 carries essentially no information for any liquid public-market asset over a 12-hour window. The Democratic primary field is wide open, Ossoff is a low-probability long-shot, and even a large percentage swing in his implied probability represents a tiny absolute change in political-outcome expectations. There is no identifiable transmission channel to equities, commodities, or FX at this horizon. Any observed correlation would be noise."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns a 2028 nomination >2 years out",
+    "Democratic primary field is wide open with many candidates",
+    "Jon Ossoff is a low-probability contender",
+    "No specified catalyst or resolution event imminent",
+    "12-hour prediction window is far too short for a long-horizon political signal to transmit"
+  ],
+  "uncertainty_notes": [
+    "Prediction markets this far out are thin and prone to noise, not information leakage",
+    "Even a sharp implied-probability move would represent a small absolute change in expected outcomes",
+    "No clear economic-policy differentiation identifiable for Ossoff vs. field that would move specific sectors"
+  ],
+  "llm_justification": {
+    "summary": "The market asks about a distant (2028), low-probability primary outcome for a single Democratic candidate. There is no plausible, identifiable transmission channel from a short-term swing in these odds to any liquid public-market asset within a 12-hour window. The mapping is weak; the honest call is 'unclear' with very low confidence and sub-threshold expected magnitude \u2014 not tradable.",
+    "key_assumptions": [
+      "No imminent resolution or major news catalyst tied to this market",
+      "The 2028 Democratic field remains contested and Ossoff remains a long-shot",
+      "Short 12h horizon precludes long-dated political repricing from moving assets"
+    ],
+    "failure_modes": [
+      "A genuine breaking event (major endorsement, scandal, health news) could make the odds move informative, but would show up in news, not just the market",
+      "Thin-market liquidity means observed odds moves may be artifacts, not information",
+      "Any correlation to SPY would be spurious given dominant macro drivers",
+      "Proxy exposure is effectively zero \u2014 no asset is meaningfully sensitive to this specific candidate's 2028 primary odds"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

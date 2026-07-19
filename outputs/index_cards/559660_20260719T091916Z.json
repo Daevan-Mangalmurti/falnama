@@ -1,0 +1,70 @@
+{
+  "card_id": "559660_20260719T091916Z",
+  "card_version": "v1",
+  "card_hash": "f33c5eb4fd2f6d9699ba0092aa77f370a393620cc8e0a000472d11cb721354ea",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-19T09:19:16Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "559660",
+    "market_slug": "will-andy-beshear-win-the-2028-democratic-presidential-nomination-832",
+    "market_name": "Will Andy Beshear win the 2028 Democratic presidential nomination?",
+    "market_url": "https://polymarket.com/market/will-andy-beshear-win-the-2028-democratic-presidential-nomination-832",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Andy Beshear win the 2028 Democratic presidential nomination?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US broad equity market",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.05,
+      "confidence_interval_bps": [
+        -50.0,
+        50.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether any actual news (announcement, endorsement, scandal) drove the probability move rather than thin-market noise.",
+        "1h": "Check if broader political-betting markets or news wires corroborate a real event; if purely internal Polymarket drift, discard.",
+        "2h": "Monitor SPY for any abnormal move; expect none attributable to this market.",
+        "6h": "Reassess whether narrative has entered mainstream financial media; almost certainly not market-moving.",
+        "12h": "Close out: log that no tradable equity signal materialized, as expected."
+      },
+      "reasoning": "A shift in the implied probability of Andy Beshear winning the 2028 Democratic nomination \u2014 an event more than two years away, with no bearing on current fiscal, monetary, or regulatory policy \u2014 carries essentially no information relevant to near-term (12h) pricing of liquid US equities. Nomination odds among individual Democratic contenders do not map to sector or index moves this far out, and no policy platform is defined. The proxy is at best weakly exposed and there is no credible transmission channel within the window."
+    }
+  ],
+  "evidence_used": [
+    "Market concerns 2028 Democratic nomination, a distant event (>2 years out)",
+    "No policy content or resolution tied to near-term economic outcomes",
+    "US elections topic but no immediate catalyst",
+    "12h prediction window vs multi-year event horizon"
+  ],
+  "uncertainty_notes": [
+    "Individual-candidate nomination odds rarely move liquid assets even close to an election, let alone 3 years out",
+    "Any move would require a concrete, market-relevant news event, not just probability drift",
+    "Sub-700bps expected move means nothing here is tradable under the stated threshold"
+  ],
+  "llm_justification": {
+    "summary": "This market tracks the 2028 Democratic presidential nomination for a single candidate \u2014 an event years away with no defined policy implications and no plausible transmission to liquid public-market assets within a 12-hour window. There is no credible mapping to a tradable move. The signal, if any, is noise from a thin political market, not information leakage relevant to near-term asset pricing. Direction is unclear and confidence is very low; no prediction clears the 700bps tradability bar.",
+    "key_assumptions": [
+      "Nomination probability shifts for a distant election do not transmit to liquid assets in 12h",
+      "No specific policy or economic catalyst is embedded in this candidate's odds",
+      "Any observed probability move is likely thin-market noise"
+    ],
+    "failure_modes": [
+      "A dramatic, genuinely news-driven shift (e.g., a major scandal or surprise entry) could briefly touch sector sentiment, but even then not within 12h at scale",
+      "The proxy (SPY) is essentially unexposed to this specific candidate's nomination odds",
+      "Assuming a signal exists where the market is merely a noisy, illiquid political sensor"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

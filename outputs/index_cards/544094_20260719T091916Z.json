@@ -1,0 +1,69 @@
+{
+  "card_id": "544094_20260719T091916Z",
+  "card_version": "v1",
+  "card_hash": "99a8201aa18c2897f2aa032dc5e6fa394b05e9f1cde9a322e4efafbc1b170c40",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-19T09:19:16Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "544094",
+    "market_slug": "will-harvey-weinstein-be-sentenced-to-between-5-and-10-years-in-prison",
+    "market_name": "Will Harvey Weinstein be sentenced to between 5 and 10 years in prison?",
+    "market_url": "https://polymarket.com/market/will-harvey-weinstein-be-sentenced-to-between-5-and-10-years-in-prison",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Harvey Weinstein be sentenced to between 5 and 10 years in prison?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "No tradable public-market implication",
+      "ticker": null,
+      "tradable_instrument_name": null,
+      "asset_class": "other",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.9,
+      "confidence_interval_bps": [
+        -50.0,
+        50.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm no major broad-market news is being conflated; verify there is no surprise corporate/settlement angle (e.g., a studio litigation exposure) that would create a real proxy.",
+        "1h": "Scan headlines for any secondary financial angle (insurance payouts, studio liability) \u2014 none expected.",
+        "2h": "Re-check that no listed media/entertainment name shows abnormal volume tied to this event.",
+        "6h": "Confirm thesis of no linkage holds; no asset action warranted.",
+        "12h": "Close the window; record that mapping is non-tradable and market carries no asset signal."
+      },
+      "reasoning": "A criminal sentencing outcome for an individual (Harvey Weinstein) in a New York retrial has no material connection to any liquid, broadly-traded public asset. There is no publicly-listed company, commodity, index, or currency whose cash flows or risk premia depend on the length of Weinstein's prison sentence. The Weinstein Company was privately held and dissolved/sold in bankruptcy years ago (assets acquired by Lantern Capital, now Spyglass). No traded equity has direct exposure. Media conglomerates are far too diversified for this idiosyncratic legal event to register. This is a case where the prediction market is a noisy sensor of legal/judicial expectations, not economic information that leaks into asset prices."
+    }
+  ],
+  "evidence_used": [
+    "Market concerns an individual criminal sentencing, not a corporate/economic event",
+    "The Weinstein Company is defunct (bankruptcy, assets sold to Lantern/Spyglass) \u2014 no listed equity exposure",
+    "No commodity, index, or FX has plausible linkage to a personal prison sentence",
+    "Mislabeled 'elections' primary topic appears erroneous; content is judicial"
+  ],
+  "uncertainty_notes": [
+    "If a surprise civil-liability or insurance angle emerged tying a listed insurer/studio to outcomes, a weak proxy could appear \u2014 currently none identified",
+    "Prediction markets on legal outcomes generally do not carry asset-relevant information"
+  ],
+  "llm_justification": {
+    "summary": "This market tracks the length of Harvey Weinstein's prison sentence in a New York retrial \u2014 a purely idiosyncratic criminal-justice outcome with no material link to any liquid public-market asset. The Weinstein Company is defunct and its assets are held privately, so there is no tradable equity, ETF, commodity, index, or FX proxy with meaningful exposure. Even a sharp move in the implied probability would not leak economically-relevant information into public markets. The correct call is 'unclear' with no tradable implication (well below the 700bps threshold).",
+    "key_assumptions": [
+      "No listed company's cash flows depend on the sentence outcome",
+      "The event is idiosyncratic and legally, not economically, driven",
+      "No hidden insurance/civil-liability proxy exists in liquid markets"
+    ],
+    "failure_modes": [
+      "A latent proxy (e.g., a specific insurer or studio facing related litigation) could exist that I have not identified",
+      "The market could be mis-categorized and actually reference something economically material \u2014 but the description is unambiguous",
+      "Even if the probability moves sharply, attributing any asset move to it would likely be spurious correlation"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

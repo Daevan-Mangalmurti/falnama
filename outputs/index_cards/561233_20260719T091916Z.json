@@ -1,0 +1,70 @@
+{
+  "card_id": "561233_20260719T091916Z",
+  "card_version": "v1",
+  "card_hash": "0cec516f064728e016432a4f184504c0ef3a69db4db37a68255728c98ef274fe",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-19T09:19:16Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "561233",
+    "market_slug": "will-josh-shapiro-win-the-2028-us-presidential-election",
+    "market_name": "Will Josh Shapiro win the 2028 US Presidential Election?",
+    "market_url": "https://polymarket.com/market/will-josh-shapiro-win-the-2028-us-presidential-election",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Josh Shapiro win the 2028 US Presidential Election?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US large-cap equity index",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.05,
+      "confidence_interval_bps": [
+        -40.0,
+        40.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether the probability move coincides with any real-time political news (major endorsement, scandal, or announcement); absent that, treat as noise.",
+        "1h": "Check SPY and VIX for any reaction; expect none attributable to this market.",
+        "2h": "Compare against other 2028 candidate markets to see if this is idiosyncratic to Shapiro or a broader Democratic-party repricing.",
+        "6h": "Re-assess whether any sector proxy (e.g., energy, healthcare) shows movement tied to policy expectations; likely none.",
+        "12h": "Close out research note; document that no tradable public-market implication materialized, as expected."
+      },
+      "reasoning": "A shift in the implied probability of Josh Shapiro winning the 2028 presidential election \u2014 an event more than three years out \u2014 carries virtually no information relevant to liquid public markets over a 12-hour window. Party control, tax, and regulatory implications are the theoretical transmission channel, but with a single Democratic primary contender in a race this distant and this uncertain, there is no material, datable catalyst that would move broad equities. The signal-to-noise ratio is effectively zero for this horizon."
+    }
+  ],
+  "evidence_used": [
+    "Market concerns the 2028 US Presidential Election, over three years from any plausible signal date",
+    "Resolution tied to inauguration January 2029",
+    "Single-candidate probability market with inherently low near-term informational content",
+    "No specified region or economic catalyst"
+  ],
+  "uncertainty_notes": [
+    "A long-dated election market rarely moves liquid assets within 12 hours",
+    "Even a large probability swing lacks a concrete near-term policy catalyst",
+    "Any observed asset move over 12h is far more likely driven by unrelated macro news"
+  ],
+  "llm_justification": {
+    "summary": "This market asks about a 2028 presidential outcome more than three years away, centered on a single Democratic contender. Even a sharp move in his implied probability would not transmit to liquid public markets within a 12-hour window, because there is no datable policy or macro catalyst attached. The mapping is very weak; the honest read is 'unclear' with negligible expected magnitude, well below the 700bps tradable threshold.",
+    "key_assumptions": [
+      "No imminent, market-moving political event is embedded in the probability shift",
+      "Broad equity indices price near-term earnings/macro, not distant election odds",
+      "2028 election composition remains highly fluid and unpredictable"
+    ],
+    "failure_modes": [
+      "The move could accompany a genuine, unexpected news catalyst (major endorsement or opponent withdrawal) that has some sector effect \u2014 but even then the horizon is too long for a 12h asset move",
+      "Attributing any coincident SPY move to this market would be spurious correlation",
+      "The chosen broad-equity proxy is only weakly, indirectly exposed to distant election odds"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

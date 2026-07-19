@@ -1,0 +1,68 @@
+{
+  "card_id": "561973_20260719T091916Z",
+  "card_version": "v1",
+  "card_hash": "9c39ac0059d7b3b4cb19660f17f5df7cc9ff3fda8cc3d6b296083c951fa0f546",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-19T09:19:16Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "561973",
+    "market_slug": "will-donald-trump-win-the-2028-republican-presidential-nomination",
+    "market_name": "Will Donald Trump win the 2028 Republican presidential nomination?",
+    "market_url": "https://polymarket.com/market/will-donald-trump-win-the-2028-republican-presidential-nomination",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Donald Trump win the 2028 Republican presidential nomination?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US large-cap equity index",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.08,
+      "confidence_interval_bps": [
+        -150.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any headline (health, legal, succession, VP announcement) is driving the probability move; note liquidity/volume on the contract.",
+        "1h": "Compare SPY and sector ETFs for any abnormal move; confirm no broad risk-on/off shift tied to political news.",
+        "2h": "Assess whether move persists or reverts, indicating noise vs. genuine information; check VIX.",
+        "6h": "Re-evaluate if any real political development (endorsement, constitutional debate) has become public.",
+        "12h": "Close out research note: record whether any measurable equity reaction occurred; expected none."
+      },
+      "reasoning": "A market on whether Trump wins the 2028 GOP nomination is a long-dated political-speculation contract with essentially no near-term causal channel to asset prices within a 12-hour window. The 22nd Amendment makes a Trump third term constitutionally barred, so this market largely reflects speculation, longshot narratives, or thin-market noise rather than tradable information about earnings, rates, or macro flows. Even a sharp move in implied probability would not map cleanly to any liquid asset over 12 hours."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns 2028 GOP nomination, a long-horizon political contract",
+    "22nd Amendment bars a third presidential term for Trump, making resolution mechanics ambiguous/speculative",
+    "No direct near-term macro, earnings, or policy channel within 12h window"
+  ],
+  "uncertainty_notes": [
+    "Long-dated political markets rarely produce 12h-tradable asset signals",
+    "A probability move could reflect thin liquidity or meme-driven speculation, not information",
+    "If an unexpected succession or health story drives the move, equity/FX reaction could be larger but direction is context-dependent"
+  ],
+  "llm_justification": {
+    "summary": "This is a long-horizon political speculation market with no clean causal link to liquid assets over a 12-hour window, and its subject (a Trump 2028 nomination) is complicated by constitutional constraints. Any implied-probability move is most likely noise or narrative rather than leaked market-moving information, so the mapping is weak and non-tradable. Expected asset impact is effectively zero with very low confidence.",
+    "key_assumptions": [
+      "The 12h window is too short for any political-nomination narrative to move broad markets",
+      "No concurrent major, unrelated news event is conflated with this market"
+    ],
+    "failure_modes": [
+      "The probability move is driven by a genuine breaking story (e.g., health/succession) that does move equities and FX, making the 'unclear/zero' call wrong",
+      "Thin market liquidity produces large probability swings unrelated to any information",
+      "Proxy (SPY) is far too broad to capture any narrow political-sector effect (e.g., specific policy-sensitive stocks)"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

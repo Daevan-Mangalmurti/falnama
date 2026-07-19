@@ -1,0 +1,67 @@
+{
+  "card_id": "561229_20260719T091916Z",
+  "card_version": "v1",
+  "card_hash": "a2dac10923f0ea1c820b96843784e4bd5955929bba18b43b4bbefeb08ca2aa64",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-19T09:19:16Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "561229",
+    "market_slug": "will-jd-vance-win-the-2028-us-presidential-election",
+    "market_name": "Will JD Vance win the 2028 US Presidential Election?",
+    "market_url": "https://polymarket.com/market/will-jd-vance-win-the-2028-us-presidential-election",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will JD Vance win the 2028 US Presidential Election?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US equity market (broad)",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.08,
+      "confidence_interval_bps": [
+        -40.0,
+        40.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move coincides with an actual news catalyst (candidacy announcement, major policy statement) versus thin-market noise.",
+        "1h": "Compare SPY/index futures move to its own recent intraday volatility; confirm no abnormal move attributable to this market.",
+        "2h": "Scan headlines for any Vance-specific policy signal (tariffs, energy, tech regulation) that could create a sector-level channel.",
+        "6h": "Reassess whether the odds move persisted or reverted, indicating noise; check sector ETFs (energy, defense) for any differential move.",
+        "12h": "Confirm no durable asset impact; log as non-tradable weak-mapping case to calibrate future long-horizon election markets."
+      },
+      "reasoning": "A shift in JD Vance's implied probability of winning an election more than three years away carries essentially no information for liquid asset prices over a 12-hour window. Election-outcome markets this far out are dominated by name-recognition, narrative, and low liquidity rather than policy-relevant news. There is no credible transmission channel from a marginal move in a 2028 candidate's odds to same-day equity, commodity, or FX moves of tradable magnitude. Included only to note the broadest, most liquid proxy; the honest read is no signal."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves on the 2028 US Presidential Election, over three years from now",
+    "Long-dated political markets are low-liquidity and narrative-driven",
+    "No described near-term catalyst tied to the question"
+  ],
+  "uncertainty_notes": [
+    "A sudden probability spike could reflect a genuine breaking event (e.g., a candidacy or health news) that has its own asset implications, but that would be captured by the event itself, not the 2028 odds",
+    "Even clear policy-preference signals from a candidate this far out rarely move markets on a 12-hour horizon"
+  ],
+  "llm_justification": {
+    "summary": "This is a 2028 presidential-election candidate market with a resolution date years away. A short-window move in JD Vance's implied odds has no credible, tradable transmission channel to liquid public-market assets within 12 hours. The mapping is weak; direction is unclear and confidence is very low. No prediction meets the 700bps tradable threshold.",
+    "key_assumptions": [
+      "The 12-hour window is far too short relative to the multi-year event horizon for any pricing-in effect",
+      "Any odds move is more likely noise/narrative than material new information"
+    ],
+    "failure_modes": [
+      "A probability jump could be driven by real breaking news (announcement, scandal, health event) whose asset impact comes from the underlying event, not the election odds",
+      "Specific policy expectations (tariffs, energy, crypto, defense) could eventually create sector channels, but not on a same-day basis",
+      "Broad-index proxy is essentially unexposed to a single long-dated candidate's odds, making any inferred move spurious"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "card_id": "559653_20260719T091916Z",
+  "card_version": "v1",
+  "card_hash": "fb14b9ad67c69354ee7883bd219e993bdf892f7dff68f81903cde924ddc9a0b3",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-19T09:19:16Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "559653",
+    "market_slug": "will-alexandria-ocasio-cortez-win-the-2028-democratic-presidential-nomination-653",
+    "market_name": "Will Alexandria Ocasio-Cortez win the 2028 Democratic presidential nomination?",
+    "market_url": "https://polymarket.com/market/will-alexandria-ocasio-cortez-win-the-2028-democratic-presidential-nomination-653",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Alexandria Ocasio-Cortez win the 2028 Democratic presidential nomination?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US broad equity market",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.08,
+      "confidence_interval_bps": [
+        -40.0,
+        40.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move coincides with an actual news catalyst (AOC announcement, poll, endorsement) versus thin-market noise.",
+        "1h": "Compare move against other 2028 Democratic candidate markets to see if it's idiosyncratic or a broad realignment.",
+        "2h": "Assess whether any sector-specific narrative (progressive policy, healthcare, energy) is being discussed in media.",
+        "6h": "Re-check SPY and sector ETFs for any drift; expect none attributable to this market.",
+        "12h": "Confirm no measurable public-market impact; log as non-tradable political noise."
+      },
+      "reasoning": "A shift in the implied probability of AOC winning the 2028 Democratic nomination is a very long-horizon political signal with essentially no mechanistic link to any liquid asset over a 12-hour window. The 2028 election is years away, the nominee is undetermined, and even a sharp move in this single-candidate market carries little actionable macro information. Any market reaction would be dwarfed by ordinary intraday noise."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns 2028 Democratic nomination, a multi-year horizon event",
+    "Single-candidate nomination market with typically low liquidity and high noise",
+    "No policy or regulatory catalyst tied to a 12-hour asset move"
+  ],
+  "uncertainty_notes": [
+    "The 2028 nomination is undetermined and years away, so probability shifts carry minimal near-term information",
+    "Even a large implied-probability move would not map cleanly to any liquid instrument in 12 hours",
+    "If accompanied by a genuine breaking news event, specific sectors (healthcare, energy, financials) could react, but that is the news, not this market"
+  ],
+  "llm_justification": {
+    "summary": "This market asks about AOC winning the 2028 Democratic nomination \u2014 a distant, single-candidate political question. There is no credible mechanistic pathway from a shift in its implied probability to a meaningful move in any liquid public-market asset within a 12-hour window. Even a sharp anomaly here is more likely thin-market noise than leaked information affecting tradable assets. I map this as unclear with very low confidence and no tradable signal.",
+    "key_assumptions": [
+      "The 2028 nomination remains undetermined and lacks near-term resolution catalysts",
+      "No concurrent breaking news that would independently move markets",
+      "Political nomination odds this far out do not systematically drive equity/FX/commodity prices intraday"
+    ],
+    "failure_modes": [
+      "A probability spike could coincide with a genuine market-moving news event (e.g., major policy proposal or health/legal news about a frontrunner) that this framing misattributes",
+      "Very thin liquidity makes the market prone to non-informative jumps",
+      "Even if a real progressive-policy narrative emerged, the proxy (SPY) is far too broad to capture it and any sector effect would be modest and slow"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

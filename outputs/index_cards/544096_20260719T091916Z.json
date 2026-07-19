@@ -1,0 +1,69 @@
+{
+  "card_id": "544096_20260719T091916Z",
+  "card_version": "v1",
+  "card_hash": "4e0a4037dbd113993d7a0c69d62cf806c10cea12e9f7ee05de8533a42d7e06ab",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-19T09:19:16Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "544096",
+    "market_slug": "will-harvey-weinstein-be-sentenced-to-between-20-and-30-years-in-prison",
+    "market_name": "Will Harvey Weinstein be sentenced to between 20 and 30 years in prison?",
+    "market_url": "https://polymarket.com/market/will-harvey-weinstein-be-sentenced-to-between-20-and-30-years-in-prison",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Harvey Weinstein be sentenced to between 20 and 30 years in prison?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "No tradable public-market implication",
+      "ticker": null,
+      "tradable_instrument_name": null,
+      "asset_class": "other",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.9,
+      "confidence_interval_bps": [
+        -50.0,
+        50.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm no unexpected corporate or media-company news tied to the case; verify no listed entity has litigation exposure.",
+        "1h": "Scan media/entertainment sector headlines (Disney, Warner Bros Discovery, Paramount) for any spillover \u2014 expect none.",
+        "2h": "Re-check whether any settlement/civil liability news affects an insurer or studio; likely irrelevant.",
+        "6h": "Monitor for any unusual movement in entertainment ETFs; treat any move as unrelated noise.",
+        "12h": "Close out: confirm thesis that this market has no tradable public-market proxy holds."
+      },
+      "reasoning": "Harvey Weinstein's criminal sentencing in a New York retrial is a legal/personal matter with no material link to any publicly-traded asset. The Weinstein Company collapsed and its assets were sold years ago (much acquired by Lantern Capital/Spyglass), so there is no listed equity exposed to this outcome. There is no commodity, index, FX, or ETF whose price would move on a sentencing bracket. The prediction market is essentially a legal betting line with zero information leakage into liquid financial instruments."
+    }
+  ],
+  "evidence_used": [
+    "Market concerns an individual's criminal sentencing, not a corporate or macro event",
+    "The Weinstein Company is defunct; its assets were liquidated and sold to private buyers",
+    "No listed equity, ETF, commodity, index, or FX instrument has direct exposure to the sentencing outcome",
+    "Primary topic tag 'elections' appears mislabeled; this is a criminal justice matter"
+  ],
+  "uncertainty_notes": [
+    "If undisclosed civil litigation or insurance exposure existed at a listed insurer, there could be a marginal link, but none is evident",
+    "Sentiment/reputational effects on the broader entertainment industry are diffuse and not measurable within a 12h window"
+  ],
+  "llm_justification": {
+    "summary": "This prediction market tracks the prison sentence in Harvey Weinstein's New York criminal retrial. It is a purely legal/personal outcome with no clean transmission channel to any liquid public-market instrument. The Weinstein Company is defunct and its assets long since sold to private parties, so no listed equity is exposed. There is no tradable proxy; the appropriate call is 'unclear' with a near-zero expected move.",
+    "key_assumptions": [
+      "No publicly-listed company has material financial exposure to the sentencing outcome",
+      "Criminal sentencing brackets do not transmit to commodity, index, or FX prices",
+      "Any entertainment-sector movement in the window would be coincidental"
+    ],
+    "failure_modes": [
+      "A hidden litigation/insurance exposure at a listed firm could exist and be missed",
+      "Broad media-sentiment effects might exist but are too diffuse and small to be tradable",
+      "The market may already reflect fully public trial information, offering no leakage even if a proxy existed"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

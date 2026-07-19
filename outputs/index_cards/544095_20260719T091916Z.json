@@ -1,0 +1,70 @@
+{
+  "card_id": "544095_20260719T091916Z",
+  "card_version": "v1",
+  "card_hash": "e436ba827e4a7d8c6667b080bd6b81d711ce69c3d103c536ee6a1ec25dd56ffd",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-19T09:19:16Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "544095",
+    "market_slug": "will-harvey-weinstein-be-sentenced-to-between-10-and-20-years-in-prison",
+    "market_name": "Will Harvey Weinstein be sentenced to between 10 and 20 years in prison?",
+    "market_url": "https://polymarket.com/market/will-harvey-weinstein-be-sentenced-to-between-10-and-20-years-in-prison",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Harvey Weinstein be sentenced to between 10 and 20 years in prison?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Broad US equity market",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.02,
+      "confidence_interval_bps": [
+        -15.0,
+        15.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm no unexpected corporate/media-sector news is being conflated with the sentencing; check headlines.",
+        "1h": "Verify no spillover narrative into media conglomerate names (DIS, WBD, PARA) \u2014 expect none.",
+        "2h": "Re-check whether market probability moved on genuine legal reporting vs. rumor; no asset action warranted.",
+        "6h": "Monitor for any bankruptcy-estate or civil-settlement news that could touch a public entity; unlikely.",
+        "12h": "Close research window; expect zero attributable asset move and log as non-tradable."
+      },
+      "reasoning": "A criminal sentencing outcome for Harvey Weinstein in a New York retrial has no discernible causal channel to any liquid, broadly-traded financial asset. Weinstein has no meaningful equity ties (The Weinstein Company went bankrupt in 2018 and its assets were sold off), no publicly traded successor entity, and the case has no macro, commodity, or FX relevance. There is no proxy with material exposure. Any observed co-movement would be pure noise."
+    }
+  ],
+  "evidence_used": [
+    "Market concerns a personal criminal sentencing (People of the State of New York v. Harvey Weinstein)",
+    "The Weinstein Company is defunct/bankrupt with no publicly traded successor",
+    "Resolution source is court/government records, not corporate disclosures",
+    "No macro, commodity, sector, or FX linkage identified"
+  ],
+  "uncertainty_notes": [
+    "Mislabeled primary topic ('elections') is irrelevant to actual content",
+    "Even a sharp probability move here should not move liquid assets; treat as a control/negative case",
+    "If any obscure litigation-finance or media insurer exposure existed it would be too diffuse to trade"
+  ],
+  "llm_justification": {
+    "summary": "This market maps to a private criminal sentencing with no viable public-market transmission channel. The Weinstein Company is defunct, there is no publicly traded successor, and the outcome carries no macro, sector, commodity, or FX signal. The only honest mapping is 'unclear' with near-zero confidence and a sub-threshold expected move; this functions as a negative/control case rather than a tradable signal.",
+    "key_assumptions": [
+      "No publicly traded entity has material P&L tied to Weinstein's sentence",
+      "Media-sector sentiment is unaffected by an individual's sentencing already widely anticipated",
+      "The case outcome is idiosyncratic and non-systemic"
+    ],
+    "failure_modes": [
+      "The proxy (SPY) has essentially no exposure, so any signal is spurious",
+      "Outcome is already broadly public/expected, giving zero information leakage",
+      "Assuming a link exists at all would manufacture a false signal \u2014 the correct call is no tradable edge"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

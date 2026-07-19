@@ -1,0 +1,70 @@
+{
+  "card_id": "561230_20260719T091916Z",
+  "card_version": "v1",
+  "card_hash": "9cd28657e4e5ef6308946d80b0157575e43379088791a5153471ffc8f16b8ce3",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-19T09:19:16Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "561230",
+    "market_slug": "will-gavin-newsom-win-the-2028-us-presidential-election",
+    "market_name": "Will Gavin Newsom win the 2028 US Presidential Election?",
+    "market_url": "https://polymarket.com/market/will-gavin-newsom-win-the-2028-us-presidential-election",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Gavin Newsom win the 2028 US Presidential Election?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US broad equity market",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.05,
+      "confidence_interval_bps": [
+        -30.0,
+        30.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any real-world catalyst (a Newsom announcement, scandal, or major primary news) accompanies an odds move; absent one, treat as noise.",
+        "1h": "Compare SPY move vs baseline intraday volatility to confirm no abnormal reaction.",
+        "2h": "Scan headlines for policy-relevant news that would actually move sectors (energy, healthcare) rather than the horse-race odds.",
+        "6h": "Re-assess whether the prediction-market move persisted or mean-reverted; a reversal confirms noise.",
+        "12h": "Close out research note: expect no measurable, attributable equity move tied to this 2028 candidate market."
+      },
+      "reasoning": "A shift in the implied probability of Gavin Newsom winning a US presidential election more than three years away carries essentially no near-term information for liquid public markets. Election outcomes this distant have no discounted impact on cash flows, rates, or risk premia within a 12-hour window. Any correlation between this specific candidate's odds and broad equities is speculative at best and swamped by macro noise."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves on the 2028 election, over three years in the future",
+    "Single-candidate odds carry no discounted near-term cash-flow or policy information",
+    "No specified region, category is generic 'elections'",
+    "Broad ETFs are far more liquid than any candidate-linked single name"
+  ],
+  "uncertainty_notes": [
+    "A large odds swing could coincide with a genuine news catalyst (health event, candidacy launch) that itself moves markets, but the market question alone does not tell us that",
+    "Sector-specific proxies (California utilities, healthcare) have marginally more theoretical exposure but still negligible at this horizon",
+    "12h window is far too short for a 2028 political signal to propagate into asset prices"
+  ],
+  "llm_justification": {
+    "summary": "This market concerns a specific candidate winning a presidential election more than three years away. Such distant, single-candidate political odds have no reliable, discountable transmission into liquid public markets within a 12-hour horizon. The honest mapping is 'unclear' with very low confidence: absent a concurrent real-world catalyst, expect no attributable asset move well below the 700 bps tradable threshold.",
+    "key_assumptions": [
+      "Markets do not price a 2028 individual candidate's odds into current asset valuations at a detectable level",
+      "No coincident material news is embedded in the odds move",
+      "12h horizon is dominated by macro and micro noise, not distant election structure"
+    ],
+    "failure_modes": [
+      "A sharp odds move actually reflects breaking news (scandal, illness, formal announcement) that separately moves equities \u2014 the proxy would then react to the news, not the election structure",
+      "Attributing any SPY move to this market would be spurious correlation given overwhelming macro drivers",
+      "If the odds move is pure liquidity/noise on a thin prediction market, there is nothing to trade and no public-market signal at all"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

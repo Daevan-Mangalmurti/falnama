@@ -1,0 +1,70 @@
+{
+  "card_id": "561236_20260719T091916Z",
+  "card_version": "v1",
+  "card_hash": "7604bd738ed300e6d03adfa86183531edbc07e34d67df6459601c23310ce286d",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-19T09:19:16Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "561236",
+    "market_slug": "will-gretchen-whitmer-win-the-2028-us-presidential-election",
+    "market_name": "Will Gretchen Whitmer win the 2028 US Presidential Election?",
+    "market_url": "https://polymarket.com/market/will-gretchen-whitmer-win-the-2028-us-presidential-election",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Gretchen Whitmer win the 2028 US Presidential Election?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US equity market broad exposure",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.05,
+      "confidence_interval_bps": [
+        -40.0,
+        40.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any breaking news (candidacy announcement, scandal) drove the probability move; if none, treat as noise.",
+        "1h": "Compare SPY move to broad market context (rates, macro data) to confirm no political attribution.",
+        "2h": "Monitor whether other 2028 candidate markets moved jointly, indicating a genuine political news event vs idiosyncratic liquidity.",
+        "6h": "Reassess if a concrete Whitmer-related headline emerged; otherwise maintain no-signal stance.",
+        "12h": "Close out: expect no measurable SPY move attributable to this market."
+      },
+      "reasoning": "This market concerns the 2028 US Presidential Election, roughly three years away. A single candidate's implied probability of winning that far out carries essentially no information for public asset prices over a 12-hour window. There is no policy catalyst, no near-term event, and Whitmer is one of many possible nominees. Broad US equities are the most liquid proxy for any political-risk repricing, but the linkage here is negligible; any move in this obscure long-dated market would be pure noise relative to the S&P 500."
+    }
+  ],
+  "evidence_used": [
+    "Market question targets the 2028 presidential election, ~3 years from now",
+    "Whitmer is one of many potential candidates, not an incumbent with immediate policy control",
+    "No near-term catalyst or resolution event within the 12h window",
+    "Long-dated election odds historically have minimal same-day impact on liquid assets"
+  ],
+  "uncertainty_notes": [
+    "A sharp probability move could reflect a genuine breaking headline (e.g., candidacy declaration) but even that rarely moves broad indices materially",
+    "Sector-level effects (healthcare, energy) from a specific candidate are speculative and long-dated",
+    "Prediction-market liquidity for a single 2028 candidate is thin, so probability moves may be noise"
+  ],
+  "llm_justification": {
+    "summary": "The market asks whether Gretchen Whitmer wins the 2028 presidential election, an event three years out involving one of many possible candidates. There is no plausible mechanism for a 12-hour public-asset move of tradable magnitude. Even a sharp shift in her implied odds carries essentially no actionable information for liquid instruments now. The best proxy (SPY) would show no attributable move; direction is unclear and confidence is very low. This is a no-signal mapping.",
+    "key_assumptions": [
+      "No imminent policy or election event within the window",
+      "Long-dated single-candidate odds do not materially reprice broad equities",
+      "Any observed probability move is likely thin-market noise"
+    ],
+    "failure_modes": [
+      "A major breaking news event (Whitmer entering race, major scandal) could briefly move sector ETFs, which this card would miss",
+      "The proxy (SPY) is essentially unexposed to this specific long-dated political question",
+      "Attributing any SPY move to this market would be spurious correlation given macro dominance"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

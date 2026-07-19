@@ -1,0 +1,69 @@
+{
+  "card_id": "544092_20260719T091916Z",
+  "card_version": "v1",
+  "card_hash": "c1e3bf87c51c35bbfa467477a395bf9a74cdbddd2f999a91e9b223a7d2018306",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-19T09:19:16Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "544092",
+    "market_slug": "will-harvey-weinstein-be-sentenced-to-no-prison-time",
+    "market_name": "Will Harvey Weinstein be sentenced to no prison time?",
+    "market_url": "https://polymarket.com/market/will-harvey-weinstein-be-sentenced-to-no-prison-time",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Harvey Weinstein be sentenced to no prison time?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "No liquid public-market proxy",
+      "ticker": null,
+      "tradable_instrument_name": null,
+      "asset_class": "other",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.9,
+      "confidence_interval_bps": [
+        -50.0,
+        50.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm no unexpected corporate/media-industry linkage (e.g., a studio or streaming name) is being tied to the news; none expected.",
+        "1h": "Scan media/entertainment ETF (e.g., PEJ, XLC) for any idiosyncratic move \u2014 expect none attributable to this.",
+        "2h": "Re-check whether any credible reporting connects sentencing to a broader #MeToo corporate-liability theme affecting a listed name.",
+        "6h": "Verify no spillover into insurance or media-liability names; treat as noise.",
+        "12h": "Close out: confirm no tradable asset moved on this event and record as non-mappable."
+      },
+      "reasoning": "This market concerns the outcome of Harvey Weinstein's New York criminal retrial sentencing. It is a personal criminal justice matter with no material connection to any publicly traded company, commodity, currency, or index. Weinstein's former company (The Weinstein Company) went bankrupt in 2018 and was liquidated; there is no listed equity exposed to this outcome. No liquid instrument would predictably move on a shift in the implied probability of his sentence. Any mapping would be manufactured."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns a criminal sentencing of an individual, not a company or economic variable",
+    "The Weinstein Company was liquidated in bankruptcy in 2018; no surviving listed equity",
+    "Category tag 'elections' appears to be a mislabel; content is criminal justice",
+    "No commodity, FX, or index has plausible sensitivity to this outcome"
+  ],
+  "uncertainty_notes": [
+    "The mislabeled category suggests metadata may be unreliable, but the underlying question text is unambiguous",
+    "If some obscure litigation-finance or media-liability name were exposed, it would still be illiquid and not meet the 700bp bar"
+  ],
+  "llm_justification": {
+    "summary": "The market asks whether Harvey Weinstein receives no prison time in his NY retrial. This is a personal criminal-justice event with no liquid public-market proxy \u2014 his former company is defunct and no listed equity, commodity, index, or FX has predictable sensitivity. The correct calibrated answer is that there is no tradable implication; direction is unclear and expected move is effectively zero.",
+    "key_assumptions": [
+      "No surviving publicly traded entity is materially tied to Weinstein's sentencing",
+      "Media/entertainment indices would not move on this idiosyncratic legal news",
+      "The 700bp tradable threshold cannot plausibly be met by any proxy"
+    ],
+    "failure_modes": [
+      "A creative but weak proxy (media ETF) could be forced, which would be spurious",
+      "The event may already be fully public via court reporting, leaving no information edge",
+      "Metadata mislabeling ('elections') could hint at a different intended market, but text governs"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

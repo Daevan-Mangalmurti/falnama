@@ -1,0 +1,70 @@
+{
+  "card_id": "561237_20260719T091916Z",
+  "card_version": "v1",
+  "card_hash": "2f25e27e6a62b1eaf2be575cf9ecc68fac0f6c8765bfa01b8934b2203ed49463",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-19T09:19:16Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "561237",
+    "market_slug": "will-andy-beshear-win-the-2028-us-presidential-election",
+    "market_name": "Will Andy Beshear win the 2028 US Presidential Election?",
+    "market_url": "https://polymarket.com/market/will-andy-beshear-win-the-2028-us-presidential-election",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Andy Beshear win the 2028 US Presidential Election?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US broad equity market",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.05,
+      "confidence_interval_bps": [
+        -40.0,
+        40.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether any real news (endorsement, candidacy announcement, scandal) drove the odds move versus thin-liquidity noise on Polymarket.",
+        "1h": "Check whether mainstream political media corroborate any event; if none, treat as noise.",
+        "2h": "Scan SPY/sector ETFs for any correlated move \u2014 expect none attributable to this market.",
+        "6h": "Reassess if a genuine political development emerges that could shift 2028 policy expectations (energy, healthcare, tax).",
+        "12h": "Close out: log that no tradable public-market implication materialized, as expected."
+      },
+      "reasoning": "This is a long-dated 2028 presidential nomination/election market focused on a single candidate (Andy Beshear), a relatively low-probability Democratic contender more than three years out. Movements in his implied probability reflect intra-party primary positioning, not any near-term policy, macro, or earnings catalyst. There is no credible transmission channel from a shift in Beshear's odds to any liquid asset within a 12-hour window. The market is a noisy sensor of speculative political sentiment with no material public-market payload."
+    }
+  ],
+  "evidence_used": [
+    "Market is about the 2028 US Presidential Election, resolving in Jan 2029 \u2014 over three years away",
+    "Single-candidate question on Andy Beshear, a lower-probability contender",
+    "No macro, sector, or policy catalyst tied to short-term price action",
+    "Polymarket political markets are often thin and speculative"
+  ],
+  "uncertainty_notes": [
+    "A large odds swing could reflect a real news event (e.g., Beshear declaring candidacy) but even then asset impact 3+ years out is negligible",
+    "Thin liquidity means implied-probability moves may be noise rather than information",
+    "No clear sectoral proxy is meaningfully exposed to a single early-stage 2028 candidate"
+  ],
+  "llm_justification": {
+    "summary": "This market asks whether Andy Beshear wins the 2028 US Presidential Election \u2014 a long-dated, single-candidate political contract resolving in January 2029. Shifts in his implied probability reflect early primary positioning and speculative sentiment, not any near-term catalyst with a transmission channel to liquid assets. Within a 12-hour window there is no plausible tradable public-market implication; the appropriate call is 'unclear' with very low confidence and effectively zero expected move.",
+    "key_assumptions": [
+      "Election is 3+ years out, so policy-outcome pricing is not yet a market driver",
+      "No individual liquid instrument is materially exposed to Beshear's odds",
+      "Any odds move is more likely noise or speculative flow than leaked material information"
+    ],
+    "failure_modes": [
+      "A dramatic real-world event (candidacy launch, major endorsement) could move the odds, but would still not move assets in 12h",
+      "If Beshear were mistakenly linked to a specific policy trade (e.g., Kentucky-linked or healthcare names), that mapping would be a weak, spurious proxy",
+      "Treating political-market noise as an information signal would manufacture a false thesis"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

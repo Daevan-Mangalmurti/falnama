@@ -1,0 +1,68 @@
+{
+  "card_id": "544097_20260719T091916Z",
+  "card_version": "v1",
+  "card_hash": "4937db41f1bef18e09cb19e28ec19e86cb3df9c42b327c9f81a2320d11e083b2",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-19T09:19:16Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "544097",
+    "market_slug": "will-harvey-weinstein-be-sentenced-to-more-than-30-years-in-prison",
+    "market_name": "Will Harvey Weinstein be sentenced to more than 30 years in prison?",
+    "market_url": "https://polymarket.com/market/will-harvey-weinstein-be-sentenced-to-more-than-30-years-in-prison",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Harvey Weinstein be sentenced to more than 30 years in prison?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "No tradable public-market implication",
+      "ticker": null,
+      "tradable_instrument_name": null,
+      "asset_class": "other",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.9,
+      "confidence_interval_bps": [
+        -50.0,
+        50.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm no unexpected corporate news ties to the case; none expected.",
+        "1h": "Re-check that no media-sector name has issued statements referencing liability.",
+        "2h": "Verify no litigation-finance or insurance names show unusual moves.",
+        "6h": "Confirm broad media ETFs (e.g., PBS/XLC) show only market-driven moves.",
+        "12h": "Close out: confirm zero attributable move; log as non-tradable."
+      },
+      "reasoning": "Harvey Weinstein's criminal sentencing is a personal legal outcome with no material link to any publicly traded company, index, commodity, or currency. The Weinstein Company is defunct and long bankrupt; there is no listed entity whose cash flows depend on his sentence length. Media conglomerates (Disney, Warner, etc.) have no financial exposure to this outcome. The prediction market moving would carry no information relevant to liquid asset prices. This is a classic 'noise not signal' case where manufacturing a proxy would be dishonest."
+    }
+  ],
+  "evidence_used": [
+    "Market concerns an individual's criminal sentence, not a corporate or macro event",
+    "The Weinstein Company is bankrupt/defunct with no public listing",
+    "No liquid asset has cash flows contingent on the sentence length",
+    "Topic tagging as 'elections' appears mislabeled; content is criminal justice"
+  ],
+  "uncertainty_notes": [
+    "If a public media company faced disclosed civil liability tied to the verdict it could matter, but none is identified",
+    "Prediction-market probability shifts here reflect legal-observer sentiment, not tradable information"
+  ],
+  "llm_justification": {
+    "summary": "This prediction market tracks Harvey Weinstein's potential prison sentence, a personal criminal-justice outcome with no identifiable transmission channel to liquid public markets. The relevant corporate entity (The Weinstein Company) is defunct, and no listed equity, index, commodity, or FX proxy has material exposure to the sentence length. Even a sharp move in the implied probability would not constitute actionable information for asset prices. The honest mapping is 'no tradable signal' with high confidence and near-zero expected move.",
+    "key_assumptions": [
+      "No currently listed company has material financial exposure to Weinstein's sentencing",
+      "Broad media/entertainment ETFs are not sensitive to this idiosyncratic legal outcome"
+    ],
+    "failure_modes": [
+      "An undisclosed civil-liability or insurance exposure at a listed firm could exist",
+      "The move could coincide with unrelated media-sector news creating spurious correlation",
+      "Market mislabeling ('elections') may indicate data error obscuring the true underlying event"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

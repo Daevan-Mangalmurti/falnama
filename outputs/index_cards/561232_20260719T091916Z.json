@@ -1,0 +1,69 @@
+{
+  "card_id": "561232_20260719T091916Z",
+  "card_version": "v1",
+  "card_hash": "3b64fe73cdbebdcfee8b82f6b3912aaca77feb6d4c740c12aca3402ba4f9a5d0",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-19T09:19:16Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "561232",
+    "market_slug": "will-pete-buttigieg-win-the-2028-us-presidential-election",
+    "market_name": "Will Pete Buttigieg win the 2028 US Presidential Election?",
+    "market_url": "https://polymarket.com/market/will-pete-buttigieg-win-the-2028-us-presidential-election",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Pete Buttigieg win the 2028 US Presidential Election?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US equity market (broad)",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.05,
+      "confidence_interval_bps": [
+        -50.0,
+        50.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether any real news catalyst (candidacy announcement, major poll) accompanies the market move; check SPY tape for unrelated macro drivers.",
+        "1h": "Compare SPY move to VIX and sector ETFs to confirm no election-linked repricing.",
+        "2h": "Scan headlines/AP for any Buttigieg-related development; assume noise absent confirmation.",
+        "6h": "Re-check whether the prediction-market move persisted or reverted; distance to 2028 makes persistence meaningless for assets.",
+        "12h": "Close out: record no tradable asset linkage; log as null signal for research."
+      },
+      "reasoning": "A shift in the implied probability of one individual candidate winning an election more than three years away carries essentially no information relevant to near-term asset prices. Markets discount events on a much shorter horizon, and a 2028 primary/general outcome is far too distant and uncertain to move liquid instruments in a 12-hour window. There is no clean policy differentiation from a single Democratic contender's odds that would reprice the broad market now."
+    }
+  ],
+  "evidence_used": [
+    "Market concerns the 2028 US Presidential Election, over three years away",
+    "Single-candidate probability question, not a policy or resolved outcome",
+    "No specified region/catalyst; category metadata largely missing"
+  ],
+  "uncertainty_notes": [
+    "Event horizon (2028) is far beyond the 12h prediction window relevance",
+    "A single candidate's odds do not map to a clear policy/asset thesis",
+    "Any move is likely dominated by unrelated macro noise"
+  ],
+  "llm_justification": {
+    "summary": "This market asks whether Pete Buttigieg wins the 2028 US Presidential Election\u2014an event more than three years out involving a single candidate among many. A move in his implied probability carries no actionable, near-term information for liquid public-market assets over a 12-hour horizon. There is no reliable proxy or direction; the honest mapping is 'unclear' with very low confidence, below any tradable threshold.",
+    "key_assumptions": [
+      "Asset prices discount events on horizons far shorter than 3+ years",
+      "A single early-stage candidate's odds lack differentiated market-moving policy content",
+      "No concurrent real-world catalyst is driving the market move"
+    ],
+    "failure_modes": [
+      "The odds shift could coincide with a genuine news event (e.g., a Democratic policy signal) that does move sectors\u2014but attribution would be spurious",
+      "Even if directionally plausible, the magnitude cannot reach 700 bps from such a distant, diffuse signal",
+      "Broad-market proxy (SPY) is only weakly, if at all, exposed to a single 2028 candidate's odds"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

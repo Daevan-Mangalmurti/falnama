@@ -1,0 +1,69 @@
+{
+  "card_id": "559657_20260719T091916Z",
+  "card_version": "v1",
+  "card_hash": "d9c223cef0ec6254cf5de052f3c2aa7168b421900930dbc1c0e3132c96c8c959",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-19T09:19:16Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "559657",
+    "market_slug": "will-stephen-a-smith-win-the-2028-democratic-presidential-nomination-914",
+    "market_name": "Will Stephen A. Smith win the 2028 Democratic presidential nomination?",
+    "market_url": "https://polymarket.com/market/will-stephen-a-smith-win-the-2028-democratic-presidential-nomination-914",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Stephen A. Smith win the 2028 Democratic presidential nomination?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US broad equity market",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.02,
+      "confidence_interval_bps": [
+        -30.0,
+        30.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm no genuine breaking political news; treat market move as noise unless corroborated by wire headlines.",
+        "1h": "Check whether broader 2028 Democratic field markets moved in tandem, which would still not be tradable within 12h.",
+        "2h": "Verify SPY realized move is within normal intraday range; no action.",
+        "6h": "Reassess for any macro or political catalyst; expect none tied to this market.",
+        "12h": "Close out research card; document that no tradable signal existed."
+      },
+      "reasoning": "This is a novelty/long-shot political market about a sports commentator winning a nomination three years out. Probability moves here carry essentially zero information about any tradable asset. There is no credible causal channel from Stephen A. Smith's 2028 Democratic nomination odds to any liquid instrument within a 12-hour window. Any observed asset move would be coincidental noise, not signal."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns a celebrity long-shot 2028 nomination bid with no policy or corporate cash-flow linkage",
+    "Event horizon is ~2028, far outside any 12h asset-pricing window",
+    "No identified liquid instrument with material exposure to this outcome"
+  ],
+  "uncertainty_notes": [
+    "A sharp probability move could reflect a viral news story rather than any market-moving fundamental",
+    "Even if Smith formally announced a run, effect on broad equities would be negligible",
+    "No sector or single name is meaningfully exposed to this specific candidacy"
+  ],
+  "llm_justification": {
+    "summary": "This prediction market is a novelty long-shot about a sports media personality winning the 2028 Democratic nomination. There is no plausible causal channel to any liquid public-market asset over a 12-hour window. The correct call is 'unclear' with near-zero confidence and no tradable signal; any correlated asset move would be coincidental noise.",
+    "key_assumptions": [
+      "The market reflects entertainment/speculative interest, not information about corporate earnings or macro policy",
+      "No liquid instrument has material exposure to this individual's 2028 nomination odds",
+      "Political events three years out do not move 12h asset prices"
+    ],
+    "failure_modes": [
+      "A genuine surprise announcement could spike attention but still not move liquid assets",
+      "Assuming any correlation implies causation when it is pure noise",
+      "Treating a novelty market as if it carried macro-relevant information"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

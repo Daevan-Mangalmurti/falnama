@@ -1,0 +1,98 @@
+{
+  "card_id": "559651_20260719T091916Z",
+  "card_version": "v1",
+  "card_hash": "4aaa9e3c017d841a9389a5721690c76c8a88e281c7a6fce470ad36e9eb103a3b",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-19T09:19:16Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "559651",
+    "market_slug": "xi-jinping-out-before-2027",
+    "market_name": "Xi Jinping out before 2027?",
+    "market_url": "https://polymarket.com/market/xi-jinping-out-before-2027",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Xi Jinping out before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "China large-cap equities",
+      "ticker": "FXI",
+      "tradable_instrument_name": "iShares China Large-Cap ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -900.0,
+      "confidence": 0.38,
+      "confidence_interval_bps": [
+        -2000.0,
+        300.0
+      ],
+      "trade_eligibility": {
+        "eligible": true,
+        "reason": "Meets minimum expected move.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether Chinese/HK ADRs and FXI are gapping; scan for any wire confirmation (Reuters/Bloomberg/Xinhua) of the leadership event or if move is pure market noise.",
+        "1h": "Compare FXI move vs KWEB and Hang Seng futures for corroboration; confirm the Polymarket probability jump is sustained not a fat-finger.",
+        "2h": "Assess whether official Chinese state media denies/confirms; watch USDCNH and gold for cross-asset confirmation of risk-off.",
+        "6h": "Re-evaluate direction: if narrative turns to 'orderly reform successor,' the initial drop may retrace; size down if no credible reporting emerged.",
+        "12h": "Mark final return vs entry; if no public confirmation materialized, treat as false signal and flag proxy as unconfirmed."
+      },
+      "reasoning": "A sharp rise in the implied probability that Xi is removed 'for any length of time' would signal an unexpected leadership crisis or power struggle in Beijing. Near-term markets price political instability as risk-off: capital flight, policy paralysis, and uncertainty over economic/trade direction. US-listed China proxies (FXI, and KWEB) are the most liquid vehicles to express this and typically gap down hard on China-political-shock headlines. The 12h window captures the initial risk-off reaction before any narrative that a successor could be reform-friendly develops."
+    },
+    {
+      "asset": "Offshore Chinese yuan (weakness)",
+      "ticker": "CYB",
+      "tradable_instrument_name": "WisdomTree Chinese Yuan Strategy Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -400.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -1000.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check USDCNH spot spike and whether PBOC has set an unusually strong/weak fix.",
+        "1h": "Watch for PBOC intervention signals (state bank USD selling) that would cap yuan weakness.",
+        "2h": "Compare CNH vs CNY spread widening as a stress gauge.",
+        "6h": "Reassess whether managed-float intervention has neutralized the move.",
+        "12h": "Mark final level; note if PBOC action invalidated the thesis."
+      },
+      "reasoning": "A Chinese leadership shock would pressure the yuan (USDCNH higher, CYB lower) via capital outflows and safe-haven USD demand. However the PBOC manages the fix aggressively and could dampen or reverse moves, so magnitude is capped and confidence is lower than for equities. Below the 700bps tradable threshold in expectation given managed-currency dynamics."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies a low-probability tail event: unexpected removal of Xi as CCP General Secretary",
+    "China leadership stability is a core input to Chinese asset risk premia",
+    "FXI/KWEB and offshore yuan are the most liquid public proxies for China political risk",
+    "PBOC actively manages the yuan, limiting FX responsiveness"
+  ],
+  "uncertainty_notes": [
+    "The prediction market moving does not confirm an actual event; probability jumps can be noise, manipulation, or thin liquidity",
+    "Direction is genuinely ambiguous over longer horizons: abrupt removal is near-term bearish (chaos) but could later be read as reform-positive",
+    "Magnitude depends heavily on whether credible reporting corroborates the move within the window"
+  ],
+  "llm_justification": {
+    "summary": "A sharp increase in the implied probability that Xi Jinping is removed before 2027 would most plausibly trigger a near-term risk-off move in liquid China equity proxies (FXI/KWEB down) and yuan weakness, driven by political-instability and capital-flight fears. Equity impact is the stronger, higher-magnitude channel; the FX channel is muted by PBOC management. Confidence is moderate-to-low because a market probability move is a noisy sensor, the event is a rare tail, and direction could flip if a reform-friendly succession narrative emerges.",
+    "key_assumptions": [
+      "A meaningful, sustained rise in the market's implied probability reflects genuine information, not noise/manipulation",
+      "Markets initially price a Chinese leadership shock as risk-off",
+      "FXI/KWEB remain liquid and open during the prediction window"
+    ],
+    "failure_modes": [
+      "The probability move is thin-liquidity noise or a manipulation with no real event, so no asset move occurs",
+      "The event was already public/priced, leaving no incremental reaction",
+      "Direction reverses as a 'reform successor' bullish narrative takes hold within 12h",
+      "PBOC intervention neutralizes yuan weakness, invalidating the FX proxy",
+      "US-listed China ETFs are closed or gap without follow-through during the window"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

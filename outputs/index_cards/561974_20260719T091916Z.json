@@ -1,0 +1,70 @@
+{
+  "card_id": "561974_20260719T091916Z",
+  "card_version": "v1",
+  "card_hash": "33926e1a7e8a30c2d6451a6417ce4682465403743992ec827994cbdd1428701f",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-19T09:19:16Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "561974",
+    "market_slug": "will-jd-vance-win-the-2028-republican-presidential-nomination",
+    "market_name": "Will J.D. Vance win the 2028 Republican presidential nomination?",
+    "market_url": "https://polymarket.com/market/will-jd-vance-win-the-2028-republican-presidential-nomination",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will J.D. Vance win the 2028 Republican presidential nomination?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US large-cap equity index",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.05,
+      "confidence_interval_bps": [
+        -40.0,
+        40.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any concurrent news (endorsement, dropout, health event) is driving the market move rather than pure speculation.",
+        "1h": "Compare move to overall Polymarket political-market activity to distinguish idiosyncratic vs broad prediction-market flow.",
+        "2h": "Scan for macro or policy headlines that could independently move SPY; confirm the political signal has no asset overlap.",
+        "6h": "Reassess whether any tradable narrative (e.g., specific sector policy tied to Vance) has emerged.",
+        "12h": "Close the window; log that no actionable equity implication materialized as expected."
+      },
+      "reasoning": "A shift in the implied probability of J.D. Vance winning the 2028 Republican nomination is a long-horizon political signal with no material, datable link to any liquid asset over a 12-hour window. The 2028 nomination is years away, the candidate field is unformed, and even a sharp probability move reflects intra-party positioning rather than policy that markets price today. There is no clean causal chain to broad equities within 12 hours."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves on 2028 Republican nomination, an event roughly 3 years out",
+    "No datable near-term catalyst tied to a 12-hour window",
+    "Nomination odds reflect intra-party politics, not immediate policy or macro variables"
+  ],
+  "uncertainty_notes": [
+    "A sharp odds move could coincide with a discrete news event (endorsement, scandal) that itself has no direct asset mapping",
+    "Even if Vance's odds rise, the policy implications are diffuse and long-dated",
+    "Prediction-market moves in political contracts are frequently noise-driven with thin liquidity"
+  ],
+  "llm_justification": {
+    "summary": "This market tracks the 2028 Republican presidential nomination, a multi-year-horizon political outcome. A move in the implied probability of a J.D. Vance nomination has no reliable causal transmission to any liquid public-market asset within a 12-hour window. Sector or macro effects (e.g., energy, defense, tariffs tied to a Vance-aligned platform) are speculative, diffuse, and far too distant to price now. The honest mapping is 'unclear' with very low confidence and a sub-threshold expected move; this is not a tradable signal.",
+    "key_assumptions": [
+      "The 2028 nomination remains a distant, low-information event for asset markets",
+      "No immediate policy-relevant news is embedded in the probability move",
+      "Broad equity indices do not price 2028 primary politics over intraday windows"
+    ],
+    "failure_modes": [
+      "The odds move could be driven by a concrete news event with its own separate market impact that we'd misattribute",
+      "A weak/nonexistent proxy: SPY has essentially no exposure to a 2028 primary outcome intraday",
+      "The signal is likely noise from thin political prediction-market liquidity rather than leaked information",
+      "Reversal is highly likely as speculative political odds mean-revert quickly"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

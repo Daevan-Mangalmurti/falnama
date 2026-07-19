@@ -1,0 +1,69 @@
+{
+  "card_id": "561235_20260719T091916Z",
+  "card_version": "v1",
+  "card_hash": "7a8d515169badc3a7d6e59df2d1f881c6b64dde9fa0e19e36d1b4450024a9a7c",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-19T09:19:16Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "561235",
+    "market_slug": "will-wes-moore-win-the-2028-us-presidential-election",
+    "market_name": "Will Wes Moore win the 2028 US Presidential Election?",
+    "market_url": "https://polymarket.com/market/will-wes-moore-win-the-2028-us-presidential-election",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Wes Moore win the 2028 US Presidential Election?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US broad equity market",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.05,
+      "confidence_interval_bps": [
+        -40.0,
+        40.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any breaking political news (candidacy announcement, scandal) coincides with the market move; if none, treat as noise.",
+        "1h": "Compare SPY move to broad market beta and news tape; confirm no idiosyncratic driver tied to the market.",
+        "2h": "Reassess whether the political headline has any sector-specific angle (e.g., Maryland/defense) worth isolating.",
+        "6h": "Verify no follow-through in equity indices attributable to the political signal.",
+        "12h": "Close out: confirm the prediction-market move produced no measurable asset impact, as expected."
+      },
+      "reasoning": "This is a 2028 presidential primary-stage longshot market about a specific candidate (Wes Moore, Maryland governor) three years before the election. Implied probability shifts here carry essentially no information about assets over a 12-hour window. Even large percentage moves in a low-base-rate candidate market reflect political speculation, not macro or sector-relevant news that would move liquid US equities intraday. No credible transmission channel exists at this horizon."
+    }
+  ],
+  "evidence_used": [
+    "Market is about the 2028 US presidential election, resolving in Jan 2029, ~3+ years out",
+    "Wes Moore is currently a longshot/speculative candidate (Maryland governor, not declared)",
+    "No dated catalyst or region-specific asset linkage in the question",
+    "12-hour prediction window is far too short to connect long-horizon election odds to asset moves"
+  ],
+  "uncertainty_notes": [
+    "A sudden probability spike could accompany a real news event (candidacy declaration), but that still lacks a clear same-day asset channel",
+    "Individual candidate election-odds markets are extremely noisy and thinly traded this far out"
+  ],
+  "llm_justification": {
+    "summary": "The market asks about a specific longshot candidate winning the 2028 US presidential election, resolving in 2029. There is no plausible mechanism by which short-term moves in these odds transmit to liquid public assets within a 12-hour window. The best-supported conclusion is 'unclear' with very low confidence and a sub-threshold expected move \u2014 not tradable.",
+    "key_assumptions": [
+      "Election-odds shifts three years out do not carry actionable intraday macro/sector information",
+      "Wes Moore's candidacy has no unique, market-moving asset exposure",
+      "No coincident hard news catalyst with a direct asset channel"
+    ],
+    "failure_modes": [
+      "A genuine political catalyst (e.g., Moore declaring, or a broader Democratic-primary realignment) could move policy-sensitive sectors, but attribution to this single market would be spurious",
+      "The move may already be public/priced via news before the market shifts",
+      "SPY is a deliberately weak proxy chosen to reflect the absence of a real transmission channel \u2014 any correlation would be coincidental"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

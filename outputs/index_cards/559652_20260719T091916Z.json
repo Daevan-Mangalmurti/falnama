@@ -1,0 +1,70 @@
+{
+  "card_id": "559652_20260719T091916Z",
+  "card_version": "v1",
+  "card_hash": "1cbe3ca0a0e0af3c7ce48fccbd1a2d840fabf113e76860643df6dccb60e684c9",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-19T09:19:16Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "559652",
+    "market_slug": "will-gavin-newsom-win-the-2028-democratic-presidential-nomination-568",
+    "market_name": "Will Gavin Newsom win the 2028 Democratic presidential nomination?",
+    "market_url": "https://polymarket.com/market/will-gavin-newsom-win-the-2028-democratic-presidential-nomination-568",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Gavin Newsom win the 2028 Democratic presidential nomination?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US large-cap equity index",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.05,
+      "confidence_interval_bps": [
+        -50.0,
+        50.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Newsom market move coincides with a genuine breaking news catalyst (e.g., a major candidacy announcement or scandal); if none, treat as noise.",
+        "1h": "Compare against other 2028 Democratic candidate markets to see if this is a Newsom-specific reprice or a broad primary-field shift.",
+        "2h": "Scan headlines for California policy or national political news that could give any sector-level (e.g., energy, healthcare) read-through.",
+        "6h": "Verify SPY and sector ETFs show no abnormal move attributable to the political market; confirm null.",
+        "12h": "Close out: record that a 2028 nomination market did not produce a tradable public-market signal, as expected."
+      },
+      "reasoning": "A shift in the implied probability of Gavin Newsom winning the 2028 Democratic nomination \u2014 an event more than two years away \u2014 carries essentially no information for near-term asset prices. Even a sharp move in this market reflects intra-Democratic-primary positioning, not policy that will be enacted, general-election odds, or any macro catalyst that would move equities within a 12-hour window. There is no clean transmission channel to any liquid instrument at this horizon."
+    }
+  ],
+  "evidence_used": [
+    "Market concerns the 2028 Democratic nomination, resolving years in the future",
+    "No near-term policy or macro catalyst tied to the question",
+    "Prediction window is only 12 hours"
+  ],
+  "uncertainty_notes": [
+    "A very sharp move could accompany a real-time political shock, but that shock (not the market) would be the true driver",
+    "Any equity read-through would be sector-specific and highly speculative, not index-level",
+    "2028 primary odds have negligible bearing on present-day cash flows or rates"
+  ],
+  "llm_justification": {
+    "summary": "This market maps a distant (2028) intra-party nomination question to public assets. There is no credible transmission channel from Newsom's nomination odds to any liquid instrument within a 12-hour window. Even a large probability swing reflects political positioning years ahead of any enactable policy or general-election outcome. The honest mapping is 'unclear' with very low confidence and no tradable move \u2014 the market is noise for asset-pricing purposes at this horizon.",
+    "key_assumptions": [
+      "The 2028 nomination remains too distant to affect near-term discount rates or earnings expectations",
+      "No simultaneous macro or breaking-news catalyst is conflated with the political market move",
+      "Broad, liquid proxies show no meaningful sensitivity to primary-field repricing"
+    ],
+    "failure_modes": [
+      "The market move could coincide with genuine breaking political news that itself moves risk sentiment, making the correlation look causal",
+      "A weak-proxy problem: even if some sector (California utilities, healthcare) is loosely exposed to Newsom policy, the 12-hour link is negligible",
+      "The move may be already public/anticipated, offering no leaked information",
+      "Thin, low-liquidity prediction market prone to random swings unrelated to any real information"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

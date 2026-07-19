@@ -1,0 +1,69 @@
+{
+  "card_id": "559659_20260719T091916Z",
+  "card_version": "v1",
+  "card_hash": "a99fd937be7d46eb1e304e87e1a36d9a642deb4c1d6cf5b4f22c30794d28f490",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-19T09:19:16Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "559659",
+    "market_slug": "will-gretchen-whitmer-win-the-2028-democratic-presidential-nomination-676",
+    "market_name": "Will Gretchen Whitmer win the 2028 Democratic presidential nomination?",
+    "market_url": "https://polymarket.com/market/will-gretchen-whitmer-win-the-2028-democratic-presidential-nomination-676",
+    "source_market_file": "relevant_markets_latest.csv"
+  },
+  "market_name": "Will Gretchen Whitmer win the 2028 Democratic presidential nomination?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US broad equity market",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.05,
+      "confidence_interval_bps": [
+        -40.0,
+        40.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether any real news (endorsement, campaign entry, health event) drove the probability move versus thin-book noise.",
+        "1h": "Check if broader political-betting complex (other 2028 candidates) moved in tandem, indicating a genuine shift vs idiosyncratic.",
+        "2h": "Scan headlines for any Whitmer/Michigan-specific news; absent that, treat as non-event.",
+        "6h": "Re-verify SPY unaffected; no policy-sensitive sector reaction expected.",
+        "12h": "Close out: confirm no measurable equity impact; log as non-tradable signal."
+      },
+      "reasoning": "A shift in the implied probability of one candidate winning a party nomination three-plus years out (2028) carries essentially no near-term cash-flow, policy, or macro information for public markets. Nomination odds among a crowded field are noise relative to any tradable asset over a 12-hour window. No sector or policy is cleanly and immediately exposed to Whitmer-specific outcomes at this horizon."
+    }
+  ],
+  "evidence_used": [
+    "Market is about the 2028 Democratic nomination, an event ~3 years away",
+    "Crowded-field primary odds are low-information for asset prices",
+    "No specific sector, commodity, or FX cleanly tied to a single candidate's nomination probability at this horizon"
+  ],
+  "uncertainty_notes": [
+    "If a major surprise (e.g., Whitmer formally declaring or a dominant frontrunner collapsing) drove the move, some clean-energy or Michigan-auto names could get marginal attention, but still not within 12h with >700bps.",
+    "Prediction-market probability moves for far-dated political events are frequently liquidity-driven noise."
+  ],
+  "llm_justification": {
+    "summary": "This market concerns a 2028 party nomination among a crowded field, an event far in the future with no clean, immediate transmission channel to any liquid public-market asset. A move in the implied probability carries negligible tradable information over a 12-hour window. The mapping is weak; direction is unclear and confidence is low. No prediction meets the 700bps tradable threshold.",
+    "key_assumptions": [
+      "Nomination odds for one of many candidates carry no near-term macro or policy signal",
+      "No candidate-specific market like a single stock is materially exposed within 12h",
+      "The probability move is more likely noise than genuine private information"
+    ],
+    "failure_modes": [
+      "The move could reflect real breaking news (endorsement/entry) that does have niche sector implications we underweight",
+      "Chosen proxy (SPY) is deliberately broad and therefore essentially unexposed\u2014by design shows no signal",
+      "Any actual asset reaction would likely be in illiquid, candidate-specific names not in the allowed liquid-proxy universe",
+      "Signal is far too long-dated to resolve within the 12h window"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
