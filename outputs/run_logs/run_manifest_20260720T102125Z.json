@@ -1,0 +1,41 @@
+{
+  "run_id": "20260720T102125Z",
+  "run_time_utc": "2026-07-20T10:21:25Z",
+  "card_mode": "live",
+  "data_source": "live",
+  "market_selector": {
+    "input_markets": 100,
+    "selected_count": 31,
+    "rejected_count": 69,
+    "selected_file": "outputs/relevant_markets/relevant_markets_20260720T102125Z.csv"
+  },
+  "screen": {
+    "enabled": true,
+    "mode": "live",
+    "screened": 31,
+    "kept": 2,
+    "dropped": 29,
+    "error": "",
+    "screened_file": "outputs/relevant_markets/screened_markets_20260720T102125Z.csv"
+  },
+  "anomaly_detector": {
+    "markets_scored": 2,
+    "strong_count": 0,
+    "concentration_red_flags": 0,
+    "ranked_file": "outputs/anomalies/ranked_anomalies_20260720T102125Z.csv"
+  },
+  "cards": {
+    "card_mode": "live",
+    "cards_written": 2,
+    "files": [
+      "outputs/index_cards/559651_20260720T102125Z.json",
+      "outputs/index_cards/560317_20260720T102125Z.json"
+    ]
+  },
+  "recommender": {
+    "recommended_count": 0,
+    "rejected_count": 0,
+    "workbook": "outputs/recommended_trades/paper_recommendations_20260720T102125Z.xlsx",
+    "backfill_mode": false
+  }
+}

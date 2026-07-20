@@ -1,0 +1,13 @@
+{
+  "mode": "live",
+  "screened": 31,
+  "kept": 2,
+  "dropped": 29,
+  "min_economic_salience": 60.0,
+  "min_information_asymmetry": 45.0,
+  "dropped_by_topic": {
+    "elections": 23,
+    "legal_judicial": 6
+  },
+  "error": ""
+}
