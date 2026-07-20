@@ -50,6 +50,35 @@ def test_hard_reject_topics():
         assert result["hard_rejected"] is True
 
 
+def test_corporate_actions_are_in_scope():
+    # Added when the screen's first axis became economic_salience: M&A and IPOs
+    # move public assets and are insider-prone, so they must reach the screen.
+    for name in ["Will OpenAI IPO by December 31 2026?",
+                 "Will the DOJ block the Kroger-Albertsons merger?",
+                 "Will Microsoft acquire Discord before 2027?"]:
+        result = classify_market(_market(name), SETTINGS)
+        assert result["primary_topic"] == "corporate_action"
+        assert result["relevance_score"] >= 60          # survives Stage 1
+        assert result["information_structure"] == "asymmetry_prone"
+
+
+def test_leadership_departure_is_cabinet_government():
+    # Real-data regression: "X out as President" / "steps down" were scored 'other'
+    # (20) and silently dropped before reaching the screen.
+    for name in ["Milei out as President of Argentina before 2027?",
+                 "Mitch McConnell steps down from Senate before his term ends?"]:
+        result = classify_market(_market(name), SETTINGS)
+        assert result["primary_topic"] == "cabinet_government"
+        assert result["relevance_score"] >= 60
+
+
+def test_bitcoin_market_cap_is_still_hard_rejected():
+    # 'market cap' is a corporate_action keyword, but a crypto market must still be
+    # hard-rejected — the crypto keyword wins regardless of topic.
+    result = classify_market(_market("Will Bitcoin's market cap exceed $3T in 2026?"), SETTINGS)
+    assert result["hard_rejected"] is True
+
+
 def test_selection_keeps_geopolitics_drops_noise():
     markets = pd.DataFrame([
         _market("Will the US strike Iran before August?", market_id="a", volume=1, liquidity=1),

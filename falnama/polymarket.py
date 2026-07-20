@@ -38,6 +38,14 @@ MARKET_COLUMNS = [
     "closed", "close_time", "clob_token_ids", "market_url",
 ]
 
+# The Gamma /markets endpoint's hard per-page ceiling (it ignores larger limits).
+# We deliberately pull the universe in DEFAULT order rather than sorting by volume:
+# Gamma's volume fields are dominated by novelty markets ("Will Jesus Christ return
+# before 2027?" reports tens of millions), so a volume sort surfaces junk. The
+# design is instead "pull wide, screen hard" — cast a broad net here and let Stage 1
+# and the LLM relevance screen decide what is real.
+_GAMMA_MAX_PAGE = 100
+
 
 # ---------------------------------------------------------------------------
 # Public entry points
@@ -123,10 +131,15 @@ def _fetch_gamma_markets(settings: Settings) -> pd.DataFrame:
     headers = {"User-Agent": str(cfg.get("user_agent", "falnama-research/0.1 (read-only)"))}
     timeout = int(cfg.get("request_timeout_seconds", 30))
 
+    # The Gamma /markets endpoint silently CAPS a page at 100 rows however large a
+    # `limit` we send. We must therefore page in 100s: if we asked for 500 we would
+    # still get 100 back, and the "a short page means the last page" check below
+    # would fire on the very first page — truncating the whole universe to 100
+    # markets and starving every later stage (and the LLM screen) of candidates.
     rows: list[dict] = []
-    offset, page = 0, min(500, max(50, max_markets))
+    offset = 0
     while len(rows) < max_markets:
-        params = {"closed": str(closed).lower(), "limit": page, "offset": offset}
+        params = {"closed": str(closed).lower(), "limit": _GAMMA_MAX_PAGE, "offset": offset}
         resp = requests.get(f"{base}/markets", params=params, headers=headers, timeout=timeout)
         resp.raise_for_status()
         records = _as_records(resp.json())
@@ -134,7 +147,7 @@ def _fetch_gamma_markets(settings: Settings) -> pd.DataFrame:
             break
         rows.extend(records)
         offset += len(records)
-        if len(records) < page:
+        if len(records) < _GAMMA_MAX_PAGE:  # a short page is genuinely the last page
             break
         time.sleep(0.2)  # be polite to the public API
     normalized = [_normalize_market(r) for r in rows[:max_markets]]

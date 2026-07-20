@@ -42,13 +42,18 @@ TOPIC_KEYWORDS: list[tuple[str, list[str]]] = [
     ("sanctions", ["sanction", "embargo", "asset freeze", "export ban"]),
     ("technology_controls", ["export control", "chip ban", "semiconductor", "huawei", "asml", "tech restriction"]),
     ("trade_policy", ["tariff", "trade war", "import ban", "trade deal", "duties", "quota"]),
-    ("cabinet_government", ["cabinet", "coalition", "prime minister", "no confidence", "government collapse", "coup", "resign", "impeach"]),
+    ("cabinet_government", ["cabinet", "coalition", "prime minister", "no confidence", "government collapse", "coup", "resign", "impeach", "out as president", "ousted", "steps down"]),
     ("diplomacy_treaty", ["treaty", "summit", "negotiation", "peace talks", "accord", "diplomat"]),
     ("elections", ["election", "presidential", "parliament", "senate", "nominee", "primary", "referendum"]),
-    ("central_bank_macro", ["central bank", "federal reserve", "interest rate", "rate cut", "inflation", "cpi", "ecb"]),
+    ("central_bank_macro", ["central bank", "federal reserve", "interest rate", "rate cut", "inflation", "cpi", "ecb", "fomc"]),
+    # Corporate control events — M&A, IPOs, and antitrust. Classic insider-prone
+    # territory and clearly cross-asset, so they earn the thesis bonuses below.
+    # Added when the screen's first axis became economic_salience: these move
+    # public assets even though they are not statecraft.
+    ("corporate_action", ["merger", "acquisition", "acquire", "takeover", "buyout", "ipo", "antitrust", "market cap"]),
     ("energy", ["oil", "gas", "opec", "pipeline", "lng", "uranium", "energy"]),
     ("civil_unrest", ["protest", "riot", "civil unrest", "state of emergency", "martial law"]),
-    ("regulatory_policy", ["regulation", "regulator", "sec", "ftc", "antitrust", "license"]),
+    ("regulatory_policy", ["regulation", "regulator", "sec", "ftc", "license"]),
     ("legal_judicial", ["court", "supreme court", "ruling", "verdict", "indictment", "trial"]),
     # Structurally low-relevance categories — matched so they can be scored near zero.
     ("weather", ["hurricane", "temperature", "rainfall", "snowfall", "weather"]),
@@ -61,10 +66,10 @@ TOPIC_KEYWORDS: list[tuple[str, list[str]]] = [
 # whose information tends to be held unevenly — they earn the thesis bonuses.
 _ASYMMETRIC_TOPICS = {
     "military_conflict", "sanctions", "trade_policy", "technology_controls",
-    "cabinet_government", "diplomacy_treaty", "legal_judicial",
+    "cabinet_government", "diplomacy_treaty", "legal_judicial", "corporate_action",
 }
 # Topics with clear knock-on effects for public financial assets.
-_CROSS_ASSET_TOPICS = {"trade_policy", "sanctions", "energy", "central_bank_macro", "military_conflict"}
+_CROSS_ASSET_TOPICS = {"trade_policy", "sanctions", "energy", "central_bank_macro", "military_conflict", "corporate_action"}
 
 # Rough country/region inference, purely for diversity balancing and diagnostics.
 _REGION_KEYWORDS = {

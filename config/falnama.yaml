@@ -85,6 +85,7 @@ selector:
     diplomacy_treaty: 80
     elections: 75
     central_bank_macro: 70
+    corporate_action: 70            # M&A / IPO / antitrust — insider-prone, cross-asset
     energy: 70
     civil_unrest: 70
     regulatory_policy: 65
