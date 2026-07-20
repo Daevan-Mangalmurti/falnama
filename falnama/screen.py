@@ -1,8 +1,8 @@
 """Stage 1.5 — an LLM relevance gate over the keyword-selected universe.
 
 WHAT:     Asks a language model to judge each selected market on two independent
-          axes — is it geopolitically in scope, and could a small group plausibly
-          know the outcome before the public — then drops the ones that fail.
+          axes — would its resolution move public financial markets, and could a
+          small group plausibly know the outcome first — then drops the failures.
 CONSUMES: outputs/relevant_markets/relevant_markets_latest.csv (Stage 1) +
           settings.screener + the LLM seam
 PRODUCES: outputs/relevant_markets/screened_markets_latest.csv (the survivors)
@@ -20,13 +20,23 @@ ROLE:     precision. Stage 1's keyword rules are cheap, deterministic, and
 
 Why two axes instead of one relevance number:
 
-    geopolitical_relevance  — is this the SUBJECT MATTER Falnama studies?
-    information_asymmetry   — could a FEW PEOPLE know this before everyone else?
+    economic_salience     — would this outcome MOVE PUBLIC ASSETS?
+    information_asymmetry — could a FEW PEOPLE know it before everyone else?
 
 They fail differently and a single score hides that. A celebrity sentencing scores
 low on the first; a presidential primary two years out scores respectably on the
 first and near zero on the second (nobody knows yet — it is decided by millions of
 voters). Falnama's thesis needs BOTH, so a market must clear both floors.
+
+A note on why the first axis is not called "geopolitical relevance". Falnama's
+founding documents scope the project to geopolitics, but that was always a PROXY:
+geopolitical questions tend to combine market impact with privately-held knowledge,
+so one label captured both properties at once. Now that the two are scored
+separately, the proxy costs more than it earns — it would exclude an antitrust
+ruling against a mega-cap or a surprise central-bank move, which can be far more
+economically salient than a minor diplomatic gesture. Naming the real test lets
+the screen widen without losing focus, because the asymmetry axis still holds the
+line on its own.
 
 The keyword score from Stage 1 is preserved next to the LLM's verdict rather than
 overwritten. Seeing "keywords said 75, the model said 10" side by side is what
@@ -77,7 +87,7 @@ class MarketVerdict(BaseModel):
     """
 
     index: int = Field(description="The [n] index of the market being judged, exactly as given.")
-    geopolitical_relevance: int = Field(description="0-100. Is this statecraft, security, or macro policy?")
+    economic_salience: int = Field(description="0-100. Would this outcome move public financial markets?")
     information_asymmetry: int = Field(description="0-100. Could a small group know the outcome before the public?")
     corrected_topic: str = Field(description="The topic this market really belongs to, in snake_case.")
     rationale: str = Field(description="One short sentence justifying both scores.")
@@ -101,26 +111,40 @@ only on markets that could carry a real information signal.
 
 Score every market on two INDEPENDENT axes, 0-100.
 
-1. geopolitical_relevance — is the subject matter statecraft, armed conflict, \
-security, sanctions, trade and technology policy, government control, diplomacy, \
-central-bank or macro policy? Score high for those. Score LOW for sport, \
-entertainment, product releases, celebrity legal proceedings, and ordinary \
-domestic crime, however famous the defendant.
+1. economic_salience — if this question resolved tomorrow, would it MOVE PUBLIC \
+FINANCIAL MARKETS? Score HIGH when the outcome plausibly moves equities, indices, \
+sector ETFs, commodities, currencies, or interest rates: armed conflict, \
+sanctions, tariffs and trade policy, export controls, control of a major \
+government or economy, central-bank and macro policy, energy supply, and large \
+regulatory, antitrust, or legal decisions against major firms. Score LOW when the \
+outcome is culturally interesting but financially inert: sport, entertainment, \
+product releases, celebrity legal proceedings, and ordinary domestic crime, \
+however famous the defendant.
+
+Judge the ASSET IMPACT, not the topic label. Falnama's founding documents scope \
+the project to "geopolitics", but that was a proxy — geopolitical questions \
+usually combine market impact with private knowledge, so one word captured both. \
+You are now scoring those two properties separately, so apply the real test \
+directly: a major antitrust ruling or a surprise central-bank decision can be far \
+more economically salient than a minor diplomatic gesture, and should score \
+higher. Do not reject something merely because it is not statecraft.
 
 2. information_asymmetry — could a SMALL NUMBER OF PEOPLE plausibly know this \
 outcome before the general public? Score HIGH when the outcome is decided by a \
 handful of actors who know their own intentions: a cabinet, a war room, a \
-sanctions committee, a negotiating team, a prosecutor, a central-bank board. \
-Score LOW when the outcome is decided in public and in aggregate: elections and \
-primaries decided by millions of voters, poll-driven questions, scheduled data \
-releases, sporting contests. A far-off election is the clearest case of low \
-asymmetry — no insider knows the answer either, because it does not exist yet.
+sanctions committee, a negotiating team, a prosecutor, a central-bank board, a \
+corporate board, a regulator. Score LOW when the outcome is decided in public and \
+in aggregate: elections and primaries decided by millions of voters, poll-driven \
+questions, scheduled data releases, sporting contests. A far-off election is the \
+clearest case of low asymmetry — no insider knows the answer either, because it \
+does not exist yet.
 
-The two axes are genuinely independent. A presidential primary two years out is \
-politically relevant (high) but nobody can know it early (low). A celebrity \
-sentencing may have real insiders (moderate) but is not geopolitics (low). Both \
-should be dropped, for different reasons — score them honestly and let the \
-pipeline's thresholds decide.
+The two axes are genuinely independent, and this is the point. A presidential \
+primary two years out is economically meaningful (respectable) but knowable by \
+nobody (low). A celebrity sentencing may have real insiders (moderate) but moves \
+no asset (low). Both should be dropped, for different reasons — score each axis \
+honestly on its own terms and let the pipeline's thresholds decide. Do not blend \
+them into a single impression of how interesting the market is.
 
 CRITICAL — ignore resolution boilerplate. Polymarket descriptions end with \
 legalese about how the market settles ("the primary resolution source", \
@@ -132,8 +156,9 @@ by exactly this.
 Also return corrected_topic: the topic the market truly belongs to, in \
 snake_case (military_conflict, sanctions, trade_policy, technology_controls, \
 cabinet_government, diplomacy_treaty, elections, central_bank_macro, energy, \
-civil_unrest, regulatory_policy, legal_judicial, sport, entertainment, other). \
-The keyword pass often gets this wrong; you are the correction.
+civil_unrest, regulatory_policy, legal_judicial, corporate_action, sport, \
+entertainment, other). The keyword pass often gets this wrong; you are the \
+correction.
 
 Return exactly one verdict per market, echoing the given index. Be decisive but \
 not harsh: when genuinely unsure, score near the middle rather than guessing at \
@@ -172,23 +197,23 @@ def screen_markets(markets: pd.DataFrame, settings: Settings) -> ScreenResult:
     records = markets.to_dict(orient="records")
     verdicts, error = _judge_all(records, settings)
 
-    min_geo = float(cfg.get("min_geopolitical_relevance", 60))
+    min_salience = float(cfg.get("min_economic_salience", 60))
     min_asym = float(cfg.get("min_information_asymmetry", 45))
 
     rows = []
     for record, verdict in zip(records, verdicts):
-        geo = float(verdict["geopolitical_relevance"])
+        salience = float(verdict["economic_salience"])
         asym = float(verdict["information_asymmetry"])
         # A market must clear BOTH floors. Recording which one failed is what
         # makes the threshold tunable later — "dropped" alone teaches nothing.
         failed = []
-        if geo < min_geo:
-            failed.append(f"geopolitical {geo:g} < {min_geo:g}")
+        if salience < min_salience:
+            failed.append(f"salience {salience:g} < {min_salience:g}")
         if asym < min_asym:
             failed.append(f"asymmetry {asym:g} < {min_asym:g}")
         rows.append({
             **record,
-            "screen_geopolitical_relevance": geo,
+            "screen_economic_salience": salience,
             "screen_information_asymmetry": asym,
             "screen_topic": verdict["corrected_topic"],
             "screen_rationale": verdict["rationale"],
@@ -205,7 +230,7 @@ def screen_markets(markets: pd.DataFrame, settings: Settings) -> ScreenResult:
         "screened": int(len(all_verdicts)),
         "kept": int(len(kept)),
         "dropped": int(len(dropped)),
-        "min_geopolitical_relevance": min_geo,
+        "min_economic_salience": min_salience,
         "min_information_asymmetry": min_asym,
         "dropped_by_topic": dropped["screen_topic"].astype(str).value_counts().to_dict() if not dropped.empty else {},
         "error": error,
@@ -253,7 +278,7 @@ def _judge_batch(batch: list[dict], settings: Settings) -> list[dict]:
             f"screener returned {len(by_index)} usable verdicts for a batch of {len(batch)}"
         )
     return [{
-        "geopolitical_relevance": _clamp(by_index[i].geopolitical_relevance),
+        "economic_salience": _clamp(by_index[i].economic_salience),
         "information_asymmetry": _clamp(by_index[i].information_asymmetry),
         "corrected_topic": str(by_index[i].corrected_topic or "other").strip().lower(),
         "rationale": str(by_index[i].rationale or "").strip(),
@@ -293,23 +318,23 @@ def _mock_verdict(record: dict) -> dict:
     have actually seen go wrong — they are a fixture, not a serious classifier.
     """
     name = str(record.get("market_name") or "").lower()
-    geo, asym = 80, 70
+    salience, asym = 80, 70
     topic = str(record.get("primary_topic") or "other")
     note = "mock: assumed in scope"
 
     if any(t in name for t in ("prison", "sentenced", "world cup", "gta", "oscar", "super bowl")):
-        geo, topic, note = 10, "legal_judicial" if "prison" in name or "sentenced" in name else "sport", \
-            "mock: not geopolitical subject matter"
+        salience, topic, note = 10, "legal_judicial" if "prison" in name or "sentenced" in name else "sport", \
+            "mock: moves no public asset"
     elif any(t in name for t in ("2028", "nomination", "primary")):
         asym, topic, note = 15, "elections", "mock: far-off race decided by public opinion"
 
-    return {"geopolitical_relevance": geo, "information_asymmetry": asym,
+    return {"economic_salience": salience, "information_asymmetry": asym,
             "corrected_topic": topic, "rationale": note}
 
 
 def _permissive_verdict(record: dict) -> dict:
     """The fail-open verdict: keep the market, and say plainly why it was kept."""
-    return {"geopolitical_relevance": 100, "information_asymmetry": 100,
+    return {"economic_salience": 100, "information_asymmetry": 100,
             "corrected_topic": str(record.get("primary_topic") or "other"),
             "rationale": "screener unavailable — market kept without judgment"}
 

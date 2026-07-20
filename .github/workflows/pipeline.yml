@@ -4,11 +4,14 @@
 # (including the .xlsx workbook), and commits the diffable evidence trail
 # (JSON/CSV/manifests) back to the repo so the audit history lives in git.
 #
-# TODAY it runs the committed config: data.source=fixtures, card_mode=mock — a
-# reliable, deterministic "the daemon is green" run needing no secrets. It
-# becomes a live research daemon by editing config/falnama.yaml
-# (data.source: live, and card_mode: live once the LLM hookup lands — the
-# ANTHROPIC_API_KEY wiring below is already in place for that day).
+# This is now a LIVE research daemon: the committed config fetches real
+# Polymarket data and makes real LLM calls (the relevance screen on every run,
+# scenario cards for the markets that survive it), so it depends on the
+# ANTHROPIC_API_KEY secret wired below. A missing or invalid key does not break
+# the run — the screen fails open and keeps every market — but it does mean a
+# day of unscreened output, so watch for "screen" errors in the health report.
+# To return to a free, deterministic, secret-free run, set data.source: fixtures
+# and card_mode: mock in config/falnama.yaml (and screener.mode: mock).
 name: Falnama research run
 
 on:

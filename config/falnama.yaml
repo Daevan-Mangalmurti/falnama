@@ -134,16 +134,23 @@ selector:
 # instrument for tuning the two floors below; read it before changing them.
 # -----------------------------------------------------------------------------
 screener:
-  enabled: false                     # off → the keyword selection above is final
-  mode: mock                         # mock (deterministic, offline) | live (uses llm.screener_model)
+  enabled: true                      # off → the keyword selection above is final
+  mode: live                         # mock (deterministic, offline) | live (uses llm.screener_model)
   batch_size: 25                     # markets judged per API call
 
   # A market must clear BOTH floors to survive. They fail differently:
-  #   geopolitical  — is this the subject matter Falnama studies at all?
-  #                   (a celebrity sentencing is not, however famous)
-  #   asymmetry     — could a few people know the outcome before the public?
-  #                   (a 2028 primary is relevant but knowable by no one)
-  min_geopolitical_relevance: 60
+  #   salience   — would this outcome actually move public assets?
+  #                (a celebrity sentencing does not, however famous)
+  #   asymmetry  — could a few people know the outcome before the public?
+  #                (a 2028 primary would move markets, but no one can know it yet)
+  #
+  # The first axis is economic salience rather than "geopolitical relevance" on
+  # purpose. Falnama's founding documents scope the project to geopolitics, but
+  # that was a PROXY for market impact plus private knowledge. Now that the two
+  # are scored separately, the direct test is better: it admits an antitrust
+  # ruling or a central-bank surprise without admitting anything the asymmetry
+  # axis would not stop on its own.
+  min_economic_salience: 60
   min_information_asymmetry: 45
 
 # -----------------------------------------------------------------------------

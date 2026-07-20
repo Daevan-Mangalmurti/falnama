@@ -14,11 +14,11 @@ S = load_config()
 # thresholds are retuned (which is the whole point of shipping this stage).
 S.raw["screener"] = {
     "enabled": True, "mode": "mock", "batch_size": 25,
-    "min_geopolitical_relevance": 60, "min_information_asymmetry": 45,
+    "min_economic_salience": 60, "min_information_asymmetry": 45,
 }
 
 # Three markets that stand for the three outcomes we care about: the one we want,
-# the one that is not geopolitics, and the one nobody can know early.
+# the one that moves no asset, and the one nobody can know early.
 MARKETS = pd.DataFrame([
     {"market_id": "1", "market_name": "Will the US impose new sanctions on Iran?", "primary_topic": "sanctions"},
     {"market_id": "2", "market_name": "Will Harvey Weinstein be sentenced to more than 30 years in prison?", "primary_topic": "elections"},
@@ -30,7 +30,7 @@ def _verdicts(result) -> dict[str, str]:
     return dict(zip(result.verdicts["market_id"], result.verdicts["screen_verdict"]))
 
 
-def test_mock_screen_keeps_geopolitics_and_drops_the_two_failure_modes():
+def test_mock_screen_keeps_the_salient_market_and_drops_both_failure_modes():
     result = screen.screen_markets(MARKETS, S)
     assert _verdicts(result) == {"1": "keep", "2": "drop", "3": "drop"}
     assert list(result.kept["market_id"]) == ["1"]
@@ -38,11 +38,11 @@ def test_mock_screen_keeps_geopolitics_and_drops_the_two_failure_modes():
 
 def test_the_two_floors_fail_for_different_reasons():
     # This is the case for two axes rather than one score: the sentencing market
-    # is dropped as off-topic, the primary as unknowable-in-advance.
+    # is dropped as financially inert, the primary as unknowable-in-advance.
     result = screen.screen_markets(MARKETS, S)
     reasons = dict(zip(result.verdicts["market_id"], result.verdicts["screen_drop_reason"]))
-    assert "geopolitical" in reasons["2"] and "asymmetry" not in reasons["2"]
-    assert "asymmetry" in reasons["3"] and "geopolitical" not in reasons["3"]
+    assert "salience" in reasons["2"] and "asymmetry" not in reasons["2"]
+    assert "asymmetry" in reasons["3"] and "salience" not in reasons["3"]
 
 
 def test_every_market_appears_in_the_verdict_table():
@@ -59,12 +59,12 @@ def test_live_path_maps_verdicts_back_by_index(monkeypatch):
     live.raw["screener"] = {**S.raw["screener"], "mode": "live"}
     fake = screen.ScreenBatch(verdicts=[
         # Deliberately out of order: mapping is by echoed index, not arrival order.
-        screen.MarketVerdict(index=2, geopolitical_relevance=70, information_asymmetry=10,
+        screen.MarketVerdict(index=2, economic_salience=70, information_asymmetry=10,
                              corrected_topic="elections", rationale="decided by voters"),
-        screen.MarketVerdict(index=0, geopolitical_relevance=95, information_asymmetry=90,
+        screen.MarketVerdict(index=0, economic_salience=95, information_asymmetry=90,
                              corrected_topic="sanctions", rationale="a committee knows first"),
-        screen.MarketVerdict(index=1, geopolitical_relevance=5, information_asymmetry=60,
-                             corrected_topic="legal_judicial", rationale="not geopolitics"),
+        screen.MarketVerdict(index=1, economic_salience=5, information_asymmetry=60,
+                             corrected_topic="legal_judicial", rationale="moves no public asset"),
     ])
     monkeypatch.setattr(screen, "_call_screen_llm", lambda *a, **k: fake)
 
@@ -97,7 +97,7 @@ def test_short_batch_from_the_model_also_fails_open(monkeypatch):
     live = load_config()
     live.raw["screener"] = {**S.raw["screener"], "mode": "live"}
     short = screen.ScreenBatch(verdicts=[
-        screen.MarketVerdict(index=0, geopolitical_relevance=95, information_asymmetry=90,
+        screen.MarketVerdict(index=0, economic_salience=95, information_asymmetry=90,
                              corrected_topic="sanctions", rationale="only one verdict returned"),
     ])
     monkeypatch.setattr(screen, "_call_screen_llm", lambda *a, **k: short)
