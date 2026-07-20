@@ -1,0 +1,19 @@
+{
+  "mode": "live",
+  "screened": 262,
+  "kept": 28,
+  "dropped": 234,
+  "min_economic_salience": 60.0,
+  "min_information_asymmetry": 45.0,
+  "dropped_by_topic": {
+    "elections": 207,
+    "legal_judicial": 8,
+    "sport": 6,
+    "corporate_action": 5,
+    "diplomacy_treaty": 5,
+    "cabinet_government": 1,
+    "other": 1,
+    "regulatory_policy": 1
+  },
+  "error": ""
+}

@@ -1,0 +1,99 @@
+{
+  "card_id": "568116_20260720T210046Z",
+  "card_version": "v1",
+  "card_hash": "5dade644ec11cc1eb2a9050582bcc00cb479480c166ac94d41987dcc87334e36",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-20T21:00:46Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "568116",
+    "market_slug": "will-trump-be-impeached-by-december-31-2026",
+    "market_name": "Will Trump be impeached by end of 2026?",
+    "market_url": "https://polymarket.com/market/will-trump-be-impeached-by-december-31-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Trump be impeached by end of 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US large-cap equities",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": -15.0,
+      "confidence": 0.28,
+      "confidence_interval_bps": [
+        -120.0,
+        90.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether Polymarket probability move coincides with a concrete news catalyst (indictment, defection, poll) vs. thin-liquidity noise.",
+        "1h": "Compare SPY futures move to sector rotation; confirm whether any move is political or macro/data-driven.",
+        "2h": "Check VIX and headline flow for confirmation of a political risk narrative.",
+        "6h": "Reassess whether cash-session US equities show any durable reaction; most likely none.",
+        "12h": "Evaluate net SPY move vs. baseline; expect signal to have been dominated by unrelated macro factors."
+      },
+      "reasoning": "A House impeachment vote is largely symbolic without Senate conviction, and historical precedent (Clinton 1998, Trump 2019-2020) shows minimal-to-positive equity reaction. A sharp move in this market would most likely reflect rising odds of a Democratic House takeover in 2026 or a fresh scandal, both of which map only weakly and ambiguously to broad equities. Any 12h move is likely dominated by macro noise, not this political signal. Well below the 700bps tradable threshold."
+    },
+    {
+      "asset": "US equity volatility",
+      "ticker": "VXX",
+      "tradable_instrument_name": "iPath Series B S&P 500 VIX Short-Term Futures ETN",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.25,
+      "confidence_interval_bps": [
+        -150.0,
+        300.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Identify catalyst; check if VIX spot is reacting at all.",
+        "1h": "Confirm whether vol move is broad-based or isolated to headline.",
+        "2h": "Watch for mean reversion in VIX as market digests symbolic nature of a House vote.",
+        "6h": "Reassess whether elevated vol persisted or faded.",
+        "12h": "Compare net VXX move vs. decay-adjusted baseline; expect little durable signal."
+      },
+      "reasoning": "If impeachment odds spike on a genuine scandal or unexpected political development, short-term volatility could tick up as headline risk rises. But impeachment without removal has historically not moved vol meaningfully, and VXX carries heavy roll decay, so any bounce is likely small and short-lived. Weak, low-confidence mapping."
+    }
+  ],
+  "evidence_used": [
+    "Market question: House impeachment vote (simple majority) by Dec 31, 2026, no Senate conviction required",
+    "Current House composition is Republican-controlled, making near-term impeachment improbable absent a 2026 midterm flip",
+    "Historical precedent: Clinton (1998) and Trump (2019-2020) impeachments had negligible or positive equity market impact",
+    "12h prediction window and 700bps tradable threshold"
+  ],
+  "uncertainty_notes": [
+    "Impeachment is a slow political process, not a discrete 12h market shock; most probability changes are incremental",
+    "A House vote is symbolic without Senate conviction; market reaction historically muted",
+    "Polymarket political markets can move on thin liquidity or speculative flows unrelated to real information",
+    "Proxy (broad equities) is only weakly and ambiguously exposed to this specific event"
+  ],
+  "llm_justification": {
+    "summary": "This market asks whether the House will pass articles of impeachment against Trump by end of 2026 \u2014 a largely symbolic event given Republican House control and no Senate conviction requirement. Historically such events have had minimal or even positive equity impact. Any sharp move in the implied probability maps only weakly to public markets, most plausibly via a small, ambiguous effect on broad US equities and a modest short-lived uptick in volatility. Neither is likely to reach the 700bps tradable threshold in a 12h window; this is a low-confidence, essentially non-tradable mapping.",
+    "key_assumptions": [
+      "Impeachment without Senate conviction is treated by markets as symbolic",
+      "No accompanying market-moving macro or fiscal shock",
+      "Probability moves reflect political/scandal news rather than pure noise"
+    ],
+    "failure_modes": [
+      "The event is largely political theater with no real asset impact \u2014 proxy is too weakly exposed",
+      "Impeachment odds move on midterm-election expectations, which would map to entirely different assets (sector/fiscal-policy trades) than broad equities",
+      "Historical precedent shows equities can RISE during impeachment, so directional call may reverse",
+      "The market move may already be public and priced (news-driven), leaving no leakage edge",
+      "Thin Polymarket liquidity can produce probability swings with zero informational content"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

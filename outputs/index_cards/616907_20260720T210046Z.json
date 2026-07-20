@@ -1,0 +1,96 @@
+{
+  "card_id": "616907_20260720T210046Z",
+  "card_version": "v1",
+  "card_hash": "a258bcb3cdbdb6e13e1258a1350671a45693c1d9e344a4edf891961cf824ddad",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-20T21:00:46Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616907",
+    "market_slug": "will-5-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 5 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-5-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 5 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-dated US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 80.0,
+      "confidence": 0.5,
+      "confidence_interval_bps": [
+        -60.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether the market's implied odds of 5 cuts actually moved sharply and in which direction; check 2y/10y yield ticks and TLT quote.",
+        "1h": "Compare TLT move vs fed funds futures (SOFR/ZQ) to see if rates complex is corroborating the signal or if it's isolated noise.",
+        "2h": "Check for any macro catalyst (CPI, jobs, Fed speak) that could explain the repricing; assess whether move is holding or fading.",
+        "6h": "Re-evaluate whether the dovish repricing persists into the US session; watch dollar and gold for confirmation.",
+        "12h": "Mark TLT return vs entry; note whether the 700bps tradable threshold was ever plausibly approached (likely not)."
+      },
+      "reasoning": "A market pricing 5 Fed cuts in 2026 is a strongly dovish scenario. A sharp rise in the implied probability of that many cuts signals expectations of a materially lower fed funds path, which pushes down front-to-intermediate yields and, through expectations, longer yields. Falling yields lift long-duration bond prices, so TLT is the cleanest liquid proxy for a dovish repricing."
+    },
+    {
+      "asset": "US Dollar",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -40.0,
+      "confidence": 0.45,
+      "confidence_interval_bps": [
+        -150.0,
+        60.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm direction of the probability move and check DXY/UUP tick reaction.",
+        "1h": "Cross-check EURUSD and USDJPY to see if dollar weakness is broad-based or idiosyncratic.",
+        "2h": "Screen for offsetting drivers (ECB/BoJ news, risk-off dollar bid) that could reverse the signal.",
+        "6h": "Assess persistence into liquid US hours; compare with TLT to gauge internal consistency.",
+        "12h": "Mark UUP return vs entry and note weak-proxy caveat."
+      },
+      "reasoning": "More expected Fed cuts narrows US rate differentials versus other majors, which typically weakens the dollar. A dovish shift implied by rising odds of 5 cuts would pressure UUP lower. This is a weaker, second-order proxy than Treasuries because FX also depends on relative central-bank paths abroad."
+    }
+  ],
+  "evidence_used": [
+    "Market question resolves on number of 25bp Fed cuts in 2026; 5 cuts is a deeply dovish outcome",
+    "Standard macro linkage: more expected easing lowers yields, weakens USD, supports duration and gold",
+    "12h prediction window with a 700bps tradability threshold"
+  ],
+  "uncertainty_notes": [
+    "The market gives no realized price move; direction of any anomaly (odds rising vs falling) is unknown and flips the sign of every prediction",
+    "700bps in 12h is far beyond normal moves for TLT/UUP; these are effectively non-tradable under the stated threshold",
+    "Rate-cut expectations are already heavily priced by liquid rates markets, so a prediction-market shift may lag rather than lead public data"
+  ],
+  "llm_justification": {
+    "summary": "This is a Fed monetary-policy market (mislabeled as military_conflict). A sharp increase in the implied probability of 5 cuts in 2026 maps to a dovish repricing: lower yields (TLT up) and a softer dollar (UUP down). Both are directionally sound but modest in magnitude and well below the 700bps tradability bar over 12 hours; a decrease in odds would invert both. Treat as a low-conviction, research-only mapping.",
+    "key_assumptions": [
+      "The relevant anomaly is a rise in the probability of many (5) cuts, i.e., a dovish signal",
+      "Rates and FX markets have not already fully absorbed the same information",
+      "No conflicting macro catalyst dominates the 12h window"
+    ],
+    "failure_modes": [
+      "The probability move is downward (hawkish), flipping both predictions' signs",
+      "Information is already public and priced in liquid rates/FX, so no leadable move exists",
+      "Proxies are only weakly and slowly exposed; expected magnitudes are far under the 700bps threshold, so signal is untradable",
+      "Prediction-market move is noise/illiquid mispricing rather than genuine information leakage"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

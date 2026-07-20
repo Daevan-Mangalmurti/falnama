@@ -1,0 +1,99 @@
+{
+  "card_id": "567688_20260720T210046Z",
+  "card_version": "v1",
+  "card_hash": "f40c036589148f60029f422338d7958e9df93078d27f89f94fd37eda2d132fd0",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-20T21:00:46Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "567688",
+    "market_slug": "netanyahu-out-before-2027-684-719-226-657",
+    "market_name": "Netanyahu out by end of 2026?",
+    "market_url": "https://polymarket.com/market/netanyahu-out-before-2027-684-719-226-657",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Netanyahu out by end of 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Israeli equity risk",
+      "ticker": "EIS",
+      "tradable_instrument_name": "iShares MSCI Israel ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 80.0,
+      "confidence": 0.25,
+      "confidence_interval_bps": [
+        -250.0,
+        300.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any headline (resignation, health event, coalition break, indictment ruling) accompanies the probability move; confirm EIS/TA-35 futures reaction sign.",
+        "1h": "Compare EIS move to global equity beta (SPY/QQQ) to isolate Israel-specific component.",
+        "2h": "Assess whether Israeli-language reporting corroborates a real political event vs. speculative market noise.",
+        "6h": "Re-evaluate direction as narrative clarifies (orderly succession vs. chaotic collapse); check TA-35 cash session move.",
+        "12h": "Mark whether EIS net move exceeded noise band; log whether the market lead the public headline."
+      },
+      "reasoning": "A sharp jump in the implied probability of Netanyahu leaving office would signal a discrete Israeli political regime shift. The direction for Israeli equities is genuinely ambiguous: a Netanyahu exit could be read as market-positive (reduced judicial-reform friction, potential coalition normalization, possible de-escalation) or market-negative (elevated near-term governance uncertainty, coalition collapse, election risk). Given this long-dated (end-2026) resolution horizon, a probability move rarely maps to an immediate, large 12h move in a diversified ETF, which is also driven by global tech beta and USD."
+    },
+    {
+      "asset": "Israeli shekel",
+      "ticker": "FXY",
+      "tradable_instrument_name": "USD/ILS spot (no clean US-listed ILS ETF; monitored via spot)",
+      "asset_class": "fx_proxy",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.2,
+      "confidence_interval_bps": [
+        -200.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check USD/ILS spot tick and whether a concrete political headline is driving the move.",
+        "1h": "Compare ILS to broad EM FX and DXY to separate idiosyncratic from macro drivers.",
+        "2h": "Look for Bank of Israel commentary or intervention signals.",
+        "6h": "Reassess whether uncertainty (ILS weaker) or de-risking (ILS stronger) narrative dominates.",
+        "12h": "Record net USD/ILS move vs. baseline volatility; note lead/lag to public reporting."
+      },
+      "reasoning": "Political leadership transitions typically inject FX volatility; the shekel could weaken on governance uncertainty or strengthen if the exit is perceived to reduce geopolitical/institutional risk. The proxy is weak (no liquid US-listed ILS instrument), and a long-dated probability shift is a poor predictor of a 12h currency move."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves Yes on any Netanyahu departure/resignation/removal announcement before end-2026",
+    "Long-dated horizon (through end of 2026) reduces immediacy of any single 12h asset move",
+    "Israeli political events map most directly to Israeli equities (EIS) and the shekel",
+    "No liquid single-name proxy captures a leadership change cleanly"
+  ],
+  "uncertainty_notes": [
+    "Direction is fundamentally two-sided: Netanyahu exit can be read as either stabilizing or destabilizing for assets",
+    "Long resolution horizon means a probability move need not correspond to an imminent, tradable event",
+    "12h window and 700bps threshold are unlikely to be met by a diversified Israel ETF absent a major confirmed headline",
+    "Proxy exposure is diluted by global equity beta and USD dynamics"
+  ],
+  "llm_justification": {
+    "summary": "A sharp move in the probability of Netanyahu leaving office by end-2026 would flag an Israeli political regime shift, most cleanly proxied by the Israel equity ETF (EIS) and the shekel. However, the direction is genuinely ambiguous \u2014 an exit could be market-positive (reduced institutional/geopolitical friction) or negative (governance chaos, election risk) \u2014 and the long resolution horizon plus global-beta contamination make a large, directional 12h move unlikely. Both mappings are low-confidence and below the tradable threshold.",
+    "key_assumptions": [
+      "The prediction market is a noisy sensor and any probability move may not reflect confirmed private information",
+      "Israeli political change is the dominant driver of any EIS/ILS idiosyncratic move if it occurs",
+      "No overwhelming global macro shock overwrites the Israel-specific signal in the window"
+    ],
+    "failure_modes": [
+      "The probability move reflects speculation or an already-public rumor, with no real asset impact",
+      "Direction reverses as markets reinterpret a Netanyahu exit from risk-off to risk-on (or vice versa)",
+      "EIS/ILS moves are driven by global tech beta or USD rather than Israeli politics, making the proxy weakly exposed",
+      "Long-dated resolution means even a genuine probability shift produces no meaningful 12h move",
+      "No liquid US-listed shekel instrument limits actionability of the FX mapping"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

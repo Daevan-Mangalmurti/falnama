@@ -1,0 +1,98 @@
+{
+  "card_id": "616902_20260720T210046Z",
+  "card_version": "v1",
+  "card_hash": "ff909aa6892253b04bf6a501b23e3bf97a9b80cb9692c56ea16b2d3c61754326",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-20T21:00:46Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616902",
+    "market_slug": "will-no-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will no Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-no-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will no Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-duration US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -90.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -250.0,
+        60.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm which direction the market's implied prob moved and check 2y/10y yields and fed funds futures for a corroborating hawkish shift.",
+        "1h": "Check whether any Fed speaker, CPI/PCE, or jobs data explains the move (i.e., already-public catalyst) vs. an unexplained leak.",
+        "2h": "Re-check TLT vs. Treasury futures; assess whether move is persisting or mean-reverting.",
+        "6h": "Compare against SOFR/fed funds futures repricing to see if the anomaly is confirmed by rates markets.",
+        "12h": "Measure realized TLT move vs. expectation; flag whether it reached the 700bps tradable threshold (very unlikely) and log reversal if any."
+      },
+      "reasoning": "A sharp rise in the implied probability of 'no Fed cuts in 2026' is a hawkish repricing of the rate path. Fewer expected cuts pushes the terminal rate and the front-to-belly of the curve higher, lifting yields and pressuring long-duration bond prices. TLT is the most liquid clean proxy for duration. Note the mapping only holds if the probability moved UP; a falling probability (more cuts priced) would flip the sign."
+    },
+    {
+      "asset": "US Dollar",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.35,
+      "confidence_interval_bps": [
+        -60.0,
+        140.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify direction of the prob move and check DXY / EURUSD for confirmation.",
+        "1h": "Determine if any scheduled macro release drove both the market and FX simultaneously.",
+        "2h": "Check whether dollar strength is broad-based or idiosyncratic to one cross.",
+        "6h": "Reassess rate-differential story vs. risk-off flows that could independently move USD.",
+        "12h": "Compare realized UUP move to expectation; note it will fall far short of the 700bps tradable bar."
+      },
+      "reasoning": "Hawkish repricing (higher-for-longer Fed) typically supports the dollar via widening rate differentials. A jump in 'no cuts 2026' probability would, on the margin, be dollar-positive. UUP is a liquid DXY proxy. This is a weaker, second-order link with small expected magnitude."
+    }
+  ],
+  "evidence_used": [
+    "Market question resolves on count of 25bp Fed cuts in 2026; 'No cuts' = maximally hawkish outcome",
+    "Description clarifies emergency cuts count and early 'No' resolution if strike becomes impossible",
+    "Standard macro linkage: fewer expected cuts -> higher yields, stronger USD"
+  ],
+  "uncertainty_notes": [
+    "Direction of the asset mapping fully depends on which way the implied probability moved; a dovish move flips all signs",
+    "The 700bps tradable threshold is implausible for rate-sensitive ETFs over 12h; expected moves are an order of magnitude smaller",
+    "Fed-path repricing is usually driven by public data (CPI, jobs, Fed speak), so leakage/edge is questionable",
+    "'Military_conflict' primary topic tag appears mislabeled for a Fed market, reducing confidence in metadata"
+  ],
+  "llm_justification": {
+    "summary": "This market tracks whether the Fed makes zero 25bp cuts in 2026 \u2014 a pure hawkish/dovish rate-path gauge. A sharp rise in the 'no cuts' probability implies higher-for-longer policy, which maps to lower long-duration Treasury prices (TLT down) and a modestly stronger dollar (UUP up). Both links are directionally sound but small in magnitude and highly conditional on the direction of the probability shift; neither approaches the 700bps tradable bar over 12 hours.",
+    "key_assumptions": [
+      "A meaningful, directional move occurred in the market's implied probability",
+      "'No cuts' probability rising = hawkish repricing (assumed direction for the mapping)",
+      "Standard rate-path-to-asset transmission holds within a 12h window"
+    ],
+    "failure_modes": [
+      "The probability move was dovish (more cuts priced), flipping TLT to up and UUP to down",
+      "The catalyst was already public (data print or Fed speech), so no informational edge exists",
+      "Rate-path news moves ETFs far less than 700bps in 12h, so signal is untradable by the stated threshold",
+      "USD linkage is weak/second-order and can be overwhelmed by risk sentiment or cross-currency idiosyncrasies",
+      "Prediction market may be thinly traded/noisy, producing false signals unrelated to real rate expectations"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

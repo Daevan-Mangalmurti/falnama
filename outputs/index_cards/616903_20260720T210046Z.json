@@ -1,0 +1,100 @@
+{
+  "card_id": "616903_20260720T210046Z",
+  "card_version": "v1",
+  "card_hash": "e2cc388247115fc83d4e07947e617358b9a24541f16ef23482889e3550aa2486",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-20T21:00:46Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616903",
+    "market_slug": "will-1-fed-rate-cut-happen-in-2026",
+    "market_name": "Will 1 Fed rate cut happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-1-fed-rate-cut-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 1 Fed rate cut happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-duration US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -60.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move is sustained or a stale-quote blip; cross-check fed funds futures (SOFR/SR3) for confirmation of a real repricing.",
+        "1h": "Compare TLT/IEF move against 2y and 10y yields to confirm duration is responding rather than idiosyncratic ETF flow.",
+        "2h": "Look for a macro catalyst (CPI, jobs, Fed speaker, geopolitical shock) that would justify the repricing; if none, fade the signal.",
+        "6h": "Reassess whether the implied-probability move held into the US session and whether rates markets corroborated.",
+        "12h": "Mark realized TLT return vs expectation; note whether the prediction-market move led or lagged the bond move."
+      },
+      "reasoning": "A sharp rise in the implied probability of Fed rate cuts in 2026 reflects a dovish shift in policy expectations. Lower expected policy rates pull the front-to-belly of the curve down and, via expectations, lift long-duration bond prices. TLT is the most liquid, broadly-traded proxy for duration. Note that 'at least 1 cut in 2026' is likely already priced near-certain, so incremental information is low unless the market swings toward NO (no cuts / hikes), which would flip the sign."
+    },
+    {
+      "asset": "US Dollar",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": 25.0,
+      "confidence": 0.35,
+      "confidence_interval_bps": [
+        -50.0,
+        90.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm the probability move is genuine and directional (more cuts = dovish); check DXY and EURUSD for immediate reaction.",
+        "1h": "Verify move is US-driven, not a foreign-central-bank story pushing the dollar the same direction.",
+        "2h": "Check for competing macro drivers (risk-off flows can strengthen USD even amid cut expectations).",
+        "6h": "Reassess UUP vs 2y yield spread to confirm rate-differential channel.",
+        "12h": "Record realized UUP return vs expectation and whether the FX move tracked the rates move."
+      },
+      "reasoning": "A dovish repricing (higher cut probability) narrows US rate differentials versus other currencies, which typically weakens the dollar. UUP is a liquid DXY proxy. The effect is second-order and easily overwhelmed by relative moves at other central banks, so confidence is modest and magnitude small."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves on FOMC statements / target fed funds rate changes in 2026",
+    "'At least 1 cut' is a low strike, likely already carrying high implied probability",
+    "Standard transmission: dovish Fed expectations lift duration and weaken USD",
+    "Liquid proxies TLT and UUP directly express duration and dollar views"
+  ],
+  "uncertainty_notes": [
+    "Direction of asset move depends entirely on WHICH way the implied probability shifts; a move toward NO (no cuts/hikes) flips all signs",
+    "A 'at least 1 cut' market is likely near-certain and thus low-information at the margin",
+    "12h moves of the 700bps tradable threshold are implausible for TLT/UUP, so neither prediction is tradable under the stated bar",
+    "Prediction markets are noisy; a probability jump may be a liquidity/stale-quote artifact rather than genuine leakage"
+  ],
+  "llm_justification": {
+    "summary": "This is a US monetary-policy market on whether the Fed cuts at least once in 2026. A sharp dovish repricing (higher cut probability) would map to higher long-duration Treasury prices (TLT up) and a modestly weaker dollar (UUP down) via lower expected policy rates and narrower rate differentials. However, the low strike ('at least 1 cut') is likely already near-certain, incremental information is small, and any realistic 12h move in these liquid proxies falls well below the 700bps tradable threshold. Direction inverts if the market swings toward NO.",
+    "key_assumptions": [
+      "The probability move reflects genuine changes in Fed-cut expectations, not noise",
+      "A rise in cut probability equals a dovish shift",
+      "Rate-differential and duration channels dominate over risk-sentiment channels in the 12h window",
+      "TLT and UUP remain liquid, representative proxies during the window"
+    ],
+    "failure_modes": [
+      "The market resolution is already effectively priced (near-certain YES), so no leakable signal exists",
+      "The probability move reverses within hours as a stale/thin-quote artifact",
+      "Risk-off dynamics could strengthen the dollar and lift bonds simultaneously, breaking the UUP thesis",
+      "A foreign central bank move could dominate USD direction regardless of Fed expectations",
+      "Sign error: an apparent 'dovish' jump could actually be repricing toward fewer cuts, flipping both predictions"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

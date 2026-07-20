@@ -1,0 +1,97 @@
+{
+  "card_id": "665224_20260720T210046Z",
+  "card_version": "v1",
+  "card_hash": "084a307a24b3cc2dcd99465d76e2640810b19209dd1e1a8b31df7ae61f799b38",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-20T21:00:46Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665224",
+    "market_slug": "ukraine-signs-peace-deal-with-russia-before-2027",
+    "market_name": "Ukraine signs peace deal with Russia before 2027?",
+    "market_url": "https://polymarket.com/market/ukraine-signs-peace-deal-with-russia-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Ukraine signs peace deal with Russia before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Poland equity (Eastern Europe reconstruction/de-risking proxy)",
+      "ticker": "EPOL",
+      "tradable_instrument_name": "iShares MSCI Poland ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 450.0,
+      "confidence": 0.5,
+      "confidence_interval_bps": [
+        100.0,
+        950.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move is corroborated by any newswire (Reuters/Bloomberg) headline on negotiations; confirm EPOL and Polish WIG20 futures are moving, not just the prediction market.",
+        "1h": "Compare EPOL move vs EU defense names and EURPLN; a genuine peace signal should show EPOL up, defense down, PLN firming.",
+        "2h": "Re-assess whether move is holding or fading; watch for official denials from Kyiv/Moscow that would reverse the thesis.",
+        "6h": "Check US session open reaction in EPOL and broader European risk (EWG, VGK); gauge follow-through.",
+        "12h": "Evaluate close-of-window return vs 700bps threshold; note if move reversed on lack of confirmation, indicating noise rather than leak."
+      },
+      "reasoning": "A sharp rise in the implied probability of a signed Ukraine-Russia peace/ceasefire instrument would reduce the war-risk premium embedded in frontline Eastern European assets and open reconstruction/normalization upside. Poland is the most directly exposed liquid market (border economy, refugee costs, energy security, reconstruction logistics), so EPOL tends to rally hard on credible de-escalation headlines. This is the cleanest liquid equity proxy for a peace surprise."
+    },
+    {
+      "asset": "European natural gas / energy war-risk premium (crude proxy)",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "commodity",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -180.0,
+      "confidence": 0.35,
+      "confidence_interval_bps": [
+        -600.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm Brent/WTI and TTF gas are softening alongside the probability move; check for sanction-relief chatter.",
+        "1h": "Assess whether energy move is peace-driven or driven by unrelated inventory/demand news.",
+        "2h": "Watch European gas (TTF) which is far more sensitive than crude; use as confirmation of the energy thesis.",
+        "6h": "Re-check oil during US session; distinguish peace signal from macro/dollar moves.",
+        "12h": "Compare window return to threshold; likely sub-700bps, treat as low-conviction confirmation only."
+      },
+      "reasoning": "A credible peace/ceasefire raises prospects of eased sanctions and restored Russian energy flows, compressing the geopolitical risk premium in oil and (more so) European gas. Crude is a liquid but only weakly-exposed proxy \u2014 the current Russia-war premium in oil is modest and OPEC/demand factors dominate \u2014 so magnitude is likely small and the mapping is uncertain."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies a discrete, high-impact geopolitical outcome (signed Ukraine-Russia peace instrument) with binary resolution by end-2026",
+    "Historical pattern: Eastern European equities (Poland) and European defense/energy react strongly to Ukraine war de-escalation/escalation headlines",
+    "Energy prices carry a Russia-war risk premium that would compress on credible sanction-relief prospects"
+  ],
+  "uncertainty_notes": [
+    "A prediction-market probability move may reflect speculation, low liquidity, or a single large bettor rather than genuine information leakage",
+    "Even a genuine leak of talks rarely produces a signed qualifying instrument quickly; markets may fade fast on denials",
+    "700bps in 12h is a high bar; most credible-but-unconfirmed peace signals move liquid proxies far less"
+  ],
+  "llm_justification": {
+    "summary": "If the implied probability of a signed Ukraine-Russia peace instrument jumps sharply, the cleanest liquid public-market implication is a rally in frontline/reconstruction equities (Poland/EPOL) and a modest compression of the energy war-risk premium (crude/European gas lower). EPOL is the strongest single proxy; oil is weaker and lower-conviction. Both mappings are contingent on the probability move being information-driven rather than noise, and magnitudes may fall short of the 700bps tradable threshold in a 12h window.",
+    "key_assumptions": [
+      "The probability move reflects real information about negotiations, not liquidity noise",
+      "Poland equities remain the most sensitive liquid proxy to Ukraine de-escalation",
+      "A peace signal reduces rather than complicates regional risk premia in the short window"
+    ],
+    "failure_modes": [
+      "The prediction-market move is noise or manipulation and no headline materializes, so proxies do not move",
+      "News was already public and priced in, leaving no residual asset reaction",
+      "EPOL/oil are driven by unrelated macro (Fed, dollar, OPEC) during the window, swamping the peace signal",
+      "Official denials from Kyiv or Moscow reverse any initial move within hours",
+      "Move magnitude stays well below the 700bps tradable threshold, making the signal non-actionable"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

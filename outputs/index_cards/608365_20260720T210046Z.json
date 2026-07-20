@@ -1,0 +1,99 @@
+{
+  "card_id": "608365_20260720T210046Z",
+  "card_version": "v1",
+  "card_hash": "3e0a549b9bc2a102f0477faa87b472c6bcfadc5c7f63545d13d19e153ddb8776",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-20T21:00:46Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "608365",
+    "market_slug": "will-openais-market-cap-be-between-1t-and-1pt25t-at-market-close-on-ipo-day",
+    "market_name": "Will OpenAI\u2019s market cap be between $1T and $1.25T at market close on IPO day?",
+    "market_url": "https://polymarket.com/market/will-openais-market-cap-be-between-1t-and-1pt25t-at-market-close-on-ipo-day",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will OpenAI\u2019s market cap be between $1T and $1.25T at market close on IPO day?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Microsoft equity (OpenAI's largest strategic backer)",
+      "ticker": "MSFT",
+      "tradable_instrument_name": "Microsoft Corporation",
+      "asset_class": "equity",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.2,
+      "confidence_interval_bps": [
+        -150.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any OpenAI IPO headline or S-1/registration news has hit the tape that would explain a probability move; confirm MSFT is not moving on unrelated macro (CPI, Fed, sector rotation).",
+        "1h": "Compare MSFT intraday move vs. Nasdaq/QQQ and other mega-cap AI names to isolate any OpenAI-specific component vs. broad beta.",
+        "2h": "Re-check the Polymarket implied probability and any newswire (Bloomberg/Reuters) confirmation of IPO timing; fade the thesis if no corroborating public information exists.",
+        "6h": "Assess whether any move persisted or mean-reverted; look for analyst notes referencing OpenAI valuation and Microsoft stake.",
+        "12h": "Evaluate final MSFT close vs. index; document whether the prediction-market signal had any measurable, isolable impact \u2014 expect none given the distance and indirectness of the linkage."
+      },
+      "reasoning": "Microsoft holds a large equity stake in OpenAI (~27% economic interest via its investment), so a credible signal that OpenAI is heading toward a ~$1T+ IPO valuation would mark up the implied value of Microsoft's holding. However, this specific market prices a narrow $1T-$1.25T bracket conditional on an IPO by end-2026 \u2014 a distant, low-base-rate event with no confirmed timeline. A move in the market's implied probability is a weak, indirect signal for MSFT over a 12h window; MSFT is a $3T+ company whose price is dominated by cloud/AI earnings, rates, and macro, not by the exact valuation bracket of an unlisted affiliate. Direction is genuinely ambiguous: a higher OpenAI valuation is a modest positive for the stake but could also raise scrutiny of Microsoft's funding commitments."
+    },
+    {
+      "asset": "AI/semiconductor complex (OpenAI ecosystem demand proxy)",
+      "ticker": "SMH",
+      "tradable_instrument_name": "VanEck Semiconductor ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.15,
+      "confidence_interval_bps": [
+        -200.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify no concurrent semi-specific catalyst (earnings, export-control headlines) that would confound attribution.",
+        "1h": "Check Nvidia and Broadcom individually vs. SMH to see if any AI-sentiment shift is broad-based.",
+        "2h": "Look for explicit news tying OpenAI IPO progress to chip-demand narratives; without it, treat signal as noise.",
+        "6h": "Assess persistence of any move and whether it tracks broad tech beta rather than an OpenAI-specific story.",
+        "12h": "Record close; conclude on whether the prediction market offered any usable lead for the semi complex (likely not)."
+      },
+      "reasoning": "A richer OpenAI IPO valuation would broadly signal robust AI-capex expectations, which flows to compute suppliers (Nvidia, Broadcom) captured by SMH. But this is a very loose, second-order linkage: the market question is about a specific valuation bracket on an unscheduled IPO, not about near-term chip demand. Over 12h, SMH is driven by earnings, guidance, and rate moves far more than by a Polymarket probability shift on OpenAI's listing bracket. The mapping is weak, so direction is unclear and confidence is low."
+    }
+  ],
+  "evidence_used": [
+    "Market question prices a conditional narrow valuation bracket ($1T-$1.25T) for OpenAI at IPO close, contingent on an IPO occurring by Dec 31, 2026",
+    "Microsoft is OpenAI's largest strategic/financial backer with a substantial equity/economic interest, the clearest listed proxy",
+    "No confirmed OpenAI IPO date or registration statement is public, making this a distant, low-base-rate event",
+    "AI-capex sentiment links OpenAI valuation to the semiconductor supply chain (SMH/NVDA) as a second-order proxy"
+  ],
+  "uncertainty_notes": [
+    "The event is conditional and distant (through end-2026); a probability move need not imply any imminent public-market catalyst",
+    "OpenAI is privately held with an unusual capped-profit/for-profit restructuring, so mapping its valuation to any listed proxy is imprecise",
+    "A shift in the specific bracket probability could reflect repricing between adjacent brackets rather than a directional valuation change",
+    "Microsoft and SMH are dominated by macro and earnings drivers that dwarf any OpenAI-stake revaluation over 12h"
+  ],
+  "llm_justification": {
+    "summary": "This market prices a narrow $1T-$1.25T valuation bracket for a hypothetical OpenAI IPO by end-2026 \u2014 a conditional, distant, low-base-rate event. The only defensible listed proxies are Microsoft (largest backer) and the AI/semiconductor complex (SMH) as an AI-capex sentiment gauge. Both linkages are weak and indirect over a 12h window, so I map both as unclear/low-confidence with expected moves far below the 700bps tradability threshold. Treat the prediction market as noise here rather than a signal.",
+    "key_assumptions": [
+      "Microsoft's OpenAI stake is material enough that a large valuation resignal could marginally move MSFT",
+      "Any probability move reflects new information about IPO timing/valuation rather than pure Polymarket liquidity noise",
+      "No overwhelming macro catalyst dominates the proxies during the window"
+    ],
+    "failure_modes": [
+      "The event is too distant and conditional to produce any 12h public-market move \u2014 signal is effectively zero",
+      "Move may already be public (widely reported OpenAI valuation chatter) and priced in, so no lead-time edge",
+      "Microsoft/SMH are weak proxies: their prices are set by earnings, rates, and macro, not OpenAI's IPO bracket",
+      "A bracket-probability shift can be non-directional (probability moving between adjacent valuation buckets), giving no usable sign",
+      "Polymarket depth on this question is likely thin, so implied-probability moves may be liquidity artifacts, not information"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

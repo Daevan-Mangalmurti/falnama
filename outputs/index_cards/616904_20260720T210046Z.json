@@ -1,0 +1,99 @@
+{
+  "card_id": "616904_20260720T210046Z",
+  "card_version": "v1",
+  "card_hash": "e084be343569c6d599eed2a674d67c2f96da80b1aed8ea25f424e403a34b3356",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-20T21:00:46Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616904",
+    "market_slug": "will-2-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 2 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-2-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 2 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US long-duration Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.25,
+      "confidence_interval_bps": [
+        -120.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability shift coincides with a scheduled macro release (CPI, jobs, FOMC minutes) or Fed speaker \u2014 if so the move is public, not a leak. Compare TLT move to fed funds futures (ZQ) implied path.",
+        "1h": "Confirm direction of 2s/10s yields and whether SOFR futures corroborate more/fewer cuts. Distinguish 'more easing' vs 'capping at 2' interpretation.",
+        "2h": "Reassess whether equity indices and USD are moving consistently with a dovish/hawkish repricing; divergence means noise.",
+        "6h": "Check for any Fed communication or wire headlines that would make this public information; fade the thesis if found.",
+        "12h": "Evaluate whether TLT net move exceeded normal intraday range and whether the futures curve permanently repriced; log outcome vs prediction."
+      },
+      "reasoning": "This market tracks the count of 2026 Fed rate cuts. A repricing toward more easing (higher odds of at least two cuts) is dovish and would push Treasury prices up / yields down, benefiting TLT. But because the question is framed as 'exactly 2' cuts, a rising probability is ambiguous \u2014 it could reflect the market pricing OUT a more aggressive cutting cycle (fewer than 2 becoming '2' from below, or capping expectations from above). Rate-path expectations are already heavily reflected in fed funds futures and the SOFR curve, so any leak here is a weak, second-derivative signal. Over a 12h window a Treasury ETF rarely moves more than ~50-150 bps absent a scheduled data or FOMC surprise."
+    },
+    {
+      "asset": "US Dollar Index proxy",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 25.0,
+      "confidence": 0.2,
+      "confidence_interval_bps": [
+        -90.0,
+        90.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Cross-check UUP move against 2-year Treasury yield and fed funds futures for consistency.",
+        "1h": "Verify no scheduled FX-relevant data (CPI, NFP) is driving the move independently.",
+        "2h": "Look for corroboration across EUR and JPY crosses; isolated moves are noise.",
+        "6h": "Check for Fed/Treasury headlines making the info public.",
+        "12h": "Compare net USD move to normal range; record whether it aligned with the cut-probability shift."
+      },
+      "reasoning": "Rate-cut expectations drive the dollar: more expected easing is USD-negative, fewer cuts USD-positive. This market's ambiguous 'exactly 2' framing makes the sign uncertain, and the dollar is a slow, macro-driven proxy already reflecting the rates curve. A 12h FX move of 700+ bps is essentially impossible outside a crisis, so this is well below the tradable threshold and offered only as a directional sanity check against the Treasury read."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves on the count of 25bp FOMC cuts in 2026, a direct measure of monetary-policy easing expectations",
+    "Fed rate-path expectations are the primary driver of Treasury yields, the USD, and rate-sensitive equities",
+    "The 'exactly 2 cuts' framing makes the directional interpretation of a probability move ambiguous",
+    "Fed funds and SOFR futures already price the expected cut path, limiting incremental information from this market"
+  ],
+  "uncertainty_notes": [
+    "The 'exactly N' resolution means a rising probability is not cleanly dovish or hawkish",
+    "Rate expectations are among the most efficiently priced macro variables; leakage is unlikely",
+    "12h horizon is far too short for a 700bps move in any liquid rates/FX proxy",
+    "Mislabeled topic ('military_conflict') suggests metadata noise, not a geopolitical driver"
+  ],
+  "llm_justification": {
+    "summary": "This Polymarket question is a proxy for the 2026 Fed easing path. A sharp probability shift would most naturally map to Treasury prices (TLT) and the dollar (UUP), with dovish repricing lifting bonds and pressuring USD. However, the 'exactly 2 cuts' framing makes direction genuinely ambiguous, rate expectations are already efficiently priced in fed funds/SOFR futures, and a 12h window cannot plausibly produce the 700bps move required to be tradable. This is a weak, low-confidence mapping best treated as unclear.",
+    "key_assumptions": [
+      "The market accurately reflects shifts in expected 2026 Fed policy easing",
+      "Treasury and FX proxies respond to rate-path repricing in the usual direction",
+      "No confounding scheduled macro release drives the assets independently"
+    ],
+    "failure_modes": [
+      "The 'exactly 2' framing inverts the naive sign \u2014 more probability could mean fewer, not more, cuts",
+      "The information is already public (embedded in futures, Fed speak, or data) so no tradable leak exists",
+      "Proxies are only weakly and indirectly exposed to a single-year cut-count question over 12h",
+      "The move reverses as noise; prediction-market thin liquidity produces false signals",
+      "Metadata mislabeling (military_conflict) indicates possible data-quality issues in the feed"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

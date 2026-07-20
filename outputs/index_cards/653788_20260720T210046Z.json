@@ -1,0 +1,99 @@
+{
+  "card_id": "653788_20260720T210046Z",
+  "card_version": "v1",
+  "card_hash": "1679fde2dd3dfb6bb0d55eeadf7ec8723bd01b1a341ec627c13fd1f305f168b9",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-20T21:00:46Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "653788",
+    "market_slug": "openai-announces-it-has-achieved-agi-before-2027",
+    "market_name": "OpenAI announces it has achieved AGI before 2027?",
+    "market_url": "https://polymarket.com/market/openai-announces-it-has-achieved-agi-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "OpenAI announces it has achieved AGI before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Microsoft equity (largest OpenAI backer)",
+      "ticker": "MSFT",
+      "tradable_instrument_name": "Microsoft Corporation",
+      "asset_class": "equity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 150.0,
+      "confidence": 0.22,
+      "confidence_interval_bps": [
+        -200.0,
+        600.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any OpenAI-related headline or credible leak has hit newswires; compare MSFT pre/post move against SPX to isolate idiosyncratic move.",
+        "1h": "Re-check Polymarket implied probability persistence and MSFT options implied vol / call skew for confirmation.",
+        "2h": "Assess whether AI-complex names (NVDA, GOOGL) are co-moving, indicating a sector AI narrative vs isolated noise.",
+        "6h": "Verify no official OpenAI statement clarifying/denying; fade thesis if move reverses without news.",
+        "12h": "Evaluate whether MSFT closed with sustained abnormal return vs market; log outcome for calibration."
+      },
+      "reasoning": "OpenAI is private, so the most liquid public proxy for OpenAI capability breakthroughs is Microsoft, which holds a large equity stake and exclusive commercialization rights. A sharp rise in the implied probability of an AGI announcement could reflect leaked capability progress; a genuine confirmed AGI announcement would be a large positive re-rating catalyst for MSFT. However, MSFT is a $3T diversified megacap, so even a dramatic OpenAI story translates into a modest single-stock move, and the AGI 'announcement' framing is highly ambiguous and self-declared by OpenAI, weakening the linkage."
+    },
+    {
+      "asset": "AI/semiconductor complex",
+      "ticker": "NVDA",
+      "tradable_instrument_name": "NVIDIA Corporation",
+      "asset_class": "equity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.18,
+      "confidence_interval_bps": [
+        -250.0,
+        550.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Scan for AI-sector news and check NVDA relative to SOX index for idiosyncratic vs sector move.",
+        "1h": "Check whether options flow / gamma is amplifying an unfounded spike.",
+        "2h": "Confirm breadth across AI names; isolated NVDA move without narrative is likely noise.",
+        "6h": "Look for any official OpenAI communication; reassess if probability spike fades.",
+        "12h": "Record whether AI complex sustained gains; note that absence of official announcement likely caps upside."
+      },
+      "reasoning": "A credible signal of accelerating frontier-model capability would reinforce the compute-demand narrative that drives NVDA and the broader AI trade. NVDA benefits from any expectation of intensified AGI-race capex. But this is a second-order, sentiment-driven linkage; the market question is about a self-declared, definitionally vague AGI 'announcement' that OpenAI has strong incentive not to make lightly, so information content is low and the proxy exposure is diffuse."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves Yes only on an official OpenAI (self-)declaration of AGI by end-2026",
+    "OpenAI is privately held; MSFT is its largest strategic investor and commercialization partner",
+    "AGI/compute narrative is a primary driver of NVDA and the broader AI equity complex",
+    "Prediction window is 12h with a 700bps tradability threshold"
+  ],
+  "uncertainty_notes": [
+    "OpenAI is not directly tradable, so all mappings are indirect proxies with diluted exposure",
+    "'AGI announcement' is definitionally vague and self-declared, making the resolution event low-probability and hard to leak meaningfully",
+    "A probability move on this market could be pure speculative noise rather than leaked information",
+    "Neither MSFT nor NVDA is likely to move 700bps in 12h absent a confirmed, concrete announcement \u2014 so neither is genuinely tradable under the stated threshold"
+  ],
+  "llm_justification": {
+    "summary": "This market tracks a self-declared, definitionally ambiguous AGI announcement by a private company (OpenAI). The only liquid public proxies are Microsoft (largest backer) and the AI/semiconductor complex (NVDA). A sharp rise in implied probability would nominally be bullish for both, but the linkage is weak: proxies are diversified megacaps, the resolution event is vague and self-controlled by OpenAI, and moves are unlikely to reach the 700bps tradability threshold in 12h. Best treated as a low-confidence, non-tradable research signal.",
+    "key_assumptions": [
+      "A move in this market reflects capability/announcement news rather than pure speculation",
+      "MSFT and NVDA are the most representative liquid proxies for an OpenAI breakthrough",
+      "No confirmed official AGI announcement occurs within the window (base case)"
+    ],
+    "failure_modes": [
+      "The probability spike is noise/thin-market manipulation with no real information, so proxies don't move",
+      "News is already public and priced in, giving no forward edge",
+      "Proxies are too diversified \u2014 even a real OpenAI story produces a sub-threshold move well under 700bps",
+      "Direction could invert: an 'AGI' claim could trigger regulatory/safety fear selloffs rather than rallies",
+      "OpenAI has strong incentive not to make a formal AGI declaration (contractual/Microsoft governance implications), so the resolution event may simply never fire"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

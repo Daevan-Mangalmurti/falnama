@@ -1,0 +1,99 @@
+{
+  "card_id": "616913_20260720T210046Z",
+  "card_version": "v1",
+  "card_hash": "1ea24d03459ea5b02c14e3ceba27a2b2745cfb8ca6857308ca08360cbb3885c5",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-20T21:00:46Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616913",
+    "market_slug": "will-11-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 11 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-11-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 11 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-duration US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.25,
+      "confidence_interval_bps": [
+        -80.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether Fed funds futures / SOFR curve show a parallel dovish shift or if it's isolated to this thin Polymarket strike.",
+        "1h": "Compare with 2Y and 10Y yield moves; confirm bond rally corroborates the implied-cut spike.",
+        "2h": "Look for any macro catalyst (jobs data, financial-stress event, geopolitical shock) that could justify emergency-cut pricing.",
+        "6h": "Reassess whether the move persisted or mean-reverted; check MOVE index for rate-vol confirmation.",
+        "12h": "Evaluate TLT vs baseline; if no macro catalyst emerged, treat the market signal as noise and mark thesis unconfirmed."
+      },
+      "reasoning": "An 11-cut (275bps) scenario for 2026 is an extreme-dovish/recession tail. If implied odds of this many cuts spiked, it would signal expectations of aggressive Fed easing, possibly via emergency cuts amid a crisis. That would compress front-end yields and pull long-end yields lower, lifting long-duration Treasury prices. But 11 cuts is a near-zero base-rate outcome, so any probability move on this specific strike is more likely noise than a genuine macro signal, hence low confidence and a sub-tradable magnitude."
+    },
+    {
+      "asset": "Gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 30.0,
+      "confidence": 0.22,
+      "confidence_interval_bps": [
+        -70.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check DXY and real-yield (TIPS) moves for confirmation of a dovish/dollar-down impulse.",
+        "1h": "Compare gold move to Treasury move for internal consistency of the easing narrative.",
+        "2h": "Scan for any geopolitical or financial-stress headline that would justify safe-haven bid.",
+        "6h": "Reassess whether gold held gains or faded with no fundamental driver.",
+        "12h": "Mark thesis confirmed only if gold, bonds, and a weaker dollar all moved together on an identifiable catalyst."
+      },
+      "reasoning": "A surge in odds of many Fed cuts implies lower real rates and a weaker dollar, both supportive of gold. An extreme 11-cut scenario would also imply crisis/recession conditions that boost safe-haven demand. However, the strike is an implausible tail and the topic tag ('military_conflict') is likely mislabeled, so the causal chain to gold is speculative and weak; magnitude well below the 700bps tradable threshold."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies an extreme 275bps (11x25bps) of 2026 Fed easing, including emergency cuts",
+    "Resolution tied to official FOMC statements and target-rate changes",
+    "Standard macro linkage: more Fed cuts => lower yields, weaker USD, higher gold and bond prices",
+    "Note that the 'military_conflict' topic tag appears inconsistent with a Fed-cuts question"
+  ],
+  "uncertainty_notes": [
+    "11 cuts is a near-zero base-rate outcome; probability moves on this strike are dominated by noise/liquidity in a thin market",
+    "No headline or catalyst provided, so directionality of any implied-probability move is unknown",
+    "A 700bps 12h move in liquid ETFs from a rate-expectations shift is implausible absent a crisis; predictions are flagged sub-tradable",
+    "The topic tag mismatch reduces confidence that this signal is meaningful"
+  ],
+  "llm_justification": {
+    "summary": "This market prices an implausibly dovish tail \u2014 11 Fed rate cuts (275bps) in 2026, including emergency cuts. If its implied odds spiked, the cleanest read is expectations of aggressive easing/recession, which maps to lower yields (TLT up), a weaker dollar, and higher gold (GLD up). But the strike is an extreme tail dominated by market noise, and the mapping is weak: expected moves are small, confidence is low, and neither prediction meets the 700bps tradable threshold. Treat as a noisy sensor requiring corroboration from the actual rates curve and a real macro catalyst.",
+    "key_assumptions": [
+      "A rise in implied cut-count odds reflects genuine dovish/recession expectations rather than thin-market noise",
+      "Standard easing transmission: lower policy-rate path lifts bond and gold prices, weakens USD",
+      "No offsetting inflation-shock interpretation that would reverse the bond-positive read"
+    ],
+    "failure_modes": [
+      "The probability move is illiquid-market noise with no real information content",
+      "Aggressive-cut pricing coincides with a growth/inflation scare that hurts long bonds via term-premium repricing",
+      "The move was already reflected in the SOFR/fed-funds curve, so ETFs don't react",
+      "Proxies (TLT, GLD) are driven by unrelated global flows over the 12h window, swamping any rate-expectation signal",
+      "Direction could be reversed if the spike is toward 'No' resolution (fewer cuts), implying hawkish repricing"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

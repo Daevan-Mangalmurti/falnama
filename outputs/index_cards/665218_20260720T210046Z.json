@@ -1,0 +1,97 @@
+{
+  "card_id": "665218_20260720T210046Z",
+  "card_version": "v1",
+  "card_hash": "195bee5481049c2593adb065a5b114988084244bec6a399e7a5ded93b29b94cd",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-20T21:00:46Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665218",
+    "market_slug": "israel-and-saudi-arabia-normalize-relations-before-2027",
+    "market_name": "Israel and Saudi Arabia normalize relations before 2027?",
+    "market_url": "https://polymarket.com/market/israel-and-saudi-arabia-normalize-relations-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Israel and Saudi Arabia normalize relations before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Israeli equities",
+      "ticker": "EIS",
+      "tradable_instrument_name": "iShares MSCI Israel ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.34,
+      "confidence_interval_bps": [
+        -150.0,
+        450.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move coincides with a concrete headline (US-brokered deal, official statements) or is thin/illiquid noise; verify EIS pre/after-hours quote reaction.",
+        "1h": "Compare EIS move vs broad EM/global equities to isolate Israel-specific component; watch TA-35 futures if available.",
+        "2h": "Reassess whether news wires (Reuters/AP) corroborate; fade if move is purely market-implied with no reporting.",
+        "6h": "Check shekel (USD/ILS) and Israeli bank names for confirmation of a coherent risk-on Israel signal.",
+        "12h": "Evaluate whether EIS held direction into/through US session close; log realized vs expected."
+      },
+      "reasoning": "A sharp rise in the implied probability of Israel\u2013Saudi normalization would signal diplomatic progress and lower regional conflict risk, historically supportive of Israeli risk assets via improved trade/investment prospects and a lower geopolitical risk premium. EIS is the most liquid direct proxy for Israeli equity beta."
+    },
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "commodity",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -90.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -350.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether Brent/WTI futures react at all; distinguish from inventory/OPEC headlines dominating tape.",
+        "1h": "Check if move is oil-specific or a broader risk-sentiment shift.",
+        "2h": "Reassess against any OPEC+ or inventory news that could swamp the signal.",
+        "6h": "Monitor whether risk-premium compression persists or reverses on unrelated supply news.",
+        "12h": "Log realized USO move vs expectation; note that oil linkage is weak and easily overwhelmed."
+      },
+      "reasoning": "Israel\u2013Saudi normalization implies broader Middle East de-escalation, which tends to compress the geopolitical risk premium in oil. A credible move toward normalization would modestly pressure crude lower. Effect is small because Saudi supply policy (OPEC+) dominates oil pricing far more than this diplomatic track."
+    }
+  ],
+  "evidence_used": [
+    "Market question on official Israel\u2013Saudi diplomatic normalization before 2027",
+    "Historical pattern that Middle East de-escalation lowers oil geopolitical risk premium and supports Israeli risk assets",
+    "Liquidity of EIS and USO as broad proxies"
+  ],
+  "uncertainty_notes": [
+    "A normalization is a multi-year diplomatic process; a probability shift on a low-volume prediction market rarely maps to a large same-day asset move",
+    "Oil pricing is dominated by OPEC+ supply decisions, not this diplomatic track, making USO a weak proxy",
+    "EIS captures Israeli equity beta broadly and may not respond materially to incremental diplomatic odds"
+  ],
+  "llm_justification": {
+    "summary": "A sharp upward move in the implied probability of Israel\u2013Saudi normalization would signal regional de-escalation, mildly bullish Israeli equities (EIS) and mildly bearish oil's geopolitical risk premium (USO). Both linkages are real but weak over a 12h window; expected magnitudes are well below the 700bps tradable threshold, so this is a low-confidence, non-tradable research signal.",
+    "key_assumptions": [
+      "A probability move reflects genuine diplomatic news rather than thin-market noise",
+      "Normalization is read as de-escalation lowering regional risk premium",
+      "EIS and USO respond to Middle East risk sentiment on the day"
+    ],
+    "failure_modes": [
+      "Move is already public/priced from prior reporting, so no asset reaction",
+      "Oil is driven by OPEC+/inventory news that swamps any risk-premium effect",
+      "Prediction-market shift is illiquid noise with no fundamental content",
+      "Diplomatic progress is too gradual/long-dated to move liquid assets within 12h",
+      "Direction reverses if the 'normalization' news is paired with conflict escalation caveats"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

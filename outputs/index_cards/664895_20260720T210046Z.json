@@ -1,0 +1,73 @@
+{
+  "card_id": "664895_20260720T210046Z",
+  "card_version": "v1",
+  "card_hash": "3ecdd8f87a9bc9d0826372276de85912442b758a81c51baf46ca4c8ee228b43d",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-20T21:00:46Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "664895",
+    "market_slug": "will-metamask-launch-a-token-by-september-30-2026",
+    "market_name": "Will MetaMask launch a token by September 30, 2026?",
+    "market_url": "https://polymarket.com/market/will-metamask-launch-a-token-by-september-30-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will MetaMask launch a token by September 30, 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Ethereum crypto-ecosystem risk (nearest liquid proxy for MetaMask activity)",
+      "ticker": "ETHE",
+      "tradable_instrument_name": "Grayscale Ethereum Trust / ETH spot",
+      "asset_class": "other",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.12,
+      "confidence_interval_bps": [
+        -150.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any MetaMask/Consensys token headline or airdrop confirmation is circulating; note ETH spot and ETHE deviation from BTC.",
+        "1h": "Compare ETH move vs BTC to isolate Ethereum-specific vs broad crypto beta; watch Polymarket implied probability shift.",
+        "2h": "Look for credible reporting (official Consensys statements) that would justify any move; reassess if move is idiosyncratic.",
+        "6h": "Assess whether any ETH/ETHE move has persisted or reverted; check crypto-equity proxies (COIN) for corroboration.",
+        "12h": "Close out: determine if the prediction-market shift preceded any public token news; log whether proxy moved at all."
+      },
+      "reasoning": "MetaMask is the dominant self-custody wallet in the Ethereum ecosystem, owned by privately-held Consensys \u2014 there is no direct listed equity. A token launch by MetaMask would be a wallet-airdrop / governance token event affecting Ethereum-ecosystem sentiment and possibly boosting on-chain activity, but the read-through to any liquid public asset over a 12h window is extremely thin, and the market resolves nearly a year out (Sept 2026), so near-term implied-probability moves carry little dated information. The mapping to ETH is directional-ambiguous: a MetaMask token could be a modest ecosystem positive but also dilutive of attention/liquidity."
+    }
+  ],
+  "evidence_used": [
+    "Market asks about MetaMask launching a tradable token by Sept 30 2026",
+    "MetaMask is owned by privately-held Consensys \u2014 no direct public equity",
+    "MetaMask is the leading Ethereum-ecosystem self-custody wallet",
+    "Resolution requires an actively transferable/tradable token, not just an announcement"
+  ],
+  "uncertainty_notes": [
+    "No liquid public instrument is directly exposed to a MetaMask token launch",
+    "Resolution horizon is ~1 year out, weakening any 12h information content",
+    "Category tag says 'elections' which appears mislabeled, reducing confidence in metadata",
+    "Directional sign on ETH is ambiguous even if the event occurs"
+  ],
+  "llm_justification": {
+    "summary": "The market concerns whether MetaMask (a Consensys-owned wallet) launches a tradable token by Sept 2026. There is no direct public-equity proxy; the nearest liquid exposure is the broad Ethereum ecosystem, but the read-through over a 12-hour window is weak and directionally ambiguous. This is a low-conviction, non-tradable mapping \u2014 reported as 'unclear' with low confidence rather than manufacturing a signal.",
+    "key_assumptions": [
+      "MetaMask/Consensys remains private with no directly tradable equity",
+      "Ethereum is the closest ecosystem proxy given MetaMask's role",
+      "A wallet token launch has only marginal, ambiguous macro read-through to ETH"
+    ],
+    "failure_modes": [
+      "Proxy is very weakly exposed \u2014 a MetaMask token has minimal impact on ETH price",
+      "Event may already be partially anticipated (airdrop speculation) so any move is priced in",
+      "Long resolution horizon means implied-probability moves reflect speculation, not leaked near-term news",
+      "Direction could invert: token launch might siphon ecosystem attention/liquidity rather than boost ETH",
+      "Mislabeled metadata ('elections') suggests low data quality on this market"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

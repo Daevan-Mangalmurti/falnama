@@ -1,0 +1,97 @@
+{
+  "card_id": "616908_20260720T210046Z",
+  "card_version": "v1",
+  "card_hash": "e79bef3dbf6a6edca6af7a62a897c30c03b320ec42da54d79671fa2497893249",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-20T21:00:46Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616908",
+    "market_slug": "will-6-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 6 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-6-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 6 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-dated US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -40.0,
+        180.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability shift persists or was a thin-liquidity blip; cross-check 2Y and 10Y yields and Fed funds futures for confirmation.",
+        "1h": "Look for a macro catalyst (weak jobs/inflation data, Fed speaker, risk-off event) that would justify a dovish repricing.",
+        "2h": "Confirm TLT direction tracks the rate-cut repricing; watch for divergence that would indicate the proxy is not responding.",
+        "6h": "Reassess against broader rates complex and whether US data releases occur in-window.",
+        "12h": "Evaluate realized TLT move vs expectation; document whether the prediction-market signal led or lagged the bond move."
+      },
+      "reasoning": "A sharp rise in the implied probability of 6 cuts (150bps of easing) in 2026 signals a much more dovish Fed path than currently priced, typically driven by expectations of weakening growth or falling inflation. That pulls the expected policy path lower, rallying front-end and long-end Treasuries and pushing TLT up. This is the cleanest, most direct mapping since the market is literally about Fed policy."
+    },
+    {
+      "asset": "US Dollar",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.33,
+      "confidence_interval_bps": [
+        -60.0,
+        120.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify the rate-cut repricing is real and check DXY reaction alongside 2Y yields.",
+        "1h": "Check whether other central banks are also being repriced dovish, which would offset the dollar move.",
+        "2h": "Confirm UUP weakness aligns with rate differentials rather than idiosyncratic FX flows.",
+        "6h": "Reassess for any risk-off dynamic that could paradoxically bid the dollar as a haven.",
+        "12h": "Compare realized UUP move to thesis and note signal quality."
+      },
+      "reasoning": "More aggressive expected Fed easing narrows US rate differentials versus other currencies, which is typically dollar-negative. A jump in the probability of 6 cuts would push UUP lower. This is a secondary, weaker mapping because FX also depends on relative central-bank paths abroad."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves on count of 25bps Fed cuts in 2026; 6 cuts implies ~150bps of easing, a strongly dovish outcome",
+    "Rate-cut expectations map directly to Treasury yields and the dollar via the policy path",
+    "Standard macro transmission: more easing -> lower yields (bonds up), narrower differentials (dollar down)"
+  ],
+  "uncertainty_notes": [
+    "The 700bps tradability threshold is far above any plausible 12h move in these liquid macro proxies, so neither prediction is 'tradable' under the stated rule",
+    "Prediction-market probability for a full-year 2026 outcome is a slow-moving, low-information sensor for intraday asset moves",
+    "Direction of the probability shift is not given; if the probability of 6 cuts FELL sharply, all signs reverse (hawkish, TLT down, dollar up)"
+  ],
+  "llm_justification": {
+    "summary": "This market tracks how many 25bps Fed cuts occur in 2026; six cuts is a strongly dovish outcome. A sharp increase in that implied probability would signal a more dovish expected policy path, mapping to higher long Treasuries (TLT up) and a weaker dollar (UUP down). Both are directionally clean but small in magnitude over 12h \u2014 well below the 700bps tradability bar \u2014 so this is a low-confidence, research-only signal that also depends entirely on the unknown direction of the probability move.",
+    "key_assumptions": [
+      "A meaningful, persistent shift in the implied probability of 6 cuts (not thin-market noise)",
+      "Assumed direction is an INCREASE in probability (more dovish); a decrease flips all signs",
+      "Standard rates/FX transmission holds and no dominant offsetting catalyst"
+    ],
+    "failure_modes": [
+      "Move is already public (driven by known data/Fed speak already reflected in bonds and FX)",
+      "The probability shift is noise from a thinly traded long-horizon market with no real information",
+      "Proxies barely move over 12h \u2014 expected magnitudes are an order of magnitude below the 700bps threshold",
+      "Risk-off interpretation could bid the dollar as a haven even amid dovish repricing, breaking the UUP mapping",
+      "Direction of the underlying probability change is unspecified, so the sign of the thesis may be inverted"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
