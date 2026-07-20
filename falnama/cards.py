@@ -409,14 +409,19 @@ def load_cards(settings: Settings) -> list[dict[str, Any]]:
 def run(ctx: RunContext, markets: pd.DataFrame | None = None) -> list[Path]:
     """Generate and write immutable cards for the configured subset of markets,
     then record the batch in the manifest. Returns the written card paths."""
+    from . import screen
+
     settings = ctx.settings
+    # The screened universe when the LLM relevance gate ran, else Stage 1's. Cards
+    # are the most expensive artifact per market, so this is where the screen pays.
+    universe = screen.universe_path(settings)
     if markets is None:
-        markets = io.read_table(settings.output_dir("relevant_markets") / "relevant_markets_latest.csv")
+        markets = io.read_table(universe)
 
     subset = _card_markets(markets, settings)
     paths: list[Path] = []
     for record in subset.to_dict(orient="records"):
-        record.setdefault("source_market_file", "relevant_markets_latest.csv")
+        record.setdefault("source_market_file", universe.name)
         card = generate_card(record, settings, created_time_utc=ctx.run_time_utc)
         paths.append(write_card(settings, card))
 

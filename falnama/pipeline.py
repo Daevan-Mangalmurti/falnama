@@ -22,8 +22,10 @@ from . import io
 from .config import Settings, load_config
 from .io import RunContext
 
-# The signal chain, in order.
-STAGE_ORDER = ["select", "anomaly", "cards", "recommend", "execution", "newslag"]
+# The signal chain, in order. `screen` is the optional LLM relevance gate; it sits
+# right after keyword selection so everything downstream works on a smaller, better
+# universe (and is a no-op pass-through when disabled).
+STAGE_ORDER = ["select", "screen", "anomaly", "cards", "recommend", "execution", "newslag"]
 
 
 def run(settings: Settings | None = None, stages: list[str] | None = None) -> RunContext:
@@ -33,7 +35,7 @@ def run(settings: Settings | None = None, stages: list[str] | None = None) -> Ru
     failure the error is recorded, the health report is still written, and the
     exception propagates so callers/CI see a non-zero exit.
     """
-    from . import anomaly, cards, execution, newslag, recommend, select
+    from . import anomaly, cards, execution, newslag, recommend, screen, select
 
     settings = settings or load_config()
     ctx = RunContext.start(settings)
@@ -45,6 +47,8 @@ def run(settings: Settings | None = None, stages: list[str] | None = None) -> Ru
         for stage in order:
             if stage == "select":
                 select.run(ctx)
+            elif stage == "screen":
+                screen.run(ctx)
             elif stage == "anomaly":
                 anomaly.run(ctx)
             elif stage == "cards":

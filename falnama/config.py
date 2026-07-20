@@ -29,6 +29,7 @@ import yaml
 _VALID_CARD_MODES = {"mock", "live"}
 _VALID_DATA_SOURCES = {"fixtures", "live"}
 _VALID_EXECUTION_MODES = {"none", "paper_sim"}
+_VALID_SCREENER_MODES = {"mock", "live"}
 
 
 class ConfigError(ValueError):
@@ -82,6 +83,10 @@ class Settings:
     @property
     def selector(self) -> dict[str, Any]:
         return self.section("selector")
+
+    @property
+    def screener(self) -> dict[str, Any]:
+        return self.section("screener")
 
     @property
     def anomaly(self) -> dict[str, Any]:
@@ -179,8 +184,15 @@ def _validate(settings: Settings) -> None:
     if settings.execution_mode not in _VALID_EXECUTION_MODES:
         errors.append(f"execution.mode must be one of {sorted(_VALID_EXECUTION_MODES)}.")
 
-    # If real cards or live news-lag are requested, the model and key var must be named.
-    needs_llm = settings.card_mode == "live" or settings.newslag.get("mode") == "live"
+    screener_mode = str(settings.screener.get("mode", "mock"))
+    if screener_mode not in _VALID_SCREENER_MODES:
+        errors.append(f"screener.mode must be one of {sorted(_VALID_SCREENER_MODES)}.")
+
+    # If real cards, a live screen, or live news-lag are requested, the model and
+    # key var must be named.
+    needs_llm = (settings.card_mode == "live"
+                 or settings.newslag.get("mode") == "live"
+                 or (settings.screener.get("enabled", False) and screener_mode == "live"))
     if needs_llm:
         if not settings.llm.get("model"):
             errors.append("llm.model is required when card_mode or newslag.mode is 'live'.")

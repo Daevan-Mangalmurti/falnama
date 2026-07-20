@@ -36,6 +36,10 @@ card_mode: live
 llm:
   provider: anthropic                 # the only provider wired up today
   model: claude-opus-4-8              # Anthropic's most capable model (see claude-api reference)
+  # The relevance screen (Stage 1.5) is fast classification over MANY markets
+  # rather than deep reasoning about one, so it runs on a small, cheap model.
+  # Scenario cards keep the large model above.
+  screener_model: claude-haiku-4-5-20251001
   api_key_env_var: ANTHROPIC_API_KEY # the env var holding the key; never hardcode the key
   timeout_seconds: 60
 
@@ -116,6 +120,31 @@ selector:
     max_per_event_family: 10
     max_per_primary_topic: 50
     preserve_top_n_per_cluster: 5
+
+# -----------------------------------------------------------------------------
+# Stage 1.5 — LLM relevance screen
+# The keyword pass above is cheap and deterministic but reads text without
+# understanding it: it cannot tell that "the PRIMARY resolution source for this
+# market" is boilerplate rather than an election. This stage asks a model to
+# judge each surviving market on two INDEPENDENT axes and drops what fails,
+# BEFORE the expensive stages (price history, scenario cards, news-lag) run.
+#
+# Every verdict — kept and dropped, with a one-line rationale — is written to
+# outputs/relevant_markets/screen_verdicts_<run_id>.csv. That file is the
+# instrument for tuning the two floors below; read it before changing them.
+# -----------------------------------------------------------------------------
+screener:
+  enabled: false                     # off → the keyword selection above is final
+  mode: mock                         # mock (deterministic, offline) | live (uses llm.screener_model)
+  batch_size: 25                     # markets judged per API call
+
+  # A market must clear BOTH floors to survive. They fail differently:
+  #   geopolitical  — is this the subject matter Falnama studies at all?
+  #                   (a celebrity sentencing is not, however famous)
+  #   asymmetry     — could a few people know the outcome before the public?
+  #                   (a 2028 primary is relevant but knowable by no one)
+  min_geopolitical_relevance: 60
+  min_information_asymmetry: 45
 
 # -----------------------------------------------------------------------------
 # Stage 2 — anomaly detection

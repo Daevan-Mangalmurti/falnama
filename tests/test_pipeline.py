@@ -28,6 +28,7 @@ def _isolated(tmp_path: Path):
     # real runs, and CI must not depend on the network or on live market counts.
     settings.raw["data"]["source"] = "fixtures"
     settings.raw["card_mode"] = "mock"
+    settings.raw.setdefault("screener", {})["mode"] = "mock"
     return settings
 
 

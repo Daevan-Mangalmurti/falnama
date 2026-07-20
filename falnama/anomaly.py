@@ -322,11 +322,12 @@ def run(ctx: RunContext, price_history: pd.DataFrame | None = None) -> AnomalyRe
     If `price_history` is None, it is fetched (via the data layer) for the markets
     selected in this run's latest relevant-markets file.
     """
-    from . import io, polymarket
+    from . import io, polymarket, screen
 
     concentration = None
     if price_history is None:
-        selected = io.read_table(ctx.settings.output_dir("relevant_markets") / "relevant_markets_latest.csv")
+        # The screened universe when the LLM relevance gate ran, else Stage 1's.
+        selected = io.read_table(screen.universe_path(ctx.settings))
         market_ids = [str(m) for m in selected["market_id"].dropna().tolist()] if "market_id" in selected else []
         price_history = polymarket.fetch_price_history(ctx.settings, market_ids, ctx)
         # Best-effort wallet concentration; returns records only for covered markets.
