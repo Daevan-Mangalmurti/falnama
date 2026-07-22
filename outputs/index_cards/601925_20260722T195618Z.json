@@ -1,0 +1,70 @@
+{
+  "card_id": "601925_20260722T195618Z",
+  "card_version": "v1",
+  "card_hash": "0d2abe9526e5454ff549ff81ed2071600fd6b104b36bf2943851aa43f3a3652e",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-22T19:56:18Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "601925",
+    "market_slug": "will-michelle-bolsonaro-qualify-for-brazils-presidential-runoff",
+    "market_name": "Will Michelle Bolsonaro qualify for Brazil's presidential runoff?",
+    "market_url": "https://polymarket.com/market/will-michelle-bolsonaro-qualify-for-brazils-presidential-runoff",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Michelle Bolsonaro qualify for Brazil's presidential runoff?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Brazil equity (iShares MSCI Brazil ETF)",
+      "ticker": "EWZ",
+      "tradable_instrument_name": "iShares MSCI Brazil ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.18,
+      "confidence_interval_bps": [
+        -150.0,
+        220.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the market probability move coincides with any Brazilian political headline (candidacy announcement, Bolsonaro eligibility ruling); confirm EWZ pre/post-market direction and volume.",
+        "1h": "Compare EWZ move to broader EM/LatAm ETFs (EEM, ILF) to isolate Brazil-specific vs regional beta.",
+        "2h": "Recheck USDBRL and Bovespa futures for a corroborating political-risk repricing; if no correlated move, downgrade the signal.",
+        "6h": "Assess whether the prediction-market shift persisted or reverted; look for TSE/legal news that could have driven both.",
+        "12h": "Evaluate whether EWZ closed with any durable directional bias attributable to Brazilian politics; log as noise if move stayed within normal daily range."
+      },
+      "reasoning": "A shift in the implied probability that Michelle Bolsonaro reaches the 2026 runoff would be a marginal signal about the strength of the pro-business/right-wing electoral bloc. Markets have historically read Bolsonaro-aligned candidacies as somewhat fiscally market-friendly relative to the PT/Lula camp, so higher odds could be mildly supportive of EWZ. But the election is ~11 months away (Oct 2026), the market is a noisy proxy for a distant political outcome, and candidate identity is highly contingent (Michelle is a placeholder for the Bolsonaro brand). Any 12h asset move driven by this specific market is likely to be small and dominated by macro/FX and commodity factors, not this question."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns a 2026 Brazilian runoff, resolving as late as mid-2027",
+    "Bolsonaro family associated with a pro-business/right-wing political brand in market perception",
+    "EWZ and USDBRL are the most liquid, direct proxies for Brazilian political risk"
+  ],
+  "uncertainty_notes": [
+    "Election is ~11 months out; near-term asset sensitivity to a single candidate's runoff odds is very low",
+    "Direction of the equity reaction is genuinely ambiguous \u2014 depends on policy expectations and who the opponent is",
+    "Michelle Bolsonaro's candidacy itself is uncertain and may be a proxy for Jair Bolsonaro's ineligibility"
+  ],
+  "llm_justification": {
+    "summary": "This market maps most naturally to Brazilian equities (EWZ) and the real (USDBRL), with a mild pro-business tilt if Bolsonaro-bloc runoff odds rise. However, the event is distant, the candidate is contingent, and the signal is weak: no 12h move is likely to clear the 700bp tradable threshold. Treat as low-confidence, effectively non-tradable research signal.",
+    "key_assumptions": [
+      "Markets perceive the Bolsonaro brand as relatively more market-friendly than the incumbent left",
+      "A sharp probability move reflects genuine new political information rather than thin-market noise",
+      "EWZ/BRL remain the dominant liquid proxies for Brazilian political risk"
+    ],
+    "failure_modes": [
+      "The 2026 timeline means near-term asset impact is negligible \u2014 the thesis is mostly irrelevant over 12h",
+      "Direction could invert if markets favor policy continuity or fear a polarized/uncertain runoff",
+      "Probability move may be pure prediction-market noise with no public information content",
+      "Proxy exposure is diluted: EWZ is driven by commodities (iron ore, oil), Petrobras/Vale, and Fed/EM flows far more than one candidate's runoff odds"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

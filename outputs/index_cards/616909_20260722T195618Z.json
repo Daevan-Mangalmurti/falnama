@@ -1,0 +1,99 @@
+{
+  "card_id": "616909_20260722T195618Z",
+  "card_version": "v1",
+  "card_hash": "335cc93d39f9d20e833b96cca24547c4f5ef462f63c3de765a00ed62523f6944",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-22T19:56:18Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616909",
+    "market_slug": "will-7-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 7 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-7-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 7 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-duration US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 80.0,
+      "confidence": 0.5,
+      "confidence_interval_bps": [
+        -60.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the shift in the 7-cut probability coincides with a move in 2y/10y Treasury yields and Fed funds futures; confirm it is not idiosyncratic thin-market noise.",
+        "1h": "Compare TLT move to SOFR/Fed funds futures repricing to see if the rates complex confirms the dovish signal.",
+        "2h": "Look for a macro catalyst (weak data, financial stress, geopolitical shock) that would justify aggressive easing expectations.",
+        "6h": "Re-assess whether TLT gains held; check for Fed speaker pushback or hawkish repricing.",
+        "12h": "Evaluate whether the dovish repricing persisted into the close and whether rate-cut odds across strikes (3,4,5 cuts) moved consistently."
+      },
+      "reasoning": "A market on '7 Fed rate cuts in 2026' pricing higher implies expectations of aggressive monetary easing, typically tied to a growth scare or recession. A sharp rise in the implied probability of 7 cuts would signal the market discounting a much lower policy rate path, pulling front-end and duration yields down and lifting long-duration Treasury prices. TLT is the cleanest liquid proxy for falling rate expectations."
+    },
+    {
+      "asset": "Gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "commodity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.42,
+      "confidence_interval_bps": [
+        -70.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify DXY direction and real-yield proxies; a weaker dollar and falling reals would corroborate a gold-positive read.",
+        "1h": "Check whether gold move tracks the rates repricing or is driven by separate risk-off/geopolitical flow.",
+        "2h": "Scan for any conflict or macro headline consistent with the market's military_conflict tagging that would drive a haven bid.",
+        "6h": "Confirm gold's move persists and is not a fade of an intraday spike.",
+        "12h": "Assess whether the dovish + haven narrative held into the close; reconcile with dollar and Treasury moves."
+      },
+      "reasoning": "An escalation in the probability of 7 rate cuts implies deeper anticipated easing and lower real yields, which is historically supportive for gold. A dovish/recessionary signal also carries a safe-haven bid, especially given the market's tagged military_conflict topic, which could add a geopolitical risk premium. Gold benefits from both channels, though the linkage is noisier than for Treasuries."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies an extreme dovish scenario (7 x 25bp cuts in 2026)",
+    "Rate-cut expectations are a primary driver of Treasury duration, the dollar, and gold",
+    "Early-resolution mechanics mean the 7-cut strike is a tail scenario tied to recession/emergency action",
+    "Topic tag references military_conflict, hinting at possible geopolitical risk overlay"
+  ],
+  "uncertainty_notes": [
+    "The 700bps tradability threshold is far above realistic 12h moves for these liquid ETFs; neither prediction is 'tradable' by that bar",
+    "Prediction-market probability for a 2026 tail strike may be illiquid and noisy, weakening any leakage signal",
+    "Direction depends on whether a probability rise reflects genuine macro news versus low-volume repricing",
+    "Fed easing expectations may already be fully public via Fed funds futures, leaving no informational edge"
+  ],
+  "llm_justification": {
+    "summary": "The market asks whether the Fed delivers 7 rate cuts (175bp) in 2026 \u2014 an extreme dovish tail scenario implying recession or emergency easing. If its implied probability rises sharply, the cleanest public-market implications are higher long-duration Treasury prices (TLT up) on lower rate expectations and higher gold (GLD up) on falling real yields plus a potential safe-haven bid. Both mappings are directionally sensible but modest in 12h magnitude, well below the 700bps tradable threshold, and carry meaningful noise from an illiquid tail-strike prediction market.",
+    "key_assumptions": [
+      "A rise in the 7-cut probability reflects genuine dovish/recession repricing rather than thin-market noise",
+      "Rate-cut expectations transmit to Treasury duration and gold through the standard real-yield channel",
+      "The move is not already fully reflected in Fed funds futures and bond prices"
+    ],
+    "failure_modes": [
+      "The probability move is noise in an illiquid tail-strike market and no asset move follows",
+      "The easing expectation is already public via futures, so no leakage/edge exists",
+      "A dovish surprise could be equity-positive risk-on that lifts yields (bear-steepening), reversing the TLT thesis",
+      "Gold is a weak/noisy proxy that can decouple if the dollar strengthens on safe-haven flows",
+      "Expected magnitudes are far below the 700bps threshold, so nothing is actionable under the stated rule"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

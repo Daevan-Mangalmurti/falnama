@@ -1,0 +1,72 @@
+{
+  "card_id": "656312_20260722T195618Z",
+  "card_version": "v1",
+  "card_hash": "0df10effea23a9bf35e69cc936e6ec7a381a8955a36c012f06f55027d7ffe3d4",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-22T19:56:18Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "656312",
+    "market_slug": "will-openai-ipo-by-december-31-2026",
+    "market_name": "Will OpenAI IPO by December 31 2026?",
+    "market_url": "https://polymarket.com/market/will-openai-ipo-by-december-31-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will OpenAI IPO by December 31 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Microsoft equity (largest OpenAI investor/partner)",
+      "ticker": "MSFT",
+      "tradable_instrument_name": "Microsoft Corporation",
+      "asset_class": "equity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.28,
+      "confidence_interval_bps": [
+        -80.0,
+        180.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the market move coincides with any credible OpenAI IPO/restructuring headline; if none, treat as noise. Watch MSFT tape for any reaction.",
+        "1h": "Compare MSFT move vs. Nasdaq/QQQ to isolate idiosyncratic component; if MSFT is just tracking beta, discount the thesis.",
+        "2h": "Scan newsflow (Bloomberg/Reuters) for OpenAI corporate-structure or banker-mandate reports that could justify the prediction-market shift.",
+        "6h": "Reassess whether the probability move persisted or reverted; a reverted market implies no information leak.",
+        "12h": "Log realized MSFT return vs. prediction; note whether any public confirmation emerged, closing the research window."
+      },
+      "reasoning": "Microsoft is OpenAI's largest strategic partner and holds a substantial economic interest (rights to a large share of OpenAI profits plus equity via the restructured for-profit entity). A rising implied probability of an OpenAI IPO would signal value-crystallization and a clearer path to marking Microsoft's stake, modestly positive for MSFT. But MSFT is a ~$3T name; an IPO-timing prediction market shift is a very small, indirect input relative to its earnings, Azure growth and macro drivers, so any move would be marginal and easily swamped by noise."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns OpenAI IPO by Dec 31 2026, a corporate action for a still-private company",
+    "Microsoft is OpenAI's principal investor/partner and the most liquid public proxy for OpenAI value",
+    "No single liquid pure-play public equity exists for OpenAI itself"
+  ],
+  "uncertainty_notes": [
+    "OpenAI is private, so there is no direct tradable instrument; all mappings are indirect",
+    "MSFT is far too large for an IPO-timing signal to produce a material 12h move",
+    "An IPO could dilute or complicate Microsoft's economic interest rather than clearly benefit it, making direction ambiguous",
+    "The market may move on speculation with zero information content"
+  ],
+  "llm_justification": {
+    "summary": "The market asks whether OpenAI will IPO by end-2026. OpenAI is private, so there is no direct liquid proxy. The closest broadly-traded exposure is Microsoft, OpenAI's largest partner/investor, which would see modest value-crystallization signaling from a rising IPO probability. However, the linkage is weak and indirect, MSFT is a mega-cap dominated by other drivers, and the expected 12h move (~40bps) is well below the 700bps tradable threshold. This is a low-confidence, non-tradable mapping best treated as research.",
+    "key_assumptions": [
+      "Microsoft retains a material economic interest in OpenAI that would be marked up by an IPO",
+      "A prediction-market probability shift precedes rather than follows public reporting",
+      "Market participants view an OpenAI IPO as net positive for MSFT rather than dilutive"
+    ],
+    "failure_modes": [
+      "The IPO probability shift is pure speculation with no leaked information",
+      "Any MSFT move is just index/beta drift, not OpenAI-specific",
+      "An IPO could be interpreted as reducing Microsoft's preferential access/economics, flipping the sign",
+      "Effect is immaterial relative to MSFT's size, so no measurable move occurs",
+      "Market resolves via acquisition clause or restructuring, breaking the simple IPO-positive narrative"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

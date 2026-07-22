@@ -1,0 +1,98 @@
+{
+  "card_id": "567688_20260722T195618Z",
+  "card_version": "v1",
+  "card_hash": "6f7986d2bb8f59e1165ccc11f701cec5f5c03d40c36e727329df4e6ac1a03863",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-22T19:56:18Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "567688",
+    "market_slug": "netanyahu-out-before-2027-684-719-226-657",
+    "market_name": "Netanyahu out by end of 2026?",
+    "market_url": "https://polymarket.com/market/netanyahu-out-before-2027-684-719-226-657",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Netanyahu out by end of 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Israeli equities",
+      "ticker": "EIS",
+      "tradable_instrument_name": "iShares MSCI Israel ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.25,
+      "confidence_interval_bps": [
+        -250.0,
+        300.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any concrete Israeli political headline (resignation, coalition collapse, indictment, health event) has hit wires to explain the market move; check EIS pre/post move.",
+        "1h": "Compare EIS move vs broad EM (EEM) and Nasdaq to isolate Israel-specific component; look at TA-35 futures if trading.",
+        "2h": "Reassess whether move is stability-positive or uncertainty-negative based on tone of reporting; check USD/ILS.",
+        "6h": "Confirm direction persistence; fade if move was noise with no news corroboration.",
+        "12h": "Evaluate whether EIS net move exceeded normal daily range and whether it aligned with the political-risk narrative; close research note."
+      },
+      "reasoning": "A sharp repricing in the probability that Netanyahu exits by end-2026 signals a change in Israeli political-transition risk. But the sign is genuinely ambiguous: leadership change could be read as reducing coalition-driven policy risk (mild positive for equities) or as raising short-term governance/security uncertainty (negative). Israeli equities historically track security/war headlines and global tech far more than which individual holds the premiership, so the exposure of EIS to this specific question is weak. Over a 12h window a long-dated (end-2026) political market moving does not plausibly generate a 700bp equity move."
+    },
+    {
+      "asset": "Israeli shekel",
+      "ticker": null,
+      "tradable_instrument_name": "USD/ILS spot",
+      "asset_class": "fx_proxy",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 80.0,
+      "confidence": 0.22,
+      "confidence_interval_bps": [
+        -200.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Scan for Israel political headlines and check USD/ILS against DXY to separate idiosyncratic move.",
+        "1h": "Watch for BoI commentary or intervention signals; compare to regional FX.",
+        "2h": "Judge whether shekel move is risk-on (stability) or risk-off (uncertainty).",
+        "6h": "Check persistence and whether local rates/CDS moved consistently.",
+        "12h": "Assess net USD/ILS move vs normal range and news corroboration; finalize note."
+      },
+      "reasoning": "The shekel is a cleaner barometer of Israeli political/geopolitical risk than equities, and would tend to weaken on heightened governance uncertainty and strengthen on perceived stabilization. However, ILS is dominated by BoI intervention, global USD moves, and security dynamics; a shift in a long-horizon PM-exit probability is a thin driver for a 12h FX move and unlikely to reach the 700bp tradable threshold. Direction depends entirely on whether the market interprets a Netanyahu exit as calming or destabilizing."
+    }
+  ],
+  "evidence_used": [
+    "Market question: probability Netanyahu ceases to be PM by end-2026",
+    "Resolves Yes on any announced resignation/removal",
+    "Region: Israel; topic: cabinet/government",
+    "Most liquid Israel proxies are EIS (equity ETF) and USD/ILS"
+  ],
+  "uncertainty_notes": [
+    "Sign of equity/FX response to a Netanyahu exit is genuinely ambiguous (stability vs uncertainty).",
+    "Long-dated (end-2026) horizon means probability drift may not map to any 12h asset move.",
+    "Israeli asset prices are dominated by security/war and global tech beta, diluting political-leadership signal.",
+    "No single-name proxy is directly exposed; ETF/FX proxies are broad."
+  ],
+  "llm_justification": {
+    "summary": "The market prices the odds that Netanyahu leaves office by end-2026. A sharp move could flag Israeli political-transition risk, with the cleanest liquid proxies being the EIS Israel equity ETF and USD/ILS. But the directional sign is fundamentally ambiguous (leadership change can read as stabilizing or destabilizing), the horizon is long-dated, and Israeli assets are driven far more by security and global factors than by the identity of the PM. The mapping is weak: both predictions are 'unclear' with low confidence and expected moves well below the 700bp tradable threshold.",
+    "key_assumptions": [
+      "A move in this probability reflects new information about Israeli political stability, not just liquidity/noise.",
+      "EIS and USD/ILS are the most accessible liquid Israel-risk proxies.",
+      "Markets have no clear consensus on whether a Netanyahu exit is bullish or bearish."
+    ],
+    "failure_modes": [
+      "The political event may already be public/priced, so the market move lags rather than leads assets.",
+      "Direction could reverse as the market debates whether an exit calms or destabilizes.",
+      "Proxies (EIS, ILS) are weakly exposed to PM identity vs security/global drivers.",
+      "A long-dated probability shift may produce essentially no 12h asset response, making any predicted move noise."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

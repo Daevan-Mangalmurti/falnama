@@ -1,0 +1,71 @@
+{
+  "card_id": "608366_20260722T195618Z",
+  "card_version": "v1",
+  "card_hash": "ad11c1a28c9b5a2d503fb1d2a8d83265faa622a4fc39ef76bdc4a7fdb0e5a32c",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-22T19:56:18Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "608366",
+    "market_slug": "will-openais-market-cap-be-between-1pt25t-and-1pt5t-at-market-close-on-ipo-day",
+    "market_name": "Will OpenAI\u2019s market cap be between $1.25T and $1.5T at market close on IPO day?",
+    "market_url": "https://polymarket.com/market/will-openais-market-cap-be-between-1pt25t-and-1pt5t-at-market-close-on-ipo-day",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will OpenAI\u2019s market cap be between $1.25T and $1.5T at market close on IPO day?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Microsoft equity (largest OpenAI investor proxy)",
+      "ticker": "MSFT",
+      "tradable_instrument_name": "Microsoft Corporation",
+      "asset_class": "equity",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 15.0,
+      "confidence": 0.18,
+      "confidence_interval_bps": [
+        -120.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any OpenAI IPO-timing or valuation headline accompanies the probability move; without a news catalyst treat as noise.",
+        "1h": "Compare MSFT move to broad software/AI peers (NVDA, semis) to see if any drift is idiosyncratic vs sector-wide.",
+        "2h": "Re-examine the bracket probability vs adjacent brackets to infer whether the market is pricing higher or lower valuation, not just 'in range'.",
+        "6h": "Assess whether options-implied vol or MSFT relative strength shifted; fade if no fundamental corroboration.",
+        "12h": "Close out research view; log that a narrow-bracket valuation market gave no clean directional MSFT signal."
+      },
+      "reasoning": "Microsoft holds a large economic stake in OpenAI's for-profit entity, so any credible signal on OpenAI's eventual IPO valuation carries some read-through to MSFT's embedded AI optionality. However, this specific market resolves on whether the day-one cap lands in a narrow $1.25T-$1.5T bracket rather than on whether valuation is high or low overall, so a probability shift is directionally ambiguous: a rising 'in-bracket' probability could reflect either an upgrade from a lower expectation or a downgrade from a higher one. The link to a 12h MSFT move is very weak, especially since no IPO is imminent and resolution can extend to Dec 2026."
+    }
+  ],
+  "evidence_used": [
+    "Market question targets a narrow $1.25T-$1.5T day-one market-cap bracket for a not-yet-public company",
+    "Resolution window extends to Dec 31 2026, so no near-term IPO event is implied",
+    "Microsoft is the principal external economic stakeholder in OpenAI's for-profit arm; Nvidia is a key supplier/investor"
+  ],
+  "uncertainty_notes": [
+    "A bracket-range market is directionally ambiguous \u2014 'in range' probability can rise from either side",
+    "No liquid asset directly tracks OpenAI's private valuation",
+    "Any 12h move is dominated by macro/sector flows, not this niche market",
+    "Resolution can be pushed far into 2026, decoupling from near-term prices"
+  ],
+  "llm_justification": {
+    "summary": "This market asks whether OpenAI's day-one IPO market cap lands in a narrow $1.25T-$1.5T bracket, for a company that is not yet public and whose resolution can extend to end-2026. The only liquid public-market read-throughs are indirect (Microsoft's embedded stake, Nvidia's AI exposure), and the bracket structure makes any probability shift directionally ambiguous. The mapping is weak: I assign 'unclear' direction and low confidence, well below the 700bps tradable threshold.",
+    "key_assumptions": [
+      "Microsoft is the best available liquid proxy for OpenAI valuation sentiment",
+      "No imminent IPO date is signaled by this market",
+      "Bracket-based markets do not cleanly encode directional valuation views"
+    ],
+    "failure_modes": [
+      "The move may already reflect public IPO-timing news, offering no edge",
+      "The narrow bracket makes direction inherently ambiguous, so any MSFT call could be exactly reversed",
+      "MSFT/NVDA exposure to OpenAI's specific IPO cap is diffuse and easily swamped by macro noise",
+      "Resolution deferral to 2026 means the market carries little 12h asset-price information"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

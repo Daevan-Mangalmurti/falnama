@@ -1,0 +1,97 @@
+{
+  "card_id": "616913_20260722T195618Z",
+  "card_version": "v1",
+  "card_hash": "4d37b390495385dc199981a21f028435e8eb42b15093d131909094c02d268a5d",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-22T19:56:18Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616913",
+    "market_slug": "will-11-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 11 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-11-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 11 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-dated US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.34,
+      "confidence_interval_bps": [
+        -80.0,
+        400.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the market's implied probability move is corroborated by 2Y/10Y yield moves and Fed funds futures; confirm it isn't stale/thin-liquidity noise.",
+        "1h": "Compare TLT move vs. SOFR/Fed funds futures repricing; look for a macro headline (jobs, CPI, financial-stability event) driving the shift.",
+        "2h": "Re-assess whether the easing narrative is holding or fading; watch equity/credit spreads for confirmation of a risk-off/recession read.",
+        "6h": "Evaluate whether TLT sustained the move into US session liquidity; check for Fed speaker or data catalysts.",
+        "12h": "Mark final TLT return vs. entry; judge whether the prediction-market signal led the bond move or merely tracked it."
+      },
+      "reasoning": "A market pricing 11 (i.e. ~275bps) of Fed cuts in 2026 is a deep-easing / emergency-cut tail scenario. A sharp rise in its implied probability would signal expectations of a hard-landing recession or crisis forcing aggressive Fed easing, which drives front-end and long-end yields lower and long-duration Treasury prices higher. TLT is the most liquid clean proxy for falling policy-rate/duration expectations."
+    },
+    {
+      "asset": "Gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 90.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -90.0,
+        320.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm gold move aligns with real-yield (TIPS) and DXY direction; rule out idiosyncratic gold-specific flows.",
+        "1h": "Check DXY and 10Y real yields for consistency with the easing signal.",
+        "2h": "Reassess whether safe-haven bid is broad (gold, bonds, yen) or isolated.",
+        "6h": "Track whether gold holds gains through US session; watch for any Fed commentary.",
+        "12h": "Record final GLD return and whether it confirmed the deep-easing thesis."
+      },
+      "reasoning": "An aggressive-easing/crisis tail scenario implies lower real rates and a weaker dollar, both supportive for gold as a non-yielding safe-haven. If the 11-cut probability spikes, it typically coincides with risk-off and dovish repricing that lifts gold."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves on count of 25bps Fed cuts in 2026; 11 cuts (~275bps) is an extreme-easing tail requiring recession/emergency action",
+    "Description explicitly includes emergency inter-meeting cuts, reinforcing crisis-scenario interpretation",
+    "Standard macro linkage: aggressive Fed easing expectations lower yields (TLT up), weaken USD, and support gold"
+  ],
+  "uncertainty_notes": [
+    "An 11-cut outcome is a very low-probability tail; even a large proportional move in implied probability may reflect tiny absolute levels and thin liquidity",
+    "Equity direction is genuinely ambiguous (dovish tailwind vs. recession fear), so no equity prediction offered",
+    "The 700bps tradable threshold is far above realistic 12h moves for these liquid proxies \u2014 treat as research signal, not tradable"
+  ],
+  "llm_justification": {
+    "summary": "This market prices an extreme deep-easing/emergency-cut scenario for the Fed in 2026. A sharp rise in its implied probability would signal expectations of a hard-landing or crisis forcing aggressive rate cuts, favoring long-duration Treasuries (TLT up) and gold (GLD up) via lower real rates, a weaker dollar, and safe-haven demand. Confidence is modest and expected magnitudes fall well below the 700bps tradable bar; treat as a noisy leading indicator, not a trade.",
+    "key_assumptions": [
+      "A rise in the 11-cut probability reflects genuine deep-easing/crisis expectations rather than thin-market noise",
+      "Bond and gold markets have not already fully priced the same macro shift",
+      "Rate-cut expectations dominate the safe-haven/duration channels over the 12h window"
+    ],
+    "failure_modes": [
+      "Move is noise in an illiquid tail contract with near-zero absolute probability, implying no real macro information",
+      "The macro news was already public and assets already repriced before the market signal",
+      "Dovish easing could be read as bullish for risk, muddying/ reversing the safe-haven interpretation",
+      "TLT/GLD are only loosely tied to a specific cut-count contract; the proxy exposure is indirect",
+      "Expected 12h magnitudes are far below the 700bps tradable threshold, so the signal is non-actionable under the stated rule"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

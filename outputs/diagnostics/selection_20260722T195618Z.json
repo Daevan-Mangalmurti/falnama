@@ -1,0 +1,39 @@
+{
+  "selected_count": 250,
+  "rejected_count": 250,
+  "by_primary_topic": {
+    "elections": 227,
+    "military_conflict": 12,
+    "trade_policy": 4,
+    "cabinet_government": 3,
+    "corporate_action": 2,
+    "legal_judicial": 1,
+    "regulatory_policy": 1
+  },
+  "by_country_or_region": {
+    "united_states": 115,
+    "europe": 84,
+    "unknown": 35,
+    "latin_america": 11,
+    "china_taiwan": 2,
+    "middle_east": 2,
+    "russia_ukraine": 1
+  },
+  "rejection_reasons": {
+    "diversity cap: country_or_region=united_states": 91,
+    "diversity cap: country_or_region=europe": 61,
+    "diversity cap: country_or_region=unknown": 32,
+    "relevance score 20.0 < 60.0": 29,
+    "diversity cap: primary_topic=elections": 12,
+    "hard reject (keyword or topic)": 8,
+    "volume 136.02 < 1000": 6,
+    "diversity cap: event_family=how-many-fed-rate-cuts-in-2026": 3,
+    "volume 236.02 < 1000": 2,
+    "volume 316.276 < 1000": 1,
+    "volume 502.2 < 1000": 1,
+    "volume 234.71 < 1000": 1,
+    "volume 476.36 < 1000": 1,
+    "volume 589.008 < 1000": 1,
+    "volume 616.122 < 1000": 1
+  }
+}

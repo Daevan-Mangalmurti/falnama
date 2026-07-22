@@ -1,0 +1,72 @@
+{
+  "card_id": "568116_20260722T195618Z",
+  "card_version": "v1",
+  "card_hash": "ca89988c19d79f794544bcba0f4903385b57a43a280e0358f3d8765b9a1fd008",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-22T19:56:18Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "568116",
+    "market_slug": "will-trump-be-impeached-by-december-31-2026",
+    "market_name": "Will Trump be impeached by end of 2026?",
+    "market_url": "https://polymarket.com/market/will-trump-be-impeached-by-december-31-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Trump be impeached by end of 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US large-cap equities",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": -40.0,
+      "confidence": 0.2,
+      "confidence_interval_bps": [
+        -250.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the impeachment probability jump coincides with a concrete news catalyst (scandal, indictment, defection) versus thin-market noise; compare SPY futures reaction.",
+        "1h": "Assess VIX and Treasury moves for corroborating risk-off; if equities are flat, downgrade the mapping.",
+        "2h": "Cross-check mainstream reporting to see if the market anticipated a public headline; gauge breadth of equity move.",
+        "6h": "Re-evaluate whether any political news has actually broken; if none, treat the market move as noise.",
+        "12h": "Record realized SPY return versus the modest expected drift; note that sub-700bps confirms non-tradable status."
+      },
+      "reasoning": "A sharp rise in the implied probability of a Trump impeachment would signal elevated political/institutional instability, which historically produces mild risk-off in broad US equities via a policy-uncertainty channel. However, House impeachment currently requires a Democratic majority (i.e., a 2026 midterm flip or mass GOP defection), so any near-term probability spike is more likely driven by scandal headlines than an imminent vote. The transmission to equities is slow, diffuse, and easily swamped by macro drivers (rates, earnings, Fed). The move is very unlikely to reach the 700bps tradable threshold within 12h."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves Yes only on a simple-majority House vote to pass articles of impeachment between July 2025 and Dec 2026",
+    "House impeachment requires a majority, currently held by Republicans, making near-term passage improbable absent a 2026 midterm flip",
+    "Historical impeachment episodes (2019, 2021) produced limited durable broad-market reaction",
+    "Political-uncertainty shocks typically transmit to equities via risk premia only mildly over intraday horizons"
+  ],
+  "uncertainty_notes": [
+    "Impeachment probability is a slow-moving political variable poorly linked to 12h asset returns",
+    "Proxy (SPY) has weak, indirect exposure to this specific event",
+    "Macro drivers dominate intraday equity moves and would swamp this signal",
+    "A probability spike may reflect prediction-market speculation rather than leaked private information"
+  ],
+  "llm_justification": {
+    "summary": "This market's implied probability is a slow, politically-driven variable with only a weak and diffuse link to liquid public markets. A sharp jump would nominally imply mild risk-off in broad US equities (SPY down) via a policy-uncertainty channel, but House impeachment is structurally improbable without a 2026 midterm shift, and any 12h asset move would almost certainly fall far short of the 700bps tradable threshold. The mapping is weak; direction is unclear and confidence is low.",
+    "key_assumptions": [
+      "A probability spike reflects genuine new political-instability information rather than thin-market noise",
+      "Political uncertainty transmits to equities as mild risk-off",
+      "No overwhelming concurrent macro catalyst"
+    ],
+    "failure_modes": [
+      "The move reverses as prediction-market noise with no underlying news",
+      "The information is already public and priced, so no asset reaction occurs",
+      "SPY is only weakly exposed; equities may ignore the political signal entirely",
+      "Direction could invert if markets read a scandal as reducing policy/tariff uncertainty (risk-on)"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
