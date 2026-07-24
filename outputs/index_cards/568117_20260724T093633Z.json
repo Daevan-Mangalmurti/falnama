@@ -1,0 +1,98 @@
+{
+  "card_id": "568117_20260724T093633Z",
+  "card_version": "v1",
+  "card_hash": "02d7f8e5d0b303a6e8d0c16c83b261ab23c3bafa6f8741cb8143101243b2e614",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-24T09:36:33Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "568117",
+    "market_slug": "will-trump-resign-by-december-31-2026",
+    "market_name": "Will Trump resign by December 31, 2026?",
+    "market_url": "https://polymarket.com/market/will-trump-resign-by-december-31-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Trump resign by December 31, 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US large-cap equity index",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -150.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -700.0,
+        100.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether major newswires (AP, Reuters, Bloomberg) carry any resignation/health/scandal headline; if silent, treat the market move as noise.",
+        "1h": "Compare SPY futures move vs VIX; a genuine political-risk episode shows both equities down and vol spiking together.",
+        "2h": "Look for White House / official denial or confirmation; a denial typically reverses the equity move quickly.",
+        "6h": "Reassess whether the resignation probability held its gain into the US cash session or faded; fade implies false signal.",
+        "12h": "Mark whether a policy-relevant news event materialized; if none, log as non-event and expect mean reversion."
+      },
+      "reasoning": "A sharp rise in the implied probability of a Trump resignation would signal acute political instability or an escalating scandal/health crisis at the top of the US executive. Historically, sudden presidential succession uncertainty raises risk premia and pressures broad equities in the short run. However, the market's baseline probability is very low, so most 'moves' are rumor-driven noise; a durable, tradable-magnitude equity drop would require credible corroborating reporting, which this venue would only weakly front-run."
+    },
+    {
+      "asset": "Gold (safe-haven)",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.28,
+      "confidence_interval_bps": [
+        -100.0,
+        600.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm any hard news corroborating the market move; check DXY and 10y yields simultaneously.",
+        "1h": "Verify gold bid coincides with equity weakness and vol spike (consistent risk-off), not an idiosyncratic rates move.",
+        "2h": "Watch for official denial that would unwind the haven bid.",
+        "6h": "Check whether gold held its gain vs dollar strength; dollar-driven offset would blunt the thesis.",
+        "12h": "Record net move and whether a real catalyst emerged; if not, expect reversal."
+      },
+      "reasoning": "Escalating US political-succession uncertainty tends to bid safe-haven assets like gold as investors hedge governance and policy-continuity risk. This is a secondary, weaker proxy than equities: gold also responds heavily to rates and the dollar, so a resignation-scare bid could be diluted or offset. Unlikely to reach the 700bps tradable threshold within 12h absent a full-blown crisis."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns a rare tail political event (US presidential resignation) with structurally low baseline probability",
+    "Primary topic cabinet_government / US region implies broad domestic policy and risk-premium sensitivity",
+    "General historical relationship: acute executive-succession uncertainty is risk-off for equities and supportive for safe havens"
+  ],
+  "uncertainty_notes": [
+    "Baseline probability of resignation is very low, so most probability moves are rumor/noise rather than leaked truth",
+    "A resignation could be read by some investors as reducing policy uncertainty (e.g., orderly succession to VP), muddying equity direction",
+    "Proxies (SPY, GLD) are broad and driven by many unrelated macro factors over a 12h window",
+    "Reaching the 700bps tradable threshold is unlikely absent a confirmed, market-moving crisis"
+  ],
+  "llm_justification": {
+    "summary": "This market tracks a low-probability US presidential resignation. A sharp upward move in its implied probability would plausibly signal acute political-succession uncertainty, which historically pressures broad US equities lower and supports safe-haven gold. But the baseline is tiny, moves are likely rumor-driven noise, and the proxies are macro-diluted, so the mapping is weak with low confidence and probably sub-tradable magnitude over 12h.",
+    "key_assumptions": [
+      "A sharp probability spike reflects genuine information rather than thin-market noise",
+      "Investors interpret rising resignation odds as risk-off (uncertainty) rather than risk-reducing (policy clarity)",
+      "No offsetting macro shock dominates the 12h window"
+    ],
+    "failure_modes": [
+      "The market move is rumor/thin-liquidity noise and fully reverses with no news",
+      "The event is already public and priced, so no incremental asset move occurs",
+      "Market reads succession as stabilizing, flipping equity direction to up",
+      "Gold's rates/dollar sensitivity offsets any haven bid, breaking the proxy",
+      "Magnitude stays well below the 700bps tradable threshold, making the signal non-actionable"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

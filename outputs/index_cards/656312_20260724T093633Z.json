@@ -1,0 +1,98 @@
+{
+  "card_id": "656312_20260724T093633Z",
+  "card_version": "v1",
+  "card_hash": "e03ced6cf230aa1ec242c4dc4a15160de2446154bf7a5203d695fc1b0bc280b2",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-24T09:36:33Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "656312",
+    "market_slug": "will-openai-ipo-by-december-31-2026",
+    "market_name": "Will OpenAI IPO by December 31 2026?",
+    "market_url": "https://polymarket.com/market/will-openai-ipo-by-december-31-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will OpenAI IPO by December 31 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Microsoft (largest OpenAI stakeholder)",
+      "ticker": "MSFT",
+      "tradable_instrument_name": "Microsoft Corporation",
+      "asset_class": "equity",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.2,
+      "confidence_interval_bps": [
+        -120.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any credible IPO/restructuring headline accompanies the market move; if none, treat as noise.",
+        "1h": "Compare MSFT move vs Nasdaq/peers to isolate any idiosyncratic OpenAI-linked reaction.",
+        "2h": "Look for confirmation from AI-complex names (NVDA, MSFT options skew) to see if a genuine catalyst exists.",
+        "6h": "Reassess whether reporting on OpenAI corporate structure has emerged; fade position if purely market-implied.",
+        "12h": "Close out research view; log whether MSFT moved beyond normal daily range attributable to this signal."
+      },
+      "reasoning": "Microsoft holds a large economic interest in OpenAI (roughly 49% of profits up to a cap plus commercial rights). A rising implied probability of an OpenAI IPO could imply a valuation-crystallizing event that markets read as positive for MSFT's stake, but the sign is genuinely ambiguous: an IPO could also dilute Microsoft's privileged position or signal a restructuring of the partnership. Over a 12h window this is a very weak, second-order linkage \u2014 a prediction-market move on IPO timing rarely translates into material equity repricing absent concrete corporate news."
+    },
+    {
+      "asset": "Broad AI/innovation equity risk",
+      "ticker": "ARKK",
+      "tradable_instrument_name": "ARK Innovation ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 30.0,
+      "confidence": 0.15,
+      "confidence_interval_bps": [
+        -150.0,
+        180.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify no unrelated macro driver (rates, CPI) is dominating growth-equity tape.",
+        "1h": "Check AI-adjacent public names for coherent co-movement.",
+        "2h": "Assess whether IPO-window narrative is appearing in financial media.",
+        "6h": "Re-evaluate if signal persists or was intraday noise.",
+        "12h": "Record outcome; downgrade proxy if no measurable link."
+      },
+      "reasoning": "An increased probability of an OpenAI IPO could be read as a broader signal that the AI-capital-markets window is opening, supporting sentiment for growth/innovation names. But ARKK does not hold OpenAI, and the transmission is diffuse and slow; a 12h move driven by an IPO-timing prediction market is unlikely to be material or directionally reliable."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns OpenAI completing an IPO by Dec 31 2026",
+    "OpenAI is privately held with no direct listed equity",
+    "Microsoft is OpenAI's largest strategic investor/stakeholder",
+    "No public ticker directly represents OpenAI equity"
+  ],
+  "uncertainty_notes": [
+    "OpenAI has no tradable public proxy; all mappings are indirect and weak",
+    "IPO-timing probability shifts rarely cause fast equity repricing without concrete news",
+    "Sign of MSFT reaction to an OpenAI IPO is genuinely ambiguous (value crystallization vs dilution of privileged access)",
+    "12h window is too short for diffuse sentiment channels to reliably manifest"
+  ],
+  "llm_justification": {
+    "summary": "A prediction market on whether OpenAI IPOs by end-2026 has no clean liquid proxy. The least-weak linkage is Microsoft, OpenAI's largest stakeholder, and secondarily broad AI/innovation sentiment (ARKK). Both mappings are indirect, low-confidence, and directionally ambiguous over a 12-hour horizon; neither approaches the 700bps tradable threshold. Treat this market as a noisy sensor with minimal near-term public-market read-through.",
+    "key_assumptions": [
+      "MSFT retains material economic exposure to OpenAI's value",
+      "IPO-timing odds could shift on leaked corporate-action information",
+      "Equity markets would interpret a higher IPO probability as broadly value-positive"
+    ],
+    "failure_modes": [
+      "The IPO probability move reflects speculation already fully public, so no new asset repricing",
+      "MSFT reaction is opposite-signed if an IPO implies restructuring/dilution of its stake",
+      "ARKK and MSFT are dominated by macro/rate factors, swamping any OpenAI-specific signal",
+      "The mapping is simply too weak \u2014 OpenAI is private with no direct proxy, so any observed co-move is coincidental"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

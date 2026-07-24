@@ -1,0 +1,99 @@
+{
+  "card_id": "616912_20260724T093633Z",
+  "card_version": "v1",
+  "card_hash": "d9a9e24d30e3acaf7dae4faae6ac1be55ac6393fc4d2fc1aa8e672b40e555f49",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-24T09:36:33Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616912",
+    "market_slug": "will-10-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 10 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-10-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 10 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-duration US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -40.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether 2y/10y Treasury yields are actually falling and if fed funds futures (SOFR/SR3) are repricing dovishly; confirm the prediction-market move isn't isolated noise.",
+        "1h": "Cross-check TLT price vs the move in front-end rate futures; look for any breaking macro headline (jobs, financial-stability event) that would justify emergency-cut pricing.",
+        "2h": "Reassess whether the dovish repricing is broad (equities, gold, USD all confirming) or a one-off in the extreme strike.",
+        "6h": "Evaluate whether TLT sustained direction; fade if move reverses toward baseline with no supporting data.",
+        "12h": "Mark final TLT return vs entry; log whether the tail-strike probability move had any predictive value for rates."
+      },
+      "reasoning": "A sharp rise in the implied probability of 10 Fed cuts in 2026 (250bps of easing) is an extreme dovish/recession signal. Aggressive expected easing pulls the entire yield curve lower, which lifts long-duration Treasury prices. TLT is the most liquid, high-beta expression of falling long-end yields. However, 10 cuts is a deep tail scenario, so a probability move here likely reflects thin, speculative positioning rather than fresh macro information."
+    },
+    {
+      "asset": "US Dollar",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -25.0,
+      "confidence": 0.33,
+      "confidence_interval_bps": [
+        -90.0,
+        40.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check DXY and EUR/USD, JPY moves alongside front-end US rates to see if the rate-differential story or the safe-haven story dominates.",
+        "1h": "Confirm whether USD weakness aligns with falling US real yields; watch for risk-off flows that could flip the sign.",
+        "2h": "Reassess dollar direction against equity/VIX behavior \u2014 risk-off would undermine the thesis.",
+        "6h": "Determine if UUP move persisted; abandon thesis if dollar strengthens on haven demand.",
+        "12h": "Record final UUP return and note whether the dovish signal or haven flows dominated."
+      },
+      "reasoning": "Pricing in ten 25bp cuts implies a collapse in US short-term rate expectations relative to other economies, which typically weakens the dollar via narrowing rate differentials. UUP would drift lower. But the linkage is weak in a 12h window: a global recession scare can paradoxically strengthen the dollar as a safe haven, muddying the sign, hence low confidence and a wide, sign-straddling interval."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies 250bps of Fed easing in 2026, an extreme dovish/recession tail scenario",
+    "Standard macro transmission: aggressive expected cuts lower yields (bonds up) and narrow rate differentials (USD down)",
+    "700bps tradability threshold is extreme for broad liquid ETFs over 12h",
+    "Deep out-of-strike prediction markets tend to be thin and speculative"
+  ],
+  "uncertainty_notes": [
+    "10-cut strike is a deep tail; probability moves may be noise or low-liquidity artifacts rather than information",
+    "Recession fears can strengthen the dollar (safe haven), inverting the FX call",
+    "Neither proxy is likely to move 700bps in 12h, so neither is 'tradable' by the stated threshold",
+    "Topic metadata ('military_conflict') appears mislabeled; content is monetary policy"
+  ],
+  "llm_justification": {
+    "summary": "This market prices an extreme scenario of ten Fed rate cuts (250bps) in 2026. A sharp rise in that probability would signal deep recession/emergency-easing expectations, implying lower yields (long Treasuries/TLT up) and, less reliably, a softer dollar (UUP down). Both mappings are macro-sensible but weak in a 12h window: the strike is a thin tail, safe-haven flows can flip the FX sign, and neither liquid proxy plausibly moves the 700bps needed to be tradable. Treat as low-confidence research signals, not actionable trades.",
+    "key_assumptions": [
+      "A probability move reflects genuine macro repricing rather than illiquid speculation",
+      "Rate-cut expectations transmit conventionally to bond prices and FX",
+      "No offsetting shock (e.g., inflation surprise) dominates the window"
+    ],
+    "failure_modes": [
+      "The tail-strike move is noise/liquidity-driven and reverses within hours",
+      "Recession scare triggers safe-haven USD buying, inverting the FX prediction",
+      "The dovish scenario was already public/priced into rates, leaving no leakage edge",
+      "Broad ETF proxies are too low-beta to reach the 700bps tradable threshold, making signals immaterial",
+      "Bond selloff on fiscal/inflation concerns could push TLT down despite cut expectations"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

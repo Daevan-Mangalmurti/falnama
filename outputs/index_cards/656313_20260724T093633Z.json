@@ -1,0 +1,99 @@
+{
+  "card_id": "656313_20260724T093633Z",
+  "card_version": "v1",
+  "card_hash": "b199a6c0bec82745c7d18015da45de012e3e29206cbdf78cff4d86c13e7e1d85",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-24T09:36:33Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "656313",
+    "market_slug": "openai-1t-ipo-before-2027",
+    "market_name": "OpenAI $1t+ IPO before 2027?",
+    "market_url": "https://polymarket.com/market/openai-1t-ipo-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "OpenAI $1t+ IPO before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Microsoft (largest OpenAI stakeholder)",
+      "ticker": "MSFT",
+      "tradable_instrument_name": "Microsoft Corporation",
+      "asset_class": "equity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -80.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket probability move is accompanied by any credible reporting (Bloomberg/Reuters/FT) on OpenAI restructuring or S-1 activity; confirm MSFT tape reaction vs QQQ beta.",
+        "1h": "Compare MSFT relative strength to the Nasdaq to isolate idiosyncratic OpenAI-linked bid from broad tech beta.",
+        "2h": "Look for options-market activity (call skew) in MSFT and any sell-side notes referencing OpenAI stake valuation.",
+        "6h": "Reassess whether the prediction-market move persisted or reverted; if it reverted, treat as noise.",
+        "12h": "Mark-to-market the MSFT move vs QQQ; log whether public news eventually corroborated the market signal (leakage test)."
+      },
+      "reasoning": "A sharp rise in the implied probability of a $1T+ OpenAI IPO would likely reflect leaked news of concrete IPO/restructuring progress. Microsoft holds a large economic stake in OpenAI, so a credible path to a $1T public valuation would mark up the implied value of that stake and reinforce Microsoft's AI monetization narrative. But Microsoft is a $3T+ mega-cap; an OpenAI IPO revalue is a small, uncertain fraction of its cap, so any 12h move would be modest and easily swamped by macro/rate/tape factors."
+    },
+    {
+      "asset": "US megacap tech / AI equity sentiment",
+      "ticker": "QQQ",
+      "tradable_instrument_name": "Invesco QQQ Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.2,
+      "confidence_interval_bps": [
+        -120.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify whether any AI-bellwether names (NVDA, AVGO) are reacting alongside the prediction-market shift.",
+        "1h": "Check breadth of the tech move and whether it is OpenAI-specific chatter or a broad risk-on/off macro move.",
+        "2h": "Screen headlines for confirmation; discount if no credible source emerges.",
+        "6h": "Determine if the QQQ move is holding independent of macro data prints.",
+        "12h": "Record net QQQ move and whether it can be attributed to the OpenAI signal at all; likely conclude weak/no linkage."
+      },
+      "reasoning": "News that accelerates an OpenAI IPO could boost broad AI/tech risk appetite (validating private AI valuations, feeding the capex/monetization theme). However the linkage is very diffuse: QQQ is driven by rates, earnings, and dozens of names, so a single corporate-action prediction market is a weak, low-signal proxy. Direction is genuinely ambiguous \u2014 an IPO can also read as insiders cashing out / froth peak."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns OpenAI completing a $1T+ IPO before 2027, a corporate-action event",
+    "OpenAI is privately held; Microsoft is its largest strategic investor and economic stakeholder",
+    "OpenAI recently completed a for-profit restructuring, a precondition for any eventual IPO",
+    "No liquid instrument tracks OpenAI directly, so implications must flow through partners/proxies"
+  ],
+  "uncertainty_notes": [
+    "No direct tradable OpenAI instrument exists; all mappings are indirect and weak",
+    "A probability move may reflect speculation/noise rather than leaked information",
+    "Microsoft's OpenAI stake is small relative to its total market cap, capping the magnitude",
+    "IPO news is directionally ambiguous for sentiment (validation vs froth/insider exit)"
+  ],
+  "llm_justification": {
+    "summary": "The market prices whether OpenAI completes a $1T+ IPO before 2027. A sharp probability increase would most plausibly signal concrete IPO/restructuring progress, marginally positive for Microsoft (its largest stakeholder) and broadly supportive of AI-tech sentiment (QQQ). However, no liquid instrument tracks OpenAI directly, the proxy linkages are diffuse, and Microsoft's stake is small versus its cap. Neither implication clears the 700bps tradable threshold; both are low-confidence, small-magnitude, and dominated by macro noise. This is a weak signal, disclosed as such.",
+    "key_assumptions": [
+      "A sharp prob move reflects genuine information about IPO progress rather than pure speculation",
+      "Microsoft remains the primary listed beneficiary of an OpenAI value crystallization",
+      "Broad markets treat an OpenAI IPO as a mild AI-validation positive"
+    ],
+    "failure_modes": [
+      "The prediction-market move is noise/thin-liquidity and reverts, with no asset impact",
+      "IPO progress is already public/priced, so no fresh information leaks to equities",
+      "Microsoft is too large for the stake revaluation to move its stock measurably (weak proxy)",
+      "Sign flips: an IPO reads as insider cash-out/top-signal, pressuring AI names lower",
+      "Macro factors (rates, CPI, earnings) dominate the 12h window and swamp any OpenAI-linked move"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

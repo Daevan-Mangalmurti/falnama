@@ -1,0 +1,99 @@
+{
+  "card_id": "568116_20260724T093633Z",
+  "card_version": "v1",
+  "card_hash": "21edb0f39a46c859ba51b816cccdbfb051a1cb61b0f627763204b6d22c7d12f1",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-24T09:36:33Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "568116",
+    "market_slug": "will-trump-be-impeached-by-december-31-2026",
+    "market_name": "Will Trump be impeached by end of 2026?",
+    "market_url": "https://polymarket.com/market/will-trump-be-impeached-by-december-31-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Trump be impeached by end of 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US large-cap equity index",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": -40.0,
+      "confidence": 0.2,
+      "confidence_interval_bps": [
+        -250.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the impeachment-odds move coincides with a concrete news catalyst (indictment, defection, scandal) versus thin-market noise; watch SPY and ES futures tape.",
+        "1h": "Compare SPY move to sector breadth and to VIX; if VIX is flat, treat the equity signal as noise.",
+        "2h": "Re-assess whether any mainstream reporting corroborates the market move; if none, fade the thesis.",
+        "6h": "Look for follow-through in index and cross-asset (USD, Treasuries); confirm move is not mean-reverting.",
+        "12h": "Evaluate net SPY return vs the 700bps tradable threshold; document that magnitude almost certainly fell short and mapping was weak."
+      },
+      "reasoning": "A sharp rise in implied odds of a House impeachment vote would signal elevated US political instability, which historically nudges broad equities modestly lower via a higher risk premium. But impeachment by the House alone (no Senate conviction, no removal) is largely symbolic, and under a Republican-controlled House it realistically requires a 2026 midterm flip \u2014 a slow, telegraphed event, not a 12h shock. The equity linkage is therefore weak and easily swamped by macro/rate news."
+    },
+    {
+      "asset": "US equity volatility",
+      "ticker": "VXX",
+      "tradable_instrument_name": "iPath Series B S&P 500 VIX Short-Term Futures ETN",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 80.0,
+      "confidence": 0.22,
+      "confidence_interval_bps": [
+        -200.0,
+        600.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check spot VIX and front VIX futures for any uptick correlated with the odds move.",
+        "1h": "Confirm whether vol rise is broad or isolated; cross-check news flow.",
+        "2h": "If VIX fades and no corroborating catalyst, downgrade to noise.",
+        "6h": "Monitor for term-structure changes signaling sustained uncertainty.",
+        "12h": "Tally VXX return against 700bps threshold and note it likely did not qualify as tradable."
+      },
+      "reasoning": "Rising impeachment probability is a proxy for political-uncertainty shocks, which tend to bid implied volatility more reliably than they move index price. VXX would capture a modest fear premium. Still, the base case is that a symbolic House-impeachment probability shift produces little durable vol, so confidence is low and the magnitude likely under threshold."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves Yes only on a House majority vote on articles of impeachment, not on Senate conviction or removal",
+    "House is currently Republican-controlled, so a Yes realistically depends on the 2026 midterms or major GOP defection",
+    "Historical episodes (2019 Trump impeachment, Clinton 1998) had muted, transient effects on broad US equities",
+    "Impeachment without removal leaves policy and executive continuity intact"
+  ],
+  "uncertainty_notes": [
+    "The proxy linkage from impeachment odds to liquid assets is inherently weak and indirect",
+    "A 12h horizon is too short for a slow political process to transmit to markets absent a discrete catalyst",
+    "Prediction-market moves in low-liquidity political contracts are often noise rather than information",
+    "If the move reflects an already-public news event, the asset reaction is already priced"
+  ],
+  "llm_justification": {
+    "summary": "This market tracks the probability of a US House impeachment vote against Trump before end-2026. Because House impeachment alone is symbolic (no conviction/removal) and realistically hinges on the 2026 midterms rather than an imminent 12h event, the mapping to liquid public assets is weak. The most plausible but low-conviction implications are a small risk-premium drag on broad US equities (SPY down) and a modest bid to equity volatility (VXX up). Neither is likely to reach the 700bps tradable threshold within 12 hours, so this is best treated as a non-tradable, informational signal.",
+    "key_assumptions": [
+      "A sharp odds move reflects genuine new political-risk information rather than thin-market noise",
+      "Investors treat rising impeachment odds as mildly negative for risk sentiment",
+      "No Senate conviction is expected, so real policy impact is limited"
+    ],
+    "failure_modes": [
+      "The equity/vol move is dominated by unrelated macro (rates, earnings, data) and shows no impeachment linkage",
+      "The prediction-market shift is illiquid noise with no corroborating public news",
+      "Markets shrug off symbolic impeachment as they largely did in 2019, producing near-zero asset reaction",
+      "Direction could invert if a Trump impeachment is read as increasing odds of a more market-friendly successor or reduced policy volatility",
+      "Both proxies (SPY, VXX) are only weakly exposed to this specific political variable"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

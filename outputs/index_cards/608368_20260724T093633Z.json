@@ -1,0 +1,99 @@
+{
+  "card_id": "608368_20260724T093633Z",
+  "card_version": "v1",
+  "card_hash": "62825c086b06ccbe2e67207dae61281e046ade40b43b87932e0f3ef006d070c9",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-24T09:36:33Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "608368",
+    "market_slug": "will-openai-not-ipo-by-december-31-2026",
+    "market_name": "Will OpenAI not IPO by December 31, 2026?",
+    "market_url": "https://polymarket.com/market/will-openai-not-ipo-by-december-31-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will OpenAI not IPO by December 31, 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Microsoft equity (largest OpenAI backer)",
+      "ticker": "MSFT",
+      "tradable_instrument_name": "Microsoft Corporation",
+      "asset_class": "equity",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.2,
+      "confidence_interval_bps": [
+        -120.0,
+        180.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any concrete OpenAI IPO/S-1 headline accompanies the probability move or whether it is pure market noise.",
+        "1h": "Compare MSFT intraday move vs. Nasdaq to see if any idiosyncratic reaction is visible above beta.",
+        "2h": "Scan newswires (Bloomberg/Reuters) for OpenAI corporate-structure or fundraising news confirming a real information event.",
+        "6h": "Reassess whether the prediction-market move persisted or reverted; if reverted, treat as noise.",
+        "12h": "Log realized MSFT return vs. prediction; note whether any public IPO confirmation emerged."
+      },
+      "reasoning": "Microsoft holds a large economic stake in OpenAI, so a shift in the market-implied probability of an OpenAI IPO is the closest listed proxy. However, the sign is ambiguous: a rising IPO probability could unlock value/mark-to-market gains for MSFT's stake, but it could also complicate the commercial relationship or dilute MSFT's preferential access. An IPO is a slow structural corporate event, not a catalyst that moves a mega-cap's price sharply within 12h. Expected move is well below the 700bps tradable threshold."
+    },
+    {
+      "asset": "Broad AI/robotics thematic equity",
+      "ticker": "BOTZ",
+      "tradable_instrument_name": "Global X Robotics & Artificial Intelligence ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 30.0,
+      "confidence": 0.15,
+      "confidence_interval_bps": [
+        -100.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify whether the probability shift coincides with any AI-sector-wide catalyst rather than an OpenAI-specific one.",
+        "1h": "Check BOTZ vs. SPY/QQQ to isolate any thematic move.",
+        "2h": "Look for confirming AI-financing or IPO-pipeline headlines.",
+        "6h": "Assess persistence of the thematic move; fade if it tracked broad beta only.",
+        "12h": "Record realized ETF return and whether the prediction-market signal had any public counterpart."
+      },
+      "reasoning": "A rising probability of an OpenAI public listing could be read as bullish sentiment for the AI investment cycle broadly, lifting AI-thematic baskets. But the linkage is diffuse and second-order: OpenAI is private, the ETF holds hardware/semis/software names with only indirect exposure, and IPO timing news rarely produces a same-day thematic repricing of 700bps. Direction and magnitude are both uncertain, so this is a non-tradable, low-conviction mapping."
+    }
+  ],
+  "evidence_used": [
+    "Market question on whether OpenAI will NOT IPO by Dec 31 2026",
+    "OpenAI is privately held with Microsoft as its largest strategic/financial backer",
+    "No listed instrument gives direct exposure to OpenAI equity",
+    "IPO timing is a slow structural corporate event rather than a 12h catalyst"
+  ],
+  "uncertainty_notes": [
+    "The sign of the effect on MSFT is genuinely ambiguous (value unlock vs. relationship/dilution risk).",
+    "Prediction-market probability moves on a 2026 event have little reason to translate into sharp 12h moves in liquid assets.",
+    "No pure-play public proxy for OpenAI exists, so all proxies are weakly exposed.",
+    "The market is mislabeled 'elections' which suggests low data quality."
+  ],
+  "llm_justification": {
+    "summary": "This market prices the probability OpenAI does NOT go public by end-2026. There is no direct liquid proxy for OpenAI; the closest listed exposures are Microsoft (large stakeholder) and broad AI-thematic ETFs. Both mappings are weak: the directional sign is ambiguous, IPO timing is a slow structural event unlikely to move mega-caps or thematic baskets by the 700bps tradable threshold within 12 hours, and prediction-market noise on a 2026 resolution rarely reflects imminent public information. We therefore assign 'unclear' direction and low confidence, with sub-threshold expected magnitudes \u2014 this is not a tradable signal.",
+    "key_assumptions": [
+      "Microsoft retains a material economic interest in OpenAI.",
+      "No public S-1 filing or concrete IPO announcement has occurred at the time of the signal.",
+      "Prediction-market probability moves here are largely noise absent a corroborating headline."
+    ],
+    "failure_modes": [
+      "The probability move simply reflects public speculation already priced into equities (no leak).",
+      "MSFT's reaction, if any, could be the opposite sign to what an 'IPO more likely' read implies.",
+      "Proxies (MSFT, BOTZ) are so diversified that OpenAI-specific news is drowned out by macro/beta.",
+      "An IPO event, even if signaled, is months/years away and creates no 12h catalyst.",
+      "Market is potentially miscategorized/low-liquidity, making the implied probability unreliable."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

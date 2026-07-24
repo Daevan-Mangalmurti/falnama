@@ -1,0 +1,97 @@
+{
+  "card_id": "616902_20260724T093633Z",
+  "card_version": "v1",
+  "card_hash": "82703bc42255af6c53c19f189a5d52604e6c1e540116144e43cb5bf3c1bce921",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-24T09:36:33Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616902",
+    "market_slug": "will-no-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will no Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-no-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will no Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-duration US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -40.0,
+      "confidence": 0.5,
+      "confidence_interval_bps": [
+        -150.0,
+        60.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether front-end rate futures (SOFR/Fed funds futures) and the 2y/10y yields are moving in the same hawkish direction, confirming the signal is macro rather than a thin-market blip.",
+        "1h": "Compare TLT price action vs the size of the probability shift; look for confirmation in the dollar (DXY) and equity index futures.",
+        "2h": "Re-examine whether any scheduled macro data (CPI, jobs, Fed speak) explains the move \u2014 if so the market was reacting to public info, not leaking it.",
+        "6h": "Assess persistence: has TLT held the move or mean-reverted? Check overnight rates markets.",
+        "12h": "Final read: did duration sell off in line with a hawkish repricing, or did the prediction-market move prove noise?"
+      },
+      "reasoning": "If the implied probability that the Fed makes NO cuts in 2026 rises sharply, that is a hawkish repricing of the rate path \u2014 fewer/no cuts means the front end and the whole curve reprice higher in yield, pushing long-duration Treasury prices down. TLT is a clean, liquid proxy for duration. Note the effect is diffuse: rate-path news is broadly disseminated, so a Polymarket move rarely leads Treasuries by much."
+    },
+    {
+      "asset": "US Dollar",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 25.0,
+      "confidence": 0.45,
+      "confidence_interval_bps": [
+        -60.0,
+        110.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check DXY and EURUSD for confirmation alongside the rate-futures move.",
+        "1h": "Verify the dollar move is rate-driven, not risk-off flight (which could coincide).",
+        "2h": "Scan for scheduled Fed communication or data that already explains the shift.",
+        "6h": "Assess whether the dollar strength persists or fades intraday.",
+        "12h": "Final read on whether dollar tracked the hawkish repricing."
+      },
+      "reasoning": "A hawkish shift (higher probability of no 2026 cuts) generally supports the dollar via wider real-rate and carry differentials. UUP is a liquid dollar proxy. The exposure is weaker and noisier than for duration, and dollar moves depend heavily on relative central-bank expectations abroad."
+    }
+  ],
+  "evidence_used": [
+    "Market question probability on 'no Fed rate cuts in 2026' \u2014 a rise implies a hawkish rate-path repricing",
+    "Standard macro transmission: fewer cuts => higher yields => lower long-duration bond prices and stronger USD",
+    "Liquidity of TLT and UUP as broad proxies for duration and the dollar"
+  ],
+  "uncertainty_notes": [
+    "The 700bps tradable threshold is enormous (7%); realistic 12h moves in these liquid proxies are tens of bps, so none of these are 'tradable' under the stated bar.",
+    "Fed-path expectations are heavily driven by public data (CPI, NFP, Fed speak); a prediction market is unlikely to lead these liquid assets.",
+    "Direction depends on which way the implied probability moved \u2014 this card assumes a hawkish (probability-up) shift."
+  ],
+  "llm_justification": {
+    "summary": "A sharp increase in the implied probability that the Fed makes NO rate cuts in 2026 represents a hawkish repricing of the policy path. The cleanest downstream implications are lower long-duration Treasury prices (TLT down) and a modestly stronger dollar (UUP up). However, rate-path expectations are dominated by widely-disseminated public data, the proxies respond to many other forces, and realistic 12h magnitudes (tens of bps) fall far below the 700bps tradable threshold \u2014 so this is a low-confidence, non-tradable research mapping.",
+    "key_assumptions": [
+      "The observed prediction-market move is toward higher probability of no cuts (hawkish).",
+      "No offsetting risk-off flow that would push Treasuries up as a safe haven.",
+      "The move reflects new information rather than thin-market noise."
+    ],
+    "failure_modes": [
+      "The probability could have moved the other way (dovish), reversing all directions.",
+      "Rate expectations are already fully public; the market is a lagging, not leading, sensor.",
+      "Safe-haven demand could push Treasuries UP even in a hawkish scenario, breaking the TLT link.",
+      "Dollar exposure is weak and dominated by foreign central-bank expectations.",
+      "Thin prediction-market liquidity can produce probability swings unrelated to genuine information."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

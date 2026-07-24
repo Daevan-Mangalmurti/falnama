@@ -1,0 +1,97 @@
+{
+  "card_id": "616904_20260724T093633Z",
+  "card_version": "v1",
+  "card_hash": "c8ad4ad88b5fc0a66dc7776042e62b655a98d8332baa83dce6d637e1f4ca5f07",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-24T09:36:33Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616904",
+    "market_slug": "will-2-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 2 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-2-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 2 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US long-duration Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 15.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -40.0,
+        60.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket odds move coincided with a macro catalyst (CPI, jobs, Fed speaker); compare to fed funds futures / SOFR strip to see if bonds already moved.",
+        "1h": "Confirm TLT direction vs 2y/10y yields; verify no idiosyncratic Polymarket liquidity spike drove the odds.",
+        "2h": "Reassess whether rates market has repriced in same direction; if not, treat the Polymarket signal as noise.",
+        "6h": "Look for scheduled data/Fed communications overnight that could validate or reverse the move.",
+        "12h": "Mark TLT return vs entry; log whether the prediction-market move had any lead relationship to Treasury yields."
+      },
+      "reasoning": "A sharp move in the implied probability of two 25bp Fed cuts in 2026 is a shift in the market-implied policy path. A dovish repricing (higher odds of cuts) lowers expected fwd rates and rallies long bonds; a hawkish repricing does the opposite. TLT is the most direct liquid proxy for shifts in Fed rate-path expectations. However, this Polymarket contract is thin, mislabeled ('military_conflict'), and 2026 policy is already heavily discounted by deeper, more liquid rates markets (fed funds futures, SOFR), so a Polymarket move is unlikely to lead Treasuries. Direction is unclear absent knowing which way the probability moved, and the magnitude over 12h is far below the 700bp tradable threshold."
+    },
+    {
+      "asset": "US dollar",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 10.0,
+      "confidence": 0.25,
+      "confidence_interval_bps": [
+        -30.0,
+        40.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check DXY and 2y yield reaction; see if any FX-relevant catalyst coincided.",
+        "1h": "Compare UUP move to rate-differential implied direction; discard if incoherent.",
+        "2h": "Reassess vs euro/yen crosses to confirm it's a dollar story not a cross-specific move.",
+        "6h": "Watch for overseas data/central-bank news that dominate FX overnight.",
+        "12h": "Record UUP return and whether it tracked the implied rate-path shift."
+      },
+      "reasoning": "More expected Fed cuts (dovish) tends to weaken the dollar via lower rate differentials; fewer cuts (hawkish) supports it. UUP is a liquid DXY proxy. But the transmission from a niche prediction market on 2026 cut counts to spot FX is weak and slow, and FX is driven by relative central-bank paths, not just the Fed. Magnitude tiny over 12h and nowhere near tradable."
+    }
+  ],
+  "evidence_used": [
+    "Market question on number of 25bp Fed cuts in 2026, resolving on FOMC statements",
+    "Fed rate-path expectations map directly to Treasury yields and the dollar",
+    "Deep liquid rates markets (fed funds/SOFR futures) already price 2026 policy",
+    "Polymarket contract appears mislabeled (topic 'military_conflict'), suggesting weak categorization/liquidity"
+  ],
+  "uncertainty_notes": [
+    "We are not told the direction of the probability move, so asset direction is unclear.",
+    "2026 Fed policy is a long-horizon variable already discounted by more liquid markets; a 12h window is too short for a leak thesis.",
+    "Polymarket liquidity/labeling issues make this a noisy sensor."
+  ],
+  "llm_justification": {
+    "summary": "This market tracks the number of 2026 Fed 25bp cuts, a pure rate-path variable. A sharp odds move would, in principle, map to Treasuries (TLT) and the dollar (UUP): dovish repricing rallies bonds and weakens USD, hawkish the reverse. But the direction of the implied move is unknown, deeper liquid rates markets already price 2026 policy far more efficiently, and the 12h horizon plus tiny expected magnitude (well under the 700bp tradable bar) make this a non-tradable, low-confidence research signal.",
+    "key_assumptions": [
+      "The market reflects genuine shifts in Fed cut expectations rather than thin-market noise.",
+      "TLT and UUP are adequate liquid proxies for rate-path repricing.",
+      "No dominating exogenous catalyst overwhelms the rate-path signal in the window."
+    ],
+    "failure_modes": [
+      "Direction unknown\u2014if the probability fell (hawkish) rather than rose, both proxies move opposite to the dovish case.",
+      "Information already public: fed funds/SOFR futures price 2026 policy first, so Treasuries would move before this niche market, not after.",
+      "Weak/slow proxy exposure: a 2026-horizon cut-count contract has minimal 12h impact on spot bonds/FX.",
+      "Thin, possibly mislabeled Polymarket contract could produce spurious odds moves with no fundamental content."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
