@@ -1,0 +1,99 @@
+{
+  "card_id": "608364_20260725T091351Z",
+  "card_version": "v1",
+  "card_hash": "93ae27b7a2e5b18fbc1c68d92906b652610b11c44e3201a0ef88a6a746ec0f8b",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-25T09:13:51Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "608364",
+    "market_slug": "will-openais-market-cap-be-between-750b-and-1t-at-market-close-on-ipo-day",
+    "market_name": "Will OpenAI\u2019s market cap be between $750B and $1T at market close on IPO day?",
+    "market_url": "https://polymarket.com/market/will-openais-market-cap-be-between-750b-and-1t-at-market-close-on-ipo-day",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will OpenAI\u2019s market cap be between $750B and $1T at market close on IPO day?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Microsoft (largest OpenAI stakeholder proxy)",
+      "ticker": "MSFT",
+      "tradable_instrument_name": "Microsoft Corporation",
+      "asset_class": "equity",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.12,
+      "confidence_interval_bps": [
+        -120.0,
+        120.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any OpenAI IPO filing/S-1 headline or valuation leak accompanies the market move; without news the signal is noise.",
+        "1h": "Compare MSFT move vs broad software/AI peers (QQQ) to isolate any OpenAI-specific component.",
+        "2h": "Re-check Polymarket implied probability stability; a specific-bracket market is prone to thin liquidity and mechanical repricing.",
+        "6h": "Assess whether AI/megacap sentiment is driving both the market and MSFT, i.e. reverse causation.",
+        "12h": "Confirm whether any concrete IPO timeline emerged; if not, treat as non-tradable noise and stand down."
+      },
+      "reasoning": "Microsoft holds a large economic stake in OpenAI, so an OpenAI IPO valuation is the cleanest liquid read-through. But this market asks about a narrow $750B-$1T bracket at IPO close of an IPO that is not yet scheduled and may not occur before end-2026. A probability shift in a specific valuation bracket carries almost no directional information for a 12h move in MSFT, and MSFT's own multi-trillion cap dwarfs any incremental OpenAI mark. Mapping is weak."
+    },
+    {
+      "asset": "AI/semiconductor equipment ecosystem",
+      "ticker": "SMH",
+      "tradable_instrument_name": "VanEck Semiconductor ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.1,
+      "confidence_interval_bps": [
+        -150.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Scan for AI-capex or OpenAI funding headlines that could jointly move both.",
+        "1h": "Check NVDA/AVGO leadership within SMH for any OpenAI-linked narrative.",
+        "2h": "Verify move isn't just broad risk-on/off; compare to SPY.",
+        "6h": "Look for follow-through or reversal; bracket markets often mean-revert.",
+        "12h": "Decide whether any durable AI-sentiment signal exists; likely non-tradable."
+      },
+      "reasoning": "A higher OpenAI IPO valuation could signal continued AI capex enthusiasm benefiting chip names. However this market is about a bounded valuation bracket, not overall AI direction, and there is no scheduled IPO, so the read-through to a 12h SMH move is extremely tenuous and dominated by macro/rates and earnings flow."
+    }
+  ],
+  "evidence_used": [
+    "Market question targets a narrow $750B-$1T bracket for OpenAI's IPO-day close",
+    "Resolution allows 'No IPO by December 31, 2026' - no IPO is currently scheduled",
+    "Microsoft is OpenAI's largest strategic/economic partner",
+    "OpenAI is privately held with no public tradable equity"
+  ],
+  "uncertainty_notes": [
+    "No liquid instrument directly tracks OpenAI's private valuation",
+    "Bracket-specific probability moves are non-directional on overall valuation",
+    "Long time horizon (to end-2026) means near-term asset impact is minimal",
+    "Reverse causality: AI equity sentiment likely drives the market more than vice versa"
+  ],
+  "llm_justification": {
+    "summary": "This prediction market concerns whether a not-yet-scheduled OpenAI IPO would close in a specific $750B-$1T market-cap bracket. There is no directly tradable OpenAI equity, the bracket is non-directional, and the horizon extends to end-2026, so the read-through to liquid public assets within a 12h window is very weak. The closest proxies (Microsoft as largest stakeholder, semis via SMH) are far too diversified for a bracket-specific probability move to matter. Both mappings are flagged unclear with low confidence and sub-threshold expected moves; this is best treated as non-tradable research noise absent an accompanying concrete IPO/valuation headline.",
+    "key_assumptions": [
+      "No OpenAI IPO is imminently scheduled within the 12h window",
+      "MSFT and SMH are the most exposed liquid proxies to OpenAI valuation",
+      "Bracket-specific market moves carry little directional macro information"
+    ],
+    "failure_modes": [
+      "The move reflects a genuine IPO-timing leak that would move MSFT sharply - but bracket specificity still mutes direction",
+      "Information is already public (broad AI enthusiasm) and priced into proxies",
+      "Proxies (MSFT, SMH) are far too large/diversified for OpenAI marks to register",
+      "Polymarket bracket illiquidity produces spurious probability swings unrelated to fundamentals",
+      "Reverse causation: equity rally drives the prediction market, not the other way around"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

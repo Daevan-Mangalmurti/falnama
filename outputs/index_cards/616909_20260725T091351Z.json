@@ -1,0 +1,98 @@
+{
+  "card_id": "616909_20260725T091351Z",
+  "card_version": "v1",
+  "card_hash": "e777e6e7b36b06441749f97e98afb5c1d23118d0b868ad79af71c26eb171bf25",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-25T09:13:51Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616909",
+    "market_slug": "will-7-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 7 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-7-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 7 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-duration US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 80.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -60.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the market's implied 7-cut probability move persists or is a thin-liquidity blip; watch 2y/10y yields and fed funds futures for confirmation.",
+        "1h": "Cross-check against any Fed speaker headlines, labor/inflation data surprises, or risk-off catalysts that could justify aggressive easing bets.",
+        "2h": "Assess TLT price action vs. move in front-end futures; if front end leads and long end lags, curve is bull-steepening as expected.",
+        "6h": "Re-evaluate whether the dovish repricing is broad (equities, gold, dollar all consistent) or idiosyncratic to the Polymarket contract.",
+        "12h": "Confirm whether TLT held any gains into the window close; log whether the prediction-market move led or lagged the Treasury move."
+      },
+      "reasoning": "A sharp rise in the implied probability of 7 cuts (175bps of easing) in 2026 signals a dramatic dovish repricing \u2014 likely tied to recession or an emergency-easing scenario. Aggressive expected Fed easing pulls the entire front-to-belly of the curve lower in yield, and long-duration Treasuries rally as terminal-rate and growth expectations collapse. TLT is the cleanest liquid proxy for that duration bid."
+    },
+    {
+      "asset": "US Dollar",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -40.0,
+      "confidence": 0.35,
+      "confidence_interval_bps": [
+        -150.0,
+        60.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm the prediction-market spike is real and check DXY/EURUSD reaction alongside front-end rate futures.",
+        "1h": "Determine if the dovish narrative is US-specific (dollar-negative) or global risk-off (dollar could rally on haven flows).",
+        "2h": "Watch whether other central-bank pricing shifts too; relative dovishness, not absolute, drives FX.",
+        "6h": "Reassess UUP vs. gold and Treasuries for internal consistency of the easing thesis.",
+        "12h": "Log net UUP move and whether the FX proxy behaved as a rate-differential trade or a haven trade."
+      },
+      "reasoning": "An abrupt jump in odds of seven 2026 cuts implies a widening negative US rate differential vs. other central banks, which typically weakens the dollar. UUP is a liquid DXY proxy. Conviction is lower than the Treasury leg because a recession-driven dovish scenario can also trigger safe-haven dollar demand, muddying the FX signal."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies an extreme dovish tail (7 cuts = ~175bps of easing in 2026)",
+    "Aggressive Fed easing historically co-moves with lower Treasury yields, weaker USD, and firmer gold",
+    "A jump in this contract's probability would signal a major shift in easing expectations or recession odds"
+  ],
+  "uncertainty_notes": [
+    "The market is a noisy, thin sensor; a probability move could be liquidity-driven not information-driven",
+    "7 cuts is a low-base-rate tail; even a large relative probability shift may be a small absolute repricing that barely moves rates",
+    "Recession-driven easing can make the dollar rally (haven) rather than fall, inverting the FX leg",
+    "12h magnitudes here are far below the 700bps tradable threshold \u2014 these are not tradable signals"
+  ],
+  "llm_justification": {
+    "summary": "This contract prices an extreme dovish 2026 Fed path. A sharp rise in its implied probability would signal aggressive-easing/recession expectations, mapping to a duration rally (TLT up) and a weaker dollar (UUP down), with gold as a secondary beneficiary. Both mappings are directionally plausible but low-confidence, and expected 12h magnitudes fall well below the tradable threshold \u2014 treat as research, not a signal.",
+    "key_assumptions": [
+      "A prediction-market move reflects genuine shift in Fed-path expectations, not noise",
+      "Rate-cut expectations transmit to Treasury yields and FX via standard rate-differential channels",
+      "The dovish scenario is US-specific enough to weaken the dollar rather than trigger haven demand"
+    ],
+    "failure_modes": [
+      "Move was already public \u2014 Fed pricing largely set by futures/data, so Polymarket adds little new information",
+      "Reversal: thin prediction-market liquidity produces a spike that mean-reverts within hours",
+      "Weak/ambiguous proxy: recession-driven easing flips USD to a haven bid, breaking the UUP-down thesis",
+      "Magnitude far below 700bps threshold \u2014 no tradable edge even if direction is right",
+      "Category tag 'military_conflict' appears mislabeled; if a real conflict shock drives easing bets, haven dynamics dominate and dollar/gold could both rise"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "card_id": "616914_20260725T091351Z",
+  "card_version": "v1",
+  "card_hash": "ea156258f808aa85e63d3a189f7f47688dacaeca52d3e9da43fed2ca3a7e0884",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-25T09:13:51Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616914",
+    "market_slug": "will-12-or-more-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 12 or more Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-12-or-more-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 12 or more Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-duration US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 80.0,
+      "confidence": 0.32,
+      "confidence_interval_bps": [
+        -120.0,
+        350.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability shift is corroborated by moves in fed funds futures / SOFR strip and 2Y yield; isolate signal from noise.",
+        "1h": "Compare TLT tick with 2Y and 10Y yields to confirm a genuine dovish repricing rather than an idiosyncratic Polymarket quote.",
+        "2h": "Look for any macro headline (labor data, credit event, geopolitical shock) that could justify emergency-cut pricing.",
+        "6h": "Reassess whether the rate-cut probability held or mean-reverted; check MOVE index for rate vol confirmation.",
+        "12h": "Evaluate whether TLT moved with rates repricing; if no corroborating rates move, treat the market signal as noise."
+      },
+      "reasoning": "A market pricing 12+ (=300bps) Fed cuts in 2026 is a deep-recession/emergency-easing tail scenario. A sharp rise in its implied probability would signal expectations of aggressive, possibly emergency, easing \u2014 bullish for duration as front-end and long-end yields fall. TLT is the cleanest liquid proxy for that rate move."
+    },
+    {
+      "asset": "US large-cap equities",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "equity_index",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -90.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -400.0,
+        120.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify equity futures reaction and VIX; distinguish 'bad-news easing' from 'good-news soft-landing easing.'",
+        "1h": "Check credit spreads (HYG/LQD) for corroborating risk-off; cross-check with the TLT signal.",
+        "2h": "Scan for the catalyst driving deep-cut pricing; a benign disinflation story would flip equities positive, breaking this thesis.",
+        "6h": "Reassess direction \u2014 dovish easing without recession can lift equities, so watch whether risk-off persists.",
+        "12h": "Confirm whether equities and rates moved consistently with a recession-easing narrative; otherwise mark mapping weak."
+      },
+      "reasoning": "12+ cuts implies severe economic distress (only plausible with a recession or systemic shock triggering emergency easing). If that tail probability spikes, equities would typically fall on growth/earnings fear despite easing hopes, since the easing is a response to crisis. SPY is the deepest liquid proxy."
+    }
+  ],
+  "evidence_used": [
+    "Market implies 12+ 25bp cuts (=300bps) in 2026, an extreme tail requiring recession or emergency Fed action",
+    "Rate-cut expectations map directly to Treasury duration and risk assets",
+    "Emergency/large cuts historically coincide with crisis (2008, 2020) and equity drawdowns"
+  ],
+  "uncertainty_notes": [
+    "The 700bps tradable threshold is very unlikely to be met by any liquid ETF over 12h absent an actual crisis",
+    "Direction of equities is ambiguous: dovishness can be bullish (soft landing) or bearish (crisis) depending on cause",
+    "Polymarket quotes on tail strikes are thin and noisy; a probability move may reflect low liquidity, not information"
+  ],
+  "llm_justification": {
+    "summary": "This market prices an extreme easing scenario (12+ cuts / 300bps in 2026), only realistic under recession or emergency Fed action. A sharp rise in its implied probability would signal crisis/deep-easing expectations, which map to higher long-duration Treasuries (TLT up) and, most likely, lower equities (SPY down) on growth fears. Both mappings are low-confidence, noisy, and almost certainly below the 700bps tradable bar over a 12h window.",
+    "key_assumptions": [
+      "A probability spike reflects genuine macro information rather than thin-market noise",
+      "12+ cuts is interpreted as crisis-driven emergency easing, not benign disinflation",
+      "Rate and equity proxies react in standard risk-off/dovish fashion"
+    ],
+    "failure_modes": [
+      "The move is already public (priced into rates via FOMC data/CPI) so no incremental asset move",
+      "Benign soft-landing easing would lift equities, reversing the SPY thesis",
+      "Thin Polymarket tail-strike liquidity produces spurious probability moves with no asset linkage",
+      "Magnitude far below 700bps threshold, making the signal non-tradable even if directionally right"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

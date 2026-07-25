@@ -1,0 +1,99 @@
+{
+  "card_id": "568117_20260725T091351Z",
+  "card_version": "v1",
+  "card_hash": "bc6064931f871624b474fdddaadc588b5bca389de13ddcbdfe8d038c323f7e1a",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-25T09:13:51Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "568117",
+    "market_slug": "will-trump-resign-by-december-31-2026",
+    "market_name": "Will Trump resign by December 31, 2026?",
+    "market_url": "https://polymarket.com/market/will-trump-resign-by-december-31-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Trump resign by December 31, 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US equity market",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -250.0,
+      "confidence": 0.28,
+      "confidence_interval_bps": [
+        -1500.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability spike is corroborated by any wire headlines (Reuters/AP/Bloomberg) or is isolated Polymarket noise; watch SPY futures and VIX for confirmation.",
+        "1h": "Re-assess whether cross-asset risk-off (gold up, USD, Treasuries bid) is coherent; if only the prediction market moved and no news, downgrade to noise.",
+        "2h": "Confirm whether credible reporting on resignation/health/legal event has emerged; size conviction accordingly.",
+        "6h": "Evaluate whether equity move persisted or mean-reverted; reversal implies false signal.",
+        "12h": "Final check: was the political event real and public? Compare realized SPY move to prediction; log calibration."
+      },
+      "reasoning": "A sharp rise in the implied probability of a Trust resignation would signal an acute US political/constitutional shock, driving a risk-off move: equities typically sell off on sudden leadership uncertainty. However, base rate of actual resignation is extremely low, so most probability moves are noise; only a genuine, credible escalation (health, legal, scandal) would produce a large equity drawdown reaching the 700bps threshold. Absent that, expected move is modest and the mapping is weak."
+    },
+    {
+      "asset": "Gold (safe haven)",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 150.0,
+      "confidence": 0.25,
+      "confidence_interval_bps": [
+        -150.0,
+        1000.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check gold spot and DXY for corroborating flight-to-safety; verify against news wires.",
+        "1h": "Confirm whether Treasuries and JPY/CHF are also bid, indicating genuine risk-off rather than idiosyncratic noise.",
+        "2h": "Assess credibility of underlying political event; if none, treat as noise.",
+        "6h": "Check persistence of safe-haven bid; fade if reversing.",
+        "12h": "Compare realized gold move to prediction and log outcome."
+      },
+      "reasoning": "Sudden US political instability tends to bid safe havens including gold as investors hedge policy/institutional uncertainty and potential USD weakness. This is a secondary, weaker proxy \u2014 gold responds to many drivers, and a resignation-probability move alone is a thin signal. Only a real, escalating event would push gold meaningfully; otherwise expect drift."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies a tail political-risk event (US presidential resignation) with normally very low base rate",
+    "Historical pattern: sudden US leadership/constitutional uncertainty produces equity risk-off and safe-haven demand",
+    "Resolution allows 'announce' to trigger Yes, lowering the bar somewhat but still a rare event",
+    "Polymarket probability shifts are frequently noisy and thinly traded on tail political questions"
+  ],
+  "uncertainty_notes": [
+    "A probability spike may reflect illiquid market noise or speculation rather than genuine information leakage",
+    "If a resignation event were truly imminent it would likely already be public, muting any 'leak' edge",
+    "Proxies (SPY, GLD) are exposed to many unrelated macro drivers over a 12h window",
+    "The 700bps tradability threshold is unlikely to be met absent a confirmed, credible event"
+  ],
+  "llm_justification": {
+    "summary": "This market maps to a US political-shock scenario. A sharp rise in the implied probability of a Trump resignation would, if credible, drive risk-off flows: US equities lower and safe havens (gold, USD, Treasuries) higher. But the base rate is extremely low, prediction-market moves on tail questions are noisy, and any genuine event would likely already be public \u2014 so the mapping is weak and low-confidence. Neither implication reliably clears the 700bps tradable threshold absent confirmed news; treat as monitoring signal, not a trade.",
+    "key_assumptions": [
+      "A meaningful probability move actually occurred and is not pure illiquidity noise",
+      "The move reflects some information rather than speculation",
+      "Markets would react to leadership uncertainty in the classic risk-off pattern"
+    ],
+    "failure_modes": [
+      "The probability move reverses within hours as thin-market noise, with no equity/gold follow-through",
+      "The event is already public (headline-driven), so no leak edge exists and assets have already repriced",
+      "SPY and GLD are weakly and non-uniquely exposed; unrelated macro data dominates the 12h window",
+      "A resignation announcement could paradoxically reduce uncertainty (orderly succession to VP), muting or reversing the expected risk-off move",
+      "Magnitude falls far short of 700bps, making both implications non-tradable"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

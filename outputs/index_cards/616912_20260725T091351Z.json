@@ -1,0 +1,98 @@
+{
+  "card_id": "616912_20260725T091351Z",
+  "card_version": "v1",
+  "card_hash": "69fbfbf53b57d53d621424183ad09a3e40fe4ac508c11148c2878db1c5ec52e5",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-25T09:13:51Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616912",
+    "market_slug": "will-10-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 10 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-10-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 10 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-dated US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 80.0,
+      "confidence": 0.32,
+      "confidence_interval_bps": [
+        -60.0,
+        260.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether front-end rate futures (SOFR/Fed funds futures) confirm a dovish repricing or if this is an isolated illiquid Polymarket tick.",
+        "1h": "Compare TLT move to 2y/10y Treasury yield changes; confirm bonds are rallying and it isn't a fluke.",
+        "2h": "Look for a macro catalyst (jobs/CPI shock, bank stress, geopolitical crisis) that would justify emergency-cut pricing; absent one, fade the signal.",
+        "6h": "Reassess whether equity/credit stress accompanies the bond bid (risk-off) versus a benign soft-landing dovish read.",
+        "12h": "Evaluate whether the dovish repricing held into the next session or reversed; log outcome vs prediction."
+      },
+      "reasoning": "A sharp rise in the implied probability of 10 rate cuts (250bps of easing) in 2026 would signal that market participants expect an emergency-scale Fed easing cycle, which typically accompanies a severe recession or financial-crisis shock. That expectation pulls the entire rate path lower and bids long-duration Treasuries. TLT is the most liquid direct duration proxy. Note the 250bps-of-cuts strike is an extreme tail scenario, so the base rate of this market moving meaningfully is low."
+    },
+    {
+      "asset": "Gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -70.0,
+        220.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm DXY is softening and real yields (TIPS) are falling alongside the dovish signal.",
+        "1h": "Check gold futures volume and whether the move tracks a genuine rate repricing.",
+        "2h": "Identify any risk-off catalyst supporting a haven bid; distinguish rate-driven from crisis-driven move.",
+        "6h": "Reassess dollar and real-yield path; verify gold strength persists.",
+        "12h": "Log whether gold held gains or mean-reverted; compare to prediction."
+      },
+      "reasoning": "An aggressive-easing tail scenario implies lower real yields and a weaker dollar, both supportive of gold, plus gold's safe-haven bid if the easing reflects crisis conditions. GLD is a liquid proxy. Magnitude is modest and well below the 700bps tradable threshold; confidence is low because the market is pricing an extreme tail and could simply be noise."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies 10 cuts = 250bps of easing in a single year, an extreme dovish/emergency scenario",
+    "Fed easing cycles of that magnitude historically coincide with recession or crisis and drive lower rates, stronger bonds, weaker USD, and firmer gold",
+    "Included emergency-cut clause signals the market accounts for crisis-driven action"
+  ],
+  "uncertainty_notes": [
+    "Polymarket rate-cut markets are often thinly traded; a probability spike may be noise rather than information",
+    "10 cuts is a deep tail; even a large relative probability move can be a small absolute shift",
+    "12h window is too short for macro fundamentals to fully play out",
+    "Whether the move is 'risk-off crisis' (equities down, bonds up) or 'benign dovish' (equities up) drastically changes equity implications, so equities are left out"
+  ],
+  "llm_justification": {
+    "summary": "A market on 10 Fed rate cuts in 2026 embeds an extreme dovish/emergency-easing scenario. If its implied probability rose sharply, the cleanest downstream reads are lower rates and a crisis-tinged risk backdrop: long Treasuries (TLT) and gold (GLD) rise, dollar softens. Both mappings are modest in magnitude (well under the 700bps tradable bar) and low-confidence because the strike is a deep tail and Polymarket rate markets are noisy sensors.",
+    "key_assumptions": [
+      "A rise in this market reflects genuine expectations of aggressive Fed easing, not liquidity noise",
+      "Aggressive-easing pricing lowers the whole rate path, bidding duration and gold",
+      "Any easing of this scale is crisis/recession driven rather than benign"
+    ],
+    "failure_modes": [
+      "The Polymarket move is illiquid noise with no corresponding move in Fed funds futures \u2014 proxies don't react",
+      "The dovish expectation was already public (post-FOMC, CPI print) and priced into bonds/gold before the market moved",
+      "Equities could rally on 'Fed put' optimism, meaning the risk-off interpretation is wrong",
+      "If easing is seen as inflationary/currency-debasing, long Treasuries could actually sell off despite cuts",
+      "Magnitude far below 700bps threshold \u2014 not tradable, only a directional research signal"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
