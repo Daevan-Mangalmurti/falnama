@@ -1,0 +1,98 @@
+{
+  "card_id": "616903_20260726T092607Z",
+  "card_version": "v1",
+  "card_hash": "097c26be79c98477e7c45e1af0fa2d0559637858deb1bdbd1a86ca9f01bc42d9",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-26T09:26:07Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616903",
+    "market_slug": "will-1-fed-rate-cut-happen-in-2026",
+    "market_name": "Will 1 Fed rate cut happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-1-fed-rate-cut-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 1 Fed rate cut happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US long-term Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 25.0,
+      "confidence": 0.32,
+      "confidence_interval_bps": [
+        -60.0,
+        110.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the market's implied probability move is confirmed and sizeable (>5 points) rather than thin-liquidity noise; compare with fed funds futures/OIS repricing.",
+        "1h": "Watch 2y and 10y Treasury yields and TLT intraday tape for corroboration of a dovish/hawkish shift.",
+        "2h": "Cross-check against any Fedspeak, CPI/PCE, or jobs-data catalysts that could independently explain both the market and asset move (avoid false attribution).",
+        "6h": "Reassess whether the move persists or mean-reverts; note that a single-day full-year cut probability rarely drives durable long-end moves.",
+        "12h": "Record realized TLT return vs. expectation; flag if the anomaly preceded a public catalyst (leak test) or simply tracked already-public rate expectations."
+      },
+      "reasoning": "A sharp rise in the implied probability of at least one 2026 Fed cut signals a more dovish expected path. Lower expected policy rates pull down the long end of the curve, lifting long-duration Treasury prices (TLT). The linkage is directionally clean but the baseline probability of at least one cut over a full year is already very high and largely priced, so incremental information content is limited. If instead the probability fell (hawkish repricing), TLT would fall."
+    },
+    {
+      "asset": "US dollar",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": 15.0,
+      "confidence": 0.28,
+      "confidence_interval_bps": [
+        -70.0,
+        50.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm the probability shift is genuine and check DXY/EUR-USD reaction.",
+        "1h": "Compare US OIS repricing against foreign rate expectations to gauge differential move.",
+        "2h": "Screen for confounding macro releases or risk-off flows that move the dollar independently.",
+        "6h": "Assess persistence vs. reversal; the FX channel often decouples from a single rate-path market.",
+        "12h": "Log realized UUP return and whether the FX move was attributable to the rate-path repricing or unrelated drivers."
+      },
+      "reasoning": "A higher implied probability of Fed cuts narrows expected US rate differentials, which tends to weaken the dollar (UUP down). This is a second-order, weaker channel than the Treasury link and is easily overwhelmed by relative moves in ECB/BoJ expectations, risk sentiment, and global flows, so exposure is diffuse and confidence low."
+    }
+  ],
+  "evidence_used": [
+    "Market question tracks the number of 25bp Fed cuts in 2026, a direct read on expected monetary policy path",
+    "Standard transmission: lower expected policy rates -> lower yields, higher bond prices, weaker dollar, supportive for rate-sensitive equities and gold",
+    "Baseline probability of at least one cut over a full calendar year is structurally high and largely embedded in fed funds futures/OIS"
+  ],
+  "uncertainty_notes": [
+    "Direction of any asset move depends entirely on which way the implied probability moved; the card is written pre-move, so both up and down scenarios are possible",
+    "At least one cut over 12 months is a low-information, likely already-priced outcome; marginal signal is weak",
+    "12h horizon is too short for a full-year policy-path market to produce large asset moves; nothing here approaches the 700bp tradable threshold",
+    "Topic tag 'military_conflict' appears mislabeled; this is a monetary-policy market"
+  ],
+  "llm_justification": {
+    "summary": "This is a US monetary-policy probability market. A sharp rise in the implied odds of at least one 2026 Fed cut maps to a modestly dovish repricing: long Treasuries (TLT) up and the dollar (UUP) down, with the reverse on a hawkish shift. Both channels are directionally standard but weak in a 12h window because a full-year 'at least one cut' outcome is already largely priced, giving low information content. No implication reaches the 700bp tradable bar; confidence is deliberately low.",
+    "key_assumptions": [
+      "The market proxies expected Fed policy path via cut count for 2026",
+      "Standard rate-transmission channels hold over the window",
+      "A probability increase reflects a genuine dovish repricing rather than liquidity noise or resolution mechanics"
+    ],
+    "failure_modes": [
+      "The outcome (at least one cut in a year) is near-certain and already public/priced, so any market move carries little new info",
+      "Direction assumption inverts if the implied probability actually fell (hawkish)",
+      "Proxy exposure is diffuse: TLT and UUP respond to global rates, risk sentiment, and scheduled data that can dominate any single-market signal",
+      "12h window is far too short for a full-year policy market to move assets 700bp; likely non-tradable noise",
+      "Possible confounding by a concurrent public macro release causing false attribution"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

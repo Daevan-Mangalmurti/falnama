@@ -1,0 +1,18 @@
+{
+  "run_id": "20260726T092607Z",
+  "run_time_utc": "2026-07-26T09:26:07Z",
+  "card_mode": "live",
+  "stages": {
+    "select": true,
+    "screen": true,
+    "anomaly": true,
+    "cards": true,
+    "recommend": true,
+    "execution": true,
+    "newslag": true
+  },
+  "success": true,
+  "warnings": [],
+  "errors": [],
+  "last_updated_utc": "2026-07-26T09:41:41Z"
+}

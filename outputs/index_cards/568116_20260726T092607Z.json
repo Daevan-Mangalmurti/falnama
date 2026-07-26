@@ -1,0 +1,97 @@
+{
+  "card_id": "568116_20260726T092607Z",
+  "card_version": "v1",
+  "card_hash": "dd0596b03af534877559f9deafb9b14fafea7c55c058b24044d2869164320398",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-26T09:26:07Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "568116",
+    "market_slug": "will-trump-be-impeached-by-december-31-2026",
+    "market_name": "Will Trump be impeached by end of 2026?",
+    "market_url": "https://polymarket.com/market/will-trump-be-impeached-by-december-31-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Trump be impeached by end of 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US large-cap equity index",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": -15.0,
+      "confidence": 0.2,
+      "confidence_interval_bps": [
+        -120.0,
+        80.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether a specific news catalyst (investigation, scandal, defection) drove the probability move versus noise/thin liquidity.",
+        "1h": "Compare SPY futures move to baseline intraday range; confirm whether reaction is present at all.",
+        "2h": "Assess whether the move correlates with any policy-relevant headline (tariffs, appointments) rather than pure impeachment odds.",
+        "6h": "Re-check if move persists into the next session or fully mean-reverts, indicating noise.",
+        "12h": "Evaluate whether equities showed any measurable political-risk premium; expect none if event stays hypothetical."
+      },
+      "reasoning": "A sharp rise in implied probability of a House impeachment vote signals elevated US political instability. However, House impeachment alone (no Senate conviction or removal) is a weak market catalyst: both 2019 and 2021 Trump impeachments produced negligible equity reaction. Any risk-off would likely be small and short-lived, far below the 700bp tradable threshold."
+    },
+    {
+      "asset": "US equity volatility",
+      "ticker": "VIXY",
+      "tradable_instrument_name": "ProShares VIX Short-Term Futures ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.22,
+      "confidence_interval_bps": [
+        -100.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether front-month VIX ticks up alongside the probability shift or is flat.",
+        "1h": "Check if the vol move is idiosyncratic to political headlines versus broad macro drivers.",
+        "2h": "Assess term-structure: a genuine political-risk bid would steepen near-dated vol.",
+        "6h": "Determine if vol elevation holds or fades as market digests the low practical impact of House-only impeachment.",
+        "12h": "Judge whether any political-risk premium remains; expect decay toward baseline."
+      },
+      "reasoning": "Rising political-uncertainty odds can lift demand for hedges, modestly bidding implied volatility. But impeachment of a sitting president with a divided Congress rarely moves realized volatility meaningfully, and the House-only resolution criterion is largely symbolic. Any vol bump is likely small and mean-reverting, well under the tradable threshold."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves on House-only impeachment vote, explicitly excluding Senate conviction and removal",
+    "Historical precedent: 2019 and 2021 Trump impeachments produced minimal S&P 500 reaction",
+    "Event probability is heavily conditioned on 2026 midterm House composition (Democratic majority needed)",
+    "Prediction window is only 12h, limiting scope for large asset repricing"
+  ],
+  "uncertainty_notes": [
+    "Impeachment odds are driven by domestic political dynamics that historically decouple from asset prices",
+    "A probability spike could reflect thin prediction-market liquidity rather than genuine information",
+    "If a move were tied to a broader scandal affecting policy continuity (tariffs, Fed, fiscal), equity impact could be larger \u2014 but that is a different catalyst"
+  ],
+  "llm_justification": {
+    "summary": "This market maps weakly to public assets. A House-only impeachment vote is largely symbolic and, per 2019/2021 precedent, moves markets little. A sharp odds shift would at most produce a modest risk-off in broad US equities and a small volatility bid, both far below the 700bp tradable threshold. The honest read is low-confidence and not tradable within a 12h window.",
+    "key_assumptions": [
+      "Market participants price House impeachment as symbolic absent Senate removal",
+      "No accompanying policy-disruption catalyst travels with the impeachment odds move",
+      "Prediction-market probability move reflects real information, not liquidity noise"
+    ],
+    "failure_modes": [
+      "The impeachment odds move is already public/priced, so no incremental asset reaction",
+      "The move is prediction-market noise from thin liquidity with zero equity linkage",
+      "The true driver is a broader scandal affecting policy, making SPY/VIX poor isolated proxies",
+      "Direction could reverse quickly as markets recognize the House-only, non-removal resolution has minimal practical consequence"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

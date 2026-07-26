@@ -1,0 +1,100 @@
+{
+  "card_id": "567621_20260726T092607Z",
+  "card_version": "v1",
+  "card_hash": "728ff8bf6185def57748db82a9629cd670997e13f8edc131a899be008feea14f",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-26T09:26:07Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "567621",
+    "market_slug": "will-china-invade-taiwan-before-2027",
+    "market_name": "Will China invade Taiwan by end of 2026?",
+    "market_url": "https://polymarket.com/market/will-china-invade-taiwan-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will China invade Taiwan by end of 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Taiwan equity market",
+      "ticker": "EWT",
+      "tradable_instrument_name": "iShares MSCI Taiwan ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -900.0,
+      "confidence": 0.55,
+      "confidence_interval_bps": [
+        -3000.0,
+        -100.0
+      ],
+      "trade_eligibility": {
+        "eligible": true,
+        "reason": "Meets minimum expected move.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm the probability spike is a real, sustained move and not a single large order or thin-book noise; check TWD offshore (NDF) and TSM ADR for corroboration.",
+        "1h": "Check for any confirming headlines (PLA activity, US State/DoD statements, Taiwan MND alerts); if none, treat move as speculative and reduce conviction.",
+        "2h": "Assess whether Asian futures / VIX / gold are corroborating a genuine risk-off; watch semiconductor complex (SOXX, TSM).",
+        "6h": "Re-evaluate whether the probability move held or reverted; check Taiwan cash open if within session for confirmation of drawdown.",
+        "12h": "Close research window: compare realized EWT move vs predicted; note whether the leak proved informative or reverted to baseline."
+      },
+      "reasoning": "A sharp rise in the implied probability of a Chinese invasion of Taiwan is the single most direct threat to Taiwanese assets. EWT is the most liquid US-listed proxy for the TAIEX. War-risk repricing would trigger heavy foreign outflows, currency depreciation, and equity drawdown. Because the baseline probability is very low, any meaningful jump reflects genuine tail-risk repricing and would hit Taiwan equity hardest and fastest."
+    },
+    {
+      "asset": "Taiwan Semiconductor ADR",
+      "ticker": "TSM",
+      "tradable_instrument_name": "Taiwan Semiconductor Manufacturing Co. ADR",
+      "asset_class": "equity",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -1000.0,
+      "confidence": 0.5,
+      "confidence_interval_bps": [
+        -3500.0,
+        -100.0
+      ],
+      "trade_eligibility": {
+        "eligible": true,
+        "reason": "Meets minimum expected move.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify the prediction-market move is genuine; check TSM ADR premarket/after-hours depth and options skew for confirmation.",
+        "1h": "Scan for corroborating geopolitical headlines; if absent, downweight as noise-driven.",
+        "2h": "Compare TSM move to broader semis (SOXX, NVDA) to isolate Taiwan-specific risk vs sector beta.",
+        "6h": "Reassess whether move persisted; watch for official denials/reassurances that would reverse the thesis.",
+        "12h": "Close window: measure realized TSM move vs forecast and log whether signal led public confirmation."
+      },
+      "reasoning": "TSMC is the crown jewel of Taiwan's economy and the epicenter of invasion risk to global supply chains. A credible rise in invasion probability would sharply repricing TSM's existential/physical risk, likely more violently than a diversified ETF given single-asset concentration and the market's focus on chip supply disruption. Highly liquid ADR trades in US hours, so it can move on the signal even outside Taiwan cash session."
+    }
+  ],
+  "evidence_used": [
+    "Prediction market question on China invading Taiwan by end 2026",
+    "Taiwan-China military_conflict topic and region tags",
+    "EWT and TSM are the most liquid US-traded proxies for Taiwan tail risk",
+    "Known market sensitivity of Taiwan equities and TSMC to cross-strait tensions"
+  ],
+  "uncertainty_notes": [
+    "Prediction markets for multi-year tail events are thin and noisy; a probability move may reflect a single trade rather than information",
+    "Baseline probability is very low, so most 'spikes' revert without any public confirmation",
+    "Magnitude depends entirely on how large the implied-probability move is; a small drift implies far smaller asset moves",
+    "If the move is already public (headline-driven), assets may have already repriced before the signal"
+  ],
+  "llm_justification": {
+    "summary": "A sharp upward move in the implied probability of a Chinese invasion of Taiwan would map most directly to a risk-off repricing of Taiwanese assets. The cleanest liquid proxies are EWT (Taiwan equity ETF) and TSM (Taiwan Semiconductor ADR), both expected to fall, with TSM potentially more violent given single-name concentration and its supply-chain centrality. Both could exceed the 700bps tradable threshold in a genuine tail-risk repricing, but confidence is moderate because prediction-market moves on multi-year tail events are noisy and frequently revert without public confirmation.",
+    "key_assumptions": [
+      "The observed prediction-market move is a genuine, sustained probability increase, not book noise",
+      "The move is not already fully reflected in public asset prices",
+      "Cross-strait invasion risk transmits primarily through Taiwan-domiciled equities and semiconductors",
+      "EWT and TSM remain liquid and tradable within the 12h window"
+    ],
+    "failure_modes": [
+      "The probability spike is thin-book noise or a single large order and reverts within hours, leaving assets unmoved",
+      "The information is already public (headlines) so EWT/TSM already repriced before the signal \u2014 no edge",
+      "A false alarm or official denial triggers a sharp reversal, whipsawing the position",
+      "Broader market beta (Fed, macro) dominates the Taiwan-specific signal, muddying the mapping",
+      "Magnitude falls below 700bps if the probability move is modest, making it non-tradable despite correct direction"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

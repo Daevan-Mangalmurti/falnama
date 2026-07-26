@@ -1,0 +1,98 @@
+{
+  "card_id": "616905_20260726T092607Z",
+  "card_version": "v1",
+  "card_hash": "132c1e92107468091a2e58a705cf043c5efd92021ee4778e3e42b18384a02228",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-26T09:26:07Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616905",
+    "market_slug": "will-3-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 3 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-3-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 3 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-duration US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.5,
+      "confidence_interval_bps": [
+        -40.0,
+        180.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm the market probability moved on genuine flow, not a single mispriced trade; check 2y/10y Treasury yields and Fed funds futures for corroboration.",
+        "1h": "Check whether SOFR/fed funds futures and short-end yields have echoed the move; look for any Fed speak or data release explaining it.",
+        "2h": "Re-assess TLT vs the size of the yield move; verify the repricing is persisting rather than mean-reverting.",
+        "6h": "Compare against equity and dollar behavior for consistency of a dovish narrative; watch for scheduled data (CPI, jobs) that could dominate.",
+        "12h": "Evaluate whether the dovish shift held into the close; note if move faded (suggesting noise) for calibration."
+      },
+      "reasoning": "A sharp rise in the implied probability of 3 Fed cuts in 2026 signals a more dovish rate-path expectation. Lower expected policy rates pull down the whole yield curve, especially the long end, lifting long-duration bond prices. TLT is the most liquid direct proxy for this repricing."
+    },
+    {
+      "asset": "US dollar",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -30.0,
+      "confidence": 0.42,
+      "confidence_interval_bps": [
+        -120.0,
+        50.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check DXY and major pairs (EURUSD, USDJPY) for confirmation the dollar is softening alongside the rate-cut repricing.",
+        "1h": "Verify no offsetting risk-off flow (which can support USD despite dovish Fed) is dominating.",
+        "2h": "Reassess whether rate-differential logic or safe-haven demand is driving the dollar.",
+        "6h": "Watch for foreign central bank news or US data that could swamp the Fed-path signal.",
+        "12h": "Judge whether the dollar's move aligned with the dovish thesis; flag weak proxy if no consistent move."
+      },
+      "reasoning": "More expected Fed cuts narrow US rate differentials versus other currencies, typically weakening the dollar. UUP is a liquid proxy that would drift lower on a dovish repricing, though FX is driven by many cross-currents and the link is weaker than for Treasuries."
+    }
+  ],
+  "evidence_used": [
+    "Market question tracks number of 25bp Fed cuts in 2026, a direct read on expected monetary policy path",
+    "Standard macro linkages: dovish rate expectations lower yields (bonds up), weaken USD, and tend to lift gold and equities",
+    "Liquidity of TLT and UUP as tradable proxies for rate-path and dollar views"
+  ],
+  "uncertainty_notes": [
+    "The 700bp tradability threshold is far above realistic 12h moves in these liquid rate/FX proxies; direction may be right but magnitude is small",
+    "A probability move in the market may already reflect public data (e.g., CPI, FOMC minutes) and thus be priced into assets",
+    "Mislabeled primary topic ('military_conflict') suggests metadata noise; the question itself is clearly monetary policy",
+    "Safe-haven flows can decouple USD from rate differentials, and long-end yields can move on term-premium/fiscal factors unrelated to Fed path"
+  ],
+  "llm_justification": {
+    "summary": "This is a US monetary-policy market: a sharp rise in the implied probability of 3 Fed cuts in 2026 reflects a more dovish rate-path expectation. The cleanest public-market implications are lower Treasury yields (TLT up) and a softer dollar (UUP down). Directions are defensible but expected 12h magnitudes are far below the 700bp tradable threshold, so these are low-conviction, non-tradable research mappings rather than actionable signals.",
+    "key_assumptions": [
+      "A move in this market represents a genuine shift in expected Fed policy, not thin-market noise",
+      "Standard rate-differential and duration linkages hold over the 12h window",
+      "The repricing is not already fully reflected in bond and FX markets"
+    ],
+    "failure_modes": [
+      "Move reverses as thin prediction-market liquidity mean-reverts",
+      "The dovish shift was already public (post-data or post-FOMC) and thus priced into TLT/UUP",
+      "USD proxy is weakly exposed if risk-off haven demand offsets the rate-differential effect",
+      "Long-end yields driven by term premium/fiscal supply rather than Fed path, breaking the TLT link",
+      "Magnitudes stay well under 700bps, making any 'signal' untradable under the stated rule"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

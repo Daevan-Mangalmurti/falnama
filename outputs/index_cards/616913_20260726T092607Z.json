@@ -1,0 +1,99 @@
+{
+  "card_id": "616913_20260726T092607Z",
+  "card_version": "v1",
+  "card_hash": "d7a9b0ea865afa80f851bbdfbe97018b006163d4689444f97e0dbf0f48165096",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-26T09:26:07Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616913",
+    "market_slug": "will-11-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 11 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-11-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 11 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-dated US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.28,
+      "confidence_interval_bps": [
+        -150.0,
+        500.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability shift coincides with any Fed speaker headlines, jobs/CPI leaks, or credit-stress news; verify TLT and 2y/10y yields are moving in the risk-off direction.",
+        "1h": "Confirm whether front-end fed funds futures (SOFR/ZQ) are repricing dovishly alongside; if not, treat the prediction-market move as noise.",
+        "2h": "Reassess if move persists; compare to VIX and MOVE index to confirm a genuine risk regime shift versus a single-market blip.",
+        "6h": "Look for a public catalyst that would justify aggressive easing odds; if none surfaced, fade the thesis.",
+        "12h": "Mark TLT return vs entry; note whether Treasuries held the risk-off bid into the close of the window."
+      },
+      "reasoning": "An implied probability rising for 11 Fed cuts in 2026 (275bps of easing) is a deep-recession/emergency-easing signal. Such a regime would collapse the front end and rally the long end as growth and inflation expectations fall. TLT is the cleanest liquid duration proxy. However, 11 cuts is an extreme tail, so even a sharp probability shift in a thin market maps to only a modest, uncertain Treasury move absent corroborating macro data."
+    },
+    {
+      "asset": "US large-cap equities",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -90.0,
+      "confidence": 0.24,
+      "confidence_interval_bps": [
+        -450.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether equity futures are selling off or, conversely, rallying on the 'more cuts' framing; direction ambiguity is high.",
+        "1h": "Cross-check credit spreads (HYG/LQD) and VIX for confirmation of a genuine growth-scare interpretation.",
+        "2h": "If equities are rising on dovish read rather than falling on growth fear, downgrade or flip this prediction.",
+        "6h": "Look for macro headlines explaining the cut-odds jump; reassess sign.",
+        "12h": "Record SPY return and whether risk-off or dovish-relief interpretation dominated."
+      },
+      "reasoning": "Eleven cuts in one year has only ever accompanied acute economic crises (2008, 2020). Rising odds of that scenario imply expectations of a sharp growth shock, which is equity-negative despite the easing (the cuts would be a symptom, not a stimulus). SPY is the most liquid equity proxy. The mapping is weak, though: markets often treat dovishness as risk-positive in the short term, which could invert the sign."
+    }
+  ],
+  "evidence_used": [
+    "Market strike of 11 cuts (275bps) implies emergency/crisis-level easing far beyond any base-case 2026 path",
+    "Historical precedent that such easing only occurs in severe recessions/financial crises",
+    "Standard risk-off transmission: crisis odds up -> Treasuries up, equities down, given a growth-shock interpretation",
+    "Thin, tail-focused prediction market is a noisy sensor"
+  ],
+  "uncertainty_notes": [
+    "11 cuts is a deep-tail scenario; probability is near zero and small absolute moves in the market convey little information",
+    "Dovish-easing news can be equity-positive short term, inverting the equity sign",
+    "Prediction-market moves in illiquid tail strikes may reflect single large orders, not information",
+    "700bps tradable threshold is very unlikely to be met by a prediction-market signal alone within 12h"
+  ],
+  "llm_justification": {
+    "summary": "This market's high strike (11 cuts = 275bps) is an emergency-easing/recession proxy. A sharp rise in its implied probability would, if genuine, signal a growth shock: bullish long-duration Treasuries (TLT up) and bearish equities (SPY down) under a risk-off reading. But the scenario is a deep tail, the market is thin, and the dovish framing could instead be read as risk-positive, so confidence is low and expected magnitudes are well below the 700bps tradable threshold.",
+    "key_assumptions": [
+      "A rising probability reflects genuine crisis expectations rather than order-flow noise",
+      "The 'more cuts' signal is interpreted as growth-shock (risk-off) rather than stimulus (risk-on)",
+      "TLT and SPY are exposed to the implied macro regime shift"
+    ],
+    "failure_modes": [
+      "Move is noise in a thin tail-strike market and reverses quickly",
+      "Dovish easing is priced as risk-on, sending equities up and inverting the SPY call",
+      "The information is already public (e.g., known dovish Fed commentary) so no residual asset move follows",
+      "Weak/ambiguous proxy exposure: broad ETFs may not move on a single prediction-market repricing",
+      "Expected magnitudes fall far short of the 700bps tradability bar, making these non-actionable"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

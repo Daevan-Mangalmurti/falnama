@@ -1,0 +1,97 @@
+{
+  "card_id": "560317_20260726T092607Z",
+  "card_version": "v1",
+  "card_hash": "d7d9c1f49b38dc9534e54e9db3e8c4d0c667c40ac207d236be09f0b492778353",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-26T09:26:07Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "560317",
+    "market_slug": "putin-out-before-2027-346",
+    "market_name": "Putin out as President of Russia by December 31, 2026?",
+    "market_url": "https://polymarket.com/market/putin-out-before-2027-346",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Putin out as President of Russia by December 31, 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "commodity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 350.0,
+      "confidence": 0.32,
+      "confidence_interval_bps": [
+        -400.0,
+        900.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the market probability move is corroborated by any credible wire (Reuters/Bloomberg) on Putin health/succession; if no news, treat as noise. Watch Brent/WTI front-month tick.",
+        "1h": "Compare oil move vs broad risk (SPX futures); isolate whether oil is moving on Russia-specific premium or general risk-off.",
+        "2h": "Re-check for official Kremlin denial/confirmation; a denial would fade the premium quickly.",
+        "6h": "Assess whether any move held into the session; look for natural gas (TTF) and European gas co-movement as confirmation of a Russia supply-risk theme.",
+        "12h": "Evaluate whether oil sustained a risk premium or fully reversed; log outcome vs. the mixed thesis for calibration."
+      },
+      "reasoning": "A sharp rise in the implied probability that Putin ceases to be president would most plausibly reflect near-term Russian leadership instability (health, coup, or forced removal). Russia is a top-3 oil exporter; sudden succession uncertainty raises a supply-disruption risk premium. The 2023 Prigozhin mutiny produced a modest oil bid. Direction is genuinely ambiguous, however, because a Putin exit could also be read as raising the odds of an end to the Ukraine war and eventual sanctions relief, which is bearish oil \u2014 hence low confidence and a wide, sign-crossing interval."
+    },
+    {
+      "asset": "Gold (safe-haven)",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 200.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -250.0,
+        600.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether there is any hard news behind the probability move; without it, discount the safe-haven read.",
+        "1h": "Check DXY and real yields \u2014 gold moves are often dominated by rates, not geopolitics.",
+        "2h": "Look for concurrent VIX / Treasury bid confirming a genuine risk-off tone.",
+        "6h": "Assess persistence; fade if driven purely by rates rather than Russia risk.",
+        "12h": "Record whether gold held any geopolitical bid or was noise; update calibration."
+      },
+      "reasoning": "Elevated odds of a disorderly leadership transition in a nuclear-armed state would raise geopolitical tail risk, typically supporting safe-haven gold. This is a weak, diffuse channel: gold reacts to many drivers and a single prediction-market probability shift is a thin catalyst, so the expected magnitude is small and below the tradable threshold."
+    }
+  ],
+  "evidence_used": [
+    "Market question: probability Putin ceases to be Russian president by end-2026, resolves Yes on resignation/removal/detention",
+    "Russia's structural role as a major oil and gas exporter",
+    "Historical precedent: 2023 Prigozhin mutiny produced a modest, short-lived oil risk premium",
+    "Standard safe-haven behavior of gold during acute geopolitical uncertainty"
+  ],
+  "uncertainty_notes": [
+    "Direction on oil is genuinely two-sided: instability premium (up) vs. peace/sanctions-relief hope (down).",
+    "A prediction-market probability move alone, without corroborating news, is a very noisy signal and may already reflect public rumor.",
+    "Direct Russia asset proxies (RSX, ruble) are effectively untradable for Western participants post-sanctions, forcing reliance on indirect proxies with weak exposure."
+  ],
+  "llm_justification": {
+    "summary": "A sharp increase in the implied probability that Putin leaves office would signal potential near-term Russian leadership instability. The cleanest liquid expression is a geopolitical risk premium in crude oil (up) and, more weakly, safe-haven gold (up). Both mappings are low-confidence: oil's direction is ambiguous because a Putin exit could equally signal an off-ramp to the Ukraine war and sanctions relief, and a probability shift without hard news is a noisy catalyst. Neither prediction is expected to clear the 700bps tradable bar under a base-case anomaly.",
+    "key_assumptions": [
+      "The probability move reflects new information about Russian succession/instability rather than pure noise or thin liquidity.",
+      "Markets price short-run instability as a supply-risk premium before pricing any longer-run peace dividend.",
+      "No offsetting macro shock dominates the 12h window."
+    ],
+    "failure_modes": [
+      "The rumor was already public/priced, so no fresh asset reaction occurs.",
+      "Oil reverses or falls if the exit is interpreted as raising odds of war de-escalation and sanctions relief.",
+      "Proxies are weakly exposed: a probability shift on a low-base-rate 2026 event may barely move global oil or gold at all.",
+      "The prediction-market move is illiquidity-driven noise with no real-world signal, producing no consistent asset move."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
