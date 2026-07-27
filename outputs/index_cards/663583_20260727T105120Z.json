@@ -1,0 +1,98 @@
+{
+  "card_id": "663583_20260727T105120Z",
+  "card_version": "v1",
+  "card_hash": "b8cc8b364162d28e70e33b9e5b08bbb52e89a9392afeb4ca515be5c20e43bbd3",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-27T10:51:20Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "663583",
+    "market_slug": "will-the-iranian-regime-fall-by-the-end-of-2026",
+    "market_name": "Will the Iranian regime fall before 2027?",
+    "market_url": "https://polymarket.com/market/will-the-iranian-regime-fall-by-the-end-of-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will the Iranian regime fall before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 450.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -300.0,
+        1200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability spike aligns with breaking headlines about strikes/unrest in Iran; confirm Brent/WTI futures are moving in the same direction rather than mean-reverting.",
+        "1h": "Compare oil move against broad risk assets (SPX, DXY) to separate an Iran-specific supply-risk premium from a general risk-off shock.",
+        "2h": "Watch tanker/insurance and Hormuz-related headlines; check if OPEC or IEA sources signal supply reassurance that could cap the move.",
+        "6h": "Reassess whether the market probability held its move or faded; if it faded, expect oil premium to bleed out.",
+        "12h": "Evaluate close-of-window return vs prediction; note whether narrative shifted toward sanctions-relief (bearish oil) or deeper conflict (bullish)."
+      },
+      "reasoning": "A sharp rise in the implied probability of the Iranian regime falling almost always coincides with acute escalation \u2014 external strikes, mass unrest, or open conflict involving the IRGC. In the near term that threatens Iranian crude exports (~1.5-1.7 mbd) and, critically, tanker traffic through the Strait of Hormuz (~20% of seaborne oil). Markets price a geopolitical risk premium into oil first, so a fast move in this market is most likely tied to conflict news that pushes crude higher on a 12h horizon."
+    },
+    {
+      "asset": "Gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 200.0,
+      "confidence": 0.42,
+      "confidence_interval_bps": [
+        -150.0,
+        600.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm gold is rising alongside the probability move and not being dominated by a stronger dollar or rate move.",
+        "1h": "Check real yields and DXY; a hawkish rate backdrop can blunt gold's haven bid.",
+        "2h": "Assess whether haven flows are broad (JPY, CHF, Treasuries also bid) confirming genuine risk-off.",
+        "6h": "Reassess if the geopolitical premium is sustaining or fading in gold.",
+        "12h": "Compare realized move to expectation; note if gold decoupled from the Iran narrative."
+      },
+      "reasoning": "A sudden jump in regime-collapse probability signals rising Middle East instability, a classic safe-haven trigger. Gold typically catches a bid on acute geopolitical stress, though the magnitude is smaller and slower than oil's supply-driven move. This is a lower-conviction, corroborating signal rather than a standalone thesis."
+    }
+  ],
+  "evidence_used": [
+    "Market question ties resolution to overthrow/collapse of the Islamic Republic \u2014 a high-impact geopolitical event",
+    "Primary topic tagged military_conflict, region middle_east",
+    "Iran is a major oil producer and controls the Strait of Hormuz chokepoint",
+    "Historical pattern: acute Iran/Middle East escalation spikes crude oil risk premium and safe-haven gold"
+  ],
+  "uncertainty_notes": [
+    "Direction of oil is genuinely ambiguous: near-term conflict is bullish, but a resolved regime change ending sanctions is medium-term bearish for oil",
+    "A probability move may be driven by slow-burn political speculation with no immediate market catalyst, producing little asset reaction",
+    "The 700bps tradable threshold is unlikely to be met in a routine 12h window absent a major kinetic event"
+  ],
+  "llm_justification": {
+    "summary": "A sharp increase in the implied probability that the Iranian regime falls most plausibly reflects acute escalation in the Middle East, which raises the oil supply-risk premium (Strait of Hormuz / Iranian exports) and drives safe-haven gold higher over a 12h window. Crude via USO is the primary proxy; gold via GLD is a weaker corroborating signal. Both mappings are only moderate-confidence because the direction can flip if the narrative is one of conflict resolution/sanctions relief rather than active conflict.",
+    "key_assumptions": [
+      "A fast probability move is driven by real escalation news rather than idle speculation",
+      "Escalation threatens Iranian supply and/or Hormuz transit, lifting oil",
+      "Safe-haven flows accompany Middle East instability"
+    ],
+    "failure_modes": [
+      "Regime-fall optimism framed as conflict resolution/sanctions relief would send oil DOWN, reversing the thesis",
+      "The event may already be public/priced, so no fresh asset move occurs",
+      "The move may not reach the 700bps tradable threshold within 12h",
+      "Oil could be dominated by unrelated drivers (OPEC output, demand, dollar) swamping the Iran signal",
+      "Gold's haven bid can be offset by a stronger dollar or rising real yields"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

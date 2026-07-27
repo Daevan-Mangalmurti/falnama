@@ -1,0 +1,98 @@
+{
+  "card_id": "616905_20260727T105120Z",
+  "card_version": "v1",
+  "card_hash": "8e83c72a3cf2ae6388b7df0286fe530997716297712656481cbdd406a4815115",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-27T10:51:20Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616905",
+    "market_slug": "will-3-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 3 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-3-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 3 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-dated US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.5,
+      "confidence_interval_bps": [
+        -60.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the market probability move persists or fades; cross-check 2y and 10y Treasury yields and fed funds futures (SOFR/ZQ) for confirmation.",
+        "1h": "Confirm TLT price reaction vs. move in 2y yield; look for any Fed speaker headlines or data prints (CPI, jobs) that could explain the shift.",
+        "2h": "Assess whether the yield move is broad-based (curve shift) or idiosyncratic; check dollar index for corroboration.",
+        "6h": "Re-evaluate whether move was already public (scheduled data/FOMC minutes) vs. genuine leak; scale conviction accordingly.",
+        "12h": "Mark TLT return vs. entry; note whether directional thesis held and whether magnitude stayed well below the 700bp tradable bar."
+      },
+      "reasoning": "A sharp rise in the implied probability of three 25bp Fed cuts in 2026 is a dovish signal implying a lower expected policy-rate path. Lower expected front-end and terminal rates pull the whole curve down, and duration-heavy TLT rallies as yields fall. Conversely a drop in the probability would push TLT down. Directional read assumes the anomaly is a dovish shift."
+    },
+    {
+      "asset": "Gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 50.0,
+      "confidence": 0.42,
+      "confidence_interval_bps": [
+        -80.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check DXY and real-yield (TIP) direction to confirm the dovish read; verify gold spot/GLD reaction.",
+        "1h": "Compare gold move to Treasury move for internal consistency of the easing thesis.",
+        "2h": "Watch for competing drivers (geopolitical risk bid, equity risk-on/off) that could dominate gold independent of rates.",
+        "6h": "Reassess whether the catalyst was public data; downgrade if move mean-reverts.",
+        "12h": "Record GLD return; confirm the move stayed far under 700bp and note thesis accuracy."
+      },
+      "reasoning": "A dovish shift toward more 2026 cuts lowers real yields and typically weakens the dollar, both supportive of gold. Gold is a liquid, broadly-traded proxy for Fed-easing expectations. The effect is second-order and noisy, so confidence is modest and direction flips if the probability move is hawkish."
+    }
+  ],
+  "evidence_used": [
+    "Market question ties resolution to number of 25bp Fed cuts in 2026, a direct rate-expectations gauge",
+    "Standard macro transmission: dovish rate path -> lower yields, weaker USD, higher gold and long bonds",
+    "TLT and GLD are highly liquid ETF proxies for these channels"
+  ],
+  "uncertainty_notes": [
+    "Direction depends entirely on which way the implied probability moved; the prompt gives no move direction, so the mapping assumes a dovish shift",
+    "12h asset moves from a single prediction-market shift are typically tens of bps, far below the 700bp tradable threshold \u2014 not tradable",
+    "Fed-cut probabilities usually move on public data (CPI, payrolls, FOMC), so leakage/edge is unlikely",
+    "'military_conflict' topic tag appears mislabeled; treated as a pure monetary-policy market"
+  ],
+  "llm_justification": {
+    "summary": "This is a US monetary-policy market on the count of 2026 Fed rate cuts, a clean rate-expectations sensor. A sharp rise in the probability of three cuts is a dovish signal implying a lower policy-rate path, which would lift long Treasuries (TLT) and gold (GLD) while pressuring the dollar; a hawkish drop would reverse these. Realistic 12h magnitudes are tens of bps, well under the 700bp tradable bar, so this is research-only with modest confidence.",
+    "key_assumptions": [
+      "The observed anomaly is a meaningfully sized dovish shift in cut probability",
+      "Standard rate-transmission channels dominate over idiosyncratic flows in the 12h window",
+      "The move is not already fully reflected via a public data release"
+    ],
+    "failure_modes": [
+      "Probability actually moved hawkish, flipping both directions",
+      "Move driven by public FOMC/data event already priced into TLT and GLD",
+      "Risk-on equity rally or geopolitical bid overrides the rate channel for gold",
+      "Small, noisy prediction-market move with no genuine informational edge",
+      "Curve reshaping (front-end vs long-end) means TLT reacts opposite to a front-loaded-cut narrative"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

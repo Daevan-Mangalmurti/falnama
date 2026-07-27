@@ -1,0 +1,99 @@
+{
+  "card_id": "616912_20260727T105120Z",
+  "card_version": "v1",
+  "card_hash": "4b41cc00e45b6d9f6950e8f2e9327b281f00cd2e2a97d7d6c1552af64353c85a",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-27T10:51:20Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616912",
+    "market_slug": "will-10-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 10 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-10-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 10 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-dated US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -80.0,
+        350.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the market's implied probability of many cuts actually moved sharply vs. thin-book noise; cross-check 2Y/10Y Treasury futures for confirmation.",
+        "1h": "Confirm move in fed funds futures (SOFR/Fed funds curve) and any macro headline (jobs, credit stress, geopolitical shock) that could justify aggressive easing bets.",
+        "2h": "Assess whether TLT is tracking the rates repricing or diverging; look for term-premium vs. flight-to-safety drivers.",
+        "6h": "Re-evaluate against equity/credit stress signals (HYG, VIX); a genuine easing-repricing should coincide with risk-off.",
+        "12h": "Mark realized TLT return vs. expectation; determine if signal reflected new information or reverted (mean-reversion suggests noise)."
+      },
+      "reasoning": "A market implying 10 Fed cuts (~250bps of easing) in 2026 is a deep-easing/recession-or-emergency scenario. A sharp rise in that implied probability would signal expectations of a much lower policy path, which mechanically pulls front-end and belly yields down and, on flight-to-safety, long yields too \u2014 pushing long-duration bond ETFs like TLT higher. But this is a far tail; a 12h probability jump is a noisy, low-signal event."
+    },
+    {
+      "asset": "US large-cap equities",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -150.0,
+      "confidence": 0.35,
+      "confidence_interval_bps": [
+        -450.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check S&P futures and VIX for corroborating risk-off; verify the prediction-market move is real, not a stale quote.",
+        "1h": "Look for a triggering catalyst (credit event, geopolitical shock, weak data) that would justify both easing bets and equity weakness.",
+        "2h": "Assess breadth and whether defensives outperform cyclicals, consistent with a recession-easing narrative.",
+        "6h": "Re-check whether equities are reading the easing as relief (rally) or as a growth scare (selloff); adjust directional read.",
+        "12h": "Record realized SPY return; note if the equity reaction confirmed or contradicted the recession interpretation of the rate-cut signal."
+      },
+      "reasoning": "Ten cuts in a single year is not a soft-landing story \u2014 it implies a sharp downturn, financial stress, or emergency intercutting. If that probability spiked, it would typically accompany risk-off equity selling (growth scare outweighing the 'Fed put' relief). However the sign is ambiguous: markets sometimes rally on aggressive-easing hopes, so direction is genuinely uncertain and confidence is low."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves on count of 25bp Fed cuts in 2026, including emergency intermeeting cuts",
+    "10 cuts implies ~250bps of easing, far beyond baseline soft-landing expectations",
+    "Deep-easing scenarios historically coincide with recession/financial-stress regimes",
+    "Standard rates-transmission: lower expected policy path lifts bond prices and pressures risk assets"
+  ],
+  "uncertainty_notes": [
+    "A 12h window is far too short to resolve a full-year cut count; any probability move is a weak, noisy sensor",
+    "Equity direction is genuinely ambiguous (Fed-put relief rally vs. growth-scare selloff)",
+    "700bps tradability threshold is unrealistic for these liquid proxies in 12h \u2014 neither prediction is 'tradable' by that bar",
+    "Prediction-market liquidity for extreme-tail strikes is typically thin, so implied-probability moves can be quote artifacts"
+  ],
+  "llm_justification": {
+    "summary": "The market prices an extreme tail: 10 Fed cuts (~250bps easing) in 2026, which only occurs in recession/emergency regimes. A sharp rise in that implied probability would map to lower rates (long Treasuries/TLT up) and, most likely but ambiguously, risk-off equities (SPY down). Both mappings are directionally plausible but low-confidence over a 12h window, and neither is expected to clear the 700bps move bar; treat the prediction market as a noisy, low-signal sensor here.",
+    "key_assumptions": [
+      "A meaningful, real (non-noise) jump in the many-cuts probability actually occurs",
+      "The easing scenario is interpreted as recession/stress rather than benign",
+      "Rates and equity proxies respond within the 12h window rather than lagging"
+    ],
+    "failure_modes": [
+      "The probability move is thin-book noise or a stale quote, not information",
+      "Equities rally on 'Fed put' easing hopes rather than selling off, flipping the SPY sign",
+      "The macro backdrop is already public (priced in), so no fresh asset move follows",
+      "TLT is a weak proxy if the repricing is concentrated in the front end (SHY/2Y) rather than long duration",
+      "Mean-reversion: an intraday spike reverses by the 12h mark"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

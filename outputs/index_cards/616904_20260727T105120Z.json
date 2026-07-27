@@ -1,0 +1,97 @@
+{
+  "card_id": "616904_20260727T105120Z",
+  "card_version": "v1",
+  "card_hash": "65eba5b564884e76f90669a0919afd8ca5b462e45379236d5c997aefab8bea3d",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-27T10:51:20Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616904",
+    "market_slug": "will-2-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 2 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-2-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 2 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US long-duration Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 15.0,
+      "confidence": 0.25,
+      "confidence_interval_bps": [
+        -40.0,
+        70.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move coincides with a repricing in fed funds futures / SOFR curve to confirm direction (dovish vs hawkish).",
+        "1h": "Compare TLT and 2Y/10Y yields against the market move; confirm they moved consistent with a policy-path repricing rather than idiosyncratic flow.",
+        "2h": "Look for a macro catalyst (CPI, jobs, FOMC commentary) that would explain the shift and give it a clear sign.",
+        "6h": "Reassess whether the move persisted or mean-reverted; a reversal implies noise, not information.",
+        "12h": "Record realized TLT return vs prediction and whether the count-market move preceded any public news."
+      },
+      "reasoning": "A Fed-cut count market is a proxy for the market-implied policy path. A rising probability of '2 cuts in 2026' is directionally ambiguous: it can reflect a shift from a more-cuts (dovish) or fewer-cuts (hawkish) expectation, so the bond move is not cleanly signed. If the shift is dovish (more easing expected), Treasuries rally and TLT rises; if hawkish, TLT falls. Because this is a bucketed count and not a level, mapping to a directional bond move is weak."
+    },
+    {
+      "asset": "US dollar index proxy",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 10.0,
+      "confidence": 0.2,
+      "confidence_interval_bps": [
+        -30.0,
+        40.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether short-end rate differentials moved and in which direction.",
+        "1h": "Check DXY/UUP move against front-end yields to infer dovish vs hawkish tilt.",
+        "2h": "Scan for scheduled data or Fed-speak explaining the move.",
+        "6h": "Assess persistence versus intraday noise.",
+        "12h": "Log realized UUP return and whether the market move led public information."
+      },
+      "reasoning": "Shifts in the expected Fed easing path move the dollar: a more-dovish repricing (more/faster cuts) tends to weaken USD, a hawkish repricing strengthens it. But an 'exactly 2 cuts' bucket does not cleanly indicate more vs less easing, so the dollar direction is ambiguous and the magnitude small over 12h."
+    }
+  ],
+  "evidence_used": [
+    "Market question resolves on count of 25bp Fed cuts in 2026, a proxy for the market-implied policy path",
+    "Fed policy expectations transmit to Treasuries, the dollar, and rate-sensitive equities",
+    "12h window and 700bps tradable threshold are very large relative to typical daily moves in these liquid ETFs"
+  ],
+  "uncertainty_notes": [
+    "A bucketed 'exactly 2 cuts' outcome is directionally ambiguous \u2014 rising probability can be dovish or hawkish depending on which adjacent bucket loses probability.",
+    "The 700bps tradable threshold is far above realistic 12h moves for TLT/UUP; neither is tradable under that rule.",
+    "The 'military_conflict' topic tag appears to be mislabeled noise and was ignored."
+  ],
+  "llm_justification": {
+    "summary": "This market tracks the market-implied count of 2026 Fed rate cuts, essentially a proxy for the policy path. A sharp move in the implied probability would map to rate-sensitive proxies (long Treasuries via TLT, the dollar via UUP), but because the outcome is a specific count bucket rather than a level, the directional signal is ambiguous \u2014 a probability increase could reflect either dovish or hawkish repricing. Expected 12h magnitudes are modest and well below the 700bps tradable threshold, so this is a low-confidence, non-tradable mapping.",
+    "key_assumptions": [
+      "The count market reflects genuine policy-path expectations rather than thin/idiosyncratic liquidity.",
+      "Fed policy repricing transmits promptly to TLT and the dollar.",
+      "Any anomaly reflects information, not noise or resolution mechanics."
+    ],
+    "failure_modes": [
+      "Direction is fundamentally unclear because 'exactly 2 cuts' can rise for both dovish and hawkish reasons.",
+      "The information may already be public (data prints, Fed speeches) and fully priced in bonds/FX.",
+      "Proxies are only weakly tied to a single-year cut-count bucket over a 12h window.",
+      "Moves this small will never meet the 700bps tradable bar, so no trade is warranted.",
+      "Prediction-market move may be liquidity-driven noise that reverses."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
