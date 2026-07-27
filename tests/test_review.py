@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import json
 
+import pytest
+
 from falnama import review
 from falnama.config import Settings, load_config
 
@@ -45,3 +47,24 @@ def test_load_run_defaults_to_latest(tmp_path):
     assert run.run_id == "20260715T090000Z"
     assert len(run.relevant_markets) == 1 and len(run.anomalies) == 1
     assert run.recommendations.empty  # none written -> empty frame, not a crash
+
+
+def test_unknown_run_id_fails_loudly(tmp_path):
+    # The bug this guards: a run_id that matches no manifest used to load an EMPTY
+    # manifest, so the notebook's summary cell blew up later with KeyError. It must
+    # instead raise immediately, and name the valid ids.
+    s = _settings(tmp_path)
+    _write_run(s, "20260715T090000Z", 31, 1)
+    with pytest.raises(FileNotFoundError, match="20260715T090000Z"):
+        review.load_run(s, run_id="20260715T999999Z")
+
+
+def test_load_run_tolerates_pasted_decorations(tmp_path):
+    # Copy-paste slips that should still resolve to the right run rather than error.
+    s = _settings(tmp_path)
+    _write_run(s, "20260715T090000Z", 31, 1)
+    for messy in ["run_manifest_20260715T090000Z", "20260715T090000Z.json",
+                  "  20260715T090000Z  ", "outputs/run_logs/run_manifest_20260715T090000Z.json"]:
+        run = review.load_run(s, run_id=messy)
+        assert run.run_id == "20260715T090000Z"
+        assert run.manifest["market_selector"]["selected_count"] == 31

@@ -56,6 +56,19 @@ def latest_run_id(settings: Settings | None = None) -> str | None:
     return io.read_json(manifests[-1], {}).get("run_id") if manifests else None
 
 
+def _normalize_run_id(run_id: str) -> str:
+    """Strip the decorations people paste around a run_id: a leading path or
+    'run_manifest_' prefix, a '.json'/'.csv' suffix, and surrounding whitespace.
+    A genuinely wrong id (e.g. a dashed ISO date) is left alone to fail loudly."""
+    text = str(run_id).strip().rsplit("/", 1)[-1].rsplit("\\", 1)[-1]
+    if text.startswith("run_manifest_"):
+        text = text[len("run_manifest_"):]
+    for suffix in (".json", ".csv"):
+        if text.endswith(suffix):
+            text = text[: -len(suffix)]
+    return text.strip()
+
+
 @dataclass
 class RunFiles:
     """Everything one run produced, loaded into memory for review."""
@@ -74,16 +87,35 @@ def load_run(settings: Settings | None = None, run_id: str | None = None) -> Run
     """Load one run's artifacts (defaults to the latest run).
 
     Uses the run-specific timestamped files, so any past run can be reviewed, not
-    only the latest. Missing/empty artifacts come back as empty frames.
+    only the latest. A run's own missing/empty artifacts come back as empty
+    frames — but a run_id that matches NO run raises immediately with the valid
+    ids, rather than returning an empty manifest that fails cryptically later.
     """
     settings = settings or load_config()
-    run_id = run_id or latest_run_id(settings)
-    if run_id is None:
-        raise FileNotFoundError(
-            "No runs found under outputs/run_logs/. Run the pipeline first "
-            "(python scripts/run.py)."
-        )
     logs = settings.output_dir("run_logs")
+
+    if run_id is None:
+        run_id = latest_run_id(settings)
+        if run_id is None:
+            raise FileNotFoundError(
+                "No runs found under outputs/run_logs/. Run the pipeline first "
+                "(python scripts/run.py)."
+            )
+    else:
+        # Tolerate the common copy-paste slips (a wrapping filename/path, a
+        # 'run_manifest_' prefix, a '.json' suffix, stray whitespace), then insist
+        # the run actually exists so a typo fails loudly HERE, not three cells on.
+        run_id = _normalize_run_id(run_id)
+        if not (logs / f"run_manifest_{run_id}.json").exists():
+            known = [p.name[len("run_manifest_"):-len(".json")]
+                     for p in sorted(logs.glob("run_manifest_*.json"))]
+            hint = ", ".join(known[-5:]) if known else "none found"
+            raise FileNotFoundError(
+                f"No run with id {run_id!r} under outputs/run_logs/. The id is the "
+                f"compact timestamp printed by load_run() — e.g. '20260715T092325Z', "
+                f"with no 'run_manifest_' prefix, no '.json', no dashes. "
+                f"Most recent available: {hint}."
+            )
 
     def table(folder: str, basename: str) -> pd.DataFrame:
         return io.read_table(settings.output_dir(folder) / f"{basename}_{run_id}.csv")
