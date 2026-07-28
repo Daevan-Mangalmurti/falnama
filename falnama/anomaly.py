@@ -42,6 +42,14 @@ from .io import RunContext
 MOVE_REFERENCE = 0.40       # an absolute move of 0.40 over a window → magnitude 100
 SPEED_REFERENCE = 0.20      # a 0.20 move within the SHORTEST window → speed 100
 Z_REFERENCE = 6.0           # a 6-sigma step (vs the market's own noise) → unusualness 100
+# The volatility floor for unusualness (same probability units). Prediction-market
+# prices sit unchanged for long stretches, so the standard deviation of ALL steps
+# is ~0 and every tick looks like a many-sigma event. We measure volatility over
+# the market's non-zero moves and floor it here, so a barely-moving market is
+# judged against a fixed ~1-cent scale instead of dividing by ~0. This is also the
+# rarity dial: lower it and a given move counts for more in a quiet market.
+UNUSUALNESS_VOL_FLOOR = 0.01
+_FLAT_STEP_EPS = 1e-9       # a price step smaller than this counts as "no change"
 TTC_WINDOW_DAYS = 7.0       # moves within 7 days of resolution earn the time-to-close bonus
 TTC_MAX_BONUS = 10.0        # ...worth at most +10 on the composite
 PERSISTENCE_WINDOW = "6h"   # how long after the move we check whether it held
@@ -163,12 +171,27 @@ def _persistence(series: pd.Series, trigger_time, pre_price: float, peak_price: 
 
 def _unusualness(series: pd.Series) -> float:
     """Largest single-step return expressed in standard deviations of this
-    market's returns, scaled to 0-100. Flags moves that are big *for this market*."""
+    market's ACTIVE moves, scaled to 0-100. Flags moves that are big *for this
+    market* — and, via the floor, moves that are big for a normally-quiet one.
+
+    Two guards keep this honest on real prediction-market data, where a price
+    sits unchanged for long stretches (no trades) and only occasionally moves:
+      * volatility is measured over the NON-ZERO steps only. Including the flat
+        periods drives the standard deviation to ~0, so any tick looks like a
+        many-sigma event and the score saturates at 100 for nearly everything
+        (the bug this replaces).
+      * that volatility is floored at UNUSUALNESS_VOL_FLOOR, so a barely-moving
+        market is judged against a fixed, sane move-size rather than dividing by
+        ~0. Below the floor all quiet markets are treated alike, so the same move
+        scores higher the quieter the market — a bounded credit for rarity.
+    A market that never moved has no largest step, so it scores 0, not 100."""
     returns = series.diff().dropna()
-    std = float(returns.std())
-    if std < 1e-9 or returns.empty:
-        return 0.0
-    z = float(returns.abs().max() / std)
+    peak = float(returns.abs().max()) if not returns.empty else 0.0
+    if peak < _FLAT_STEP_EPS:
+        return 0.0  # the market never moved — nothing to judge
+    active = returns[returns.abs() > _FLAT_STEP_EPS]
+    vol = float(active.std()) if len(active) >= 2 else 0.0  # <2 active steps → rely on the floor
+    z = peak / max(vol, UNUSUALNESS_VOL_FLOOR)
     return _scale(z, Z_REFERENCE)
 
 

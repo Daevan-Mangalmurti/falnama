@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 
 from falnama.config import load_config
-from falnama.anomaly import score_market
+from falnama.anomaly import UNUSUALNESS_VOL_FLOOR, _unusualness, score_market
 
 SETTINGS = load_config()
 
@@ -44,6 +44,42 @@ def test_calm_market_scores_low():
 
 def test_too_little_history_returns_none():
     assert score_market(_series([0.2, 0.3, 0.4]), SETTINGS) is None
+
+
+def _prices_to_series(prices: list[float]) -> pd.Series:
+    idx = pd.date_range("2026-06-01T00:00:00Z", periods=len(prices), freq="1h")
+    return pd.Series(prices, index=idx, dtype=float)
+
+
+def test_unusualness_does_not_saturate_on_a_mostly_flat_market():
+    # The bug this guards: a market flat ~90% of the time with tiny ticks used to
+    # score 100 because the std (dominated by zeros) was ~0. It should now be
+    # modest — a big-for-this-market move, not an off-the-charts one.
+    prices = [0.30] * 90 + [0.31, 0.31, 0.32, 0.31, 0.32] * 2  # long flat, then tiny ticks
+    u = _unusualness(_prices_to_series(prices))
+    assert 0.0 < u < 60.0  # discriminates, nowhere near the old saturated 100
+
+
+def test_unusualness_is_zero_for_a_never_moving_market():
+    assert _unusualness(_prices_to_series([0.25] * 50)) == 0.0
+
+
+def test_unusualness_survives_a_single_step_market_via_the_floor():
+    # One lone move and otherwise flat: std over active steps is undefined, so the
+    # floor must carry it — a finite score, not a divide-by-zero blow-up to 100.
+    prices = [0.20] * 40 + [0.26] * 20          # exactly one non-zero step (+0.06)
+    u = _unusualness(_prices_to_series(prices))
+    assert u == round(100.0 * min(1.0, (0.06 / UNUSUALNESS_VOL_FLOOR) / 6.0), 1)
+
+
+def test_same_move_scores_higher_in_a_quieter_market():
+    # The bounded rarity credit the floor provides: the SAME 0.05 jump is more
+    # unusual in a market whose other moves are tiny than in a churny one.
+    quiet = _unusualness(_prices_to_series([0.30] * 59 + [0.35]))   # flat, then one +0.05
+    noisy_steps = np.array([0.03, -0.03] * 29 + [0.05])            # active vol ~0.03, peak 0.05
+    noisy_prices = 0.30 + np.concatenate([[0.0], np.cumsum(noisy_steps)])
+    noisy = _unusualness(_prices_to_series(list(noisy_prices)))
+    assert quiet > noisy
 
 
 def test_time_to_close_bonus_applies_near_resolution():
