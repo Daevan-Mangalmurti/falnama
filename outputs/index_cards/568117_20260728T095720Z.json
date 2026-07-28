@@ -1,0 +1,98 @@
+{
+  "card_id": "568117_20260728T095720Z",
+  "card_version": "v1",
+  "card_hash": "2a0f9c5779716885baa47dd7a967a86cca42021d1e92f66224e02e61687a85ae",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-28T09:57:20Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "568117",
+    "market_slug": "will-trump-resign-by-december-31-2026",
+    "market_name": "Will Trump resign by December 31, 2026?",
+    "market_url": "https://polymarket.com/market/will-trump-resign-by-december-31-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Trump resign by December 31, 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US equity volatility",
+      "ticker": "VXX",
+      "tradable_instrument_name": "iPath Series B S&P 500 VIX Short-Term Futures ETN",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 900.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -200.0,
+        4000.0
+      ],
+      "trade_eligibility": {
+        "eligible": true,
+        "reason": "Meets minimum expected move.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm the prob move is real (not thin-book noise) and check whether any credible resignation/health/legal headline is already circulating on wires.",
+        "1h": "Check VIX spot and VXX intraday; look for confirming move in SPY put skew and Treasury futures.",
+        "2h": "Assess whether move is sustained or mean-reverting; compare to any official White House statement.",
+        "6h": "Re-evaluate whether story became public (news confirmation) \u2014 if so signal already priced; if not, watch for continued vol bid.",
+        "12h": "Close research window: log realized VXX return vs prediction and whether an anomaly preceded public confirmation."
+      },
+      "reasoning": "A sharp rise in the implied probability of a Trump resignation would signal an unpriced US political-succession shock. Regardless of whether the ultimate policy path is bullish or bearish, sudden leadership uncertainty reliably spikes short-dated equity volatility as markets reprice tail risk. Volatility proxies are the cleanest, most directionally-robust expression because the equity-index direction itself is ambiguous."
+    },
+    {
+      "asset": "Gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 300.0,
+      "confidence": 0.35,
+      "confidence_interval_bps": [
+        -200.0,
+        1200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify gold spot reaction and whether DXY is moving simultaneously (dollar-negative would amplify gold).",
+        "1h": "Check whether the prob move coincides with any concrete headline; distinguish haven bid from pure USD weakness.",
+        "2h": "Reassess magnitude; gold moves this large are rare intraday without confirmed news.",
+        "6h": "Determine if event became public; if priced, expect fade.",
+        "12h": "Log realized GLD return vs prediction and lead/lag vs public confirmation."
+      },
+      "reasoning": "A credible US presidential-succession shock is a classic safe-haven catalyst, drawing flows into gold as a political/geopolitical hedge. Effect is smaller and slower than the vol response and likely below the 700bps tradable threshold, so this is a supporting, lower-conviction mapping rather than a standalone signal."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies a rare, high-impact US political-succession event",
+    "Base rate of a sitting president resigning is extremely low",
+    "Political-instability shocks historically spike equity volatility and bid safe havens",
+    "12h window with a 700bps tradability threshold favors high-beta vol proxies over broad index"
+  ],
+  "uncertainty_notes": [
+    "Equity-index direction is genuinely ambiguous: some investors view Trump policy (tariffs, unpredictability) as a risk premium whose removal could be equity-positive",
+    "This market is a very noisy, low-liquidity sensor; small notional can swing implied probability without information",
+    "Absent an actual resignation, most of the modeled magnitude will not materialize"
+  ],
+  "llm_justification": {
+    "summary": "The market tracks a rare, high-impact event: a US presidential resignation. A sharp jump in its implied probability would most likely reflect an unpriced political-succession shock. The most direction-robust public-market expression is a spike in US equity volatility (VXX/VIX), with a smaller safe-haven bid in gold. Broad equity-index direction is ambiguous because Trump policy is itself a two-sided risk premium, so I avoid a high-confidence SPY call. Confidence is modest given this is an extremely low-base-rate, noisy market.",
+    "key_assumptions": [
+      "A sharp implied-probability move reflects genuine information rather than thin-book noise",
+      "A resignation shock would raise, not lower, short-term uncertainty and volatility",
+      "Vol and gold proxies have meaningful, liquid exposure to a US political shock"
+    ],
+    "failure_modes": [
+      "The probability move is noise/manipulation in a low-liquidity market and no asset move follows",
+      "The event is already public (news-confirmed) so the move is already priced and mean-reverts",
+      "Markets interpret a Trump exit as reducing tariff/policy uncertainty, making equities rally and volatility fall \u2014 inverting the thesis",
+      "Gold's move is dominated by unrelated USD/rates flows, making it a weak proxy",
+      "Realized magnitudes fall well below the 700bps threshold, leaving no tradable signal"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

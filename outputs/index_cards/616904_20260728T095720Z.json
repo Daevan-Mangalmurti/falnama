@@ -1,0 +1,99 @@
+{
+  "card_id": "616904_20260728T095720Z",
+  "card_version": "v1",
+  "card_hash": "0d51cb09f48879faa236bfbcdcadfb2ef32a729dd5504206b1b3a14c89483987",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-28T09:57:20Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616904",
+    "market_slug": "will-2-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 2 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-2-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 2 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-duration US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 15.0,
+      "confidence": 0.25,
+      "confidence_interval_bps": [
+        -60.0,
+        90.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the market move was toward MORE cuts (>2 strikes rising) or FEWER cuts to disambiguate direction; cross-check 2y/10y Treasury yields and Fed funds futures (SOFR).",
+        "1h": "Confirm whether any Fedspeak, CPI/jobs data, or headline caused the repricing (i.e. it may already be public); watch TLT vs 2y yield co-movement.",
+        "2h": "Assess persistence \u2014 has TLT held the initial move or mean-reverted? Compare with DXY and gold for a consistent macro signal.",
+        "6h": "Re-evaluate against rate-futures curve; if move is noise, expect reversion. Note magnitude far below 700bps tradable threshold.",
+        "12h": "Final check on TLT close vs entry, whether yield curve confirmed the direction, and log whether the prediction-market move preceded the public rates move."
+      },
+      "reasoning": "This market tracks the number of 25bp Fed cuts in 2026, a direct read on the expected path of policy rates. A sharp move higher in the implied probability of more/deeper cuts would be dovish and push Treasury yields lower and TLT higher; a move toward fewer cuts would be hawkish and push TLT lower. But the '2 cuts' strike is a MIDDLE outcome \u2014 its probability can rise both when expectations shift up (from <2) and fall when they shift beyond 2, so the sign of a probability move does not cleanly map to a rate direction. Hence direction is genuinely ambiguous absent knowing which tail the move came from. Even under a clear dovish repricing, a 12h TLT move of ~700bps (7%) is implausible; realistic reaction to a marginal 2026-cut repricing is tens of bps."
+    },
+    {
+      "asset": "US Dollar",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 10.0,
+      "confidence": 0.2,
+      "confidence_interval_bps": [
+        -40.0,
+        40.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Determine whether repricing was dovish or hawkish; check DXY and EURUSD spot reaction.",
+        "1h": "Look for a macro catalyst (data/Fedspeak) that may already be public.",
+        "2h": "Check UUP vs 2y yield consistency and whether the move persists.",
+        "6h": "Assess reversion; compare with TLT and gold for coherent macro story.",
+        "12h": "Log final UUP move vs entry and whether prediction-market timing led spot FX."
+      },
+      "reasoning": "Fed cut expectations drive the dollar via rate differentials: a dovish repricing (more/deeper cuts) tends to weaken USD, a hawkish repricing strengthens it. Same middle-strike ambiguity as bonds means the sign of a probability move in the '2 cuts' contract is not directionally clean. FX moves on rate repricing are typically small (a few tens of bps intraday) and nowhere near the 700bps tradable bar."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves on count of 25bp FOMC cuts in 2026 \u2014 a direct proxy for expected Fed policy path",
+    "Rate-cut expectations are transmitted to Treasuries (TLT), USD (UUP/DXY), and gold via real yields",
+    "'2 cuts' is a middle-strike outcome, making probability moves directionally ambiguous",
+    "Prediction window is only 12h; macro proxies rarely move 7% intraday absent a shock"
+  ],
+  "uncertainty_notes": [
+    "We do not know the direction of any anomaly (toward more vs fewer cuts), so asset direction is unresolved",
+    "Middle-strike contracts respond non-monotonically to shifts in the rate-path distribution",
+    "Fed policy repricing is usually driven by public data (CPI, NFP, FOMC), so any leak edge is likely small or already public",
+    "The 'military_conflict' primary topic tag appears mislabeled for a Fed rate market and adds no usable signal"
+  ],
+  "llm_justification": {
+    "summary": "This is a US monetary-policy market whose implied probability tracks the expected number of 2026 Fed cuts. The cleanest public-market proxies are long Treasuries (TLT), the dollar (UUP), and gold. However, because '2 cuts' is a middle outcome, a sharp probability move does not translate cleanly into a rate direction, and realistic 12h reactions in liquid rate proxies are tens of bps \u2014 far below the 700bps tradable threshold. We therefore flag direction as unclear with low confidence and treat this as a weak, non-tradable mapping.",
+    "key_assumptions": [
+      "The prediction market reflects genuine shifts in Fed-cut expectations rather than thin-market noise",
+      "Rate expectations transmit to TLT/USD in the usual direction",
+      "No knowledge of which strike/tail drove any observed anomaly"
+    ],
+    "failure_modes": [
+      "Direction is unidentifiable from a middle-strike probability move, so the sign could be wrong either way",
+      "The repricing is driven by already-public data (CPI, jobs, FOMC minutes), leaving no informational edge",
+      "Proxies move far less than 700bps in 12h, so even a correct-direction call is not tradable",
+      "Prediction-market move is noise/liquidity-driven and mean-reverts within the window",
+      "Topic mislabeling suggests metadata is unreliable"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

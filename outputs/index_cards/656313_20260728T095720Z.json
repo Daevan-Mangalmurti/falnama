@@ -1,0 +1,98 @@
+{
+  "card_id": "656313_20260728T095720Z",
+  "card_version": "v1",
+  "card_hash": "99cc439280aeddf5c6bcf4010dc19c6a087e7bb127625083596247eea0781b50",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-28T09:57:20Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "656313",
+    "market_slug": "openai-1t-ipo-before-2027",
+    "market_name": "OpenAI $1t+ IPO before 2027?",
+    "market_url": "https://polymarket.com/market/openai-1t-ipo-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "OpenAI $1t+ IPO before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Microsoft equity (largest OpenAI backer/stakeholder)",
+      "ticker": "MSFT",
+      "tradable_instrument_name": "Microsoft Corporation",
+      "asset_class": "equity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -120.0,
+        300.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any OpenAI IPO/restructuring headline (S-1, bank mandate, for-profit conversion) is breaking; confirm the market move is news-driven not liquidity noise.",
+        "1h": "Compare MSFT move vs. Nasdaq/SOX to isolate idiosyncratic OpenAI-linked reaction from broad tech beta.",
+        "2h": "Look for confirming reporting (Bloomberg/Reuters) on OpenAI equity structure enabling a public listing.",
+        "6h": "Reassess whether probability shift persisted or reverted; downgrade if it was a single mispriced trade.",
+        "12h": "Mark MSFT return vs. QQQ; record whether any public confirmation validated the signal and whether magnitude stayed well below the 700bp tradable bar."
+      },
+      "reasoning": "Microsoft holds a large economic stake in OpenAI and is its primary cloud/compute partner. A sharp rise in the implied probability of a near-term $1t+ OpenAI IPO would crystallize/validate an enormous mark on Microsoft's stake and confirm the AI capex thesis, marginally bullish. However, MSFT is a >$3t mega-cap; even meaningful OpenAI news rarely moves it more than tens of bps intraday, so a 700bp move is very unlikely within 12h."
+    },
+    {
+      "asset": "AI/innovation growth-equity complex",
+      "ticker": "ARKK",
+      "tradable_instrument_name": "ARK Innovation ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.2,
+      "confidence_interval_bps": [
+        -200.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify whether the prediction-market move coincides with any concrete OpenAI listing news vs. speculation.",
+        "1h": "Check breadth in AI-adjacent names (small/mid-cap software, compute) vs. mega-cap to judge whether the theme is being repriced.",
+        "2h": "Assess whether narrative is 'validation' (bullish) or 'capital drain/new supply' (bearish) in coverage.",
+        "6h": "Re-evaluate direction; keep flagged as unclear unless a clear tape develops.",
+        "12h": "Record ARKK return vs. QQQ and conclude whether the mapping had any predictive content."
+      },
+      "reasoning": "A credible signal that OpenAI could IPO at $1t+ would validate rich private AI valuations and could lift risk appetite for high-multiple AI-adjacent names. But the linkage is diffuse: an OpenAI IPO also introduces a giant new supply of AI equity that competes for capital, so the net effect on existing AI names is ambiguous. This is a weak, second-order proxy."
+    }
+  ],
+  "evidence_used": [
+    "Market question ties resolution to OpenAI completing a $1t+ IPO before end-2026",
+    "OpenAI's principal public-market linkages are Microsoft (equity stake and compute partnership) and, more diffusely, the AI/compute equity complex",
+    "OpenAI is privately held, so there is no direct tradable OpenAI instrument"
+  ],
+  "uncertainty_notes": [
+    "OpenAI has no listed equity, so all proxies are indirect and weakly exposed",
+    "A shift in IPO probability may reflect structural/legal news (for-profit conversion) rather than fundamental value change",
+    "Mega-cap proxies like MSFT are too large for a 12h 700bp move driven by this single item",
+    "Direction of net effect on other AI names is genuinely ambiguous (validation vs. capital competition)"
+  ],
+  "llm_justification": {
+    "summary": "The market prices the odds of a near-term $1t+ OpenAI IPO. The cleanest public-market linkage is Microsoft, OpenAI's largest backer, which would see its stake validated by a high listing\u2014so a sharp probability rise is marginally bullish MSFT. A secondary, weaker read is the broad AI/growth-equity complex (ARKK), where the effect is genuinely ambiguous because an OpenAI listing both validates AI valuations and introduces massive new equity supply. Both mappings are indirect; neither is likely to clear the 700bp tradable threshold in 12h, so confidence is low.",
+    "key_assumptions": [
+      "Any sharp move in this market reflects genuine information about OpenAI's listing path, not noise",
+      "Microsoft's economic exposure to OpenAI is material enough to register in its stock",
+      "No confounding macro/tech-wide catalyst dominates the 12h window"
+    ],
+    "failure_modes": [
+      "The probability move is speculation already largely priced into MSFT, producing no reaction",
+      "MSFT/ARKK moves are driven by broad market beta, not OpenAI, making the proxy attribution spurious",
+      "A restructuring/for-profit-conversion headline could raise IPO odds while being neutral or negative for Microsoft's specific claim",
+      "The move reverses as prediction-market liquidity is thin and a single trade distorted the implied probability",
+      "Magnitude far below the 700bp bar renders the signal non-tradable even if directionally correct"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "card_id": "653788_20260728T095720Z",
+  "card_version": "v1",
+  "card_hash": "9cb53908bd66fabbd0b6199cfd3bbd616026ee01d836336103a52f5e721baf63",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-28T09:57:20Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "653788",
+    "market_slug": "openai-announces-it-has-achieved-agi-before-2027",
+    "market_name": "OpenAI announces it has achieved AGI before 2027?",
+    "market_url": "https://polymarket.com/market/openai-announces-it-has-achieved-agi-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "OpenAI announces it has achieved AGI before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "AI/semiconductor equity theme",
+      "ticker": "SMH",
+      "tradable_instrument_name": "VanEck Semiconductor ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 80.0,
+      "confidence": 0.18,
+      "confidence_interval_bps": [
+        -250.0,
+        400.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move coincides with a real headline (OpenAI blog, leadership tweet) vs thin-liquidity Polymarket noise. Note SMH pre-market/spot level.",
+        "1h": "Compare SMH move to broad market (SPY) to isolate AI-specific beta vs general risk-on; look for NVDA-specific volume spike.",
+        "2h": "Re-check whether credible media corroborate any AGI-related claim; if none, treat as pure market noise.",
+        "6h": "Assess persistence: has SMH held any move or mean-reverted? Watch options IV on NVDA for genuine repricing.",
+        "12h": "Final read: confirm whether any durable AI-theme repricing occurred or the signal decayed; log outcome for calibration."
+      },
+      "reasoning": "A sharp rise in the implied probability that OpenAI announces AGI would signal accelerating AI capability, which in theory bids up AI-infrastructure beneficiaries (Nvidia-heavy SMH). But OpenAI is private, the question horizon is >1yr, and 'AGI announcement' is a soft, hype-prone catalyst. On a 12h window the linkage from a Polymarket probability wiggle to a broad semis ETF is very weak and easily dominated by macro/rates noise, so direction is genuinely unclear and magnitude small."
+    },
+    {
+      "asset": "Nvidia",
+      "ticker": "NVDA",
+      "tradable_instrument_name": "NVIDIA Corporation",
+      "asset_class": "equity",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 100.0,
+      "confidence": 0.17,
+      "confidence_interval_bps": [
+        -300.0,
+        500.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify catalyst authenticity; note NVDA quote and unusual options activity.",
+        "1h": "Measure NVDA move relative to SMH/QQQ to gauge idiosyncratic vs thematic component.",
+        "2h": "Scan for corroborating credible reporting; discount if absent.",
+        "6h": "Check for reversal or continuation and any analyst commentary tying to the event.",
+        "12h": "Log whether move persisted; update priors on prediction-market-to-equity leakage."
+      },
+      "reasoning": "NVDA is the most liquid single-name expression of AI-capability optimism; a credible jump in AGI-announcement odds could lift it. However, a private-company prediction-market probability is a distant, noisy proxy for NVDA cash flows, and single-name idiosyncratic moves swamp any leak signal on a half-day horizon. Confidence is low and direction unclear."
+    }
+  ],
+  "evidence_used": [
+    "Market question: OpenAI announces AGI before 2027, resolving on official OpenAI statement or credible reporting",
+    "OpenAI is a private company; no direct listed equity",
+    "Most liquid public proxies for AI capability optimism are Nvidia and semiconductor/AI ETFs (SMH, QQQ, ARKK)",
+    "12h window with a 700bps tradability threshold"
+  ],
+  "uncertainty_notes": [
+    "OpenAI is private, so there is no clean asset to price this event directly.",
+    "'AGI announcement' is definitionally vague and hype-driven; a probability move may reflect narrative/liquidity noise rather than information.",
+    "Long resolution horizon (through end-2026) means near-term probability moves have muted asset relevance.",
+    "Proxy exposure is diffuse: Nvidia/SMH move on many unrelated drivers (rates, macro, earnings)."
+  ],
+  "llm_justification": {
+    "summary": "The market maps only weakly to public assets because OpenAI is private and the catalyst ('AGI announcement') is soft and long-dated. The best liquid proxies are AI-capability beneficiaries \u2014 Nvidia and the SMH semiconductor ETF \u2014 which could rise if AGI-announcement odds spiked on genuine news. But on a 12h horizon the signal-to-noise is poor, direction is unclear, and expected magnitude falls well below the 700bps tradable threshold. This is a low-conviction, research-only mapping.",
+    "key_assumptions": [
+      "A sharp AGI-odds move would be interpreted as AI-capability-positive, favoring AI-infrastructure names.",
+      "Nvidia/SMH are the cleanest liquid expressions of that theme.",
+      "Any market move on a Polymarket probability requires a real corroborating catalyst to affect equities."
+    ],
+    "failure_modes": [
+      "The probability move is thin-liquidity Polymarket noise with zero information content, so equities do not react.",
+      "The event is already-public sentiment (ongoing AI hype) and fully priced into NVDA/SMH.",
+      "Weak proxy: NVDA/SMH driven by rates/macro that swamp any AGI-narrative effect.",
+      "Reversal: AGI-announcement claims get debunked, sending AI names down instead of up.",
+      "Magnitude far below the 700bps threshold, making the mapping non-tradable even if directionally right."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

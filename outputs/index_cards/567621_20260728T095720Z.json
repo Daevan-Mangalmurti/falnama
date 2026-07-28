@@ -1,0 +1,100 @@
+{
+  "card_id": "567621_20260728T095720Z",
+  "card_version": "v1",
+  "card_hash": "6ca0888b208ed85ffcfc6b4d1444fcd6043415fef3450cf21df89127b9b12cd4",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-28T09:57:20Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "567621",
+    "market_slug": "will-china-invade-taiwan-before-2027",
+    "market_name": "Will China invade Taiwan by end of 2026?",
+    "market_url": "https://polymarket.com/market/will-china-invade-taiwan-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will China invade Taiwan by end of 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Taiwan equity risk",
+      "ticker": "EWT",
+      "tradable_instrument_name": "iShares MSCI Taiwan ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -1200.0,
+      "confidence": 0.6,
+      "confidence_interval_bps": [
+        -4000.0,
+        -200.0
+      ],
+      "trade_eligibility": {
+        "eligible": true,
+        "reason": "Meets minimum expected move.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether EWT/TSM ADRs are gapping down and whether the probability move is corroborated by news wires or is idiosyncratic Polymarket noise.",
+        "1h": "Compare EWT move to USD/TWD proxy and gold; confirm cross-asset risk-off is coherent rather than a single-market glitch.",
+        "2h": "Watch for official statements from China/Taiwan/US; assess whether move is fading (false signal) or building.",
+        "6h": "Reassess against Asian session open flows and any defense-sector or VIX confirmation.",
+        "12h": "Evaluate whether the probability shift persisted and whether EWT held its move or mean-reverted, flagging likely false positive if reversed."
+      },
+      "reasoning": "A sharp upward repricing in the implied probability of a Chinese military offensive against Taiwan is the single most direct threat to Taiwan-listed equities. EWT is dominated by TSMC and other Taiwan names whose earnings, supply chains, and physical assets are directly at risk from conflict. A credible spike in invasion odds would trigger immediate risk-off selling, capital flight, and TWD weakness, all of which drag EWT sharply lower. Magnitude is large and asymmetric because the tail scenario is catastrophic for these assets."
+    },
+    {
+      "asset": "Safe-haven gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "commodity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 250.0,
+      "confidence": 0.45,
+      "confidence_interval_bps": [
+        -100.0,
+        900.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check spot gold and GLD for a bid coincident with the probability move; verify DXY and Treasury reaction.",
+        "1h": "Assess whether gold move is driven by this event or by unrelated macro (rates, USD).",
+        "2h": "Watch for escalation headlines that would sustain a safe-haven bid.",
+        "6h": "Re-evaluate against overnight flows and real-yield moves.",
+        "12h": "Determine whether gold held any gain or faded, marking weak proxy if no persistent move."
+      },
+      "reasoning": "A rising probability of a major-power military conflict in the Taiwan Strait typically drives safe-haven demand into gold. However gold's response to geopolitical shocks is often muted and short-lived unless the event is imminent and confirmed, so magnitude is uncertain and likely below the tradable threshold. Included as a secondary, lower-conviction hedge implication."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies a discrete, high-impact tail event (Chinese military offensive against Taiwan)",
+    "EWT and TSM are the most direct, liquid Taiwan-exposed instruments",
+    "Historical pattern of risk-off selling in Taiwan/China assets and safe-haven bids in gold during geopolitical escalation",
+    "Semiconductor supply-chain concentration in Taiwan amplifies equity sensitivity"
+  ],
+  "uncertainty_notes": [
+    "Polymarket probability moves can be thin/noisy and not reflect real information",
+    "If the probability move is small rather than sharp, none of these implications reach the 700bps tradable threshold",
+    "Gold's geopolitical response is inconsistent and often muted",
+    "Move could reverse quickly if no confirming news emerges"
+  ],
+  "llm_justification": {
+    "summary": "A sharp upward move in the implied probability of China invading Taiwan would most directly hit Taiwan equity via EWT (and TSMC), which would sell off hard on risk-off flows, capital flight, and TWD weakness. A secondary, lower-conviction implication is a safe-haven bid in gold. The primary EWT-down thesis can clear the tradable threshold only if the probability shift is large and credible; otherwise treat as noise.",
+    "key_assumptions": [
+      "The prediction-market move is a genuine, sharp repricing rather than illiquid noise",
+      "The move is not already fully reflected in public equity prices",
+      "EWT/TSM remain liquid and tradable during the window",
+      "Escalation risk translates into risk-off flows within 12 hours"
+    ],
+    "failure_modes": [
+      "The Polymarket move is thin/manipulated and carries no real signal, so assets do not move",
+      "Information was already public and equities have already priced it, leaving no fresh move",
+      "The probability spike reverses within hours, causing EWT to mean-revert",
+      "Gold fails to respond because macro drivers dominate, making it a weak proxy",
+      "A small probability change produces sub-700bps moves that are not tradable"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

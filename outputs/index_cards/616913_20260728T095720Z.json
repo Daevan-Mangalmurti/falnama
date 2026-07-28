@@ -1,0 +1,99 @@
+{
+  "card_id": "616913_20260728T095720Z",
+  "card_version": "v1",
+  "card_hash": "f79453938b084dcaff406f1bdf08f18f001afb81f465cf0912bf9dae96ae7242",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-28T09:57:20Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616913",
+    "market_slug": "will-11-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 11 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-11-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 11 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-dated US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -80.0,
+        400.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability spike coincides with a macro shock headline (labor data, credit event) or is isolated market noise; verify Treasury futures (ZB/ZN) confirm the direction.",
+        "1h": "Compare Fed funds futures / SOFR curve repricing against the Polymarket move; a genuine signal should show 2026 easing being priced across the curve.",
+        "2h": "Reassess TLT vs 10y yield; if yields have not fallen, downgrade the thesis as a weak/noisy proxy.",
+        "6h": "Check for any Fed speaker or data release that explains the move; confirm whether move is persisting or mean-reverting.",
+        "12h": "Evaluate net TLT return vs the 700bps tradable threshold; almost certainly below it, log as directional-only research signal."
+      },
+      "reasoning": "A market pricing 11 Fed cuts (~275bps) in 2026 is an extreme easing/recession-crisis tail. A sharp upward move in that implied probability would signal expectations of aggressive Fed easing, which pushes front-end and long-end yields down and bond prices up. TLT is the cleanest liquid duration proxy for a dovish/emergency-cut regime."
+    },
+    {
+      "asset": "Broad US equities",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "mixed",
+      "expected_return_12h_bps": -90.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -450.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Determine if the probability move is crisis-driven (risk-off, VIX up, credit spreads widening) or liquidity/easing-optimism driven; that dictates the sign.",
+        "1h": "Watch VIX and HYG (credit) alongside SPY; crisis interpretation confirmed if both deteriorate.",
+        "2h": "Reassess whether equities are following the recession narrative or brushing it off; adjust direction call.",
+        "6h": "Check macro news flow for a catalyst; if none, treat as noise and reduce conviction.",
+        "12h": "Log net SPY move; expect it well below the 700bps threshold and flag as non-tradable directional research."
+      },
+      "reasoning": "Eleven cuts in a year only happens in a crisis/recession scenario, which is typically equity-negative (growth collapse dominates). But aggressive easing is also a liquidity tailwind, so the sign is genuinely ambiguous over a 12h window \u2014 hence 'mixed' with low confidence. The proxy exposure to this specific tail is weak."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies 11 x 25bps = ~275bps of 2026 cuts, an extreme easing scenario far outside base-case Fed paths",
+    "Historical pattern: only recessions/financial crises produce that many cuts in a year",
+    "Standard macro linkage: aggressive Fed easing expectations -> lower yields (bonds up), weaker USD, risk-asset ambiguity",
+    "Mislabeled metadata (topic 'military_conflict', region 'unknown') is inconsistent with the actual monetary-policy question and was disregarded"
+  ],
+  "uncertainty_notes": [
+    "This is a deep-tail question; a probability 'spike' may still leave absolute odds tiny and carry little information",
+    "Direction of equities is genuinely ambiguous: crisis (down) vs liquidity (up)",
+    "Prediction markets on Fed policy are noisy and thin; move may not reflect leaked information",
+    "A 700bps 12h move in liquid ETFs is extremely unlikely absent a systemic shock, so predictions are unlikely to be 'tradable'"
+  ],
+  "llm_justification": {
+    "summary": "The market asks about an extreme 11-cut (~275bps) easing path in 2026, which realistically only occurs in a recession or financial-crisis scenario. A sharp rise in its implied probability would most cleanly imply expectations of aggressive Fed easing: long-duration Treasuries (TLT) up on falling yields, with equities (SPY) ambiguous because crisis-driven downside competes with liquidity-driven upside. Both mappings are directional-only, low-confidence, and almost certainly below the 700bps tradable threshold over 12 hours.",
+    "key_assumptions": [
+      "A probability move reflects genuine repricing of the Fed easing path rather than thin-market noise",
+      "Bond markets transmit the easing signal faster and more reliably than equities",
+      "No confounding, already-public catalyst fully explains the move"
+    ],
+    "failure_modes": [
+      "The move is noise in a thin tail market and reverses within hours",
+      "The information is already public (e.g., a data print) so assets have already repriced",
+      "TLT/SPY are weak proxies for this specific extreme scenario and fail to move meaningfully",
+      "Equity direction inverts if easing is read as bullish liquidity rather than recession",
+      "Magnitudes fall far short of 700bps, making both signals non-tradable"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

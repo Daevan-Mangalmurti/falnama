@@ -1,0 +1,98 @@
+{
+  "card_id": "616910_20260728T095720Z",
+  "card_version": "v1",
+  "card_hash": "2e44ca17eeff60619762b97d83cb5a3c819c0336919e4e288a2f7bbeb51ad960",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-28T09:57:20Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616910",
+    "market_slug": "will-8-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 8 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-8-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 8 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US long-term Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -60.0,
+        180.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether 2y/5y Treasury yields are actually falling and Fed funds futures (SOFR/ZQ) are repricing dovishly; if yields flat, signal is noise.",
+        "1h": "Confirm TLT price action versus MOVE index and any Fed/newswire headlines; distinguish genuine easing bets from risk-off duration bid.",
+        "2h": "Re-check the prediction-market probability itself \u2014 has it held or reverted? Cross-reference with SOFR curve steepening/flattening.",
+        "6h": "Assess whether macro data or Fed speak is driving the move; verify TLT move is not purely rate-vol driven.",
+        "12h": "Evaluate net TLT move vs expectation; note if the dovish repricing persisted into the close or faded."
+      },
+      "reasoning": "A market implying 8 rate cuts (200bps) in 2026 is an extreme dovish/recession-or-emergency scenario. If its implied probability rose sharply, it would reflect expectations of aggressive Fed easing, which lowers the entire front-to-belly yield curve and, via lower discount rates and flight-to-quality, tends to push long-duration Treasury prices higher. TLT is the most direct liquid proxy for a large downward repricing of the policy path."
+    },
+    {
+      "asset": "US dollar",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -25.0,
+      "confidence": 0.33,
+      "confidence_interval_bps": [
+        -90.0,
+        50.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check DXY and EURUSD reaction alongside front-end yields; confirm rate-differential story rather than broad risk-off (which can bid USD).",
+        "1h": "Watch whether risk-off dynamics override the differential effect \u2014 in a crisis-driven easing scenario USD can rally as a haven, contradicting the thesis.",
+        "2h": "Re-check prediction-market probability and USD trend consistency.",
+        "6h": "Assess relative moves in EUR, JPY, and whether ECB/BoJ repricing offsets the Fed dovishness.",
+        "12h": "Evaluate net UUP move and whether the differential channel or the haven channel dominated."
+      },
+      "reasoning": "Aggressive Fed easing expectations narrow US rate differentials versus other major central banks, which typically weakens the dollar. A sharp rise in the 8-cut probability would be consistent with lower expected US front-end yields and thus a softer USD, so UUP would tend to fall."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies an extreme dovish outcome of 8 x 25bp cuts (200bps) in 2026, including emergency inter-meeting cuts",
+    "Standard macro linkage: dovish Fed repricing lowers yields (bonds up) and narrows rate differentials (USD down)",
+    "Liquid ETF proxies TLT and UUP are the cleanest broadly-traded expressions of these channels"
+  ],
+  "uncertainty_notes": [
+    "The 700bps tradability threshold is far beyond plausible 12h moves in TLT or UUP, so neither is 'tradable' by that bar",
+    "A rise in the 8-cut probability could reflect either benign disinflation easing or crisis/emergency easing; these have opposite implications for the USD (haven bid) and equities",
+    "Prediction-market probability for such a tail outcome is thin and noisy; a move may reflect low-liquidity distortion rather than real information",
+    "Direction of asset moves depends on WHETHER the probability moved up (dovish) versus down; the card assumes a sharp upward move"
+  ],
+  "llm_justification": {
+    "summary": "The market prices an extreme scenario of eight 25bp Fed cuts in 2026 (~200bps of easing). If its implied probability moved sharply higher, the cleanest public-market implications are lower US yields / higher long-duration Treasury prices (TLT up) and a softer US dollar (UUP down) via narrower rate differentials. Both mappings are directionally standard but weak in confidence over a 12h window, and neither approaches the 700bps tradability bar. The scenario is ambiguous because aggressive easing could be either benign (disinflation) or crisis-driven (haven USD bid), which flips some signs.",
+    "key_assumptions": [
+      "A sharp move in this market means the implied probability of aggressive easing ROSE, not fell",
+      "The move reflects genuine repricing of the Fed path rather than thin-market noise",
+      "Rate-differential channel dominates over haven-flow channel for the USD"
+    ],
+    "failure_modes": [
+      "The scenario is already public/priced \u2014 Fed path is heavily tracked via SOFR futures, so a Polymarket move likely lags, not leads, established rates markets",
+      "Crisis-driven easing would trigger a haven USD rally (UUP up) and equity/duration cross-currents, reversing the FX call",
+      "Thin liquidity in an 8-cut tail market makes probability moves unreliable signals",
+      "12h horizon is too short for a 2026 macro theme to produce measurable, attributable asset moves",
+      "Both proxies could be dominated by unrelated same-day catalysts (CPI, payrolls, Fed speakers)"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

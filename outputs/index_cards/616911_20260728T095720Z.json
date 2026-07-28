@@ -1,0 +1,97 @@
+{
+  "card_id": "616911_20260728T095720Z",
+  "card_version": "v1",
+  "card_hash": "845bcf731b68bacc90e23028315516a07e847733917974c4e00e8f990da01738",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-28T09:57:20Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616911",
+    "market_slug": "will-9-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 9 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-9-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 9 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-dated US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 80.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -60.0,
+        300.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the market's move coincides with a fresh macro headline (weak jobs data, financial stress) versus thin-liquidity noise; confirm Treasury futures are moving.",
+        "1h": "Compare TLT tick against 2y/10y yield changes and Fed funds futures repricing to see if bonds are actually rallying.",
+        "2h": "Assess whether move persists or mean-reverts; watch equity risk sentiment for corroborating recession signal.",
+        "6h": "Re-evaluate against any Fed speaker commentary or economic releases; check if curve is bull-steepening (recession) vs bull-flattening.",
+        "12h": "Close-of-window review: did TLT hold gains, and did the prediction-market probability sustain its move or fade?"
+      },
+      "reasoning": "A sharp rise in the implied probability of 9 Fed cuts in 2026 (225bps of easing) reflects expectations of severe economic deterioration or emergency easing. Aggressive dovish repricing pulls the front-end and belly of the curve lower and, in a growth-scare scenario, drives a flight to duration, lifting long-Treasury prices. TLT is a liquid, direct proxy for falling long-end yields."
+    },
+    {
+      "asset": "Gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "commodity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.35,
+      "confidence_interval_bps": [
+        -80.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether real yields and DXY are moving consistently with a dovish repricing.",
+        "1h": "Check gold futures vs dollar index correlation to validate the driver is rate expectations.",
+        "2h": "Watch for mean reversion; distinguish safe-haven bid from pure rate story.",
+        "6h": "Reassess against any macro data or Fed commentary shifting cut expectations.",
+        "12h": "End-of-window check: did GLD hold, and did the market probability remain elevated?"
+      },
+      "reasoning": "An extreme-dovish scenario (9 cuts) implies lower real rates and a weaker dollar, both supportive for gold. Elevated odds also often accompany crisis/safe-haven demand, reinforcing the direction. GLD is a liquid proxy."
+    }
+  ],
+  "evidence_used": [
+    "Market question targets 9 cuts (225bps) in 2026, an extreme-dovish/crisis-consistent outcome",
+    "Rate-cut expectations map directly to Treasury yields, gold, and the dollar",
+    "12h window and 700bps tradable threshold are demanding for macro ETFs"
+  ],
+  "uncertainty_notes": [
+    "A move in a low-probability tail market is very noisy and often thin-liquidity driven",
+    "Direction is ambiguous: 'controlled easing into soft landing' vs 'crisis emergency cuts' imply different equity/credit reactions even if bonds rally",
+    "Expected 12h magnitudes are well below the 700bps tradable threshold, so this is not a tradable signal"
+  ],
+  "llm_justification": {
+    "summary": "The market asks whether the Fed delivers 9 cuts (225bps) in 2026 \u2014 a deeply dovish, recession/crisis-consistent scenario. A sharp rise in its implied probability would signal expectations of aggressive easing, which most cleanly maps to lower long-end yields (TLT up) and higher gold (GLD up) via lower real rates and a softer dollar. Both mappings are modest-confidence and, importantly, expected 12h moves fall far short of the 700bps tradable bar, so this is research-only.",
+    "key_assumptions": [
+      "A probability spike reflects genuine dovish/macro information rather than market microstructure noise",
+      "The dovish signal transmits to rates and gold within a 12h window",
+      "No offsetting hawkish surprise or already-public information dominates"
+    ],
+    "failure_modes": [
+      "The probability move is noise in an illiquid tail market and reverses quickly",
+      "Information is already public (data already released), so assets have already repriced",
+      "A 'soft-landing' interpretation lifts equities and dampens the safe-haven bid, muddying gold/bond directions",
+      "TLT/GLD are only indirectly exposed and could be dominated by unrelated flows",
+      "Move magnitude far below the 700bps threshold means no actionable edge"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

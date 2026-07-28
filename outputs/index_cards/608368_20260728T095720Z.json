@@ -1,0 +1,69 @@
+{
+  "card_id": "608368_20260728T095720Z",
+  "card_version": "v1",
+  "card_hash": "a51b35ef005d390708e8b47b66960713d89efc6e78cfcac7b54a448329b8e9f3",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-28T09:57:20Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "608368",
+    "market_slug": "will-openai-not-ipo-by-december-31-2026",
+    "market_name": "Will OpenAI not IPO by December 31, 2026?",
+    "market_url": "https://polymarket.com/market/will-openai-not-ipo-by-december-31-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will OpenAI not IPO by December 31, 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Microsoft equity (largest OpenAI backer)",
+      "ticker": "MSFT",
+      "tradable_instrument_name": "Microsoft Corporation",
+      "asset_class": "equity",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.15,
+      "confidence_interval_bps": [
+        -120.0,
+        120.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move coincides with any OpenAI/Microsoft headline (funding, restructuring, S-1 filing) versus pure market noise.",
+        "1h": "Compare MSFT intraday move to QQQ/XLK to isolate any idiosyncratic OpenAI-driven component.",
+        "2h": "Look for confirmation in options flow or news wires on OpenAI corporate structure; if none, treat as noise.",
+        "6h": "Reassess whether the prediction-market move persisted or mean-reverted; a reversal implies no real signal.",
+        "12h": "Close out: log MSFT return vs sector, note whether any public news materialized that would justify the probability shift."
+      },
+      "reasoning": "Microsoft holds a large economic stake in OpenAI's for-profit arm, so OpenAI's public-market valuation/IPO timing is the single closest listed proxy. However, a shift in the implied probability of OpenAI *not* IPO-ing by end-2026 is only weakly and ambiguously linked to MSFT price over a 12h window: an IPO could crystallize value (bullish) or signal dilution/independence from Microsoft (bearish), and pure timing shifts carry little near-term cash-flow information. Net directional read is genuinely unclear."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns timing of an OpenAI IPO by Dec 31 2026",
+    "Microsoft is the largest disclosed institutional backer of OpenAI's for-profit entity",
+    "No public asset is directly tied to OpenAI (privately held), so proxies are indirect"
+  ],
+  "uncertainty_notes": [
+    "IPO-timing probability is a slow-moving, long-horizon variable with minimal 12h public-market transmission",
+    "Direction of MSFT reaction to OpenAI IPO news is theoretically ambiguous (value crystallization vs. reduced strategic control)",
+    "OpenAI has no listed equity; all mappings are second-order and diluted"
+  ],
+  "llm_justification": {
+    "summary": "This market asks whether OpenAI avoids an IPO through end-2026 \u2014 a long-dated, timing-based question with no direct listed instrument. The closest public proxy is Microsoft, OpenAI's largest backer, but the mapping is weak and directionally ambiguous over a 12h window. I assign low confidence and an 'unclear' direction; the expected move is well below the 700bps tradable threshold, so this is a non-tradable research observation rather than a signal.",
+    "key_assumptions": [
+      "Microsoft remains the primary listed entity with material OpenAI economic exposure",
+      "Prediction-market probability shifts on IPO timing carry little near-term public information"
+    ],
+    "failure_modes": [
+      "The probability move reflects information already public (e.g., known restructuring), so no edge exists",
+      "MSFT is a very large, diversified company where any OpenAI-timing effect is swamped by macro/AI-sector beta",
+      "An IPO-timing shift could be interpreted bullishly or bearishly, making any directional bet a coin flip",
+      "The prediction-market move may be pure liquidity noise on a thin geopolitical/misc market with no fundamental driver"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
