@@ -184,20 +184,33 @@ def _is_hard_reject(blob: str, primary_topic: str, selector_cfg: dict) -> bool:
 # ---------------------------------------------------------------------------
 # Universe selection (classify → filter → diversity-balance)
 # ---------------------------------------------------------------------------
-def select_markets(markets: pd.DataFrame, settings: Settings) -> SelectionResult:
+def select_markets(markets: pd.DataFrame, settings: Settings,
+                   now: pd.Timestamp | str | None = None) -> SelectionResult:
     """Classify every candidate, apply the relevance/quality filters, then
-    diversity-balance the survivors. Returns kept + rejected + diagnostics."""
+    diversity-balance the survivors. Returns kept + rejected + diagnostics.
+
+    `now` is the reference time for the resolved-market check; it defaults to the
+    current time, and the pipeline passes the run's start time so a run stays
+    reproducible from its own snapshot.
+    """
     cfg = settings.selector
     min_score = float(cfg.get("min_relevance_score", 60))
     min_volume = float(cfg.get("min_total_volume", 0))
     min_liquidity = float(cfg.get("min_liquidity", 0))
+    # In live mode (closed_only: false) a market whose close_time has already
+    # passed is resolved — drop it before the expensive stages spend an LLM call
+    # and score stale prices on it. In backtest mode (closed_only: true) past-close
+    # markets are exactly the point, so this check is off.
+    drop_resolved = not bool(cfg.get("closed_only", True))
+    now = pd.Timestamp.now(tz="UTC") if now is None else pd.to_datetime(now, utc=True)
 
     kept: list[dict] = []
     rejected: list[dict] = []
     for record in markets.to_dict(orient="records"):
         classification = classify_market(record, settings)
         row = {**record, **classification}
-        reason = _rejection_reason(row, classification, min_score, min_volume, min_liquidity)
+        reason = _rejection_reason(row, classification, min_score, min_volume, min_liquidity,
+                                   now, drop_resolved)
         if reason:
             rejected.append({**row, "rejection_reason": reason})
         else:
@@ -210,8 +223,16 @@ def select_markets(markets: pd.DataFrame, settings: Settings) -> SelectionResult
 
 
 def _rejection_reason(row: dict, classification: dict, min_score: float,
-                      min_volume: float, min_liquidity: float) -> str:
+                      min_volume: float, min_liquidity: float,
+                      now: pd.Timestamp, drop_resolved: bool) -> str:
     """Return the first reason this market fails selection, or '' if it passes."""
+    # Already resolved? Then it is not a live market at all — the most basic
+    # disqualifier, checked first. Missing/unparseable close_time never drops a
+    # market (we can't tell), consistent with the rest of the pipeline.
+    if drop_resolved:
+        close = pd.to_datetime(row.get("close_time"), utc=True, errors="coerce")
+        if pd.notna(close) and close < now:
+            return f"already resolved (close_time {close.date()} is in the past)"
     if classification["hard_rejected"]:
         return "hard reject (keyword or topic)"
     if classification["relevance_score"] < min_score:
@@ -303,7 +324,7 @@ def run(ctx: RunContext, markets: pd.DataFrame | None = None) -> SelectionResult
     if markets is None:
         markets = polymarket.fetch_markets(ctx.settings, ctx)
 
-    result = select_markets(markets, ctx.settings)
+    result = select_markets(markets, ctx.settings, now=ctx.run_time_utc)
 
     out_dir = ctx.settings.output_dir("relevant_markets")
     selected_path = io.write_table(result.relevant, out_dir, "relevant_markets", ctx.run_id)

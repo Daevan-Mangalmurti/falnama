@@ -88,3 +88,40 @@ def test_selection_keeps_geopolitics_drops_noise():
     kept = set(result.relevant["market_id"])
     assert "a" in kept and "b" not in kept
     assert result.diagnostics["selected_count"] == 1
+
+
+def test_resolved_market_is_dropped_in_live_mode():
+    # A market whose close_time has already passed is resolved; in live mode it
+    # must not reach the expensive downstream stages (Opus cards, stale scoring).
+    markets = pd.DataFrame([
+        _market("Will the US strike Iran before August?", market_id="live",
+                volume=1, liquidity=1, close_time="2026-12-31T00:00:00Z"),
+        _market("Will the US strike Iran before August?", market_id="past",
+                volume=1, liquidity=1, close_time="2026-06-30T00:00:00Z"),
+    ])
+    result = select_markets(markets, SETTINGS, now="2026-07-27T00:00:00Z")
+    kept = set(result.relevant["market_id"])
+    assert "live" in kept and "past" not in kept
+    reason = result.rejected.set_index("market_id").loc["past", "rejection_reason"]
+    assert "resolved" in reason
+
+
+def test_missing_close_time_is_not_treated_as_resolved():
+    # We can't tell when a market resolves without a close_time, so we keep it —
+    # consistent with the pipeline's "missing data never penalizes" stance.
+    markets = pd.DataFrame([_market("Will the US strike Iran before August?",
+                                    market_id="noclose", volume=1, liquidity=1)])
+    result = select_markets(markets, SETTINGS, now="2026-07-27T00:00:00Z")
+    assert "noclose" in set(result.relevant["market_id"])
+
+
+def test_backtest_mode_keeps_resolved_markets():
+    # In historical-backtest mode (closed_only: true) past-close markets are the
+    # entire point, so the resolved-market filter must switch off.
+    from falnama.config import Settings
+    bt = Settings(raw={**SETTINGS.raw, "selector": {**SETTINGS.raw["selector"], "closed_only": True}},
+                  project_root=SETTINGS.project_root)
+    markets = pd.DataFrame([_market("Will the US strike Iran before August?", market_id="past",
+                                     volume=1, liquidity=1, close_time="2026-06-30T00:00:00Z")])
+    result = select_markets(markets, bt, now="2026-07-27T00:00:00Z")
+    assert "past" in set(result.relevant["market_id"])

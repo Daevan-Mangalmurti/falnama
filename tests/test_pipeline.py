@@ -8,6 +8,8 @@ import json
 import shutil
 from pathlib import Path
 
+import pandas as pd
+
 from falnama.config import load_config
 from falnama.pipeline import run
 
@@ -22,6 +24,7 @@ def _isolated(tmp_path: Path):
     (tmp_path / "data" / "fixtures").mkdir(parents=True)
     for csv in (REPO / "data" / "fixtures").glob("*.csv"):
         shutil.copy(csv, tmp_path / "data" / "fixtures" / csv.name)
+    _make_fixtures_live(tmp_path / "data" / "fixtures")
     settings = load_config(tmp_path / "config" / "falnama.yaml")
     # Pin the fixture path so the end-to-end test stays deterministic and offline
     # no matter what the committed config sets — main may be flipped to live for
@@ -30,6 +33,27 @@ def _isolated(tmp_path: Path):
     settings.raw["card_mode"] = "mock"
     settings.raw.setdefault("screener", {})["mode"] = "mock"
     return settings
+
+
+def _make_fixtures_live(fixtures_dir: Path) -> None:
+    """The committed fixtures are a frozen June-2026 snapshot, so their close_time
+    is now in the past — which Stage 1's resolved-market filter would (correctly)
+    drop. Shift every fixture date forward by a constant so the markets read as
+    live as of the run (close just ahead of the latest price point), preserving
+    the price-history-to-close spacing that the anomaly scores and the
+    time-to-close bonus depend on. This keeps the end-to-end test hermetic and
+    independent of the wall-clock date it runs on."""
+    target_close = pd.Timestamp.now(tz="UTC").floor("h") + pd.Timedelta(days=1)
+    for name in ("markets.csv", "price_history.csv"):
+        path = fixtures_dir / name
+        df = pd.read_csv(path)
+        if "close_time" not in df.columns:
+            continue
+        offset = target_close - pd.to_datetime(df["close_time"], utc=True).max()
+        df["close_time"] = (pd.to_datetime(df["close_time"], utc=True) + offset).dt.strftime("%Y-%m-%dT%H:%M:%SZ")
+        if "timestamp" in df.columns:
+            df["timestamp"] = (pd.to_datetime(df["timestamp"], utc=True) + offset).dt.strftime("%Y-%m-%dT%H:%M:%SZ")
+        df.to_csv(path, index=False)
 
 
 def _manifest(settings, run_id: str) -> dict:
