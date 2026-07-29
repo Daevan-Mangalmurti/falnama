@@ -241,8 +241,8 @@ execution:
 # move. A deterministic first pass plus an LLM information-state classifier.
 # -----------------------------------------------------------------------------
 newslag:
-  enabled: false                     # off by default until the module matures
-  mode: mock                         # mock (deterministic, offline) | live (GDELT + LLM)
+  enabled: true                     # off by default until the module matures
+  mode: live                         # mock (deterministic, offline) | live (GDELT + LLM)
   lookback_hours: 48                 # consider news strictly before the trigger time
 
   # Layer 1 — retrieval. Pull timestamped candidates from a news source, then rank.
@@ -259,7 +259,7 @@ newslag:
   # default so the pipeline is clone-and-run); `voyage` uses hosted embeddings
   # (Anthropic's recommended embeddings partner — its own key, not ANTHROPIC_API_KEY).
   embedding:
-    provider: lexical                # lexical | voyage
+    provider: voyage                # lexical | voyage
     model: voyage-3.5
     api_key_env_var: VOYAGE_API_KEY
 
