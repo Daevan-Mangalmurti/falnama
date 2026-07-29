@@ -188,10 +188,14 @@ def _validate(settings: Settings) -> None:
     if screener_mode not in _VALID_SCREENER_MODES:
         errors.append(f"screener.mode must be one of {sorted(_VALID_SCREENER_MODES)}.")
 
+    newslag_mode = str(settings.newslag.get("mode", "mock"))
+    if newslag_mode not in _VALID_SCREENER_MODES:  # same mock|live set
+        errors.append(f"newslag.mode must be one of {sorted(_VALID_SCREENER_MODES)}.")
+
     # If real cards, a live screen, or live news-lag are requested, the model and
     # key var must be named.
     needs_llm = (settings.card_mode == "live"
-                 or settings.newslag.get("mode") == "live"
+                 or newslag_mode == "live"
                  or (settings.screener.get("enabled", False) and screener_mode == "live"))
     if needs_llm:
         if not settings.llm.get("model"):

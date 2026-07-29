@@ -242,8 +242,28 @@ execution:
 # -----------------------------------------------------------------------------
 newslag:
   enabled: false                     # off by default until the module matures
+  mode: mock                         # mock (deterministic, offline) | live (GDELT + LLM)
   lookback_hours: 48                 # consider news strictly before the trigger time
-  mode: mock                         # mock | live (live uses the LLM seam above)
+
+  # Layer 1 — retrieval. Pull timestamped candidates from a news source, then rank.
+  source: gdelt                      # gdelt (free, keyless, timestamped, geopolitics-native)
+  gdelt_base_url: https://api.gdeltproject.org/api/v2/doc/doc
+  request_timeout_seconds: 30
+  max_candidates: 40                 # articles pulled per anomaly (cast wide)
+  top_k_articles: 6                  # ...then only the top-ranked few reach the LLM
+
+  # Ranking: embeddings are more discriminating than keyword overlap and far cheaper
+  # than an LLM call per article. `lexical` needs no key and runs offline (the
+  # default so the pipeline is clone-and-run); `voyage` uses hosted embeddings
+  # (Anthropic's recommended embeddings partner — its own key, not ANTHROPIC_API_KEY).
+  embedding:
+    provider: lexical                # lexical | voyage
+    model: voyage-3.5
+    api_key_env_var: VOYAGE_API_KEY
+
+  # Layer 2 — adjudication. Reuses the llm: section: the cheap screener_model (Haiku)
+  # triages every case; only cases it flags as ambiguous escalate to model (Opus).
+  escalate_to_opus: true
 
 # -----------------------------------------------------------------------------
 # Output locations — the durable evidence trail. Paths are relative to the repo.

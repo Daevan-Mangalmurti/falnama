@@ -34,6 +34,12 @@ viz = [
     "jupyter>=1.0",       # run notebooks/analyst_review.ipynb
     "matplotlib>=3.7",    # charts in the review notebook
 ]
+# Embedding-based news-lag ranking (Stage 5). Only needed when newslag.embedding
+# .provider is set to 'voyage'; the default 'lexical' ranker needs nothing extra.
+# Installed with: pip install -e ".[embeddings]"
+embeddings = [
+    "voyageai>=0.2",      # hosted text embeddings for article relevance ranking
+]
 
 [project.scripts]
 # Lets you run the whole pipeline as `falnama` from the command line after install.
