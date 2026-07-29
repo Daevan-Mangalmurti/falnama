@@ -1,0 +1,99 @@
+{
+  "card_id": "562829_20260729T095911Z",
+  "card_version": "v1",
+  "card_hash": "5b78c3e33dcf33773579df1d514704e42e130c48364333e011f74cfce84da98f",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-29T09:59:11Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "562829",
+    "market_slug": "2026-balance-of-power-d-senate-r-house-692",
+    "market_name": "2026 Balance of Power: D Senate, R House",
+    "market_url": "https://polymarket.com/market/2026-balance-of-power-d-senate-r-house-692",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "2026 Balance of Power: D Senate, R House",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US large-cap equities (divided-government gridlock proxy)",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.12,
+      "confidence_interval_bps": [
+        -60.0,
+        60.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability shift is a genuine repricing or thin-liquidity noise; compare to SPY intraday tape for any co-movement.",
+        "1h": "Look for any political news (candidate announcement, polling, retirement) explaining the move and whether it is already public.",
+        "2h": "Assess if related election markets (overall Senate control, House control) moved consistently, indicating a real information event vs. isolated mispricing.",
+        "6h": "Re-evaluate SPY vs. baseline; midterm-outcome markets this far out rarely drive same-day equity moves, so expect no durable signal.",
+        "12h": "Close research window; record whether any equity move materialized and flag as likely noise if none did."
+      },
+      "reasoning": "This market describes a narrow, low-probability split outcome (Democratic Senate, Republican House) for elections still ~a year away in November 2026. Any short-term move in the implied probability is unlikely to carry information that moves broad US equities within a 12h window. Divided government is generally viewed as mildly market-friendly (legislative gridlock, status quo on taxes/regulation), but this specific unusual crossover has ambiguous implications and no clear near-term catalyst. The signal-to-noise for a 12h equity move is very poor."
+    },
+    {
+      "asset": "US small-cap / rate-sensitive equities (fiscal-policy proxy)",
+      "ticker": "IWM",
+      "tradable_instrument_name": "iShares Russell 2000 ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.1,
+      "confidence_interval_bps": [
+        -80.0,
+        80.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether IWM shows any reaction; check bid/ask and volume in the underlying prediction market for legitimacy of the probability move.",
+        "1h": "Scan for policy-relevant headlines (tax, spending, regulation) that could plausibly link this election configuration to small-caps.",
+        "2h": "Compare IWM vs SPY relative performance for any divided-government rotation signal.",
+        "6h": "Reassess; absent a concrete catalyst, treat as non-signal.",
+        "12h": "Close out and log outcome; expect no tradable move given the long horizon and narrow scenario."
+      },
+      "reasoning": "Small caps are more sensitive to domestic fiscal and regulatory policy, so a shift toward divided government could theoretically matter more here than for mega-caps. However, the 2026 midterm timing is far off and this precise D-Senate/R-House split is a tail configuration; a 12h move in the prediction market is very unlikely to trigger a tradable reaction. Mapping is weak and dominated by macro/rates noise over any 12h window."
+    }
+  ],
+  "evidence_used": [
+    "Market question specifies a narrow crossover outcome: Democratic Senate control and Republican House control for the 2026 US midterms",
+    "Elections resolve in November 2026, roughly a year or more from any near-term price move",
+    "Primary topic is US elections; general market view that divided government tends toward legislative gridlock",
+    "No specific dated catalyst present in the market description"
+  ],
+  "uncertainty_notes": [
+    "Horizon mismatch: a 12h asset window vs. an election ~a year away makes leakage-to-price extremely unlikely",
+    "This specific split is a low-probability configuration, so probability shifts may reflect repricing of tail odds rather than new fundamental information",
+    "Prediction-market liquidity for niche configurations is often thin, so moves may be noise",
+    "Even genuine election-odds shifts historically have muted same-day broad-equity impact this far from the vote"
+  ],
+  "llm_justification": {
+    "summary": "The market prices a narrow, low-probability crossover (Democratic Senate, Republican House) for the November 2026 US midterms. Because the resolution is roughly a year out and the configuration is a tail scenario, any 12h shift in implied probability maps only weakly and noisily to liquid public assets. Divided government leans mildly market-neutral-to-positive with small caps theoretically more policy-sensitive, but neither mapping supports a tradable (>=700bps) 12h move. Both predictions are therefore 'unclear' with low confidence \u2014 this is closer to noise than signal over the stated window.",
+    "key_assumptions": [
+      "No imminent dated catalyst tied to this market within the 12h window",
+      "Broad US equity indices are the most exposed liquid proxies to a US-election configuration signal",
+      "Election outcomes this far out have limited same-day price impact on liquid assets"
+    ],
+    "failure_modes": [
+      "The scenario/proxy link is fundamentally weak \u2014 broad ETFs have negligible sensitivity to a specific midterm split a year out",
+      "A probability move may already reflect public polling or news, making it non-predictive",
+      "Thin prediction-market liquidity means observed moves could be spurious",
+      "Even a correct directional read on 'divided government' does not distinguish this exact D-Senate/R-House split from other divided outcomes, muddying any asset mapping",
+      "Macro/rates/earnings flow would dominate any 12h SPY or IWM move, swamping the election signal"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

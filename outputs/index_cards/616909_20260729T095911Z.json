@@ -1,0 +1,99 @@
+{
+  "card_id": "616909_20260729T095911Z",
+  "card_version": "v1",
+  "card_hash": "bd45cf8d259636e681057b477e3dede71123c4fc3ccb4846cb2913a257c5e784",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-29T09:59:11Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616909",
+    "market_slug": "will-7-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 7 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-7-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 7 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-duration US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 180.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -80.0,
+        500.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the 7-cut probability move is corroborated by moves in fed funds futures and 2y yields; confirm it's not a thin-market fluke.",
+        "1h": "Re-check TLT vs 10y yield direction and whether any macro headline (jobs, CPI, crisis) explains the dovish repricing.",
+        "2h": "Assess whether the move persists or mean-reverts; look at 2s10s curve steepening as confirmation of easing bets.",
+        "6h": "Compare against equity and gold behavior to distinguish 'recession fear' vs 'benign disinflation' regime.",
+        "12h": "Evaluate whether Treasury rally held into window close and whether prediction-market signal led or lagged futures."
+      },
+      "reasoning": "A sharp rise in the implied probability of 7 cuts (175bps of easing) in 2026 signals a dramatically more dovish rate path than currently priced \u2014 usually driven by a growth scare or shock. Front-end and long-end yields would fall, pushing long-duration Treasury prices up. TLT is the most liquid, high-duration proxy and moves inversely to yields."
+    },
+    {
+      "asset": "Gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.35,
+      "confidence_interval_bps": [
+        -100.0,
+        400.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm dollar (DXY) is softening and real yields falling alongside the dovish repricing.",
+        "1h": "Check whether gold move is broad (spot, futures) or ETF-specific noise.",
+        "2h": "Look for risk-off cross-confirmation (VIX, equity weakness) supporting a crisis-driven easing narrative.",
+        "6h": "Reassess dollar trajectory and whether gold rally is sustained.",
+        "12h": "Evaluate net move vs baseline and whether the prediction-market signal preceded the gold/USD move."
+      },
+      "reasoning": "An abrupt jump in expectations for aggressive 2026 Fed easing implies lower real yields and a weaker dollar, both bullish for gold. Gold is a liquid, non-yielding asset that benefits when rate-cut expectations surge, especially if driven by risk-off or crisis dynamics (consistent with the 'military_conflict' tag)."
+    }
+  ],
+  "evidence_used": [
+    "Market question asks about an extreme 7-cut (175bps) 2026 easing scenario, far more dovish than typical baseline pricing",
+    "A spike in this probability would coincide with a large dovish repricing of the Fed path",
+    "Standard macro transmission: dovish repricing lowers yields (bond prices up), weakens USD, supports gold",
+    "Liquid proxies TLT and GLD are the cleanest expressions of a lower-rate-path shock"
+  ],
+  "uncertainty_notes": [
+    "Prediction markets on Fed cuts are thin and can move on low volume; a probability jump may not reflect real information",
+    "7 cuts is a tail scenario; small absolute probability changes may carry little asset-price signal",
+    "If the dovish shift is driven by a growth/crisis shock, equities and even risk assets could fall, complicating the read",
+    "The 700bps tradable threshold is very unlikely to be met in a 12h window for these liquid instruments absent an outright crisis"
+  ],
+  "llm_justification": {
+    "summary": "The market prices the tail probability of 7 Fed rate cuts in 2026, an unusually dovish easing path. A sharp rise in that probability would signal expectations of aggressive Fed easing \u2014 typically from a growth scare or shock \u2014 which transmits to lower yields (long Treasuries up) and a weaker dollar with lower real yields (gold up). Both mappings are plausible but modest in a 12h window and well below the 700bps tradable bar, so we treat this as low-confidence research signal rather than an actionable trade.",
+    "key_assumptions": [
+      "A probability spike reflects genuine dovish repricing rather than thin-market noise",
+      "Standard rate transmission holds: dovish path => lower yields, weaker USD, higher gold",
+      "The shift is large enough to move liquid proxies at all within 12h"
+    ],
+    "failure_modes": [
+      "The prediction-market move is illiquid noise and no real information leaked",
+      "The information is already public (e.g., after a known dovish data print or FOMC), so assets already moved",
+      "If easing expectations rise due to a crisis, equities fall and the gold/bond relationship may decouple (risk-off scramble for USD could even lift the dollar)",
+      "TLT and GLD are only indirectly exposed to a 2026-specific cut count; front-end futures would be a purer proxy",
+      "Expected moves are far below the 700bps tradable threshold, so signal is non-actionable"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

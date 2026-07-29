@@ -1,0 +1,99 @@
+{
+  "card_id": "616911_20260729T095911Z",
+  "card_version": "v1",
+  "card_hash": "e23b1dbac79a477ca276421d54dbd18957143eca3fcf6c8ac011033ed167869d",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-29T09:59:11Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616911",
+    "market_slug": "will-9-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 9 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-9-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 9 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-duration US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -80.0,
+        400.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the 9-cut probability move coincides with a broader dovish repricing (2yr yield down, front-end fed funds futures) rather than isolated thin-market noise.",
+        "1h": "Compare TLT move to MOVE index and 10yr yield; confirm direction consistency and whether any macro headline (jobs, Fed speaker, geopolitical shock) is driving it.",
+        "2h": "Re-check if the probability spike persists or mean-reverts; assess whether equity/credit markets corroborate a risk-off vs pure-rates story.",
+        "6h": "Evaluate whether the signal has been absorbed into consensus rate expectations (public) already, reducing edge.",
+        "12h": "Assess net TLT move vs prediction; log whether the market led or lagged Treasuries."
+      },
+      "reasoning": "Nine 25bp cuts in 2026 (~225bps of easing) is a deep-easing/emergency scenario. A sharp rise in the implied probability of this outcome signals markets pricing recession or crisis-driven Fed capitulation, which pulls the whole rate curve lower and lifts long-duration Treasury prices. TLT is the cleanest liquid proxy for a dovish repricing. However, this is a tail-strike market; probability moves here are noisy and the expected 12h move is well below the 700bp tradable threshold."
+    },
+    {
+      "asset": "Gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 80.0,
+      "confidence": 0.35,
+      "confidence_interval_bps": [
+        -100.0,
+        300.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm DXY is softening and real yields falling alongside the probability move.",
+        "1h": "Check if gold move is haven-driven (equities down, VIX up) or rates-driven; distinguish narratives.",
+        "2h": "Watch for reversal if the probability spike was thin-market noise; compare to silver/miners for corroboration.",
+        "6h": "Assess whether dollar weakness sustains and whether any geopolitical headline explains the move publicly.",
+        "12h": "Compare net GLD return to prediction and note lead/lag versus the prediction market."
+      },
+      "reasoning": "A jump in odds of aggressive 2026 easing implies lower expected real rates and a weaker dollar, both supportive for gold. Gold also benefits if the driver is crisis/geopolitical (topic tagged military_conflict), adding a safe-haven bid. But the linkage from a tail rate-cut strike to gold is indirect and the move is far below the 700bp tradable bar."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves on count of 25bp cuts in 2026; 9 cuts implies ~225bps easing, a deep/emergency scenario",
+    "Emergency inter-meeting cuts count, so high strikes are tied to crisis/recession outcomes",
+    "Standard macro linkage: dovish repricing lowers yields (TLT up), weakens USD, supports gold",
+    "Topic tag military_conflict suggests a possible geopolitical/haven driver"
+  ],
+  "uncertainty_notes": [
+    "Tail-strike prediction markets are thin and noisy; probability moves may not reflect real information",
+    "Equity direction is ambiguous: cuts are supportive but a recession/crisis driver is negative",
+    "If the move is already reflected in fed funds futures and Treasuries, there is no leaked edge",
+    "Magnitude: expected 12h moves are far below the 700bp tradable threshold, so this is research-only, not tradable"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability of 9 Fed cuts in 2026 would signal a deep-easing or crisis scenario. The cleanest liquid implications are higher long-duration Treasury prices (TLT up) and higher gold (GLD up) via lower real rates and a weaker dollar, with a possible safe-haven overlay given the conflict tag. Both mappings are directionally plausible but modest in magnitude, well under the tradable threshold, and confidence is low because tail-strike markets are noisy and equity direction is ambiguous.",
+    "key_assumptions": [
+      "A probability spike reflects genuine dovish/recession expectations rather than thin-market noise",
+      "Standard rates-gold-dollar transmission holds over the 12h window",
+      "No offsetting inflation shock that would force the Fed to stay restrictive"
+    ],
+    "failure_modes": [
+      "The probability move reverses quickly as illiquid tail-strike noise",
+      "The information is already public and priced into fed funds futures and Treasuries",
+      "TLT/GLD are only weakly exposed if the move is idiosyncratic to the prediction market",
+      "Direction inverts if the driver is a hawkish repricing or inflation surprise elsewhere",
+      "Expected magnitude never reaches the 700bp bar, so no tradable signal materializes"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

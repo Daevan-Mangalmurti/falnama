@@ -1,0 +1,98 @@
+{
+  "card_id": "616912_20260729T095911Z",
+  "card_version": "v1",
+  "card_hash": "68808cd5aa6ffd20535f7113c0bbd295e6d26bd34e3147f2f5152c47ad62f241",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-29T09:59:11Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616912",
+    "market_slug": "will-10-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 10 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-10-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 10 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-duration US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -60.0,
+        180.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether front-end rate futures (SOFR/Fed funds futures) and 2y yields are moving in the same dovish direction, confirming the signal is macro not idiosyncratic to the Polymarket contract.",
+        "1h": "Re-check TLT price vs 10y/30y yields; look for a coincident equity/vol reaction that would corroborate a genuine recession-easing narrative.",
+        "2h": "Scan for any newswire (Fed speak, jobs/CPI leak, financial-stress event) that could justify a dovish repricing; if none, treat as noise.",
+        "6h": "Assess whether the bond move persisted or mean-reverted; update confidence downward if TLT round-tripped.",
+        "12h": "Log final TLT return vs prediction; note whether the prediction-market move led or lagged the Treasury move."
+      },
+      "reasoning": "A market on '10 Fed rate cuts in 2026' (250bps of easing) is a deep-dovish / recession-emergency tail. If its implied probability spiked, it would reflect a sudden repricing toward aggressive Fed easing, which mechanically pulls the front end and long end of the Treasury curve lower in yield and higher in price. TLT is the cleanest liquid proxy for a large downward shift in expected policy rates. However, 10 cuts is an extreme tail with low base rate, so any anomaly is likely noise or a small probability shift, and the realized bond move over 12h would be modest \u2014 far below the 700bps tradable threshold."
+    },
+    {
+      "asset": "Gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "commodity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 30.0,
+      "confidence": 0.33,
+      "confidence_interval_bps": [
+        -70.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm DXY is weakening and real yields (TIPS) are falling alongside any gold move.",
+        "1h": "Check whether gold's move is being driven by the same dovish impulse or by unrelated safe-haven/geopolitical flow.",
+        "2h": "Look for macro catalyst; if gold rallies without rate confirmation, downgrade the thesis as coincidental.",
+        "6h": "Evaluate persistence and correlation with TLT; divergence weakens the shared dovish-rates story.",
+        "12h": "Record final GLD return, note lead/lag vs the prediction market and vs TLT."
+      },
+      "reasoning": "A spike in the probability of very aggressive Fed easing implies lower real rates and a weaker dollar, both supportive of gold. Gold is a liquid, broadly-traded proxy for a dovish/real-rate-down regime. The link is real but second-order and diluted by many other gold drivers (geopolitics, dollar, positioning); the extreme-tail nature of '10 cuts' makes the mapping weak and the 12h move small, well under the tradable threshold."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies counting discrete 25bps cuts; 10 cuts = ~250bps of easing in one year, an extreme dovish/recession tail",
+    "Standard macro transmission: expectations of aggressive Fed easing lower Treasury yields (TLT up), weaken USD, and lift gold",
+    "Polymarket contract is thinly informative relative to deep rates futures markets"
+  ],
+  "uncertainty_notes": [
+    "The 700bps tradable threshold is essentially unreachable for TLT or GLD over 12h barring a systemic crisis; these are research signals, not tradable",
+    "10 cuts is a low-base-rate tail, so probability moves are likely noise or small repricings",
+    "Mislabeled topic ('military_conflict') suggests metadata is unreliable; the market is purely a monetary-policy contract",
+    "If the market instead prices FEWER cuts (hawkish), the directional implications flip"
+  ],
+  "llm_justification": {
+    "summary": "This is a monetary-policy tail market on 10 Fed rate cuts (~250bps) in 2026. A sharp rise in its implied probability would signal expectations of aggressive/emergency Fed easing, mapping to lower Treasury yields (TLT up) and higher gold via lower real rates and a softer dollar. Both proxies are liquid but the mapping is second-order and the extreme-tail nature makes any 12h move small \u2014 nowhere near the 700bps tradable bar. Treat as a weak, low-confidence research signal.",
+    "key_assumptions": [
+      "A prediction-market move toward more cuts reflects genuine dovish macro expectations, not contract-specific noise",
+      "Deep rate-futures and Treasury markets will move in the same direction if the signal is real",
+      "Real rates and the dollar transmit dovish expectations into gold"
+    ],
+    "failure_modes": [
+      "The prediction-market move is noise/illiquidity in a low-probability tail contract with no asset impact",
+      "Any dovish repricing was already public and fully reflected in Treasuries/gold before the anomaly",
+      "TLT and GLD are weakly/ambiguously exposed over a 12h window and dominated by other drivers",
+      "Direction reverses if the anomaly actually prices fewer cuts (hawkish)",
+      "Move mean-reverts within hours, producing near-zero realized return"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

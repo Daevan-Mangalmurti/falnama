@@ -1,0 +1,96 @@
+{
+  "card_id": "616910_20260729T095911Z",
+  "card_version": "v1",
+  "card_hash": "7131fb89b99726ba3f0843c6178d1ee6909733a76329ba3e0727c476b7dda41f",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-29T09:59:11Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616910",
+    "market_slug": "will-8-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 8 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-8-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 8 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-dated US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.5,
+      "confidence_interval_bps": [
+        -40.0,
+        180.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check 2y and 10y Treasury yields and fed funds futures for confirming downward move; verify no headline (jobs data, Fed speaker) already explains it.",
+        "1h": "Compare TLT move vs. rate-futures implied cuts; confirm the prediction-market shift is not stale/thin liquidity.",
+        "2h": "Reassess whether the dovish repricing is broadening across the curve or fading.",
+        "6h": "Check for scheduled economic releases or Fed communications that could validate the easing signal.",
+        "12h": "Evaluate whether TLT held the move; mark whether the prediction-market probability was a leading indicator or noise."
+      },
+      "reasoning": "A sharp rise in the implied probability of 8 rate cuts (200bps of easing) in 2026 signals expectations of aggressive Fed easing, typically tied to recession/labor-market deterioration or a dovish policy pivot. That drives front-end and long-end yields lower, pushing long-duration Treasury prices (TLT) up. The magnitude in a 12h window is modest because this market is about the full-year 2026 path, not an imminent catalyst."
+    },
+    {
+      "asset": "US Dollar",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -30.0,
+      "confidence": 0.42,
+      "confidence_interval_bps": [
+        -120.0,
+        50.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check DXY and EUR/USD, JPY for confirming dollar weakness; verify no competing global driver.",
+        "1h": "Confirm dollar move aligns with lower US yields rather than global risk-off (which can strengthen USD).",
+        "2h": "Reassess whether risk-off vs. pure rate-differential dynamics dominate.",
+        "6h": "Check for overseas central-bank news that could offset the dollar signal.",
+        "12h": "Mark whether UUP direction matched thesis and whether magnitude stayed within interval."
+      },
+      "reasoning": "Pricing in 8 cuts implies a materially lower expected policy rate path, compressing US rate differentials and typically weakening the dollar. UUP would fall. Exposure is weaker/noisier than the direct rates channel because FX also depends on relative moves abroad and risk sentiment, so lower confidence."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies 8 cuts = 200bps of easing in 2026, an extreme dovish scenario",
+    "Aggressive-easing expectations historically co-move with falling yields, rising bond prices, and a weaker dollar",
+    "Topic tags (military_conflict) appear mislabeled; content is clearly a Fed monetary-policy market"
+  ],
+  "uncertainty_notes": [
+    "The 12h window is short relative to a full-year 2026 policy question, so any shift is a weak, diffuse signal",
+    "700bps tradable threshold is far above realistic 12h moves in these liquid proxies \u2014 neither prediction is 'tradable' under that bar",
+    "If the probability rises due to expected recession, risk-off could paradoxically strengthen USD, undermining the FX leg"
+  ],
+  "llm_justification": {
+    "summary": "A sharp increase in the implied probability of 8 Fed rate cuts in 2026 signals aggressive-easing expectations, most cleanly mapping to lower Treasury yields (TLT up) and a modestly weaker dollar (UUP down). The rates channel is the more reliable link; the FX channel is noisier. Expected 12h magnitudes are small (tens of bps), well below the 700bps tradable threshold, so this is a directional research signal rather than an actionable trade.",
+    "key_assumptions": [
+      "The prediction-market move reflects genuine shifts in easing expectations, not thin/illiquid noise",
+      "No overlapping public catalyst (jobs report, CPI, Fed speaker) already priced the move",
+      "Standard rate-differential and duration relationships hold over the window"
+    ],
+    "failure_modes": [
+      "Move already public: if a dovish data print or Fed comment preceded the market shift, proxies have already repriced",
+      "Reversal: extreme-cut markets are thin and mean-revert quickly, so early moves can fade",
+      "Weak proxy on FX: recession-driven easing bets can trigger safe-haven USD buying, flipping the UUP direction",
+      "Magnitude far below tradable threshold, so signal has no standalone execution value"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

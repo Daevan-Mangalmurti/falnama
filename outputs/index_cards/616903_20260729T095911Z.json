@@ -1,0 +1,98 @@
+{
+  "card_id": "616903_20260729T095911Z",
+  "card_version": "v1",
+  "card_hash": "709105527fc35885f03d22ec3d7184189a6bd57ebbbf7aefd51186c47e85c3d9",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-29T09:59:11Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616903",
+    "market_slug": "will-1-fed-rate-cut-happen-in-2026",
+    "market_name": "Will 1 Fed rate cut happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-1-fed-rate-cut-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 1 Fed rate cut happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US Treasuries (long-duration)",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.2,
+      "confidence_interval_bps": [
+        -120.0,
+        120.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability shift is concentrated in the '1 cut' bucket vs adjacent buckets (0, 2, 3+) to infer hawkish vs dovish tilt; cross-check 2y/10y yields and fed funds futures.",
+        "1h": "Confirm move is not driven by a scheduled FOMC statement, CPI, or jobs data already public; look for corroboration in SOFR futures.",
+        "2h": "Re-check TLT and DXY co-movement to validate rate-driven interpretation vs noise.",
+        "6h": "Assess persistence of the probability shift and whether Treasury market has repriced consistently.",
+        "12h": "Evaluate net TLT move vs baseline; mark whether the leak hypothesis was supported or the move was noise/reversal."
+      },
+      "reasoning": "This market tracks the count of 2026 Fed rate cuts. A sharp move in the implied probability of 'exactly 1 cut' reflects a shift in rate-path expectations, which is the primary driver of long-duration Treasuries. However the mapping is directionally ambiguous: a rising probability of '1 cut' could come from a hawkish repricing (fewer cuts than a multi-cut baseline, which would push yields up / TLT down) OR from a dovish repricing away from a 'zero cut' baseline (yields down / TLT up). Without knowing which side of the distribution the move comes from, direction is unclear. Any 12h move would be a small fraction of a percent, nowhere near the 700bps tradable bar."
+    },
+    {
+      "asset": "US Dollar",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.18,
+      "confidence_interval_bps": [
+        -80.0,
+        80.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Determine whether probability shift implies hawkish or dovish repricing; compare with 2y UST yield and DXY tick.",
+        "1h": "Rule out concurrent macro data releases or Fed speak that already moved FX publicly.",
+        "2h": "Check EURUSD and USDJPY consistency with a rate-differential story.",
+        "6h": "Reassess dollar move persistence versus mean reversion.",
+        "12h": "Record net UUP move and whether it aligned with the rate-path signal direction."
+      },
+      "reasoning": "Rate-cut expectations map to the dollar via rate differentials: fewer/slower cuts (hawkish) tend to support USD, more cuts (dovish) weaken it. A shift in the '1 cut in 2026' probability could signal either depending on the prior baseline, so the direction is genuinely ambiguous. Magnitude over 12h would be tens of bps at most, far below the 700bps tradable threshold."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves on the exact count of 25bp Fed cuts in 2026 per FOMC statements",
+    "Fed rate-path expectations are the dominant driver of Treasury yields and the dollar",
+    "No specific price/probability move was provided, only the question definition"
+  ],
+  "uncertainty_notes": [
+    "The 'exactly N cuts' framing makes directional mapping ambiguous without knowing which bucket the probability flows to/from",
+    "Mislabeled primary topic ('military_conflict') is irrelevant; this is a monetary-policy market",
+    "Fed-path information is heavily monitored and largely already priced in liquid markets, leaving little room for leakage-driven alpha",
+    "No magnitude of any anomaly given, so I cannot judge whether a real signal exists"
+  ],
+  "llm_justification": {
+    "summary": "This is a US monetary-policy market keyed to the number of 2026 Fed rate cuts. Its natural public-market proxies are long-duration Treasuries (TLT) and the dollar (UUP/DXY), both of which are dominated by rate-path expectations. However, because the strike is a specific cut count rather than a clean dovish/hawkish axis, a probability move is directionally ambiguous, and any realistic 12h asset move is far below the 700bps tradable threshold. I therefore flag both mappings as unclear with low confidence \u2014 this is a weak, non-tradable signal.",
+    "key_assumptions": [
+      "Rate-path repricing transmits primarily to Treasuries and the dollar",
+      "A sharp probability move reflects genuine expectation shifts rather than thin-market noise",
+      "Fed policy expectations are otherwise efficiently priced in liquid markets"
+    ],
+    "failure_modes": [
+      "Direction is unknowable from the 'exactly 1 cut' framing \u2014 could be hawkish or dovish",
+      "The information may already be fully public (Fed communications, macro data)",
+      "12h horizon is far too short for rate-count expectations to move liquid assets by 700bps; effectively not tradable",
+      "Prediction-market probability shifts in low-liquidity Fed-count markets are often noise, not leaks",
+      "Cross-currents (risk sentiment, supply, foreign flows) can dominate TLT/UUP over the interpretation from this single market"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "card_id": "562828_20260729T095911Z",
+  "card_version": "v1",
+  "card_hash": "858931d4e18dfaf971404c310b316df7c30ff703660ecfcb179bb1af3a919f14",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-29T09:59:11Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "562828",
+    "market_slug": "2026-balance-of-power-d-senate-d-house-949",
+    "market_name": "2026 Balance of Power: D Senate, D House",
+    "market_url": "https://polymarket.com/market/2026-balance-of-power-d-senate-d-house-949",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "2026 Balance of Power: D Senate, D House",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Clean energy equities",
+      "ticker": "ICLN",
+      "tradable_instrument_name": "iShares Global Clean Energy ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.22,
+      "confidence_interval_bps": [
+        -120.0,
+        220.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket odds move is a real, volume-backed shift or thin-book noise; compare ICLN/TAN premarket or intraday tick vs SPY beta.",
+        "1h": "Confirm no coincident macro driver (Fed speak, CPI, oil) that better explains any clean-energy move.",
+        "2h": "Assess whether solar single names (ENPH, FSLR) show correlated moves beyond ETF beta.",
+        "6h": "Re-check if the prediction-market shift persisted or reverted; a reversion invalidates the leak thesis.",
+        "12h": "Evaluate cumulative ICLN return vs SPY; expect negligible net move and treat as non-signal unless >200bps idiosyncratic."
+      },
+      "reasoning": "A rising implied probability of Democratic control of both chambers in 2026 would, at the margin, raise expectations for sustained clean-energy subsidies, IRA-style tax credits, and lighter regulatory rollback risk, which historically benefits solar/renewables names. However, the election is ~a year away, so the near-term (12h) pass-through to a liquid ETF is very small and easily dominated by rate and macro noise. This is a weak, slow-burn mapping, not a tradable catalyst."
+    },
+    {
+      "asset": "US large-cap equity index",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.15,
+      "confidence_interval_bps": [
+        -80.0,
+        80.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify no confounding macro release; treat any SPY move as macro, not election-driven.",
+        "1h": "Check sector rotation (financials, healthcare, energy) for any tax/regulation-themed signature.",
+        "2h": "Look for follow-through vs mean reversion in the odds.",
+        "6h": "Reassess whether narrative coverage links markets to the election odds move.",
+        "12h": "Close out; expect no meaningful attributable SPY move and record as non-signal."
+      },
+      "reasoning": "Broad equity direction from a distant midterm control shift is genuinely ambiguous: a Democratic sweep raises higher-corporate-tax and regulation fears (bearish) but also fiscal-spending expectations (mixed), and markets prefer to price this only closer to the event. Twelve-hour reaction to a probability wiggle a year out should be essentially nil, so I mark direction unclear with near-zero expected move."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies Democratic control of both Senate and House after the 2026 US midterms",
+    "Election resolves in November 2026, roughly a year beyond the 12h prediction window",
+    "Historical tendency for clean-energy/renewable equities to respond to expected Democratic legislative control",
+    "General market pattern of pricing distant political outcomes gradually rather than in sharp 12h jumps"
+  ],
+  "uncertainty_notes": [
+    "The event horizon is ~1 year away, so short-window asset pass-through is minimal",
+    "Prediction-market moves may be thin-book noise rather than genuine information leakage",
+    "Democratic sweep has offsetting effects on broad equities (tax/regulation vs spending), muddying direction",
+    "No specific policy catalyst is embedded in this question beyond party control"
+  ],
+  "llm_justification": {
+    "summary": "This market prices a Democratic sweep of both chambers in the 2026 midterms, an event roughly a year out. The cleanest thematic proxy is clean-energy equities (mildly positive on higher subsidy expectations) and broad equity index (directionally ambiguous). Because the election is distant, any 12-hour asset reaction to a probability shift should be tiny and dominated by macro noise. Neither mapping meets the 700bps tradable threshold; I treat this as a weak, low-confidence, non-tradable research signal.",
+    "key_assumptions": [
+      "A sharp odds move in this market reflects real information rather than illiquid noise",
+      "Markets do not aggressively reprice a one-year-out midterm outcome within 12 hours",
+      "Clean-energy and tax/regulation channels are the primary equity linkages to party control"
+    ],
+    "failure_modes": [
+      "The odds move reverts, confirming it was noise not signal",
+      "The 12h asset move is entirely driven by unrelated macro data, not the election",
+      "Clean-energy ETF exposure to midterm expectations is too weak/slow to register within the window",
+      "Democratic control's competing bullish/bearish equity effects cancel out, leaving no detectable move",
+      "Information may already be public (polling trends) and fully priced"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

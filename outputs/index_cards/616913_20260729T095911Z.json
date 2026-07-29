@@ -1,0 +1,99 @@
+{
+  "card_id": "616913_20260729T095911Z",
+  "card_version": "v1",
+  "card_hash": "39a9f464bc2925966038d62766ebf9acd97ec1aeb3f21a5e4e730e92f923bb5a",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-29T09:59:11Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616913",
+    "market_slug": "will-11-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 11 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-11-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 11 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-dated US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.28,
+      "confidence_interval_bps": [
+        -60.0,
+        180.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether Treasury yields (2y/10y) and TLT are actually moving lower; cross-check against any macro headlines or Fed-speak.",
+        "1h": "Confirm move is not a one-off print; watch fed funds futures (implied 2026 cuts) for corroboration.",
+        "2h": "Assess whether risk assets (SPY) and rates are moving consistently with a dovish/recession narrative.",
+        "6h": "Re-evaluate whether the prediction-market shift persisted or reverted; check for scheduled data (CPI, jobs) or Fed communications.",
+        "12h": "Tally TLT move vs. 40bps expectation; log whether any public catalyst emerged that explains the market shift."
+      },
+      "reasoning": "An extreme strike of 11 rate cuts (275bps) in 2026 only becomes plausible in a hard-landing/emergency-easing scenario. If this market's implied probability spiked, it would signal rising expectations of aggressive Fed easing, which pushes front- and long-end yields lower and bond prices higher. TLT is the most liquid duration proxy. But an 11-cut path is a deep tail; any probability move is more likely noise than genuine leakage, and 12h public-market reaction would be small."
+    },
+    {
+      "asset": "US Dollar",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -25.0,
+      "confidence": 0.24,
+      "confidence_interval_bps": [
+        -120.0,
+        60.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check DXY/UUP direction and whether it aligns with lower yields.",
+        "1h": "Look for confirmation across EURUSD/USDJPY that the move is rate-driven, not risk-off.",
+        "2h": "Distinguish dovish-easing (dollar down) from crisis safe-haven (dollar up) interpretation.",
+        "6h": "Reassess persistence and any macro catalyst; watch for Fed commentary.",
+        "12h": "Compare UUP realized move to -25bps expectation and note whether safe-haven flows overrode the rate-differential channel."
+      },
+      "reasoning": "A sharp rise in the probability of many 2026 Fed cuts implies a lower expected US rate path, which typically weakens the dollar via narrowing rate differentials. UUP is a liquid dollar proxy. However, in a genuine crisis-driven easing scenario the dollar can strengthen on safe-haven flows, making direction genuinely ambiguous; hence low confidence."
+    }
+  ],
+  "evidence_used": [
+    "Market strike: 11 cuts (~275bps) in 2026, an extreme dovish tail requiring recession/emergency easing",
+    "Fed easing expectations map directly to Treasury yields, the dollar, and gold",
+    "Liquid proxies: TLT for duration, UUP for the dollar",
+    "12h window and 700bps tradability threshold are very demanding for these liquid ETFs"
+  ],
+  "uncertainty_notes": [
+    "Neither prediction is expected to reach the 700bps tradable threshold \u2014 these are research signals only",
+    "An 11-cut strike is a deep tail; probability moves there are frequently noise/low-liquidity artifacts",
+    "Crisis-driven easing could flip the dollar direction to up (safe haven) and pressure equities, muddying the mapping",
+    "Prediction-market resolution runs through Dec 2026, so a probability shift may reflect long-horizon repricing, not an imminent 12h catalyst"
+  ],
+  "llm_justification": {
+    "summary": "The market asks whether the Fed delivers 11 (25bps) cuts in 2026 \u2014 an extreme dovish/recession tail. If its implied probability spiked, the cleanest public-market read is expectations of aggressive easing: lower Treasury yields (TLT up) and a softer dollar (UUP down). Both mappings are weak over a 12h window: the strike is a deep tail prone to noise, crisis scenarios can reverse the dollar via safe-haven flows, and realized moves are very unlikely to clear the 700bps tradable bar. Treated as low-confidence research signals only.",
+    "key_assumptions": [
+      "A rising probability of many cuts reflects genuine dovish/recession repricing, not thin-market noise",
+      "Rate-differential channel dominates dollar direction rather than safe-haven flows",
+      "TLT and UUP remain representative, liquid proxies for duration and the dollar"
+    ],
+    "failure_modes": [
+      "The prediction-market move is a low-liquidity artifact with no real information content",
+      "The information was already public (e.g., a data release) and is fully priced in",
+      "Crisis-driven easing triggers a stronger dollar (safe haven), reversing the UUP call",
+      "Long resolution horizon means no 12h public-market reaction materializes",
+      "Proxies move for unrelated macro reasons, breaking the causal link"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

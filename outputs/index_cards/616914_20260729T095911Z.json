@@ -1,0 +1,98 @@
+{
+  "card_id": "616914_20260729T095911Z",
+  "card_version": "v1",
+  "card_hash": "1ab8fcd777988b5991fc8a9cfd3ccacdc5d42f75a1ed646ca45c2ea93a995308",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-29T09:59:11Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616914",
+    "market_slug": "will-12-or-more-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 12 or more Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-12-or-more-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 12 or more Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-duration US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.35,
+      "confidence_interval_bps": [
+        -60.0,
+        180.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the market probability move is a real shift or thin-liquidity noise; cross-check Fed funds futures (SOFR/ZQ) and 2y/10y yields for confirmation.",
+        "1h": "Look for any macro catalyst (jobs data, bank stress, geopolitical shock) that would justify a 300bps-cut expectation; confirm TLT is bid alongside falling yields.",
+        "2h": "Re-assess whether bond rally is broadening or fading; watch VIX and credit spreads (HYG) for corroborating recession/risk signal.",
+        "6h": "Evaluate persistence of the rate-cut repricing and whether equity/FX markets echo the dovish shift; update if move has reversed.",
+        "12h": "Final check: did TLT hold gains and did rate-cut pricing sustain? Log whether the prediction-market move led or lagged public rate markets."
+      },
+      "reasoning": "A sharp rise in the implied probability of 12+ (i.e. 300bps of) Fed cuts in 2026 would signal expectations of aggressive easing, typically tied to a recession or financial-crisis scenario. That regime drives front-end and long-end yields lower, pushing long-duration Treasury prices (TLT) up. The proxy is directly exposed to the rate-expectations channel, but a 12h window rarely produces the magnitude such a tail scenario implies unless a genuine macro shock is unfolding."
+    },
+    {
+      "asset": "US Dollar",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": 30.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -70.0,
+        120.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify the move is genuine and check DXY and 2y yield reaction; distinguish dovish-Fed weakness from crisis safe-haven flows.",
+        "1h": "Watch EURUSD and USDJPY for confirmation of dollar direction; check for risk-off signals that could flip USD stronger.",
+        "2h": "Assess whether easing narrative or haven narrative dominates FX; adjust view accordingly.",
+        "6h": "Re-check dollar trend and whether rate-differential story is holding.",
+        "12h": "Final review: did UUP weaken consistent with dovish repricing, or did haven demand reverse it? Log outcome."
+      },
+      "reasoning": "Expectations of 300bps of Fed cuts imply a collapsing US rate differential versus other economies, which is dollar-negative. A spike in this market's yes-probability would therefore point to USD weakness via UUP. However, in an actual crisis the dollar often catches a safe-haven bid, muddying the direction \u2014 hence low confidence."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies 12+ cuts = ~300bps easing in 2026, an extreme dovish/recession-scale scenario",
+    "Standard macro linkages: aggressive Fed easing expectations lower yields (bond prices up) and typically weaken USD",
+    "Fed funds futures and Treasury yields are the direct transmission channel for rate-cut probability shifts"
+  ],
+  "uncertainty_notes": [
+    "A 12h window is very unlikely to produce moves near the 700bps tradable threshold, so neither prediction is tradable",
+    "Direction depends heavily on whether the driver is a benign dovish shift or a genuine crisis \u2014 crisis flows can send USD up and equities down while bonds still rally",
+    "Prediction-market probability moves in illiquid tail contracts are often noise, not information leakage",
+    "Topic tagged 'military_conflict' is likely a mislabel; this is a pure macro/monetary market"
+  ],
+  "llm_justification": {
+    "summary": "This market prices an extreme tail (300bps of Fed cuts in 2026). A sharp rise in its implied probability would signal expectations of aggressive easing, most plausibly tied to recession or crisis. The cleanest public-market implications are long-duration Treasuries higher (TLT) and the dollar lower (UUP) via the rate-expectations channel. Both mappings are directionally reasonable but low-confidence and well below the 700bps tradable bar over 12h; crisis-driven safe-haven flows could invert the USD call and complicate equities.",
+    "key_assumptions": [
+      "A rise in yes-probability reflects genuine dovish/recession expectations rather than thin-market noise",
+      "The prediction-market move leads or coincides with, rather than lags, public rate-market repricing",
+      "Standard rate-differential and duration relationships hold within the window"
+    ],
+    "failure_modes": [
+      "Move was already public/priced in via Fed funds futures, so no incremental asset move",
+      "In an actual crisis the dollar rallies on safe-haven demand, reversing the UUP call",
+      "The prediction-market shift is illiquid noise with no macro catalyst",
+      "Expected 12h magnitude is far below the 700bps threshold, so signal is non-tradable even if directionally correct",
+      "Equity direction is ambiguous (easing bullish vs recession bearish), so no equity proxy was chosen"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "card_id": "562831_20260729T095911Z",
+  "card_version": "v1",
+  "card_hash": "ce9efbb83bdd884f574abcdc7c7913a65804c0951f9638ddfc05199e6f7a4dab",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-29T09:59:11Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "562831",
+    "market_slug": "2026-balance-of-power-r-senate-r-house-537",
+    "market_name": "2026 Balance of Power: R Senate, R House",
+    "market_url": "https://polymarket.com/market/2026-balance-of-power-r-senate-r-house-537",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "2026 Balance of Power: R Senate, R House",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US small-cap equities",
+      "ticker": "IWM",
+      "tradable_instrument_name": "iShares Russell 2000 ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 20.0,
+      "confidence": 0.22,
+      "confidence_interval_bps": [
+        -60.0,
+        120.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket implied probability shift is corroborated by other election markets (Kalshi, PredictIt) and by any breaking political news; if it's isolated noise, discount.",
+        "1h": "Compare IWM/SPY relative move against broad market beta to isolate any political-policy premium versus general risk moves.",
+        "2h": "Look for follow-through in policy-sensitive subsectors (regional banks, domestic industrials) confirming a genuine policy repricing rather than random drift.",
+        "6h": "Reassess whether any macro/rates catalyst has dominated; a long-dated election probability shift should fade quickly if no news underlies it.",
+        "12h": "Mark the realized IWM move; expect it near zero attributable to this market. Log as weak/non-tradable signal for calibration."
+      },
+      "reasoning": "A rising implied probability of Republicans holding both the Senate and House in 2026 signals continuation of a unified-government policy mix that is generally read as pro-business: extension of tax cuts, lighter regulation, and domestic-friendly policy. Small caps are the highest-beta domestic equity expression of that theme. However, the resolving event is ~a year away, so any 12h probability shift carries almost no discounted cash-flow signal for equities today; the mapping is directional at best and the magnitude is far below the 700bps tradable threshold."
+    },
+    {
+      "asset": "US financials / regional banks",
+      "ticker": "KRE",
+      "tradable_instrument_name": "SPDR S&P Regional Banking ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 15.0,
+      "confidence": 0.18,
+      "confidence_interval_bps": [
+        -70.0,
+        110.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm the probability move is real and not thin-market noise; check rates (2Y yield) which dominate bank pricing intraday.",
+        "1h": "Separate any KRE move driven by yields/credit spreads from a political-deregulation narrative.",
+        "2h": "Watch for news flow (Fed, bank earnings, regulation headlines) that would swamp the election signal.",
+        "6h": "Reassess whether KRE outperformance vs XLF persists, which would hint at a genuine deregulation bid.",
+        "12h": "Record realized move; expect negligible attribution to this election market. Flag as weak proxy."
+      },
+      "reasoning": "Continued Republican control implies a lighter regulatory posture that markets often view as favorable for banks, making regional banks a plausible beneficiary of a rising R-sweep probability. But the horizon is ~12 months out, the current baseline is already Republican control (so the incremental information is small), and 12h price action in KRE is dominated by rates and credit conditions rather than distant election odds. Direction is effectively unclear over this window with magnitude far below tradable."
+    }
+  ],
+  "evidence_used": [
+    "Market question: 2026 R Senate + R House control probability",
+    "Republicans currently hold both chambers, so this outcome is roughly status-quo continuation",
+    "Standard mapping of unified GOP government to pro-business/deregulation/tax-cut themes favoring small caps and financials",
+    "Resolution horizon is the November 2026 midterms, ~12 months from now"
+  ],
+  "uncertainty_notes": [
+    "A 12h prediction window against an election resolving ~a year away means minimal cash-flow discounting; any equity move is likely noise.",
+    "The baseline is already Republican control, so a probability shift carries little incremental policy information.",
+    "Prediction-market moves in long-dated political questions are frequently driven by thin liquidity rather than genuine information leakage.",
+    "Intraday equity/bank moves are dominated by rates, macro data, and earnings \u2014 not distant election odds."
+  ],
+  "llm_justification": {
+    "summary": "This market prices the odds of Republicans holding both chambers after the November 2026 midterms \u2014 essentially a status-quo unified-government outcome. The cleanest theoretical implication of a rising R-sweep probability is a modest pro-cyclical, deregulation-friendly tilt favoring domestic small caps (IWM) and regional banks (KRE). But because resolution is roughly a year away and the outcome largely continues the current configuration, any 12h asset move attributable to this market is expected to be tiny and well below the 700bps tradable threshold. This is a weak, low-confidence, non-tradable mapping.",
+    "key_assumptions": [
+      "Markets read unified GOP control as marginally pro-business (tax, deregulation).",
+      "Small caps and regional banks are the highest-beta expressions of that policy theme.",
+      "Prediction-market probability shifts can occasionally lead public sentiment, but weakly for long-dated events."
+    ],
+    "failure_modes": [
+      "The ~12-month horizon means no meaningful discounting into today's prices \u2014 the move is essentially non-existent within 12h.",
+      "The outcome is close to status quo, so even a large probability shift carries little new policy information.",
+      "Intraday equity moves are dominated by rates/macro, making the political signal undetectable (weak proxy exposure).",
+      "The probability move could be thin-market noise or already-public polling data, not leaked information.",
+      "Direction could reverse if markets fear gridlock-removal risks (fiscal expansion, deficits) rather than welcoming it."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
