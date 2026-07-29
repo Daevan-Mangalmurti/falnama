@@ -291,22 +291,32 @@ def _fetch_gdelt(anomaly: dict[str, Any], settings: Settings) -> list[dict[str, 
     }
     base = str(cfg.get("gdelt_base_url", "https://api.gdeltproject.org/api/v2/doc/doc"))
     timeout = int(cfg.get("request_timeout_seconds", 30))
-    # GDELT's free tier throttles hard (~1 request / 5s) and answers a burst with
-    # HTTP 429. Since we make one call per anomaly, retry a throttled/5xx response
-    # with a polite backoff rather than immediately giving up (which would fail-safe
-    # to "no coverage" and skip the news check for that anomaly).
+    # GDELT's free tier throttles hard (~1 request / 5s). It signals this TWO ways:
+    # an HTTP 429, OR — its soft throttle — a 200 whose body is a plain-text warning
+    # instead of JSON. Both must be retried; since we make one call per anomaly,
+    # a polite backoff is worth it rather than fail-safing to "no coverage" on a
+    # transient throttle. A real error (bad query -> 4xx) still raises and is caught
+    # upstream; exhausting the retries returns [] (fail-safe: no coverage found).
     retries = int(cfg.get("gdelt_max_retries", 3))
     backoff = float(cfg.get("gdelt_retry_backoff_seconds", 5.0))
-    resp = None
+    headers = {"User-Agent": "falnama-research/0.1 (read-only)"}
+    articles: list = []
     for attempt in range(retries + 1):
-        resp = requests.get(base, params=params, timeout=timeout,
-                            headers={"User-Agent": "falnama-research/0.1 (read-only)"})
-        if resp.status_code in (429, 500, 502, 503) and attempt < retries:
-            time.sleep(backoff * (attempt + 1))
-            continue
-        break
-    resp.raise_for_status()
-    articles = resp.json().get("articles", []) if resp.text.strip() else []
+        resp = requests.get(base, params=params, timeout=timeout, headers=headers)
+        if resp.status_code in (429, 500, 502, 503):
+            if attempt < retries:
+                time.sleep(backoff * (attempt + 1))
+                continue
+            return []  # exhausted -> fail-safe, don't crash the stage
+        resp.raise_for_status()
+        try:
+            articles = resp.json().get("articles", []) if resp.text.strip() else []
+            break
+        except ValueError:  # 200 + non-JSON body = GDELT's soft throttle
+            if attempt < retries:
+                time.sleep(backoff * (attempt + 1))
+                continue
+            return []
     return [{
         "title": a.get("title"),
         "snippet": a.get("title"),           # DOC ArtList gives titles, not bodies

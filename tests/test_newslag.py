@@ -192,3 +192,59 @@ def test_run_writes_assessments_and_manifest(tmp_path, monkeypatch):
 def test_state_maps_to_a_sensible_public_score(state, expected_floor, expected_ceiling):
     power = newslag._STATE_EXPLANATORY_POWER[state]
     assert expected_floor <= round(100 * power) <= expected_ceiling
+
+
+class _FakeResp:
+    def __init__(self, status: int, body: str):
+        self.status_code, self.text = status, body
+
+    def raise_for_status(self):
+        if self.status_code >= 400 and self.status_code != 429:
+            raise RuntimeError(f"HTTP {self.status_code}")
+
+    def json(self):
+        import json
+        return json.loads(self.text)  # raises ValueError on a non-JSON body
+
+
+def test_gdelt_retries_through_both_throttle_forms(monkeypatch):
+    # GDELT throttles two ways: a hard 429, and a soft 200-with-plain-text-body.
+    # _fetch_gdelt must retry BOTH and then parse the eventual JSON — real failure
+    # modes seen against the live API.
+    import sys
+    import time as _time
+
+    live = load_config()
+    live.raw["newslag"] = {**S.raw["newslag"], "mode": "live", "gdelt_retry_backoff_seconds": 0}
+    monkeypatch.setattr(_time, "sleep", lambda *a, **k: None)  # don't actually wait
+
+    ok = '{"articles":[{"title":"US strike confirmed","url":"http://x","domain":"reuters","seendate":"20260728T120000Z"}]}'
+    responses = iter([
+        _FakeResp(429, ""),                                # hard throttle
+        _FakeResp(200, "Your query rate is too high"),     # soft throttle (200 + non-JSON)
+        _FakeResp(200, ok),                                # finally, real JSON
+    ])
+    monkeypatch.setitem(sys.modules, "requests", type("R", (), {"get": staticmethod(lambda *a, **k: next(responses))}))
+
+    a = {"market_name": "US strike Iran", "anomaly_trigger_time_utc": "2026-07-29T00:00:00Z"}
+    arts = newslag._fetch_gdelt(a, live)
+    assert len(arts) == 1
+    assert arts[0]["published_time_utc"] == "2026-07-28T12:00:00Z"   # seendate parsed
+    assert arts[0]["source"] == "reuters"
+
+
+def test_gdelt_gives_up_safely_after_exhausting_retries(monkeypatch):
+    # Persistent throttle → return [] (fail-safe: assess reports "no coverage"),
+    # never crash the stage.
+    import sys
+    import time as _time
+
+    live = load_config()
+    live.raw["newslag"] = {**S.raw["newslag"], "mode": "live",
+                           "gdelt_max_retries": 2, "gdelt_retry_backoff_seconds": 0}
+    monkeypatch.setattr(_time, "sleep", lambda *a, **k: None)
+    monkeypatch.setitem(sys.modules, "requests",
+                        type("R", (), {"get": staticmethod(lambda *a, **k: _FakeResp(429, ""))}))
+
+    a = {"market_name": "US strike Iran", "anomaly_trigger_time_utc": "2026-07-29T00:00:00Z"}
+    assert newslag._fetch_gdelt(a, live) == []
