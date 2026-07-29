@@ -75,6 +75,19 @@ _STOPWORDS = {
     "this", "it", "his", "her", "their", "than", "then", "any", "no", "not",
 }
 
+# Words common in market QUESTIONS but useless — or actively harmful — in a news
+# query. GDELT ANDs terms, so an incidental month name ("...before August?") or a
+# generic verb ("Putin OUT as president") forces every matched article to also
+# contain it, which crushes recall to near zero. Dropped only when building the
+# query, never from the analysis. (Finer query construction — entity extraction,
+# phrase quoting, OR-fallback for sparse hits — is a deferred calibration item.)
+_QUERY_NOISE = {
+    "january", "february", "march", "april", "may", "june", "july", "august",
+    "september", "october", "november", "december",
+    "win", "wins", "won", "out", "hold", "holds", "reach", "reaches",
+    "happen", "happens", "occur", "occurs", "remain", "remains", "stay", "stays",
+}
+
 
 @dataclass
 class NewsLagResult:
@@ -348,11 +361,21 @@ def _mock_news(anomaly: dict[str, Any]) -> list[dict[str, Any]]:
 
 
 def _news_query(anomaly: dict[str, Any]) -> str:
-    """Build a GDELT keyword query from the market's salient terms."""
+    """Build a GDELT keyword query from the market's distinctive terms.
+
+    GDELT ANDs space-separated words, so every extra term narrows the match — the
+    goal is the few topical anchors (actors, places, actions), not the whole
+    question. Drops stopwords and query-noise words, then keeps the most
+    distinctive terms (longer / capitalized ones first, as a cheap proxy for
+    proper nouns and content words)."""
     name = str(anomaly.get("market_name") or "")
-    terms = [t for t in re.findall(r"[A-Za-z][A-Za-z'-]+", name) if t.lower() not in _STOPWORDS]
-    # Keep the distinctive terms; GDELT ANDs space-separated words.
-    return " ".join(terms[:8]) or name
+    words = [w for w in re.findall(r"[A-Za-z][A-Za-z'-]+", name)
+             if w.lower() not in _STOPWORDS and w.lower() not in _QUERY_NOISE]
+    # Rank by distinctiveness (capitalized first, then longer) but preserve original
+    # order among equals so the query still reads naturally.
+    ranked = sorted(enumerate(words), key=lambda p: (p[1][:1].isupper(), len(p[1]), -p[0]), reverse=True)
+    chosen = {w for _, w in ranked[:5]}
+    return " ".join(w for w in words if w in chosen) or name
 
 
 def _parse_gdelt_time(value) -> str | None:

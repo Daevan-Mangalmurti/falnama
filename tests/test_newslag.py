@@ -194,6 +194,16 @@ def test_state_maps_to_a_sensible_public_score(state, expected_floor, expected_c
     assert expected_floor <= round(100 * power) <= expected_ceiling
 
 
+def test_query_builder_keeps_anchors_and_drops_noise():
+    # The query must keep topical anchors (actors/places/actions) and drop the
+    # incidental words that crush GDELT recall — month names and generic verbs.
+    q = newslag._news_query({"market_name": "Will the US strike Iran before August?"}).lower()
+    assert "iran" in q and "strike" in q and "august" not in q
+    q2 = newslag._news_query({"market_name": "Putin out as President of Russia by December 31, 2026?"}).lower()
+    assert "putin" in q2 and "russia" in q2
+    assert "out" not in q2.split() and "december" not in q2
+
+
 class _FakeResp:
     def __init__(self, status: int, body: str):
         self.status_code, self.text = status, body
