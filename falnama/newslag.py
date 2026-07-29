@@ -272,6 +272,8 @@ def _fetch_gdelt(anomaly: dict[str, Any], settings: Settings) -> list[dict[str, 
     surveillance substrate. We ask only for article metadata (title, url, domain,
     seen-time); full text is fetched later only if a case reaches deep review.
     """
+    import time
+
     import requests  # lazy import so the mock path needs no network stack
 
     cfg = settings.newslag
@@ -288,8 +290,21 @@ def _fetch_gdelt(anomaly: dict[str, Any], settings: Settings) -> list[dict[str, 
         "sort": "DateDesc",
     }
     base = str(cfg.get("gdelt_base_url", "https://api.gdeltproject.org/api/v2/doc/doc"))
-    resp = requests.get(base, params=params, timeout=int(cfg.get("request_timeout_seconds", 30)),
-                        headers={"User-Agent": "falnama-research/0.1 (read-only)"})
+    timeout = int(cfg.get("request_timeout_seconds", 30))
+    # GDELT's free tier throttles hard (~1 request / 5s) and answers a burst with
+    # HTTP 429. Since we make one call per anomaly, retry a throttled/5xx response
+    # with a polite backoff rather than immediately giving up (which would fail-safe
+    # to "no coverage" and skip the news check for that anomaly).
+    retries = int(cfg.get("gdelt_max_retries", 3))
+    backoff = float(cfg.get("gdelt_retry_backoff_seconds", 5.0))
+    resp = None
+    for attempt in range(retries + 1):
+        resp = requests.get(base, params=params, timeout=timeout,
+                            headers={"User-Agent": "falnama-research/0.1 (read-only)"})
+        if resp.status_code in (429, 500, 502, 503) and attempt < retries:
+            time.sleep(backoff * (attempt + 1))
+            continue
+        break
     resp.raise_for_status()
     articles = resp.json().get("articles", []) if resp.text.strip() else []
     return [{

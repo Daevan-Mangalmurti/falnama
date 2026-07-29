@@ -12,6 +12,13 @@
 # day of unscreened output, so watch for "screen" errors in the health report.
 # To return to a free, deterministic, secret-free run, set data.source: fixtures
 # and card_mode: mock in config/falnama.yaml (and screener.mode: mock).
+#
+# News-lag (Stage 5) adds two more live seams when enabled (newslag.enabled: true,
+# mode: live): GDELT (free, keyless — no secret) and, if newslag.embedding.provider
+# is 'voyage', hosted embeddings via the VOYAGE_API_KEY secret wired below. Both
+# fail SAFE (a missing Voyage key falls back to lexical ranking; a GDELT/LLM outage
+# leaves the move UNEXPLAINED rather than dismissed). The [embeddings] extra is
+# installed so the voyage path is available; it is inert until the provider is set.
 name: Falnama research run
 
 on:
@@ -40,12 +47,18 @@ jobs:
           cache: pip
 
       - name: Install
-        run: pip install -e .
+        # Includes the [embeddings] extra so news-lag's optional Voyage ranker is
+        # available; harmless (and unused) while newslag.embedding.provider: lexical.
+        run: pip install -e ".[embeddings]"
 
       - name: Run the pipeline
         env:
-          # Read at runtime only when card_mode/newslag is 'live'. Unset today.
+          # Read at runtime only when card_mode/newslag is 'live'.
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Read only when newslag.embedding.provider is 'voyage'; if the secret is
+          # unset, ranking falls back to lexical (no failure). Add the secret in
+          # repo Settings → Secrets and variables → Actions to enable embeddings.
+          VOYAGE_API_KEY: ${{ secrets.VOYAGE_API_KEY }}
         run: python scripts/run.py
 
       - name: Upload outputs (includes the .xlsx workbook)

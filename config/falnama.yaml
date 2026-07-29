@@ -249,6 +249,8 @@ newslag:
   source: gdelt                      # gdelt (free, keyless, timestamped, geopolitics-native)
   gdelt_base_url: https://api.gdeltproject.org/api/v2/doc/doc
   request_timeout_seconds: 30
+  gdelt_max_retries: 3               # GDELT's free tier throttles (~1 req/5s) with HTTP 429...
+  gdelt_retry_backoff_seconds: 5     # ...so retry a throttled response with a polite backoff
   max_candidates: 40                 # articles pulled per anomaly (cast wide)
   top_k_articles: 6                  # ...then only the top-ranked few reach the LLM
 
