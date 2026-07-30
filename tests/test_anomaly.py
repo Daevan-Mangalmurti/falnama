@@ -46,6 +46,18 @@ def test_too_little_history_returns_none():
     assert score_market(_series([0.2, 0.3, 0.4]), SETTINGS) is None
 
 
+def test_persistence_is_none_when_the_move_is_the_latest_observation():
+    # A jump on the FINAL observation has no aftermath to observe, so persistence
+    # is undetermined (None) rather than a fabricated 100, and the composite is
+    # renormalized over the components we could actually measure.
+    result = score_market(_series([0.20] * 55 + [0.40]), SETTINGS)
+    assert result is not None
+    assert result["score_persistence"] is None
+    assert 0.0 <= result["anomaly_score"] <= 100.0          # finite, not NaN
+    # A fresh, sharp move should still score — not be penalized for being recent.
+    assert result["anomaly_score"] >= SETTINGS.anomaly["weak_threshold"]
+
+
 def _prices_to_series(prices: list[float]) -> pd.Series:
     idx = pd.date_range("2026-06-01T00:00:00Z", periods=len(prices), freq="1h")
     return pd.Series(prices, index=idx, dtype=float)

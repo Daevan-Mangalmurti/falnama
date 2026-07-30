@@ -72,7 +72,9 @@ def test_pipeline_runs_end_to_end(tmp_path):
     # Manifest ties the stages together with sensible counts.
     manifest = _manifest(settings, ctx.run_id)
     assert manifest["market_selector"]["selected_count"] == 6
-    assert manifest["anomaly_detector"]["strong_count"] == 2
+    # The three big geopolitical movers (Iran 42c, China 32c, EU sanctions 20c)
+    # read strong under the recalibrated references; the 6-8c moves stay weak.
+    assert manifest["anomaly_detector"]["strong_count"] == 3
     assert manifest["anomaly_detector"]["concentration_red_flags"] == 2
     assert manifest["cards"]["cards_written"] == 6
     # Default (backfill off): strong signals are rejected as ex-post -> no trades.

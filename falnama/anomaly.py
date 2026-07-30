@@ -39,8 +39,16 @@ from .io import RunContext
 
 # ---- calibration references (the score's "meaning") -------------------------
 # Prices are probabilities in [0, 1], so moves are in the same units.
-MOVE_REFERENCE = 0.40       # an absolute move of 0.40 over a window → magnitude 100
-SPEED_REFERENCE = 0.20      # a 0.20 move within the SHORTEST window → speed 100
+# Calibrated to the SELECTED geopolitical universe, whose moves are small: across
+# 21 live runs the 90-95th-percentile largest-window move is ~6-8 cents (of
+# probability), so the old 0.40 reference buried real moves at magnitude ~15 and
+# nothing could ever read strong. At 0.10 a top-decile ~6-8c move reads magnitude
+# 60-80 while the median ~1c move stays ~10 — restoring dynamic range without
+# manufacturing signal on a quiet week. It is also consistent with documented
+# insider-grade moves on major geopolitical markets (16-20 point jumps), which
+# read a capped 100. Set these against real output, not by feel.
+MOVE_REFERENCE = 0.10       # an absolute move of 0.10 over a window → magnitude 100
+SPEED_REFERENCE = 0.05      # a 0.05 move within the SHORTEST window → speed 100
 Z_REFERENCE = 6.0           # a 6-sigma step (vs the market's own noise) → unusualness 100
 # The volatility floor for unusualness (same probability units). Prediction-market
 # prices sit unchanged for long stretches, so the standard deviation of ALL steps
@@ -117,10 +125,13 @@ def score_market(price_history: pd.DataFrame, settings: Settings,
     first = price_history.iloc[0]
     overlay = concentration_overlay(first, concentration, cfg)
 
-    core = sum(WEIGHTS[name] * value for name, value in {
-        "magnitude": magnitude, "speed": speed,
-        "persistence": persistence, "unusualness": unusualness,
-    }.items())
+    # Combine the core sub-scores. Persistence is None when the move is too recent
+    # to observe its aftermath; renormalize over the components we could measure so
+    # a missing one neither inflates nor drags the composite.
+    components = {"magnitude": magnitude, "speed": speed,
+                  "persistence": persistence, "unusualness": unusualness}
+    measured = {k: v for k, v in components.items() if v is not None}
+    core = sum(WEIGHTS[k] * measured[k] for k in measured) / sum(WEIGHTS[k] for k in measured)
     composite = float(min(100.0, round(core + ttc_bonus + overlay["concentration_bonus"], 1)))
 
     return {
@@ -156,15 +167,22 @@ def _largest_move(series: pd.Series, windows: list[pd.Timedelta]):
     return best
 
 
-def _persistence(series: pd.Series, trigger_time, pre_price: float, peak_price: float) -> float:
+def _persistence(series: pd.Series, trigger_time, pre_price: float, peak_price: float) -> float | None:
     """Fraction of the move still in place over the window AFTER the trigger.
-    ~100 means the move held; ~0 means it fully reverted."""
+    ~100 means the move held; ~0 means it fully reverted.
+
+    Returns None when the move is the most recent thing we can see (no
+    observations within the window after it). 'No data yet' is not evidence the
+    move held, so we decline to score persistence rather than award a misleading
+    100 — the composite then renormalizes over the components we could measure.
+    This keeps a genuinely fresh anomaly from being either inflated or penalized
+    for being fresh."""
     move = peak_price - pre_price
     if abs(move) < 1e-9:
         return 0.0
     after = series[(series.index > trigger_time) & (series.index <= trigger_time + pd.Timedelta(PERSISTENCE_WINDOW))]
     if after.empty:
-        return 100.0  # no reversal observed within the window
+        return None  # too recent to tell — excluded from the composite, not a fake 100
     held = (after.mean() - pre_price) / move
     return float(round(100.0 * min(1.0, max(0.0, held)), 1))
 
