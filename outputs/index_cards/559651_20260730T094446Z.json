@@ -1,0 +1,100 @@
+{
+  "card_id": "559651_20260730T094446Z",
+  "card_version": "v1",
+  "card_hash": "d27566349d1ad5d128ff90b730b98f02507f869b8f13eacb9521525eb7ebe6c2",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-30T09:44:46Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "559651",
+    "market_slug": "xi-jinping-out-before-2027",
+    "market_name": "Xi Jinping out before 2027?",
+    "market_url": "https://polymarket.com/market/xi-jinping-out-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Xi Jinping out before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "China large-cap equities",
+      "ticker": "FXI",
+      "tradable_instrument_name": "iShares China Large-Cap ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -750.0,
+      "confidence": 0.34,
+      "confidence_interval_bps": [
+        -2500.0,
+        300.0
+      ],
+      "trade_eligibility": {
+        "eligible": true,
+        "reason": "Meets minimum expected move.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket probability spike is corroborated by any wire/social reporting or is an isolated single-market blip; note FXI/ADR (BABA, PDD) pre-market or intraday reaction.",
+        "1h": "Confirm whether HK/mainland-linked names and USDCNH are moving in the same risk-off direction; a lone move in the prediction market with flat assets argues noise.",
+        "2h": "Look for official Xinhua/state-media denials or state-media silence; assess whether Chinese equity futures and gold are pricing a real event.",
+        "6h": "Re-evaluate whether the probability move sustained or mean-reverted; reassess FXI drawdown vs baseline volatility.",
+        "12h": "Mark final FXI return vs entry; determine if any public confirmation emerged or the signal decayed as noise."
+      },
+      "reasoning": "A sharp rise in the implied probability that Xi Jinping is removed from power would signal an acute top-level political crisis in China. Sudden leadership uncertainty at the apex of the CCP is a textbook risk-off catalyst for Chinese equities: it raises policy-continuity, capital-flight and geopolitical (Taiwan) tail risks. FXI is the most liquid, broadly-traded proxy for offshore Chinese large-caps and would sell off hard on credible instability news. The move only clears the 700bps tradable bar if the market signal reflects a genuine, near-confirmed rupture rather than noise."
+    },
+    {
+      "asset": "Chinese yuan (offshore) weakness",
+      "ticker": "CNH",
+      "tradable_instrument_name": "Offshore Chinese Renminbi (USD/CNH)",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -300.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -1200.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check USD/CNH spot vs recent range and whether it is reacting alongside the prediction-market move.",
+        "1h": "Watch for PBOC fix guidance or intervention signals that could cap CNH weakness.",
+        "2h": "Assess broad USD/EM FX to separate China-specific stress from global dollar moves.",
+        "6h": "Re-check whether CNH weakness persisted and aligned with FXI selloff.",
+        "12h": "Mark CNH move; judge whether it confirmed or contradicted a genuine China political-risk event."
+      },
+      "reasoning": "Acute Chinese political instability typically triggers capital-flight pressure and CNH depreciation as investors price policy uncertainty and outflows. USD/CNH would rise (CNH weakens). FX moves are usually smaller than equity moves and the PBOC actively manages the fix, damping the reaction, so this is unlikely to independently clear 700bps in 12h but would confirm direction of the equity thesis."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies probability of Xi Jinping losing power by end-2026",
+    "Xi removal would represent an extreme, low-base-rate political discontinuity",
+    "FXI and offshore CNH are the most liquid public proxies for China political/economic risk",
+    "Historical pattern: leadership/political shocks in China trigger risk-off in offshore Chinese equities and currency pressure"
+  ],
+  "uncertainty_notes": [
+    "Base rate of Xi actually being removed is very low; most probability spikes in this market are likely noise or thin-liquidity manipulation",
+    "Direction of asset reaction is ambiguous: some investors could read a hypothetical leadership change as reformist/positive, muddying the sign",
+    "PBOC management and state intervention can heavily dampen or reverse CNH and equity moves",
+    "Prediction market may move without any real underlying information (weak sensor)"
+  ],
+  "llm_justification": {
+    "summary": "A sharp upward move in the implied probability that Xi Jinping is removed from power would most plausibly signal acute Chinese political instability, mapping to risk-off in offshore Chinese equities (FXI down) and yuan depreciation (CNH weaker). Both are directionally consistent but the equity move is the primary channel. Given the extremely low base rate and the noisiness of thin prediction markets, confidence is modest and the thesis only becomes tradable if the probability spike is corroborated by credible reporting rather than an isolated market blip.",
+    "key_assumptions": [
+      "A genuine probability spike reflects real information about leadership instability, not noise",
+      "Markets interpret Xi removal as destabilizing/risk-negative rather than reform-positive",
+      "FXI and CNH remain liquid and responsive during the window",
+      "No immediate, overwhelming state intervention neutralizes the move"
+    ],
+    "failure_modes": [
+      "The prediction-market move is thin-liquidity noise with no real information and assets do not move",
+      "The event/rumor is already public and priced, leaving no residual 12h move",
+      "Markets read a leadership change as positive for reform/opening, flipping the sign to equities up",
+      "PBOC intervention and state-media denial rapidly reverse any risk-off move",
+      "Weak proxy exposure: broad USD or global macro drivers dominate FXI/CNH, masking the China-specific signal"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

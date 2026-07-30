@@ -1,0 +1,99 @@
+{
+  "card_id": "616910_20260730T094446Z",
+  "card_version": "v1",
+  "card_hash": "067ace31099be9bc31532154d596a1dea4b7d11fe091a1efdcb71d0fafad260a",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-30T09:44:46Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616910",
+    "market_slug": "will-8-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 8 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-8-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 8 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US long-duration Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 80.0,
+      "confidence": 0.45,
+      "confidence_interval_bps": [
+        -60.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability shift persists or is a thin-liquidity blip; cross-check 2y/10y Treasury yields and Fed funds futures for confirmation.",
+        "1h": "Confirm TLT direction aligns with falling yields; look for any macro headline (jobs, inflation, geopolitical shock) explaining the move.",
+        "2h": "Assess whether move is broadening across the curve vs isolated; check equity/vol reaction to distinguish 'good easing' vs 'crisis easing'.",
+        "6h": "Re-evaluate magnitude vs the 700bps tradable bar (unlikely met); note whether news has gone public.",
+        "12h": "Final check: did TLT hold gains, and did the rate-cut narrative get confirmed by official Fed commentary or data?"
+      },
+      "reasoning": "A sharp rise in the implied probability of 8 Fed cuts in 2026 (an extreme, ~200bps of easing scenario) would signal expectations of aggressive easing, likely tied to recession or an emergency/crisis. That pushes the market to price much lower policy rates, rallying long-duration Treasuries (yields down, TLT up). The bond move is the most direct and mechanically-linked proxy to a shift in rate-cut pricing."
+    },
+    {
+      "asset": "US Dollar",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -40.0,
+      "confidence": 0.35,
+      "confidence_interval_bps": [
+        -150.0,
+        60.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check DXY and major crosses (EUR/USD, USD/JPY) for confirmation of dollar weakness vs safe-haven bid.",
+        "1h": "Determine whether move is rate-differential driven (dollar down) or risk-off driven (dollar up).",
+        "2h": "Reassess if the easing narrative is US-specific vs global; global easing would blunt the FX signal.",
+        "6h": "Check whether any anomaly has become public news reducing edge.",
+        "12h": "Final review of UUP direction and whether the rate-path repricing was sustained."
+      },
+      "reasoning": "Pricing of 8 cuts implies a dramatically lower expected US rate path, which typically erodes USD carry and weakens the dollar, all else equal. However, an aggressive-easing scenario often coincides with global risk-off, which can paradoxically strengthen the dollar as a safe haven, making direction ambiguous \u2014 hence lower confidence and a wide interval."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies an extreme dovish scenario: 8 x 25bps = ~200bps of cuts in 2026",
+    "Rate-cut expectations map directly to Treasury yields and Fed funds futures",
+    "Lower expected policy rates typically weaken USD carry",
+    "Mislabeled 'military_conflict' topic suggests possible crisis/emergency-cut framing"
+  ],
+  "uncertainty_notes": [
+    "8 cuts is a tail scenario; a probability move may reflect thin liquidity rather than real information",
+    "Emergency-cut framing means the move could be crisis-driven, flipping equity/FX reactions to risk-off",
+    "The 700bps tradable threshold is extremely unlikely to be met by these proxies in 12h",
+    "Whether the information is already public (via data releases or Fed speak) is unknown"
+  ],
+  "llm_justification": {
+    "summary": "A market on 8 Fed cuts in 2026 is a proxy for extreme dovish/emergency-easing expectations. A sharp rise in its implied odds would most directly rally long Treasuries (TLT up on falling yields) and pressure the dollar lower on reduced rate differentials, though crisis-driven risk-off could offset the FX move. Both moves are directionally plausible but small relative to the 700bps tradable bar, so neither is tradable; confidence is moderate for bonds and low for FX.",
+    "key_assumptions": [
+      "A shift in this market's implied probability reflects genuine repricing of the Fed path, not noise",
+      "Treasury and FX markets respond conventionally to rate-cut expectations within 12h",
+      "The easing scenario is US-specific enough to move the dollar via rate differentials"
+    ],
+    "failure_modes": [
+      "The probability move is thin-liquidity noise and reverses quickly",
+      "Crisis-driven easing triggers safe-haven dollar strength, inverting the FX call",
+      "Information is already public (data/Fed speak), so proxies have already moved",
+      "Global synchronized easing neutralizes the USD differential signal",
+      "Proxies move far less than the 700bps threshold, making the signal non-actionable"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

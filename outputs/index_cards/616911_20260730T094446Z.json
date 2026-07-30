@@ -1,0 +1,97 @@
+{
+  "card_id": "616911_20260730T094446Z",
+  "card_version": "v1",
+  "card_hash": "69bb9ba511a524c771c53d79c06b42e4d7b19689a50a181680e05d9a039bfa09",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-30T09:44:46Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616911",
+    "market_slug": "will-9-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 9 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-9-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 9 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-dated US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -80.0,
+        400.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the move in the market is idiosyncratic (thin book) or corroborated by Fed funds futures/SOFR curve steepening dovishly.",
+        "1h": "Compare TLT and 2y/10y yield reaction to any macro news (jobless claims, CPI leak, geopolitical shock) that could justify emergency easing.",
+        "2h": "Confirm whether short-rate futures (SOFR, Fed funds) are pricing added cuts; divergence means the Polymarket move is noise.",
+        "6h": "Reassess if TLT gains held; check for Fed speaker headlines or risk-off flows.",
+        "12h": "Evaluate whether dovish repricing persisted into the next session; mark thesis outcome."
+      },
+      "reasoning": "A sharp rise in the implied probability of 9 Fed cuts in 2026 (225bps of easing) would signal a dramatic dovish repricing \u2014 consistent with recession fears or an emergency-cut environment. That pushes front-end and long-end yields lower, lifting long-duration Treasury prices. TLT is the cleanest liquid proxy for a big dovish shift."
+    },
+    {
+      "asset": "US Dollar",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.33,
+      "confidence_interval_bps": [
+        -40.0,
+        180.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check DXY and whether the dovish signal is US-specific vs global.",
+        "1h": "Look at rate-differential-sensitive pairs (EURUSD, USDJPY) for confirmation.",
+        "2h": "Distinguish 'dovish Fed' dollar weakness from 'risk-off' dollar strength \u2014 the latter would invalidate this.",
+        "6h": "Reassess dollar direction against equity/vol backdrop.",
+        "12h": "Mark whether dollar weakened on the dovish repricing or safe-haven flows dominated."
+      },
+      "reasoning": "An aggressive expected Fed easing path (9 cuts) narrows US rate differentials and typically weakens the dollar. UUP is a liquid dollar proxy. Effect is weaker and noisier than the rate channel because global risk-off can paradoxically bid the dollar."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies 9 cuts = ~225bps of 2026 easing, an extreme dovish/emergency-easing tail scenario",
+    "Rate-cut expectations map directly to Treasury yields, the dollar, and gold via standard monetary-transmission channels",
+    "Market allows emergency inter-meeting cuts, tying the tail to crisis/recession scenarios"
+  ],
+  "uncertainty_notes": [
+    "A 700bps 12h move threshold is far above realistic single-session moves in TLT/UUP; neither prediction is 'tradable' at that bar",
+    "Polymarket rate-cut markets can be thin and mispriced; a probability jump may be noise not information",
+    "Direction of equities and dollar is ambiguous \u2014 recession fears (risk-off) vs. easing tailwind pull opposite ways"
+  ],
+  "llm_justification": {
+    "summary": "The market prices an extreme tail (9 Fed cuts in 2026). A sharp rise in its implied probability would signal a dramatically dovish or emergency-easing/recession scenario, which most cleanly lifts long-duration Treasuries (TLT up) and, more weakly and ambiguously, pressures the dollar (UUP down). Magnitudes in a 12h window are modest \u2014 well below the 700bps tradable threshold \u2014 so this is a low-confidence, research-only mapping.",
+    "key_assumptions": [
+      "A probability move reflects genuine dovish repricing rather than thin-market noise",
+      "Standard rate-transmission channels hold: more expected cuts \u2192 lower yields, weaker USD",
+      "The signal is US-specific, not a global risk event that flips dollar direction"
+    ],
+    "failure_modes": [
+      "Move reverses quickly as an illiquid-market artifact",
+      "The dovish shift is driven by a recession/risk-off shock that bids the dollar and hits Treasuries via credit/liquidity, inverting the dollar call",
+      "Information already public (post-FOMC, CPI print) so proxies already repriced",
+      "9-cut strike is a deep tail; small absolute probability changes carry little real macro signal",
+      "12h magnitude far below the 700bps tradable bar, so no actionable edge"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

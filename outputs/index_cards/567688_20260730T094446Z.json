@@ -1,0 +1,98 @@
+{
+  "card_id": "567688_20260730T094446Z",
+  "card_version": "v1",
+  "card_hash": "6eff9d96522880192c50fdc16cbd33930f85fea4c8e96776859ebe242fe97379",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-30T09:44:46Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "567688",
+    "market_slug": "netanyahu-out-before-2027-684-719-226-657",
+    "market_name": "Netanyahu out by end of 2026?",
+    "market_url": "https://polymarket.com/market/netanyahu-out-before-2027-684-719-226-657",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Netanyahu out by end of 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Israeli equity risk",
+      "ticker": "EIS",
+      "tradable_instrument_name": "iShares MSCI Israel ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": -150.0,
+      "confidence": 0.28,
+      "confidence_interval_bps": [
+        -500.0,
+        300.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether Polymarket move coincides with any Israeli headline (coalition, indictment, health, Gaza deal); confirm move is not stale/rumor.",
+        "1h": "Compare EIS pre-market/ADR-linked names (TEVA, NICE) for corroborating direction and volume.",
+        "2h": "Assess USD/ILS spot to see if FX confirms equity risk direction.",
+        "6h": "Re-evaluate whether the probability shift persisted or reverted; discount if no public news materialized.",
+        "12h": "Mark realized EIS return vs prediction; log whether political-market leakage preceded any public confirmation."
+      },
+      "reasoning": "A sharp jump in the implied probability of Netanyahu leaving office would signal near-term political/coalition instability, which typically raises uncertainty premia on Israeli equities. But the sign is genuinely ambiguous: markets could interpret a leadership change as reducing geopolitical/war-escalation risk (bullish) or as introducing governance/policy uncertainty (bearish). EIS is the most liquid direct Israel equity proxy, but it trades US hours with limited depth, so a clean 12h read is hard."
+    },
+    {
+      "asset": "Israeli shekel (USD/ILS)",
+      "ticker": "FXI",
+      "tradable_instrument_name": "USD/ILS spot (no clean liquid US-listed ETF; shekel proxy)",
+      "asset_class": "fx_proxy",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": -120.0,
+      "confidence": 0.24,
+      "confidence_interval_bps": [
+        -450.0,
+        350.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check USD/ILS spot and Bank of Israel/coalition headlines for the trigger.",
+        "1h": "See if ILS move aligns with EIS direction or diverges.",
+        "2h": "Monitor whether global risk sentiment (DXY, oil) is a confounder given Middle East linkage.",
+        "6h": "Reassess persistence; discount if driven by thin liquidity or rumor.",
+        "12h": "Record realized USD/ILS move vs expectation and whether market anticipated public news."
+      },
+      "reasoning": "Political leadership uncertainty tends to pressure the shekel (USD/ILS higher) via risk premium, but a change perceived as de-escalatory could strengthen the shekel. There is no clean, liquid US-listed ILS ETF, so this proxy is weak and hard to trade cleanly, which itself lowers conviction."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies binary political-transition risk for Israel with a long horizon (end 2026), so short-term 12h moves depend on a sharp implied-probability jump signaling imminent news.",
+    "EIS (iShares MSCI Israel ETF) and USD/ILS are the most direct liquid public-market proxies for Israeli political/geopolitical risk.",
+    "Historically, leadership-change probabilities have ambiguous asset effects: uncertainty premium vs de-escalation relief."
+  ],
+  "uncertainty_notes": [
+    "Direction is genuinely two-sided: Netanyahu departure could be read as risk-reducing (war de-escalation) or risk-increasing (governance uncertainty).",
+    "This is a long-dated market; a probability move need not correspond to imminent public news, weakening the leakage thesis.",
+    "EIS is thinly traded relative to major ETFs and USD/ILS has no clean liquid US-listed instrument, so proxies are weak.",
+    "A 700bps 12h move is a very high bar for a broad Israeli equity/FX proxy absent a confirmed resignation headline."
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability that Netanyahu leaves office would most directly touch Israeli equity (EIS) and the shekel (USD/ILS), but the sign is fundamentally ambiguous \u2014 leadership change can be read as either de-escalatory (bullish) or destabilizing (bearish). Given weak/illiquid proxies, a long-dated horizon, and directional ambiguity, this is a low-confidence, non-tradable mapping (expected moves well below the 700bps threshold).",
+    "key_assumptions": [
+      "A prediction-market probability jump reflects genuine incremental information about near-term Israeli political transition.",
+      "EIS and USD/ILS are the cleanest available public-market proxies for that risk.",
+      "No overwhelming confounding global-macro or Middle East event dominates the 12h window."
+    ],
+    "failure_modes": [
+      "The probability move reverts as a rumor/liquidity artifact with no public confirmation, so no asset move occurs.",
+      "The information is already public (news-driven), so assets have already repriced before the signal.",
+      "Directional sign is wrong because markets treat Netanyahu's exit as risk-reducing rather than risk-increasing (or vice versa).",
+      "Proxy weakness: EIS thin liquidity and lack of a clean ILS ETF mean the tradable instruments barely respond even if the thesis is directionally right.",
+      "The 12h magnitude is far below the 700bps tradable bar, making any signal non-actionable."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

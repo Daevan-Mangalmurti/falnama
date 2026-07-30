@@ -1,0 +1,99 @@
+{
+  "card_id": "567690_20260730T094446Z",
+  "card_version": "v1",
+  "card_hash": "d5935108c7413d4e915853a46177d6c370fbcdc7ae67bb9a01ca436fadf53d3b",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-30T09:44:46Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "567690",
+    "market_slug": "erdoan-out-before-2027",
+    "market_name": "Erdo\u011fan out by December 31, 2026?",
+    "market_url": "https://polymarket.com/market/erdoan-out-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Erdo\u011fan out by December 31, 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Turkish equities",
+      "ticker": "TUR",
+      "tradable_instrument_name": "iShares MSCI Turkey ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -800.0,
+      "confidence": 0.5,
+      "confidence_interval_bps": [
+        -2000.0,
+        300.0
+      ],
+      "trade_eligibility": {
+        "eligible": true,
+        "reason": "Meets minimum expected move.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket odds move was driven by a specific credible news catalyst (health, detention, resignation) versus thin speculative flow; scan Turkish/international wires.",
+        "1h": "Compare TUR pre-market/ADR-linked names (e.g. Turkcell TKC) reaction and USD/TRY spot to confirm risk-off is broad-based, not a single-stock artifact.",
+        "2h": "Reassess whether the probability move persists or fully reverses; a reversal implies noise and I would cut the thesis.",
+        "6h": "Evaluate official Turkish government statements; if Erdo\u011fan appears publicly and denies, expect mean reversion in TUR.",
+        "12h": "Mark realized TUR move vs the -800bps expectation; note whether direction was actually negative or whether markets priced regime-change optimism (upside)."
+      },
+      "reasoning": "A sharp rise in the implied probability that Erdo\u011fan ceases to be President would signal acute Turkish political instability (health crisis, coup, sudden resignation, or forced removal). Political shock risk premia would spike, foreign investors would de-risk, and TUR \u2014 the most liquid US-listed vehicle for Turkish equity \u2014 would sell off. Political discontinuity in an EM with high external funding needs and a personalized policy regime is typically negative for local risk assets in the immediate aftermath, regardless of longer-term policy implications."
+    },
+    {
+      "asset": "Turkish lira weakness (USD/TRY up)",
+      "ticker": "USDTRY",
+      "tradable_instrument_name": "US Dollar / Turkish Lira spot",
+      "asset_class": "fx_proxy",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 600.0,
+      "confidence": 0.45,
+      "confidence_interval_bps": [
+        -500.0,
+        2500.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether the odds move reflects a real catalyst; check TRY offshore/NDF quotes for stress.",
+        "1h": "Watch for CBRT intervention signals or state-bank dollar selling that could cap USD/TRY.",
+        "2h": "Assess whether spot has broken managed levels or is being defended; carry makes shorting TRY costly, so persistence matters.",
+        "6h": "Re-check official confirmations/denials and any capital-control chatter.",
+        "12h": "Mark realized USD/TRY move; note that intervention could produce a muted or reversed outcome versus the +600bps view."
+      },
+      "reasoning": "A credible spike in Erdo\u011fan-out probability would raise political and policy-continuity uncertainty, typically triggering lira depreciation as investors demand higher risk premium and locals dollarize. The lira has a managed but fragile regime; sudden leadership uncertainty historically pressures TRY. Note the lira is heavily managed by the central bank, which can blunt or reverse moves, and TRY is a difficult, high-carry instrument to trade cleanly in a 12h window."
+    }
+  ],
+  "evidence_used": [
+    "Market question defines 'Yes' as Erdo\u011fan ceasing to be President for any reason (resignation, removal, detention, incapacity) before end-2026",
+    "Resolution keys on official Turkish government info or consensus credible reporting, implying a sharp move would coincide with real news flow",
+    "TUR ETF and USD/TRY are the most liquid public-market expressions of Turkish political risk"
+  ],
+  "uncertainty_notes": [
+    "Direction is genuinely ambiguous: some investors view an Erdo\u011fan exit as positive for a return to orthodox monetary policy, which could rally TUR and strengthen TRY rather than the reverse",
+    "The market horizon is end-2026, so a probability move today may reflect long-dated repricing with little 12h asset impact",
+    "CBRT/state-bank management of the lira can suppress or reverse FX moves",
+    "Polymarket liquidity on Turkish political markets is often thin, so odds moves can be noise not information"
+  ],
+  "llm_justification": {
+    "summary": "A sharp increase in the implied probability that Erdo\u011fan leaves office would most plausibly signal acute Turkish political instability, mapping to near-term downside in Turkish equities (TUR) and lira weakness (USD/TRY up). However, the mapping is only moderately confident because an orderly, policy-orthodox transition could be read positively, the market's end-2026 horizon dilutes 12h impact, and the CBRT actively manages the lira. Treat as a risk-off signal only if the odds move is tied to a concrete destabilizing catalyst.",
+    "key_assumptions": [
+      "A sharp odds move reflects a real, near-term destabilizing event rather than long-horizon speculation or thin-market noise",
+      "Markets initially price leadership uncertainty as risk-off for Turkish assets",
+      "TUR and USD/TRY remain the dominant liquid proxies with meaningful exposure"
+    ],
+    "failure_modes": [
+      "Move reverses within hours if government issues a credible denial or Erdo\u011fan appears publicly",
+      "Information already public/priced \u2014 no incremental asset move",
+      "Directional reversal: markets rally Turkish assets on hopes of orthodox policy successor",
+      "Weak proxy timing: end-2026 horizon means little to no 12h asset reaction",
+      "CBRT intervention nullifies expected TRY depreciation",
+      "Move below the 700bps tradable threshold, making it non-actionable"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

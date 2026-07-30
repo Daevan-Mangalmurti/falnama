@@ -1,0 +1,97 @@
+{
+  "card_id": "616903_20260730T094446Z",
+  "card_version": "v1",
+  "card_hash": "d5770d5b5e577e8769b8924dbe7ca6899830d11660477195db2e89d745cf8c99",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-30T09:44:46Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616903",
+    "market_slug": "will-1-fed-rate-cut-happen-in-2026",
+    "market_name": "Will 1 Fed rate cut happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-1-fed-rate-cut-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 1 Fed rate cut happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-duration US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.25,
+      "confidence_interval_bps": [
+        -120.0,
+        120.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability of the '0 cuts' and '2+ cuts' buckets moved, to infer directional tilt; watch 10Y/2Y yields and TLT intraday.",
+        "1h": "Confirm move persistence and whether any Fed speaker headlines or CPI/jobs data explain it (already-public catalyst).",
+        "2h": "Reassess whether TLT and fed funds futures (SOFR) have moved consistently with the market shift.",
+        "6h": "Evaluate durability into the US session; check if move faded (noise) or trended.",
+        "12h": "Record net TLT move vs baseline and whether the prediction-market shift led or lagged rates."
+      },
+      "reasoning": "This is a Fed rate-path market, so shifts in the implied odds of exactly one 2026 cut reflect changing expectations for 2026 policy. Treasuries are the most direct liquid proxy for cut expectations. However, 'exactly one cut' is a middle bucket: rising odds could come from a hawkish shift away from multiple cuts (bearish TLT) OR a dovish shift away from zero cuts (bullish TLT). Direction is genuinely ambiguous without knowing which neighboring bucket lost probability, so I flag it unclear."
+    },
+    {
+      "asset": "US Dollar",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.2,
+      "confidence_interval_bps": [
+        -70.0,
+        70.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check DXY/UUP and short-end rate differentials for a coherent directional move.",
+        "1h": "Look for macro data or Fed commentary that could be the real driver (public information).",
+        "2h": "Compare UUP move against Treasury move for internal consistency.",
+        "6h": "Assess whether any move survives into liquid US trading hours.",
+        "12h": "Log net UUP move and whether it aligned with the implied rate-path shift."
+      },
+      "reasoning": "Fewer expected cuts generally support the dollar (higher-for-longer rates) and more expected cuts weigh on it. A shift in the 'exactly one cut' bucket ties to rate expectations, but the directional read is ambiguous for the same reason as Treasuries, and FX is a weak, slow-moving proxy for a single-bucket probability change over 12h."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns the count of 25bp Fed cuts in 2026 (a monetary-policy expectations market)",
+    "Rate-path expectations most directly transmit to Treasuries, the dollar, and rate-sensitive equities",
+    "'Exactly one cut' is a middle bucket whose directional meaning depends on which adjacent bucket loses probability"
+  ],
+  "uncertainty_notes": [
+    "The mislabeled primary topic ('military_conflict') is ignored; this is clearly a rates market",
+    "No single-bucket probability shift plausibly moves liquid ETFs 700bps in 12h, so neither prediction is tradable under the threshold",
+    "Directional sign is fundamentally ambiguous for a middle bucket without seeing the full distribution move"
+  ],
+  "llm_justification": {
+    "summary": "This is a US Fed rate-path prediction market. The cleanest liquid proxies are long Treasuries (TLT) and the dollar (UUP), but because 'exactly one 2026 cut' is a middle bucket, a rise or fall in its odds does not map cleanly to a direction \u2014 it depends on whether probability shifted from the zero-cut (dovish) or multi-cut (hawkish) side. I therefore flag both as unclear/low-confidence, with expected 12h moves far below the 700bps tradable threshold.",
+    "key_assumptions": [
+      "The market reflects genuine Fed policy expectations, not resolution mechanics or thin liquidity",
+      "Rate expectations transmit to Treasuries and FX within the 12h window",
+      "No large scheduled macro catalyst (CPI, FOMC, payrolls) is the already-public driver"
+    ],
+    "failure_modes": [
+      "Direction wrong because probability shifted from the opposite adjacent bucket than assumed",
+      "The move reflects already-public data (Fed speakers, CPI) and is fully priced, so no lead-lag edge exists",
+      "Middle-bucket probabilities can rise on reduced conviction/higher uncertainty rather than a directional rate view, breaking any asset mapping",
+      "Proxies (TLT, UUP) respond to global factors unrelated to the specific 2026 cut count",
+      "Magnitude far below the 700bps tradable bar \u2014 signal is not actionable even if directionally correct"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

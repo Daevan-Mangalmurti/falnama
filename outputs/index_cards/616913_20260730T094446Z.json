@@ -1,0 +1,98 @@
+{
+  "card_id": "616913_20260730T094446Z",
+  "card_version": "v1",
+  "card_hash": "fc1f127269027291f576f459795faef6cad35763633e6fbb8c83334c9fb72158",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-30T09:44:46Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616913",
+    "market_slug": "will-11-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 11 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-11-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 11 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-duration US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -60.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move in the market is persistent or a single wick; compare to Fed funds futures (implied 2026 cuts) for corroboration.",
+        "1h": "Watch 2Y and 10Y yields and TLT price for directional confirmation; check for any macro headline (jobs, CPI, Fed speaker) that already explains the move.",
+        "2h": "Re-assess whether SOFR/fed funds futures repriced dovishly; if not, treat market move as noise.",
+        "6h": "Evaluate whether the bond move held or faded; look for risk-off confirmation across equities and credit.",
+        "12h": "Final check: did TLT close higher with lower yields? Log realized vs expected and whether the market anticipated any public data release."
+      },
+      "reasoning": "A market on '11 rate cuts in 2026' (275bps of easing) is a deep-recession / financial-crisis tail. If its implied probability rises sharply, it signals expectations of aggressive Fed easing, which pushes front-end and long-end yields lower and bond prices higher. TLT is the cleanest liquid proxy for a dovish shift in rate expectations."
+    },
+    {
+      "asset": "US large-cap equities",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -50.0,
+      "confidence": 0.25,
+      "confidence_interval_bps": [
+        -250.0,
+        100.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm the market move is real and check VIX and equity futures for risk-off tone.",
+        "1h": "Cross-check with credit spreads (HYG/LQD) and USD for a consistent risk-off signal.",
+        "2h": "Determine whether equities are trading the recession fear (down) or the easing hope (up); direction may be mixed.",
+        "6h": "Reassess whether any confirming macro catalyst emerged; downgrade confidence if move is idiosyncratic.",
+        "12h": "Final check on SPY close and whether the dovish tail scenario gained traction in rate futures; log outcome."
+      },
+      "reasoning": "Eleven cuts in a single year would only be priced if markets expected a sharp downturn requiring emergency easing. A rising probability of this extreme tail is a risk-off / recession signal, which typically pressures equities lower despite the eventual easing being supportive. The relationship is ambiguous, however, because aggressive easing can also boost stocks (bad-news-is-good-news)."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies 275bps of Fed cuts in 2026, an extreme dovish/recession tail",
+    "Fed easing expectations map to bond prices (up), yields (down), and typically risk-off equities",
+    "Threshold for 'tradable' is a 700bps 12h move, far above plausible magnitude here"
+  ],
+  "uncertainty_notes": [
+    "11 cuts is a very low-probability tail; small probability changes carry little clean information",
+    "Equity direction is genuinely ambiguous \u2014 recession fear (down) vs easing stimulus (up)",
+    "No headline catalyst identified; the market move could be pure noise or thin liquidity",
+    "Mislabeled topic ('military_conflict') suggests metadata is unreliable"
+  ],
+  "llm_justification": {
+    "summary": "This is an extreme-tail Fed easing market (11 cuts = 275bps in 2026), essentially a recession/crisis scenario. A sharp rise in its implied probability would signal expectations of aggressive Fed easing: bullish long Treasuries (TLT up, yields down) and generally risk-off for equities (SPY down), though the equity link is ambiguous. Magnitudes are far below the 700bps tradable threshold, so this is a low-confidence, non-tradable research mapping.",
+    "key_assumptions": [
+      "A probability move in this market reflects genuine repricing of Fed easing expectations, not liquidity noise",
+      "Rate expectations transmit to Treasury and equity ETFs within the 12h window",
+      "No dominant offsetting macro catalyst overwhelms the signal"
+    ],
+    "failure_modes": [
+      "The move is noise in a thin, deep-tail market with no information content",
+      "The easing expectation was already public via fed funds futures, so no fresh signal",
+      "Equities rise instead of fall (bad-news-is-good-news easing rally), breaking the risk-off mapping",
+      "Magnitude is far below the 700bps tradable bar, so no actionable signal even if direction is right",
+      "Proxy exposure is diffuse \u2014 many factors drive TLT/SPY beyond this one probability"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "card_id": "568116_20260730T094446Z",
+  "card_version": "v1",
+  "card_hash": "e2be6443245e40edaf7a17f458b2b3650c5ee7d2ee1ac95c59eb706f212af8d2",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-30T09:44:46Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "568116",
+    "market_slug": "will-trump-be-impeached-by-december-31-2026",
+    "market_name": "Will Trump be impeached by end of 2026?",
+    "market_url": "https://polymarket.com/market/will-trump-be-impeached-by-december-31-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Trump be impeached by end of 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US large-cap equity risk",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": -20.0,
+      "confidence": 0.2,
+      "confidence_interval_bps": [
+        -120.0,
+        80.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability spike coincides with a concrete news catalyst (indictment, defection, House flip odds) or is just thin-market noise.",
+        "1h": "Compare SPY move vs. its own recent range; confirm whether any move is impeachment-driven or driven by macro data/Fed headlines.",
+        "2h": "Look at VIX and Treasury futures for corroborating risk-off signal; if absent, downgrade thesis.",
+        "6h": "Reassess whether credible reporting corroborates the market move; check political news wires.",
+        "12h": "Evaluate whether SPY moved beyond noise and whether the impeachment probability held; log outcome for calibration."
+      },
+      "reasoning": "A sharp rise in implied impeachment probability would signal political instability, but House impeachment (short of Senate conviction) does not remove Trump and, given current Republican House control, a real jump would imply a dramatic political realignment. Historically, impeachment proceedings (2019, 2021) had minimal, transient effect on broad equities. Any 12h effect is likely small and noisy; direction is genuinely ambiguous because markets may view continuity (no removal) as neutral."
+    },
+    {
+      "asset": "Equity volatility / safe-haven demand",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 30.0,
+      "confidence": 0.18,
+      "confidence_interval_bps": [
+        -80.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm gold is reacting to political news rather than to USD/real-rate moves.",
+        "1h": "Cross-check DXY and 10y yields to isolate whether gold's move is safe-haven driven.",
+        "2h": "Check VIX term structure for a genuine risk premium expansion.",
+        "6h": "Reassess if the political probability shift is corroborated by mainstream reporting.",
+        "12h": "Record whether gold held any gain and whether the driver was truly the impeachment signal."
+      },
+      "reasoning": "A credible surge in US political-instability odds tends to modestly support safe havens like gold and increase implied volatility. But impeachment without removal is a weak, well-telegraphed catalyst; the market has repeatedly shrugged off past impeachments. Any bid to gold would likely be small and easily swamped by rates/dollar moves, so confidence is low and the magnitude is well below the 700bps tradable threshold."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves Yes on a simple House majority passing articles of impeachment, no Senate action required",
+    "Current House is Republican-controlled, making near-term impeachment unlikely absent a majority flip",
+    "Historical precedent: 2019-20 and 2021 impeachments produced negligible sustained equity impact",
+    "12h prediction window limits ability to capture slow political developments"
+  ],
+  "uncertainty_notes": [
+    "Impeachment (House vote) is symbolic without Senate conviction, so market impact is inherently muted",
+    "A probability spike could reflect thin-market noise rather than genuine information leakage",
+    "Broad-index proxies are only weakly exposed to a single US political event over 12h",
+    "Direction is ambiguous: continuity-in-office could be read as neutral or even stabilizing"
+  ],
+  "llm_justification": {
+    "summary": "The impeachment market maps only weakly to liquid public-market assets. Because a House impeachment short of Senate removal is largely symbolic and past episodes barely moved equities, even a sharp probability shift would likely produce only small, noisy moves in broad US equity (SPY, slightly lower) and safe havens (gold, slightly higher). None of the implied moves plausibly reach the 700bps tradable threshold, so this is best treated as a low-confidence, non-tradable research signal.",
+    "key_assumptions": [
+      "Market participants treat House impeachment without removal as a low-consequence event",
+      "No simultaneous macro catalyst dominates the 12h window",
+      "Any probability move is at least partly informative rather than pure microstructure noise"
+    ],
+    "failure_modes": [
+      "The equity move reverses quickly as markets discount the symbolic nature of impeachment",
+      "The political information is already public and priced, so no asset reaction occurs",
+      "SPY and GLD are far too diffuse to capture a single US political event, making the proxy weak",
+      "A probability spike is driven by low-liquidity market noise with no real-world information content",
+      "Correlation could flip: a 'stable Trump policy continuity' read could lift equities instead of lowering them"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

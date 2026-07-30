@@ -1,0 +1,97 @@
+{
+  "card_id": "616905_20260730T094446Z",
+  "card_version": "v1",
+  "card_hash": "104f94bbeef27704d1d08bd79accb0b28ba1ed14bec5b16ead55566b8f2c8ed3",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-30T09:44:46Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616905",
+    "market_slug": "will-3-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 3 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-3-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 3 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-duration US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 45.0,
+      "confidence": 0.55,
+      "confidence_interval_bps": [
+        -40.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm the direction and size of the Polymarket implied-probability move and check whether 2Y yield and Fed funds futures are moving consistently (dovish repricing).",
+        "1h": "Compare TLT tick move to SOFR/fed-funds futures; verify no offsetting hawkish Fedspeak or data release explains it.",
+        "2h": "Check if the move persists or mean-reverts; look for a macro catalyst (CPI, jobs, FOMC leak) that would make this already-public.",
+        "6h": "Reassess against 10Y yield and DXY; determine whether the bond move is genuine dovish repricing or noise.",
+        "12h": "Log realized TLT return vs expectation; note whether the prediction-market move led or lagged the rates move."
+      },
+      "reasoning": "A sharp rise in the implied probability of 3 (25bp) Fed cuts in 2026 signals a more dovish rate path than currently priced. Lower expected policy rates pull down the whole Treasury curve, and long-duration bonds are the most rate-sensitive liquid proxy, so TLT should rise. Direction flips to down if the market instead prices fewer/no cuts."
+    },
+    {
+      "asset": "US Dollar",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -25.0,
+      "confidence": 0.5,
+      "confidence_interval_bps": [
+        -90.0,
+        40.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check DXY/UUP against the rates move; confirm dollar softening rather than risk-off dollar bid.",
+        "1h": "Watch EURUSD and USDJPY for consistency with a US-led dovish move.",
+        "2h": "Determine if any global risk event is overriding the rate-differential signal.",
+        "6h": "Reassess whether dollar weakness held; compare to Treasury move for coherence.",
+        "12h": "Record realized UUP return and whether the FX channel confirmed the rates thesis."
+      },
+      "reasoning": "More expected Fed cuts narrow US rate differentials versus other G10 currencies, which is dollar-negative. UUP is a liquid dollar-index proxy that should soften on a dovish repricing. This is a weaker, noisier link than the direct rates channel and highly dependent on relative central-bank expectations abroad."
+    }
+  ],
+  "evidence_used": [
+    "Market question directly tracks number of 2026 Fed 25bp cuts, a pure monetary-policy expectation",
+    "Standard transmission: dovish rate-path repricing lowers Treasury yields (TLT up) and weakens the dollar (UUP down)",
+    "Fed funds futures and 2Y yields are the cleanest real-time cross-checks"
+  ],
+  "uncertainty_notes": [
+    "The mapping's sign depends entirely on the DIRECTION of the implied-probability move, which is not specified here; I assumed a dovish (probability-up) shift",
+    "Rate expectations are usually driven by public data (CPI, payrolls, FOMC), so a Polymarket move likely lags rather than leads",
+    "12h magnitudes for these liquid instruments are far below the 700bp tradable threshold, so neither is actionable"
+  ],
+  "llm_justification": {
+    "summary": "This market is a proxy for how dovish the 2026 Fed path is. A sharp increase in the implied probability of 3 cuts implies lower policy-rate expectations, which should lift long-duration Treasuries (TLT) and soften the dollar (UUP). Both are directionally sound but weak in magnitude over 12h, and the effect is almost certainly driven by public macro information rather than leaked private information, so this is low-confidence, non-tradable research.",
+    "key_assumptions": [
+      "The implied probability moved sharply higher (dovish); a hawkish move reverses all signs",
+      "No confounding risk-off event distorting the bond/dollar relationship",
+      "Prediction-market pricing reflects genuine rate-path repricing, not thin-liquidity noise"
+    ],
+    "failure_modes": [
+      "The prediction-market move reflects already-public data (CPI/FOMC), so assets have already repriced and there is no edge",
+      "Direction misread: probability could have fallen (hawkish), flipping both predictions",
+      "Risk-off flight-to-quality could push TLT up AND the dollar up, breaking the FX leg",
+      "Polymarket illiquidity produces a spurious probability move with no macro content",
+      "12h moves stay well under 700bps, so even a correct mapping is not tradable"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

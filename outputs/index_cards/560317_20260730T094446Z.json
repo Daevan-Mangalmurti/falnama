@@ -1,0 +1,100 @@
+{
+  "card_id": "560317_20260730T094446Z",
+  "card_version": "v1",
+  "card_hash": "1c4b49fd0b4ed303f8a5173fe65c4c9bf647741df4fdeff523f22734adbd1fbc",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-30T09:44:46Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "560317",
+    "market_slug": "putin-out-before-2027-346",
+    "market_name": "Putin out as President of Russia by December 31, 2026?",
+    "market_url": "https://polymarket.com/market/putin-out-before-2027-346",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Putin out as President of Russia by December 31, 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 300.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -400.0,
+        900.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether crude futures (Brent/WTI) and USO are moving with the probability shift; confirm the prediction-market move is a genuine spike, not thin-liquidity noise, and scan wires for any Kremlin/health headlines.",
+        "1h": "Assess whether the oil move is holding or fading; look for confirmation via Russia-linked FX (RUB) and European gas (TTF); distinguish 'instability premium' vs 'peace-hope discount' narrative.",
+        "2h": "Re-evaluate direction: if credible reporting emerges suggesting orderly succession/peace, flip bias toward oil down; if chaos/escalation, maintain up bias.",
+        "6h": "Check whether move persisted into the next session and whether volatility (OVX) rose; reassess magnitude vs the 700bps tradable threshold.",
+        "12h": "Compare realized crude return to the 300bps expectation; log whether the probability move preceded any public confirmation (leakage test) or was noise."
+      },
+      "reasoning": "A sharp jump in the implied probability of Putin's sudden removal would signal acute political instability in the world's third-largest oil producer and a top exporter. Regime-change uncertainty typically raises a geopolitical/supply-disruption risk premium in crude in the immediate hours, as markets fear disorderly transitions, export disruptions, or escalation. The direction is genuinely ambiguous, however: an orderly exit read as a path to ending the Ukraine war could instead compress the risk premium and push oil DOWN. On net an abrupt, surprising probability spike more often initially prices instability, hence a modest upward tilt."
+    },
+    {
+      "asset": "Gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 150.0,
+      "confidence": 0.32,
+      "confidence_interval_bps": [
+        -150.0,
+        500.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm gold/GLD is bid alongside the probability spike and that broad risk-off (equity index softness, VIX up, Treasury bid) accompanies it, validating a genuine safe-haven impulse.",
+        "1h": "Check whether the move is corroborated by DXY and real-yield direction; a purely dollar-driven gold move would weaken the geopolitical read.",
+        "2h": "Reassess if headlines confirm or debunk the event; a debunk should collapse the safe-haven bid.",
+        "6h": "Evaluate persistence and whether equity indices (SPY/Euro Stoxx) are still risk-off; scale conviction accordingly.",
+        "12h": "Compare realized gold return to the 150bps expectation and note whether the market-implied signal led public confirmation."
+      },
+      "reasoning": "A credible surge in the odds of an abrupt leadership change in a nuclear-armed state is a classic safe-haven trigger. Gold tends to catch a bid on geopolitical tail-risk and regime-instability fears, independent of the war's ultimate direction, because the transition risk itself raises uncertainty. The magnitude should be smaller than oil's since gold reacts to broad risk sentiment rather than a specific supply channel, and much of any move could reverse quickly if the news proves unfounded."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns sudden removal/resignation of Putin, resolving Yes on announcement regardless of effective date",
+    "Russia is a top-three global oil producer and major energy exporter, so leadership instability has a direct crude-supply risk channel",
+    "Russia is a nuclear-armed state, making abrupt leadership change a broad geopolitical tail-risk relevant to safe havens",
+    "Direct Russian asset proxies (RSX, RUB access) are largely frozen/delisted for Western investors post-2022 sanctions, forcing reliance on commodity and safe-haven proxies"
+  ],
+  "uncertainty_notes": [
+    "Direction is fundamentally two-sided: instability premium (oil up) vs peace-hope discount (oil down); confidence is deliberately low",
+    "A probability spike on Polymarket may reflect a viral rumor or thin liquidity rather than genuine information leakage",
+    "If a removal were truly imminent and confirmed, the market impact could vastly exceed these estimates; if it's noise, near-zero",
+    "The mapping to oil/gold is indirect; both are driven by many other macro factors within any 12h window"
+  ],
+  "llm_justification": {
+    "summary": "A sharp upward move in the implied probability that Putin leaves office would most plausibly transmit to public markets via a geopolitical risk premium: crude oil higher on Russian supply-disruption fears and gold higher on safe-haven demand tied to instability in a nuclear-armed, major-exporter state. Both mappings are weak and two-sided \u2014 an exit read as a path to peace could instead lower oil \u2014 so directions carry low confidence and modest magnitudes, likely below the 700bps tradable threshold absent a truly confirmed event.",
+    "key_assumptions": [
+      "The relevant scenario is a SHARP jump in Yes probability, not a drift, implying new information",
+      "Markets initially price abrupt regime change as instability/uncertainty rather than immediate peace",
+      "Oil and gold are the most liquid accessible proxies given sanctions on direct Russian instruments",
+      "The 12h window captures the immediate reflex move, not the ultimate resolution"
+    ],
+    "failure_modes": [
+      "The move reverses: rumor is debunked within hours and any risk premium fully unwinds",
+      "Wrong sign: a leadership change interpreted as ending the Ukraine war compresses oil's risk premium (oil down, equities up)",
+      "Already public: if driven by a public health/political headline the assets have already repriced before the card acts",
+      "Weak proxy: oil and gold are dominated by unrelated macro drivers (Fed, dollar, inventories) in any given 12h window, drowning out the signal",
+      "Magnitude shortfall: absent hard confirmation, moves likely stay well under the 700bps tradable bar"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
