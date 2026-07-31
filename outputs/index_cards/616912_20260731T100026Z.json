@@ -1,0 +1,98 @@
+{
+  "card_id": "616912_20260731T100026Z",
+  "card_version": "v1",
+  "card_hash": "e8e947f989a8c04a9cb0d1ac318600db66da1840c779e6564100306f9f07692f",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-31T10:00:26Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616912",
+    "market_slug": "will-10-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 10 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-10-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 10 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-dated US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -40.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move coincides with a real macro catalyst (weak data, credit event) or is thin/illiquid market noise; confirm 2y/10y yields are actually falling.",
+        "1h": "Compare TLT move vs fed funds futures (implied 2026 cuts) to confirm coherent dovish repricing rather than an idiosyncratic bid.",
+        "2h": "Re-check for reversal; assess whether equities are selling off (risk-off duration bid) vs rallying (soft-landing easing).",
+        "6h": "Reassess against any Fed speak, CPI/jobs releases, or headlines that could validate or refute the deep-easing scenario.",
+        "12h": "Evaluate whether the yield/duration move held; log realized TLT return vs expectation and whether the market signal preceded public news."
+      },
+      "reasoning": "A sharp rise in the implied probability of 10 Fed cuts (250bps of easing) in 2026 signals expectations of aggressive/emergency easing, typically driven by recession or financial-stress fears. That environment is bond-bullish: front-end and long-end yields fall as the market prices deep cuts, lifting long-duration Treasuries. The link from a dovish rate-path repricing to duration is mechanically strong, though the extreme-tail nature of a 10-cut strike means much of any signal is noise."
+    },
+    {
+      "asset": "Gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "commodity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.35,
+      "confidence_interval_bps": [
+        -50.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm the DXY is softening and real yields (TIPS) are falling alongside the rate-cut repricing.",
+        "1h": "Check gold spot vs GLD and whether the move tracks the dovish rate signal or an unrelated commodity flow.",
+        "2h": "Watch for reversal if the probability spike fades as illiquid noise.",
+        "6h": "Reassess against dollar and Treasury moves; look for macro headlines justifying deep easing.",
+        "12h": "Log realized GLD return vs expectation; note whether signal led public data."
+      },
+      "reasoning": "Pricing in 10 cuts implies collapsing real rates and likely a weaker dollar, both classically supportive of gold. Emergency/aggressive easing expectations also carry a safe-haven/risk-off flavor that adds a bid. The channel is real but second-order and diluted by the tail-scenario framing, so magnitude and confidence are modest."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies an extreme easing path (10 x 25bps = 250bps of cuts in 2026)",
+    "Rate-cut repricing maps mechanically to Treasury duration (TLT) and, via real rates/dollar, to gold",
+    "12h window and 700bps tradability threshold far exceed plausible single-asset moves from this signal",
+    "Standard monetary-policy transmission: dovish path -> lower yields, weaker USD, higher gold"
+  ],
+  "uncertainty_notes": [
+    "10 cuts is a deep-tail strike; probability moves are likely thin/illiquid and dominated by noise, not information",
+    "The 700bps tradability threshold is essentially unreachable in 12h for these liquid proxies, so this is not a tradable signal",
+    "Direction of equities is ambiguous: deep easing can be risk-off (recession) or risk-on (liquidity), so no equity index call given",
+    "Topic mislabeled as 'military_conflict'; this is purely a monetary-policy market"
+  ],
+  "llm_justification": {
+    "summary": "This market tracks an extreme easing scenario (250bps of 2026 Fed cuts). A sharp rise in its implied probability would signal expectations of aggressive/emergency easing amid recession or stress, which is bond-bullish (TLT up) and gold-supportive (weaker dollar, lower real rates). Both mappings are directionally reasonable but modest in magnitude; given the tail nature of the strike, the signal is likely noisy and well below the 700bps tradability threshold, so confidence is low and neither prediction is tradable.",
+    "key_assumptions": [
+      "A move in the market's implied probability reflects genuine dovish repricing rather than illiquid noise",
+      "Standard transmission holds: deep-cut pricing lowers yields and real rates and weakens the dollar",
+      "No offsetting inflation shock that would keep the Fed hawkish despite growth fears"
+    ],
+    "failure_modes": [
+      "The probability spike is illiquid noise on a deep-tail contract and reverses, with no asset follow-through",
+      "The macro information is already public (post-CPI/jobs/Fed) and fully priced into TLT and gold",
+      "Deep easing is being priced due to inflation/stagflation concerns, in which case gold rises but Treasuries could sell off, breaking the TLT thesis",
+      "Proxies are only partially exposed; idiosyncratic ETF flows dominate the modest expected move"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

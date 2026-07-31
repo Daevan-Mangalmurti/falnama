@@ -1,0 +1,98 @@
+{
+  "card_id": "616904_20260731T100026Z",
+  "card_version": "v1",
+  "card_hash": "8405681ff4c4d0ba9974326aaac8507780b320cb6312df5f025cc50f0e98ced0",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-31T10:00:26Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616904",
+    "market_slug": "will-2-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 2 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-2-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 2 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US long-duration Treasuries (rate expectations proxy)",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -60.0,
+        140.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether front-end and belly Treasury yields (2y/5y) are declining consistent with a dovish repricing; confirm the prediction-market probability move is persistent not a fat-finger.",
+        "1h": "Compare TLT move against fed funds futures / SOFR strip to see if the cash rates market corroborates the dovish shift.",
+        "2h": "Watch for any Fed speaker headlines or data prints that could be driving both the market and yields; distinguish leak vs. public catalyst.",
+        "6h": "Reassess whether the duration move has held or mean-reverted; check dollar and equity confirmation.",
+        "12h": "Evaluate net TLT return vs. prediction; note whether move was already public (data/Fedspeak) and log calibration."
+      },
+      "reasoning": "A sharp rise in the implied probability of 2 Fed cuts in 2026 signals a more dovish rate path than currently priced. Lower expected policy rates pull down the yield curve, lifting long-duration Treasury prices (TLT rises as yields fall). The link from a rate-cut prediction market to duration is direct and mechanical, though the specific '2 cuts' strike is only one node of a broader distribution, so the signal is coarse."
+    },
+    {
+      "asset": "US dollar (broad)",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -25.0,
+      "confidence": 0.33,
+      "confidence_interval_bps": [
+        -90.0,
+        50.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check DXY and EURUSD for direction consistent with a softer dollar; confirm prediction-market move is genuine.",
+        "1h": "Cross-check 2y US-Bund spread to see if rate-differential channel is active.",
+        "2h": "Screen for competing drivers (risk-off flight-to-dollar could reverse the sign).",
+        "6h": "Reassess whether dollar weakness persisted or was offset by global factors.",
+        "12h": "Log net UUP move vs. prediction and note whether the rate-market signal transmitted to FX at all."
+      },
+      "reasoning": "A dovish repricing (higher odds of 2026 cuts) typically narrows US rate differentials and weakens the dollar modestly. The channel is real but second-order and easily overwhelmed by global risk sentiment and relative central-bank moves, so confidence is low and the proxy exposure is diffuse."
+    }
+  ],
+  "evidence_used": [
+    "Market question directly tracks number of 2026 Fed 25bp rate cuts, resolved by FOMC statements",
+    "Dovish shifts in expected policy path mechanically lower yields (bonds up) and tend to soften the dollar",
+    "Standard rates-to-duration and rates-to-FX transmission relationships"
+  ],
+  "uncertainty_notes": [
+    "Direction of the implied-probability move is not specified; predictions assume a rise in cut odds (dovish). A fall would flip all signs.",
+    "The '2 cuts' strike is a single point on a distribution; a move could reflect reshuffling between 1/2/3 cut buckets rather than a clear net dovish/hawkish shift.",
+    "12h magnitudes for these liquid proxies are typically 20-60bps, far below the 700bps tradable threshold \u2014 so no prediction here is 'tradable' by that bar.",
+    "Fed-cut expectations often move on public catalysts (CPI, NFP, Fedspeak), so information may already be public rather than leaked."
+  ],
+  "llm_justification": {
+    "summary": "This market prices the odds of exactly-or-at-least 2 Fed 25bp cuts in 2026, a direct read on the expected policy-rate path. A sharp increase in those odds implies a more dovish path than priced, which mechanically lifts long-duration Treasuries (TLT up as yields fall) and modestly softens the broad dollar (UUP down). Both linkages are legitimate but the magnitudes over 12h are small (tens of bps), well under the 700bps tradable threshold, and the direction depends entirely on which way the implied probability moved. Treat as a low-confidence, coarse macro signal, not an actionable edge.",
+    "key_assumptions": [
+      "The implied probability of 2026 cuts moved sharply higher (dovish); a hawkish move reverses all directions.",
+      "Rates-market transmission to Treasuries and FX operates normally over the window.",
+      "No dominant offsetting risk-sentiment shock (e.g., flight-to-quality) overrides the rate-differential channel."
+    ],
+    "failure_modes": [
+      "Move already public: rate-cut odds usually shift on scheduled data/Fedspeak that markets already digested, so no leak/edge exists.",
+      "Wrong sign: probability could have fallen (hawkish) rather than risen, flipping TLT/UUP direction.",
+      "Weak proxy for FX: dollar is driven by relative central-bank paths and global risk, so UUP may not respond to a US-only dovish tilt.",
+      "Bucket reshuffle: '2 cuts' odds can rise while overall expected cuts fall (mass shifting from 3+ to 2), muddying the macro read.",
+      "Magnitude far below tradable threshold \u2014 even a correct directional call is not actionable at 700bps."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

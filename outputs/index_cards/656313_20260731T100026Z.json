@@ -1,0 +1,99 @@
+{
+  "card_id": "656313_20260731T100026Z",
+  "card_version": "v1",
+  "card_hash": "3cfe45aca447ee537331f77afa052ef56177ecf2af6d4ae606124dd539b32ed2",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-31T10:00:26Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "656313",
+    "market_slug": "openai-1t-ipo-before-2027",
+    "market_name": "OpenAI $1t+ IPO before 2027?",
+    "market_url": "https://polymarket.com/market/openai-1t-ipo-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "OpenAI $1t+ IPO before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Microsoft equity (largest OpenAI stakeholder)",
+      "ticker": "MSFT",
+      "tradable_instrument_name": "Microsoft Corporation",
+      "asset_class": "equity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.28,
+      "confidence_interval_bps": [
+        -60.0,
+        180.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket probability move coincides with any real headline (S-1 filing, restructuring news, reported banker mandates). If purely market-internal, discount heavily.",
+        "1h": "Compare MSFT intraday move vs QQQ/semis beta to see if any move is idiosyncratic to OpenAI news versus broad tech beta.",
+        "2h": "Scan reputable outlets (Bloomberg, Reuters, FT) for corroborating OpenAI IPO/restructuring reporting; absence weakens thesis.",
+        "6h": "Re-evaluate whether the prediction-market move persisted or reverted; a revert implies noise.",
+        "12h": "Assess cumulative MSFT return vs baseline; log whether signal had any predictive value for the pre-commitment record."
+      },
+      "reasoning": "Microsoft holds a large economic stake in OpenAI's for-profit arm. A sharp rise in the implied probability of a $1t+ OpenAI IPO would mark-to-market Microsoft's holding at an enormous valuation and signal a liquidity/monetization event, modestly bullish for MSFT. But the linkage to a specific 12h price move is weak: the market resolves on a 2026 deadline, so probability drift is slow-burn and largely already reflected in AI-narrative pricing. Any 12h move is likely small and noisy, well below the 700bps tradable threshold."
+    },
+    {
+      "asset": "US large-cap AI/tech beta",
+      "ticker": "QQQ",
+      "tradable_instrument_name": "Invesco QQQ Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 20.0,
+      "confidence": 0.2,
+      "confidence_interval_bps": [
+        -90.0,
+        120.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether the probability move is event-driven; check for OpenAI corporate-structure news.",
+        "1h": "Look at NVDA and semis relative strength as a cleaner AI-sentiment read.",
+        "2h": "Verify no macro (rates/CPI) driver is dominating tech beta today.",
+        "6h": "Reassess if AI names outperformed broad market, isolating OpenAI-narrative contribution.",
+        "12h": "Record net QQQ move and whether the prediction-market signal added information over macro beta."
+      },
+      "reasoning": "A jump in perceived near-term OpenAI IPO probability could be read as bullish AI-liquidity sentiment lifting mega-cap tech broadly (Nvidia, Microsoft, Broadcom). However, a mega-cap IPO could also be interpreted as future supply/competition or capital rotation, making net direction ambiguous. On a 12h horizon this is a very diffuse, low-conviction linkage."
+    }
+  ],
+  "evidence_used": [
+    "Market question: OpenAI $1t+ IPO before end-2026",
+    "Microsoft's well-documented large economic interest in OpenAI's for-profit entity",
+    "OpenAI is private; no direct tradable instrument exists, forcing use of second-order proxies",
+    "Category tag: corporate_action"
+  ],
+  "uncertainty_notes": [
+    "No direct liquid instrument for OpenAI; all mappings are second-order and weak.",
+    "A $1t IPO by 2026 is an aggressive, low-base-rate outcome; probability moves may be speculative noise rather than information.",
+    "Microsoft's stake benefit could be offset by governance/dilution/restructuring concerns, muddying direction.",
+    "12h window is far too short for a 2026-dated resolution to produce a large asset move."
+  ],
+  "llm_justification": {
+    "summary": "The OpenAI $1t+ IPO market has no direct tradable proxy; the strongest indirect link is Microsoft, whose large OpenAI stake would be marked up on higher IPO probability, with US mega-cap tech (QQQ) as a diffuse AI-sentiment proxy. Both linkages are weak, slow-burn, and likely already embedded in AI-narrative pricing. Expected 12h moves are small (tens of bps) and well below the 700bps tradable threshold, so this is a low-confidence, non-tradable research mapping rather than an actionable signal.",
+    "key_assumptions": [
+      "Microsoft remains the primary listed beneficiary of OpenAI equity value.",
+      "Prediction-market probability shifts precede rather than merely echo public reporting.",
+      "No dominant macro driver overwhelms the idiosyncratic AI signal in the window."
+    ],
+    "failure_modes": [
+      "The probability move reflects speculation/thin liquidity, not leaked information \u2014 no asset reaction.",
+      "News is already public and priced, so proxies show no incremental reaction.",
+      "Microsoft/QQQ are only weakly exposed; OpenAI value is a small fraction of MSFT's cap and diluted across QQQ.",
+      "Restructuring or governance concerns could make an IPO net-negative for MSFT, flipping direction.",
+      "Resolution deadline is late 2026, so a 12h horizon captures essentially no fundamental repricing."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

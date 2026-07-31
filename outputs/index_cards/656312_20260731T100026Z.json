@@ -1,0 +1,99 @@
+{
+  "card_id": "656312_20260731T100026Z",
+  "card_version": "v1",
+  "card_hash": "319595e2b57d2f8e101b8ef356ecac3fde3bed0d61762f80fb4384356c8f4624",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-31T10:00:26Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "656312",
+    "market_slug": "will-openai-ipo-by-december-31-2026",
+    "market_name": "Will OpenAI IPO by December 31 2026?",
+    "market_url": "https://polymarket.com/market/will-openai-ipo-by-december-31-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will OpenAI IPO by December 31 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Microsoft equity",
+      "ticker": "MSFT",
+      "tradable_instrument_name": "Microsoft Corporation",
+      "asset_class": "equity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.28,
+      "confidence_interval_bps": [
+        -80.0,
+        220.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check for any breaking headlines on OpenAI restructuring, S-1/confidential filing, or funding round; verify whether the probability move coincides with a public catalyst.",
+        "1h": "Compare MSFT move vs QQQ/SPX to isolate idiosyncratic vs beta; check options implied vol for MSFT.",
+        "2h": "Reassess whether news is already public (if so, no leak edge) and whether the OpenAI IPO probability move persisted or reverted.",
+        "6h": "Look for analyst notes valuing Microsoft's OpenAI stake; recheck MSFT relative performance.",
+        "12h": "Evaluate whether MSFT closed the window with a persistent idiosyncratic move; log outcome for calibration."
+      },
+      "reasoning": "Microsoft is OpenAI's largest strategic investor and holds a large equity stake in the for-profit entity. A sharp rise in the implied probability of an OpenAI IPO would imply progress on OpenAI's corporate restructuring into a for-profit/PBC and an eventual public valuation event, marking Microsoft's stake to a higher, liquid mark and unlocking value. That is a mildly positive read-through. However, the causal chain to a 12-hour MSFT move is weak: MSFT's market cap dwarfs any incremental value from the OpenAI stake, and an IPO could also imply dilution or a more independent OpenAI. Hence small magnitude and low confidence \u2014 clearly below the 700bps tradable threshold."
+    },
+    {
+      "asset": "AI/semiconductor complex",
+      "ticker": "NVDA",
+      "tradable_instrument_name": "NVIDIA Corporation",
+      "asset_class": "equity",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.18,
+      "confidence_interval_bps": [
+        -120.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any OpenAI capex/compute-commitment headline accompanies the probability move.",
+        "1h": "Assess NVDA vs semiconductor index (SOXX) to see if any move is sector-wide or idiosyncratic.",
+        "2h": "Determine if the driver is already-public news; downgrade edge if so.",
+        "6h": "Recheck for OpenAI-Nvidia commercial announcements; monitor SOXX breadth.",
+        "12h": "Log whether any move materialized; treat as null result if flat."
+      },
+      "reasoning": "An OpenAI IPO would give OpenAI access to public capital markets to fund massive compute buildout, a demand tailwind for Nvidia as its key GPU supplier. But this is a very indirect, long-dated read-through with essentially no clean 12-hour mechanism, and IPO timing itself says little about near-term GPU orders. Direction is genuinely unclear and magnitude negligible relative to Nvidia's own drivers. Included only to note the proxy is weak, not to manufacture a signal."
+    }
+  ],
+  "evidence_used": [
+    "Market question on whether OpenAI completes an IPO by Dec 31 2026",
+    "Public knowledge that Microsoft is OpenAI's largest strategic investor with a significant equity stake",
+    "Public knowledge that Nvidia is OpenAI's primary compute/GPU supplier",
+    "Resolution clause that acquisition by a public company resolves 'No'"
+  ],
+  "uncertainty_notes": [
+    "OpenAI is private; there is no direct tradable instrument, so all mappings are indirect proxies.",
+    "IPO timing probability moving does not cleanly imply a 12-hour public-equity move; catalysts are usually multi-day/quarter events.",
+    "An OpenAI IPO could be read as neutral or even dilutive for Microsoft depending on stake conversion terms.",
+    "If a probability spike reflects already-public reporting, there is no informational leak to exploit."
+  ],
+  "llm_justification": {
+    "summary": "A sharp move in the OpenAI-IPO-by-2026 probability most plausibly reads through to Microsoft, OpenAI's largest investor, whose stake would be marked to a public valuation \u2014 a mildly positive but small and low-confidence signal. Nvidia is a secondary, even weaker proxy via compute-demand narratives with unclear direction. Neither mapping reaches the 700bps tradable threshold; OpenAI is private so all links are indirect and the 12-hour causal mechanism is thin. This is best treated as a weak, non-tradable research observation.",
+    "key_assumptions": [
+      "Microsoft retains a large, value-accretive stake that would benefit from an OpenAI public valuation.",
+      "A probability spike reflects genuine new information about IPO progress rather than noise.",
+      "Public equities react modestly and slowly to changes in a private company's IPO timing odds."
+    ],
+    "failure_modes": [
+      "The probability move is noise or already-public news, leaving no exploitable edge.",
+      "An OpenAI IPO is dilutive or structurally negative for Microsoft, flipping the expected sign.",
+      "MSFT and NVDA are dominated by their own idiosyncratic and macro drivers, so any OpenAI signal is swamped.",
+      "Acquisition clause: OpenAI resolution mechanics differ from actual equity value creation, weakening the proxy link.",
+      "12-hour window too short for a slow-moving corporate-action theme to register."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

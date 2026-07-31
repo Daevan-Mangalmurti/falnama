@@ -1,0 +1,98 @@
+{
+  "card_id": "568116_20260731T100026Z",
+  "card_version": "v1",
+  "card_hash": "c758a4b328b79438e38e55fdce9634332407ec0642347b598855b22aaff42b36",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-31T10:00:26Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "568116",
+    "market_slug": "will-trump-be-impeached-by-december-31-2026",
+    "market_name": "Will Trump be impeached by end of 2026?",
+    "market_url": "https://polymarket.com/market/will-trump-be-impeached-by-december-31-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Trump be impeached by end of 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US equity index (broad market)",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": -40.0,
+      "confidence": 0.2,
+      "confidence_interval_bps": [
+        -200.0,
+        120.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move coincides with a concrete news catalyst (scandal, indictment, House vote scheduling) versus thin-market noise; confirm SPY/ES futures reaction.",
+        "1h": "Compare SPY move to VIX and Treasury futures to see if a genuine risk-off regime is forming rather than idiosyncratic drift.",
+        "2h": "Assess whether headline is corroborated by major outlets (already public) or leading the news; gauge fade vs continuation.",
+        "6h": "Re-evaluate whether equity move persisted or mean-reverted; check overnight futures for follow-through.",
+        "12h": "Mark final SPY return vs baseline; log whether impeachment odds and equities co-moved or decoupled to refine future mapping."
+      },
+      "reasoning": "A sharp rise in the implied probability of a Trump impeachment would signal elevated political instability, potentially rising after a scandal or a shift in the House balance. Historically, political-uncertainty shocks produce mild, short-lived equity risk-off moves. But impeachment without Senate conviction is largely symbolic, policy continuity is high, and markets have repeatedly shrugged off impeachment headlines (2019 Trump impeachment barely dented the S&P). Net 12h effect is small and directionally ambiguous, well below the 700bps tradable threshold."
+    },
+    {
+      "asset": "US dollar (safe-haven / political-risk proxy)",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 15.0,
+      "confidence": 0.15,
+      "confidence_interval_bps": [
+        -80.0,
+        110.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check DXY and UUP for any immediate reaction; likely negligible.",
+        "1h": "Cross-check against 2-year yield moves to separate rate-driven from politics-driven FX action.",
+        "2h": "Confirm whether any move is USD-specific or broad risk sentiment.",
+        "6h": "Reassess persistence; expect noise to dominate.",
+        "12h": "Record net UUP return and whether it correlated at all with the impeachment-odds shift."
+      },
+      "reasoning": "Domestic US political turmoil has an ambiguous dollar effect: safe-haven flows can support USD even when the US is the source of risk, while governance concerns can weaken it. The 12h impeachment-probability signal is a very weak and noisy driver for FX, which is dominated by rate differentials and macro data. Mapping is weak; low confidence and unclear direction are appropriate."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves Yes only on a House majority vote on articles of impeachment, not conviction/removal",
+    "Impeachment requires a House majority, so a large odds move likely implies a scandal or a shift in expected 2026 midterm control",
+    "Historical precedent: the 2019 Trump impeachment had minimal, transient effect on US equities",
+    "Standard behavior of equities and FX to domestic political-uncertainty shocks"
+  ],
+  "uncertainty_notes": [
+    "Impeachment without Senate conviction is largely symbolic; policy and macro continuity is high, muting asset impact",
+    "A probability move may reflect thin Polymarket liquidity/noise rather than genuine information",
+    "Direction of USD response to US political risk is genuinely ambiguous (safe-haven vs governance discount)",
+    "The market has a long horizon (through end-2026) so short 12h asset windows are only loosely linked"
+  ],
+  "llm_justification": {
+    "summary": "A sharp move in the odds Trump is impeached by end-2026 maps only weakly to 12h public-market moves. The most plausible channel is a mild equity risk-off if a genuine scandal or House-control shift drives the odds, but impeachment without Senate conviction is largely symbolic and history (2019) shows minimal, transient equity impact. Both the SPY and USD mappings are low-confidence and directionally unclear, and neither is expected to reach the 700bps tradable threshold. This is best treated as a non-tradable, monitor-only signal.",
+    "key_assumptions": [
+      "The odds move is driven by real political news rather than illiquid-market noise",
+      "Markets treat symbolic impeachment as low economic-impact, consistent with 2019",
+      "No simultaneous macro catalyst (Fed, CPI) dominates the tape"
+    ],
+    "failure_modes": [
+      "The impeachment odds shift is already public/priced, so no asset reaction occurs",
+      "Any equity dip quickly reverses as markets discount a symbolic, non-conviction impeachment",
+      "SPY/USD are weak proxies whose 12h moves are dominated by rates and macro, not political odds",
+      "Direction assumed wrong: safe-haven flows could lift both USD and equities, or a 'buy the news' rally could occur"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

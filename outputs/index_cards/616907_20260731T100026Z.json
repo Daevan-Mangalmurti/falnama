@@ -1,0 +1,99 @@
+{
+  "card_id": "616907_20260731T100026Z",
+  "card_version": "v1",
+  "card_hash": "6507c6291796a4415e6748f35779053515216fe2403aa31ca56abdb813990fbd",
+  "do_not_revise": true,
+  "created_time_utc": "2026-07-31T10:00:26Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616907",
+    "market_slug": "will-5-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 5 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-5-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 5 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-dated US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.5,
+      "confidence_interval_bps": [
+        -30.0,
+        120.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the 2y/10y Treasury yields and fed funds futures (SOFR strip) have moved in the same dovish direction; confirm the move is not idiosyncratic to the Polymarket contract.",
+        "1h": "Re-check TLT price vs move in 2y yield and OIS-implied 2026 cut count; look for confirmation from Fed-speak headlines or data surprises.",
+        "2h": "Assess persistence: is TLT holding gains or fading? Compare with a broader duration proxy (IEF) to gauge curve shape.",
+        "6h": "Reassess against any scheduled macro releases (CPI, jobs, FOMC minutes) that could be the true driver; discount if news is already public.",
+        "12h": "Final read on TLT vs starting level; note whether the dovish repricing stuck or reversed and whether prediction-market move led or lagged rates."
+      },
+      "reasoning": "A sharp rise in the implied probability of 5 Fed rate cuts in 2026 signals a materially more dovish rate path than currently priced. That pulls the expected fed funds trajectory lower, which lowers the front-to-belly of the curve and tends to lift duration-sensitive long bonds. TLT is the most liquid, direct expression of falling US rate expectations."
+    },
+    {
+      "asset": "US Dollar",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -25.0,
+      "confidence": 0.42,
+      "confidence_interval_bps": [
+        -90.0,
+        40.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm DXY and EURUSD are moving consistently with a dovish US repricing rather than a global risk event.",
+        "1h": "Check whether the dollar move is US-specific (rate-driven) or a broad risk-on/off flow that would muddy the signal.",
+        "2h": "Compare UUP with 2y US-Germany rate spread to verify the rates channel is driving FX.",
+        "6h": "Watch for offsetting dovish moves from ECB/BoJ that could neutralize the differential.",
+        "12h": "Final check on UUP vs open; judge whether the dollar weakened as the cut-expectation thesis implies."
+      },
+      "reasoning": "More expected Fed cuts narrow US rate differentials versus other G10 central banks, which typically weakens the dollar. UUP tracks the broad DXY-style basket and is the liquid proxy. Effect is weaker and noisier than the rates channel because FX also depends on relative foreign central-bank paths."
+    }
+  ],
+  "evidence_used": [
+    "Market question ties resolution directly to the count of 25bp Fed cuts in 2026",
+    "A rise in probability of 5 cuts = more dovish expected policy path",
+    "Standard macro transmission: lower expected policy rate -> lower Treasury yields, weaker USD",
+    "TLT and UUP are highly liquid proxies for these channels"
+  ],
+  "uncertainty_notes": [
+    "Prediction-market probability moves are noisy and may reflect thin liquidity rather than genuine information",
+    "12h window is far too short for a 700bps move in these macro ETFs; not tradable under the threshold",
+    "Dovish repricing may already be public (driven by CPI/FOMC), so the prediction market lags rather than leads",
+    "The 'military_conflict' topic tag appears mislabeled; treat the question purely as a rates question"
+  ],
+  "llm_justification": {
+    "summary": "The market prices how many 25bp Fed cuts occur in 2026. A sharp rise in the implied probability of 5 cuts represents a more dovish expected policy path than currently discounted. The cleanest downstream implications are falling US rate expectations (long Treasuries/TLT up) and a softer dollar (UUP down) via narrower rate differentials. Both are directionally sensible but modest over a 12h window and fall well short of the 700bps tradable threshold, so this is a low-conviction research mapping rather than a signal.",
+    "key_assumptions": [
+      "An observed anomaly means the implied probability of 5 cuts rose sharply",
+      "Rate expectations transmit to TLT and USD in the usual macro direction",
+      "No dominant offsetting global risk shock during the window"
+    ],
+    "failure_modes": [
+      "The dovish shift was already public (post-CPI or post-FOMC), so assets already moved and no edge remains",
+      "Prediction-market move is liquidity noise, not information, and reverses",
+      "TLT/UUP driven by unrelated global flows, weakening the proxy link",
+      "Direction of the probability move is opposite to assumed (fewer cuts priced), flipping both trades",
+      "Magnitudes far below the 700bps threshold make this untradable in practice"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
