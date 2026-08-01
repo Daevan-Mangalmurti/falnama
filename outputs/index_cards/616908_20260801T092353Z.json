@@ -1,0 +1,98 @@
+{
+  "card_id": "616908_20260801T092353Z",
+  "card_version": "v1",
+  "card_hash": "6579133df7cd6aaa4f74f67f8ecab63acedae92166e4b76e85094cd189add29d",
+  "do_not_revise": true,
+  "created_time_utc": "2026-08-01T09:23:53Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616908",
+    "market_slug": "will-6-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 6 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-6-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 6 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-duration US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.5,
+      "confidence_interval_bps": [
+        -40.0,
+        180.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move is corroborated by front-end rate futures (SOFR/Fed funds futures) and 2Y yield; confirm it isn't isolated noise in a thin Polymarket book.",
+        "1h": "Compare TLT/yield direction against the prediction-market shift; look for any macro headline (CPI, jobs, Fed speak) that already explains it (already-public risk).",
+        "2h": "Assess persistence: is the yield move holding or mean-reverting? Re-check dollar and gold for confirmation of a coherent dovish theme.",
+        "6h": "Evaluate whether US session price action confirmed the dovish signal or faded it; note magnitude vs the modest expected band.",
+        "12h": "Final read: did TLT close higher with lower yields? Log realized vs predicted and whether the prediction market led or lagged public data."
+      },
+      "reasoning": "A sharp rise in the implied probability of 6 rate cuts (150bps of easing) in 2026 signals a materially more dovish rate path than currently priced. Lower expected policy rates compress the front end and pull down the whole curve, boosting long-duration bond prices. TLT is the most direct, liquid duration proxy. A dovish repricing of this magnitude in the prediction market would map to falling yields."
+    },
+    {
+      "asset": "Gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.45,
+      "confidence_interval_bps": [
+        -50.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm the prediction-market move and check if DXY is weakening and real yields (TIPS) are falling in tandem.",
+        "1h": "Distinguish a rate-driven gold move from a risk-off/geopolitical driver, which would change the interpretation.",
+        "2h": "Check gold's correlation with the dollar and Treasuries this session for a consistent dovish narrative.",
+        "6h": "Reassess whether gold held gains; watch for reversal if rate-cut pricing fades.",
+        "12h": "Final read on GLD close vs prediction; note if move was rate-driven or dominated by other factors."
+      },
+      "reasoning": "A dovish shift toward 6 cuts implies lower real yields and a weaker dollar, both supportive of gold. GLD is a liquid proxy that responds to falling rate expectations. The mapping is looser than for Treasuries since gold also carries a large geopolitical/safe-haven component, so confidence is lower."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies a very dovish scenario: 6 cuts = ~150bps of easing in 2026",
+    "Rate-cut expectations map directly to Treasury yields, the dollar, and gold via real-rate and discount-rate channels",
+    "Liquid ETF proxies (TLT, GLD) capture duration and real-yield sensitivity"
+  ],
+  "uncertainty_notes": [
+    "Direction of the prediction-market move is assumed to be a rising probability of many cuts (dovish); a falling probability would flip all signs",
+    "Polymarket rate-cut markets can be thin and driven by a few traders rather than genuine information",
+    "12h moves in these ETFs are typically tens of bps, far below the 700bps tradable threshold \u2014 so no prediction is tradable",
+    "The market's tagged topic 'military_conflict' appears mislabeled; treated as a pure monetary-policy market"
+  ],
+  "llm_justification": {
+    "summary": "This market tracks whether the Fed delivers 6 (150bps) of cuts in 2026 \u2014 a deeply dovish outcome. If its implied probability rises sharply, the coherent public-market read is a dovish rate repricing: long Treasuries (TLT) up as yields fall, and gold (GLD) up on lower real yields and a softer dollar. Both mappings are plausible but modest in a 12h window, well below the 700bps tradable bar, so this is research-only with moderate confidence. Treasuries are the cleaner proxy; gold is noisier due to safe-haven cross-currents.",
+    "key_assumptions": [
+      "The observed anomaly is a rise, not a fall, in the probability of many cuts",
+      "The move reflects genuine dovish rate-path information, not book noise",
+      "No offsetting macro shock (e.g., inflation surprise) dominates the tape"
+    ],
+    "failure_modes": [
+      "The probability move reverses quickly as thin-market noise, and yields/gold don't follow",
+      "The dovish shift was already public (driven by a released CPI/jobs print or Fed speech), so no leakage edge exists",
+      "Gold moves for geopolitical/safe-haven reasons unrelated to rates, breaking the mapping",
+      "A risk-on equity rally accompanies the dovish move and steepens the curve, muting or reversing the long-bond gain",
+      "Sign error: the market actually reprices toward fewer cuts, in which case TLT and GLD fall"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

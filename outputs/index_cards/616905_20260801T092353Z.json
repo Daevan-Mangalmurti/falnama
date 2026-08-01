@@ -1,0 +1,98 @@
+{
+  "card_id": "616905_20260801T092353Z",
+  "card_version": "v1",
+  "card_hash": "94cf941b5e1de32c371e34ff7a650f54ec475250859334202d996327a8657475",
+  "do_not_revise": true,
+  "created_time_utc": "2026-08-01T09:23:53Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616905",
+    "market_slug": "will-3-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 3 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-3-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 3 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US long-term Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.5,
+      "confidence_interval_bps": [
+        -60.0,
+        140.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm the direction and size of the implied-probability move; check whether 2y/10y Treasury yields are moving consistently (yields down = dovish).",
+        "1h": "Cross-check fed funds futures (CME FedWatch) and SOFR futures for a matching shift; verify no scheduled Fed speaker or data release explains it.",
+        "2h": "Assess whether TLT move is tracking the rate-expectation shift or being swamped by term-premium/supply news; watch dollar and gold for corroboration.",
+        "6h": "Re-evaluate persistence; determine if this was a genuine expectations shift or noise that has mean-reverted.",
+        "12h": "Record realized TLT return vs. expectation and whether the prediction-market move led or lagged rates markets."
+      },
+      "reasoning": "This market prices the number of 25bp Fed cuts in 2026. A sharp rise in the implied probability of 3 cuts is a dovish signal \u2014 more easing lowers the expected path of the funds rate, pulling yields down and long-duration bond prices up. TLT is the most direct, liquid duration proxy. Direction is conditioned on a dovish (higher-cut-probability) move; a hawkish repricing would invert the sign."
+    },
+    {
+      "asset": "Gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 30.0,
+      "confidence": 0.42,
+      "confidence_interval_bps": [
+        -50.0,
+        110.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether gold is moving with real yields (TIPS) and the dollar in the dovish direction.",
+        "1h": "Verify DXY/dollar weakness accompanies the move; confirm no gold-specific catalyst (geopolitical safe-haven flow) is the real driver.",
+        "2h": "Gauge whether the gold move is holding or fading relative to the rates signal.",
+        "6h": "Reassess correlation to real yields; downgrade if gold decoupled from the rate story.",
+        "12h": "Log realized GLD return vs. expectation and note strength of the rate-expectation linkage."
+      },
+      "reasoning": "A dovish repricing (higher probability of 3 cuts) lowers real yields and typically weakens the dollar, both supportive of gold. GLD is liquid and non-yielding, so it benefits from lower expected rates. This is a weaker, second-order link than the direct rates proxy and is easily overwhelmed by other macro drivers (risk sentiment, dollar flows, geopolitics)."
+    }
+  ],
+  "evidence_used": [
+    "Market question ties resolution directly to the number of 25bp FOMC cuts in 2026 (monetary-policy expectations, not military conflict despite the mistagged topic).",
+    "Standard macro transmission: more expected Fed cuts \u2192 lower expected funds-rate path \u2192 lower yields, higher bond prices, weaker USD, supportive for gold.",
+    "TLT and GLD are highly liquid, broad proxies for duration and real-rate/dollar exposure."
+  ],
+  "uncertainty_notes": [
+    "The 12h window and 700bp tradability threshold are far larger than realistic macro-proxy moves; neither prediction is expected to be 'tradable' by that bar.",
+    "Direction is conditional on the SIGN of the implied-probability move; a hawkish shift inverts all signs.",
+    "Fed-cut expectations are already heavily reflected in fed funds futures \u2014 the prediction market likely lags rather than leads liquid rates markets.",
+    "Topic tag 'military_conflict' appears mislabeled; treated as a pure monetary-policy question."
+  ],
+  "llm_justification": {
+    "summary": "This is a Fed monetary-policy market: its implied probability tracks how many 25bp cuts the Fed delivers in 2026. A sharp increase in the odds of 3 cuts is a dovish signal that should push long Treasuries (TLT) up as yields fall and, secondarily, support gold (GLD) via lower real yields and a softer dollar. Both mappings are directionally sound but modest in 12h magnitude, well below the 700bp tradability threshold, and the sign flips if the move is hawkish. The prediction market is more likely to echo than to lead already-liquid fed funds futures.",
+    "key_assumptions": [
+      "The implied-probability move is dovish (higher chance of 3 cuts); signs invert otherwise.",
+      "Standard rates-to-asset transmission holds within the 12h window.",
+      "No dominant competing catalyst (risk-off shock, dollar flows, geopolitics) overrides the rate-expectation channel."
+    ],
+    "failure_modes": [
+      "The information is already public and priced by fed funds/SOFR futures, so no incremental asset move follows the prediction-market shift.",
+      "The move reverses as noise within hours (thin prediction-market liquidity).",
+      "TLT is driven by term-premium/supply rather than expected policy path, weakening the link.",
+      "Gold's move is dominated by safe-haven or dollar-specific flows unrelated to Fed expectations, making it a weak proxy.",
+      "Direction assumption wrong: the market repriced hawkishly, inverting both predictions."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

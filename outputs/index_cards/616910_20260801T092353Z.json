@@ -1,0 +1,98 @@
+{
+  "card_id": "616910_20260801T092353Z",
+  "card_version": "v1",
+  "card_hash": "397af5ae00ef6a0a26b7f4ab11ccc581c8ba50db2ab60832b73b79bef4d8cd5f",
+  "do_not_revise": true,
+  "created_time_utc": "2026-08-01T09:23:53Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616910",
+    "market_slug": "will-8-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 8 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-8-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 8 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-dated US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.5,
+      "confidence_interval_bps": [
+        -40.0,
+        220.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check 2y/10y Treasury yields and Fed funds futures (SOFR/SR3) for corroborating dovish repricing; confirm move is not idiosyncratic to the market.",
+        "1h": "Compare TLT move vs implied-vol / MOVE index; look for a news catalyst (Fed speak, labor/inflation surprise) that already explains it.",
+        "2h": "Re-check whether the probability shift persists or reverts; watch equity reaction to distinguish 'good easing' vs 'recession fear'.",
+        "6h": "Assess whether curve steepening/bull-flattening is consistent with an easing narrative; note any Fed communication.",
+        "12h": "Mark TLT close vs entry; evaluate if the prediction-market move led or lagged the rates move."
+      },
+      "reasoning": "An 8-cut (200bps) scenario for 2026 is a deep-easing tail that implies either a severe recession or emergency intra-meeting cuts. A sharp rise in the implied probability of that many cuts would front-run a large downward repricing of the Fed path, pulling front-end and long-end yields lower and lifting duration-sensitive bond prices. TLT is the cleanest liquid duration proxy."
+    },
+    {
+      "asset": "US dollar",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -30.0,
+      "confidence": 0.42,
+      "confidence_interval_bps": [
+        -120.0,
+        40.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check DXY and EURUSD for confirmation; verify move aligns with lower US front-end yields rather than a global risk-off dollar bid.",
+        "1h": "Distinguish rate-differential weakness from safe-haven flows by watching risk assets and JPY/CHF.",
+        "2h": "Re-check persistence and whether other central-bank expectations shifted simultaneously.",
+        "6h": "Reassess dollar vs gold to gauge whether easing or risk-off dominates.",
+        "12h": "Mark UUP close vs entry; note if FX confirmed or contradicted the rates signal."
+      },
+      "reasoning": "A jump in the probability of aggressive Fed easing (8 cuts) narrows expected US rate differentials versus other central banks, which is typically dollar-negative. UUP is a liquid DXY proxy. Effect is weaker/noisier than the rates channel because a US recession can also trigger safe-haven dollar demand, muting or reversing the move."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies a very dovish 8-cut (200bps) Fed path for 2026, including emergency cuts",
+    "Standard macro transmission: lower expected policy rates lift bond prices and pressure the dollar",
+    "TLT and UUP are highly liquid proxies for duration and the dollar"
+  ],
+  "uncertainty_notes": [
+    "8 cuts is a low-probability tail; small probability moves may carry limited information",
+    "A recession-driven easing narrative can produce a safe-haven dollar bid, offsetting the rate-differential channel",
+    "The 700bp tradable threshold is far above realistic 12h moves in these instruments, so neither prediction is 'tradable' by that bar",
+    "Prediction-market pricing on distant 2026 outcomes is thin and may be noise rather than leaked information"
+  ],
+  "llm_justification": {
+    "summary": "A market pricing 8 Fed cuts in 2026 is a deep-easing/recession tail. If its implied probability spiked, the cleanest downstream implications are lower Treasury yields (TLT up) and a weaker dollar (UUP down) via rate-differential compression. Both mappings are directionally sound but modest in 12h magnitude, well below the 700bp tradable threshold, and the dollar leg is ambiguous due to potential safe-haven offset. Treat as low-to-moderate confidence research signal.",
+    "key_assumptions": [
+      "A rise in the 8-cut probability reflects genuine dovish repricing, not resolution mechanics or thin-market noise",
+      "Rate expectations transmit normally to bond prices and FX within the 12h window",
+      "No dominant offsetting global risk-off flow"
+    ],
+    "failure_modes": [
+      "Move already public/priced from a prior macro release, so no incremental asset move",
+      "Recession fear triggers safe-haven USD strength, reversing the UUP-down thesis",
+      "Equity reaction dominates and drags TLT via cross-asset flows rather than pure rate signal",
+      "Prediction-market shift is illiquid noise with no real information content",
+      "12h magnitudes far below the 700bp tradable bar, making any signal economically marginal"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

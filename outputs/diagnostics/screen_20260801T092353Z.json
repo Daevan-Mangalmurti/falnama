@@ -1,0 +1,22 @@
+{
+  "mode": "live",
+  "screened": 249,
+  "kept": 22,
+  "dropped": 227,
+  "min_economic_salience": 60.0,
+  "min_information_asymmetry": 45.0,
+  "dropped_by_topic": {
+    "elections": 206,
+    "cabinet_government": 4,
+    "corporate_action": 4,
+    "sport": 4,
+    "diplomacy_treaty": 3,
+    "civil_unrest": 1,
+    "other": 1,
+    "regulatory_policy": 1,
+    "technology_controls": 1,
+    "entertainment": 1,
+    "legal_judicial": 1
+  },
+  "error": ""
+}

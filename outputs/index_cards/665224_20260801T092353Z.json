@@ -1,0 +1,98 @@
+{
+  "card_id": "665224_20260801T092353Z",
+  "card_version": "v1",
+  "card_hash": "50b0f3976109f2c248f23a4fb7a447fea75bb4699efca77aaf1cfc0d2fdc9cfd",
+  "do_not_revise": true,
+  "created_time_utc": "2026-08-01T09:23:53Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665224",
+    "market_slug": "ukraine-signs-peace-deal-with-russia-before-2027",
+    "market_name": "Ukraine signs peace deal with Russia before 2027?",
+    "market_url": "https://polymarket.com/market/ukraine-signs-peace-deal-with-russia-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Ukraine signs peace deal with Russia before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Aerospace & defense equity",
+      "ticker": "ITA",
+      "tradable_instrument_name": "iShares U.S. Aerospace & Defense ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -180.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -600.0,
+        120.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm the direction and magnitude of the Polymarket probability shift; check for any wire headline (Reuters/Bloomberg) on ceasefire/negotiation to gauge if move is already public.",
+        "1h": "Check ITA pre/after-hours or futures-implied move vs SPX beta; strip out broad-market drift to isolate defense-specific reaction.",
+        "2h": "Compare ITA move to European defense single names (Rheinmetall ADR/OTC) to validate the conflict-premium thesis; large divergence signals weak proxy.",
+        "6h": "Reassess whether probability move persisted or reversed; if reverted, thesis likely noise. Check option-implied vol in defense names.",
+        "12h": "Measure realized 12h return vs prediction; log whether magnitude exceeded 700bps (unlikely) and whether news became public."
+      },
+      "reasoning": "A sharp rise in the implied probability of a Ukraine-Russia peace deal reduces the outlook for sustained elevated defense procurement and war-driven order books. Defense names carry an embedded conflict premium; a credible peace signal compresses it. ITA is a liquid, broadly-traded proxy, though it is dominated by U.S. primes (Boeing, RTX, Lockheed) whose backlogs are diversified and long-dated, so the sensitivity to any single European conflict is muted. European defense names (Rheinmetall, Leonardo) would move far more but are single-name and less liquid for this framework."
+    },
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "commodity",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -120.0,
+      "confidence": 0.35,
+      "confidence_interval_bps": [
+        -500.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check Brent/WTI futures immediate reaction and whether any energy-specific headline accompanies the probability move.",
+        "1h": "Monitor European gas (TTF) as a more war-sensitive tell; a coordinated gas+oil down move strengthens conviction.",
+        "2h": "Assess if oil move is driven by broader macro/DXY rather than the peace signal; isolate the geopolitical component.",
+        "6h": "Re-evaluate persistence; note OPEC+ or inventory headlines that could confound.",
+        "12h": "Record realized move vs forecast; flag if reversal occurred, indicating the market misread the signal."
+      },
+      "reasoning": "A credible move toward Russia-Ukraine peace would erode the geopolitical risk premium in oil and open a path toward eased sanctions and higher Russian crude flows over time, biasing prices lower. However, in 2024-2025 much of the war premium has already decayed and Russian barrels largely reach market via shadow fleets, so the marginal supply impact of a signed deal is limited. The 12h reaction to a mere probability shift (not an actual sanctions change) is likely small and noisy. USO tracks front-month WTI with roll drag, a loose proxy."
+    }
+  ],
+  "evidence_used": [
+    "Polymarket question framing: any signed instrument ending hostilities or committing to a defined peace process by end-2026, only Ukraine's signature required",
+    "Historical relationship between Russia-Ukraine conflict escalation/de-escalation and defense equities, oil, and European gas premia",
+    "Recognition that much war risk premium in oil has already decayed and Russian barrels flow via alternative channels"
+  ],
+  "uncertainty_notes": [
+    "Direction of the anomaly is assumed: this card presumes a sharp UPWARD move in the Yes (peace) probability; a downward move would invert all signs",
+    "A shift in prediction-market probability is not the same as an actual signed deal or sanctions relief, so asset reactions to a mere probability change are typically small",
+    "The market's loose resolution criteria (any framework/roadmap qualifies) mean 'peace' probability can rise without a genuine end to fighting, weakening the economic linkage",
+    "Proxies chosen (ITA, USO) are only partially exposed to the Ukraine-specific catalyst"
+  ],
+  "llm_justification": {
+    "summary": "If the implied probability of a Ukraine-Russia peace deal jumps sharply, the cleanest liquid implications are a modest decline in defense equities (conflict premium compression) and a modest decline in crude oil (geopolitical risk-premium erosion plus eventual Russian supply normalization). Both linkages are real but attenuated: U.S. defense primes have diversified long-dated backlogs, and oil's war premium has already largely decayed. Expected 12h magnitudes are well below the 700bps tradable threshold, so this is best treated as a low-confidence research signal rather than an actionable trade.",
+    "key_assumptions": [
+      "The observed anomaly is an upward move in the peace (Yes) probability, not a collapse",
+      "Prediction-market moves partially lead public reporting rather than merely echoing it",
+      "Defense and oil retain measurable, if small, sensitivity to Ukraine-war de-escalation signals"
+    ],
+    "failure_modes": [
+      "The probability move simply reflects already-public negotiation headlines, so assets have already repriced",
+      "A rise in peace probability under this market's loose criteria (a mere 'roadmap') does not change actual military spending or Russian oil supply, producing no asset move",
+      "The move reverses within the window as talks stall, common in this conflict",
+      "ITA and USO are weak proxies \u2014 U.S.-dominated defense backlogs and shadow-fleet oil routes blunt the linkage; European defense names or TTF gas would react far more but are less accessible",
+      "Broad macro drift (rates, DXY, SPX) swamps the small conflict-specific signal over 12h"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

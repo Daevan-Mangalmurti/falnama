@@ -1,0 +1,98 @@
+{
+  "card_id": "665243_20260801T092353Z",
+  "card_version": "v1",
+  "card_hash": "ad5fba3be487755f134b900d2d66d4ae937697885ae615a9f68116f0e9421afe",
+  "do_not_revise": true,
+  "created_time_utc": "2026-08-01T09:23:53Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665243",
+    "market_slug": "nato-article-5-before-2027",
+    "market_name": "NATO article 5 before 2027?",
+    "market_url": "https://polymarket.com/market/nato-article-5-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "NATO article 5 before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "European equity risk",
+      "ticker": "EZU",
+      "tradable_instrument_name": "iShares MSCI Eurozone ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -850.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -2000.0,
+        100.0
+      ],
+      "trade_eligibility": {
+        "eligible": true,
+        "reason": "Meets minimum expected move.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket probability jump is corroborated by any newswire (Reuters/AP) headline on an attack, incursion, or NATO consultation (Article 4). Distinguish noise/thin-market spike from real signal.",
+        "1h": "Monitor EZU/FEZ pre-market or intraday tape, EUR/USD, and European sovereign/Bund futures for confirming risk-off. If no corroboration, downgrade.",
+        "2h": "Re-check NATO.int and defense-ministry statements; look for VIX/VSTOXX spike confirming systemic fear vs. isolated market blip.",
+        "6h": "Assess whether move persisted or reversed; a reversal implies the probability spike was a false positive or already-priced rumor.",
+        "12h": "Final read: did European equities close materially lower with corroborating official news? Log whether the market anticipated public confirmation."
+      },
+      "reasoning": "A sharp rise in the implied probability of a NATO Article 5 invocation signals an acute escalation of Russia-NATO military conflict in Europe. Eurozone equities are the most directly exposed public-market proxy: a genuine Article 5 trigger would imply direct military engagement, mobilization, and severe risk-off flows out of the frontline economic region. European indices would gap down hard on any credible escalation."
+    },
+    {
+      "asset": "Gold safe-haven",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "commodity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 400.0,
+      "confidence": 0.35,
+      "confidence_interval_bps": [
+        -100.0,
+        1200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm the probability move is escalation-driven, not a resolution-mechanics artifact; check gold futures tape for immediate bid.",
+        "1h": "Watch DXY and real yields \u2014 gold's reaction can be blunted if USD safe-haven demand dominates.",
+        "2h": "Check whether gold move is holding alongside equity selloff; divergence weakens thesis.",
+        "6h": "Reassess magnitude; likely gold under 700bps unless conflict is confirmed and severe.",
+        "12h": "Final read on gold close and whether safe-haven bid persisted with corroborating news."
+      },
+      "reasoning": "An escalation to the point of Article 5 invocation would trigger classic flight-to-safety flows into gold. Gold is a liquid, broadly-traded hedge against major-power military conflict. However, gold moves are typically more muted than equity crashes over 12h, so reaching the 700bps tradable threshold is uncertain absent a full-blown conflict shock."
+    }
+  ],
+  "evidence_used": [
+    "Market question resolves Yes only on an actual NATO Article 5 invocation, an extreme and historically rare event (invoked once, post-9/11)",
+    "Region tagged europe, topic military_conflict \u2014 implies Russia-NATO escalation as the driving scenario",
+    "Article 5 invocation would mean collective-defense military engagement, a systemic risk-off catalyst"
+  ],
+  "uncertainty_notes": [
+    "Polymarket probability spikes on rare-event markets are often thin-liquidity noise rather than genuine information leakage",
+    "Base rate of Article 5 is extremely low; even a large relative probability move may reflect small absolute risk",
+    "Proxy exposure: EZU captures regional risk broadly but a defense-sector ETF (ITA) would move opposite (up) \u2014 direction depends on whether escalation is priced as growth-negative risk-off vs. defense-spending tailwind",
+    "12h magnitude thresholds (700bps) require a near-confirmed escalation; probability drift alone rarely delivers that in equities without a headline"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability of a NATO Article 5 invocation before 2027 signals acute Europe-centered military escalation. The cleanest public-market implications are a risk-off selloff in Eurozone equities (EZU/FEZ) and a safe-haven bid in gold (GLD). Both mappings hinge on the probability move reflecting real escalation news rather than thin-market noise, and only reach the 700bps tradable bar in a genuine conflict-confirmation scenario. Confidence is deliberately moderate-to-low given the rare-event base rate and the noisiness of prediction-market signals.",
+    "key_assumptions": [
+      "A meaningful probability spike reflects genuine escalation information, not liquidity artifacts",
+      "Article 5 scenario implies Russia-NATO direct conflict centered on Europe",
+      "Eurozone equities and gold are the most liquid, directionally clear proxies for such an escalation"
+    ],
+    "failure_modes": [
+      "The probability move is thin-market noise or driven by market-mechanics/resolution debate, not real news \u2014 no asset move follows",
+      "The escalation is already public and priced, so equities/gold do not move on the prediction-market signal",
+      "Weak/ambiguous proxy exposure: risk-off equity selloff could be offset or dominated by defense-spending optimism (ITA up), muddying EZU direction",
+      "Gold fails to reach 700bps as USD or Treasuries absorb safe-haven flows instead",
+      "Move reverses within 12h as a rumor is denied by NATO/official sources"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

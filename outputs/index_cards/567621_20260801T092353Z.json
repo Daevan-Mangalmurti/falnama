@@ -1,0 +1,98 @@
+{
+  "card_id": "567621_20260801T092353Z",
+  "card_version": "v1",
+  "card_hash": "8e82838f72c649a5d9b751319a5c7c35c0b0e895bca2864da9c484fd8190125b",
+  "do_not_revise": true,
+  "created_time_utc": "2026-08-01T09:23:53Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "567621",
+    "market_slug": "will-china-invade-taiwan-before-2027",
+    "market_name": "Will China invade Taiwan by end of 2026?",
+    "market_url": "https://polymarket.com/market/will-china-invade-taiwan-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will China invade Taiwan by end of 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Taiwan equity market",
+      "ticker": "EWT",
+      "tradable_instrument_name": "iShares MSCI Taiwan ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -1200.0,
+      "confidence": 0.7,
+      "confidence_interval_bps": [
+        -3000.0,
+        -300.0
+      ],
+      "trade_eligibility": {
+        "eligible": true,
+        "reason": "Meets minimum expected move.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the market probability move is sustained or a fat-finger/liquidity blip; scan newswires (Reuters, Bloomberg) for any PLA mobilization or Taiwan Strait headlines. Confirm EWT/TSM pre-market or ADR reaction.",
+        "1h": "Compare EWT move to TSM ADR and broader Asia risk (USD/JPY, gold) to confirm it is Taiwan-specific rather than generic risk-off. Watch for official denials.",
+        "2h": "Assess whether US futures (ES), VIX, and defense stocks corroborate a genuine geopolitical shock. If no corroboration, downgrade conviction.",
+        "6h": "Re-check whether the prediction-market move has persisted and whether credible reporting has emerged; evaluate whether EWT move is holding or reverting.",
+        "12h": "Final check: did the anomaly precede any public confirmation? Log realized EWT return vs prediction and whether reversal (false signal) occurred."
+      },
+      "reasoning": "A sharp rise in the implied probability of a China invasion of Taiwan is the single most direct threat to Taiwanese equities. EWT is the most liquid, direct proxy for Taiwan risk (heavily weighted to TSMC and financials). A credible escalation signal would trigger capital flight, currency risk, and a repricing of existential tail risk in the most exposed market. The magnitude is very asymmetric to the downside: even a partial repricing of invasion odds can move EWT well beyond 700bps intraday, and a genuine kinetic signal could gap it double-digits."
+    },
+    {
+      "asset": "Gold safe-haven",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "commodity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 300.0,
+      "confidence": 0.55,
+      "confidence_interval_bps": [
+        -100.0,
+        900.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify gold spot/GLD reaction alongside the market move; distinguish geopolitical bid from rates-driven moves.",
+        "1h": "Check correlation with VIX, USD, and Treasuries to confirm a genuine risk-off bid rather than noise.",
+        "2h": "Assess whether the safe-haven bid is broadening (JPY, CHF, Treasuries) confirming a real escalation narrative.",
+        "6h": "Re-evaluate whether gold gains held; downgrade if the equity signal reverted, implying a false alarm.",
+        "12h": "Log realized GLD return vs prediction; note whether magnitude cleared the tradable threshold or stayed as a modest hedge move."
+      },
+      "reasoning": "A rising probability of major-power military conflict in the Taiwan Strait drives safe-haven demand into gold, which benefits from geopolitical tail risk and potential monetary/flight-to-safety flows. Gold is a cleaner cross-asset hedge than USD given that a US-China conflict has ambiguous dollar implications. However the move is smaller and less certain than the Taiwan equity hit, and often does not exceed the 700bps tradable threshold absent an actual kinetic event."
+    }
+  ],
+  "evidence_used": [
+    "Market question conditions on a China military offensive against Taiwan by end-2026",
+    "Primary topic military_conflict, region china_taiwan",
+    "Standard cross-asset geopolitical risk transmission: Taiwan equities most exposed, gold as safe haven",
+    "EWT and GLD are among the most liquid direct proxies for these exposures"
+  ],
+  "uncertainty_notes": [
+    "Analysis is conditional on a SHARP move in implied probability; day-to-day the market is usually near-static and no asset move follows",
+    "Prediction-market liquidity for long-horizon tail events is thin, so a probability jump may be noise rather than information",
+    "If the move is small, none of these mappings clear the 700bps tradable threshold except EWT under a genuine escalation"
+  ],
+  "llm_justification": {
+    "summary": "Conditioning on a sharp increase in the implied probability of a China invasion of Taiwan, the most direct and highest-magnitude public-market implication is a sell-off in Taiwan equities (EWT), with a secondary safe-haven bid into gold (GLD). EWT is the strongest, most liquid proxy and can move well beyond 700bps on a credible escalation signal; gold is a smaller, less certain hedge. Absent a genuine escalation, the market is a noisy sensor and these moves may not materialize.",
+    "key_assumptions": [
+      "The prediction-market probability actually moves sharply and is not a liquidity artifact",
+      "A rising invasion probability transmits to risk assets before public confirmation",
+      "EWT and GLD remain liquid and open/tradable during the window"
+    ],
+    "failure_modes": [
+      "The probability move is noise or thin-market manipulation with no underlying information, so assets do not move",
+      "The escalation is already public/priced, leaving no residual asset reaction",
+      "Gold's response is muted or offset by USD/rates dynamics, weak proxy exposure",
+      "A subsequent official denial reverses both the market and any asset move within the window",
+      "Broad risk-off (not Taiwan-specific) misattributes generic moves to this event"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

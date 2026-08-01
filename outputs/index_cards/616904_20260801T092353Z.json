@@ -1,0 +1,96 @@
+{
+  "card_id": "616904_20260801T092353Z",
+  "card_version": "v1",
+  "card_hash": "a7aef4071b0356aac50614acd34bd9a9f4fb042db1acbef836a079dd50779854",
+  "do_not_revise": true,
+  "created_time_utc": "2026-08-01T09:23:53Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616904",
+    "market_slug": "will-2-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 2 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-2-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 2 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-duration US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 25.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -40.0,
+        90.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the shift in cut-probability coincides with any Fed speaker, CPI/PCE, or jobs surprise; if not, treat as noise.",
+        "1h": "Compare TLT and 2y/10y yield moves to confirm direction consistency with the probability shift.",
+        "2h": "Re-check fed funds futures (SOFR/Fed funds) for corroboration of the implied path change.",
+        "6h": "Assess whether the move persists or mean-reverts; watch for headlines that make the info public.",
+        "12h": "Evaluate whether TLT closed in the expected direction and log realized vs expected move for calibration."
+      },
+      "reasoning": "A sharp rise in the implied probability of Fed rate cuts in 2026 signals expectations of easier policy, which lowers front-end and belly yields and supports long-duration Treasury prices. TLT is the most liquid direct proxy for duration. Conversely a drop in cut odds would pressure TLT. Magnitude over 12h is small because macro/rates ETFs move only a few tens of bps intraday absent a scheduled catalyst."
+    },
+    {
+      "asset": "US Dollar",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": 15.0,
+      "confidence": 0.35,
+      "confidence_interval_bps": [
+        -45.0,
+        60.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm the cut-odds move is not driven by a broad risk-off flight-to-dollar event.",
+        "1h": "Check DXY and EURUSD for directional agreement.",
+        "2h": "Cross-reference rate differentials and any ECB/BoJ commentary.",
+        "6h": "Look for reversal or continuation and any public data releases.",
+        "12h": "Log UUP close vs expectation and note whether dollar-rates linkage held."
+      },
+      "reasoning": "Rising odds of more 2026 rate cuts imply lower expected US real yields, which typically weakens the dollar versus peers. UUP is a liquid DXY proxy. The linkage is real but noisy over 12h and depends on relative central-bank expectations, so confidence is low and magnitude small."
+    }
+  ],
+  "evidence_used": [
+    "Market question directly tracks number of 25bp Fed cuts in 2026, a pure monetary-policy signal",
+    "Rate-cut expectations map mechanically to Treasury yields, duration ETFs, and the dollar",
+    "TLT and UUP are highly liquid proxies for duration and USD respectively"
+  ],
+  "uncertainty_notes": [
+    "The 'military_conflict' topic tag appears mislabeled; this is a monetary-policy market",
+    "Prediction-market probability shifts for a full-year cut count are slow-moving and rarely leak non-public info ahead of scheduled data",
+    "12h ETF moves are typically far below the 700bps tradability threshold, so neither prediction is tradable under the stated rule"
+  ],
+  "llm_justification": {
+    "summary": "This is a Fed monetary-policy market whose implied cut probability maps most directly to US rates duration (TLT, up if cut odds rise) and the dollar (UUP, down if cut odds rise). The linkages are economically sound but the signal is noisy over a 12h window, expected moves are small (tens of bps, well under the 700bps tradable threshold), and much of the info is driven by public data, so confidence is modest.",
+    "key_assumptions": [
+      "A sharp rise in implied 2026 cut count reflects genuine dovish repricing rather than liquidity noise",
+      "US rates and dollar respond in textbook fashion to shifting cut expectations",
+      "No offsetting risk-off flow overrides the rates-duration linkage"
+    ],
+    "failure_modes": [
+      "The probability move simply tracks already-public data (CPI, jobs, Fed speak), so no edge exists",
+      "Risk-off episodes can push both Treasuries and the dollar up simultaneously, breaking the UUP thesis",
+      "A full-year cut-count market is a weak, slow proxy for any 12h asset move; magnitude far below tradable threshold",
+      "Direction could reverse quickly if the probability shift was a transient liquidity spike on a thin market"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

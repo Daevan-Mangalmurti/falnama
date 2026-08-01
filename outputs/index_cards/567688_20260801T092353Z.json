@@ -1,0 +1,99 @@
+{
+  "card_id": "567688_20260801T092353Z",
+  "card_version": "v1",
+  "card_hash": "e8a66a3d29307365994fd83d6f715c3beacecc9693e4391342dba0c302187dc3",
+  "do_not_revise": true,
+  "created_time_utc": "2026-08-01T09:23:53Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "567688",
+    "market_slug": "netanyahu-out-before-2027-684-719-226-657",
+    "market_name": "Netanyahu out by end of 2026?",
+    "market_url": "https://polymarket.com/market/netanyahu-out-before-2027-684-719-226-657",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Netanyahu out by end of 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Israel equity",
+      "ticker": "EIS",
+      "tradable_instrument_name": "iShares MSCI Israel ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.25,
+      "confidence_interval_bps": [
+        -250.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check EIS/Israel ADR pre-market or intraday tape for any gap; scan wires for concrete resignation/removal reporting.",
+        "1h": "Confirm whether the probability move coincides with a credible headline (coalition vote, health event, indictment ruling) versus thin-market drift.",
+        "2h": "Compare EIS move to broad EM/global equity beta to isolate Israel-specific signal.",
+        "6h": "Reassess whether any Israeli official statement has surfaced; fade if no news materialized.",
+        "12h": "Close out the window: mark whether EIS diverged from global equities and whether the prediction-market move persisted or reversed."
+      },
+      "reasoning": "A sharp jump in the implied probability of Netanyahu leaving office would signal domestic political instability or a leadership transition. The sign for Israeli equities is genuinely ambiguous: a coalition collapse/political uncertainty is typically risk-off (down), but markets have at times priced a Netanyahu exit as reducing judicial-reform and governance risk (up). On a 12h horizon, this long-dated (end-2026) political question rarely produces a discrete, market-moving catalyst, so any anomaly in the market probability is more likely noise than leaked news."
+    },
+    {
+      "asset": "Israeli shekel",
+      "ticker": "ILS=X",
+      "tradable_instrument_name": "US Dollar / Israeli Shekel spot",
+      "asset_class": "fx_proxy",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.22,
+      "confidence_interval_bps": [
+        -200.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check USD/ILS spot for any abrupt move and correlate with the prediction-market spike timing.",
+        "1h": "Look for Bank of Israel or government commentary; distinguish idiosyncratic ILS move from broad USD strength.",
+        "2h": "Assess whether DXY explains the ILS move; strip out dollar beta.",
+        "6h": "Verify any credible reporting on Netanyahu's status; if none, expect mean reversion.",
+        "12h": "Record net USD/ILS change and whether it tracked a genuine political catalyst."
+      },
+      "reasoning": "Political leadership uncertainty in Israel can pressure the shekel (USD/ILS up) via risk premium, but a perceived reduction in governance/judicial-reform tail risk could strengthen it. Given the 12h window and the slow-moving, long-dated nature of the question, a leak large enough to move FX by 700bps is very unlikely absent a confirmed resignation headline. Treat as low-conviction."
+    }
+  ],
+  "evidence_used": [
+    "Market question: probability Netanyahu ceases to be PM at any point before end-2026",
+    "Resolution triggers on announcement of resignation/removal",
+    "Long-dated horizon (through 2026) versus short 12h prediction window",
+    "Standard liquid Israel proxies: EIS ETF and USD/ILS FX"
+  ],
+  "uncertainty_notes": [
+    "Direction of Israeli asset reaction to a Netanyahu exit is genuinely two-sided (instability risk-off vs. reduced governance-risk relief).",
+    "A long-dated political market is unlikely to generate a discrete 12h asset move absent a confirmed headline.",
+    "Prediction-market probability drift is often thin-liquidity noise, not leaked information.",
+    "EIS and ILS have only moderate exposure to Israeli-specific political headlines relative to global risk beta."
+  ],
+  "llm_justification": {
+    "summary": "The market asks whether Netanyahu leaves office before end-2026. The natural public-market proxies are Israeli equities (EIS) and the shekel (USD/ILS), but the directional sign is ambiguous \u2014 a leadership change could be read as either destabilizing (risk-off) or as reducing governance/judicial-reform risk (risk-on). Combined with the long-dated horizon versus a 12h window, neither proxy is likely to clear the 700bps tradable threshold, so both are flagged unclear with low confidence.",
+    "key_assumptions": [
+      "EIS and USD/ILS are the most liquid available proxies for Israel-specific political risk.",
+      "A prediction-market spike could, but likely does not, front-run a concrete resignation/removal announcement.",
+      "No confirmed public headline exists at signal time."
+    ],
+    "failure_modes": [
+      "The probability move is thin-market noise and reverses, with no asset reaction.",
+      "The news is already public (health event, coalition vote) and priced in, so the asset move is stale.",
+      "The directional assumption is wrong \u2014 a Netanyahu exit is greeted positively rather than negatively (or vice versa).",
+      "EIS/ILS are dominated by global risk and USD beta, masking any Israel-specific signal.",
+      "No 12h catalyst materializes for a 2026-dated question, so the move stays far below the 700bps threshold."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "card_id": "568116_20260801T092353Z",
+  "card_version": "v1",
+  "card_hash": "a45f1a464be91be8ae1a604aa171aa8a3abe86390c201d619c45f97a6022065c",
+  "do_not_revise": true,
+  "created_time_utc": "2026-08-01T09:23:53Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "568116",
+    "market_slug": "will-trump-be-impeached-by-december-31-2026",
+    "market_name": "Will Trump be impeached by end of 2026?",
+    "market_url": "https://polymarket.com/market/will-trump-be-impeached-by-december-31-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Trump be impeached by end of 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US large-cap equity risk",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": -20.0,
+      "confidence": 0.22,
+      "confidence_interval_bps": [
+        -120.0,
+        60.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability jump is accompanied by a concrete news catalyst (scandal, DOJ/House action) versus thin-liquidity drift; scan SPY futures and VIX for any reaction.",
+        "1h": "Compare SPY move to sector-neutral macro moves (rates, dollar) to isolate any political component; if SPY unmoved, downgrade signal further.",
+        "2h": "Look for mainstream wire confirmation of any underlying event; if none, treat the market move as noise.",
+        "6h": "Reassess whether the political story has legs into the US session and whether it is shifting midterm-control narratives rather than near-term policy.",
+        "12h": "Evaluate net SPY move vs. baseline; document that impeachment-odds signals have historically low equity beta and mark thesis accordingly."
+      },
+      "reasoning": "A sharp rise in the implied probability of a House impeachment vote would signal either an emerging scandal or shifting expectations of Democratic House control after 2026 midterms. Historically (2019 Trump impeachment, 2019-20 proceedings), impeachment news produced negligible durable moves in broad US equities because markets treat Senate conviction/removal as the binding event, and that is explicitly NOT required here. Any 12h effect is likely a small, transient risk-off wobble at most, easily swamped by macro/rates flow. The mapping from this specific market to SPY is therefore weak and mostly noise."
+    },
+    {
+      "asset": "Equity volatility / safe-haven demand",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 15.0,
+      "confidence": 0.18,
+      "confidence_interval_bps": [
+        -60.0,
+        90.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check real yields and DXY to see if gold move is macro-driven vs. political.",
+        "1h": "Confirm whether any political catalyst is genuinely escalating uncertainty.",
+        "2h": "Assess if safe-haven bid (gold, JPY, front-end Treasuries) is coherent or isolated.",
+        "6h": "Re-evaluate whether the story persists into US trading; if it fades, drop the safe-haven thesis.",
+        "12h": "Compare gold net move to rates/dollar drivers and record that political-odds signal was likely marginal."
+      },
+      "reasoning": "Heightened political/constitutional uncertainty can modestly support safe havens like gold, but the linkage is tenuous and gold is dominated by real rates, the dollar, and global macro. A pure impeachment-odds move is unlikely to drive a 12h gold move above a fraction of a percent absent a genuine crisis. Included mainly to flag a weak secondary channel, not a high-conviction call."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves on a House simple-majority impeachment vote, not Senate conviction or removal",
+    "Republicans currently control the House, so a Yes typically requires post-2026 midterm control shift or major GOP defection",
+    "Historical precedent (2019 Trump impeachment, Clinton 1998) showed minimal durable US equity market reaction to House impeachment events",
+    "12h prediction window and 700bps tradable threshold are demanding for a purely political, non-policy signal"
+  ],
+  "uncertainty_notes": [
+    "The core weakness: House impeachment (without removal) has repeatedly shown near-zero equity market impact",
+    "A probability move could be driven by illiquid Polymarket flow rather than real information",
+    "If a move reflected an actual acute scandal or governance crisis, risk-off could be larger, but that is a different, observable event",
+    "Direction of any equity effect is ambiguous \u2014 markets could shrug or even rally on gridlock expectations"
+  ],
+  "llm_justification": {
+    "summary": "This market tracks the probability of a US House vote to pass articles of impeachment against Trump by end-2026 \u2014 explicitly not conviction or removal. A sharp move in that probability is a noisy political signal with historically weak transmission to liquid public markets: prior impeachment episodes produced negligible durable equity moves because the binding event (Senate removal) is excluded and control of the House already limits near-term feasibility. The most plausible, but low-conviction, channels are a small transient risk-off dip in broad US equities (SPY) and a marginal safe-haven bid in gold (GLD). Neither is likely to clear the 700bps tradable threshold in 12 hours absent a genuine underlying crisis. This mapping is weak; direction is best labeled unclear with low confidence.",
+    "key_assumptions": [
+      "Any probability move is not accompanied by a market-moving policy or macro shock beyond the political news itself",
+      "Investors continue to treat House impeachment without Senate removal as largely symbolic for asset pricing",
+      "Broad ETFs are the cleanest proxies since no single name is directly exposed"
+    ],
+    "failure_modes": [
+      "The equity/gold move fails to materialize because impeachment odds have essentially no equity beta (most likely outcome)",
+      "The information is already public/priced, so the prediction-market move lags rather than leads assets",
+      "The proxies (SPY, GLD) are only weakly and indirectly exposed to political-process risk and are dominated by rates/dollar/macro flows",
+      "A probability spike is driven by thin prediction-market liquidity, not real information, producing no asset reaction",
+      "If a real governance crisis is behind the move, magnitude and direction could differ sharply from this benign-case estimate"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

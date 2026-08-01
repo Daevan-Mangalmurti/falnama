@@ -1,0 +1,98 @@
+{
+  "card_id": "665218_20260801T092353Z",
+  "card_version": "v1",
+  "card_hash": "37302f9f6730866a8859ea77f62573c70289f2a9ce1134aa9a05940ec31100b0",
+  "do_not_revise": true,
+  "created_time_utc": "2026-08-01T09:23:53Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665218",
+    "market_slug": "israel-and-saudi-arabia-normalize-relations-before-2027",
+    "market_name": "Israel and Saudi Arabia normalize relations before 2027?",
+    "market_url": "https://polymarket.com/market/israel-and-saudi-arabia-normalize-relations-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Israel and Saudi Arabia normalize relations before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Israel equity risk",
+      "ticker": "EIS",
+      "tradable_instrument_name": "iShares MSCI Israel ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -80.0,
+        220.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the market move coincides with any Reuters/Axios headline on US-brokered talks; if purely a market move with no news, treat as noise.",
+        "1h": "Compare EIS/TA-35 futures tape vs regional peers to isolate Israel-specific bid.",
+        "2h": "Assess whether oil is moving in the risk-premium-down direction consistent with de-escalation thesis.",
+        "6h": "Re-check for official statements from Riyadh, Jerusalem, or Washington confirming or denying.",
+        "12h": "Mark whether any durable EIS drift persisted or fully mean-reverted; log as weak/no signal if reverted."
+      },
+      "reasoning": "A sharp rise in the implied probability of Israel-Saudi normalization would signal regional de-escalation and integration of Israel into Gulf trade/investment flows, a structural positive for Israeli assets. EIS is the most liquid broad proxy for Israeli equity beta. However, normalization is a multi-year, largely-telegraphed diplomatic process; a 12h probability shift is unlikely to produce a large, immediate equity repricing."
+    },
+    {
+      "asset": "Crude oil geopolitical risk premium",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "commodity",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -50.0,
+      "confidence": 0.25,
+      "confidence_interval_bps": [
+        -180.0,
+        100.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check Brent/WTI front-month vs the prediction-market move for co-movement.",
+        "1h": "Watch for any OPEC+ or Saudi production headlines that would overwhelm the risk-premium channel.",
+        "2h": "Assess dollar and broad risk sentiment to separate oil-specific effect.",
+        "6h": "Re-evaluate whether de-escalation narrative is holding in credible reporting.",
+        "12h": "Log net oil move; expect small/ambiguous given OPEC+ dominance over geopolitics."
+      },
+      "reasoning": "Normalization implies broader Middle East de-escalation, which historically compresses the geopolitical risk premium embedded in crude. But Saudi Arabia is a swing producer whose policy (OPEC+ output) dominates oil pricing far more than a diplomatic announcement with Israel, so the mapping is weak and could even invert if normalization is read as freeing Saudi capacity or as part of a broader US-Saudi defense/oil deal."
+    }
+  ],
+  "evidence_used": [
+    "Market question on Israel-Saudi diplomatic normalization by end-2026",
+    "Historical relationship between Middle East de-escalation and lower oil risk premium",
+    "Israeli equity ETF EIS as liquid Israel beta proxy",
+    "Saudi Arabia's role as OPEC+ swing producer dominating oil pricing"
+  ],
+  "uncertainty_notes": [
+    "Normalization is a slow, heavily-telegraphed diplomatic process; a 12h probability shift rarely maps to a large same-day asset move.",
+    "The 700bps tradability threshold is far above realistic 12h moves for these liquid proxies from a diplomacy signal.",
+    "Oil direction is ambiguous: de-escalation lowers risk premium but a US-Saudi grand bargain could involve production/defense terms that push oil either way."
+  ],
+  "llm_justification": {
+    "summary": "A sharp increase in the implied probability of Israel-Saudi normalization would most cleanly signal regional de-escalation and Israeli economic integration, modestly bullish for Israeli equities (EIS) and modestly bearish for the crude geopolitical risk premium (USO). Both mappings are weak over a 12h horizon: normalization is a multi-year telegraphed process and oil is dominated by OPEC+ policy rather than diplomacy. Expected moves are well below the 700bps tradable threshold, so neither is actionable; treat as low-confidence research signals.",
+    "key_assumptions": [
+      "A market move reflects genuine information about normalization odds rather than thin-market noise.",
+      "Normalization is read by markets as de-escalatory and pro-integration.",
+      "EIS and USO are adequate liquid proxies for Israel beta and oil risk premium."
+    ],
+    "failure_modes": [
+      "The prediction-market move reverses or is illiquid noise with no real information.",
+      "Normalization progress may already be public/priced, so no fresh asset reaction.",
+      "EIS captures many idiosyncratic factors and may not respond to diplomacy news.",
+      "Oil mapping can invert: a broader US-Saudi deal could raise oil via defense/curbs or lower via added supply.",
+      "Moves are far too small to clear the 700bps tradable bar, making the signal non-actionable."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

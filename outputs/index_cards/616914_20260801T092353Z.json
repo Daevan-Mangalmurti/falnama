@@ -1,0 +1,98 @@
+{
+  "card_id": "616914_20260801T092353Z",
+  "card_version": "v1",
+  "card_hash": "64c8f41d08def82d16e71dcdb215835cfac725e4f4e8294fc6cb154bf01d298b",
+  "do_not_revise": true,
+  "created_time_utc": "2026-08-01T09:23:53Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616914",
+    "market_slug": "will-12-or-more-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 12 or more Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-12-or-more-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 12 or more Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-dated US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -40.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether 2y/10y Treasury yields are declining and fed funds futures (SOFR/ZQ) are repricing dovishly; confirm the prediction-market move is not a thin-liquidity blip.",
+        "1h": "Compare TLT move vs. rate-futures implied cuts; look for a coincident risk-off signal (VIX up, equities down) to validate the recession-tail read.",
+        "2h": "Reassess if any macro headline (jobs, CPI, Fed speak, financial-stability event) explains the move; if already public, downgrade signal.",
+        "6h": "Evaluate persistence of the yield decline and whether the prediction-market probability held or reverted.",
+        "12h": "Mark TLT return vs. entry; note whether the rate-cut narrative was corroborated by other rate assets or faded as noise."
+      },
+      "reasoning": "A market on 12+ Fed cuts in 2026 (=300bps of easing) is a deep-recession/crisis tail. A sharp rise in its implied probability would signal expectations of aggressive, possibly emergency, easing \u2014 which pushes front- and long-end yields down and bond prices up. TLT is the most liquid long-duration proxy for that rate-expectations shift. Magnitude is small over 12h because the market is a low-probability tail bet and any leak is noisy."
+    },
+    {
+      "asset": "US large-cap equities",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -40.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -200.0,
+        80.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check VIX and equity futures for risk-off confirmation; verify the prediction-market shift is real, not thin.",
+        "1h": "Cross-check whether bonds are rallying alongside equity weakness (classic recession-tail combo) vs. easing-driven risk-on.",
+        "2h": "Scan for a triggering headline; if the move is purely 'good news easing', flip thesis toward equities up.",
+        "6h": "Assess persistence and whether credit spreads (HYG) are widening to support the distress read.",
+        "12h": "Record SPY return vs. entry and whether the recession-tail interpretation held."
+      },
+      "reasoning": "Twelve cuts imply a severe growth shock, so a rising probability here is a recession/crisis signal that typically pressures equities in the near term (before any 'Fed put' relief dominates). However the sign is ambiguous \u2014 aggressive easing can also be bid as a tailwind \u2014 so confidence is low and direction could invert."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies 300bps of cuts in 2026, an extreme dovish/recession tail",
+    "Rate-cut expectations map most directly to Treasury yields (TLT) and the dollar",
+    "Deep-easing scenarios historically coincide with risk-off in equities and credit"
+  ],
+  "uncertainty_notes": [
+    "The 700bps tradability threshold is implausible for these liquid ETFs over 12h; neither prediction qualifies as tradable",
+    "Sign of equity move is genuinely ambiguous (recession fear vs. Fed-put relief)",
+    "A 12+ cut market is a deep tail; small probability moves carry little information and are easily dominated by noise",
+    "Cannot verify current implied probability or whether any move is already public"
+  ],
+  "llm_justification": {
+    "summary": "The market prices an extreme 300bps-of-easing (12+ cut) recession/crisis tail for 2026. If its implied probability jumped sharply, the cleanest read is aggressive dovish repricing: long Treasuries (TLT) up on falling yields, with equities (SPY) likely lower on the implied growth shock \u2014 though the equity sign is ambiguous because easing can also be risk-positive. Expected 12h magnitudes are small and below the tradable threshold; this is a weak, noisy mapping best treated as low-confidence research.",
+    "key_assumptions": [
+      "A rise in this market's probability reflects genuine dovish/recession expectations, not thin liquidity",
+      "Rate-expectation shifts transmit to TLT and equities within the 12h window",
+      "No overriding contemporaneous catalyst reverses the signal"
+    ],
+    "failure_modes": [
+      "The prediction-market move is noise/illiquid and no asset moves",
+      "The information is already public (priced into rates before the market moved)",
+      "Equities rally on 'easing = good' rather than fall on 'recession fear', inverting the SPY call",
+      "TLT weakly tracks a tail bet on 2026 cuts if the move is concentrated in a specific meeting rather than the whole path",
+      "Move reverses as the extreme 12-cut scenario is deemed implausible"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

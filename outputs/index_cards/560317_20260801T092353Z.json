@@ -1,0 +1,98 @@
+{
+  "card_id": "560317_20260801T092353Z",
+  "card_version": "v1",
+  "card_hash": "f8a149d882e83665c1e3dc03467f81eb354a1357405bf61ac9d00469bf60baa2",
+  "do_not_revise": true,
+  "created_time_utc": "2026-08-01T09:23:53Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "560317",
+    "market_slug": "putin-out-before-2027-346",
+    "market_name": "Putin out as President of Russia by December 31, 2026?",
+    "market_url": "https://polymarket.com/market/putin-out-before-2027-346",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Putin out as President of Russia by December 31, 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Gold (safe-haven bid)",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 250.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -50.0,
+        800.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the market move is corroborated by any newswire (Interfax, TASS, Reuters) or is isolated Polymarket noise; watch spot XAU tick.",
+        "1h": "Compare GLD/gold futures move vs. DXY and real yields to isolate genuine safe-haven flow from dollar moves.",
+        "2h": "Assess whether Russian-linked assets (RUB proxies, European gas) confirm a coherent risk-off narrative.",
+        "6h": "Re-evaluate if any official Russian government statement has confirmed or denied; fade if it was rumor.",
+        "12h": "Mark realized GLD return vs. expectation; note whether move persisted or mean-reverted as headline risk clarified."
+      },
+      "reasoning": "A sharp jump in the implied probability of Putin leaving power would signal sudden instability at the top of a nuclear-armed major energy exporter. Regime uncertainty in Russia is a classic risk-off catalyst; gold is the most liquid, cleanest safe-haven proxy and tends to catch a bid on geopolitical shocks regardless of the eventual policy direction. The magnitude for gold on such events is usually modest (1-3%), so it likely falls short of the 700bps tradable bar in a 12h window."
+    },
+    {
+      "asset": "Crude oil / energy supply risk",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "commodity",
+      "expected_direction": "mixed",
+      "expected_return_12h_bps": 300.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -600.0,
+        900.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Determine if the probability spike is coup/instability-flavored (bullish oil) vs. negotiated-exit-flavored (bearish oil).",
+        "1h": "Watch Brent-WTI spread and European TTF gas for supply-disruption signature.",
+        "2h": "Cross-check OPEC/Russian export headlines and tanker-tracking chatter.",
+        "6h": "Reassess whether narrative has resolved toward instability vs. de-escalation; adjust directional bias.",
+        "12h": "Record realized USO/oil move and which of the two scenarios dominated price action."
+      },
+      "reasoning": "Putin's sudden departure is genuinely two-sided for oil: chaotic power transition or coup in a top-3 producer implies a supply-risk premium (up), but a change that raises hopes of ending the Ukraine war and easing sanctions on Russian barrels implies more supply and lower prices (down). Because the direction depends on the nature of the event, this is a weak, ambiguous mapping \u2014 I flag it mixed with low confidence rather than manufacture a clean signal."
+    }
+  ],
+  "evidence_used": [
+    "Market question tracks whether Putin ceases to be President of Russia (resignation, removal, detention, or incapacity) before end-2026",
+    "Russia is a top-3 global oil and gas exporter and a nuclear power, making its leadership stability macro-relevant",
+    "Historical pattern: abrupt geopolitical regime shocks produce safe-haven flows (gold, USD) and energy risk premia",
+    "Resolution allows immediate 'Yes' on any announcement, so a leaked/impending event could show up as a probability jump"
+  ],
+  "uncertainty_notes": [
+    "Direction for energy assets is genuinely ambiguous \u2014 instability (bullish) vs. potential war resolution/sanctions relief (bearish)",
+    "Polymarket probability moves on this market are often driven by speculation, rumor, or thin liquidity rather than real leaks",
+    "12h magnitude for gold rarely reaches the 700bps tradable threshold; most likely sub-threshold",
+    "If the news is already public when the market moves, the asset move is already priced"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability that Putin leaves power would most reliably map to a safe-haven bid in gold (risk-off from instability in a nuclear-armed major energy exporter) and an ambiguous, two-sided move in crude oil (supply-risk premium vs. potential sanctions-relief/war-end supply increase). Neither mapping cleanly clears the 700bps tradable bar in 12 hours, so I treat this as a low-to-moderate confidence research signal, not a trade.",
+    "key_assumptions": [
+      "A meaningful probability jump reflects real information rather than pure noise",
+      "Markets interpret Putin's exit as a destabilizing shock at least initially",
+      "Gold and oil are the most liquid instruments genuinely exposed to Russian regime risk given RSX and direct Russian ETFs are delisted/unavailable"
+    ],
+    "failure_modes": [
+      "The probability move is thin-liquidity Polymarket noise with no real event, so assets don't move",
+      "Event is already public and fully priced before the market signal",
+      "Direction reverses: an orderly transition or peace-deal framing sends oil down and equities up, opposite to the risk-off thesis",
+      "Weak proxy exposure: gold and USO respond to many unrelated macro drivers (real yields, DXY, OPEC), diluting the Russia-specific signal"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

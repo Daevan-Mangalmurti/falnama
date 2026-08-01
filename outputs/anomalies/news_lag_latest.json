@@ -1,0 +1,14 @@
+[
+  {
+    "market_name": "Netanyahu out by end of 2026?",
+    "market_id": "567688",
+    "anomaly_trigger_time_utc": "2026-07-28T00:00:22Z",
+    "lookback_hours": 48.0,
+    "public_information_score": 0.0,
+    "residual_anomaly_score": 91.1,
+    "information_state": "none",
+    "evidence": [],
+    "uncertainty_note": "No relevant pre-trigger coverage found \u2014 this is weak evidence (retrieval may be incomplete), not proof the move was non-public.",
+    "mode": "live"
+  }
+]
