@@ -279,3 +279,4 @@ outputs:
   rejected_signals: outputs/rejected_signals
   run_logs: outputs/run_logs
   diagnostics: outputs/diagnostics
+  backtest: outputs/backtest              # Phase 1 detection-backtest results

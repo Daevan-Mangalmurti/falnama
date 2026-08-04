@@ -1,0 +1,51 @@
+# =============================================================================
+# Phase 1 detection backtest — the curated set of ALREADY-RESOLVED markets.
+#
+# Each case names a Polymarket EVENT slug and (when the event holds many dated
+# sub-markets) a `market_contains` substring to pick the right one. `label` is
+# either `positive` (a documented / suspected insider case) or `control` (a
+# resolved market whose outcome was driven by a scheduled, public event, where no
+# private-information edge should have existed).
+#
+# Methodology notes baked into the set:
+#   * NEAR-DUPLICATES on purpose. For each sharp positive we include a sibling
+#     market from the same event (a different deadline) so results can't hinge on
+#     one hand-picked contract — if the detector fires on "by Feb 28" but not its
+#     "by Mar 31" twin, that inconsistency is itself a finding.
+#   * The June-2025 events (Midnight Hammer, Rising Lion) are omitted for now:
+#     CLOB appears to prune history that old, so their windows come back empty.
+#     The harness records "unavailable" rather than failing, so re-add them if the
+#     data returns.
+#   * Controls anchor the recall number: a well-calibrated detector should NOT
+#     flag a scheduled Fed decision or an IPO-by-date as a strong anomaly.
+# =============================================================================
+cases:
+  # ---- Positives: the Feb-2026 US/Israel–Iran strikes ("Epic Fury") ----------
+  - event: us-strikes-iran-by
+    market_contains: "February 28, 2026"
+    label: positive
+    note: "Epic Fury — US strike ~Feb 28 2026; 6 fresh single-purpose wallets flagged (~$1.2M)"
+  - event: us-strikes-iran-by
+    market_contains: "March 31, 2026"
+    label: positive
+    note: "Epic Fury near-duplicate (same event, later deadline) — anti-cherry-pick"
+  - event: us-strikes-iran-by
+    market_contains: "June 30, 2026"
+    label: positive
+    note: "Epic Fury near-duplicate (same event, later deadline) — anti-cherry-pick"
+  - event: israel-strikes-iran-by-february-28-2026
+    label: positive
+    note: "Israel twin — observed 6% -> 36% run-up before resolving YES"
+  - event: usisrael-strikes-iran-by
+    label: positive
+    note: "US/Israel strikes Iran — combined framing of the same episode"
+
+  # ---- A different event type, to test generalization beyond Iran ------------
+  - event: spacex-ipo-by
+    label: positive
+    note: "SpaceX IPO — corporate event, tests the detector outside geopolitics"
+
+  # ---- Controls: scheduled / public-information events (should NOT flag) ------
+  - event: fed-decision-in-january
+    label: control
+    note: "Scheduled FOMC decision — public calendar, no private-information edge"
