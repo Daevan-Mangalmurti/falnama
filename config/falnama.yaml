@@ -31,7 +31,7 @@ backfill_mode: false
 #   mock  → deterministic placeholder cards (no network, no key). Default so the
 #           pipeline is runnable by anyone, anywhere, for free.
 #   live  → real cards from the LLM below (requires the API key env var to be set).
-card_mode: live
+card_mode: mock
 
 llm:
   provider: anthropic                 # the only provider wired up today
@@ -136,7 +136,7 @@ selector:
 # -----------------------------------------------------------------------------
 screener:
   enabled: true                      # off → the keyword selection above is final
-  mode: live                         # mock (deterministic, offline) | live (uses llm.screener_model)
+  mode: mock                         # mock (deterministic, offline) | live (uses llm.screener_model)
   batch_size: 25                     # markets judged per API call
 
   # A market must clear BOTH floors to survive. They fail differently:
@@ -241,8 +241,8 @@ execution:
 # move. A deterministic first pass plus an LLM information-state classifier.
 # -----------------------------------------------------------------------------
 newslag:
-  enabled: true                     # off by default until the module matures
-  mode: live                         # mock (deterministic, offline) | live (GDELT + LLM)
+  enabled: false                     # off by default until the module matures
+  mode: mock                         # mock (deterministic, offline) | live (GDELT + LLM)
   lookback_hours: 48                 # consider news strictly before the trigger time
 
   # Layer 1 — retrieval. Pull timestamped candidates from a news source, then rank.
