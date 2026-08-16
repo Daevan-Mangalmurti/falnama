@@ -1,0 +1,2 @@
+kind,market_name,market_id,anomaly_score,anomaly_trigger_time_utc,reason
+rejected,Will Donald Trump visit South Korea in 2026?,665266,95.3,2026-08-13T08:00:14Z,only ex-post cards exist (created after the trigger)
