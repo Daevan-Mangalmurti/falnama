@@ -1,0 +1,3 @@
+kind,market_name,market_id,anomaly_score,anomaly_trigger_time_utc,reason
+rejected,Will Pablo Marçal win the 2026 Brazilian presidential election?,601835,99.8,2026-08-16T22:00:11Z,only ex-post cards exist (created after the trigger)
+rejected,Will Augusto Cury win the 2026 Brazilian presidential election?,601836,99.7,2026-08-26T20:00:14Z,only ex-post cards exist (created after the trigger)
