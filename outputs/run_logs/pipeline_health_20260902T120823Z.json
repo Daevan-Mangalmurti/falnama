@@ -1,0 +1,18 @@
+{
+  "run_id": "20260902T120823Z",
+  "run_time_utc": "2026-09-02T12:08:23Z",
+  "card_mode": "mock",
+  "stages": {
+    "select": true,
+    "screen": true,
+    "anomaly": true,
+    "cards": true,
+    "recommend": true,
+    "execution": true,
+    "newslag": true
+  },
+  "success": true,
+  "warnings": [],
+  "errors": [],
+  "last_updated_utc": "2026-09-02T12:11:42Z"
+}
