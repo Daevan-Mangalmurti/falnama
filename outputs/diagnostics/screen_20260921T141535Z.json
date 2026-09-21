@@ -1,0 +1,12 @@
+{
+  "mode": "mock",
+  "screened": 250,
+  "kept": 233,
+  "dropped": 17,
+  "min_economic_salience": 60.0,
+  "min_information_asymmetry": 45.0,
+  "dropped_by_topic": {
+    "elections": 17
+  },
+  "error": ""
+}
