@@ -1,13 +1,17 @@
-"""Phase 1 detection backtest — would the detector have caught known anomalies?
+"""Phase 1 detection backtest — would the sensors have caught known anomalies?
 
 WHAT:     Replays a curated list of ALREADY-RESOLVED Polymarket markets through
-          the live anomaly detector and asks, for each: did a strong anomaly form
-          in the run-up BEFORE the outcome became public, and how many hours of
-          lead would we have had?
+          BOTH live sensors and asks, for each: did a strong price anomaly form in
+          the run-up BEFORE the outcome became public (and with how much lead)?
+          And did the wallet-fingerprint sensor see a cluster of fresh, focused
+          wallets making large long-shot bets in the week before?
 CONSUMES: config/backtest_markets.yaml (the curated cases) + Polymarket's public
-          read-only APIs (Gamma for metadata, CLOB for price history)
-PRODUCES: outputs/backtest/detection_<run_id>.csv (one row per case) + a summary
-          (recall on the documented insider cases, false-positive rate on controls)
+          read-only APIs (Gamma for metadata, CLOB for price history, the data
+          API for trades and wallet histories)
+PRODUCES: outputs/backtest/detection_<run_id>.csv (one row per case), a summary
+          (recall on the documented insider cases and false-positive rate on
+          controls, per sensor), and wallet_evidence_<run_id>.csv (every wallet
+          the fingerprint sensor examined, per case)
 REVIEWER: anyone asking "would Falnama actually have flagged the Iran-strike moves
           the world later decided were insider trading?"
 ROLE:     the honest, LLM-free half of the backtest. It touches only price data and
@@ -28,6 +32,11 @@ Method, and its honest limits:
   * We cannot pin the exact public-news timestamp from price alone (that is what
     the news-lag module adds); here the price settlement is the news proxy, so the
     lead is a lower bound on the informational head start, reported as such.
+  * The wallet sensor looks back `wallets.lookback_hours` from the same
+    settlement onset (or from the resolution anchor when the price never
+    settled), so it only sees bets placed while the outcome was still uncertain.
+    It runs even when the price history is too thin to score: the two sensors are
+    independent, and a case one cannot judge is still a case for the other.
 """
 
 from __future__ import annotations
@@ -38,7 +47,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from . import anomaly, io
+from . import anomaly, io, wallets
 from .config import Settings, load_config
 from .io import RunContext
 
@@ -79,6 +88,12 @@ class BacktestOutcome:
     trigger_time_utc: str | None = None
     settlement_time_utc: str | None = None
     error: str = ""
+    # The wallet-fingerprint sensor's verdict on the same market (see wallets.py).
+    fingerprint_tier: str | None = None       # cluster | watch | none | unavailable
+    fingerprint_matched_wallets: int | None = None
+    fingerprint_matched_usd: float | None = None
+    fingerprint_outcome: str | None = None    # the side the matched wallets bet
+    fingerprint_reason: str = ""
 
 
 # ---------------------------------------------------------------------------
@@ -189,51 +204,91 @@ def _pre_settlement(history: pd.DataFrame, outcome: str | None) -> tuple[pd.Data
 # ---------------------------------------------------------------------------
 # Running one case and the whole set
 # ---------------------------------------------------------------------------
-def run_case(case: BacktestCase, settings: Settings) -> BacktestOutcome:
-    """Replay one resolved market and return the detector's verdict on it. Every
+def run_case(case: BacktestCase, settings: Settings, wallet_evidence: list | None = None,
+             wallet_cache: dict | None = None) -> BacktestOutcome:
+    """Replay one resolved market and return both sensors' verdicts on it. Every
     failure mode (missing event, no history, pruned data) is captured on the row
-    rather than raised, so one bad case never sinks the whole backtest."""
+    rather than raised, so one bad case never sinks the whole backtest.
+
+    If `wallet_evidence` is a list, the wallets the fingerprint sensor examined
+    are appended to it (one DataFrame per case); `wallet_cache` shares wallet
+    lookups across cases, since the same bettors recur across sibling markets."""
     out = BacktestOutcome(event=case.event, label=case.label, note=case.note)
+    market, anchor = None, None
     try:
         event = _gamma_event(case.event, settings)
         market = _pick_market(event, case.market_contains)
         out.market_name = str(market.get("question") or event.get("title"))
         out.resolved_outcome = _outcome(market)
-
-        token_ids = market.get("clobTokenIds")
-        token_ids = json.loads(token_ids) if isinstance(token_ids, str) else token_ids
         anchor = _resolution_anchor(market, settings)
-        if not token_ids or pd.isna(anchor):
-            out.error = "no CLOB token or resolution time"
-            return out
-
-        end_ts = int(anchor.timestamp())
-        history = _clob_history(str(token_ids[0]), end_ts - _MAX_WINDOW_DAYS * 86400, end_ts, settings)
-        out.history_points = int(len(history))
-        if history.empty:
-            out.error = "no price history (likely pruned — market too old)"
-            return out
-
-        pre, settlement = _pre_settlement(history, out.resolved_outcome)
-        if settlement is not None:
-            out.settlement_time_utc = settlement.strftime("%Y-%m-%dT%H:%M:%SZ")
-        if len(pre) < int(settings.anomaly.get("min_price_observations", 20)):
-            out.error = f"too few pre-settlement points ({len(pre)}) to score"
-            return out
-
-        scored = _score(pre, market, settings)
-        if scored is None:
-            out.error = "detector returned no score"
-            return out
-        out.peak_anomaly_score = float(scored["anomaly_score"])
-        out.detected_strong = bool(scored["anomaly_score"] >= float(settings.anomaly.get("strong_threshold", 85)))
-        out.trigger_time_utc = scored["anomaly_trigger_time_utc"]
-        if settlement is not None and scored["anomaly_trigger_time_utc"]:
-            trigger = pd.to_datetime(scored["anomaly_trigger_time_utc"], utc=True)
-            out.lead_hours = round((settlement - trigger).total_seconds() / 3600.0, 1)
+        _score_price(out, market, anchor, settings)
     except Exception as exc:  # network, parse, lookup — recorded, never fatal
         out.error = f"{type(exc).__name__}: {exc}"
+
+    if market is not None and anchor is not None and not pd.isna(anchor):
+        # Look back from the moment the outcome went public (else resolution).
+        end = pd.to_datetime(out.settlement_time_utc, utc=True) if out.settlement_time_utc else anchor
+        evidence = _fingerprint(out, market, end, settings, wallet_cache)
+        if wallet_evidence is not None and not evidence.empty:
+            wallet_evidence.append(evidence.assign(event=case.event, label=case.label))
     return out
+
+
+def _score_price(out: BacktestOutcome, market: dict, anchor, settings: Settings) -> None:
+    """The price half of a case: fetch the pre-resolution window, cut the
+    settlement tail, and score the run-up with the live detector. Fills `out`;
+    a network error propagates to run_case, which records it on the row."""
+    token_ids = market.get("clobTokenIds")
+    token_ids = json.loads(token_ids) if isinstance(token_ids, str) else token_ids
+    if not token_ids or pd.isna(anchor):
+        out.error = "no CLOB token or resolution time"
+        return
+
+    end_ts = int(anchor.timestamp())
+    history = _clob_history(str(token_ids[0]), end_ts - _MAX_WINDOW_DAYS * 86400, end_ts, settings)
+    out.history_points = int(len(history))
+    if history.empty:
+        out.error = "no price history (likely pruned — market too old)"
+        return
+
+    pre, settlement = _pre_settlement(history, out.resolved_outcome)
+    if settlement is not None:
+        out.settlement_time_utc = settlement.strftime("%Y-%m-%dT%H:%M:%SZ")
+    if len(pre) < int(settings.anomaly.get("min_price_observations", 20)):
+        out.error = f"too few pre-settlement points ({len(pre)}) to score"
+        return
+
+    scored = _score(pre, market, settings)
+    if scored is None:
+        out.error = "detector returned no score"
+        return
+    out.peak_anomaly_score = float(scored["anomaly_score"])
+    out.detected_strong = bool(scored["anomaly_score"] >= float(settings.anomaly.get("strong_threshold", 85)))
+    out.trigger_time_utc = scored["anomaly_trigger_time_utc"]
+    if settlement is not None and scored["anomaly_trigger_time_utc"]:
+        trigger = pd.to_datetime(scored["anomaly_trigger_time_utc"], utc=True)
+        out.lead_hours = round((settlement - trigger).total_seconds() / 3600.0, 1)
+
+
+def _fingerprint(out: BacktestOutcome, market: dict, window_end: pd.Timestamp,
+                 settings: Settings, cache: dict | None) -> pd.DataFrame:
+    """The wallet half of a case: run the live fingerprint sensor over the week
+    before `window_end`. Fills the fingerprint_* fields; returns the evidence.
+
+    A replay always reads the real data API (resolved markets have no fixtures),
+    whatever data.source the committed config sets for the daily pipeline."""
+    live = Settings(raw={**settings.raw, "data": {**settings.data, "source": "live"}},
+                    project_root=settings.project_root)
+    evidence, record = wallets.fingerprint_market(live, {
+        "market_id": io.clean_id(market.get("id")), "market_name": out.market_name,
+        "condition_id": market.get("conditionId"),
+    }, window_end, cache)
+    out.fingerprint_tier = record["fingerprint_tier"]
+    out.fingerprint_matched_wallets = int(record["matched_wallets"])
+    out.fingerprint_matched_usd = float(record["matched_stake_usd"])
+    out.fingerprint_outcome = record["matched_outcome"]
+    out.fingerprint_reason = record["fingerprint_reason"]
+    return evidence
 
 
 def _score(pre: pd.DataFrame, market: dict, settings: Settings) -> dict | None:
@@ -248,10 +303,13 @@ def _score(pre: pd.DataFrame, market: dict, settings: Settings) -> dict | None:
     return anomaly.score_market(frame, settings)
 
 
-def run_backtest(cases: list[BacktestCase], settings: Settings) -> tuple[pd.DataFrame, dict]:
-    """Replay every case and summarize: detection recall on the documented
-    positives, and the false-positive rate on the controls."""
-    rows = [asdict(run_case(c, settings)) for c in cases]
+def run_backtest(cases: list[BacktestCase], settings: Settings,
+                 wallet_evidence: list | None = None) -> tuple[pd.DataFrame, dict]:
+    """Replay every case and summarize, per sensor: recall on the documented
+    positives, and the false-positive rate on the controls. Pass a list as
+    `wallet_evidence` to collect the wallets the fingerprint sensor examined."""
+    cache: dict = {}
+    rows = [asdict(run_case(c, settings, wallet_evidence, cache)) for c in cases]
     table = pd.DataFrame(rows)
 
     def rate(label: str) -> dict:
@@ -260,12 +318,23 @@ def run_backtest(cases: list[BacktestCase], settings: Settings) -> tuple[pd.Data
         return {"scored": int(len(sub)), "flagged_strong": flagged,
                 "rate": round(flagged / len(sub), 3) if len(sub) else None}
 
+    def cluster_rate(label: str) -> dict:
+        judged = table[(table["label"] == label) &
+                       table["fingerprint_tier"].isin(["cluster", "watch", "none"])]
+        clusters = int((judged["fingerprint_tier"] == "cluster").sum())
+        watches = int((judged["fingerprint_tier"] == "watch").sum())
+        return {"judged": int(len(judged)), "cluster": clusters, "watch": watches,
+                "rate": round(clusters / len(judged), 3) if len(judged) else None}
+
     summary = {
         "cases": int(len(table)),
         "usable": int(table["detected_strong"].notna().sum()),
         "unavailable": int(table["error"].astype(bool).sum()),
         "positives_recall": rate("positive"),
         "controls_false_positive": rate("control"),
+        # The wallet sensor, scored separately: a cluster is its alarm.
+        "fingerprint_positives_recall": cluster_rate("positive"),
+        "fingerprint_controls_false_positive": cluster_rate("control"),
     }
     return table, summary
 
@@ -289,11 +358,14 @@ def run(settings: Settings | None = None, cases_path: str | Path | None = None) 
     settings = settings or load_config()
     ctx = RunContext.start(settings)
     cases = load_cases(cases_path, settings)
-    table, summary = run_backtest(cases, settings)
+    evidence: list[pd.DataFrame] = []
+    table, summary = run_backtest(cases, settings, evidence)
 
     out_dir = settings.output_dir("backtest") if "backtest" in settings.section("outputs") else \
         (settings.project_root / "outputs" / "backtest")
     out_dir.mkdir(parents=True, exist_ok=True)
     io.write_table(table, out_dir, "detection", ctx.run_id, also_latest=True)
+    if evidence:
+        io.write_table(pd.concat(evidence, ignore_index=True), out_dir, "wallet_evidence", ctx.run_id)
     io.write_json(out_dir / f"summary_{ctx.run_id}.json", summary)
     return table, summary

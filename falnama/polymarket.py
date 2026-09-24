@@ -35,7 +35,7 @@ from .io import RunContext
 MARKET_COLUMNS = [
     "market_id", "market_slug", "market_name", "question", "description",
     "category", "tags", "event_slug", "event_title", "volume", "liquidity",
-    "closed", "close_time", "clob_token_ids", "market_url",
+    "closed", "close_time", "clob_token_ids", "market_url", "condition_id",
 ]
 
 # The Gamma /markets endpoint's hard per-page ceiling (it ignores larger limits).
@@ -75,11 +75,15 @@ def fetch_price_history(settings: Settings, market_ids: list[str],
 
 
 def fetch_trade_concentration(settings: Settings, market_ids: list[str],
-                              ctx: RunContext | None = None) -> dict[str, dict]:
+                              ctx: RunContext | None = None,
+                              condition_ids: dict[str, str] | None = None) -> dict[str, dict]:
     """Return {market_id: concentration_record} for the markets we have wallet
     data for. Coverage is PARTIAL by nature — a market with no record simply
     isn't in the returned dict, and Stage 2 treats that as 'unavailable' (never a
     penalty). Records carry available=True plus top-k shares, Gini, and HHI.
+
+    `condition_ids` maps market_id -> on-chain conditionId, which the live trades
+    API requires (see _fetch_live_concentration). Unused for fixtures.
     """
     if settings.data_source == "fixtures":
         path = settings.fixtures_dir / "concentration.csv"
@@ -92,7 +96,7 @@ def fetch_trade_concentration(settings: Settings, market_ids: list[str],
             str(r["market_id"]): {"available": True, **{k: r.get(k) for k in fields}}
             for r in df.to_dict(orient="records") if str(r["market_id"]) in wanted
         }
-    return _fetch_live_concentration(settings, market_ids)
+    return _fetch_live_concentration(settings, market_ids, condition_ids or {})
 
 
 def load_fixture(settings: Settings, name: str) -> pd.DataFrame:
@@ -237,12 +241,17 @@ def _gini(values) -> float:
     return float((n + 1 - 2 * (cumulative.sum() / cumulative[-1])) / n)
 
 
-def _fetch_live_concentration(settings: Settings, market_ids: list[str]) -> dict[str, dict]:
+def _fetch_live_concentration(settings: Settings, market_ids: list[str],
+                              condition_ids: dict[str, str]) -> dict[str, dict]:
     """Best-effort wallet concentration from the public trades API. Coverage is
     partial and rate-limited, so a failure for any single market is recorded as
-    'unavailable' rather than aborting the run. Live-only; fixtures are the tested
-    path. First pass measures recent trades; scoping to the exact anomaly window
-    is a worthwhile refinement."""
+    'unavailable' rather than aborting the run. First pass measures recent trades;
+    scoping to the exact anomaly window is a worthwhile refinement.
+
+    The trades API keys markets by on-chain conditionId. Until 2026-09 this sent
+    Gamma's numeric market id instead, which the API accepts but answers with an
+    empty list — so every live market read 'unavailable' and the overlay never
+    ran. A market with no conditionId is now recorded as unavailable, explicitly."""
     import requests
 
     cfg = settings.data
@@ -250,8 +259,12 @@ def _fetch_live_concentration(settings: Settings, market_ids: list[str]) -> dict
     timeout = int(cfg.get("request_timeout_seconds", 30))
     out: dict[str, dict] = {}
     for market_id in market_ids:
+        condition = condition_ids.get(str(market_id))
+        if not isinstance(condition, str) or not condition.startswith("0x"):
+            out[str(market_id)] = {"available": False, "reason": "no conditionId for this market"}
+            continue
         try:
-            resp = requests.get(f"{base}/trades", params={"market": market_id, "limit": 1000}, timeout=timeout)
+            resp = requests.get(f"{base}/trades", params={"market": condition, "limit": 1000}, timeout=timeout)
             resp.raise_for_status()
             raw = resp.json()
             records = raw if isinstance(raw, list) else raw.get("data", [])
@@ -322,4 +335,7 @@ def _normalize_market(m: dict) -> dict:
         "close_time": _first(m, ["closedTime", "endDate", "end_date"]),
         "clob_token_ids": json.dumps(_parse_json(m.get("clobTokenIds"), [])),
         "market_url": f"https://polymarket.com/market/{slug}" if slug else None,
+        # The on-chain id Polymarket's data API (trades, holders) keys markets by.
+        # Gamma's numeric `id` is NOT accepted there — it silently returns nothing.
+        "condition_id": _first(m, ["conditionId", "condition_id"]),
     }

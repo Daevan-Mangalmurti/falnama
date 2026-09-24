@@ -6,14 +6,23 @@ from __future__ import annotations
 
 import numpy as np
 import pandas as pd
+import pytest
 
-from falnama import backtest
+from falnama import backtest, wallets
 from falnama.config import load_config
 
 S = load_config()
 # Pin the detector knobs these tests depend on, independent of committed config.
 S.raw["anomaly"]["strong_threshold"] = 85
 S.raw["anomaly"]["min_price_observations"] = 20
+
+
+@pytest.fixture(autouse=True)
+def _no_wallet_network(monkeypatch):
+    """Every case also runs the wallet sensor; stub its trade fetch so these price
+    tests stay offline (an empty window reads as fingerprint tier 'none')."""
+    monkeypatch.setattr(wallets, "_fetch_trades", lambda *a, **k: pd.DataFrame(
+        columns=["wallet", "wallet_name", "side", "outcome", "price", "size", "timestamp"]))
 
 
 def _history(prices: list[float], start="2026-02-01T00:00:00Z") -> pd.DataFrame:
@@ -114,3 +123,28 @@ def test_summary_separates_recall_from_false_positive(monkeypatch):
     ], S)
     assert summary["positives_recall"] == {"scored": 2, "flagged_strong": 1, "rate": 0.5}
     assert summary["controls_false_positive"] == {"scored": 1, "flagged_strong": 0, "rate": 0.0}
+
+
+def test_wallet_sensor_runs_beside_the_price_detector(monkeypatch):
+    """The fingerprint looks back from the settlement onset, reports its tier on the
+    same row, and still runs when the price history is too thin to score."""
+    windows = []
+
+    def trades(settings, market, start, end):
+        windows.append((start, end))
+        rows = [(f"0x{i}", f"w{i}", "BUY", "Yes", 0.10, 200000, "2026-02-01T20:00:00Z") for i in range(3)]
+        return pd.DataFrame(rows, columns=["wallet", "wallet_name", "side", "outcome", "price", "size", "timestamp"])
+
+    monkeypatch.setattr(wallets, "_fetch_trades", trades)
+    monkeypatch.setattr(wallets, "_fetch_profile", lambda s, w: {
+        "first_activity_utc": "2026-01-30T00:00:00Z", "markets_traded": 3})
+    _patch(monkeypatch, [0.10] * 40 + [0.35] * 12 + [0.98] * 10)
+    evidence: list = []
+    out = backtest.run_case(backtest.BacktestCase(event="x", label="positive"), S, evidence)
+    assert out.fingerprint_tier == "cluster" and out.fingerprint_matched_wallets == 3
+    assert windows[0][1] == pd.Timestamp(out.settlement_time_utc)  # window ends at settlement onset
+    assert len(evidence) == 1 and evidence[0]["label"].eq("positive").all()
+
+    _patch(monkeypatch, [0.10] * 5)  # far too little price history to score...
+    thin = backtest.run_case(backtest.BacktestCase(event="x", label="positive"), S)
+    assert "too few" in thin.error and thin.fingerprint_tier == "cluster"  # ...wallets still judged

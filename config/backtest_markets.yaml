@@ -18,6 +18,14 @@
 #     data returns.
 #   * Controls anchor the recall number: a well-calibrated detector should NOT
 #     flag a scheduled Fed decision or an IPO-by-date as a strong anomaly.
+#   * MATCHED controls (added with the wallet-fingerprint sensor): sibling
+#     deadlines from the SAME Iran-strike event that resolved NO. Same topic, same
+#     crowd of bettors, same fresh-wallet gamblers — but nothing happened, so no
+#     one could have known. They are the honest test of both sensors, far harder
+#     than a scheduled Fed decision (which trades at 99c and has no long shots).
+#   * OUT-OF-SAMPLE pair: the wallet-fingerprint thresholds were set while looking
+#     at the Feb-2026 Iran markets. The Maduro pair (a different event family) was
+#     added afterwards to check them on data they were not tuned on.
 # =============================================================================
 cases:
   # ---- Positives: the Feb-2026 US/Israel–Iran strikes ("Epic Fury") ----------
@@ -49,3 +57,27 @@ cases:
   - event: fed-decision-in-january
     label: control
     note: "Scheduled FOMC decision — public calendar, no private-information edge"
+
+  # ---- Out-of-sample positive: a different event family -----------------------
+  - event: maduro-out-in-2025
+    market_contains: "January 31, 2026"
+    label: positive
+    note: "Maduro captured Jan 3 2026 — reported lone insider wallet (~$32K at ~8c)"
+
+  # ---- Matched controls: same event family, resolved NO (no one could know) ----
+  - event: us-strikes-iran-by
+    market_contains: "January 31, 2026"
+    label: control
+    note: "Iran strike deadline that passed with no strike — matched control"
+  - event: us-strikes-iran-by
+    market_contains: "February 20, 2026"
+    label: control
+    note: "Iran strike deadline that passed with no strike — matched control"
+  - event: us-strikes-iran-by
+    market_contains: "February 27, 2026"
+    label: control
+    note: "Iran deadline ONE DAY before the strike, resolved NO — the hardest control"
+  - event: maduro-out-in-2025
+    market_contains: "Maduro out in 2025?"
+    label: control
+    note: "Maduro deadline that passed (Dec 31 2025) days before the capture — matched control"

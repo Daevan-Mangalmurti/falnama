@@ -64,6 +64,7 @@ about a minute, even with only a moderate coding background.
 | `schema.py`     | —      | Validate artifacts against the JSON schemas in `schemas/`. |
 | `polymarket.py` | data   | Read-only client for the Polymarket APIs, plus snapshot-to-disk and a fixtures fallback. |
 | `select.py`     | 1      | Build the geopolitical market universe; log every accept/reject. |
+| `wallets.py`    | 2a     | Wallet fingerprints: flags clusters of fresh, focused wallets making large long-shot bets. |
 | `anomaly.py`    | 2      | Interpretable deterministic anomaly scores (no opaque model). |
 | `cards.py`      | 3      | Generate immutable, hashed scenario index cards via the LLM seam (mock by default). |
 | `recommend.py`  | 4      | Paper recommendation engine: eligibility, anti-ex-post timing, sizing, no-trade bias. |
@@ -119,6 +120,7 @@ land in `outputs/`:
 
 ```
 outputs/relevant_markets/     selected market universe + selection diagnostics
+outputs/wallets/              wallet-fingerprint evidence (every wallet examined) + per-market tiers
 outputs/anomalies/            ranked + strong anomalies, concentration diagnostics
 outputs/index_cards/          immutable, hashed scenario cards
 outputs/recommended_trades/   paper recommendations (.xlsx workbook + JSON)

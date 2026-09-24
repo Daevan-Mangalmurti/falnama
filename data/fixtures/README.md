@@ -10,6 +10,8 @@ script, so re-running it reproduces them exactly.
 | `markets.csv` | 11 candidate markets: 6 geopolitical (Stage 1 should keep them) and 5 noise — sports, crypto, entertainment, weather, and a polling market (Stage 1 should reject them). |
 | `price_history.csv` | Hourly price series (14 days) for the 6 geopolitical markets, with deliberately embedded anomalies: a sharp late jump on the Iran and Taiwan markets, a moderate mid-series move on the Russia-sanctions market, and calm noise on the rest. |
 | `concentration.csv` | Wallet-concentration records for **only 4 of the 6** markets — deliberately partial, to mirror reality. It exercises all four overlay tiers Stage 2 can assign. |
+| `wallet_trades.csv` | Individual trades (wallet, side, outcome, price, shares) for 4 of the 6 markets — the input to the Stage 2a wallet-fingerprint sensor. Treated as an already-frozen window (no time filter in fixtures mode). |
+| `wallet_profiles.csv` | Each fixture wallet's first-ever Polymarket activity and lifetime markets-traded count — what the live sensor looks up per wallet. |
 
 ## What the concentration fixture demonstrates
 
@@ -19,10 +21,24 @@ the fixture is intentionally incomplete. The four included rows cover every case
 | market | thick? | concentration | Stage 2 tier | effect |
 |--------|--------|---------------|--------------|--------|
 | taiwan-blockade | yes | extreme | **red_flag** | corroborates an already-strong signal |
-| sanc-russia-q3 | yes | extreme | **red_flag** | promotes a *weak* signal to *medium* |
+| sanc-russia-q3 | yes | extreme | **red_flag** | flagged (the committed bonus is a token +1, so it records rather than promotes) |
 | trade-china-evs | yes | diffuse | diffuse | no flag (broad participation) |
 | france-snap-election | no | extreme | concentrated_thin | no flag (concentration in a thin market is unremarkable) |
 | mil-iran-strike, opec-cut-jul | — | *(no record)* | unavailable | no effect — missing data never penalizes |
 
 The red flag fires only for a **thick market moved by a few wallets** — the
 fingerprint of a small, informed group moving an otherwise liquid market.
+
+## What the wallet-fingerprint fixture demonstrates
+
+A wallet MATCHES when it is fresh (first activity ≤ 14 days before its bet),
+focused (≤ 25 markets traded), and made a large (≥ $10K) bet at a long-shot price
+(≤ 35c). A market is a CLUSTER only when 3+ matching wallets bet the same side.
+
+| market | who bet | Stage 2a tier | effect |
+|--------|---------|---------------|--------|
+| mil-iran-strike | 4 fresh, focused wallets on Yes at 12-20c; plus a veteran whale, a late 91c buyer and a small fresh bettor (none of which match) | **cluster** | red flag, +15 on the anomaly score |
+| taiwan-blockade | one fresh wallet, $15K at 8c | watch | surfaced for review, no score effect |
+| trade-china-evs | three fresh wallets, but split 2 Yes / 1 No | watch | a cluster must pile onto ONE side |
+| sanc-russia-q3 | large long-shot bets from established wallets | none | big bets alone are not a fingerprint |
+| opec-cut-jul, france-snap-election | *(no trades)* | none | |

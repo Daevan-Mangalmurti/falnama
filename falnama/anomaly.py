@@ -18,6 +18,8 @@ see *why* a market ranked where it did:
     persistence  did the move stick, or did it snap back
     unusualness  how large the move was relative to THIS market's own volatility
     (+ time_to_close bonus: moves just before resolution are more suspicious)
+    (+ two "who traded" overlays that can only ever ADD: wallet concentration,
+       and the wallet-fingerprint cluster flag from Stage 2a, falnama/wallets.py)
 
 We score ONE anomaly per market — its single most anomalous window — which
 naturally de-duplicates repeated bursts (the cooldown idea) without extra state.
@@ -81,7 +83,7 @@ class AnomalyResult:
 # Scoring one market (pure, unit-testable)
 # ---------------------------------------------------------------------------
 def score_market(price_history: pd.DataFrame, settings: Settings,
-                 concentration: dict | None = None) -> dict | None:
+                 concentration: dict | None = None, fingerprint: dict | None = None) -> dict | None:
     """Return the sub-scores + composite for one market's price history, or None
     if there is too little history to judge.
 
@@ -90,6 +92,8 @@ def score_market(price_history: pd.DataFrame, settings: Settings,
     wallet-concentration record for the red-flag overlay (None for the many
     markets without such data — that case never lowers the score). Output is a
     flat dict, ready to become a row in the ranked-anomalies table.
+    `fingerprint` is this market's Stage 2a verdict (None when wallets were not
+    examined — again, never a penalty).
     """
     cfg = settings.anomaly
     min_obs = int(cfg.get("min_price_observations", 20))
@@ -124,6 +128,7 @@ def score_market(price_history: pd.DataFrame, settings: Settings,
     # --- concentration overlay: an independent red flag, never a core sub-score
     first = price_history.iloc[0]
     overlay = concentration_overlay(first, concentration, cfg)
+    fingerprint_cols = fingerprint_overlay(fingerprint)
 
     # Combine the core sub-scores. Persistence is None when the move is too recent
     # to observe its aftermath; renormalize over the components we could measure so
@@ -132,7 +137,8 @@ def score_market(price_history: pd.DataFrame, settings: Settings,
                   "persistence": persistence, "unusualness": unusualness}
     measured = {k: v for k, v in components.items() if v is not None}
     core = sum(WEIGHTS[k] * measured[k] for k in measured) / sum(WEIGHTS[k] for k in measured)
-    composite = float(min(100.0, round(core + ttc_bonus + overlay["concentration_bonus"], 1)))
+    bonuses = ttc_bonus + overlay["concentration_bonus"] + fingerprint_cols["fingerprint_bonus"]
+    composite = float(min(100.0, round(core + bonuses, 1)))
 
     return {
         "market_id": first.get("market_id"),
@@ -147,6 +153,7 @@ def score_market(price_history: pd.DataFrame, settings: Settings,
         "score_unusualness": unusualness,
         "time_to_close_bonus": round(ttc_bonus, 1),
         **overlay,  # concentration_available / _tier / _red_flag / _bonus + metrics
+        **fingerprint_cols,  # fingerprint_tier / _red_flag / _bonus / matched_wallets
         "anomaly_score": composite,
         "observations": int(len(series)),
     }
@@ -300,22 +307,48 @@ def concentration_overlay(market_row, concentration: dict | None, cfg: dict) -> 
     return overlay
 
 
+def fingerprint_overlay(fingerprint: dict | None) -> dict:
+    """Carry a market's wallet-fingerprint verdict (Stage 2a) onto its anomaly row.
+
+    The judgment itself — which wallets match, and whether enough of them pile onto
+    one side to call it a cluster — lives in falnama/wallets.py. Here we only read
+    the verdict: a 'cluster' adds its bonus; every other tier, including missing
+    data, leaves the composite untouched."""
+    fp = fingerprint or {}
+    tier = fp.get("fingerprint_tier")
+    tier = tier if isinstance(tier, str) and tier else "unavailable"
+    flag = tier == "cluster"
+    bonus = _num(fp.get("fingerprint_bonus")) if flag else 0.0
+    matched = _num(fp.get("matched_wallets"))
+    return {
+        "fingerprint_tier": tier,
+        "fingerprint_red_flag": flag,
+        "fingerprint_bonus": bonus if bonus == bonus else 0.0,  # NaN guard
+        "fingerprint_matched_wallets": int(matched) if matched == matched else 0,
+    }
+
+
 # ---------------------------------------------------------------------------
 # Scoring the whole universe
 # ---------------------------------------------------------------------------
 def detect_anomalies(price_history: pd.DataFrame, settings: Settings,
-                     concentration_by_market: dict[str, dict] | None = None) -> AnomalyResult:
+                     concentration_by_market: dict[str, dict] | None = None,
+                     fingerprint_by_market: dict[str, dict] | None = None) -> AnomalyResult:
     """Score every market, rank by composite score, and classify severity.
 
     `concentration_by_market` maps market_id -> a wallet-concentration record; it
     is absent for the many markets without such data, and feeds the red-flag
-    overlay for the few that have it.
+    overlay for the few that have it. `fingerprint_by_market` maps market_id ->
+    that market's Stage 2a wallet-fingerprint verdict, with the same
+    missing-means-no-effect rule.
     """
     cfg = settings.anomaly
     concentration_by_market = concentration_by_market or {}
+    fingerprint_by_market = fingerprint_by_market or {}
     scored = []
     for market_id, group in price_history.groupby("market_id", sort=False):
-        row = score_market(group, settings, concentration_by_market.get(str(market_id)))
+        row = score_market(group, settings, concentration_by_market.get(str(market_id)),
+                           fingerprint_by_market.get(str(market_id)))
         if row is not None:
             scored.append(row)
 
@@ -372,9 +405,12 @@ def run(ctx: RunContext, price_history: pd.DataFrame | None = None) -> AnomalyRe
         market_ids = [str(m) for m in selected["market_id"].dropna().tolist()] if "market_id" in selected else []
         price_history = polymarket.fetch_price_history(ctx.settings, market_ids, ctx)
         # Best-effort wallet concentration; returns records only for covered markets.
-        concentration = polymarket.fetch_trade_concentration(ctx.settings, market_ids, ctx)
+        # The trades API keys markets by on-chain conditionId, not Gamma's numeric id.
+        condition_ids = dict(zip(selected["market_id"].astype(str), selected["condition_id"])) \
+            if "condition_id" in selected else {}
+        concentration = polymarket.fetch_trade_concentration(ctx.settings, market_ids, ctx, condition_ids)
 
-    result = detect_anomalies(price_history, ctx.settings, concentration)
+    result = detect_anomalies(price_history, ctx.settings, concentration, _this_runs_fingerprints(ctx))
 
     out_dir = ctx.settings.output_dir("anomalies")
     ranked_path = io.write_table(result.ranked, out_dir, "ranked_anomalies", ctx.run_id)
@@ -382,10 +418,27 @@ def run(ctx: RunContext, price_history: pd.DataFrame | None = None) -> AnomalyRe
     io.write_table(result.concentration, out_dir, "concentration_diagnostics", ctx.run_id, also_latest=False)
 
     red_flags = int(result.ranked["concentration_red_flag"].sum()) if not result.ranked.empty else 0
+    fp_flags = int(result.ranked["fingerprint_red_flag"].sum()) if not result.ranked.empty else 0
     io.update_manifest(ctx, "anomaly_detector", {
         "markets_scored": int(len(result.ranked)),
         "strong_count": int(len(result.strong)),
         "concentration_red_flags": red_flags,
+        "fingerprint_red_flags": fp_flags,
         "ranked_file": str(ranked_path.relative_to(ctx.settings.project_root)),
     })
     return result
+
+
+def _this_runs_fingerprints(ctx: RunContext) -> dict[str, dict]:
+    """Stage 2a's per-market verdicts from THIS run only (keyed by market_id).
+
+    Rows are stamped with their run_id; anything else in the file is stale — e.g.
+    the wallets stage was skipped this time — and must not leak into today's
+    scores. No file, or no rows for this run, simply means no fingerprint overlay."""
+    from . import io, wallets
+
+    table = io.read_table(wallets.market_fingerprints_path(ctx.settings))
+    if table.empty or "run_id" not in table:
+        return {}
+    table = table[table["run_id"].astype(str) == ctx.run_id]
+    return {io.clean_id(r["market_id"]): r for r in table.to_dict(orient="records")}

@@ -77,6 +77,10 @@ def test_pipeline_runs_end_to_end(tmp_path):
     # read strong under the recalibrated references; the 6-8c moves stay weak.
     assert manifest["anomaly_detector"]["strong_count"] == 3
     assert manifest["anomaly_detector"]["concentration_red_flags"] == 2
+    # Stage 2a: the Iran fixture carries a cluster of fresh wallets; Taiwan and the
+    # EV-tariff market only a lone/split match (watch), which never moves a score.
+    assert manifest["wallet_fingerprints"]["tiers"] == {"none": 3, "watch": 2, "cluster": 1}
+    assert manifest["anomaly_detector"]["fingerprint_red_flags"] == 1
     assert manifest["cards"]["cards_written"] == 6
     # Default (backfill off): strong signals are rejected as ex-post -> no trades.
     assert manifest["recommender"]["recommended_count"] == 0

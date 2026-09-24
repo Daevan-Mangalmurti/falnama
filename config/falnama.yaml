@@ -6,7 +6,8 @@
 # Settings object. Edit values here, not in code.
 #
 # Sections, top to bottom, follow the signal chain:
-#   safety → llm → data → select → anomaly → cards → recommend → execution →
+#   safety → llm → data → select → screen → wallets → anomaly → cards →
+#   recommend → execution →
 #   newslag → outputs
 # =============================================================================
 
@@ -155,6 +156,35 @@ screener:
   min_information_asymmetry: 45
 
 # -----------------------------------------------------------------------------
+# Stage 2a — wallet fingerprints (falnama/wallets.py)
+# Asks WHO bet, beside Stage 2's question of how the price moved. A wallet MATCHES
+# when all four hold for a bet placed inside the lookback window:
+#   long-shot  bought an outcome at or below longshot_max_price
+#   large      staked at least min_stake_usd on it
+#   fresh      its first-ever Polymarket activity was <= max_wallet_age_days
+#              before this bet
+#   focused    it has traded <= max_markets_traded markets in its lifetime
+# A market is a CLUSTER (red flag, +cluster_bonus on its anomaly score) when at
+# least min_cluster_wallets matching wallets bet the SAME side. One or two matches
+# are a WATCH: surfaced in outputs/wallets/ for review, no score effect — because
+# on the backtest's matched controls (Iran deadlines that resolved NO) 0-2 lone
+# gamblers matched too, while the real Feb-2026 strike market had 8.
+# Uses Polymarket's keyless public data API when data.source is live; fixtures
+# otherwise. Every wallet examined is written with the facts behind its verdict.
+# -----------------------------------------------------------------------------
+wallets:
+  enabled: true
+  lookback_hours: 168                # examine bets from the last 7 days
+  min_trade_usd: 500                 # trades smaller than this are never pulled
+  longshot_max_price: 0.35           # "unlikely" = the outcome cost <= 35 cents
+  min_stake_usd: 10000               # "large" = >= $10K staked on that outcome
+  max_wallet_age_days: 14            # "fresh" = first-ever activity <= 14 days earlier
+  max_markets_traded: 25             # "focused" = <= 25 markets traded, lifetime
+  max_candidates_per_market: 50      # cap on wallets looked up per market (API cost)
+  min_cluster_wallets: 3             # matching wallets on one side to call a cluster
+  cluster_bonus: 15                  # added to the anomaly composite for a cluster
+
+# -----------------------------------------------------------------------------
 # Stage 2 — anomaly detection
 # Deterministic, INTERPRETABLE component scores. We deliberately avoid an opaque
 # learned model: at this stage, being able to explain a score matters more than
@@ -193,10 +223,15 @@ anomaly:
     extreme_top1_share: 0.30      # one wallet did >= 30% of the window's volume
     extreme_top3_share: 0.55      # the top three wallets did >= 55%
     extreme_gini: 0.80            # highly unequal wallet volumes (0=even, 1=one wallet)
-    # A thick + extreme market gets this capped bonus added to the composite. The
+    # A thick + extreme market gets this bonus added to the composite. The
     # independent red-flag column is surfaced either way, so reviewers can filter
     # on it even when the bonus doesn't cross a severity threshold.
-    red_flag_bonus: 15
+    # Held at a token +1 (2026-09): the overlay only started receiving live data
+    # after a market-id bug was fixed, and these absolute thresholds were earlier
+    # seen to flag most liquid markets (most are whale-concentrated). +1 records
+    # the flag alongside the other bonuses without distorting rankings; raise it
+    # only once the thresholds are recalibrated against live concentration data.
+    red_flag_bonus: 1
 
 # -----------------------------------------------------------------------------
 # Stage 3 — scenario index cards
@@ -279,4 +314,5 @@ outputs:
   rejected_signals: outputs/rejected_signals
   run_logs: outputs/run_logs
   diagnostics: outputs/diagnostics
+  wallets: outputs/wallets                # Stage 2a wallet evidence + per-market verdicts
   backtest: outputs/backtest              # Phase 1 detection-backtest results

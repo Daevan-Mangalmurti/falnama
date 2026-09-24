@@ -74,3 +74,27 @@ def test_red_flag_promotes_composite_by_exactly_the_bonus():
     with_flag = score_market(series, S, EXTREME)
     assert with_flag["concentration_red_flag"] is True
     assert with_flag["anomaly_score"] == min(100.0, without["anomaly_score"] + BONUS)
+
+
+def test_live_fetch_sends_the_condition_id_not_the_market_id(monkeypatch):
+    """Regression: the trades API answers Gamma's numeric id with an empty list,
+    which silently kept this overlay dark on every live run until 2026-09."""
+    import requests
+
+    from falnama import polymarket
+
+    sent = []
+
+    class Resp:
+        def raise_for_status(self):
+            pass
+
+        def json(self):
+            return [{"proxyWallet": "0xa", "size": 10}, {"proxyWallet": "0xb", "size": 30}]
+
+    monkeypatch.setattr(requests, "get", lambda url, params, timeout: sent.append(params) or Resp())
+    monkeypatch.setattr(polymarket.time, "sleep", lambda s: None)
+    out = polymarket._fetch_live_concentration(S, ["540843", "999"], {"540843": "0xcond"})
+    assert sent == [{"market": "0xcond", "limit": 1000}]      # only the market with a conditionId
+    assert out["540843"]["available"] and out["540843"]["top1_share"] == 0.75
+    assert out["999"] == {"available": False, "reason": "no conditionId for this market"}

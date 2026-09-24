@@ -1,7 +1,8 @@
 """The orchestrator — run the stages in order and write the audit trail.
 
-WHAT:     Runs the signal chain end to end: select → detect → cards → recommend →
-          (execution) → (news-lag), writing the run manifest and health report.
+WHAT:     Runs the signal chain end to end: select → screen → wallets → detect →
+          cards → recommend → (execution) → (news-lag), writing the run
+          manifest and health report.
 CONSUMES: a `Settings` object (loaded from config if not supplied)
 PRODUCES: every stage's artifacts, tied together by one run_id, plus the
           manifest and health files under outputs/run_logs/
@@ -24,8 +25,10 @@ from .io import RunContext
 
 # The signal chain, in order. `screen` is the optional LLM relevance gate; it sits
 # right after keyword selection so everything downstream works on a smaller, better
-# universe (and is a no-op pass-through when disabled).
-STAGE_ORDER = ["select", "screen", "anomaly", "cards", "recommend", "execution", "newslag"]
+# universe (and is a no-op pass-through when disabled). `wallets` fingerprints who
+# bet on each screened market; it runs before `anomaly` so the price detector can
+# fold a wallet-cluster red flag into its score.
+STAGE_ORDER = ["select", "screen", "wallets", "anomaly", "cards", "recommend", "execution", "newslag"]
 
 
 def run(settings: Settings | None = None, stages: list[str] | None = None) -> RunContext:
@@ -35,7 +38,7 @@ def run(settings: Settings | None = None, stages: list[str] | None = None) -> Ru
     failure the error is recorded, the health report is still written, and the
     exception propagates so callers/CI see a non-zero exit.
     """
-    from . import anomaly, cards, execution, newslag, recommend, screen, select
+    from . import anomaly, cards, execution, newslag, recommend, screen, select, wallets
 
     settings = settings or load_config()
     ctx = RunContext.start(settings)
@@ -49,6 +52,8 @@ def run(settings: Settings | None = None, stages: list[str] | None = None) -> Ru
                 select.run(ctx)
             elif stage == "screen":
                 screen.run(ctx)
+            elif stage == "wallets":
+                wallets.run(ctx)
             elif stage == "anomaly":
                 anomaly.run(ctx)
             elif stage == "cards":
