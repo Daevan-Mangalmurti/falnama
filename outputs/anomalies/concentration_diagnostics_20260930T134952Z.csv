@@ -1,0 +1,101 @@
+market_id,market_name,concentration_available,concentration_tier,concentration_red_flag,top1_wallet_share,top3_wallet_share,wallet_gini,concentration_reason
+629707,Will the Democrats win the Vermont governor race in 2026?,True,red_flag,True,0.129,0.3164,0.8281,"THICK market moved by a few wallets (top1=13%, top3=32%, gini=0.83)"
+629708,Will the Republicans win the Vermont governor race in 2026?,True,red_flag,True,0.1636,0.3719,0.8609,"THICK market moved by a few wallets (top1=16%, top3=37%, gini=0.86)"
+629691,Will the Republicans win the Texas governor race in 2026?,True,red_flag,True,0.3637,0.4847,0.8813,"THICK market moved by a few wallets (top1=36%, top3=48%, gini=0.88)"
+629690,Will the Democrats win the Texas governor race in 2026?,True,red_flag,True,0.0842,0.232,0.8223,"THICK market moved by a few wallets (top1=8%, top3=23%, gini=0.82)"
+630707,Will Todd Achilles win the Idaho Senate race in 2026?,True,diffuse,False,0.1788,0.4537,0.7281,wallet participation is diffuse
+630734,Will the Republicans win the Iowa Senate race in 2026?,True,red_flag,True,0.2326,0.4434,0.9246,"THICK market moved by a few wallets (top1=23%, top3=44%, gini=0.92)"
+664045,Will Mamdani freeze NYC rents before 2027?,True,red_flag,True,0.1269,0.3186,0.8548,"THICK market moved by a few wallets (top1=13%, top3=32%, gini=0.85)"
+630806,Will the Republicans win the Michigan Senate race in 2026?,True,red_flag,True,0.2852,0.4554,0.8928,"THICK market moved by a few wallets (top1=29%, top3=46%, gini=0.89)"
+593974,Will Bernie endorse Dan Osborn for NE-Sen by Nov 2 2026 ET?,True,concentrated_thin,False,0.3207,0.577,0.8233,"concentrated, but market is thin where concentration is unremarkable"
+567688,Netanyahu out by end of 2026?,True,red_flag,True,0.1297,0.2605,0.9005,"THICK market moved by a few wallets (top1=13%, top3=26%, gini=0.90)"
+620335,"Aziz Akhannouch out as Morocco Prime Minister by December 31, 2026?",True,diffuse,False,0.1331,0.2412,0.5676,wallet participation is diffuse
+630733,Will the Democrats win the Iowa Senate race in 2026?,True,red_flag,True,0.2073,0.4364,0.9345,"THICK market moved by a few wallets (top1=21%, top3=44%, gini=0.93)"
+630805,Will the Democrats win the Michigan Senate race in 2026?,True,red_flag,True,0.1283,0.2686,0.9064,"THICK market moved by a few wallets (top1=13%, top3=27%, gini=0.91)"
+622738,"Will Hyperliquid perform an airdrop by December 31, 2026? ",True,red_flag,True,0.1491,0.3057,0.8402,"THICK market moved by a few wallets (top1=15%, top3=31%, gini=0.84)"
+629583,Will the Democrats win the Oregon governor race in 2026?,True,diffuse,False,0.1549,0.3002,0.7973,wallet participation is diffuse
+634976,Will Mary Peltola win the Alaska Senate race in 2026?,True,red_flag,True,0.2092,0.4134,0.9204,"THICK market moved by a few wallets (top1=21%, top3=41%, gini=0.92)"
+665260,Will Donald Trump visit Israel in 2026?,True,diffuse,False,0.1566,0.3448,0.7976,wallet participation is diffuse
+630772,Will the Democrats win the Maine Senate race in 2026?,True,red_flag,True,0.1941,0.3412,0.9104,"THICK market moved by a few wallets (top1=19%, top3=34%, gini=0.91)"
+629584,Will the Republicans win the Oregon governor race in 2026?,True,diffuse,False,0.0977,0.2228,0.7766,wallet participation is diffuse
+629506,Will the Republicans win the Nevada governor race in 2026?,True,red_flag,True,0.2784,0.4395,0.8776,"THICK market moved by a few wallets (top1=28%, top3=44%, gini=0.88)"
+629338,Will the Republicans win the Georgia governor race in 2026?,True,diffuse,False,0.1072,0.2355,0.7928,wallet participation is diffuse
+629337,Will the Democrats win the Georgia governor race in 2026?,True,red_flag,True,0.1792,0.2994,0.8385,"THICK market moved by a few wallets (top1=18%, top3=30%, gini=0.84)"
+630747,Will the Republicans win the Kansas Senate race in 2026?,True,red_flag,True,0.3135,0.5111,0.9208,"THICK market moved by a few wallets (top1=31%, top3=51%, gini=0.92)"
+630773,Will the Republicans win the Maine Senate race in 2026?,True,red_flag,True,0.1732,0.3839,0.8976,"THICK market moved by a few wallets (top1=17%, top3=38%, gini=0.90)"
+630746,Will the Democrats win the Kansas Senate race in 2026?,True,red_flag,True,0.2944,0.5014,0.8911,"THICK market moved by a few wallets (top1=29%, top3=50%, gini=0.89)"
+601920,Will any presidential candidate win outright in the first round of the Brazil election?,True,red_flag,True,0.0841,0.1855,0.853,"THICK market moved by a few wallets (top1=8%, top3=19%, gini=0.85)"
+629398,Will the Republicans win the Iowa governor race in 2026?,True,red_flag,True,0.0946,0.2102,0.805,"THICK market moved by a few wallets (top1=9%, top3=21%, gini=0.81)"
+631058,Will the Republicans win the Ohio Senate race in 2026?,True,red_flag,True,0.1754,0.3831,0.9108,"THICK market moved by a few wallets (top1=18%, top3=38%, gini=0.91)"
+630706,Will the Republicans win the Idaho Senate race in 2026?,True,red_flag,True,0.341,0.4679,0.8539,"THICK market moved by a few wallets (top1=34%, top3=47%, gini=0.85)"
+629271,Will the Republicans win the Alabama governor race in 2026?,True,diffuse,False,0.1187,0.2771,0.7019,wallet participation is diffuse
+629518,Will the Democrats win the New Hampshire governor race in 2026?,True,diffuse,False,0.1106,0.2541,0.7454,wallet participation is diffuse
+631057,Will the Democrats win the Ohio Senate race in 2026?,True,red_flag,True,0.193,0.4472,0.9431,"THICK market moved by a few wallets (top1=19%, top3=45%, gini=0.94)"
+651327,"Will Gavin Newsom announce a Presidential run by December 31, 2026?",True,diffuse,False,0.0897,0.2259,0.7894,wallet participation is diffuse
+665261,Will Donald Trump visit Canada in 2026?,True,diffuse,False,0.0739,0.2038,0.6417,wallet participation is diffuse
+629324,Will the Democrats win the Florida governor race in 2026?,True,red_flag,True,0.2584,0.474,0.8881,"THICK market moved by a few wallets (top1=26%, top3=47%, gini=0.89)"
+637910,Mitch McConnell steps down from Senate before his term ends?,True,red_flag,True,0.2907,0.4726,0.9183,"THICK market moved by a few wallets (top1=29%, top3=47%, gini=0.92)"
+629413,Will the Republicans win the Kansas governor race in 2026?,True,red_flag,True,0.2996,0.5193,0.8322,"THICK market moved by a few wallets (top1=30%, top3=52%, gini=0.83)"
+631018,Will the Republicans win the Mississippi Senate race in 2026?,True,red_flag,True,0.2754,0.4851,0.8617,"THICK market moved by a few wallets (top1=28%, top3=49%, gini=0.86)"
+593977,Will Bernie endorse Alan Grayson for FL-Sen Nov 2 2026 ET?,True,diffuse,False,0.0907,0.192,0.6532,wallet participation is diffuse
+653788,OpenAI announces it has achieved AGI before 2027?,True,red_flag,True,0.1465,0.2545,0.8366,"THICK market moved by a few wallets (top1=15%, top3=25%, gini=0.84)"
+562830,"2026 Balance of Power: R Senate, D House",True,red_flag,True,0.1631,0.3744,0.9008,"THICK market moved by a few wallets (top1=16%, top3=37%, gini=0.90)"
+629558,Will the Republicans win the Ohio governor race in 2026?,True,red_flag,True,0.2737,0.3707,0.8793,"THICK market moved by a few wallets (top1=27%, top3=37%, gini=0.88)"
+630845,Will the Republicans win the New Hampshire Senate race in 2026?,True,red_flag,True,0.2519,0.4683,0.8897,"THICK market moved by a few wallets (top1=25%, top3=47%, gini=0.89)"
+629720,Will the Democrats win the Wisconsin governor race in 2026?,True,red_flag,True,0.1565,0.3347,0.8946,"THICK market moved by a few wallets (top1=16%, top3=33%, gini=0.89)"
+665218,Israel and Saudi Arabia normalize relations before 2027?,True,red_flag,True,0.107,0.2077,0.8325,"THICK market moved by a few wallets (top1=11%, top3=21%, gini=0.83)"
+629397,Will the Democrats win the Iowa governor race in 2026?,True,diffuse,False,0.0606,0.1725,0.7746,wallet participation is diffuse
+629325,Will the Republicans win the Florida governor race in 2026?,True,red_flag,True,0.1436,0.2464,0.8612,"THICK market moved by a few wallets (top1=14%, top3=25%, gini=0.86)"
+629519,Will the Republicans win the New Hampshire governor race in 2026?,True,diffuse,False,0.2945,0.423,0.7964,wallet participation is diffuse
+630844,Will the Democrats win the New Hampshire Senate race in 2026?,True,red_flag,True,0.0865,0.2351,0.8485,"THICK market moved by a few wallets (top1=9%, top3=24%, gini=0.85)"
+616903,Will 1 Fed rate cut happen in 2026?,True,red_flag,True,0.1197,0.268,0.8442,"THICK market moved by a few wallets (top1=12%, top3=27%, gini=0.84)"
+629505,Will the Democrats win the Nevada governor race in 2026?,True,red_flag,True,0.2541,0.3893,0.8436,"THICK market moved by a few wallets (top1=25%, top3=39%, gini=0.84)"
+631017,Will the Democrats win the Mississippi Senate race in 2026?,True,red_flag,True,0.2354,0.4082,0.8172,"THICK market moved by a few wallets (top1=24%, top3=41%, gini=0.82)"
+629557,Will the Democrats win the Ohio governor race in 2026?,True,red_flag,True,0.1186,0.2537,0.8424,"THICK market moved by a few wallets (top1=12%, top3=25%, gini=0.84)"
+601922,Will Luiz Inácio Lula da Silva qualify for Brazil's presidential runoff?,True,red_flag,True,0.376,0.476,0.9337,"THICK market moved by a few wallets (top1=38%, top3=48%, gini=0.93)"
+629270,Will the Democrats win the Alabama governor race in 2026?,True,diffuse,False,0.2235,0.4405,0.7436,wallet participation is diffuse
+562828,"2026 Balance of Power: D Senate, D House",True,red_flag,True,0.1318,0.3046,0.9209,"THICK market moved by a few wallets (top1=13%, top3=30%, gini=0.92)"
+562803,Will the Republican Party control the House after the 2026 Midterm elections?,True,red_flag,True,0.1457,0.4058,0.9396,"THICK market moved by a few wallets (top1=15%, top3=41%, gini=0.94)"
+648383,Billionaire one-time wealth tax passes in California election 2026?,True,red_flag,True,0.1428,0.3723,0.8856,"THICK market moved by a few wallets (top1=14%, top3=37%, gini=0.89)"
+562794,Will the Republican Party control the Senate after the 2026 Midterm elections?,True,red_flag,True,0.0908,0.2609,0.9174,"THICK market moved by a few wallets (top1=9%, top3=26%, gini=0.92)"
+608565,Will Lionel Messi win the 2026 Ballon d'Or?,True,red_flag,True,0.1708,0.4348,0.8555,"THICK market moved by a few wallets (top1=17%, top3=43%, gini=0.86)"
+656313,OpenAI $1t+ IPO before 2027?,True,red_flag,True,0.1613,0.2923,0.8375,"THICK market moved by a few wallets (top1=16%, top3=29%, gini=0.84)"
+630833,Will an Independent win the Montana Senate race in 2026?,True,diffuse,False,0.2005,0.3141,0.7633,wallet participation is diffuse
+629412,Will the Democrats win the Kansas governor race in 2026?,True,diffuse,False,0.0979,0.1973,0.7162,wallet participation is diffuse
+665224,Ukraine signs peace deal with Russia before 2027?,True,red_flag,True,0.1144,0.2437,0.8564,"THICK market moved by a few wallets (top1=11%, top3=24%, gini=0.86)"
+630939,Will Brian Bengs win the South Dakota Senate race in 2026?,True,concentrated_thin,False,0.2972,0.6011,0.6211,"concentrated, but market is thin where concentration is unremarkable"
+630977,Will the Republicans win the Virginia Senate race in 2026?,True,diffuse,False,0.2533,0.5273,0.7957,wallet participation is diffuse
+630964,Will the Republicans win the Texas Senate race in 2026?,True,red_flag,True,0.2279,0.3842,0.914,"THICK market moved by a few wallets (top1=23%, top3=38%, gini=0.91)"
+629465,Will the Republicans win the Michigan governor race in 2026?,True,diffuse,False,0.1189,0.2233,0.7554,wallet participation is diffuse
+629545,Will the Republicans win the New York governor race in 2026?,True,red_flag,True,0.1741,0.3272,0.8487,"THICK market moved by a few wallets (top1=17%, top3=33%, gini=0.85)"
+630924,Will the Democrats win the South Carolina Senate race in 2026?,True,red_flag,True,0.2987,0.4981,0.9408,"THICK market moved by a few wallets (top1=30%, top3=50%, gini=0.94)"
+630883,Will the Democrats win the North Carolina Senate race in 2026?,True,red_flag,True,0.1463,0.3721,0.8685,"THICK market moved by a few wallets (top1=15%, top3=37%, gini=0.87)"
+630884,Will the Republicans win the North Carolina Senate race in 2026?,True,red_flag,True,0.2113,0.2849,0.8379,"THICK market moved by a few wallets (top1=21%, top3=28%, gini=0.84)"
+630627,Will the Democrats win the Alabama Senate race in 2026?,True,red_flag,True,0.4742,0.5656,0.8155,"THICK market moved by a few wallets (top1=47%, top3=57%, gini=0.82)"
+562793,Will the Democratic Party control the Senate after the 2026 Midterm elections?,True,red_flag,True,0.1232,0.3162,0.9129,"THICK market moved by a few wallets (top1=12%, top3=32%, gini=0.91)"
+629490,Will the Democrats win the Nebraska governor race in 2026?,True,diffuse,False,0.1373,0.331,0.7316,wallet participation is diffuse
+629721,Will the Republicans win the Wisconsin governor race in 2026?,True,red_flag,True,0.2775,0.375,0.8389,"THICK market moved by a few wallets (top1=28%, top3=37%, gini=0.84)"
+629531,Will the Democrats win the New Mexico governor race in 2026?,True,red_flag,True,0.1988,0.4564,0.8204,"THICK market moved by a few wallets (top1=20%, top3=46%, gini=0.82)"
+630818,Will the Democrats win the Minnesota Senate race in 2026?,True,red_flag,True,0.1534,0.2739,0.8322,"THICK market moved by a few wallets (top1=15%, top3=27%, gini=0.83)"
+665262,Will Donald Trump visit Mexico in 2026?,True,diffuse,False,0.1563,0.3699,0.7279,wallet participation is diffuse
+630679,Will the Democrats win the Delaware Senate race in 2026?,True,diffuse,False,0.1041,0.2879,0.7471,wallet participation is diffuse
+630819,Will the Republicans win the Minnesota Senate race in 2026?,True,red_flag,True,0.1708,0.3427,0.8149,"THICK market moved by a few wallets (top1=17%, top3=34%, gini=0.81)"
+665243,NATO article 5 before 2027?,True,red_flag,True,0.126,0.3127,0.8562,"THICK market moved by a few wallets (top1=13%, top3=31%, gini=0.86)"
+629653,Will the Democrats win the South Dakota governor race in 2026?,True,diffuse,False,0.2662,0.4417,0.7751,wallet participation is diffuse
+630963,Will the Democrats win the Texas Senate race in 2026?,True,red_flag,True,0.0634,0.1816,0.8988,"THICK market moved by a few wallets (top1=6%, top3=18%, gini=0.90)"
+629451,Will the Democrats win the Massachusetts governor race in 2026?,True,red_flag,True,0.1616,0.3657,0.8478,"THICK market moved by a few wallets (top1=16%, top3=37%, gini=0.85)"
+616902,Will no Fed rate cuts happen in 2026?,True,red_flag,True,0.1707,0.4232,0.9316,"THICK market moved by a few wallets (top1=17%, top3=42%, gini=0.93)"
+562802,Will the Democratic Party control the House after the 2026 Midterm elections?,True,red_flag,True,0.2998,0.4326,0.9259,"THICK market moved by a few wallets (top1=30%, top3=43%, gini=0.93)"
+630976,Will the Democrats win the Virginia Senate race in 2026?,True,red_flag,True,0.2895,0.4473,0.8289,"THICK market moved by a few wallets (top1=29%, top3=45%, gini=0.83)"
+629477,Will the Democrats win the Minnesota governor race in 2026?,True,diffuse,False,0.0855,0.2074,0.7965,wallet participation is diffuse
+630912,Will the Republicans win the Rhode Island Senate race in 2026?,True,red_flag,True,0.7748,0.8609,0.9064,"THICK market moved by a few wallets (top1=77%, top3=86%, gini=0.91)"
+631031,Will the Republicans win the Oklahoma Senate race in 2026?,True,concentrated_thin,False,0.2511,0.5263,0.8653,"concentrated, but market is thin where concentration is unremarkable"
+629184,Will the Republicans win the Arizona governor race in 2026?,True,red_flag,True,0.1932,0.3594,0.8386,"THICK market moved by a few wallets (top1=19%, top3=36%, gini=0.84)"
+629571,Will the Republicans win the Oklahoma governor race in 2026?,True,diffuse,False,0.1339,0.3379,0.7937,wallet participation is diffuse
+630911,Will the Democrats win the Rhode Island Senate race in 2026?,True,diffuse,False,0.216,0.3891,0.7666,wallet participation is diffuse
+630705,Will the Democrats win the Idaho Senate race in 2026?,True,diffuse,False,0.1555,0.4295,0.7821,wallet participation is diffuse
+630950,Will the Democrats win the Tennessee Senate race in 2026?,True,diffuse,False,0.1532,0.3339,0.7258,wallet participation is diffuse
+593978,Will Bernie endorse Zach Wahls for IA-Sen Nov 2 2026 ET?,True,diffuse,False,0.0711,0.1964,0.7196,wallet participation is diffuse
+629351,Will the Republicans win the Hawaii governor race in 2026?,True,red_flag,True,0.3114,0.4877,0.7335,"THICK market moved by a few wallets (top1=31%, top3=49%, gini=0.73)"
+630693,Will the Republicans win the Georgia Senate race in 2026?,True,red_flag,True,0.195,0.3787,0.8682,"THICK market moved by a few wallets (top1=19%, top3=38%, gini=0.87)"
+656312,Will OpenAI IPO by December 31 2026?,True,red_flag,True,0.0709,0.2023,0.8447,"THICK market moved by a few wallets (top1=7%, top3=20%, gini=0.84)"
