@@ -33,6 +33,9 @@ def _isolated(tmp_path: Path):
     settings.raw["card_mode"] = "mock"
     settings.raw.setdefault("screener", {})["mode"] = "mock"
     settings.raw.setdefault("newslag", {})["mode"] = "mock"  # keep Stage 5 offline too
+    # The committed config caps live cards (top_n) for cost and runtime; the test
+    # checks every fixture market gets a card, so restore the uncapped selection.
+    settings.raw.setdefault("cards", {})["generate_for"] = "all_markets"
     return settings
 
 

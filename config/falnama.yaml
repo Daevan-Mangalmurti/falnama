@@ -42,7 +42,9 @@ llm:
   # Scenario cards keep the large model above.
   screener_model: claude-haiku-4-5-20251001
   api_key_env_var: ANTHROPIC_API_KEY # the env var holding the key; never hardcode the key
-  timeout_seconds: 60
+  # Per-call limit. An Opus card that reasons first routinely needs more than
+  # 60s; a cut-off call is retried by the SDK, so too low a limit wastes minutes.
+  timeout_seconds: 180
 
 # -----------------------------------------------------------------------------
 # Data source
@@ -239,8 +241,11 @@ anomaly:
 # plausible asset implications. Created BEFORE recommendations, never edited.
 # -----------------------------------------------------------------------------
 cards:
-  generate_for: all_markets          # all_markets | top_n | manual_ids
-  top_n: 20                          # used when generate_for: top_n
+  # Live cards are one Opus call each, run in sequence (~30-90s apiece), so
+  # all_markets on a ~250-market universe cannot finish inside the workflow's
+  # 20-minute limit. top_n keeps the live run bounded (and affordable).
+  generate_for: top_n                # all_markets | top_n | manual_ids
+  top_n: 5                           # used when generate_for: top_n
   manual_ids: []                     # used when generate_for: manual_ids
   immutable: true                    # regeneration writes a NEW card, never overwrites
   prediction_window: "12h"           # horizon the card reasons over
