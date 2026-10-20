@@ -1,0 +1,72 @@
+{
+  "card_id": "665419_20261020T175645Z",
+  "card_version": "v1",
+  "card_hash": "70e3adf7055f7fcfaf82ce797e677b347fd501a866bb95b9625e792bef48f605",
+  "do_not_revise": true,
+  "created_time_utc": "2026-10-20T17:56:45Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665419",
+    "market_slug": "milei-out-as-president-of-argentina-before-2027",
+    "market_name": "Milei out as President of Argentina before 2027?",
+    "market_url": "https://polymarket.com/market/milei-out-as-president-of-argentina-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Milei out as President of Argentina before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Argentine equity risk (Global X MSCI Argentina ETF)",
+      "ticker": "ARGT",
+      "tradable_instrument_name": "Global X MSCI Argentina ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -850.0,
+      "confidence": 0.5,
+      "confidence_interval_bps": [
+        -2000.0,
+        300.0
+      ],
+      "trade_eligibility": {
+        "eligible": true,
+        "reason": "Meets minimum expected move.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket probability spike is corroborated by any Argentine news (protests, cabinet resignations, health, impeachment chatter) or is thin/illiquid noise. Compare ARGT pre-market/live quote vs prior close.",
+        "1h": "Confirm direction and volume in ARGT; cross-check Argentine sovereign USD bonds (GD30/AL30) and any ADR moves (YPF, BMA, GGAL) for consistent risk-off.",
+        "2h": "Assess whether the move is sustained or mean-reverting; look for official Argentine government statements denying/confirming. Fade if no corroboration emerges.",
+        "6h": "Re-evaluate against peso (blue/official) and country-risk (EMBI) signals; determine if the prediction-market move is leading or lagging public reporting.",
+        "12h": "Mark final ARGT return vs entry; log whether any public event materialized that justified the probability move, for post-hoc leak analysis."
+      },
+      "reasoning": "Milei is the central driver of Argentina's market-friendly reform narrative (fiscal austerity, deregulation, inflation stabilization, FX normalization). A sharp jump in the implied probability that he leaves office before 2027 signals rising political instability and a potential reversal of the reform agenda. ARGT is the most liquid US-listed proxy for Argentine equity risk; names like YPF, Banco Macro, Grupo Galicia dominate it and are highly sensitive to policy continuity. A credible spike in removal/resignation odds would drive ARGT sharply lower on de-risking. The magnitude can exceed 700bps because Argentine assets are high-beta to political shock."
+    }
+  ],
+  "evidence_used": [
+    "Market question ties directly to continuation of Milei's presidency, the key variable behind Argentina's reform rally",
+    "ARGT is a liquid, broadly-traded proxy concentrated in Argentine large-caps sensitive to policy continuity",
+    "Argentine assets historically exhibit high volatility and large political-risk betas"
+  ],
+  "uncertainty_notes": [
+    "Prediction markets are noisy; a probability move may reflect illiquidity or speculation rather than real information",
+    "Direction depends on which way the implied probability moves \u2014 a decline in 'out' odds would be bullish ARGT",
+    "Timing mismatch: a 12h window may not capture resolution-relevant news; political tail events are rare",
+    "ARGT also carries broad EM/USD and commodity beta that can dilute the Argentina-specific signal"
+  ],
+  "llm_justification": {
+    "summary": "The market prices the risk that Javier Milei leaves office before 2027. Because Milei personifies Argentina's market-friendly reform program, a sharp increase in the implied probability of his departure maps to higher Argentine political risk and lower Argentine asset prices. The cleanest liquid proxy is ARGT (Global X MSCI Argentina ETF): rising 'Milei out' odds imply ARGT down, potentially materially given high-beta Argentine assets. The signal is directional and conditional on the probability actually spiking; absent that move the thesis is neutral.",
+    "key_assumptions": [
+      "The relevant signal is a sharp move in the market's implied probability, not the static question",
+      "Milei's continuity is the dominant driver of Argentine asset sentiment",
+      "ARGT remains a faithful, tradable proxy for Argentine equity/political risk"
+    ],
+    "failure_modes": [
+      "Probability move is thin/illiquid Polymarket noise with no real information content",
+      "The event or rumor is already public and priced into ARGT, leaving no edge",
+      "Probability moves toward 'No' (Milei safer), inverting the predicted direction",
+      "ARGT's broad EM/USD/commodity exposure overwhelms the Argentina-specific political signal over 12h",
+      "A denial or stabilization quickly reverses any initial de-risking move"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "card_id": "616908_20261020T175645Z",
+  "card_version": "v1",
+  "card_hash": "9d072ca4dd3a42be9d105771b9aa540fe8a1e4cfbbe4a22b45025b111851a0df",
+  "do_not_revise": true,
+  "created_time_utc": "2026-10-20T17:56:45Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616908",
+    "market_slug": "will-6-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 6 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-6-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 6 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-dated US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -80.0,
+        220.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the market probability move is sustained or a thin-liquidity blip; cross-check with 2y/10y yields and fed funds futures (SOFR) for confirmation.",
+        "1h": "Compare TLT move to SHY/IEF (front/belly) \u2014 if curve is bull-steepening via front end, confirms dovish rate-path read.",
+        "2h": "Look for any macro catalyst (CPI, jobs, Fed speak) that may already be public and driving both the market and bonds.",
+        "6h": "Re-assess whether yields holding lower or mean-reverting; check dollar and gold for corroboration of a dovish regime.",
+        "12h": "Evaluate net TLT move vs expectation; note if signal faded, indicating noise rather than genuine information leakage."
+      },
+      "reasoning": "A sharp rise in the implied probability of six 25bp Fed cuts in 2026 reflects a dovish repricing of the policy path (weaker growth/inflation or recession fears). That lowers the expected path of the fed funds rate, pulling Treasury yields down and bond prices up. TLT is the most rate-sensitive liquid proxy, so a dovish shift should lift it. The effect on the long end is muted vs the front end because six cuts is mostly a front/belly story and long yields also embed growth/term-premium dynamics."
+    },
+    {
+      "asset": "US Dollar",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -40.0,
+      "confidence": 0.38,
+      "confidence_interval_bps": [
+        -150.0,
+        70.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm the probability move is real; check DXY and EURUSD for immediate direction.",
+        "1h": "Determine if the dovish repricing is US-specific (dollar-negative) or global risk-off (dollar could rally).",
+        "2h": "Watch rate differentials (US vs German/JGB yields) to gauge FX driver.",
+        "6h": "Reassess dollar trend and whether safe-haven flows are overwhelming the rate-differential channel.",
+        "12h": "Score UUP move vs thesis; flag if dollar rose despite dovish odds (haven dominance), falsifying the simple rate-differential mapping."
+      },
+      "reasoning": "More expected Fed cuts narrows US rate differentials versus other economies, typically a headwind for the dollar. A sharp rise in six-cut odds would therefore tend to weaken the broad dollar, with UUP a liquid proxy. The move is small and noisy because FX also depends on relative central-bank stances abroad; if the dovish shift reflects global risk-off, the dollar could instead strengthen as a haven, which caps confidence."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies probability of six 25bp Fed cuts in 2026, a strongly dovish policy-path scenario",
+    "Standard macro linkage: more expected cuts => lower expected fed funds path => lower yields, weaker dollar, supportive for gold",
+    "Liquid rate/FX proxies (TLT, UUP) respond to shifts in expected Fed policy"
+  ],
+  "uncertainty_notes": [
+    "The 700bps tradability threshold is far above realistic 12h moves for these liquid proxies, so neither prediction is tradable by that bar",
+    "Direction of the market move (rising vs falling six-cut odds) is not specified; thesis assumes a sharp INCREASE in dovish odds",
+    "Dovish repricing driven by recession fears could trigger risk-off that strengthens the dollar, reversing the FX call",
+    "Topic tag 'military_conflict' seems mislabeled; treated as a pure Fed-policy market"
+  ],
+  "llm_justification": {
+    "summary": "This is a US monetary-policy market: a jump in the odds of six 2026 rate cuts signals a dovish repricing of the Fed path. The cleanest liquid implications are lower Treasury yields (TLT up) and a softer dollar (UUP down). Both effects are modest and noisy over a 12h window \u2014 well below the 700bps tradable threshold \u2014 and could reverse if the dovish signal reflects recession/risk-off dynamics that bid the dollar as a haven. Confidence is low; this is a weak, noisy mapping rather than a clean signal.",
+    "key_assumptions": [
+      "The anomaly is a sharp INCREASE in the implied probability of six cuts (more dovish)",
+      "The move reflects genuine policy-path information, not thin-market noise",
+      "No offsetting global central-bank or risk-off dynamics dominate",
+      "Standard rate-differential and duration channels hold"
+    ],
+    "failure_modes": [
+      "The dovish shift stems from recession fear, causing risk-off that strengthens USD and muddies TLT (credit/term-premium effects)",
+      "Information is already public (e.g., post-CPI/jobs/Fed-speak), so assets already priced it and no leakage edge exists",
+      "Proxies are weakly exposed: six cuts is a front-end story while TLT is long-end; UUP depends heavily on foreign central banks",
+      "The prediction-market move reverses as a liquidity blip, with no corresponding asset move",
+      "Moves are an order of magnitude below the 700bps tradability bar, so signal is non-actionable even if directionally right"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

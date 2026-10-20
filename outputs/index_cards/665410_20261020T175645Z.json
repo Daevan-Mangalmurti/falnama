@@ -1,0 +1,98 @@
+{
+  "card_id": "665410_20261020T175645Z",
+  "card_version": "v1",
+  "card_hash": "6116b06e5c1b000f2bec3d675f2213f2099a4bbd57a7c4bb6d592b904e3bf9d0",
+  "do_not_revise": true,
+  "created_time_utc": "2026-10-20T17:56:45Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665410",
+    "market_slug": "will-ukraine-agree-to-give-up-the-rest-of-donbas-before-2027",
+    "market_name": "Will Ukraine agree to give up the rest of Donbas before 2027?",
+    "market_url": "https://polymarket.com/market/will-ukraine-agree-to-give-up-the-rest-of-donbas-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Ukraine agree to give up the rest of Donbas before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Poland equity (geopolitical risk proxy for Russia-Ukraine de-escalation)",
+      "ticker": "EPOL",
+      "tradable_instrument_name": "iShares MSCI Poland ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 250.0,
+      "confidence": 0.32,
+      "confidence_interval_bps": [
+        -150.0,
+        700.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move coincides with concrete diplomatic headlines (ceasefire talks, Witkoff/Putin/Zelensky statements) versus thin-liquidity noise on Polymarket.",
+        "1h": "Compare EPOL/zloty premarket or intraday reaction to European equity futures and gas; confirm correlated risk-on across the region.",
+        "2h": "Reassess if the prob move holds or fades; look for official Ukrainian/Russian denials that would reverse the thesis.",
+        "6h": "Evaluate whether mainstream wire services corroborate any deal; a confirmed public report means the information is no longer a leak and move may be priced.",
+        "12h": "Mark-to-market EPOL vs entry, note whether move exceeded the 700bps tradable threshold and whether diplomatic narrative sustained."
+      },
+      "reasoning": "A sharp rise in the implied probability that Ukraine cedes Donbas under a diplomatic deal signals real progress toward a Russia-Ukraine settlement. Poland is the most liquid frontline-adjacent equity market; de-escalation compresses the regional war-risk premium, lowers reconstruction/refugee overhangs, and tends to lift Polish equities and the zloty. EPOL is a cleaner, liquid proxy than single names."
+    },
+    {
+      "asset": "European natural gas risk premium",
+      "ticker": "BOIL",
+      "tradable_instrument_name": "ProShares Ultra Bloomberg Natural Gas (proxy for gas complex)",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -300.0,
+      "confidence": 0.28,
+      "confidence_interval_bps": [
+        -800.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify the Polymarket move is backed by genuine ceasefire/diplomatic signals rather than low-liquidity repricing.",
+        "1h": "Look at European TTF futures directly if accessible; US gas proxy may diverge due to weather/storage drivers unrelated to the war.",
+        "2h": "Check whether energy desks attribute any gas move to Ukraine headlines versus domestic supply/demand factors.",
+        "6h": "Reassess proxy validity; if US gas is dominated by weather, down-weight or drop this leg.",
+        "12h": "Mark-to-market and record that European gas, not US gas, is the true exposure; note mapping weakness in postmortem."
+      },
+      "reasoning": "Progress toward a Ukraine-Russia settlement would ease the war-risk premium embedded in European energy, with potential for eventual Russian pipeline flows to normalize. European TTF gas is the cleanest beneficiary, but it is hard to trade directly; US-listed gas proxies are weakly correlated to European gas, so this mapping is deliberately low-confidence. Direction is down on de-escalation, magnitude uncertain and proxy is noisy."
+    }
+  ],
+  "evidence_used": [
+    "Market question ties a specific, verifiable diplomatic event (Ukraine ceding de facto control of named Donbas cities) to a Russia-Ukraine peace agreement",
+    "Historical pattern: Russia-Ukraine de-escalation news lifts regional (Polish) equities and the zloty and compresses European energy risk premia",
+    "Polymarket probability as a noisy early sensor of settlement odds"
+  ],
+  "uncertainty_notes": [
+    "A probability spike may reflect thin liquidity or a single rumor, not real diplomatic progress",
+    "If a deal is already widely reported, the move is public and largely priced into assets",
+    "US-listed gas ETFs are weak proxies for European TTF gas, the true war-risk-premium instrument",
+    "A ceded-Donbas deal could be read as Russian strength/escalation elsewhere, muddying risk-on interpretation"
+  ],
+  "llm_justification": {
+    "summary": "The market prices the odds of a diplomatic deal where Ukraine cedes de facto control of remaining Donbas cities to Russia. A sharp rise in this probability signals genuine settlement progress, which historically compresses regional war-risk premia: Polish equities (EPOL) and the zloty tend to rally, and European natural gas risk premium eases. Both mappings are indirect and low-confidence given Polymarket noise and weak US-listed gas proxies; neither reliably clears the 700bps tradable bar within 12h, so this is flagged as a weak, research-only signal.",
+    "key_assumptions": [
+      "A probability jump reflects real, not-yet-public diplomatic progress toward a settlement",
+      "De-escalation is interpreted by markets as net risk-on for the region",
+      "EPOL and the zloty remain the most liquid tradable proxies for Russia-Ukraine geopolitical risk"
+    ],
+    "failure_modes": [
+      "The move is driven by low-liquidity noise or a rumor that is quickly denied, reversing within hours",
+      "A deal is already in mainstream reporting, so assets have priced it and no edge exists",
+      "US gas proxy decouples from European gas due to weather/storage, invalidating the energy leg",
+      "Ceding territory is read as Russian strength and future escalation risk, flipping the equity sign",
+      "12h magnitude is well below 700bps, making the signal untradable under the stated threshold"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
