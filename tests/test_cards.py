@@ -80,3 +80,73 @@ def test_live_path_builds_a_valid_card(monkeypatch):
     assert card["predictions"][0]["ticker"] == "USO"  # normalized to upper-case
     assert card["llm_justification"]["failure_modes"] == ["the move reverses"]
     assert card["card_hash"] == cards.canonical_hash(card)
+
+
+# ---------------------------------------------------------------------------
+# Reuse: a still-valid card covers its market instead of a new one being written
+# ---------------------------------------------------------------------------
+NOW = "2026-10-20T12:00:00Z"
+
+
+def _settings(**cards_cfg):
+    s = load_config()
+    s.raw["card_mode"] = "mock"
+    s.raw["cards"] = {**s.raw.get("cards", {}), "generate_for": "all_markets",
+                      "reuse_existing": True, "reuse_max_age_days": 7, **cards_cfg}
+    return s
+
+
+def _markets(*rows):
+    import pandas as pd
+    return pd.DataFrame([{"market_id": mid, "market_slug": mid, "market_name": name,
+                          "market_url": None, "relevance_score": score} for mid, name, score in rows])
+
+
+def _card_at(settings, market_id, name, created):
+    ctx = {"market_id": market_id, "market_slug": market_id, "market_name": name, "market_url": None}
+    return cards.generate_card(ctx, settings, created_time_utc=created)
+
+
+def test_fresh_card_is_reused_not_regenerated():
+    s = _settings()
+    old = _card_at(s, "m1", "Will X happen?", "2026-10-18T12:00:00Z")
+    plan = cards.plan_cards(_markets(("m1", "Will X happen?", 80)), [old], s, now=NOW)
+    assert plan.to_generate == [] and [c["card_id"] for c in plan.reused] == [old["card_id"]]
+
+
+def test_stale_renamed_or_future_cards_are_not_reused():
+    s = _settings()
+    stale = _card_at(s, "m1", "Will X happen?", "2026-10-12T12:00:00Z")    # 8 days old
+    renamed = _card_at(s, "m2", "Old wording?", "2026-10-19T12:00:00Z")   # question changed
+    future = _card_at(s, "m3", "Will Z happen?", "2026-10-21T12:00:00Z")  # after the run
+    markets = _markets(("m1", "Will X happen?", 80), ("m2", "New wording?", 80), ("m3", "Will Z happen?", 80))
+    plan = cards.plan_cards(markets, [stale, renamed, future], s, now=NOW)
+    assert plan.reused == [] and len(plan.to_generate) == 3
+
+
+def test_mock_card_never_stands_in_for_a_live_card():
+    s = _settings()
+    mock_card = _card_at(s, "m1", "Will X happen?", "2026-10-19T12:00:00Z")
+    s.raw["card_mode"] = "live"
+    plan = cards.plan_cards(_markets(("m1", "Will X happen?", 80)), [mock_card], s, now=NOW)
+    assert plan.reused == [] and len(plan.to_generate) == 1
+
+
+def test_tampered_card_is_regenerated_and_reported():
+    s = _settings()
+    card = _card_at(s, "m1", "Will X happen?", "2026-10-19T12:00:00Z")
+    card["predictions"][0]["confidence"] = 0.99  # edited after the hash was stamped
+    plan = cards.plan_cards(_markets(("m1", "Will X happen?", 80)), [card], s, now=NOW)
+    assert plan.reused == [] and len(plan.to_generate) == 1
+    assert plan.hash_mismatches == [card["card_id"]]
+
+
+def test_top_n_caps_only_new_cards():
+    # The top market is already covered, so the one new card goes to the
+    # highest-relevance market WITHOUT a card — coverage grows at a fixed cost.
+    s = _settings(generate_for="top_n", top_n=1)
+    covered = _card_at(s, "a", "A?", "2026-10-19T12:00:00Z")
+    markets = _markets(("a", "A?", 90), ("b", "B?", 80), ("c", "C?", 70))
+    plan = cards.plan_cards(markets, [covered], s, now=NOW)
+    assert [c["source"]["market_id"] for c in plan.reused] == ["a"]
+    assert [r["market_id"] for r in plan.to_generate] == ["b"]

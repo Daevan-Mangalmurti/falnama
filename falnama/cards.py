@@ -12,6 +12,9 @@ ROLE:     Falnama's defense against EX-POST RATIONALIZATION. A card is written
           BEFORE any anomaly is acted on, is never edited in place, and is
           hashed so tampering is detectable. The recommender (Stage 4) refuses
           any card created after an anomaly's trigger time (unless backfill_mode).
+          A market whose card is still valid keeps it rather than getting a new
+          one each run (see `plan_cards`) — cheaper, and an older card is the
+          clearer pre-commitment.
 
 Two generation paths, chosen by `card_mode`:
   * mock → a deterministic placeholder card (no network, no key). Lets anyone
@@ -34,6 +37,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Literal
 
@@ -407,8 +411,8 @@ def load_cards(settings: Settings) -> list[dict[str, Any]]:
 # Stage entry point
 # ---------------------------------------------------------------------------
 def run(ctx: RunContext, markets: pd.DataFrame | None = None) -> list[Path]:
-    """Generate and write immutable cards for the configured subset of markets,
-    then record the batch in the manifest. Returns the written card paths."""
+    """Write cards for the markets that need one, reusing still-valid cards for
+    the rest, then record the batch in the manifest. Returns the NEW card paths."""
     from . import screen
 
     settings = ctx.settings
@@ -418,9 +422,11 @@ def run(ctx: RunContext, markets: pd.DataFrame | None = None) -> list[Path]:
     if markets is None:
         markets = io.read_table(universe)
 
-    subset = _card_markets(markets, settings)
+    existing = load_cards(settings) if settings.cards.get("reuse_existing", True) else []
+    plan = plan_cards(markets, existing, settings, now=ctx.run_time_utc)
+
     paths: list[Path] = []
-    for record in subset.to_dict(orient="records"):
+    for record in plan.to_generate:
         record.setdefault("source_market_file", universe.name)
         card = generate_card(record, settings, created_time_utc=ctx.run_time_utc)
         paths.append(write_card(settings, card))
@@ -428,19 +434,112 @@ def run(ctx: RunContext, markets: pd.DataFrame | None = None) -> list[Path]:
     io.update_manifest(ctx, "cards", {
         "card_mode": settings.card_mode,
         "cards_written": len(paths),
+        "cards_reused": len(plan.reused),
         "files": [str(p.relative_to(settings.project_root)) for p in paths],
+        "reused_card_ids": [c["card_id"] for c in plan.reused],
+        # A stored card whose hash no longer matches was edited after it was
+        # written. It is never reused (the market gets a fresh card instead), and
+        # it is named here so a reviewer can find out what happened to it.
+        "hash_mismatch_card_ids": plan.hash_mismatches,
     })
     return paths
 
 
+# ---------------------------------------------------------------------------
+# Deciding which markets need a NEW card (and which can keep the one they have)
+# ---------------------------------------------------------------------------
+@dataclass
+class CardPlan:
+    """The outcome of planning one run's cards."""
+
+    to_generate: list[dict[str, Any]]  # market records that get a new card
+    reused: list[dict[str, Any]]       # existing cards that still cover their market
+    hash_mismatches: list[str]         # card_ids that failed the tamper check
+
+
+def plan_cards(markets: pd.DataFrame, existing: list[dict[str, Any]], settings: Settings,
+               *, now: str) -> CardPlan:
+    """Split the target markets into "reuse the card it has" and "write a new one".
+
+    WHY REUSE: a card is a pre-commitment — a forward-looking hypothesis written
+    before any move. A card written three days ago is still a valid hypothesis
+    today, and it is a STRONGER one for the anti-ex-post rule, because it plainly
+    predates whatever the market does next. Rewriting it every run spends an Opus
+    call to replace good evidence with a newer copy of the same thing.
+
+    A card is reused only if ALL of these hold (see `_reusable`): same mode (a
+    mock placeholder never stands in for a live card), its hash still verifies,
+    the market's question text is unchanged, and it is no older than
+    `cards.reuse_max_age_days`.
+
+    With generate_for: top_n, the cap counts only NEW cards: each run spends at
+    most top_n calls on the highest-relevance markets that lack a valid card, so
+    coverage of the universe grows run over run at a fixed cost.
+    """
+    cfg = settings.cards
+    mode = str(cfg.get("generate_for", "all_markets"))
+    targets = _card_markets(markets, settings)
+    latest = _latest_card_by_market(existing, mock_mode=settings.card_mode == "mock")
+    max_age = pd.Timedelta(days=float(cfg.get("reuse_max_age_days", 7)))
+    run_time = pd.to_datetime(now, utc=True)
+
+    to_generate: list[dict[str, Any]] = []
+    reused: list[dict[str, Any]] = []
+    mismatches: list[str] = []
+    for record in targets.to_dict(orient="records"):
+        card = latest.get(str(io.clean_id(record.get("market_id"))))
+        verdict = _reusable(card, record, run_time, max_age) if card else "none"
+        if verdict == "reuse":
+            reused.append(card)
+        else:
+            if verdict == "hash_mismatch":
+                mismatches.append(card["card_id"])
+            to_generate.append(record)
+
+    if mode == "top_n":
+        to_generate = to_generate[:int(cfg.get("top_n", 20))]
+    return CardPlan(to_generate=to_generate, reused=reused, hash_mismatches=mismatches)
+
+
+def _latest_card_by_market(cards: list[dict[str, Any]], *, mock_mode: bool) -> dict[str, dict[str, Any]]:
+    """The newest card per market among cards of the current mode. Only the newest
+    needs checking: if it is too old or out of date, every older one is too."""
+    latest: dict[str, dict[str, Any]] = {}
+    for card in cards:
+        if bool(card.get("mock_mode")) != mock_mode:
+            continue
+        market_id = str((card.get("source") or {}).get("market_id"))
+        current = latest.get(market_id)
+        if current is None or str(card.get("created_time_utc", "")) > str(current.get("created_time_utc", "")):
+            latest[market_id] = card
+    return latest
+
+
+def _reusable(card: dict[str, Any], record: dict[str, Any], run_time: pd.Timestamp,
+              max_age: pd.Timedelta) -> str:
+    """'reuse', or the reason this card cannot cover the market this run."""
+    created = pd.to_datetime(card.get("created_time_utc"), utc=True, errors="coerce")
+    if pd.isna(created) or created > run_time:
+        return "bad_timestamp"   # a card from the future cannot be a pre-commitment
+    if run_time - created > max_age:
+        return "stale"
+    current_name = io.clean_id(record.get("market_name")) or "Unknown market"
+    if (card.get("source") or {}).get("market_name") != current_name:
+        return "question_changed"  # Polymarket re-worded it; the old analysis may not fit
+    if canonical_hash(card) != card.get("card_hash"):
+        return "hash_mismatch"
+    return "reuse"
+
+
 def _card_markets(markets: pd.DataFrame, settings: Settings) -> pd.DataFrame:
-    """Pick which selected markets get a card, per cards.generate_for."""
+    """The markets eligible for a card, per cards.generate_for. For top_n this is
+    every market in relevance order; `plan_cards` applies the cap after reuse."""
     cfg = settings.cards
     mode = str(cfg.get("generate_for", "all_markets"))
     if markets.empty or mode == "all_markets":
         return markets
     if mode == "top_n":
-        return markets.sort_values("relevance_score", ascending=False).head(int(cfg.get("top_n", 20)))
+        return markets.sort_values("relevance_score", ascending=False)
     if mode == "manual_ids":
         wanted = {str(m) for m in cfg.get("manual_ids", [])}
         return markets[markets["market_id"].astype(str).isin(wanted)]

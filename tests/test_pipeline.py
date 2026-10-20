@@ -99,3 +99,16 @@ def test_pipeline_backfill_produces_recommendations(tmp_path):
     ctx = run(settings)
     manifest = _manifest(settings, ctx.run_id)
     assert manifest["recommender"]["recommended_count"] >= 1
+
+
+def test_second_run_reuses_cards_instead_of_rewriting_them(tmp_path):
+    settings = _isolated(tmp_path)
+    run(settings)
+    card_dir = settings.output_dir("index_cards")
+    after_first = sorted(card_dir.glob("*.json"))
+    second = run(settings)
+    cards = _manifest(settings, second.run_id)["cards"]
+    assert cards["cards_written"] == 0 and cards["cards_reused"] == 6
+    assert cards["hash_mismatch_card_ids"] == []
+    # No new files, and the first run's cards are untouched (recommend reads them).
+    assert sorted(card_dir.glob("*.json")) == after_first and len(after_first) == 6

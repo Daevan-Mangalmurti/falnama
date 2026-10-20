@@ -245,9 +245,16 @@ cards:
   # all_markets on a ~250-market universe cannot finish inside the workflow's
   # 20-minute limit. top_n keeps the live run bounded (and affordable).
   generate_for: top_n                # all_markets | top_n | manual_ids
-  top_n: 5                           # used when generate_for: top_n
+  top_n: 5                           # top_n: max NEW cards per run (highest relevance first)
   manual_ids: []                     # used when generate_for: manual_ids
   immutable: true                    # regeneration writes a NEW card, never overwrites
+
+  # Reuse: a market that already has a valid card keeps it instead of paying for
+  # a fresh one. Valid = same mode (live/mock), hash still verifies, question text
+  # unchanged, and no older than reuse_max_age_days. Under top_n the cap counts
+  # only NEW cards, so card coverage grows run over run at a fixed daily cost.
+  reuse_existing: true
+  reuse_max_age_days: 7
   prediction_window: "12h"           # horizon the card reasons over
   minimum_expected_move_bps: 700     # a card is only "tradable" above this expected move
   allowed_asset_classes: [equity, etf, equity_index, fx_proxy, commodity, other]
