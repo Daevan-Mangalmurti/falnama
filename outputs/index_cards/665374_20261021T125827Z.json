@@ -1,0 +1,100 @@
+{
+  "card_id": "665374_20261021T125827Z",
+  "card_version": "v1",
+  "card_hash": "fa71ef53cc8a249d8ef08076f23477a3b68622210bfa0e576b7be0398e4e6299",
+  "do_not_revise": true,
+  "created_time_utc": "2026-10-21T12:58:27Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665374",
+    "market_slug": "will-the-us-invade-iran-before-2027",
+    "market_name": "Will the U.S. invade Iran before 2027?",
+    "market_url": "https://polymarket.com/market/will-the-us-invade-iran-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will the U.S. invade Iran before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 850.0,
+      "confidence": 0.6,
+      "confidence_interval_bps": [
+        300.0,
+        2000.0
+      ],
+      "trade_eligibility": {
+        "eligible": true,
+        "reason": "Meets minimum expected move.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether crude futures (CL) and Brent are gapping with the Polymarket move; confirm no contradicting OPEC/inventory headline is driving it independently.",
+        "1h": "Look for corroborating tape in defense stocks, gold, and VIX to confirm a coherent risk-off/war-premium regime rather than isolated oil noise.",
+        "2h": "Reassess whether escalation headlines (official statements, troop movements) have surfaced publicly; if still only market-implied, signal is more interesting.",
+        "6h": "Check for mean reversion in oil; evaluate whether the probability move held or faded, and whether Hormuz/tanker-traffic news emerged.",
+        "12h": "Final mark: did crude hold its premium into the window close? Log realized move vs. 850bps expectation and whether event became public."
+      },
+      "reasoning": "A sharp rise in the implied probability of a U.S. military offensive against Iran is the clearest oil catalyst available: Iran produces ~3mbd and sits on the Strait of Hormuz, through which ~20% of global oil flows. Any credible escalation toward invasion prices a war/supply-disruption premium into crude almost immediately. USO is a liquid, broadly-traded proxy for front-month WTI. If the market anomaly reflects genuine leaked escalation risk, oil is the highest-beta, most direct beneficiary."
+    },
+    {
+      "asset": "Gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 350.0,
+      "confidence": 0.5,
+      "confidence_interval_bps": [
+        50.0,
+        900.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm gold spot is moving with the probability shift and not being offset by a dollar spike.",
+        "1h": "Cross-check DXY and real yields; a strong USD safe-haven bid can cap gold's response.",
+        "2h": "Assess whether risk-off is broad (equities down, VIX up) supporting a sustained gold bid.",
+        "6h": "Evaluate persistence; geopolitical gold spikes often partially reverse within hours absent fresh news.",
+        "12h": "Final mark vs. 350bps expectation; note whether gold held gains or reverted and whether escalation became public."
+      },
+      "reasoning": "Escalation toward a U.S. invasion of Iran triggers classic safe-haven demand. Gold typically rallies on Middle East war-premium shocks alongside oil, though with lower beta than crude. GLD is the most liquid retail/institutional gold proxy. The move is directionally reliable but magnitude is usually smaller than oil and can be dampened if the same event pushes the dollar higher (competing safe haven) or yields up."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns a U.S. military offensive against Iran, a top-tier oil producer on the Strait of Hormuz",
+    "Iran produces ~3mbd and ~20% of seaborne oil transits Hormuz, making invasion risk a direct oil-supply shock",
+    "Historical pattern: Middle East escalation reliably bids crude and gold and pressures equities",
+    "ETFs USO and GLD are liquid, broadly-traded proxies for the underlying war-premium trades"
+  ],
+  "uncertainty_notes": [
+    "Base rate of an actual U.S. invasion is very low; most probability moves will be small and noisy rather than regime-changing",
+    "A probability spike may already reflect public headlines, meaning assets have already repriced before any anomaly is actionable",
+    "Oil's reaction depends on whether markets believe Hormuz flows are actually threatened vs. a contained strike",
+    "Gold's response can be muted or offset by a competing USD safe-haven bid and rising yields"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability of a U.S. invasion of Iran maps most directly to a crude oil war/supply-disruption premium (USO up) given Iran's production and control of the Strait of Hormuz, with a secondary safe-haven gold bid (GLD up). Oil is the highest-beta, most reliable proxy; gold is directionally supportive but lower magnitude. Both depend on the probability move reflecting genuine escalation risk rather than noise or already-public news.",
+    "key_assumptions": [
+      "A material probability increase reflects real, not-yet-fully-priced escalation risk",
+      "Markets would interpret invasion risk as threatening Iranian output and Hormuz transit",
+      "USO and GLD are adequate liquid proxies with meaningful sensitivity to the catalyst",
+      "The 12h window captures the initial repricing before mean reversion"
+    ],
+    "failure_modes": [
+      "The probability move is noise; oil and gold do not move materially, falling short of the 700bps tradable bar",
+      "The escalation is already public and fully priced, so no residual move remains",
+      "A U.S.-Iran de-escalation or diplomatic headline arrives, reversing both trades sharply",
+      "Oil fails to respond if markets judge Hormuz flows safe or if SPR/OPEC spare capacity offsets fear",
+      "Gold is capped or falls as a competing USD and higher-yield safe-haven bid dominates"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

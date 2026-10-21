@@ -1,0 +1,99 @@
+{
+  "card_id": "560317_20261021T125827Z",
+  "card_version": "v1",
+  "card_hash": "da6cba2f3c9863d3ea14c2f406d74645f00ab8e78624f63717f9a5f045294759",
+  "do_not_revise": true,
+  "created_time_utc": "2026-10-21T12:58:27Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "560317",
+    "market_slug": "putin-out-before-2027-346",
+    "market_name": "Putin out as President of Russia by December 31, 2026?",
+    "market_url": "https://polymarket.com/market/putin-out-before-2027-346",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Putin out as President of Russia by December 31, 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "commodity",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -400.0,
+        500.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket probability move is corroborated by any credible newswire (Reuters/Bloomberg) or is isolated market noise; note oil futures tick direction.",
+        "1h": "Compare Brent/WTI move vs baseline energy-sector moves to see if oil is actually reacting to the Russia signal or to broader macro.",
+        "2h": "Reassess whether implied vol in oil options has risen; a vol spike without clear direction supports 'unclear' classification.",
+        "6h": "Look for official Kremlin statements or denial; most such rumors reverse, so check if the prediction-market probability has decayed back.",
+        "12h": "Evaluate net oil move vs the 700bps tradable threshold; document whether the signal produced any durable directional edge or reverted to noise."
+      },
+      "reasoning": "Russia is one of the world's largest oil exporters, so any sharp repricing of 'Putin out' probability signals a regime-stability shock. The directional implication is genuinely ambiguous: a sudden removal/chaos scenario implies supply-disruption risk premium (oil up), while a scenario interpreted as a path to peace/sanctions relief implies more Russian barrels returning (oil down). Over a 12h window with only a probability shift (no confirmed event), the signal is weak and the proxy's response is dominated by other macro flows."
+    },
+    {
+      "asset": "European defense equities",
+      "ticker": "EUAD",
+      "tradable_instrument_name": "Select STOXX Europe Aerospace & Defense ETF",
+      "asset_class": "etf",
+      "expected_direction": "mixed",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.25,
+      "confidence_interval_bps": [
+        -350.0,
+        350.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether the probability move reflects an actual news catalyst versus thin-market noise.",
+        "1h": "Check defense-sector price action vs broad European indices to isolate any conflict-driven repricing.",
+        "2h": "Monitor Ukrainian/Russian official commentary and any ceasefire-related headlines that would clarify direction.",
+        "6h": "Reassess whether the political-instability narrative is strengthening (escalation) or being framed as peace-path (de-escalation).",
+        "12h": "Document net move vs 700bps threshold; note that absence of a confirmed regime event most likely leaves this proxy range-bound."
+      },
+      "reasoning": "A shift in Putin's tenure probability alters the perceived trajectory of the Russia-Ukraine conflict. A succession/instability scenario could be read as either escalation risk (bullish defense) or a path toward de-escalation and lower long-run defense spending (bearish defense). Because both narratives are plausible and a probability shift is far from a confirmed event, the net effect on European defense names over 12h is highly uncertain and likely small."
+    }
+  ],
+  "evidence_used": [
+    "Market question on Putin ceasing to be Russian President by end-2026",
+    "Resolution hinges on resignation, removal, detention, or incapacity",
+    "Russia's central role as a major oil/gas exporter and party to the Ukraine war",
+    "No liquid direct Russia equity proxies remain investable post-2022 sanctions"
+  ],
+  "uncertainty_notes": [
+    "Directional sign is fundamentally ambiguous: regime chaos (risk-premium up) vs peace path (supply relief, risk-off reversal)",
+    "A probability shift is a low-base-rate tail signal, not a confirmed event; most such rumors decay within hours",
+    "12h window is too short for a political-tenure thesis to resolve into clean asset moves",
+    "Proxies (oil, defense) respond to many unrelated macro drivers, diluting any Russia-specific signal"
+  ],
+  "llm_justification": {
+    "summary": "A sharp repricing of 'Putin out by 2026' would flag Russian regime-stability risk, whose most liquid public-market expressions are crude oil and European defense equities. However, the directional implication is genuinely two-sided (instability/supply-disruption premium vs peace-path/sanctions-relief), and over a 12h window a mere probability shift without a confirmed event is a weak, noisy signal. Both mapped proxies are rated unclear/mixed with low confidence and expected moves below the 700bps tradable threshold.",
+    "key_assumptions": [
+      "The prediction-market probability move is at least partially information-bearing rather than pure noise",
+      "No official confirmation of Putin's removal occurs within the window",
+      "Oil and defense ETFs remain the best available liquid proxies for Russia regime risk given delisted Russian equities"
+    ],
+    "failure_modes": [
+      "The move is isolated Polymarket noise with no real-world catalyst, so no asset reacts",
+      "The event is a false rumor that reverses within hours, reversing any initial asset move",
+      "Oil moves in the opposite direction expected because markets price peace/sanctions relief rather than supply disruption",
+      "Defense and oil proxies are swamped by unrelated macro flows, making the Russia signal undetectable",
+      "Information was already public/priced, so the prediction market lags rather than leads the asset move"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

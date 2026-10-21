@@ -1,14 +1,50 @@
 [
   {
-    "market_name": "Netanyahu out by end of 2026?",
-    "market_id": "567688",
-    "anomaly_trigger_time_utc": "2026-07-28T00:00:22Z",
+    "market_name": "Kim Jong Un out as Supreme Leader of North Korea by December 31, 2026?",
+    "market_id": "665464",
+    "anomaly_trigger_time_utc": "2026-10-19T20:00:24Z",
     "lookback_hours": 48.0,
-    "public_information_score": 0.0,
-    "residual_anomaly_score": 91.1,
-    "information_state": "none",
-    "evidence": [],
-    "uncertainty_note": "No relevant pre-trigger coverage found \u2014 this is weak evidence (retrieval may be incomplete), not proof the move was non-public.",
+    "public_information_score": 92.0,
+    "residual_anomaly_score": 6.9,
+    "information_state": "confirmation",
+    "evidence": [
+      {
+        "snippet": "Inside  death  of Kim Jong - un at 42 as daughter  to be first female dictator  ",
+        "source": "dailystar.co.uk",
+        "url": "https://www.dailystar.co.uk/news/world-news/inside-death-kim-jong-un-37787769",
+        "published_time_utc": "2026-10-19T16:00:00Z",
+        "information_state": "confirmation"
+      },
+      {
+        "snippet": "Kim Jong - un  in COMA after suffering brain haemorrhage , wild rumours claim as tyrant  rushed to China for treatment  ",
+        "source": "the-sun.com",
+        "url": "https://www.the-sun.com/news/17169955/kim-jong-un-coma-china-treatment/",
+        "published_time_utc": "2026-10-19T15:30:00Z",
+        "information_state": "rumor"
+      },
+      {
+        "snippet": "Inside Kim Jong Un world of luxury : mega yachts , armoured trains and designer wear",
+        "source": "hindustantimes.com",
+        "url": "https://www.hindustantimes.com/world-news/inside-kim-jong-un-world-of-luxury-mega-yachts-armoured-trains-and-designer-wear-101792319057887.html",
+        "published_time_utc": "2026-10-18T15:00:00Z",
+        "information_state": "none"
+      },
+      {
+        "snippet": "Kim Jong - un luxury yachts : Inside the $143m vessel with an Olympic - size pool used by North Korean leader",
+        "source": "smh.com.au",
+        "url": "https://www.smh.com.au/world/asia/four-water-slides-and-a-swimming-pool-kim-jong-uns-luxury-yacht-revealed-20261019-p616ki.html",
+        "published_time_utc": "2026-10-19T05:00:00Z",
+        "information_state": "none"
+      },
+      {
+        "snippet": "Kim Jong - un luxury yachts : Inside the $143m vessel with an Olympic - size pool used by North Korean leader",
+        "source": "watoday.com.au",
+        "url": "https://www.watoday.com.au/world/asia/four-water-slides-and-a-swimming-pool-kim-jong-uns-luxury-yacht-revealed-20261019-p616ki.html",
+        "published_time_utc": "2026-10-19T06:45:00Z",
+        "information_state": "none"
+      }
+    ],
+    "uncertainty_note": "Article [0] published at 2026-10-19T16:00:00Z\u2014just 4 hours before trigger\u2014reports Kim Jong Un's death directly, which would obviously resolve the binary contract sharply upward. However, we note only snippet text; confirmation of death via official announcement or credible source verification is assumed from the headline. If the full text shows this was tabloid speculation rather than verified reporting, the score should drop substantially. Snippet-only analysis creates moderate risk of mischaracterization.",
     "mode": "live"
   }
 ]

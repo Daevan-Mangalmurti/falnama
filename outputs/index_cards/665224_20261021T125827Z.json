@@ -1,0 +1,98 @@
+{
+  "card_id": "665224_20261021T125827Z",
+  "card_version": "v1",
+  "card_hash": "03615bcbe2a533fffdb467f5fa688229ed98232ca7af5b262cac140e39527ea4",
+  "do_not_revise": true,
+  "created_time_utc": "2026-10-21T12:58:27Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665224",
+    "market_slug": "ukraine-signs-peace-deal-with-russia-before-2027",
+    "market_name": "Ukraine signs peace deal with Russia before 2027?",
+    "market_url": "https://polymarket.com/market/ukraine-signs-peace-deal-with-russia-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Ukraine signs peace deal with Russia before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US Aerospace & Defense equities",
+      "ticker": "ITA",
+      "tradable_instrument_name": "iShares U.S. Aerospace & Defense ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -400.0,
+      "confidence": 0.52,
+      "confidence_interval_bps": [
+        -900.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move is backed by any wire-service headline (Reuters/Bloomberg) on negotiations; confirm ITA/defense premarket or intraday reaction and volume.",
+        "1h": "Compare ITA move vs European defense (EUAD/Rheinmetall ADR) \u2014 European names should lead if thesis is right; divergence would weaken the read.",
+        "2h": "Reassess whether move is holding or fading; check options skew in defense names for confirmation of directional repricing.",
+        "6h": "Verify against official statements from Kyiv/Moscow/US; if no corroboration, treat probability spike as noise and expect mean reversion.",
+        "12h": "Mark final ITA return vs entry; evaluate whether signal preceded public confirmation (leak thesis) or dissipated (noise)."
+      },
+      "reasoning": "A sharp rise in the implied probability of a Ukraine-Russia peace agreement would reduce expectations of sustained elevated Western defense procurement and prolonged conflict, pressuring defense-contractor valuations. Defense names carry an embedded 'war premium' that compresses on credible de-escalation signals. ITA is the most liquid broad proxy, though it is more US-weighted (Boeing, RTX, Lockheed) and thus less directly exposed than European primes (Rheinmetall, BAE) which would move harder."
+    },
+    {
+      "asset": "European equities",
+      "ticker": "EZU",
+      "tradable_instrument_name": "iShares MSCI Eurozone ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 200.0,
+      "confidence": 0.45,
+      "confidence_interval_bps": [
+        -200.0,
+        600.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check EUR/USD and EZU reaction alongside any headline; FX should firm if de-escalation is being priced.",
+        "1h": "Compare European gas (TTF) direction \u2014 a falling gas price would corroborate the easing-risk-premium thesis.",
+        "2h": "Assess breadth: is the move broad (index) or concentrated in energy-sensitive sectors?",
+        "6h": "Look for official confirmation; absent it, expect fade given long 2026 horizon.",
+        "12h": "Mark EZU return; note whether magnitude ever approached tradable threshold."
+      },
+      "reasoning": "European equities carry the largest geographic risk premium from the war (energy costs, proximity, sanctions drag). A credible peace path would ease the energy/geopolitical risk premium and lift Eurozone risk assets. The link is real but diffuse and unlikely to reach the 700bps tradable threshold from a mere probability shift rather than an actual signing."
+    }
+  ],
+  "evidence_used": [
+    "Market question: probability of Ukraine signing a peace/ceasefire instrument with Russia before 2027",
+    "Low signing bar (only Ukraine's signature required, broad definition of qualifying documents)",
+    "Known war-risk premia embedded in defense stocks, European equities, European gas, and grains",
+    "Defense sector sensitivity to conflict-duration and procurement expectations"
+  ],
+  "uncertainty_notes": [
+    "A probability shift on a market with a long (end-2026) horizon is far weaker than an actual signed deal; magnitudes are likely modest in a 12h window.",
+    "Proxies are imperfect: ITA is US-centric and less exposed than European defense primes; EZU reaction is diffuse.",
+    "Hard to distinguish genuine information leakage from speculative repricing or thin-market noise on Polymarket."
+  ],
+  "llm_justification": {
+    "summary": "A sharp increase in the implied probability of a Ukraine-Russia peace deal should compress the war-risk premium: defense equities (ITA, and more acutely European primes) would fall, while European risk assets (EZU) and the euro would modestly firm. Both mappings are directionally sound but, given the long resolution horizon and that a probability move is not a signing, magnitudes are likely below the 700bps tradable threshold; confidence is moderate at best.",
+    "key_assumptions": [
+      "A sharp probability move reflects genuine new information about negotiation progress rather than noise.",
+      "Defense valuations currently embed a conflict-duration premium that would unwind on de-escalation.",
+      "The move is not already fully public/priced into these liquid proxies."
+    ],
+    "failure_modes": [
+      "The probability spike is thin-market noise with no underlying development, so proxies do not move.",
+      "Any peace development is already public and priced, leaving no edge.",
+      "Defense spending expectations stay high (rearmament cycle persists even post-conflict), so ITA fails to fall.",
+      "Move reverses as initial negotiation optimism fades given the long horizon and low signing bar enabling false positives.",
+      "Proxy weakness: ITA's US tilt mutes the European-centric war-premium unwind."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

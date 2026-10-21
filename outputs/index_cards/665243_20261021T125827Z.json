@@ -1,0 +1,98 @@
+{
+  "card_id": "665243_20261021T125827Z",
+  "card_version": "v1",
+  "card_hash": "dd6708d06a79eb7820a9a83d564b9bc763610127f0ddfb79b7d3e7e67c978790",
+  "do_not_revise": true,
+  "created_time_utc": "2026-10-21T12:58:27Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665243",
+    "market_slug": "nato-article-5-before-2027",
+    "market_name": "NATO article 5 before 2027?",
+    "market_url": "https://polymarket.com/market/nato-article-5-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "NATO article 5 before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "European defense & aerospace equities",
+      "ticker": "EUAD",
+      "tradable_instrument_name": "Select STOXX Europe Aerospace & Defense ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 550.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -200.0,
+        1500.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket probability move is accompanied by any breaking headline (airspace incursion, strike on NATO territory); if purely price action with no news, treat as noise.",
+        "1h": "Compare EUAD / Rheinmetall pre-market or intraday move vs STOXX 600; confirm defense is outperforming broad index (escalation signature) rather than moving with beta.",
+        "2h": "Reassess whether NATO/member statements corroborate; fade position if officials downplay.",
+        "6h": "Check if move is holding and whether US defense names (ITA) confirm the theme; divergence suggests idiosyncratic noise.",
+        "12h": "Mark final return vs entry; note whether Article-5 probability stayed elevated or reverted, and whether any public confirmation emerged."
+      },
+      "reasoning": "A sharp rise in the implied probability of a NATO Article 5 invocation signals a material escalation of armed conflict involving a NATO member (likely Russia/eastern-flank incident). Defense procurement expectations rise immediately on escalation, and defense equities are the most direct, high-beta beneficiary. European-domiciled names (Rheinmetall, BAE, Leonardo, Thales) captured by EUAD are the most exposed to an eastern-flank crisis. A genuine escalation can move these names several percent in a session, though reaching 700bps in 12h requires a confirmed hard-news catalyst, not just a probability drift."
+    },
+    {
+      "asset": "Broad European equities",
+      "ticker": "FEZ",
+      "tradable_instrument_name": "SPDR EURO STOXX 50 ETF",
+      "asset_class": "equity_index",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -350.0,
+      "confidence": 0.38,
+      "confidence_interval_bps": [
+        -1100.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify risk-off is broad (EUR/USD down, Bund futures up, VSTOXX spiking), not a single-sector story.",
+        "1h": "Check whether US futures (ES) are also lower, confirming genuine risk-off contagion vs localized European move.",
+        "2h": "Reassess if diplomatic de-escalation headlines appear; cover if VSTOXX fades.",
+        "6h": "Confirm the index is still below entry and safe havens (gold, Bunds) remain bid.",
+        "12h": "Record final return; assess whether the prediction-market signal led or lagged the equity move."
+      },
+      "reasoning": "An escalation sharp enough to raise Article 5 odds would trigger a risk-off move in the most directly exposed regional equity bloc. European large caps (banks, industrials, autos) would sell off on war-escalation fears, energy-supply risk and EUR weakness. FEZ is a liquid proxy for the eurozone equity complex. The move is opposite-signed to defense: the broad index falls while defense names rise. A 700bps broad-index drop in 12h would require a severe, clearly public shock; more plausibly a few hundred bps."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves Yes only if a NATO member formally invokes Article 5 between Nov 5 2025 and Dec 31 2026 \u2014 a rare, high-impact collective-defense trigger",
+    "Topic is military_conflict, region Europe, implying an eastern-flank/Russia escalation scenario",
+    "Historical pattern: escalation news lifts defense equities and pressures broad European risk assets simultaneously",
+    "Long resolution horizon means a sharp short-term probability spike would most likely be driven by a discrete escalation event"
+  ],
+  "uncertainty_notes": [
+    "A 12h window and 700bps threshold are demanding; prediction-market probability drift without hard news rarely moves liquid assets that much",
+    "Mapping depends on the probability move being a genuine escalation signal, not thin-liquidity noise on a low-base-rate market",
+    "If an escalation is already public, the asset move will have occurred before any prediction-market leak, nullifying the edge"
+  ],
+  "llm_justification": {
+    "summary": "The market measures the probability of a NATO Article 5 invocation, effectively a gauge of European armed-conflict escalation risk. A sharp upward move in that probability maps to higher European defense-equity prices (EUAD) and a risk-off selloff in broad eurozone equities (FEZ), with gold/Bunds bid and EUR softer. Both mappings are directionally confident but the 700bps/12h magnitude bar is high and likely only met with a confirmed hard-news catalyst, so confidence is moderate.",
+    "key_assumptions": [
+      "A sharp probability rise reflects a real escalation event rather than market noise or a single large bettor",
+      "Escalation would be Europe/Russia-centric, maximizing exposure of European proxies",
+      "Defense equities rise and broad European index falls on the same catalyst (negative correlation holds)"
+    ],
+    "failure_modes": [
+      "The probability move is driven by low-liquidity speculation with no underlying event, so assets do not move",
+      "The escalation is already fully public, meaning asset prices already repriced before any prediction-market leak",
+      "Proxy exposure is weaker than assumed \u2014 defense ETFs can lag on 'buy the rumor, sell the news' dynamics",
+      "A de-escalation or diplomatic resolution reverses the move within the 12h window",
+      "Base rate of Article 5 is extremely low; most probability spikes historically revert without asset impact"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
