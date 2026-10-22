@@ -1,0 +1,39 @@
+market_id,market_name,concentration_available,concentration_tier,concentration_red_flag,top1_wallet_share,top3_wallet_share,wallet_gini,concentration_reason
+665464,"Kim Jong Un out as Supreme Leader of North Korea by December 31, 2026?",True,red_flag,True,0.0776,0.1748,0.8164,"THICK market moved by a few wallets (top1=8%, top3=17%, gini=0.82)"
+665427,Will a new country join the Abraham Accords before 2027?,True,diffuse,False,0.1583,0.3292,0.7918,wallet participation is diffuse
+665409,Will Trump cut corporate taxes before 2027?,True,diffuse,False,0.0956,0.2329,0.7498,wallet participation is diffuse
+567688,Netanyahu out by end of 2026?,True,red_flag,True,0.1153,0.3068,0.8838,"THICK market moved by a few wallets (top1=12%, top3=31%, gini=0.88)"
+653788,OpenAI announces it has achieved AGI before 2027?,True,red_flag,True,0.1368,0.2687,0.8493,"THICK market moved by a few wallets (top1=14%, top3=27%, gini=0.85)"
+665374,Will the U.S. invade Iran before 2027?,True,red_flag,True,0.102,0.2656,0.9262,"THICK market moved by a few wallets (top1=10%, top3=27%, gini=0.93)"
+665218,Israel and Saudi Arabia normalize relations before 2027?,True,red_flag,True,0.1038,0.2016,0.8433,"THICK market moved by a few wallets (top1=10%, top3=20%, gini=0.84)"
+560317,"Putin out as President of Russia by December 31, 2026?",True,red_flag,True,0.2944,0.5006,0.9415,"THICK market moved by a few wallets (top1=29%, top3=50%, gini=0.94)"
+608368,"Will OpenAI not IPO by December 31, 2026?",True,red_flag,True,0.3277,0.5015,0.9335,"THICK market moved by a few wallets (top1=33%, top3=50%, gini=0.93)"
+665474,Will Saudi Arabia join the Abraham Accords before 2027?,True,red_flag,True,0.1014,0.2377,0.8553,"THICK market moved by a few wallets (top1=10%, top3=24%, gini=0.86)"
+665353,Ukraine agrees not to join NATO before 2027? ,True,red_flag,True,0.1596,0.3428,0.8882,"THICK market moved by a few wallets (top1=16%, top3=34%, gini=0.89)"
+663583,Will the Iranian regime fall before 2027?,True,red_flag,True,0.1695,0.2981,0.918,"THICK market moved by a few wallets (top1=17%, top3=30%, gini=0.92)"
+665224,Ukraine signs peace deal with Russia before 2027?,True,red_flag,True,0.1052,0.2218,0.8461,"THICK market moved by a few wallets (top1=11%, top3=22%, gini=0.85)"
+665410,Will Ukraine agree to give up the rest of Donbas before 2027?,True,diffuse,False,0.0696,0.137,0.7321,wallet participation is diffuse
+616903,Will 1 Fed rate cut happen in 2026?,True,red_flag,True,0.068,0.1841,0.816,"THICK market moved by a few wallets (top1=7%, top3=18%, gini=0.82)"
+665419,Milei out as President of Argentina before 2027?,True,diffuse,False,0.0312,0.0739,0.7591,wallet participation is diffuse
+665420,Fed abolished before 2027?,True,diffuse,False,0.1753,0.2977,0.7021,wallet participation is diffuse
+616902,Will no Fed rate cuts happen in 2026?,True,red_flag,True,0.0776,0.1648,0.8869,"THICK market moved by a few wallets (top1=8%, top3=16%, gini=0.89)"
+616905,Will 3 Fed rate cuts happen in 2026?,True,red_flag,True,0.1409,0.3304,0.8875,"THICK market moved by a few wallets (top1=14%, top3=33%, gini=0.89)"
+567690,"Erdoğan out by December 31, 2026?",True,red_flag,True,0.1628,0.3965,0.9159,"THICK market moved by a few wallets (top1=16%, top3=40%, gini=0.92)"
+665459,Will North Korea invade South Korea before 2027?,True,diffuse,False,0.2198,0.2717,0.7901,wallet participation is diffuse
+568117,"Will Trump resign by December 31, 2026?",True,red_flag,True,0.2944,0.4566,0.8855,"THICK market moved by a few wallets (top1=29%, top3=46%, gini=0.89)"
+656312,Will OpenAI IPO by December 31 2026?,True,red_flag,True,0.0663,0.1854,0.8337,"THICK market moved by a few wallets (top1=7%, top3=19%, gini=0.83)"
+656313,OpenAI $1t+ IPO before 2027?,True,red_flag,True,0.159,0.288,0.8363,"THICK market moved by a few wallets (top1=16%, top3=29%, gini=0.84)"
+616907,Will 5 Fed rate cuts happen in 2026?,True,red_flag,True,0.2036,0.4914,0.8546,"THICK market moved by a few wallets (top1=20%, top3=49%, gini=0.85)"
+559651,Xi Jinping out before 2027?,True,red_flag,True,0.1596,0.3848,0.9135,"THICK market moved by a few wallets (top1=16%, top3=38%, gini=0.91)"
+616908,Will 6 Fed rate cuts happen in 2026?,True,red_flag,True,0.4986,0.6954,0.9204,"THICK market moved by a few wallets (top1=50%, top3=70%, gini=0.92)"
+608364,Will OpenAI’s market cap be between $750B and $1T at market close on IPO day?,True,diffuse,False,0.0862,0.1844,0.767,wallet participation is diffuse
+608365,Will OpenAI’s market cap be between $1T and $1.25T at market close on IPO day?,True,diffuse,False,0.0599,0.1413,0.7636,wallet participation is diffuse
+567621,Will China invade Taiwan by end of 2026?,True,red_flag,True,0.1981,0.5447,0.9035,"THICK market moved by a few wallets (top1=20%, top3=54%, gini=0.90)"
+665243,NATO article 5 before 2027?,True,red_flag,True,0.1369,0.3424,0.8733,"THICK market moved by a few wallets (top1=14%, top3=34%, gini=0.87)"
+608366,Will OpenAI’s market cap be between $1.25T and $1.5T at market close on IPO day?,True,diffuse,False,0.051,0.1379,0.736,wallet participation is diffuse
+616904,Will 2 Fed rate cuts happen in 2026?,True,diffuse,False,0.0726,0.1744,0.7763,wallet participation is diffuse
+608367,Will OpenAI’s market cap be $1.5T or greater at market close on IPO day?,True,diffuse,False,0.0615,0.162,0.7429,wallet participation is diffuse
+616914,Will 12 or more Fed rate cuts happen in 2026?,True,red_flag,True,0.3853,0.6543,0.9302,"THICK market moved by a few wallets (top1=39%, top3=65%, gini=0.93)"
+616913,Will 11 Fed rate cuts happen in 2026?,True,red_flag,True,0.3214,0.5785,0.938,"THICK market moved by a few wallets (top1=32%, top3=58%, gini=0.94)"
+616912,Will 10 Fed rate cuts happen in 2026?,True,red_flag,True,0.1817,0.3874,0.893,"THICK market moved by a few wallets (top1=18%, top3=39%, gini=0.89)"
+616911,Will 9 Fed rate cuts happen in 2026?,True,red_flag,True,0.2125,0.4372,0.8754,"THICK market moved by a few wallets (top1=21%, top3=44%, gini=0.88)"

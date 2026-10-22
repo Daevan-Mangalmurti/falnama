@@ -1,0 +1,80 @@
+{
+  "run_id": "20261022T130041Z",
+  "run_time_utc": "2026-10-22T13:00:41Z",
+  "card_mode": "live",
+  "data_source": "live",
+  "market_selector": {
+    "input_markets": 500,
+    "selected_count": 260,
+    "rejected_count": 240,
+    "selected_file": "outputs/relevant_markets/relevant_markets_20261022T130041Z.csv"
+  },
+  "screen": {
+    "enabled": true,
+    "mode": "live",
+    "screened": 260,
+    "kept": 38,
+    "dropped": 222,
+    "error": "",
+    "screened_file": "outputs/relevant_markets/screened_markets_20261022T130041Z.csv"
+  },
+  "wallet_fingerprints": {
+    "enabled": true,
+    "markets_examined": 38,
+    "wallets_examined": 0,
+    "wallets_matched": 0,
+    "tiers": {
+      "none": 38
+    },
+    "market_fingerprints_file": "outputs/wallets/market_fingerprints_20261022T130041Z.csv"
+  },
+  "anomaly_detector": {
+    "markets_scored": 38,
+    "strong_count": 1,
+    "concentration_red_flags": 27,
+    "fingerprint_red_flags": 0,
+    "ranked_file": "outputs/anomalies/ranked_anomalies_20261022T130041Z.csv"
+  },
+  "cards": {
+    "card_mode": "live",
+    "cards_written": 5,
+    "cards_reused": 10,
+    "files": [
+      "outputs/index_cards/665427_20261022T130041Z.json",
+      "outputs/index_cards/616902_20261022T130041Z.json",
+      "outputs/index_cards/616903_20261022T130041Z.json",
+      "outputs/index_cards/616904_20261022T130041Z.json",
+      "outputs/index_cards/616905_20261022T130041Z.json"
+    ],
+    "reused_card_ids": [
+      "567688_20261020T175645Z",
+      "665459_20261020T175645Z",
+      "616908_20261020T175645Z",
+      "665419_20261020T175645Z",
+      "665410_20261020T175645Z",
+      "665243_20261021T125827Z",
+      "665224_20261021T125827Z",
+      "663583_20261021T125827Z",
+      "560317_20261021T125827Z",
+      "665374_20261021T125827Z"
+    ],
+    "hash_mismatch_card_ids": []
+  },
+  "recommender": {
+    "recommended_count": 1,
+    "rejected_count": 0,
+    "workbook": "outputs/recommended_trades/paper_recommendations_20261022T130041Z.xlsx",
+    "backfill_mode": false
+  },
+  "execution": {
+    "mode": "paper_sim",
+    "simulated_orders": 1
+  },
+  "newslag": {
+    "enabled": true,
+    "mode": "live",
+    "assessed": 1,
+    "unexplained_residual": 1,
+    "checker_errors": 0
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "card_id": "616902_20261022T130041Z",
+  "card_version": "v1",
+  "card_hash": "e089a1822628510092b6950be66f29611ea485384e044407e4f5802c1f34c9ef",
+  "do_not_revise": true,
+  "created_time_utc": "2026-10-22T13:00:41Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616902",
+    "market_slug": "will-no-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will no Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-no-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will no Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-dated US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -60.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -180.0,
+        60.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket probability shift is sustained or a liquidity blip; confirm direction (toward 'Yes/no cuts' = hawkish).",
+        "1h": "Watch 2y and 10y Treasury yields and Fed funds futures for confirmation of a hawkish repricing.",
+        "2h": "Compare TLT move vs yield move; check for any Fed speak, CPI/jobs data, or headlines that explain the shift.",
+        "6h": "Re-assess whether the move is idiosyncratic to the prediction market or corroborated by the broader rates complex.",
+        "12h": "Evaluate whether TLT closed consistent with the implied rate path change; log realized vs expected and whether signal led or lagged public rates."
+      },
+      "reasoning": "If the implied probability of 'no Fed cuts in 2026' rises sharply, markets are repricing a more hawkish/higher-for-longer rate path. That pushes the expected policy rate up, lifting yields across the curve and pressuring long-duration bond prices. TLT is the most liquid, rate-sensitive proxy and would fall as yields rise. The relationship is mechanical but the magnitude over 12h is small relative to the 700bps tradable bar."
+    },
+    {
+      "asset": "US dollar",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 30.0,
+      "confidence": 0.35,
+      "confidence_interval_bps": [
+        -40.0,
+        110.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm the prediction-market move and check DXY/EURUSD reaction.",
+        "1h": "Look at short-end rate differentials (US vs EU/UK) for consistency.",
+        "2h": "Screen for competing FX drivers (ECB/BoJ news, risk-off flows).",
+        "6h": "Reassess whether dollar strength persists or mean-reverts.",
+        "12h": "Log realized UUP move vs expected; note weak proxy exposure."
+      },
+      "reasoning": "A rising probability of no 2026 cuts implies higher relative US rates, which is typically dollar-supportive via rate differentials. UUP is a liquid DXY proxy. However FX is driven by many cross-currents (foreign central banks, risk sentiment), so the exposure to this single market is weak and the 12h magnitude is far below the 700bps threshold."
+    }
+  ],
+  "evidence_used": [
+    "Market question framing: 'no Fed rate cuts in 2026' maps directly to the expected Fed policy path",
+    "Standard transmission: higher expected policy rates -> higher yields, lower bond prices, stronger USD",
+    "Liquidity of TLT and UUP as rate/FX proxies"
+  ],
+  "uncertainty_notes": [
+    "Direction of the probability move is unknown; a shift toward MORE cuts would flip all signs (TLT up, USD down)",
+    "12h magnitudes for these macro proxies are an order of magnitude below the 700bps tradable threshold, so neither is tradable",
+    "Prediction markets for 2026 policy are long-horizon and may move on noise, not new information",
+    "Mislabeled primary topic ('military_conflict') suggests metadata is unreliable"
+  ],
+  "llm_justification": {
+    "summary": "The market reflects the expected 2026 Fed easing path. A sharp rise in the implied probability of 'no cuts' is a hawkish/higher-for-longer signal, which should push bond prices (TLT) down and the dollar (UUP) up; a fall in that probability would invert these. The mapping is directionally clean but exposure is diffuse and 12h magnitudes are tiny versus the 700bps bar, so this is informative, not tradable. Confidence is modest because the direction of the actual probability move is unspecified and these proxies are driven by many macro factors.",
+    "key_assumptions": [
+      "The implied probability moved sharply in a hawkish direction (toward no cuts)",
+      "Rates/FX transmission channels are the dominant linkage",
+      "No offsetting macro news dominates the 12h window"
+    ],
+    "failure_modes": [
+      "The move actually reflects rising cut expectations (dovish), reversing both predictions",
+      "The long-horizon 2026 path is already priced into SOFR/Fed funds futures, so no leakage edge exists",
+      "TLT and UUP are influenced by growth, risk sentiment, and foreign central banks, weakening the single-market link",
+      "Prediction-market shift is low-liquidity noise that mean-reverts within the window",
+      "12h magnitude falls far short of the 700bps tradable requirement"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
