@@ -1,0 +1,96 @@
+{
+  "card_id": "616913_20261023T124001Z",
+  "card_version": "v1",
+  "card_hash": "33e033b194181d3eeb8235e872f667723880206edc8824bf8eefeb2bc5fec6af",
+  "do_not_revise": true,
+  "created_time_utc": "2026-10-23T12:40:01Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616913",
+    "market_slug": "will-11-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 11 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-11-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 11 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-dated US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -80.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability spike in the 11-cut market is corroborated by moves in near-term cut markets (1-3 cuts) and fed funds futures; isolated tail-market noise should be discounted.",
+        "1h": "Compare TLT and 2Y/10Y yield moves against any macro headline (payrolls shock, financial-stability event) that could justify an emergency-cut narrative.",
+        "2h": "Reassess if MOVE index / rate vol is rising; confirm whether the easing repricing is broad-based or just this single thin market.",
+        "6h": "Check for official Fed communications, data surprises, or risk-off flows into Treasuries; fade the signal if no corroboration.",
+        "12h": "Evaluate whether TLT held any gain and whether short-rate futures moved; log outcome vs. the tail-event hypothesis."
+      },
+      "reasoning": "A market pricing 11 Fed cuts (275bps) in 2026 is an extreme-tail, emergency/recession scenario. If its implied probability jumped sharply, it would reflect expectations of aggressive, possibly emergency, easing \u2014 which pulls the entire rate curve lower and sends duration-sensitive Treasuries higher. TLT is the cleanest liquid proxy for falling long-end yields."
+    },
+    {
+      "asset": "Gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 50.0,
+      "confidence": 0.28,
+      "confidence_interval_bps": [
+        -70.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify the DXY is softening and real yields (TIPS) are falling alongside the cut-expectation jump.",
+        "1h": "Check gold vs. dollar correlation; confirm move is macro-driven, not idiosyncratic metals flow.",
+        "2h": "Reassess if risk-off/safe-haven demand is present across gold, Treasuries, and JPY.",
+        "6h": "Watch for any Fed-speak or data that validates or kills the deep-easing narrative.",
+        "12h": "Log whether GLD gain persisted and whether the cut-expectation move held or reversed."
+      },
+      "reasoning": "Pricing of 11 cuts implies collapsing real rates and a dovish/crisis Fed, both classically bullish for gold as a non-yielding hedge and dollar-debasement play. GLD is a liquid proxy. Exposure is indirect and the market is a noisy tail sensor, so confidence is low."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies 11 cuts = 275bps of easing in 2026, an extreme-tail outcome",
+    "Fed easing cycles lower the yield curve, supporting Treasuries and gold and pressuring the dollar",
+    "Description notes emergency/inter-meeting cuts count, reinforcing the crisis interpretation of a high strike"
+  ],
+  "uncertainty_notes": [
+    "This is a deep tail market; implied probability is tiny and extremely noisy, so moves may be liquidity artifacts rather than information",
+    "The 700bps tradability threshold is far above any plausible 12h move in these proxies \u2014 this is NOT tradable",
+    "Mislabeled primary topic (military_conflict) suggests metadata noise; mapping rests only on the literal question"
+  ],
+  "llm_justification": {
+    "summary": "The market asks whether the Fed delivers 11 rate cuts (~275bps) in 2026 \u2014 an extreme easing/recession tail. A sharp rise in this probability would signal expectations of aggressive or emergency easing, which would lift long Treasuries (TLT) and gold (GLD) while weighing on the dollar. However, this is a thin tail market and a noisy sensor; expected 12h moves (~50-60bps) fall far below the 700bps tradability bar, so confidence is low and neither prediction is tradable.",
+    "key_assumptions": [
+      "A probability spike reflects genuine deep-easing expectations rather than thin-market noise",
+      "Treasuries and gold respond to broad easing/crisis repricing in the stated direction",
+      "No offsetting shock (e.g., inflation scare) distorts the rate reaction"
+    ],
+    "failure_modes": [
+      "The tail-market move is pure illiquidity noise with no macro information content",
+      "The easing expectation is already public and fully priced into bonds/gold, leaving no residual move",
+      "Proxies are weakly or ambiguously exposed over a 12h window; a crisis could also spike the dollar (safe-haven), undercutting the gold/USD-down thesis",
+      "Move reverses as the tail probability mean-reverts toward near-zero"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

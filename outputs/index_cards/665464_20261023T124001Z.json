@@ -1,0 +1,99 @@
+{
+  "card_id": "665464_20261023T124001Z",
+  "card_version": "v1",
+  "card_hash": "f1e0d9e24694264538cd893509489f32f9d9f104d65f38bdb0c1e4c4e93adbfe",
+  "do_not_revise": true,
+  "created_time_utc": "2026-10-23T12:40:01Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665464",
+    "market_slug": "kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027",
+    "market_name": "Kim Jong Un out as Supreme Leader of North Korea by December 31, 2026?",
+    "market_url": "https://polymarket.com/market/kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Kim Jong Un out as Supreme Leader of North Korea by December 31, 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "South Korea equity (iShares MSCI South Korea ETF)",
+      "ticker": "EWY",
+      "tradable_instrument_name": "iShares MSCI South Korea ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -800.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -2000.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": true,
+        "reason": "Meets minimum expected move.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability spike is sustained or a thin-liquidity blip; scan wire services (Yonhap, Reuters) for any North Korea headlines.",
+        "1h": "Compare EWY/KOSPI futures move vs broad EM (EEM) to isolate Korea-specific vs global risk-off; confirm KRW direction.",
+        "2h": "Look for official DPRK/ROK statements; assess if any credible reporting corroborates the market, else fade the signal.",
+        "6h": "Reassess during Asian session open when KOSPI cash trades and Korean-market liquidity deepens; watch won fixing.",
+        "12h": "Evaluate whether EWY move persisted or reverted; if no corroborating news emerged, treat as noise and close research thesis."
+      },
+      "reasoning": "A sharp upward move in the implied probability of Kim Jong Un leaving power would signal elevated risk of North Korean regime instability \u2014 a scenario with acute tail risk for the Korean peninsula (succession chaos, military miscalculation, border escalation). South Korean equities are the most liquid, directly geographically-exposed asset. Regime-change uncertainty historically pressures KOSPI/EWY via a geopolitical risk premium and foreign-capital outflows. The move is directional-down if the market is genuinely leaking instability information."
+    },
+    {
+      "asset": "Gold (safe-haven)",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "commodity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 250.0,
+      "confidence": 0.25,
+      "confidence_interval_bps": [
+        -100.0,
+        900.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify spot gold reaction and whether DXY/UST yields are moving in risk-off direction.",
+        "1h": "Distinguish Korea-specific bid from broader macro flow; check whether move is isolated to Asia-sensitive assets.",
+        "2h": "Scan for any corroborating official or credible reporting; if absent, downgrade conviction.",
+        "6h": "Reassess into Asian session; monitor gold vs real yields.",
+        "12h": "Determine if any safe-haven bid persisted; close thesis if no news materialized."
+      },
+      "reasoning": "North Korean regime instability is a classic geopolitical tail-risk catalyst that can bid safe havens. If the market signals genuine instability risk, gold would likely catch a modest flight-to-safety bid. However, gold's reaction to a single localized geopolitical event is typically muted and crowded out by macro/rate drivers, so exposure is weak and magnitude limited."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies probability of Kim Jong Un losing power by end-2026",
+    "Primary region: Korea \u2014 proxies with direct geographic exposure are South Korean equities and KRW",
+    "Geopolitical tail-risk events historically pressure local equities and bid safe havens",
+    "Prediction markets on leadership-change are noisy, low-base-rate, and prone to thin liquidity"
+  ],
+  "uncertainty_notes": [
+    "Base rate of an authoritarian leader actually being removed within the window is very low; most probability spikes are noise or rumor-driven",
+    "A move in the prediction market may already reflect public rumors, so no informational edge",
+    "12h window likely spans periods when Korean cash markets are closed, limiting proxy responsiveness",
+    "Magnitude of EWY/gold reaction to an unconfirmed regime-change rumor is uncertain and likely smaller than the 700bps tradable threshold unless corroborated"
+  ],
+  "llm_justification": {
+    "summary": "This market prices the risk of Kim Jong Un leaving power. A sharp upward move in its implied probability would most plausibly signal North Korean regime-instability risk, which maps to downside in South Korean equities (EWY) and a modest safe-haven bid in gold (GLD). Both mappings are directionally sensible but weak and low-confidence: leadership-change markets are extremely noisy, base rates are tiny, and any move may already be public rumor. Treat as a monitoring signal, not a high-conviction trade; magnitudes likely fall below the 700bps tradable bar absent credible corroboration.",
+    "key_assumptions": [
+      "A probability spike reflects genuine new information about DPRK instability rather than thin-market noise",
+      "South Korean assets carry a geopolitical risk premium sensitive to peninsula instability",
+      "The information is not already fully public/priced"
+    ],
+    "failure_modes": [
+      "The probability move is noise/manipulation in a thin market with no real event \u2014 EWY and gold do not react",
+      "News is already public and priced, so no forward edge exists",
+      "Markets are closed during the window, so the proxy cannot express the move within 12h",
+      "EWY/gold are weakly exposed to a single localized rumor and dominated by macro drivers",
+      "Counterintuitive reaction: some analysts view DPRK leadership change as de-escalatory, which could bid Korean equities instead of selling them"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
