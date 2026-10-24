@@ -1,0 +1,97 @@
+{
+  "card_id": "616911_20261024T120257Z",
+  "card_version": "v1",
+  "card_hash": "45f2a0c77a42e6ea9d3399107e6be9019e0c28f94324b80913933fb5e58e5e14",
+  "do_not_revise": true,
+  "created_time_utc": "2026-10-24T12:02:57Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616911",
+    "market_slug": "will-9-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 9 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-9-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 9 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-dated US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.5,
+      "confidence_interval_bps": [
+        -60.0,
+        350.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the implied probability move persists or was a thin-liquidity blip; cross-check 2y/10y yields and Fed funds futures (SOFR) for confirmation.",
+        "1h": "Confirm TLT direction aligns with falling yields; watch for any macro headline (jobs, CPI, bank stress) that could be the real driver.",
+        "2h": "Reassess whether move is a genuine regime shift vs noise; check if equity/credit markets corroborate a growth-scare narrative.",
+        "6h": "Evaluate durability into/through US session liquidity; look for Fed-speak or data that validates or fades the easing bet.",
+        "12h": "Mark final TLT return vs prediction; note whether the prediction-market move led or lagged observable rate repricing."
+      },
+      "reasoning": "A market pricing 9 cuts (225bps) in 2026 is an extreme-dovish/recession-or-crisis scenario. A sharp rise in this implied probability would signal expectations of aggressive Fed easing, which pulls down the front and belly of the curve and bids duration. TLT is the cleanest liquid proxy for a large downward rate-path repricing."
+    },
+    {
+      "asset": "US Dollar",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -60.0,
+      "confidence": 0.42,
+      "confidence_interval_bps": [
+        -200.0,
+        90.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check DXY and EURUSD for corroboration; determine if the narrative is US-specific dovishness (USD down) vs global risk-off (USD up).",
+        "1h": "Compare UUP move with 2y yield move for consistency.",
+        "2h": "Reassess safe-haven vs rate-differential dominance.",
+        "6h": "Watch US session FX flows and any Fed/Treasury commentary.",
+        "12h": "Mark final UUP return; record whether safe-haven flows overrode the dovish-differential thesis."
+      },
+      "reasoning": "Aggressive expected Fed easing narrows rate differentials and typically weakens the dollar, so a spike in the 9-cut probability would be USD-negative. However, if the easing is driven by a global risk-off/crisis scare, the dollar can instead rally on safe-haven demand \u2014 making direction less reliable than the duration trade."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies 9 cuts (225bps) in 2026, a far-tail extreme-dovish/recession scenario",
+    "Fed easing expectations map mechanically to lower Treasury yields (TLT up) and typically weaker USD",
+    "Resolution tied to official FOMC/Fed funds data, so the market tracks genuine rate-path expectations"
+  ],
+  "uncertainty_notes": [
+    "A 12h window rarely produces 700bps moves in TLT or UUP, so neither is 'tradable' by the stated threshold",
+    "Prediction-market probability moves in deep-tail questions are often thin and noisy, not information leakage",
+    "If easing expectations stem from a crisis, USD could rally (safe haven) rather than fall, and equities would drop \u2014 flipping parts of the thesis",
+    "The 'military_conflict' topic tag is inconsistent with a Fed-cuts question, suggesting metadata noise"
+  ],
+  "llm_justification": {
+    "summary": "This is a Fed rate-path market; 9 cuts in 2026 is an extreme-dovish tail. A sharp rise in its implied probability would signal expectations of aggressive easing, mapping most cleanly to higher long-dated Treasuries (TLT up) and a modestly weaker dollar (UUP down). Both moves are directionally plausible but small over a 12h window and unlikely to reach the 700bps tradable threshold; the dollar leg is especially ambiguous because crisis-driven easing can trigger safe-haven USD strength.",
+    "key_assumptions": [
+      "A probability spike reflects genuine shift in rate-path expectations, not thin-market noise",
+      "Easing is interpreted as a macro/growth story that lowers yields",
+      "Market move leads or coincides with, rather than lags, observable rate repricing"
+    ],
+    "failure_modes": [
+      "Move reverses as a liquidity artifact in a deep-tail question",
+      "Information already public (e.g., post-data/post-Fed), so no edge remains",
+      "TLT/UUP are weak proxies if the driver is idiosyncratic or if safe-haven flows dominate and flip the dollar direction",
+      "Magnitudes fall far short of the 700bps tradable threshold, making this non-actionable research only"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "run_id": "20261024T120257Z",
+  "run_time_utc": "2026-10-24T12:02:57Z",
+  "card_mode": "live",
+  "data_source": "live",
+  "market_selector": {
+    "input_markets": 500,
+    "selected_count": 249,
+    "rejected_count": 251,
+    "selected_file": "outputs/relevant_markets/relevant_markets_20261024T120257Z.csv"
+  },
+  "screen": {
+    "enabled": true,
+    "mode": "live",
+    "screened": 249,
+    "kept": 30,
+    "dropped": 219,
+    "error": "",
+    "screened_file": "outputs/relevant_markets/screened_markets_20261024T120257Z.csv"
+  },
+  "wallet_fingerprints": {
+    "enabled": true,
+    "markets_examined": 30,
+    "wallets_examined": 0,
+    "wallets_matched": 0,
+    "tiers": {
+      "none": 29,
+      "unavailable": 1
+    },
+    "market_fingerprints_file": "outputs/wallets/market_fingerprints_20261024T120257Z.csv"
+  },
+  "anomaly_detector": {
+    "markets_scored": 30,
+    "strong_count": 0,
+    "concentration_red_flags": 25,
+    "fingerprint_red_flags": 0,
+    "ranked_file": "outputs/anomalies/ranked_anomalies_20261024T120257Z.csv"
+  },
+  "cards": {
+    "card_mode": "live",
+    "cards_written": 5,
+    "cards_reused": 12,
+    "files": [
+      "outputs/index_cards/616911_20261024T120257Z.json",
+      "outputs/index_cards/665353_20261024T120257Z.json",
+      "outputs/index_cards/616910_20261024T120257Z.json",
+      "outputs/index_cards/616909_20261024T120257Z.json",
+      "outputs/index_cards/616906_20261024T120257Z.json"
+    ],
+    "reused_card_ids": [
+      "616912_20261023T124001Z",
+      "665374_20261021T125827Z",
+      "616908_20261020T175645Z",
+      "665410_20261020T175645Z",
+      "616905_20261022T130041Z",
+      "616904_20261022T130041Z",
+      "616903_20261022T130041Z",
+      "616902_20261022T130041Z",
+      "665243_20261021T125827Z",
+      "665224_20261021T125827Z",
+      "663583_20261021T125827Z",
+      "560317_20261021T125827Z"
+    ],
+    "hash_mismatch_card_ids": []
+  },
+  "recommender": {
+    "recommended_count": 0,
+    "rejected_count": 0,
+    "workbook": "outputs/recommended_trades/paper_recommendations_20261024T120257Z.xlsx",
+    "backfill_mode": false
+  },
+  "execution": {
+    "mode": "paper_sim",
+    "simulated_orders": 0
+  },
+  "newslag": {
+    "enabled": true,
+    "mode": "live",
+    "assessed": 0,
+    "unexplained_residual": 0,
+    "checker_errors": 0
+  }
+}

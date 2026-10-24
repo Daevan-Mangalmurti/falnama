@@ -1,0 +1,98 @@
+{
+  "card_id": "616909_20261024T120257Z",
+  "card_version": "v1",
+  "card_hash": "352fc947c5f391390888a1b35094b4150f7ea311efd4eb34578b40480b221e17",
+  "do_not_revise": true,
+  "created_time_utc": "2026-10-24T12:02:57Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616909",
+    "market_slug": "will-7-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 7 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-7-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 7 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-dated US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.5,
+      "confidence_interval_bps": [
+        -40.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket probability move holds and whether 2y/10y Treasury yields and fed funds futures (SOFR Dec-2026) are confirming a dovish repricing.",
+        "1h": "Compare TLT move vs implied-rate-path shift; confirm it is a rates story, not idiosyncratic ETF flow. Watch for any macro headline (jobs, CPI, Fed speaker) that could explain it.",
+        "2h": "Re-check SOFR/fed funds futures curve for 2026 to see if the market agrees with the dovish signal; fade if no corroboration.",
+        "6h": "Assess whether equities and USD are moving consistently (risk-off vs liquidity rally) to interpret the easing driver.",
+        "12h": "Close window: evaluate whether yields sustained the move and whether any scheduled data/Fed communication validated the shift; log realized TLT return vs forecast."
+      },
+      "reasoning": "A sharp rise in the implied odds of 7 Fed cuts (175bps) in 2026 signals a dramatically more dovish/recessionary easing path than currently priced. That pulls down the expected policy-rate path and front/belly yields, and typically rallies long-duration Treasuries. TLT is the most liquid pure duration proxy. However, 7 cuts is a deep-tail scenario normally tied to a growth shock, so the real move depends on whether the repricing is genuine new information versus noise on a thin Polymarket contract."
+    },
+    {
+      "asset": "US dollar index",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.45,
+      "confidence_interval_bps": [
+        -60.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm DXY/UUP direction aligns with the dovish signal rather than a risk-off USD bid.",
+        "1h": "Check EURUSD and USDJPY to see if move is broad-based dollar weakness or isolated.",
+        "2h": "Reassess whether risk-off flows are strengthening USD (haven bid) and overriding the easing thesis.",
+        "6h": "Evaluate correlation with TLT move for internal consistency of the dovish-repricing narrative.",
+        "12h": "Close window: record realized UUP return and whether the dollar leg behaved as a rate-differential or haven asset."
+      },
+      "reasoning": "Higher odds of aggressive Fed easing narrow US rate differentials and generally weaken the dollar, so UUP should drift lower. The link is real but second-order and easily overwhelmed by global risk sentiment: a recession-driven easing can trigger safe-haven USD demand that offsets the rate-differential effect, making direction genuinely ambiguous."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies pricing of 7 rate cuts (175bps) in 2026, a deep-easing tail scenario",
+    "Standard macro transmission: dovish Fed repricing lowers yields, rallies duration, pressures USD",
+    "Polymarket contract is a relatively thin, noisy probability sensor"
+  ],
+  "uncertainty_notes": [
+    "7 cuts is a tail outcome usually tied to recession, so equity/USD direction is genuinely ambiguous (risk-off haven bid vs liquidity rally)",
+    "A probability move on a thin Polymarket market may reflect noise rather than new information",
+    "Any repricing may already be reflected in fed funds futures, leaving no edge",
+    "12h magnitudes for liquid ETFs are small; none plausibly reach the 700bps tradable threshold"
+  ],
+  "llm_justification": {
+    "summary": "The market prices the probability of an extreme dovish Fed path (7 cuts/175bps in 2026). A sharp rise in that probability most cleanly maps to a rally in long-duration Treasuries (TLT up) and modest dollar weakness (UUP down) via lower expected policy rates. But the move is small, the proxy exposure is noisy, and because deep easing typically signals recession, cross-asset direction (equities, USD haven bid) is ambiguous. Neither leg reaches the 700bps tradable bar, so this is a research-grade, low-confidence mapping.",
+    "key_assumptions": [
+      "A move in the Polymarket probability reflects a genuine shift in Fed-easing expectations",
+      "Rates markets transmit the signal into Treasury yields and the dollar within the 12h window",
+      "No offsetting macro surprise dominates the window"
+    ],
+    "failure_modes": [
+      "The probability move is noise on a thin contract and reverses with no asset follow-through",
+      "The repricing is already embedded in fed funds/SOFR futures, so no residual edge exists",
+      "Recession interpretation triggers safe-haven USD strength, reversing the UUP-down call",
+      "Duration rally fails if the easing is read as inflationary (steepener) rather than growth-driven",
+      "Magnitudes far below the 700bps threshold make the signal untradable even if directionally right"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

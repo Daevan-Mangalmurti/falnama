@@ -1,0 +1,98 @@
+{
+  "card_id": "665353_20261024T120257Z",
+  "card_version": "v1",
+  "card_hash": "464a73809332245f7d2bf2799fb4dce94a79267fbff6e36c886d4f945d23579a",
+  "do_not_revise": true,
+  "created_time_utc": "2026-10-24T12:02:57Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665353",
+    "market_slug": "ukraine-agrees-not-to-join-nato-before-2027",
+    "market_name": "Ukraine agrees not to join NATO before 2027?",
+    "market_url": "https://polymarket.com/market/ukraine-agrees-not-to-join-nato-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Ukraine agrees not to join NATO before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Polish/Central-European equities (de-escalation beneficiary)",
+      "ticker": "EPOL",
+      "tradable_instrument_name": "iShares MSCI Poland ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 350.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -150.0,
+        900.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability jump is accompanied by credible wire reporting (Reuters/Bloomberg) of a peace/ceasefire framework, vs. an isolated low-liquidity Polymarket tick.",
+        "1h": "Compare EPOL/Polish zloty move to European gas and defense names to confirm a coherent de-escalation trade rather than idiosyncratic noise.",
+        "2h": "Reassess whether Ukrainian or Russian officials have confirmed/denied; fade if denied.",
+        "6h": "Check EU session/US ADR follow-through and whether the probability move held.",
+        "12h": "Mark final return vs. expectation; note whether the move reversed once headlines were digested."
+      },
+      "reasoning": "A sharp rise in the implied probability that Ukraine formally pledges to forgo NATO membership would signal that a ceasefire/peace framework is advancing, since NATO non-accession is Russia's headline precondition. Poland is the most direct liquid equity proxy for Russia-Ukraine de-escalation: lower war-risk premium, reconstruction optimism, and reduced border/energy tail risk all flow into Polish large caps. The move is bullish but a single non-accession pledge is only one piece of a broader deal, so a full 700bps+ repricing in 12h is plausible only if the news is a genuine breakthrough rather than incremental."
+    },
+    {
+      "asset": "European natural gas / energy risk premium",
+      "ticker": "BNO",
+      "tradable_instrument_name": "United States Brent Oil Fund",
+      "asset_class": "commodity",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -250.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -800.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify whether reporting links the pledge to any sanctions-relief or Russian-supply pathway.",
+        "1h": "Watch European TTF/natural gas futures for the cleaner signal and confirm Brent is tracking.",
+        "2h": "Check for official denials that would reverse the risk-premium compression.",
+        "6h": "Assess whether crude held the move through US session.",
+        "12h": "Record final return; note weak-proxy risk if Brent diverged from gas."
+      },
+      "reasoning": "De-escalation signaled by a Ukrainian NATO pledge would compress the war risk premium embedded in energy, most acutely European gas but also Brent via sanctions-relief expectations on Russian supply. Brent (BNO) is the most liquid proxy, though it is only weakly exposed to a NATO-specific pledge versus actual sanctions changes; European TTF gas would react more but lacks a clean liquid US-listed instrument. Magnitude likely modest and below the 700bps tradable bar unless the pledge is clearly tied to imminent sanctions relief."
+    }
+  ],
+  "evidence_used": [
+    "Market question framing: Ukrainian pledge to not join NATO, framed as a precondition in a broader peace process",
+    "Russia's publicly stated precondition that Ukraine forgo NATO membership",
+    "Historical pattern that Russia-Ukraine de-escalation lifts Central European equities and compresses European energy risk premium"
+  ],
+  "uncertainty_notes": [
+    "A single non-accession pledge is one element of a much larger negotiation; it may not move assets much on its own.",
+    "Polymarket probability moves can be driven by low liquidity and not reflect genuine information leakage.",
+    "700bps in 12h is a high bar; most of these ETF/commodity proxies rarely move that much absent a confirmed headline.",
+    "The direction could reverse if the pledge is denied or framed as a negotiation tactic rather than a genuine concession."
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the market-implied probability that Ukraine pledges not to join NATO would be a de-escalation signal, since NATO non-accession is Russia's headline precondition for a peace framework. The cleanest liquid implications are bullish Central European equities (Poland/EPOL) and a modest compression of energy risk premium (Brent/European gas lower). Both mappings are directional but noisy; a single pledge is only part of a broader deal, so magnitudes likely fall short of the 700bps tradable threshold unless the move reflects a genuine, confirmed breakthrough.",
+    "key_assumptions": [
+      "A probability jump reflects real information about peace-process progress, not low-liquidity noise.",
+      "Markets interpret a NATO pledge as a step toward ceasefire/sanctions relief rather than an empty gesture.",
+      "Poland and energy are reasonable liquid proxies for Russia-Ukraine de-escalation."
+    ],
+    "failure_modes": [
+      "The pledge is already partially priced or publicly discussed, so no fresh asset move occurs.",
+      "The probability move is Polymarket noise with no corroborating reporting.",
+      "Ukraine/Russia deny or qualify the pledge, reversing any de-escalation trade.",
+      "BNO is a weak proxy: a NATO-specific pledge may not touch oil without concrete sanctions-relief; European gas would move more but lacks a clean US-listed instrument.",
+      "Equity reaction muted because the pledge changes little about the actual fighting or near-term fundamentals."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
