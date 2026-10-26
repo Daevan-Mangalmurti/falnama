@@ -1,0 +1,98 @@
+{
+  "card_id": "665420_20261026T142046Z",
+  "card_version": "v1",
+  "card_hash": "9172fecdf68fd8988ad4a0094a475a58c5950e991b2d2ef5e0eb68eacbf3aaf9",
+  "do_not_revise": true,
+  "created_time_utc": "2026-10-26T14:20:46Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665420",
+    "market_slug": "fed-abolished-before-2027",
+    "market_name": "Fed abolished before 2027?",
+    "market_url": "https://polymarket.com/market/fed-abolished-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Fed abolished before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.08,
+      "confidence_interval_bps": [
+        -150.0,
+        300.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Fed-abolition probability actually moved and whether any credible reporting (legislation, executive proposal) accompanies it; if it's just thin-market noise, discard.",
+        "1h": "Cross-check gold spot and DXY for any abnormal move; confirm nothing substantive is happening in Washington.",
+        "2h": "Scan wires for any Fed-reform or abolition headlines; absent real news, treat signal as dead.",
+        "6h": "Re-evaluate whether the probability reverted to baseline (it almost certainly will).",
+        "12h": "Close out assessment; confirm no public-market impact materialized and log as non-event."
+      },
+      "reasoning": "Abolishing the Federal Reserve is an almost-impossible tail event requiring an act of Congress and a complete restructuring of US monetary policy. In the extraordinarily unlikely scenario that this market's implied probability spiked on credible signals, it would imply profound monetary-regime uncertainty, which classically supports hard assets like gold and pressures the dollar. But at realistic probabilities this market is pure noise and carries essentially no information for asset prices. The mapping is weak and the base rate near zero."
+    },
+    {
+      "asset": "US dollar index",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.07,
+      "confidence_interval_bps": [
+        -300.0,
+        120.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify whether any real political catalyst (bill, executive order, major candidate pledge) exists behind a probability move.",
+        "1h": "Check DXY and major USD pairs for any abnormal reaction; confirm it is not idiosyncratic.",
+        "2h": "Monitor for official statements from Treasury/Fed denying or confirming; absent news, dismiss.",
+        "6h": "Confirm probability reverted to baseline and FX unaffected.",
+        "12h": "Finalize as non-event; archive for calibration."
+      },
+      "reasoning": "A genuine threat to Fed independence or existence would undermine confidence in the dollar as a reserve currency and likely weaken it. However, the probability of this market resolving Yes is effectively nil, so any move in the market is noise rather than signal. Without concrete legislative or executive action, there is no credible transmission to FX."
+    }
+  ],
+  "evidence_used": [
+    "Market question: formal abolition of the Federal Reserve by Dec 31 2026",
+    "Resolution relies on US federal government action plus credible reporting",
+    "Base rate of a sitting central bank being formally abolished is near zero",
+    "Category/topic tagged as US elections"
+  ],
+  "uncertainty_notes": [
+    "This is a deep tail-risk political market with negligible realistic probability of resolving Yes.",
+    "Any observed probability move is far more likely to be thin-market noise or speculation than genuine information leakage.",
+    "Even a real move would transmit to assets only weakly without concrete legislative/executive action.",
+    "Proxies (GLD, UUP) are broad and only loosely exposed to this specific scenario."
+  ],
+  "llm_justification": {
+    "summary": "The market asks whether the Federal Reserve will be formally abolished before 2027 \u2014 an essentially impossible tail event requiring an act of Congress. There is no credible, high-probability path by which short-term moves in this market map to tradable public-asset implications. In the far-fetched case of a genuine spike driven by real monetary-regime news, gold would tend to rise and the dollar weaken, but at realistic probabilities this is pure noise. We assign unclear direction and very low confidence; no prediction clears the 700bps tradable threshold.",
+    "key_assumptions": [
+      "No credible legislative or executive action to abolish the Fed is imminent.",
+      "The market's probability remains near its floor and any movement is dominated by noise.",
+      "Transmission to gold/FX requires a real monetary-regime catalyst, not prediction-market chatter."
+    ],
+    "failure_modes": [
+      "The scenario is already known to be near-impossible, so there is no information to leak \u2014 the thesis has no edge.",
+      "A probability move reverts within hours as thin-market noise, producing no asset impact.",
+      "Even conditional on real news, GLD and UUP are weak, diffuse proxies that would react to many unrelated macro factors.",
+      "Directional sign could flip: a Fed 'abolition' framed as replacement with a more hawkish rule could strengthen rather than weaken the dollar."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

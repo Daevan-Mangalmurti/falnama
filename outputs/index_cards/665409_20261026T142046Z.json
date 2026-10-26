@@ -1,0 +1,99 @@
+{
+  "card_id": "665409_20261026T142046Z",
+  "card_version": "v1",
+  "card_hash": "63096cac91e2e297f09c5be42c78a29cbb1666b12980a673e00203cb587b0f5b",
+  "do_not_revise": true,
+  "created_time_utc": "2026-10-26T14:20:46Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665409",
+    "market_slug": "will-trump-cut-corporate-taxes-before-2027",
+    "market_name": "Will Trump cut corporate taxes before 2027?",
+    "market_url": "https://polymarket.com/market/will-trump-cut-corporate-taxes-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Trump cut corporate taxes before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US large-cap equities",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -60.0,
+        180.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket probability move is corroborated by any tax-bill headlines (Ways & Means, reconciliation chatter) or is isolated noise; watch SPY/ES futures for a corresponding tick.",
+        "1h": "Compare SPY move to sector dispersion \u2014 a genuine tax signal should show domestically-focused, high-tax sectors (financials, retail) outperforming low-tax tech/multinationals.",
+        "2h": "Reassess whether move persists or reverts; scan for official statements from Treasury or congressional leadership confirming legislative timeline.",
+        "6h": "Evaluate whether bond yields rose (fiscal/deficit expansion) alongside equities, which would confirm a fiscal-policy interpretation versus generic risk-on.",
+        "12h": "Mark final SPY return vs the ~40bps expectation; judge whether the prediction-market move led, lagged, or was unrelated to public tax-policy news."
+      },
+      "reasoning": "A corporate tax rate cut below 21% mechanically raises after-tax corporate earnings, which lifts equity valuations. If this market's implied probability spiked sharply, it would signal rising odds that a tax-cut bill is advancing through Congress, a broadly bullish earnings catalyst for US stocks. However, the effect on the broad index over a 12h window is modest and diffuse: the S&P 500's effective tax rate is already low (many multinationals shelter income abroad), markets partially price fiscal policy well in advance, and resolution can occur anytime through end-2026, so near-term cash-flow impact is limited."
+    },
+    {
+      "asset": "US small-cap equities (higher domestic tax exposure)",
+      "ticker": "IWM",
+      "tradable_instrument_name": "iShares Russell 2000 ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 70.0,
+      "confidence": 0.38,
+      "confidence_interval_bps": [
+        -80.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm the probability move and check IWM/SPY ratio for small-cap outperformance consistent with a domestic-tax thesis.",
+        "1h": "Watch whether regional banks and domestic retailers lead; verify no offsetting macro shock (rates, data releases).",
+        "2h": "Assess persistence of the IWM-over-SPY spread and any congressional scheduling news on tax legislation.",
+        "6h": "Check 2-year/10-year yields and rate-cut odds, since small caps are also highly rate-sensitive and could be moving for unrelated reasons.",
+        "12h": "Record final IWM return vs expectation and whether small-cap relative strength materialized as the tax thesis predicts."
+      },
+      "reasoning": "Small-cap domestic companies pay closer to the statutory US corporate rate (they have less ability to shift income offshore), so a cut below 21% disproportionately benefits them relative to multinationals. A sharp rise in this market's odds would be a cleaner tailwind for IWM than SPY. Still, 12h magnitude is uncertain: small caps are rate- and macro-sensitive, the tax change may be far from enactment, and the signal is easily swamped by other drivers."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves Yes only if a bill cutting the corporate rate below 21% is signed by Dec 31 2026",
+    "Corporate tax cuts raise after-tax earnings, a mechanically bullish equity catalyst",
+    "Small-cap/domestic firms pay effective rates closer to statutory and benefit most",
+    "Broad indices price fiscal policy gradually and with long lead times"
+  ],
+  "uncertainty_notes": [
+    "A 12h window is far too short for a tax-enactment signal to fully transmit; moves will be small and noisy",
+    "Resolution can occur anytime through 2026, so a probability shift need not imply imminent cash-flow impact",
+    "Prediction-market liquidity is thin and a probability move may reflect noise, not information",
+    "Equity direction could be dominated by unrelated macro drivers (rates, inflation data, earnings)"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability that Trump signs a sub-21% corporate tax cut would be broadly bullish for US equities via higher after-tax earnings, with domestic/small-cap names (IWM) benefiting more than multinational-heavy SPY. But the transmission over a 12-hour window is weak and diffuse: the policy may be far from enactment, markets price fiscal changes slowly, and the signal is easily drowned by macro noise. Expected moves are well below the 700bps tradable threshold, so this is a low-confidence, non-tradable research mapping.",
+    "key_assumptions": [
+      "A probability spike reflects genuine legislative progress rather than noise",
+      "A corporate rate cut would not be fully priced already",
+      "Equity markets react in the standard direction (up) to lower corporate taxes"
+    ],
+    "failure_modes": [
+      "The move is already public/priced \u2014 tax-cut expectations are well-telegraphed political news, leaving little surprise",
+      "The probability shift is thin-market noise with no public-market counterpart",
+      "The proxy is weakly exposed \u2014 SPY's effective tax rate is low, muting the earnings impact",
+      "Offsetting deficit/fiscal concerns push bond yields up and cap or reverse equity gains",
+      "Macro drivers (CPI, Fed, geopolitics) dominate the 12h window and swamp any tax signal"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
