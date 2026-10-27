@@ -64,6 +64,10 @@ data:
   data_api_base_url: https://data-api.polymarket.com  # trades feed for wallet concentration
   user_agent: "falnama-research/0.1 (read-only)"
   request_timeout_seconds: 30
+  # A request that times out, drops, or meets a busy server (429/5xx) is retried
+  # this many times, waiting retry_backoff_seconds x attempt between tries.
+  max_retries: 2
+  retry_backoff_seconds: 2
   max_markets: 500                    # cap the universe pulled per run
 
 # -----------------------------------------------------------------------------

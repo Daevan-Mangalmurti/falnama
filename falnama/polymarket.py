@@ -46,6 +46,11 @@ MARKET_COLUMNS = [
 # and the LLM relevance screen decide what is real.
 _GAMMA_MAX_PAGE = 100
 
+# Price history: this many markets failing in a row (each after its retries) is
+# treated as a CLOB outage and stops the run, rather than skipping market after
+# market until the workflow times out.
+_OUTAGE_AFTER = 3
+
 
 # ---------------------------------------------------------------------------
 # Public entry points
@@ -61,16 +66,32 @@ def fetch_markets(settings: Settings, ctx: RunContext | None = None) -> pd.DataF
 
 
 def fetch_price_history(settings: Settings, market_ids: list[str],
-                        ctx: RunContext | None = None) -> pd.DataFrame:
+                        ctx: RunContext | None = None,
+                        markets: pd.DataFrame | None = None) -> pd.DataFrame:
     """Return long-format price history (one row per market per timestamp) for the
     given market IDs. Columns: market_id, market_name, timestamp, price,
-    volume, liquidity, close_time."""
+    volume, liquidity, close_time.
+
+    `markets` is the universe these ids came from (it must carry clob_token_ids).
+    Passing it avoids pulling the whole Gamma universe a second time; without it
+    the live path re-pulls. Markets whose history cannot be fetched are skipped
+    and listed in the manifest (section `price_history`), not fatal."""
     if settings.data_source == "fixtures":
         history = load_fixture(settings, "price_history")
         return history[history["market_id"].astype(str).isin({str(m) for m in market_ids})].copy()
-    df = _fetch_clob_history(settings, market_ids)
-    if ctx is not None and settings.data.get("snapshot_raw", True):
-        snapshot(settings, ctx.run_id, "price_history", df)
+    df, failures = _fetch_clob_history(settings, market_ids, markets)
+    if ctx is not None:
+        if failures:
+            ctx.warnings.append(f"price history unavailable for {len(failures)} of "
+                                f"{len(market_ids)} markets (skipped; see manifest price_history)")
+        from . import io
+        io.update_manifest(ctx, "price_history", {
+            "markets_requested": len(market_ids),
+            "markets_failed": len(failures),
+            "failures": failures,
+        })
+        if settings.data.get("snapshot_raw", True):
+            snapshot(settings, ctx.run_id, "price_history", df)
     return df
 
 
@@ -144,8 +165,9 @@ def _fetch_gamma_markets(settings: Settings) -> pd.DataFrame:
     offset = 0
     while len(rows) < max_markets:
         params = {"closed": str(closed).lower(), "limit": _GAMMA_MAX_PAGE, "offset": offset}
-        resp = requests.get(f"{base}/markets", params=params, headers=headers, timeout=timeout)
-        resp.raise_for_status()
+        # Retried on a transient failure; if it still fails the run stops, since
+        # without the market list there is nothing for any later stage to do.
+        resp = _get(requests, settings, f"{base}/markets", params=params, headers=headers, timeout=timeout)
         records = _as_records(resp.json())
         if not records:
             break
@@ -158,8 +180,18 @@ def _fetch_gamma_markets(settings: Settings) -> pd.DataFrame:
     return pd.DataFrame(normalized, columns=MARKET_COLUMNS)
 
 
-def _fetch_clob_history(settings: Settings, market_ids: list[str]) -> pd.DataFrame:
-    """Fetch price history for each market's first (Yes) CLOB token. Live-only."""
+def _fetch_clob_history(settings: Settings, market_ids: list[str],
+                        universe: pd.DataFrame | None = None) -> tuple[pd.DataFrame, list[dict]]:
+    """Fetch price history for each market's first (Yes) CLOB token. Live-only.
+
+    Returns (history, failures). One call per market, ~100 per run, so a single
+    unanswered request is near-certain on some day: each call is retried, and a
+    market that still fails is SKIPPED and recorded rather than ending the run
+    (on 2026-10-27 one 30s read timeout here killed the whole daily run).
+
+    Several failures IN A ROW mean an outage, not bad luck: it raises then, both
+    because an empty history would read as a quiet day ("no anomalies") and
+    because retrying ~100 dead calls would run past the workflow's time limit."""
     import requests
 
     cfg = settings.data
@@ -167,11 +199,15 @@ def _fetch_clob_history(settings: Settings, market_ids: list[str]) -> pd.DataFra
     timeout = int(cfg.get("request_timeout_seconds", 30))
     lookback_days = int(settings.anomaly.get("price_history_lookback_days", 14))
 
-    # We need each market's Yes token id + name; re-pull the universe to get them.
-    universe = _fetch_gamma_markets(settings)
+    # We need each market's Yes token id + name. Use the universe the caller
+    # already has; re-pull it from Gamma only if none was passed.
+    if universe is None or "clob_token_ids" not in universe:
+        universe = _fetch_gamma_markets(settings)
     wanted = universe[universe["market_id"].astype(str).isin({str(m) for m in market_ids})]
 
     frames: list[pd.DataFrame] = []
+    failures: list[dict] = []
+    in_a_row = 0
     for _, m in wanted.iterrows():
         token_ids = _parse_json(m.get("clob_token_ids"), [])
         if not token_ids:
@@ -182,14 +218,22 @@ def _fetch_clob_history(settings: Settings, market_ids: list[str]) -> pd.DataFra
         end_ts = int(time.time())
         params = {"market": token_ids[0], "startTs": end_ts - lookback_days * 86400,
                   "endTs": end_ts, "fidelity": 60}
-        resp = requests.get(f"{base}/prices-history", params=params, timeout=timeout)
-        resp.raise_for_status()
-        points = resp.json().get("history", [])
+        try:
+            resp = _get(requests, settings, f"{base}/prices-history", params=params, timeout=timeout)
+            points = resp.json().get("history", [])
+        except Exception as exc:  # retries exhausted, or an unusable body — skip this market
+            failures.append({"market_id": str(m["market_id"]), "error": f"{type(exc).__name__}: {exc}"})
+            in_a_row += 1
+            if in_a_row >= _OUTAGE_AFTER:
+                raise RuntimeError(f"CLOB price history failed for {in_a_row} markets in a row — "
+                                   f"treating it as an outage (last error: {failures[-1]['error']})") from exc
+            continue
+        in_a_row = 0
         if not points:
             continue
         hist = pd.DataFrame(points).rename(columns={"t": "timestamp", "p": "price"})
         hist["timestamp"] = pd.to_datetime(hist["timestamp"], unit="s", utc=True)
-        hist["market_id"] = m["market_id"]
+        hist["market_id"] = str(m["market_id"])  # str whether the universe came from Gamma or a CSV
         hist["market_name"] = m["market_name"]
         hist["volume"] = m.get("volume")
         hist["liquidity"] = m.get("liquidity")
@@ -197,10 +241,35 @@ def _fetch_clob_history(settings: Settings, market_ids: list[str]) -> pd.DataFra
         frames.append(hist)
         time.sleep(0.2)
     if not frames:
-        return pd.DataFrame(columns=["market_id", "market_name", "timestamp", "price", "volume", "liquidity", "close_time"])
+        return pd.DataFrame(columns=["market_id", "market_name", "timestamp", "price", "volume", "liquidity", "close_time"]), failures
     out = pd.concat(frames, ignore_index=True)
     cutoff = out["timestamp"].max() - pd.Timedelta(days=lookback_days)
-    return out[out["timestamp"] >= cutoff].reset_index(drop=True)
+    return out[out["timestamp"] >= cutoff].reset_index(drop=True), failures
+
+
+# HTTP statuses that mean "try again shortly", not "your request is wrong".
+_RETRY_STATUSES = {429, 500, 502, 503, 504}
+
+
+def _get(requests, settings: Settings, url: str, **kwargs):
+    """GET with a few retries on TRANSIENT failures — no answer in time, a dropped
+    connection, or a busy/erroring server — waiting a little longer each time.
+    Returns the response once it succeeds; raises the last error once retries
+    run out. A real client error (bad request, 404) is raised at once."""
+    retries = int(settings.data.get("max_retries", 2))
+    backoff = float(settings.data.get("retry_backoff_seconds", 2.0))
+    for attempt in range(retries + 1):
+        try:
+            resp = requests.get(url, **kwargs)
+        except (requests.Timeout, requests.ConnectionError):
+            if attempt == retries:
+                raise
+        else:
+            if resp.status_code not in _RETRY_STATUSES or attempt == retries:
+                resp.raise_for_status()
+                return resp
+        time.sleep(backoff * (attempt + 1))
+    raise AssertionError("unreachable")  # the loop always returns or raises
 
 
 # ---------------------------------------------------------------------------
