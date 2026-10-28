@@ -1,0 +1,99 @@
+{
+  "card_id": "560317_20261028T140401Z",
+  "card_version": "v1",
+  "card_hash": "e975fc86e5e5eca7c5be564ddb2632365c741cf9d6f412db0a03d714452db7fe",
+  "do_not_revise": true,
+  "created_time_utc": "2026-10-28T14:04:01Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "560317",
+    "market_slug": "putin-out-before-2027-346",
+    "market_name": "Putin out as President of Russia by December 31, 2026?",
+    "market_url": "https://polymarket.com/market/putin-out-before-2027-346",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Putin out as President of Russia by December 31, 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 450.0,
+      "confidence": 0.33,
+      "confidence_interval_bps": [
+        -600.0,
+        1500.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability jump is corroborated by any credible wire reporting (Reuters/Bloomberg) on Putin's health or status; note WTI/Brent spot reaction and whether gap is holding.",
+        "1h": "Compare oil move versus gold and the dollar \u2014 if all three rally together it confirms a risk-off/uncertainty read rather than a peace read.",
+        "2h": "Reassess direction: if narrative tilts toward ceasefire/transition, flip bias to down; if toward chaos/coup, maintain up. Check European gas (TTF) for confirmation.",
+        "6h": "Evaluate whether the prediction-market move has reversed or been debunked; if no hard news emerged, fade the position and shrink expected magnitude.",
+        "12h": "Final check: confirm whether any official Russian statement materialized. If still only a market rumor with no confirmation, treat the signal as noise and close out."
+      },
+      "reasoning": "A sharp jump in the implied probability that Putin exits power would most plausibly reflect leadership instability, a coup, incapacitation, or sudden regime turmoil in the world's second-largest oil exporter. Acute political uncertainty in Russia raises a geopolitical risk premium on crude due to feared supply disruption, sanctions reshuffling, or chaotic transition. Oil is the single most liquid, globally traded asset directly exposed to Russian stability. However, the sign is genuinely two-sided: if the exit is read as a path toward peace/sanctions relief and higher Russian export flows, oil could fall instead. Net bias is modestly up on uncertainty premium, but conviction is low."
+    },
+    {
+      "asset": "European defense / risk sentiment",
+      "ticker": "ITA",
+      "tradable_instrument_name": "iShares U.S. Aerospace & Defense ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 200.0,
+      "confidence": 0.2,
+      "confidence_interval_bps": [
+        -500.0,
+        700.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check for any corroborating headlines and note initial defense-sector reaction versus broad equities.",
+        "1h": "Assess whether the escalation-vs-peace narrative is forming; defense direction keys off that.",
+        "2h": "If a de-escalation narrative dominates, bias defense down; if chaos/escalation, bias up.",
+        "6h": "Reassess whether move persists or the prediction-market spike reversed; downgrade if no news.",
+        "12h": "Close assessment; treat as noise absent official confirmation."
+      },
+      "reasoning": "Russian leadership turnover is ambiguous for defense names: a destabilizing coup/transition raises near-term escalation fears (supportive for defense), while a transition perceived as de-escalatory would pressure defense premiums. Because the two readings pull in opposite directions and the proxy is only indirectly exposed, the mapping is weak and direction is unclear."
+    }
+  ],
+  "evidence_used": [
+    "Prediction-market question on Putin ceasing to be President by end-2026",
+    "Russia's role as a top-three global oil and gas exporter",
+    "Historical pattern that acute Russian political uncertainty raises energy risk premia",
+    "Ambiguity between a 'chaos/coup' interpretation and a 'de-escalation/peace' interpretation"
+  ],
+  "uncertainty_notes": [
+    "Direction of oil is genuinely two-sided depending on whether an exit signals chaos or peace",
+    "A probability move may be driven by low-liquidity speculation or a single rumor rather than real information",
+    "Russian domestic assets are largely un-tradable due to sanctions, forcing reliance on second-order proxies",
+    "12h window makes a >=700bps move in liquid ETFs unlikely absent a confirmed, dramatic event"
+  ],
+  "llm_justification": {
+    "summary": "A sharp increase in the implied odds of Putin leaving power would most directly threaten stability in a major energy exporter, biasing crude oil modestly higher on a geopolitical risk premium \u2014 but the sign is genuinely two-sided because a transition could also be read as a path to peace and sanctions relief, which would pressure oil lower. Defense/risk proxies are even more ambiguous. Both mappings are weak, so confidence is low and neither clears the 700bps tradable bar at the central estimate.",
+    "key_assumptions": [
+      "A probability move reflects genuine information about Russian leadership stability rather than noise",
+      "Oil carries a meaningful Russia-stability risk premium in the near term",
+      "Markets initially interpret sudden turmoil as supply-threatening rather than peace-inducing"
+    ],
+    "failure_modes": [
+      "The move reverses as the rumor is debunked, unwinding any oil premium",
+      "The event is interpreted as de-escalatory, sending oil down rather than up (direction flip)",
+      "The prediction-market spike is already public/priced, so no fresh asset reaction occurs",
+      "Proxies (USO, ITA) are only indirectly exposed, muting any real signal",
+      "Thin prediction-market liquidity generates a false probability signal"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

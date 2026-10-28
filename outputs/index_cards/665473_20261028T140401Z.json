@@ -1,0 +1,99 @@
+{
+  "card_id": "665473_20261028T140401Z",
+  "card_version": "v1",
+  "card_hash": "7e8dce8b17829cf872139331d279c04068a496aedda93fcd6664d0baad95568c",
+  "do_not_revise": true,
+  "created_time_utc": "2026-10-28T14:04:01Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665473",
+    "market_slug": "will-lebanon-join-the-abraham-accords-before-2027",
+    "market_name": "Will Lebanon join the Abraham Accords before 2027?",
+    "market_url": "https://polymarket.com/market/will-lebanon-join-the-abraham-accords-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Lebanon join the Abraham Accords before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Israel equity",
+      "ticker": "EIS",
+      "tradable_instrument_name": "iShares MSCI Israel ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.28,
+      "confidence_interval_bps": [
+        -150.0,
+        400.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability jump coincides with any concrete headline (ceasefire, diplomatic visit) versus thin-market noise; confirm EIS/TA-35 futures reaction.",
+        "1h": "Compare EIS move against broader EM/global equity beta to isolate idiosyncratic Israel bid; watch ILS spot.",
+        "2h": "Reassess if any official Lebanese or Israeli government statement emerges; fade if purely speculative.",
+        "6h": "Check US-session EIS volume and whether defense/geopolitical risk premia (oil, gold) also moved consistently.",
+        "12h": "Evaluate whether the signal persisted into close or reverted; log realized EIS return vs forecast."
+      },
+      "reasoning": "A sharp rise in the implied probability of Lebanon normalizing with Israel would signal reduced Israel-Hezbollah/Lebanon conflict risk and broader regional de-escalation, which is modestly supportive for Israeli equities. However, Lebanon joining the Accords is a remote tail event (Hezbollah's political dominance makes it highly unlikely near-term), so even a large probability move off a tiny base carries little concrete, datable catalyst within a 12h window. The link to EIS is directional but weak and slow-moving."
+    },
+    {
+      "asset": "Crude oil (regional risk premium)",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "commodity",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -80.0,
+      "confidence": 0.22,
+      "confidence_interval_bps": [
+        -300.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check if oil is reacting to this at all versus inventory/OPEC headlines.",
+        "1h": "Confirm whether a broader Middle East de-escalation narrative is driving both oil and equities.",
+        "2h": "Reassess; likely noise if no corroborating diplomatic news.",
+        "6h": "Review oil vs dollar and risk sentiment to separate the channel.",
+        "12h": "Log realized USO move; mark thesis weak if no persistence."
+      },
+      "reasoning": "Middle East de-escalation implied by normalization progress would trim the geopolitical risk premium in oil. But Lebanon is not an oil producer and the channel is purely sentiment-driven; crude is dominated by OPEC+, demand, and inventory factors, so the exposure is weak and easily swamped."
+    }
+  ],
+  "evidence_used": [
+    "Market question: Lebanon joining Abraham Accords before 2027 (long-horizon, remote event)",
+    "Region: Middle East; Lebanon politically dominated by Hezbollah, making normalization a tail scenario",
+    "Abraham Accords framework historically associated with Israel-Gulf/regional de-escalation sentiment",
+    "Liquid proxies: EIS for Israeli equity, USO for oil geopolitical premium"
+  ],
+  "uncertainty_notes": [
+    "The event horizon is ~2 years; a 12h asset move tied to a probability shift is a very loose mapping.",
+    "Polymarket on such a remote question is likely thin and prone to noise, so any 'move' may not reflect real information.",
+    "Neither proxy is strongly exposed to Lebanon specifically.",
+    "Neither prediction reaches the 700bps tradable threshold \u2014 this mapping is non-tradable by design."
+  ],
+  "llm_justification": {
+    "summary": "A prediction market on Lebanon joining the Abraham Accords is a remote, long-horizon diplomatic event with only a weak and slow-moving link to liquid public markets. The most plausible \u2014 but low-conviction \u2014 implications of a sharp upward probability move are modest support for Israeli equities (EIS) via reduced regional conflict risk and a small drag on oil's geopolitical premium (USO). Both channels are sentiment-driven, well below the 700bps tradable bar, and easily dominated by unrelated macro factors; this is best treated as a non-tradable, low-confidence research signal.",
+    "key_assumptions": [
+      "A probability move reflects genuine de-escalation signal rather than thin-market noise.",
+      "Israeli equities respond positively to perceived regional normalization.",
+      "Oil carries a geopolitical risk premium that eases on Middle East de-escalation."
+    ],
+    "failure_modes": [
+      "The event is a near-impossible tail (Hezbollah veto), so probability moves are likely noise with no asset read-through.",
+      "Any de-escalation may already be public, with asset prices pre-adjusted.",
+      "EIS and USO are weak proxies for a Lebanon-specific diplomatic event and dominated by global beta, OPEC+, and macro flows.",
+      "Move could reverse quickly as the speculative question re-prices back toward zero.",
+      "Expected magnitudes fall well short of the 700bps threshold, so acting on this would be chasing noise."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

@@ -1,0 +1,2 @@
+market_id,market_name,wallet,wallet_name,outcome,stake_usd,avg_entry_price,payoff_multiple,trade_count,first_bet_utc,wallet_first_activity_utc,wallet_age_days,markets_traded,is_longshot,is_large,is_fresh,is_focused,fingerprint_match,profile_url,error
+665374,Will the U.S. invade Iran before 2027?,0x7c3db723f1d4d8cb9c550095203b686cb11e5c6b,Car,Yes,13491.7,0.1854,5.4,3,2026-10-21T19:03:33Z,2024-02-09T01:20:08Z,985.74,9113,True,True,False,False,False,https://polymarket.com/profile/0x7c3db723f1d4d8cb9c550095203b686cb11e5c6b,
