@@ -1,0 +1,99 @@
+{
+  "card_id": "665353_20261029T142521Z",
+  "card_version": "v1",
+  "card_hash": "4281c92cd707418add29a20f9ff24fbb38997c26f3b6d9b27bd06cb16ac266de",
+  "do_not_revise": true,
+  "created_time_utc": "2026-10-29T14:25:21Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665353",
+    "market_slug": "ukraine-agrees-not-to-join-nato-by-december-31-2026",
+    "market_name": "Ukraine agrees not to join NATO by December 31, 2026?",
+    "market_url": "https://polymarket.com/market/ukraine-agrees-not-to-join-nato-by-december-31-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Ukraine agrees not to join NATO by December 31, 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Aerospace & defense equities",
+      "ticker": "ITA",
+      "tradable_instrument_name": "iShares U.S. Aerospace & Defense ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -250.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -700.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the market move is corroborated by newswire/official statements or is isolated order flow; look at ITA and European defense names (Rheinmetall) for an initial reaction.",
+        "1h": "Compare ITA move vs broad market (SPY) to isolate defense-specific signal; check for Reuters/AP headlines on Ukraine-NATO language.",
+        "2h": "Reassess whether the probability move held; if it reversed, close thesis. Watch European defense ADRs.",
+        "6h": "Check for official Ukrainian/US/Russian statements; evaluate if de-escalation narrative is strengthening or fading.",
+        "12h": "Review full-window ITA return vs benchmark and whether a genuine peace headline materialized; log hit/miss."
+      },
+      "reasoning": "A sharp rise in the implied probability that Ukraine pledges not to join NATO would signal progress toward a Russia-Ukraine peace/ceasefire framework, since NATO non-membership is a core Russian precondition. De-escalation reduces the war-driven premium in Western defense procurement expectations, pressuring defense contractor valuations. ITA is liquid and broadly exposed to this theme."
+    },
+    {
+      "asset": "European natural gas / European equity risk",
+      "ticker": "FXE",
+      "tradable_instrument_name": "Invesco CurrencyShares Euro Trust",
+      "asset_class": "fx_proxy",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -150.0,
+        450.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify the probability spike is news-driven, not noise; check EUR/USD spot reaction.",
+        "1h": "Compare EUR move vs DXY to separate euro-specific strength; scan for European gas (TTF) price reaction.",
+        "2h": "Reassess if euro strength persists or mean-reverts amid other macro drivers (rates, data).",
+        "6h": "Check for confirmed diplomatic headlines; evaluate whether European equity indices (EZU) corroborate the risk-on read.",
+        "12h": "Log full-window EUR return and whether de-escalation narrative held; note FX was likely dominated by unrelated macro."
+      },
+      "reasoning": "A credible move toward Russia-Ukraine de-escalation would lower European geopolitical and energy-supply risk, modestly supporting the euro and European risk assets while easing the energy-cost drag on the eurozone. The euro (FXE) is a liquid, broadly-exposed proxy for improved European risk sentiment, though the linkage is diffuse and macro-dominated."
+    }
+  ],
+  "evidence_used": [
+    "Market question: Ukraine pledging not to join NATO, framed as part of a potential peace process (Bosnia/Dayton analogy cited)",
+    "NATO non-membership is a well-documented core Russian precondition in ceasefire discussions",
+    "Defense equities carry a war-driven procurement premium that de-escalation would erode",
+    "European energy and risk premia are sensitive to Russia-Ukraine conflict intensity"
+  ],
+  "uncertainty_notes": [
+    "A probability move may reflect speculation or thin liquidity, not genuine leaked information",
+    "Even a Yes pledge is only one component of a broader deal that may not materialize, limiting market impact",
+    "Defense stock reaction can be muted because long-term rearmament trends (Europe) persist regardless of a single ceasefire",
+    "FX and equity proxies are dominated by macro factors (rates, inflation data) that can swamp any geopolitical signal"
+  ],
+  "llm_justification": {
+    "summary": "A sharp upward move in the probability that Ukraine agrees not to join NATO would be read as progress toward a Russia-Ukraine peace framework (NATO non-membership being a core Russian demand). The cleanest liquid implications are modest downside for Western defense equities (ITA) as the war premium fades, and modest upside for European risk/euro (FXE) as geopolitical and energy risk eases. Both mappings are diffuse and macro-contaminated, so confidence is low-to-moderate and expected moves likely fall below the 700bps tradable threshold.",
+    "key_assumptions": [
+      "A large probability move corresponds to real information about peace progress rather than noise",
+      "Markets interpret Ukraine NATO non-membership as a de-escalation signal",
+      "Defense and euro proxies retain their conventional geopolitical sensitivity over the 12h window"
+    ],
+    "failure_modes": [
+      "The probability move reverses or was already priced/public, producing no asset reaction",
+      "Defense stocks fail to fall because structural European rearmament demand dominates",
+      "Euro/European equities move on unrelated macro drivers, overwhelming the geopolitical signal",
+      "The pledge is symbolic and markets judge a full peace deal still unlikely, muting all reactions",
+      "Expected magnitudes stay well under 700bps, making none of these tradable"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

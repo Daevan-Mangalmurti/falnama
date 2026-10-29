@@ -1,0 +1,99 @@
+{
+  "card_id": "665374_20261029T142521Z",
+  "card_version": "v1",
+  "card_hash": "1bacd86adf53aca64338df01b2f7f19933ed62336af6a17ed6add9dee7a01bff",
+  "do_not_revise": true,
+  "created_time_utc": "2026-10-29T14:25:21Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665374",
+    "market_slug": "will-the-us-invade-iran-before-2027",
+    "market_name": "Will the U.S. invade Iran before 2027?",
+    "market_url": "https://polymarket.com/market/will-the-us-invade-iran-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will the U.S. invade Iran before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 550.0,
+      "confidence": 0.5,
+      "confidence_interval_bps": [
+        150.0,
+        1500.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check spot Brent/WTI and USO premarket/intraday against the probability jump; look for corroborating headlines (White House, Pentagon, Tehran, tanker traffic).",
+        "1h": "Confirm whether oil move is sustained or fading; watch Hormuz shipping/insurance chatter and OPEC commentary.",
+        "2h": "Assess whether equities (SPX) are showing risk-off confirmation; re-check if probability move persists or reverses.",
+        "6h": "Evaluate overnight futures follow-through and any official statements; decide if premium is building or decaying.",
+        "12h": "Mark final 12h return; determine if the signal was information (confirmed escalation) or noise (reversion)."
+      },
+      "reasoning": "A sharp upward move in the implied probability of a U.S. invasion of Iran signals rising odds of conflict in the world's most important oil-producing and oil-transit region (Strait of Hormuz). Iran produces ~3mbd and threatens ~20% of global seaborne crude flow. Escalation fears push a geopolitical risk premium into crude almost immediately. Oil is the single most direct, liquid proxy for Iran war risk. However, the magnitude depends on whether the probability shift reflects genuine new escalation versus noise; a pure prediction-market move without confirming news may produce only a modest premium below the 700bps tradable bar."
+    },
+    {
+      "asset": "Defense sector equity",
+      "ticker": "ITA",
+      "tradable_instrument_name": "iShares U.S. Aerospace & Defense ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 250.0,
+      "confidence": 0.42,
+      "confidence_interval_bps": [
+        -50.0,
+        700.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Compare ITA vs broad market (SPY) to isolate sector-specific bid; check for defense-name news.",
+        "1h": "Watch whether defense outperformance holds or is just beta noise.",
+        "2h": "Reassess relative strength vs SPY; check analyst/political commentary.",
+        "6h": "Evaluate follow-through and any budget/procurement signals.",
+        "12h": "Mark final return and judge whether move exceeded broad-market drift."
+      },
+      "reasoning": "Higher perceived probability of U.S. military action against Iran is modestly bullish for defense contractors (expectations of increased procurement and munitions demand). But defense stocks react slowly to pure probability shifts, are already partly priced for elevated conflict, and move far less than oil on a 12h horizon \u2014 so this is a weaker proxy that likely falls short of the tradable threshold."
+    }
+  ],
+  "evidence_used": [
+    "Prediction market question on U.S. invasion of Iran before 2027 and its described resolution criteria",
+    "Iran's role as a major oil producer and its control adjacent to the Strait of Hormuz (~20% of global oil transit)",
+    "Historical pattern that Middle East conflict escalation raises oil risk premium and defense equities",
+    "General market behavior: risk-off and commodity spikes on war-escalation news"
+  ],
+  "uncertainty_notes": [
+    "A prediction-market probability move is a noisy sensor; it may reflect thin liquidity or speculation rather than real escalation",
+    "If the underlying driver is already public (headlines), the asset move may be priced before any card acts",
+    "Magnitude is highly state-dependent: absent confirming news, oil premium may stay well below 700bps",
+    "Direction could invert if the probability move is downward (de-escalation), in which case oil would fall"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability that the U.S. invades Iran most directly maps to a higher crude-oil geopolitical risk premium (oil up via USO), with a secondary, weaker bullish read on defense equities (ITA). Oil is the strongest and most liquid proxy because Iran sits at the center of global oil supply and the Strait of Hormuz chokepoint. Confidence is moderate: the mapping direction is clear, but the 12h magnitude depends heavily on whether the probability shift coincides with genuine escalation news versus market noise, and it may fall short of the 700bps tradable bar.",
+    "key_assumptions": [
+      "The prediction-market move is upward (rising invasion odds), not a de-escalation",
+      "The shift partly leads or coincides with, rather than lags, public confirmation",
+      "Oil markets price Iran conflict risk via the standard Hormuz/supply-disruption channel"
+    ],
+    "failure_modes": [
+      "The probability spike is noise/illiquidity and reverts, leaving oil unchanged",
+      "Escalation is already fully public and priced, so no residual move to capture",
+      "Oil fails to clear 700bps without an actual supply disruption or kinetic event",
+      "Defense equities move with broad-market beta rather than Iran-specific risk, making ITA a weak proxy",
+      "Direction reverses if the market actually repriced toward de-escalation"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

@@ -4,8 +4,8 @@
     "market_id": "567688",
     "anomaly_trigger_time_utc": "2026-10-28T11:00:24Z",
     "lookback_hours": 48.0,
-    "public_information_score": 12.0,
-    "residual_anomaly_score": 86.4,
+    "public_information_score": 65.0,
+    "residual_anomaly_score": 34.3,
     "information_state": "speculation",
     "evidence": [
       {
@@ -13,14 +13,14 @@
         "source": "drudge.com",
         "url": "https://drudge.com/news/295181/anti-bibi-candidate-has-netanyahu",
         "published_time_utc": "2026-10-27T05:15:00Z",
-        "information_state": "speculation"
+        "information_state": "market_commentary"
       },
       {
         "snippet": "Israel Elections",
         "source": "politicaldog101.com",
         "url": "https://politicaldog101.com/tag/israel-elections/",
         "published_time_utc": "2026-10-27T05:15:00Z",
-        "information_state": "none"
+        "information_state": "speculation"
       },
       {
         "snippet": "\u0395\u03ba\u03bb\u03bf\u03b3\u03ad\u03c2 \u03c3\u03c4\u03bf \u0399\u03c3\u03c1\u03b1\u03ae\u03bb : \u03a4\u03b9 \u03b8\u03b1 \u03c3\u03b7\u03bc\u03ac\u03bd\u03b5\u03b9 \u03c4\u03bf \u03c4\u03ad\u03bb\u03bf\u03c2 \u03c4\u03b7\u03c2 \u03b5\u03c0\u03bf\u03c7\u03ae\u03c2 \u039d\u03b5\u03c4\u03b1\u03bd\u03b9\u03ac\u03c7\u03bf\u03c5 ; ",
@@ -41,17 +41,29 @@
         "source": "jpost.com",
         "url": "http://www.jpost.com/israel-election-2026/article-912988",
         "published_time_utc": "2026-10-27T05:15:00Z",
-        "information_state": "speculation"
+        "information_state": "rumor"
       },
       {
         "snippet": "  This time I wont vote for Likud , PM Netanyahu cousin says , citing October 7",
         "source": "jpost.com",
         "url": "https://www.jpost.com/israel-election-2026/article-912988",
         "published_time_utc": "2026-10-27T05:15:00Z",
-        "information_state": "speculation"
+        "information_state": "rumor"
       }
     ],
-    "uncertainty_note": "All pre-trigger articles are election-season speculation; the sharp DOWN move (probability of Netanyahu being out collapsing) likely reflects election results or a coalition outcome that broke at/after the trigger and is not captured here \u2014 possible retrieval gap for the decisive report.",
+    "uncertainty_note": "All articles published Oct 27, just ~30 hours before the trigger, discussing Israeli elections and anti-Netanyahu sentiment. The snippets are thin, but the timing and repeated coverage of election-adjacent themes suggest these may report or foreshadow concrete polling, exit polls, or official results released Oct 27\u201328. The market move (Netanyahu-out probability falling from 45% to 15%) is consistent with news that Netanyahu's political position strengthened or that opposition to him weakened. However, without full article text, we cannot confirm whether these are speculation about *upcoming* elections or reports of *actual results*. If these articles report official results or exit polls showing Netanyahu gaining ground, the score should be higher; if they are pre-election speculation, the score is lower.",
+    "mode": "live"
+  },
+  {
+    "market_name": "Kim Jong Un out as Supreme Leader of North Korea by December 31, 2026?",
+    "market_id": "665464",
+    "anomaly_trigger_time_utc": "2026-10-19T20:00:24Z",
+    "lookback_hours": 48.0,
+    "public_information_score": 0.0,
+    "residual_anomaly_score": 88.7,
+    "information_state": "none",
+    "evidence": [],
+    "uncertainty_note": "No relevant pre-trigger coverage found \u2014 this is weak evidence (retrieval may be incomplete), not proof the move was non-public.",
     "mode": "live"
   }
 ]

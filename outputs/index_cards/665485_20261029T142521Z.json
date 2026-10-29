@@ -1,0 +1,99 @@
+{
+  "card_id": "665485_20261029T142521Z",
+  "card_version": "v1",
+  "card_hash": "1f258e0b009b3fc5b812e134fdf8ea979d25b1b685bb3b27f4ca6608b74ffb4c",
+  "do_not_revise": true,
+  "created_time_utc": "2026-10-29T14:25:21Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665485",
+    "market_slug": "us-forces-in-gaza-before-2027",
+    "market_name": "U.S. forces in Gaza before 2027?",
+    "market_url": "https://polymarket.com/market/us-forces-in-gaza-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "U.S. forces in Gaza before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.22,
+      "confidence_interval_bps": [
+        -200.0,
+        500.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move coincides with any Reuters/AP headline on US troop deployment or ceasefire-enforcement force; distinguish rumor from confirmed news.",
+        "1h": "Compare USO/Brent spot move versus the prediction-market jump; if oil is flat while probability spiked, treat as noise.",
+        "2h": "Scan for OPEC/Gulf state reactions and any Pentagon statements that would validate escalation.",
+        "6h": "Reassess whether move persisted into US session liquidity or faded; check VIX and gold for corroborating risk-off.",
+        "12h": "Final check: did crude close with a directional risk premium or revert? Log whether the market signal led, lagged, or was unrelated."
+      },
+      "reasoning": "A sharp rise in the implied probability of US ground forces entering Gaza would signal escalating direct US military involvement in the Middle East, which historically carries a geopolitical risk premium for crude via supply-disruption fears. But Gaza itself is not an oil-producing region, so transmission is indirect through broader regional escalation. The link is weak and crude already prices a baseline Mideast risk premium."
+    },
+    {
+      "asset": "Israel equity exposure",
+      "ticker": "EIS",
+      "tradable_instrument_name": "iShares MSCI Israel ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.15,
+      "confidence_interval_bps": [
+        -350.0,
+        350.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Identify the catalyst behind any probability jump and whether it implies hostile escalation vs. peacekeeping.",
+        "1h": "Check shekel (USD/ILS) and Tel Aviv futures for directional lean to disambiguate.",
+        "2h": "Look for official Israeli government or IDF commentary framing the US role.",
+        "6h": "Reassess EIS premium/discount to NAV given limited underlying liquidity during US hours.",
+        "12h": "Record whether EIS moved at all and in which direction; most likely outcome is no tradable signal."
+      },
+      "reasoning": "US forces physically entering Gaza could be read two ways: as escalation/instability (negative for Israeli risk assets) or as a stabilizing ceasefire-enforcement presence that de-risks the conflict (positive). The description explicitly excludes diplomats, contractors, advisors and special forces, so 'Yes' would require an overt conventional deployment \u2014 a rare, binary, headline-driven event. Direction is genuinely ambiguous and EIS is thinly traded with Tel Aviv time-zone gaps limiting a clean 12h signal."
+    }
+  ],
+  "evidence_used": [
+    "Market question on US regular forces physically entering Gaza by end-2026",
+    "Strict resolution criteria excluding diplomats, contractors, advisors, special forces, maritime and airspace entry",
+    "Primary topic military_conflict, region united_states",
+    "Historical pattern that direct US Mideast military involvement adds a geopolitical risk premium to crude"
+  ],
+  "uncertainty_notes": [
+    "This is a long-dated (end-2026) binary; a 12h probability move need not reflect imminent action",
+    "Transmission from a Gaza-specific troop question to liquid assets is indirect and weak",
+    "Direction for regional equities is ambiguous (escalation vs. stabilization)",
+    "A 700bps 12h move in these broad ETFs is unlikely absent a confirmed deployment headline"
+  ],
+  "llm_justification": {
+    "summary": "The market asks whether US regular ground forces physically enter Gaza before 2027. A sharp rise in implied probability would signal escalating overt US Mideast military involvement, nudging crude's geopolitical risk premium higher and introducing ambiguous risk for Israeli equities. However, the resolution window is long-dated, the exclusions are strict, and the asset linkages are indirect. None of the proxies plausibly clear the 700bps/12h tradability bar from this signal alone, so this is best treated as low-confidence research rather than a tradable mapping.",
+    "key_assumptions": [
+      "A prediction-market probability spike reflects genuine new information about near-term US deployment",
+      "Crude retains a positive beta to Mideast escalation headlines",
+      "Markets interpret US ground forces in Gaza as net risk-increasing in the short run"
+    ],
+    "failure_modes": [
+      "The probability move is speculation/noise with no underlying news and reverts",
+      "Any underlying news was already public, so assets have already repriced",
+      "Gaza is not oil-producing \u2014 crude proxy is weakly exposed and may not react",
+      "Direction for Israeli equities could invert if a US presence is read as stabilizing",
+      "Long-dated horizon means no 12h asset reaction materializes at all"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "card_id": "665410_20261029T142521Z",
+  "card_version": "v1",
+  "card_hash": "96920bf3ec0c58972dc26b7357955216d01219145c721aac61b38a643be52301",
+  "do_not_revise": true,
+  "created_time_utc": "2026-10-29T14:25:21Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665410",
+    "market_slug": "will-ukraine-agree-to-give-up-the-rest-of-donbas-before-2027",
+    "market_name": "Will Ukraine agree to give up the rest of Donbas by December 31, 2026?",
+    "market_url": "https://polymarket.com/market/will-ukraine-agree-to-give-up-the-rest-of-donbas-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Ukraine agree to give up the rest of Donbas by December 31, 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Aerospace & Defense equities",
+      "ticker": "ITA",
+      "tradable_instrument_name": "iShares U.S. Aerospace & Defense ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -150.0,
+      "confidence": 0.33,
+      "confidence_interval_bps": [
+        -500.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move is corroborated by any newswire (Reuters/Bloomberg) on ceasefire talks; if no headline, treat as pure market noise.",
+        "1h": "Compare ITA move vs broad market (SPY) to isolate defense-specific reaction vs beta.",
+        "2h": "Watch European defense names (Rheinmetall, BAE) for confirmation of a sector-wide de-rating.",
+        "6h": "Re-assess whether the prediction-market move held or reverted; fade the thesis if probability mean-reverts.",
+        "12h": "Evaluate realized ITA return vs expectation; log whether leak hypothesis held given no public confirmation."
+      },
+      "reasoning": "A sharp rise in the implied probability that Ukraine cedes de facto control of Donbas would signal a credible move toward a negotiated end to the war. A peace/ceasefire narrative tends to pressure defense names as the 'war premium' and expectations of elevated munitions/procurement demand fade at the margin. ITA is a liquid, diversified proxy. However, Western defense budgets are multi-year and driven by broad rearmament (not just Ukraine), so exposure is partial and the move is likely modest and noisy over 12h."
+    },
+    {
+      "asset": "European natural gas risk",
+      "ticker": "UNG",
+      "tradable_instrument_name": "United States Natural Gas Fund",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -100.0,
+      "confidence": 0.2,
+      "confidence_interval_bps": [
+        -600.0,
+        400.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check TTF/European gas futures direction directly if available; UNG is only a loose read-through.",
+        "1h": "Confirm whether any sanctions-relief or pipeline language appears in reporting.",
+        "2h": "Compare US vs European gas divergence to gauge whether the signal is geopolitical or weather-driven.",
+        "6h": "Reassess if probability move persists; drop thesis if no energy-market reaction.",
+        "12h": "Log realized move and whether the weak proxy produced any signal."
+      },
+      "reasoning": "A credible Russia-Ukraine settlement would ease European energy supply-fear and potentially reopen Russian gas flows over time, pressuring gas prices. The cleanest exposure is European TTF, not US Henry Hub; UNG (US natgas) is a weak proxy and US gas fundamentals are largely domestic (weather, LNG). Direction is plausible but the proxy linkage is poor, so confidence is low."
+    }
+  ],
+  "evidence_used": [
+    "Prediction market question on Ukraine ceding de facto control of Donbas cities by end-2026",
+    "Market framing requires a publicly announced or consensus-reported diplomatic agreement",
+    "General macro linkage: Russia-Ukraine de-escalation lowers war-risk premium in defense and European energy"
+  ],
+  "uncertainty_notes": [
+    "A probability move in a 2026-horizon market has very weak timing relevance to a 12h asset window",
+    "Defense spending is driven by broad NATO rearmament, not solely the Ukraine war, limiting downside",
+    "US natural gas (UNG) is a poor proxy for the European gas channel that would actually react",
+    "No confirmation that any market anomaly reflects real non-public information vs noise/speculation"
+  ],
+  "llm_justification": {
+    "summary": "A sharp upward move in the probability that Ukraine cedes de facto control of Donbas would signal progress toward a negotiated settlement, which at the margin pressures defense equities (fading war premium) and European gas (easing supply fear). But the resolution horizon is end-2026, the proxies are only partially exposed, and liquid US-listed instruments map poorly onto the European assets that would react most. Neither mapping clears the 700bps tradable threshold on a 12h window; both are low-confidence, noise-dominated reads.",
+    "key_assumptions": [
+      "A probability spike reflects genuine diplomatic progress rather than speculation",
+      "Markets price de-escalation as reducing defense demand and energy risk",
+      "The move in the prediction market is near-term/news-driven enough to have 12h asset relevance"
+    ],
+    "failure_modes": [
+      "The move is already public (ongoing peace-talk headlines), so no leak edge exists",
+      "Defense budgets stay elevated regardless, so ITA does not fall",
+      "UNG is driven by US weather/LNG dynamics, decoupled from European geopolitical risk",
+      "The prediction-market move mean-reverts as a false signal",
+      "A 2026 resolution horizon makes any 12h asset reaction essentially undetectable above noise"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

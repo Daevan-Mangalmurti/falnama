@@ -1,0 +1,101 @@
+{
+  "card_id": "665427_20261029T142521Z",
+  "card_version": "v1",
+  "card_hash": "2f41627a7fb8996776466f12627a2c7c2a49624318bf2679ed67e35fb5bd8b93",
+  "do_not_revise": true,
+  "created_time_utc": "2026-10-29T14:25:21Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665427",
+    "market_slug": "will-a-new-country-join-the-abraham-accords-before-2027",
+    "market_name": "Will a new country join the Abraham Accords before 2027?",
+    "market_url": "https://polymarket.com/market/will-a-new-country-join-the-abraham-accords-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will a new country join the Abraham Accords before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Israel equity market",
+      "ticker": "EIS",
+      "tradable_instrument_name": "iShares MSCI Israel ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.32,
+      "confidence_interval_bps": [
+        -150.0,
+        450.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move coincides with any Reuters/Bloomberg headline on Saudi-Israel or other normalization talks; if purely market-internal, treat as noise.",
+        "1h": "Compare EIS/Israeli ADR (e.g., bank and tech names) premarket or intraday moves against broad EM and global equity beta to isolate idiosyncratic Israel signal.",
+        "2h": "Reassess whether USD/ILS and Israeli CDS are moving in the risk-on direction consistent with normalization optimism.",
+        "6h": "Look for official government statements or State Department commentary; update confidence if diplomatic confirmation emerges.",
+        "12h": "Evaluate whether EIS held any move; if it reverted with no news, conclude the prediction-market move was noise and mark mapping as unconfirmed."
+      },
+      "reasoning": "A sharp rise in the implied probability of a new country normalizing with Israel (most plausibly Saudi Arabia) would signal reduced regional conflict risk and expanded trade/investment prospects, which is modestly positive for Israeli equities. EIS is the most liquid direct proxy. However, Abraham Accords expansion is a slow, multi-year diplomatic process and this market has an 18-month horizon, so even a probability jump rarely translates into a large same-day equity move absent a concrete signed deal."
+    },
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "commodity",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.2,
+      "confidence_interval_bps": [
+        -250.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check for any oil price reaction tied to specific country speculation (Saudi vs. smaller states).",
+        "1h": "Monitor Brent/WTI spread and whether any geopolitical risk-premium narrative is being priced.",
+        "2h": "Cross-check with broader energy headlines unrelated to the Accords to avoid false attribution.",
+        "6h": "Reassess if a named country emerges that would materially affect oil supply/security dynamics.",
+        "12h": "Close out: if no distinct oil move attributable to Accords news, confirm mapping as weak/non-tradable."
+      },
+      "reasoning": "Expanded Middle East normalization reduces geopolitical risk premium, which could pressure oil lower, but the link is weak and ambiguous: Saudi involvement could equally come with production/security side-deals that support prices. The diplomatic framework does not directly alter near-term supply, so 12h oil impact is likely negligible and direction is genuinely unclear."
+    }
+  ],
+  "evidence_used": [
+    "Market question on a new country joining the Abraham Accords before 2027",
+    "Description specifying formal normalization agreement with Israel",
+    "Regional focus on Middle East, most plausible candidate being Saudi Arabia",
+    "General knowledge that normalization reduces regional conflict risk premium"
+  ],
+  "uncertainty_notes": [
+    "18-month resolution horizon means a probability move need not imply imminent news",
+    "Prediction-market moves are often liquidity-driven noise, not information leakage",
+    "Proxy exposure of EIS to a diplomatic signing is diffuse and small over 12h",
+    "Which country is implied matters hugely; a small state has minimal market impact versus Saudi Arabia"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability of a new Abraham Accords signatory would be mildly bullish for Israeli equities (EIS) via reduced regional risk and improved trade/investment prospects, and ambiguously bearish for oil via a lower geopolitical risk premium. But the horizon is long, the proxies are weakly exposed, and the signal is noisy, so expected 12h magnitudes are well below the 700bps tradable threshold and confidence is low. This is best treated as a weak, non-tradable mapping pending concrete diplomatic confirmation.",
+    "key_assumptions": [
+      "A probability jump reflects genuine new information about imminent normalization",
+      "The implied candidate is a regionally significant state (e.g., Saudi Arabia)",
+      "Israeli equities respond positively to reduced conflict risk",
+      "Markets have not already priced the development"
+    ],
+    "failure_modes": [
+      "The prediction-market move is liquidity/noise with no underlying news",
+      "Any normalization progress was already publicly reported and priced in",
+      "EIS is only weakly sensitive to diplomatic framework news over 12h",
+      "The implied country is a minor state with negligible market impact",
+      "Oil direction is genuinely ambiguous, so an oil-based trade has no edge",
+      "Move reverses within the window as speculation fades"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
