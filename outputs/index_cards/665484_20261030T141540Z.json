@@ -1,0 +1,98 @@
+{
+  "card_id": "665484_20261030T141540Z",
+  "card_version": "v1",
+  "card_hash": "5fb4e8e4bbbae98ab8860d524ccd6cafa0fa2910bc17697436221f3b450bc042",
+  "do_not_revise": true,
+  "created_time_utc": "2026-10-30T14:15:40Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665484",
+    "market_slug": "israel-x-turkey-military-clash-before-2027",
+    "market_name": "Israel x Turkey military clash before 2027?",
+    "market_url": "https://polymarket.com/market/israel-x-turkey-military-clash-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Israel x Turkey military clash before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Turkey equity risk",
+      "ticker": "TUR",
+      "tradable_instrument_name": "iShares MSCI Turkey ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -180.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -600.0,
+        80.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket probability jump is corroborated by any newswire headline (airstrike, naval incident) vs. a thin-liquidity blip; watch USD/TRY tick.",
+        "1h": "Compare TUR pre-market/ADR behavior and Turkish CDS if quoted; confirm move is Turkey-specific not broad EM risk-off.",
+        "2h": "Reassess whether escalation language is being walked back by officials; fade if diplomatic de-escalation reported.",
+        "6h": "Check lira spot and Borsa Istanbul cash session direction for confirmation; size down if no follow-through.",
+        "12h": "Evaluate whether the risk premium persisted into the close or fully reversed; log outcome vs. prediction."
+      },
+      "reasoning": "A sharp rise in the implied probability of a direct Israel-Turkey military encounter would raise Turkey's geopolitical risk premium. Turkish assets are already fragile (lira, high reliance on foreign capital), so escalation fears typically pressure the local equity ETF and the currency. TUR is a liquid proxy that would absorb risk-off flow if the market moved materially."
+    },
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "commodity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 90.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -120.0,
+        450.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check Brent/WTI futures reaction and whether any shipping/strait disruption is referenced in reporting.",
+        "1h": "Distinguish a genuine risk premium from unrelated oil-specific flows (inventories, OPEC news).",
+        "2h": "Reassess if headlines fail to materialize; oil premium decays fast without hard news.",
+        "6h": "Check whether premium held through US session and if defense/energy names moved in sympathy.",
+        "12h": "Log whether oil retained any geopolitical bid or faded to flat."
+      },
+      "reasoning": "Any credible signal of two major regional militaries clashing in the Eastern Mediterranean / Middle East would add a geopolitical risk premium to oil via supply-disruption and broader regional-war fears. The proxy exposure is weak, however, since neither Israel nor Turkey is a major crude producer and the clash scenario is speculative and long-dated."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies probability of a direct Israel-Turkey military encounter by end-2026",
+    "Turkey's known macro fragility (lira sensitivity, external funding dependence)",
+    "Middle East escalation historically adds oil risk premium",
+    "12h window and 700bps tradability threshold"
+  ],
+  "uncertainty_notes": [
+    "This is a long-dated (through Dec 2026) market, so a short-term probability move need not imply an imminent event, weakening the 12h asset linkage",
+    "Polymarket liquidity can be thin; a probability spike may be noise, not information",
+    "Proxies (TUR, USO) are only loosely exposed to this specific bilateral scenario"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied odds of a direct Israel-Turkey military clash would most plausibly pressure Turkish risk assets (TUR ETF and the lira) via a higher geopolitical risk premium, and secondarily add a modest bid to crude oil on regional-war fears. Both links are weak given the market is long-dated and speculative; neither is likely to clear the 700bps tradable bar in a 12h window, so confidence is low and these are flagged as research observations rather than signals.",
+    "key_assumptions": [
+      "A probability move reflects genuine new escalation information rather than thin-market noise",
+      "Turkish assets react negatively to Turkey-specific geopolitical risk within 12h",
+      "Oil carries a regional-conflict premium even without a producer directly involved"
+    ],
+    "failure_modes": [
+      "The probability move is driven by a public headline already priced in, so no residual asset move",
+      "Long-dated resolution horizon means markets shrug off the shift entirely within 12h",
+      "TUR/lira move is actually driven by unrelated EM or monetary-policy flows",
+      "Oil proxy is too weakly exposed since neither country is a major producer",
+      "The move in the prediction market reverses as officials de-escalate"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

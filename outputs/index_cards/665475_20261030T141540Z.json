@@ -1,0 +1,98 @@
+{
+  "card_id": "665475_20261030T141540Z",
+  "card_version": "v1",
+  "card_hash": "00dfa8f9dd1fe55ce4b23a15fa30c369488bec3b297087532cb4856d567f03e5",
+  "do_not_revise": true,
+  "created_time_utc": "2026-10-30T14:15:40Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665475",
+    "market_slug": "will-azerbaijan-join-the-abraham-accords-before-2027",
+    "market_name": "Will Azerbaijan join the Abraham Accords before 2027?",
+    "market_url": "https://polymarket.com/market/will-azerbaijan-join-the-abraham-accords-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Azerbaijan join the Abraham Accords before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Israel equity market",
+      "ticker": "EIS",
+      "tradable_instrument_name": "iShares MSCI Israel ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.25,
+      "confidence_interval_bps": [
+        -120.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move is accompanied by any wire-service reporting (Reuters/AP) of Azerbaijan-Israel talks; if none, treat as pure market noise.",
+        "1h": "Compare EIS premarket/ETF indicative price vs TA-35 futures to see if any real Israeli-asset bid is forming.",
+        "2h": "Scan for official government statements from Baku or Jerusalem; absence argues the signal is not leaking real news.",
+        "6h": "Re-assess whether broader Middle East risk sentiment (oil, regional FX) is driving EIS rather than the Azerbaijan-specific catalyst.",
+        "12h": "Mark whether EIS moved materially; if flat, confirm the mapping was weak and the market question has little tradable asset linkage."
+      },
+      "reasoning": "A sharp rise in the implied probability that Azerbaijan formally normalizes with Israel under the Abraham Accords framework would be a mildly positive diplomatic signal for Israel \u2014 broadening regional legitimacy, trade and security ties. The most liquid clean proxy is the Israel equity ETF. But Azerbaijan and Israel already maintain deep de facto ties (major oil supplier to Israel, defense trade), so formal accession is largely symbolic and the incremental market impact is small. Expected move is well below the 700bps tradable threshold."
+    },
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "commodity",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.12,
+      "confidence_interval_bps": [
+        -150.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify no supply-disruption or pipeline headline is co-occurring with the probability move.",
+        "1h": "Check Brent/WTI spread and whether any Caucasus-region news is moving energy, independent of this market.",
+        "2h": "Confirm OPEC+/inventory data is not the real driver of any oil move.",
+        "6h": "Re-evaluate whether oil is responding to broader geopolitics rather than this specific question.",
+        "12h": "Record final oil move; expect no attributable linkage, confirming weak/absent mapping."
+      },
+      "reasoning": "Azerbaijan is a significant crude exporter (BTC pipeline) and already a key oil supplier to Israel, so one might imagine an energy linkage. But diplomatic normalization does not change physical oil flows that are already in place, and global crude is driven by OPEC+, demand, and macro factors that dwarf any Azerbaijan-Israel accord headline. The proxy exposure is too diffuse to produce a directional signal; included only to flag and dismiss a tempting but weak mapping."
+    }
+  ],
+  "evidence_used": [
+    "Market question: Azerbaijan joining Abraham Accords before 2027 (diplomacy_treaty, Middle East)",
+    "Known fact: Azerbaijan and Israel already have deep de facto ties \u2014 Azerbaijan is a major crude oil supplier to Israel and a defense-trade partner",
+    "Abraham Accords normalization is largely a symbolic/diplomatic milestone when relations already exist",
+    "Liquid proxies: EIS (Israel equity ETF), USO (crude oil)"
+  ],
+  "uncertainty_notes": [
+    "Formal normalization with an already-close partner adds little incremental economic information",
+    "Prediction-market probability moves on diplomacy questions are often driven by punditry/rumor rather than leaked fact",
+    "Equity and oil proxies have very diffuse exposure to this specific event",
+    "If genuine credible reporting of an imminent signing emerged, EIS could move more than modeled, but still likely below tradable threshold"
+  ],
+  "llm_justification": {
+    "summary": "A rise in the implied probability that Azerbaijan joins the Abraham Accords is a mildly positive, mostly symbolic diplomatic signal for Israel, best proxied by the Israel equity ETF (EIS) with a small upward bias. Because Azerbaijan and Israel already maintain deep oil and defense ties, the incremental market impact is small and well below the 700bps tradable threshold. The crude-oil linkage is tempting but too diffuse to generate a directional signal. Overall this is a weak mapping \u2014 low confidence, no tradable move.",
+    "key_assumptions": [
+      "Azerbaijan-Israel relations are already deep, making formal accession largely symbolic",
+      "Global equity and commodity proxies dominate over a single diplomatic headline",
+      "No simultaneous larger geopolitical catalyst is driving these proxies"
+    ],
+    "failure_modes": [
+      "The probability move reflects rumor already priced or quickly reversed",
+      "The news may already be public, so no asset edge exists",
+      "EIS and USO are weak, diffuse proxies with minimal specific exposure to Azerbaijan normalization",
+      "A move in EIS could be driven by unrelated Israeli macro or regional security news, producing a false attribution"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "selected_count": 266,
+  "rejected_count": 234,
+  "by_primary_topic": {
+    "elections": 222,
+    "military_conflict": 24,
+    "diplomacy_treaty": 8,
+    "trade_policy": 4,
+    "cabinet_government": 4,
+    "corporate_action": 3,
+    "energy": 1
+  },
+  "by_country_or_region": {
+    "united_states": 119,
+    "europe": 83,
+    "unknown": 37,
+    "middle_east": 14,
+    "russia_ukraine": 5,
+    "korea": 5,
+    "china_taiwan": 2,
+    "latin_america": 1
+  },
+  "rejection_reasons": {
+    "diversity cap: country_or_region=united_states": 101,
+    "diversity cap: country_or_region=unknown": 53,
+    "diversity cap: country_or_region=europe": 36,
+    "relevance score 20.0 < 60.0": 31,
+    "hard reject (keyword or topic)": 4,
+    "relevance score 0.0 < 60.0": 4,
+    "diversity cap: event_family=how-many-fed-rate-cuts-in-2026": 3,
+    "already resolved (close_time 2026-06-03 is in the past)": 2
+  }
+}

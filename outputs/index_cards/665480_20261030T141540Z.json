@@ -1,0 +1,99 @@
+{
+  "card_id": "665480_20261030T141540Z",
+  "card_version": "v1",
+  "card_hash": "aba8ac7c2cce65e95b57d8522a67a6a67e9eda7c960a899f6865155afcca9085",
+  "do_not_revise": true,
+  "created_time_utc": "2026-10-30T14:15:40Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665480",
+    "market_slug": "will-us-withdraw-from-nato-before-2027-348-975-598-224-737",
+    "market_name": "Will US withdraw from NATO before 2027?",
+    "market_url": "https://polymarket.com/market/will-us-withdraw-from-nato-before-2027-348-975-598-224-737",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will US withdraw from NATO before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "European equities (broad)",
+      "ticker": "VGK",
+      "tradable_instrument_name": "Vanguard FTSE Europe ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -300.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -900.0,
+        100.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any headline/official statement corroborates the market move or if it is pure speculative repricing; check EUR/USD and Bund futures for confirmation.",
+        "1h": "Compare VGK/FEZ premarket or ETF intraday vs. US large caps to isolate Europe-specific risk-off.",
+        "2h": "Reassess whether move is sticking; look at European defense names (Rheinmetall, BAE) for the offsetting rally that would confirm a NATO-structure thesis.",
+        "6h": "Check if official NATO/US government comment has emerged; fade if no confirmation and probability reverts.",
+        "12h": "Evaluate close-of-window return vs. 700bps tradable threshold; document whether the signal led or lagged public reporting."
+      },
+      "reasoning": "A sharp rise in the implied probability of a US NATO withdrawal would be a profound security shock for Europe, raising the risk premium on European assets (loss of the US security umbrella, higher defense-spending fiscal burdens, elevated geopolitical tail risk vis-a-vis Russia). Broad European equity exposure via VGK would be the most liquid risk-off proxy and should sell off. Magnitude depends heavily on how credible/near-term the signal is."
+    },
+    {
+      "asset": "Gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "commodity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 150.0,
+      "confidence": 0.38,
+      "confidence_interval_bps": [
+        -100.0,
+        600.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check if gold spot/GLD is moving in tandem with the probability spike; verify it isn't just a USD or rates move.",
+        "1h": "Cross-check with Treasury yields and DXY to separate haven demand from rate-driven flows.",
+        "2h": "Reassess; if gold fails to bid, the security-shock interpretation is weak.",
+        "6h": "Look for official confirmation or denial; trim view if probability reverts.",
+        "12h": "Measure 12h return; note correlation with the European equity leg and whether magnitude cleared tradable threshold."
+      },
+      "reasoning": "A credible signal of US disengagement from NATO is a classic geopolitical safe-haven catalyst. Gold typically bids on heightened geopolitical/defense-order uncertainty and a weaker transatlantic security architecture. It is highly liquid and a cleaner haven than FX in this scenario."
+    }
+  ],
+  "evidence_used": [
+    "Market question framing: formal US notice of denunciation under Article 13 of the North Atlantic Treaty by end-2026",
+    "Resolution explicitly excludes mere exit from integrated command, requiring formal withdrawal notice",
+    "Primary topic military_conflict, region United States",
+    "General macro linkage: transatlantic security guarantees underpin European risk premia and safe-haven demand"
+  ],
+  "uncertainty_notes": [
+    "The market is a low-liquidity, long-horizon (end-2026) probability; a 12h move may reflect noise, not information.",
+    "A probability spike need not translate into near-term asset moves absent corroborating news.",
+    "If the move is driven by a single large speculative trade, there is no fundamental signal.",
+    "700bps threshold is very high for a 12h window; most realistic moves fall short unless hard news breaks."
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied odds of a US NATO withdrawal would signal a transatlantic security shock: European equities would carry a higher risk premium (down) and safe-haven gold would bid (up). Both are highly liquid proxies, but the mapping is uncertain because the market has a long horizon and a 12h move may be speculative noise rather than leaked information. Magnitudes likely fall short of the 700bps tradable bar absent confirming public news.",
+    "key_assumptions": [
+      "A material move in the prediction-market probability reflects new information rather than illiquidity/noise.",
+      "US security guarantees are a meaningful component of European equity risk premia and global haven demand.",
+      "The chosen ETFs/commodities retain their historical risk-on/risk-off behavior in this scenario."
+    ],
+    "failure_modes": [
+      "The probability move is noise or a single speculative bet with no underlying information, so assets do not move.",
+      "The scenario is already widely discussed/public, so any move is pre-priced and reverts.",
+      "European defense stocks could rally enough to offset broad index weakness, muddying the VGK direction.",
+      "Gold's move could be dominated by rates/USD rather than geopolitical haven demand, breaking the proxy.",
+      "12h magnitude far below 700bps, making the mapping non-tradable despite correct direction."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

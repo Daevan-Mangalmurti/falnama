@@ -1,0 +1,99 @@
+{
+  "card_id": "616914_20261030T141540Z",
+  "card_version": "v1",
+  "card_hash": "398b5374928355f0d61814450f3cc2ebfa28e587ea3ff571387bcb7a9f79b689",
+  "do_not_revise": true,
+  "created_time_utc": "2026-10-30T14:15:40Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616914",
+    "market_slug": "will-12-or-more-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 12 or more Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-12-or-more-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 12 or more Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-dated US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -120.0,
+        350.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the market's implied odds actually moved sharply or just drifted on thin volume; verify TLT quote and any rates headlines.",
+        "1h": "Compare TLT move to 2Y/10Y yield changes and Fed funds futures; confirm direction is consistent with easing repricing.",
+        "2h": "Look for a macro catalyst (jobs data, recession signal, crisis headline) that would justify tail-easing bets; fade if none.",
+        "6h": "Reassess whether move persisted or reverted to noise; check correlation with risk assets (SPY, VIX).",
+        "12h": "Close window: tally realized TLT return vs expectation, note whether prediction-market move led, lagged, or was spurious."
+      },
+      "reasoning": "A market pricing 12+ cuts (300bps) in 2026 is an extreme-easing / recession-or-crisis scenario. If its implied probability spiked, it would signal expectations of an aggressive Fed easing cycle, which pulls down the entire rate path and bids up duration. TLT is the cleanest liquid proxy for a collapsing front-end/long-end rate expectation. However, 12+ cuts is a deep tail; any realistic probability move is small in absolute terms and the 12h transmission to TLT is modest."
+    },
+    {
+      "asset": "US Dollar",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -30.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -150.0,
+        90.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether the market move is real and check DXY/UUP tape for any reaction.",
+        "1h": "Watch whether dollar is trading on rate differentials (weaker) or risk-off haven flows (stronger) to resolve the sign ambiguity.",
+        "2h": "Cross-check EUR and JPY crosses; a broad dollar move confirms a rates-driven story.",
+        "6h": "Reassess if a crisis narrative emerges that flips UUP to haven strength.",
+        "12h": "Close: record realized UUP return and whether the easing-repricing or haven effect dominated."
+      },
+      "reasoning": "An aggressive-easing scenario narrows US rate differentials and typically weakens the dollar, so a spike in this market's odds would bias UUP lower. But the dollar's crisis dynamics are two-sided: a scenario severe enough to force 12 cuts could also trigger a safe-haven dollar bid, making the sign genuinely ambiguous over 12h."
+    }
+  ],
+  "evidence_used": [
+    "Market asks whether 12+ (\u2265300bps) Fed rate cuts occur in 2026 \u2014 an extreme easing tail requiring recession or financial crisis",
+    "Rules count emergency inter-meeting cuts, so the tail is a crisis-response scenario",
+    "Standard macro transmission: aggressive-easing expectations lift Treasury prices and pressure the dollar via narrowing rate differentials",
+    "High 700bps tradability threshold vs typically small 12h moves in deep-tail markets"
+  ],
+  "uncertainty_notes": [
+    "12+ cuts is a deep tail; implied probability is low and small point-moves carry little information",
+    "A crisis severe enough to justify these odds could produce safe-haven dollar strength, flipping the FX sign",
+    "Prediction-market moves on this niche question are likely thin and noisy, not informative leaks",
+    "Mislabeled 'military_conflict' topic suggests metadata is unreliable; treat mapping cautiously"
+  ],
+  "llm_justification": {
+    "summary": "This market tracks an extreme tail \u2014 12+ (\u2265300bps) Fed cuts in 2026 \u2014 which only materializes under a recession or financial crisis forcing an aggressive easing cycle. If its implied probability spiked, the cleanest downstream implications are higher long-duration Treasury prices (TLT up) and a softer dollar (UUP down) via collapsing rate-path expectations. Both mappings are directionally plausible but low-conviction: the move is a deep tail, likely thin and noisy, and a crisis scenario can produce offsetting safe-haven dollar strength. Neither is expected to reach the 700bps tradable threshold over 12h.",
+    "key_assumptions": [
+      "A spike in these odds reflects genuine easing/recession expectations rather than thin-market noise",
+      "Rate-path repricing transmits to duration and FX in the standard textbook direction",
+      "No dominant safe-haven dollar bid overwhelms the rate-differential effect"
+    ],
+    "failure_modes": [
+      "The prediction-market move is noise on low liquidity and carries no real signal",
+      "The scenario is a crisis that triggers safe-haven dollar strength, reversing the UUP call",
+      "Expectations were already priced into bonds/FX, so no fresh 12h move occurs",
+      "Deep-tail probabilities move too little to move proxies meaningfully \u2014 neither reaches tradable magnitude",
+      "Weak proxy exposure: TLT/UUP respond to many unrelated macro drivers over 12h"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
