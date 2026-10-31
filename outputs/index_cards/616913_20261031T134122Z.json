@@ -1,0 +1,98 @@
+{
+  "card_id": "616913_20261031T134122Z",
+  "card_version": "v1",
+  "card_hash": "ea60fb1a8a0d4f98e24976c4ebc950b4adfbc3eac1340dde66b43a7af935f2b4",
+  "do_not_revise": true,
+  "created_time_utc": "2026-10-31T13:41:22Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616913",
+    "market_slug": "will-11-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 11 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-11-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 11 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-dated US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -80.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check 2y/10y Treasury yields and fed funds futures (SOFR strip) for a confirming dovish repricing; verify whether a macro headline (payrolls, CPI, crisis) is driving it.",
+        "1h": "Compare TLT move vs. fed funds futures-implied 2026 cuts; if bonds not rallying, treat market move as noise/illiquid tail pricing.",
+        "2h": "Reassess whether equity and credit markets corroborate a recession/easing narrative or whether this is isolated to the Polymarket tail.",
+        "6h": "Check for official Fed commentary or data releases; fade the thesis if no macro catalyst materialized.",
+        "12h": "Mark TLT return vs. entry; evaluate whether the prediction-market move led or lagged the bond move."
+      },
+      "reasoning": "A market pricing 11 cuts (275bps) in a single year is an extreme-tail, deep-recession/emergency-easing scenario. If implied probability of this many cuts jumps sharply, it signals expectations of aggressive Fed easing, which would push front-to-long Treasury yields lower and bond prices (TLT) higher. However this is a very distant tail; even a sizeable probability shift in the tail translates to only modest expected-value changes in the bond curve over 12h."
+    },
+    {
+      "asset": "US Dollar",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -30.0,
+      "confidence": 0.25,
+      "confidence_interval_bps": [
+        -150.0,
+        90.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check DXY and EUR/USD against the rate repricing; watch for risk-off safe-haven dollar bid offsetting the dovish effect.",
+        "1h": "Determine whether move is rate-driven (dollar down) or crisis-driven (dollar up); adjust conviction accordingly.",
+        "2h": "Cross-check with gold (GLD) \u2014 a dovish+weak-dollar read should see gold up.",
+        "6h": "Look for Fed/Treasury headlines or global risk events explaining the shift.",
+        "12h": "Mark UUP return and assess whether the dollar channel was the right transmission or dominated by haven flows."
+      },
+      "reasoning": "Expectations of very aggressive Fed cutting typically narrow US rate differentials and weaken the dollar. A sharp rise in the probability of 11 cuts would be dollar-negative. But the signal is weak: the dollar also benefits from safe-haven flows in the kind of crisis that would produce emergency cuts, so the net direction is genuinely ambiguous."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies an extreme 275bps (11x25bps) of 2026 cuts, a deep-recession/emergency-easing tail",
+    "Standard macro transmission: aggressive expected Fed easing lowers yields (TLT up), narrows rate differentials (USD down), supports gold",
+    "Market mechanics: resolves on FOMC/fed funds actions, including emergency inter-meeting cuts"
+  ],
+  "uncertainty_notes": [
+    "This is a low-probability tail market; large percentage swings in implied probability may reflect thin liquidity, not information",
+    "The scenario that produces 11 cuts (crisis) can be dollar-positive via safe-haven flows, directly contradicting the rate-differential channel",
+    "Equity direction is genuinely ambiguous: dovish-good vs. recession-bad",
+    "No macro catalyst is specified; without one, the market move is likely noise"
+  ],
+  "llm_justification": {
+    "summary": "A rising implied probability of 11 Fed cuts in 2026 is an extreme dovish/recession tail signal. The cleanest transmission is lower Treasury yields (TLT up) and a softer dollar (UUP down), with gold supported. But because this outcome requires crisis-level emergency easing, safe-haven flows could offset the dollar effect, and the tail nature of the market means moves are likely small and noisy over 12h. Neither proxy is expected to reach the 700bps tradable threshold, so this is low-conviction research-only mapping.",
+    "key_assumptions": [
+      "A sharp probability move reflects genuine information rather than thin-market noise",
+      "Markets interpret more expected cuts as lower yields and a weaker dollar via rate differentials",
+      "No overwhelming safe-haven flow dominates the dollar channel"
+    ],
+    "failure_modes": [
+      "The probability move is illiquid tail noise with no asset impact",
+      "Recession/crisis implied by 11 cuts triggers safe-haven dollar strength, reversing the UUP call",
+      "The macro news driving it is already fully public and priced, so no fresh 12h move",
+      "Bonds fail to rally if the easing is seen as insufficient relative to inflation (stagflation), weakening the TLT thesis",
+      "Magnitudes fall far short of the 700bps tradable threshold, making both predictions non-actionable"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "card_id": "663583_20261031T134122Z",
+  "card_version": "v1",
+  "card_hash": "b260581182a2173c4d80276a7cbea6db1ef9abc788fc89e8fb45fc3d1d9bd2fd",
+  "do_not_revise": true,
+  "created_time_utc": "2026-10-31T13:41:22Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "663583",
+    "market_slug": "will-the-iranian-regime-fall-by-the-end-of-2026",
+    "market_name": "Will the Iranian regime fall before 2027?",
+    "market_url": "https://polymarket.com/market/will-the-iranian-regime-fall-by-the-end-of-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will the Iranian regime fall before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 600.0,
+      "confidence": 0.38,
+      "confidence_interval_bps": [
+        -300.0,
+        1400.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether crude futures (CL) and Brent are gapping; confirm whether the prob move coincides with breaking Iran/Israel/US conflict headlines versus pure speculation.",
+        "1h": "Compare USO/crude move to baseline vol; watch tanker-tracking and Strait of Hormuz chatter for supply-disruption confirmation.",
+        "2h": "Re-check if oil move is sustained or fading; look for OPEC/IEA or US SPR commentary that could cap upside.",
+        "6h": "Assess whether escalation narrative is corroborated by multiple credible outlets; reassess direction if transition looks orderly (bearish oil).",
+        "12h": "Evaluate net crude move vs 700bps threshold and whether the prediction-market signal led or lagged the price action."
+      },
+      "reasoning": "A sharp rise in the implied probability that the Iranian regime falls would most plausibly be driven by acute escalation \u2014 military strikes, open conflict, or internal collapse threatening the Strait of Hormuz and ~3mb/d of Iranian exports plus regional supply. Oil carries a geopolitical risk premium that spikes on Middle East instability, so a sudden regime-fall repricing should push crude higher in the 12h window. The sign is conditional on the move being driven by conflict/instability rather than an orderly transition."
+    },
+    {
+      "asset": "Gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 250.0,
+      "confidence": 0.35,
+      "confidence_interval_bps": [
+        -150.0,
+        700.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check gold spot and GLD for a risk-off bid; verify USD/real-yield backdrop isn't offsetting the move.",
+        "1h": "Compare gold's move with oil and equity-index direction to confirm a coherent risk-off regime.",
+        "2h": "Watch whether a stronger dollar is capping gold; reassess if move is purely FX-driven.",
+        "6h": "Confirm whether haven demand persists or mean-reverts as headlines clarify.",
+        "12h": "Tally gold's net move; note it will likely fall short of 700bps and flag as non-tradable confirmation."
+      },
+      "reasoning": "Regime-collapse risk in a major oil state is a classic safe-haven catalyst; a sharp repricing toward 'Yes' usually accompanies conflict and risk-off flows, supporting gold. However gold rarely moves 700bps intraday, so this is likely below the tradable threshold and is included as a lower-magnitude confirmation signal rather than a standalone trade."
+    }
+  ],
+  "evidence_used": [
+    "Market question ties resolution to collapse/overthrow of the Islamic Republic, a military_conflict / middle_east topic",
+    "Iran is a major oil producer (~3mb/d exports) and sits on the Strait of Hormuz, through which ~20% of global oil transits",
+    "Geopolitical risk premium in crude and safe-haven flows to gold are standard responses to Middle East instability"
+  ],
+  "uncertainty_notes": [
+    "Direction is conditional: an orderly transition or de-escalation narrative could be bearish for oil even as 'regime fall' probability rises",
+    "Prediction-market moves on multi-year questions can reflect slow sentiment drift, not an imminent catalyst, weakening the 12h linkage",
+    "Proxy exposure is diffuse \u2014 oil responds to many factors (OPEC, US inventories, demand) that can swamp the Iran signal"
+  ],
+  "llm_justification": {
+    "summary": "A sharp upward move in the probability that Iran's regime falls most plausibly signals acute Middle East escalation, which would lift crude oil via its geopolitical risk premium and, secondarily, gold via safe-haven demand. The oil mapping is the stronger thesis but remains noisy and direction-conditional; the gold leg is confirmatory and likely sub-threshold in magnitude. Both are low-to-moderate confidence given a multi-year resolution horizon versus a 12h trading window.",
+    "key_assumptions": [
+      "A regime-fall repricing is driven by conflict/instability rather than a peaceful, supply-friendly transition",
+      "The move in the prediction market is roughly contemporaneous with a real-world catalyst that assets can react to within 12h",
+      "Strait of Hormuz / Iranian export disruption risk is the dominant transmission channel to prices"
+    ],
+    "failure_modes": [
+      "The anomaly was already public (news-driven) and oil has fully priced it before the signal is actionable",
+      "Regime-collapse optimism is read by markets as reduced long-run supply risk or eventual sanctions relief, pushing oil DOWN not up",
+      "The prediction-market move is noise/low-liquidity on a 2026 horizon with no near-term catalyst, so assets do not move",
+      "Oil's move is dominated by unrelated drivers (OPEC decision, US inventory data, demand shocks), making the proxy weakly exposed",
+      "Gold's move is offset by a stronger dollar or rising real yields, nullifying the haven bid"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

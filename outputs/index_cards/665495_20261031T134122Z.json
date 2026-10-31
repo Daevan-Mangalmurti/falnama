@@ -1,0 +1,99 @@
+{
+  "card_id": "665495_20261031T134122Z",
+  "card_version": "v1",
+  "card_hash": "d9604d116634db75c2c29db5005f04d6d9cfe6a4867db45a322cadbf12d76829",
+  "do_not_revise": true,
+  "created_time_utc": "2026-10-31T13:41:22Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665495",
+    "market_slug": "ukraine-joins-nato-before-2027",
+    "market_name": "Ukraine joins NATO before 2027?",
+    "market_url": "https://polymarket.com/market/ukraine-joins-nato-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Ukraine joins NATO before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "European equities (eurozone)",
+      "ticker": "EZU",
+      "tradable_instrument_name": "iShares MSCI Eurozone ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 150.0,
+      "confidence": 0.25,
+      "confidence_interval_bps": [
+        -300.0,
+        500.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move coincides with any ceasefire/peace-deal headlines vs escalation headlines to disambiguate direction.",
+        "1h": "Compare EZU/ESTOXX futures move against VSTOXX to see if risk premium is compressing or widening.",
+        "2h": "Cross-check European defense names and gas prices for a consistent de-escalation vs escalation signature.",
+        "6h": "Reassess whether the prediction-market move persisted or reverted; if reverted, treat as noise.",
+        "12h": "Mark final EZU return and whether any public news validated the leak; log calibration."
+      },
+      "reasoning": "A sharp rise in the implied probability of Ukraine joining NATO would, in most realistic paths, require either a negotiated end to the war (risk-on for European risk assets) or a dramatic security-guarantee escalation versus Russia (risk-off). The de-escalation interpretation is modestly more likely to accompany a near-term membership path, which would compress Europe's geopolitical risk premium and support eurozone equities. But the signal is genuinely two-sided, so direction is unclear and the realistic 12h move is well below the 700bps tradable threshold."
+    },
+    {
+      "asset": "European natural gas / energy risk premium",
+      "ticker": "UNG",
+      "tradable_instrument_name": "United States Natural Gas Fund (imperfect proxy for European TTF)",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -200.0,
+      "confidence": 0.2,
+      "confidence_interval_bps": [
+        -600.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether the probability spike is tied to peace-negotiation news that would plausibly ease gas supply fears.",
+        "1h": "Check European TTF front-month vs UNG to confirm the proxy is moving in the same direction at all.",
+        "2h": "Look for divergence between US and European gas; de-risk thesis if UNG move is driven by US weather/storage.",
+        "6h": "Reassess persistence of any gas decline and whether escalation (not de-escalation) is the real driver.",
+        "12h": "Record final move, acknowledge proxy weakness, and log whether the mapping held."
+      },
+      "reasoning": "If a NATO-membership path signals an imminent ceasefire, European gas supply-fear premium would ease, pressuring gas prices lower. UNG is a US Henry Hub proxy and only weakly tracks European TTF, so exposure is poor; the cleaner instrument (TTF futures) is not in the liquid US ETF set. Given weak proxy linkage and two-sided scenario risk, confidence is low and the move is unlikely to reach the tradable threshold."
+    }
+  ],
+  "evidence_used": [
+    "Market question: Ukraine full NATO membership before 2027 (very low base-rate, long-shot resolution)",
+    "Membership realistically requires war termination (ceasefire/settlement) or a major shift in alliance posture",
+    "Region tag russia_ukraine and topic military_conflict link the market to European risk premia, energy, and FX",
+    "NATO accession requires unanimous member consent, which is politically improbable during active conflict"
+  ],
+  "uncertainty_notes": [
+    "Direction is fundamentally two-sided: membership path could reflect de-escalation (risk-on) or escalation with Russia (risk-off).",
+    "A probability move could be driven by low-liquidity speculation rather than genuine information.",
+    "The event itself is extremely unlikely by 2026, so any spike may be noise or a thin-market artifact.",
+    "Best proxies for the European-specific risk (TTF gas, European defense, EUR) are imperfectly captured by liquid US instruments."
+  ],
+  "llm_justification": {
+    "summary": "The market asks whether Ukraine achieves full NATO membership before 2027 \u2014 an extreme long-shot requiring war termination or a dramatic alliance-posture shift. A sharp upward move in implied probability would most plausibly accompany ceasefire/settlement expectations, which would compress Europe's geopolitical risk premium (supporting eurozone equities and easing gas supply fears). However, the signal is genuinely two-sided and could instead reflect escalation, so direction is marked unclear/low-confidence. Expected magnitudes fall well below the 700bps tradable threshold, and proxy exposure is imperfect, so this is treated as a weak mapping rather than an actionable signal.",
+    "key_assumptions": [
+      "A probability spike reflects a real shift in war/peace expectations rather than thin-market noise.",
+      "Membership path correlates more with de-escalation than escalation in the near term.",
+      "European risk assets and gas prices are the most directly exposed liquid markets."
+    ],
+    "failure_modes": [
+      "The move is already-public (reaction to a known summit/communique) and fully priced, so no asset follow-through.",
+      "Direction reverses: a membership push could signal escalation, pushing European equities down and gas up.",
+      "Weak proxy: UNG tracks US gas not European TTF; EZU captures broad eurozone beta not Ukraine-specific risk.",
+      "Thin prediction-market liquidity produces a spurious probability move with no information content.",
+      "Base rate is near zero, so the market may never carry meaningful information to leak."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

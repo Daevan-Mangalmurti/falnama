@@ -1,0 +1,99 @@
+{
+  "card_id": "665474_20261031T134122Z",
+  "card_version": "v1",
+  "card_hash": "b4fd8605dc08384d584518e5f08ced8e01e0581c043764e4a045b58eaae79db4",
+  "do_not_revise": true,
+  "created_time_utc": "2026-10-31T13:41:22Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665474",
+    "market_slug": "will-saudi-arabia-join-the-abraham-accords-before-2027",
+    "market_name": "Will Saudi Arabia join the Abraham Accords before 2027?",
+    "market_url": "https://polymarket.com/market/will-saudi-arabia-join-the-abraham-accords-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Saudi Arabia join the Abraham Accords before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Israeli equities",
+      "ticker": "EIS",
+      "tradable_instrument_name": "iShares MSCI Israel ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 180.0,
+      "confidence": 0.33,
+      "confidence_interval_bps": [
+        -120.0,
+        450.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move coincides with any wire headlines (Reuters/Bloomberg) on Saudi-Israel talks; if none, treat as noise.",
+        "1h": "Compare EIS/Israeli ADR pre-market or intraday move vs MSCI EM and global equity beta to isolate idiosyncratic Israel move.",
+        "2h": "Reassess whether probability shift held or reverted; check TASE (Tel Aviv) session reaction if open.",
+        "6h": "Look for official Saudi/Israeli/US government statements confirming or denying; update confidence sharply.",
+        "12h": "Evaluate whether EIS move persisted or faded; mark prediction accuracy and note if move was already-public news."
+      },
+      "reasoning": "A sharp rise in the implied probability of Saudi-Israel normalization signals regional de-escalation and reduced war-risk premium, which is broadly supportive of Israeli equity valuations (normalized trade, investment, tourism, lower risk discount). EIS is the most liquid broad proxy for Israeli equity risk. However, a prediction-market probability shift is a soft signal, not a signed treaty, so the realized equity move tends to be modest unless accompanied by concrete diplomatic confirmation."
+    },
+    {
+      "asset": "Crude oil",
+      "ticker": "BNO",
+      "tradable_instrument_name": "United States Brent Oil Fund",
+      "asset_class": "commodity",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -120.0,
+      "confidence": 0.28,
+      "confidence_interval_bps": [
+        -400.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check if Brent/WTI futures moved with the probability shift or are driven by inventory/OPEC headlines.",
+        "1h": "Isolate oil move vs DXY and broad commodity index to avoid misattribution.",
+        "2h": "Reassess whether any OPEC+ or supply news is the true driver.",
+        "6h": "Check for official normalization confirmation; if absent, downgrade signal.",
+        "12h": "Mark whether oil drift matched thesis; note dominance of non-diplomacy factors."
+      },
+      "reasoning": "Saudi-Israel normalization implies lower Middle East geopolitical risk and warmer Saudi-US-Israel alignment, which would tend to compress the oil geopolitical risk premium. But oil is dominated by OPEC+ supply policy, demand data, and inventories, so a diplomacy-probability shift is a weak, easily-swamped driver. Direction is plausible but low conviction."
+    }
+  ],
+  "evidence_used": [
+    "Market question on Saudi Arabia joining Abraham Accords by end-2026",
+    "Topic: diplomacy_treaty, region: middle_east",
+    "General mapping: Middle East normalization reduces regional risk premium, supports Israeli assets, pressures oil geopolitical premium",
+    "Liquidity considerations favoring EIS and BNO as broad proxies"
+  ],
+  "uncertainty_notes": [
+    "A prediction-market probability shift is a noisy sensor and may reflect speculation, not leaked information.",
+    "Neither proxy is tightly coupled to Saudi-Israel diplomacy on a 12h horizon; both are dominated by other drivers.",
+    "Expected moves fall well below the 700bps tradable threshold, so this is informational, not tradable.",
+    "If normalization news is already public, no incremental asset move should occur."
+  ],
+  "llm_justification": {
+    "summary": "A sharp upward move in the implied probability of Saudi-Israel normalization would signal Middle East de-escalation: mildly bullish for Israeli equities (EIS) via a lower risk discount, and mildly bearish for oil (BNO) via a compressed geopolitical risk premium. Both mappings are directionally plausible but weak on a 12h horizon and swamped by larger macro/supply drivers. Expected magnitudes are far below the 700bps tradable bar, so neither is tradable; confidence is low and this is best treated as monitoring.",
+    "key_assumptions": [
+      "A probability shift reflects genuine de-escalation expectations rather than pure speculation.",
+      "Normalization is broadly risk-positive for Israeli assets and risk-premium-negative for oil.",
+      "EIS and BNO are adequate liquid proxies for these exposures."
+    ],
+    "failure_modes": [
+      "The probability move reverses quickly as a false signal or thin-market noise.",
+      "The information is already public and fully priced, yielding no incremental move.",
+      "Oil is driven by OPEC+/inventory/demand news, overwhelming any diplomacy premium and even reversing the sign.",
+      "EIS is a weak proxy: Israeli equity performance can be dominated by global tech beta and currency, not regional diplomacy.",
+      "Normalization could be perceived as provoking retaliation from other actors, flipping the risk sign."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
