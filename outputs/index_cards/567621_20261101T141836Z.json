@@ -1,0 +1,99 @@
+{
+  "card_id": "567621_20261101T141836Z",
+  "card_version": "v1",
+  "card_hash": "7a1a9edf45a26e2569fdbee5fec50b215c4965c0b7a0fe905cdf3e38bf046772",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-01T14:18:36Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "567621",
+    "market_slug": "will-china-invade-taiwan-before-2027",
+    "market_name": "Will China invade Taiwan by end of 2026?",
+    "market_url": "https://polymarket.com/market/will-china-invade-taiwan-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will China invade Taiwan by end of 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Taiwan equity (iShares MSCI Taiwan ETF)",
+      "ticker": "EWT",
+      "tradable_instrument_name": "iShares MSCI Taiwan ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -900.0,
+      "confidence": 0.55,
+      "confidence_interval_bps": [
+        -3000.0,
+        -100.0
+      ],
+      "trade_eligibility": {
+        "eligible": true,
+        "reason": "Meets minimum expected move.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket probability move is sustained or a thin-book spike; cross-check with news wires, PLA activity reports, and any TAIEX futures/ADR moves.",
+        "1h": "Compare EWT ADR/premarket action and TSMC ADR (TSM) to confirm risk-off is spreading beyond the prediction market; watch USD/TWD proxy and VIX.",
+        "2h": "Assess whether safe-haven flows (gold, JPY, Treasuries) confirm genuine geopolitical fear vs. isolated noise; reassess confidence.",
+        "6h": "Re-evaluate against official statements from China/Taiwan/US; if no corroboration, expect mean-reversion and fade the signal.",
+        "12h": "Mark final EWT move vs. forecast; log whether prediction-market move led, lagged, or decoupled from the ETF."
+      },
+      "reasoning": "A sharp upward repricing in the implied probability of a China invasion of Taiwan is the single most direct catalyst for Taiwan-domiciled equity risk. EWT concentrates Taiwan large-caps (heavily TSMC), which would be the epicenter of capital flight, FX stress, and war-risk premium. Tail-risk escalation produces convex, non-linear drawdowns, so a credible probability spike could drive a large gap-down well beyond 700bps. Direction is high-conviction; magnitude depends entirely on how severe/credible the signal is."
+    },
+    {
+      "asset": "Semiconductor equities (concentration risk from TSMC)",
+      "ticker": "SMH",
+      "tradable_instrument_name": "VanEck Semiconductor ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -500.0,
+      "confidence": 0.45,
+      "confidence_interval_bps": [
+        -2000.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm the probability move is real and check SMH/SOXX futures and TSM ADR reaction.",
+        "1h": "Gauge whether semis are selling off idiosyncratically vs. broad risk-off (SPY beta) to isolate the Taiwan channel.",
+        "2h": "Watch for commentary on fab contingency, inventory, and whether US names (NVDA/AMD) decouple from Taiwan-exposed names.",
+        "6h": "Reassess if any official escalation confirmation emerges; otherwise expect partial retracement.",
+        "12h": "Record final SMH move and whether it stayed below the 700bps tradable bar as expected."
+      },
+      "reasoning": "A Taiwan conflict scenario threatens the global semiconductor supply chain given TSMC's dominance in advanced-node fabrication. A credible invasion-probability spike would pressure the entire semi complex via supply-disruption fears. However, SMH is US/global diversified and could be cushioned by substitution/relocation narratives, so the magnitude is more muted and uncertain than for pure Taiwan exposure; likely below the 700bps tradable threshold except in a severe escalation."
+    }
+  ],
+  "evidence_used": [
+    "Market question: probability of China invasion of Taiwan by end-2026",
+    "Taiwan's outsized weight in global semiconductor supply via TSMC",
+    "EWT as the most liquid direct Taiwan equity proxy; SMH as semiconductor proxy",
+    "General pattern that geopolitical tail-risk produces convex, risk-off drawdowns in directly-exposed assets"
+  ],
+  "uncertainty_notes": [
+    "Polymarket probability moves on this market are often thin-book noise rather than genuine information leakage.",
+    "This is a long-dated (end-2026) resolution, so a 12h probability wiggle may carry little near-term asset signal.",
+    "Magnitude is extremely scenario-dependent: a modest probability drift produces little, while a credible escalation produces a gap far beyond the interval.",
+    "If the move is already public (news-driven), the asset repricing may precede or coincide, leaving no leakable edge."
+  ],
+  "llm_justification": {
+    "summary": "A sharp increase in the implied probability of a China invasion of Taiwan maps most directly to a sell-off in Taiwan equity (EWT) and, secondarily, the semiconductor complex (SMH) via supply-chain fears. Direction is well-grounded (risk-off), but magnitude is highly non-linear and depends on signal credibility; for a routine probability drift the move likely stays small, while a credible escalation produces convex downside. Prediction-market noise is the key caveat.",
+    "key_assumptions": [
+      "A rise in the market's implied invasion probability reflects genuine escalation risk rather than thin-book noise.",
+      "Taiwan-domiciled equity and semiconductor supply chains repriced down under escalation fear.",
+      "The move is not already fully reflected in public asset prices at signal time."
+    ],
+    "failure_modes": [
+      "The probability move is illiquid-book noise and reverses within hours with no asset impact.",
+      "The information is already public (news headline), so EWT/SMH have already moved and there is no leading signal.",
+      "Long-dated resolution means a 12h probability change is economically immaterial to near-term asset prices.",
+      "SMH is a weak/diluted proxy \u2014 global diversification and substitution narratives blunt the Taiwan-specific channel.",
+      "Policy/central-bank backstops or US deterrence signals could offset the risk-off move, muting or reversing direction."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

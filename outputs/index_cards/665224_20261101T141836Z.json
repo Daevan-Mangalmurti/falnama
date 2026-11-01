@@ -1,0 +1,99 @@
+{
+  "card_id": "665224_20261101T141836Z",
+  "card_version": "v1",
+  "card_hash": "ac2f4365a16948779112544c9d4dcdeb56ebedbb4082a569f3c290564278f61d",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-01T14:18:36Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665224",
+    "market_slug": "ukraine-signs-peace-deal-with-russia-before-2027",
+    "market_name": "Ukraine signs peace deal with Russia before 2027?",
+    "market_url": "https://polymarket.com/market/ukraine-signs-peace-deal-with-russia-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Ukraine signs peace deal with Russia before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "European defense equity (war-premium names)",
+      "ticker": "RHM.DE",
+      "tradable_instrument_name": "Rheinmetall AG",
+      "asset_class": "equity",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -550.0,
+      "confidence": 0.5,
+      "confidence_interval_bps": [
+        -1200.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move is backed by any wire headline (Reuters/Bloomberg on talks, Witkoff/Zelensky/Putin statements) or is pure market noise; note Rheinmetall pre/after-hours quote and sector peers (Leonardo, BAE, Thales).",
+        "1h": "Confirm move persists in the prediction market and whether defense ETFs (ITA/EUAD) and peers are moving in sympathy; distinguish idiosyncratic from thematic.",
+        "2h": "Re-assess against European equity index behavior and gas prices to validate a coherent de-escalation narrative rather than a one-name blip.",
+        "6h": "Check for official denials/confirmations; defense names often retrace quickly if 'peace talk' headlines are walked back. Reduce conviction if no corroboration.",
+        "12h": "Mark realized move vs the -550bps expectation; log whether the prediction-market move led, lagged, or was unrelated to defense-equity price action."
+      },
+      "reasoning": "European defense primes like Rheinmetall have re-rated massively on sustained Russia-Ukraine conflict and expectations of persistent elevated European defense spending. A sharp upward move in the implied probability of a Ukraine-Russia peace/ceasefire instrument would compress that war premium, as markets price lower near-term escalation and a possible plateau in the fastest phase of rearmament. Rheinmetall is the single most war-sensitive liquid European name, so it is the cleanest directional proxy for a de-escalation signal."
+    },
+    {
+      "asset": "European natural gas / energy risk premium",
+      "ticker": "TTF",
+      "tradable_instrument_name": "Dutch TTF natural gas futures (European benchmark)",
+      "asset_class": "commodity",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -300.0,
+      "confidence": 0.35,
+      "confidence_interval_bps": [
+        -900.0,
+        300.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify any genuine news catalyst; check TTF front-month and Brent reaction, plus EUR/USD for a broader risk-on read.",
+        "1h": "See if energy move is consistent with the defense-equity signal (coherent de-escalation theme) or divergent.",
+        "2h": "Assess whether storage/weather/LNG headlines are dominating energy instead of geopolitics, which would void the thesis.",
+        "6h": "Re-check for sanctions-relief commentary; absent concrete flow implications, fade the energy signal.",
+        "12h": "Record realized TTF/Brent move vs expectation and whether geopolitics or fundamentals explained it."
+      },
+      "reasoning": "A credible peace/ceasefire path would reduce the geopolitical risk premium in European energy and raise the possibility of eventual normalization of Russian gas/energy flows, pressuring European gas prices lower and modestly easing crude. However, the link is indirect and slow: sanctions relief and pipeline restarts would lag any signature by months, and current European gas is driven more by LNG/weather/storage than by Russian flow expectations. This is a weak, low-conviction mapping."
+    }
+  ],
+  "evidence_used": [
+    "Market question: probability Ukraine signs a written peace/ceasefire instrument with Russia before end-2026",
+    "Broad resolution criteria (any signed framework/roadmap with ceasefire or defined peace process qualifies; only Ukraine's signature needed)",
+    "Known sensitivity of European defense primes (Rheinmetall, Leonardo, Thales, BAE) to the war premium",
+    "European energy complex's historical sensitivity to Russia-Ukraine geopolitical risk"
+  ],
+  "uncertainty_notes": [
+    "A move in implied probability is not the signing itself; 12h asset moves from a probability shift alone are usually modest and may not reach the 700bps tradable threshold.",
+    "Defense re-rating also reflects structural NATO spending commitments that would persist even after a ceasefire, muting the downside.",
+    "Energy prices are currently dominated by LNG supply, storage, and weather, weakening the Russia-flow linkage.",
+    "Russian assets (the most direct beneficiaries) are largely untradable/sanctioned, forcing reliance on second-order proxies."
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability of a Ukraine-Russia peace/ceasefire instrument should compress the war risk premium: most cleanly in European defense equities (Rheinmetall as the most war-sensitive liquid proxy, directionally down) and, more weakly and slowly, in European natural gas/energy prices (down on reduced geopolitical premium and eventual normalization hopes). Both mappings are directionally plausible but face significant dilution\u2014structural defense spending and non-geopolitical energy drivers\u2014so conviction is moderate-to-low and 12h magnitudes may fall short of the tradable threshold absent an actual signing headline.",
+    "key_assumptions": [
+      "The probability move reflects genuine de-escalation information, not noise or a resolution-criteria technicality.",
+      "Defense primes still carry a meaningful war premium that can decompress on peace signals.",
+      "Markets interpret a Ukrainian signature as reducing, not increasing, regional conflict risk."
+    ],
+    "failure_modes": [
+      "The move is already public (peace talks widely reported), so assets have already repriced and there is no leak edge.",
+      "Defense stocks hold up because investors view elevated European rearmament as structural and sticky regardless of a ceasefire.",
+      "A ceasefire signing could paradoxically be read as temporary/unstable, keeping risk premia elevated (direction unclear/reverses).",
+      "Energy proxy is weakly exposed\u2014LNG/weather/storage dominate, so gas fails to respond.",
+      "The prediction-market move reverses quickly as a 'peace' headline is denied or walked back, whipsawing proxies."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
