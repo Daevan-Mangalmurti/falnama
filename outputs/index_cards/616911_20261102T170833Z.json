@@ -1,0 +1,100 @@
+{
+  "card_id": "616911_20261102T170833Z",
+  "card_version": "v1",
+  "card_hash": "0a3099b14c240f1b2fb5757ecc218e6cfe77da7a37f1494772565ff3a50411dd",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-02T17:08:33Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616911",
+    "market_slug": "will-9-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 9 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-9-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 9 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-duration US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.5,
+      "confidence_interval_bps": [
+        -80.0,
+        400.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether 2y/10y Treasury yields are falling and fed funds futures (SOFR/SR3) are pricing additional 2026 cuts; confirm the Polymarket move isn't a thin-liquidity blip.",
+        "1h": "Compare TLT move vs rate-futures-implied easing; look for any Fed headline, economic data release, or crisis news that would justify a 9-cut repricing.",
+        "2h": "Reassess whether risk-off (equities down, VIX up, credit spreads wider) accompanies the bond rally, confirming a recession/easing narrative vs a false signal.",
+        "6h": "Verify durability: has the Polymarket probability held, and are rate expectations across the curve consistent? Fade if reverting.",
+        "12h": "Final check at window close; mark whether TLT held its move and whether broader rates markets corroborated the signal."
+      },
+      "reasoning": "A 9-cut (225bps) scenario in 2026 is a deep-easing/recession tail. If this market's implied probability spikes sharply, it signals expectations of aggressive Fed easing \u2014 possibly emergency cuts. Long-duration Treasuries rally hard when the market prices rapid rate cuts, so TLT would rise. The move is directionally robust but a single Polymarket tail-strike shift is a noisy sensor and front-month Treasury reactions are driven primarily by official data/Fed speak, so 12h magnitude is modest."
+    },
+    {
+      "asset": "US Dollar",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -60.0,
+      "confidence": 0.42,
+      "confidence_interval_bps": [
+        -250.0,
+        80.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check DXY/EURUSD reaction and whether 2y yields fell; confirm rate-differential channel is dominating over safe-haven flows.",
+        "1h": "Watch for risk-off haven bid into USD that could offset the easing-driven weakness.",
+        "2h": "Assess cross-asset consistency: if gold is up and real yields down with USD weak, the easing thesis holds.",
+        "6h": "Re-evaluate whether USD move persists or reverses on haven demand.",
+        "12h": "Final assessment at close; note whether the dollar channel was dominated by easing or risk-off."
+      },
+      "reasoning": "Aggressive Fed easing expectations narrow US rate differentials and typically weaken the dollar, so a spike in the probability of 9 cuts would pressure the USD lower, benefiting UUP shorts. However, a tail recession scenario can also trigger safe-haven dollar demand, muddying the direction \u2014 hence lower confidence and a wide interval straddling zero."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies 9 cuts (~225bps) in 2026, an extreme deep-easing tail scenario",
+    "Resolution tied to FOMC statements and official fed funds target changes",
+    "Inclusion of emergency inter-meeting cuts signals a crisis/recession pathway",
+    "Standard rate-cut transmission: lower rates lift long bonds, pressure the dollar, support gold"
+  ],
+  "uncertainty_notes": [
+    "Polymarket tail-strike probabilities are thinly traded and noisy; a 'sharp move' may be liquidity-driven not information-driven",
+    "9 cuts is a far-tail event; small absolute probability changes can look large in percent terms without real information",
+    "Direction of USD is ambiguous because recession tails can trigger safe-haven dollar strength",
+    "12h window is too short for broad macro proxies to move 700bps; unlikely to be 'tradable' by the stated threshold",
+    "Mislabeled primary topic (military_conflict) suggests metadata noise"
+  ],
+  "llm_justification": {
+    "summary": "This market prices an extreme deep-easing scenario (nine 25bps Fed cuts in 2026). A sharp rise in its implied probability would signal expectations of aggressive Fed easing, likely tied to recession or crisis. The cleanest public-market reads are long-duration Treasuries higher (TLT up) and the dollar lower (UUP down), though the dollar's direction is complicated by potential safe-haven flows. Given the noisiness of a far-tail Polymarket strike and a 12h window, moves are unlikely to reach the 700bps tradable threshold; this is a directional research mapping with moderate-to-low confidence.",
+    "key_assumptions": [
+      "A sharp probability move reflects genuine easing/recession repricing, not thin-market noise",
+      "Standard monetary transmission holds: more expected cuts lift bonds and weaken USD",
+      "The move in the prediction market is roughly contemporaneous with, not lagging, rates markets"
+    ],
+    "failure_modes": [
+      "The Polymarket shift is already reflected in SOFR futures and Treasuries \u2014 no leak, no edge",
+      "Thin liquidity on a far-tail strike produces a fake signal that reverts within hours",
+      "Recession-driven safe-haven demand lifts the dollar instead of weakening it, breaking the UUP thesis",
+      "Broad ETF proxies simply do not move 700bps in 12h, so nothing is tradable under the threshold",
+      "The easing narrative is offset by inflation concerns keeping long yields elevated despite cut expectations"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

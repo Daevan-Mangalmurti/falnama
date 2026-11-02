@@ -1,0 +1,97 @@
+{
+  "card_id": "616912_20261102T170833Z",
+  "card_version": "v1",
+  "card_hash": "1f4cccbceace43d64442ab92489d96130440153c13e6a0593ee242ef6bbd50df",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-02T17:08:33Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616912",
+    "market_slug": "will-10-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 10 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-10-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 10 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-dated US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -80.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether 2y/10y Treasury yields are actually falling in sympathy and whether any macro headline (jobs, credit event) is driving both the market and bonds.",
+        "1h": "Confirm move is not just thin Polymarket liquidity; cross-check fed funds futures (SOFR/ZQ) implied cuts for corroboration.",
+        "2h": "Re-assess whether equities and credit spreads confirm a risk-off/recession narrative consistent with deep easing.",
+        "6h": "Review whether the probability shift persists or mean-reverts; look for Fed speak or data that could anchor expectations.",
+        "12h": "Evaluate net TLT move vs expectation; flag as non-tradable if below threshold and log calibration."
+      },
+      "reasoning": "Ten 25bp cuts (250bps of easing) in 2026 is a deep-recession/emergency-easing tail scenario. A sharp rise in this market's implied probability would signal rapidly deteriorating growth/credit expectations and aggressive forward Fed easing, which pulls the front end and belly of the curve lower and bids duration. TLT is a liquid, rate-sensitive proxy that rallies when the market prices much deeper cuts. The mapping direction is reasonable but the 12h magnitude is far below the 700bps tradable threshold; duration rarely moves 7% in half a day absent a crisis print."
+    },
+    {
+      "asset": "Gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "commodity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.33,
+      "confidence_interval_bps": [
+        -70.0,
+        180.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check DXY direction and real yields (TIPS) to see if the dovish-easing channel is active.",
+        "1h": "Verify gold move is coincident with the rate-cut repricing and not a separate geopolitical shock.",
+        "2h": "Compare gold vs silver and miners for confirmation of a genuine rates-driven move.",
+        "6h": "Reassess whether dollar weakness is sustaining the gold bid.",
+        "12h": "Measure net GLD move vs expectation; mark non-tradable and record outcome for calibration."
+      },
+      "reasoning": "A jump in the probability of extreme Fed easing implies lower real rates and a weaker dollar, both supportive of gold. Gold is a liquid proxy for a dovish/real-rate-decline regime. However, the link is indirect and gold also responds to the geopolitical/risk backdrop; 12h magnitude is well under the 700bps threshold and direction can be swamped by dollar and flight-to-quality cross-currents."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves on count of 25bp Fed cuts in 2026; 10 cuts equals 250bps of easing",
+    "Such a scenario is only realistic in a severe recession or emergency-easing cycle",
+    "Standard macro transmission: deeper expected cuts lower yields, weaken USD, support duration and gold",
+    "700bps tradable threshold over a 12h window is very large for these proxies"
+  ],
+  "uncertainty_notes": [
+    "We do not know the direction or size of any actual probability move; this is a forward mapping",
+    "Polymarket pricing on extreme tails is thin and noisy, prone to false signals",
+    "12h horizon is too short for most macro proxies to register the implied magnitude"
+  ],
+  "llm_justification": {
+    "summary": "The market asks whether the Fed delivers ten 25bp cuts (250bps of easing) in 2026 \u2014 a deep-recession/emergency tail. If its implied probability rose sharply, the cleanest public-market reads are a rally in long-duration Treasuries (TLT) and a bid in gold (GLD) via lower real rates and a softer dollar. Both mappings are directionally sensible but modest over 12h and well below the 700bps tradable bar, so this is best treated as non-tradable, low-confidence research.",
+    "key_assumptions": [
+      "A rise in implied probability reflects genuine recession/easing expectations rather than noise",
+      "Standard rates/FX/commodity transmission holds",
+      "No offsetting shock (e.g., inflation surprise, geopolitical risk-on) dominates the tape"
+    ],
+    "failure_modes": [
+      "The probability move is already public/priced via fed funds futures, so no residual edge",
+      "Thin Polymarket liquidity creates a false signal with no corroboration in bonds",
+      "Proxies are weakly exposed over 12h and dominated by dollar, equity, or geopolitical flows",
+      "Direction reverses if the easing narrative is paired with inflation fears that lift yields instead"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

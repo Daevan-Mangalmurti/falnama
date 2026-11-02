@@ -1,0 +1,97 @@
+{
+  "card_id": "616906_20261102T170833Z",
+  "card_version": "v1",
+  "card_hash": "436ccabb20a5a07769a9478b0793d2d7666d78e862414c0be843176c36bf2623",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-02T17:08:33Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616906",
+    "market_slug": "will-4-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 4 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-4-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 4 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-dated US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.55,
+      "confidence_interval_bps": [
+        -30.0,
+        120.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the market's implied-probability shift is holding or was a liquidity blip; cross-check 2y/10y Treasury yields and fed funds futures (SOFR) for confirmation.",
+        "1h": "Compare TLT move vs. fed funds futures repricing; confirm no competing macro headline (CPI, jobs, Fed speaker) explains the move.",
+        "2h": "Assess whether rate-cut repricing is broad-based across the curve or isolated; watch dollar and equity reaction for consistency.",
+        "6h": "Re-evaluate against any scheduled data/Fed communications; determine if move is persisting into the US session.",
+        "12h": "Mark final TLT return vs. prediction; note whether the prediction-market signal led or lagged the rates move."
+      },
+      "reasoning": "A sharp rise in the implied probability of 4 Fed cuts in 2026 signals markets pricing a more dovish policy path. Lower expected policy rates pull down the whole yield curve, especially the long end relative to current pricing, lifting long-duration bond prices. TLT is the most liquid direct proxy for falling long-term yields."
+    },
+    {
+      "asset": "US Dollar",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -25.0,
+      "confidence": 0.5,
+      "confidence_interval_bps": [
+        -90.0,
+        40.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm the dovish signal is US-specific, not a global growth scare that would paradoxically bid the dollar as a haven.",
+        "1h": "Check EURUSD and USDJPY direction for consistency with a weaker-dollar thesis.",
+        "2h": "Watch whether rate-differential narrative dominates or risk sentiment overrides FX.",
+        "6h": "Reassess during US session liquidity; verify no offsetting ECB/BoJ headlines.",
+        "12h": "Mark final UUP return; evaluate whether FX confirmed or contradicted the rates signal."
+      },
+      "reasoning": "More expected Fed cuts narrow US rate differentials versus other majors, which is dollar-negative. A dovish repricing typically weakens the DXY, so UUP should fall. Effect is modest and conditional on the move being Fed-specific rather than global risk-off (which can be dollar-positive)."
+    }
+  ],
+  "evidence_used": [
+    "Market question centers on number of 2026 Fed 25bp cuts, a direct read on monetary-policy expectations",
+    "Standard macro transmission: more expected cuts -> lower yields, weaker dollar, supportive for duration",
+    "Liquid ETF proxies (TLT, UUP) track rates and dollar directly"
+  ],
+  "uncertainty_notes": [
+    "The 'military_conflict' topic tag is inconsistent with a pure Fed-policy market; possible metadata error, so treat topic as rates/macro",
+    "12h moves in these ETFs rarely exceed a few tens of bps absent a scheduled catalyst, so none approach the 700bps tradable threshold",
+    "Prediction-market probability shifts on far-dated (2026) cuts may be slow-moving and weakly informative over a 12h window",
+    "Direction depends on whether dovishness stems from easing inflation (risk-on, dollar-down) or growth fears (risk-off, dollar-up)"
+  ],
+  "llm_justification": {
+    "summary": "This market prices how dovish the Fed will be in 2026. A sharp increase in the probability of 4 cuts implies a lower expected policy path, which mechanically supports long-duration Treasuries (TLT up) and weakens the dollar (UUP down). Both are liquid, direct macro proxies, but the expected 12h magnitudes are small (tens of bps), far below the 700bps tradable bar, and direction is contingent on the cuts reflecting disinflation rather than a growth scare.",
+    "key_assumptions": [
+      "A move in the market's implied probability reflects genuine repricing of Fed expectations, not noise",
+      "Dovish repricing lowers yields across the curve and narrows US rate differentials",
+      "No competing dominant macro catalyst overrides the rates narrative in the window"
+    ],
+    "failure_modes": [
+      "The probability move was already public/priced via fed funds futures, so no fresh signal remains",
+      "Dovishness driven by recession fear triggers risk-off that bids the dollar, reversing the UUP call",
+      "Long-dated 2026 cut odds are a weak, slow proxy for 12h asset moves \u2014 signal-to-noise is low",
+      "Metadata mislabels this as military_conflict, hinting the market may be miscategorized or thinly traded/illiquid"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

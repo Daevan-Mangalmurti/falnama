@@ -1,78 +1,66 @@
 [
   {
+    "market_name": "Kim Jong Un out as Supreme Leader of North Korea by December 31, 2026?",
+    "market_id": "665464",
+    "anomaly_trigger_time_utc": "2026-10-20T20:00:30Z",
+    "lookback_hours": 48.0,
+    "public_information_score": 22.0,
+    "residual_anomaly_score": 78.0,
+    "information_state": "rumor",
+    "evidence": [
+      {
+        "snippet": "A ka vdekur v\u00ebrtet Kim Jong - un ?  Shp\u00ebrthen  rrjeti , kush e z\u00ebvend\u00ebson liderin suprem t\u00eb Kores\u00eb s\u00eb Veriut n\u00ebse nd\u00ebrron jet\u00eb",
+        "source": "top-channel.tv",
+        "url": "https://top-channel.tv/2026/10/20/a-ka-vdekur-vertet-kim-jong-un-shperthen-rrjeti-kush-e-zevendeson-liderin-suprem-te-korese-se-veriut-nese-nderron-jete/",
+        "published_time_utc": "2026-10-20T16:15:00Z",
+        "information_state": "rumor"
+      },
+      {
+        "snippet": "Who Would Succeed Kim Jong - un ? Daughter Ju - ae and Sister Yo - jong Emerge in Succession Questions",
+        "source": "ibtimes.co.uk",
+        "url": "https://www.ibtimes.co.uk/kim-jong-un-death-rumours-north-korea-succession-1826653",
+        "published_time_utc": "2026-10-20T09:15:00Z",
+        "information_state": "speculation"
+      },
+      {
+        "snippet": "Speculation abounds over content of Kim Jong - un letter to President Moon",
+        "source": "english.hani.co.kr",
+        "url": "https://english.hani.co.kr/arti/english_edition/e_northkorea/831958.html",
+        "published_time_utc": "2026-10-20T03:30:00Z",
+        "information_state": "speculation"
+      },
+      {
+        "snippet": "N Korea releases",
+        "source": "bignewsnetwork.com",
+        "url": "http://www.bignewsnetwork.com/news/279386484/n-korea-releases-proof-of-life-photos-of-kim-jong-un-after-death-rumours-report",
+        "published_time_utc": "2026-10-20T04:00:00Z",
+        "information_state": "none"
+      },
+      {
+        "snippet": "N Korea releases",
+        "source": "beijingbulletin.com",
+        "url": "http://www.beijingbulletin.com/news/279386484/n-korea-releases-proof-of-life-photos-of-kim-jong-un-after-death-rumours-report",
+        "published_time_utc": "2026-10-20T08:15:00Z",
+        "information_state": "none"
+      },
+      {
+        "snippet": "N Korea releases",
+        "source": "shanghaisun.com",
+        "url": "http://www.shanghaisun.com/news/279386484/n-korea-releases-proof-of-life-photos-of-kim-jong-un-after-death-rumours-report",
+        "published_time_utc": "2026-10-20T07:30:00Z",
+        "information_state": "none"
+      }
+    ],
+    "uncertainty_note": "Snippets are thin and several ('N Korea releases') are truncated and uncontextualized; the death/succession pieces are speculation in the UP direction (Kim possibly gone), whereas the market moved DOWN (toward Kim staying), suggesting the actual trigger was a debunking or public reappearance not clearly captured here. Full article text would clarify whether any piece confirms Kim alive and in control.",
+    "mode": "live"
+  },
+  {
     "market_name": "Netanyahu out by end of 2026?",
     "market_id": "567688",
     "anomaly_trigger_time_utc": "2026-10-28T11:00:24Z",
     "lookback_hours": 48.0,
-    "public_information_score": 15.0,
-    "residual_anomaly_score": 83.2,
-    "information_state": "speculation",
-    "evidence": [
-      {
-        "snippet": "The Anti - Bibi Candidate who Has Netanyahu on His Heels",
-        "source": "drudge.com",
-        "url": "https://drudge.com/news/295181/anti-bibi-candidate-has-netanyahu",
-        "published_time_utc": "2026-10-27T05:15:00Z",
-        "information_state": "speculation"
-      },
-      {
-        "snippet": "Israel Elections",
-        "source": "politicaldog101.com",
-        "url": "https://politicaldog101.com/tag/israel-elections/",
-        "published_time_utc": "2026-10-27T05:15:00Z",
-        "information_state": "none"
-      },
-      {
-        "snippet": "\u0395\u03ba\u03bb\u03bf\u03b3\u03ad\u03c2 \u03c3\u03c4\u03bf \u0399\u03c3\u03c1\u03b1\u03ae\u03bb : \u03a4\u03b9 \u03b8\u03b1 \u03c3\u03b7\u03bc\u03ac\u03bd\u03b5\u03b9 \u03c4\u03bf \u03c4\u03ad\u03bb\u03bf\u03c2 \u03c4\u03b7\u03c2 \u03b5\u03c0\u03bf\u03c7\u03ae\u03c2 \u039d\u03b5\u03c4\u03b1\u03bd\u03b9\u03ac\u03c7\u03bf\u03c5 ; ",
-        "source": "lifo.gr",
-        "url": "https://www.lifo.gr/stiles/optiki-gonia/ekloges-sto-israil-ti-tha-simanei-telos-tis-epohis-netaniahoy",
-        "published_time_utc": "2026-10-27T05:15:00Z",
-        "information_state": "speculation"
-      },
-      {
-        "snippet": "Alegeri \u00een Israel : Benjamin Netanyahu \u00ee\u0219i joac\u0103 ultima carte politic\u0103",
-        "source": "stiripesurse.ro",
-        "url": "https://www.stiripesurse.ro/alegeri-israel-benjamin-netanyahu-gadi-eisenkot-parlamentare_3931582",
-        "published_time_utc": "2026-10-27T05:15:00Z",
-        "information_state": "speculation"
-      },
-      {
-        "snippet": "  This time I wont vote for Likud , Netanyahu cousin says , citing October 7",
-        "source": "jpost.com",
-        "url": "http://www.jpost.com/israel-election-2026/article-912988",
-        "published_time_utc": "2026-10-27T05:15:00Z",
-        "information_state": "retrospective"
-      },
-      {
-        "snippet": "  This time I wont vote for Likud , PM Netanyahu cousin says , citing October 7",
-        "source": "jpost.com",
-        "url": "https://www.jpost.com/israel-election-2026/article-912988",
-        "published_time_utc": "2026-10-27T05:15:00Z",
-        "information_state": "retrospective"
-      }
-    ],
-    "uncertainty_note": "All pre-trigger articles discuss Israeli elections and Netanyahu's vulnerability, which if anything points toward him being OUT (up), the opposite of the observed downward move. No article reports an electoral outcome or confirmation that he will stay, so the actual trigger for the down move (e.g. an election result or deal keeping him in power) may have broken after these snippets or via channels not captured here \u2014 a likely retrieval gap.",
-    "mode": "live"
-  },
-  {
-    "market_name": "Will Iran withdraw from the NPT before 2027?",
-    "market_id": "665727",
-    "anomaly_trigger_time_utc": "2026-10-29T18:00:35Z",
-    "lookback_hours": 48.0,
     "public_information_score": 0.0,
-    "residual_anomaly_score": 93.1,
-    "information_state": "none",
-    "evidence": [],
-    "uncertainty_note": "No relevant pre-trigger coverage found \u2014 this is weak evidence (retrieval may be incomplete), not proof the move was non-public.",
-    "mode": "live"
-  },
-  {
-    "market_name": "Kim Jong Un out as Supreme Leader of North Korea by December 31, 2026?",
-    "market_id": "665464",
-    "anomaly_trigger_time_utc": "2026-10-19T20:00:24Z",
-    "lookback_hours": 48.0,
-    "public_information_score": 0.0,
-    "residual_anomaly_score": 88.7,
+    "residual_anomaly_score": 97.9,
     "information_state": "none",
     "evidence": [],
     "uncertainty_note": "No relevant pre-trigger coverage found \u2014 this is weak evidence (retrieval may be incomplete), not proof the move was non-public.",
@@ -84,7 +72,7 @@
     "anomaly_trigger_time_utc": "2026-10-29T18:00:32Z",
     "lookback_hours": 48.0,
     "public_information_score": 0.0,
-    "residual_anomaly_score": 85.2,
+    "residual_anomaly_score": 86.6,
     "information_state": "none",
     "evidence": [],
     "uncertainty_note": "No relevant pre-trigger coverage found \u2014 this is weak evidence (retrieval may be incomplete), not proof the move was non-public.",
