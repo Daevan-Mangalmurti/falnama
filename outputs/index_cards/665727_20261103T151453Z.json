@@ -1,0 +1,99 @@
+{
+  "card_id": "665727_20261103T151453Z",
+  "card_version": "v1",
+  "card_hash": "4650f7fcb31a6311ea5a168b5c0500ac92237a5f0b9a490c68cbe3cbe72aacbe",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-03T15:14:53Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665727",
+    "market_slug": "will-iran-withdraw-from-the-npt-before-2027",
+    "market_name": "Will Iran withdraw from the NPT before 2027?",
+    "market_url": "https://polymarket.com/market/will-iran-withdraw-from-the-npt-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Iran withdraw from the NPT before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 350.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -100.0,
+        900.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check Brent/WTI futures and headline flow for any official Iranian statement or IAEA/UN reaction; confirm whether the prob move is matched by newswire.",
+        "1h": "Compare oil move vs. gold/VIX to see if a broad risk-off is forming or if it is idiosyncratic; watch for Iranian/US official denials.",
+        "2h": "Assess whether crude holds gains or fades; check tanker-tracking and Hormuz shipping chatter.",
+        "6h": "Re-evaluate against overnight Asian session liquidity and OPEC/EIA commentary; fade if no corroborating escalation.",
+        "12h": "Close window: determine if move was signal (sustained premium) or noise (reversion to pre-event levels)."
+      },
+      "reasoning": "A sharp rise in the implied probability of Iran formally withdrawing from the NPT would signal nuclear escalation and heightened risk of military confrontation in the Persian Gulf, through which ~20% of global oil transits (Strait of Hormuz). This is a classic geopolitical supply-risk premium that pushes crude higher. Oil is the most direct, liquid channel for Iran-escalation news."
+    },
+    {
+      "asset": "Gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 200.0,
+      "confidence": 0.38,
+      "confidence_interval_bps": [
+        -80.0,
+        600.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify gold spot reaction alongside USD and Treasury yields; confirm news corroboration.",
+        "1h": "Check whether safe-haven flows are broad (JPY, CHF, UST) or gold-specific.",
+        "2h": "Watch for real-yield moves that could cap gold; reassess if dollar strength offsets haven bid.",
+        "6h": "Re-evaluate during overlapping sessions; fade if escalation fails to materialize.",
+        "12h": "Close window: judge whether haven premium persisted or faded."
+      },
+      "reasoning": "NPT withdrawal implies a step-change toward nuclear proliferation and regional conflict risk, a textbook safe-haven catalyst. Gold typically bids on Middle East escalation headlines. However, gold reacts more to the actual conflict/risk-off than to a treaty-notification probability shift, so magnitude is modest and well below the 700bps tradable threshold."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns formal Iranian NPT Article X withdrawal, a major nuclear-escalation signal",
+    "Iran sits on the Strait of Hormuz, a critical oil chokepoint",
+    "NPT withdrawal historically precedes/accompanies heightened conflict risk (cf. North Korea 2003)",
+    "Oil and gold are the standard liquid proxies for Middle East escalation"
+  ],
+  "uncertainty_notes": [
+    "A probability shift in a long-dated (before 2027) treaty market is weakly linked to an imminent 12h asset move",
+    "Oil and gold rarely move 700bps in 12h absent an actual kinetic event, so tradability is doubtful",
+    "The prediction market may lead by weeks/months, not hours \u2014 timing mismatch with a 12h window",
+    "Resolution depends on a formal written notice, which is a discrete bureaucratic act, not a continuous market driver"
+  ],
+  "llm_justification": {
+    "summary": "A sharp upward move in the implied probability that Iran withdraws from the NPT would most plausibly map to a geopolitical risk premium in crude oil (Strait of Hormuz supply risk) and a secondary safe-haven bid in gold. Both are liquid, well-exposed proxies, but the link from a long-dated treaty-withdrawal probability to a 12-hour asset move is noisy, and expected magnitudes (crude ~350bps, gold ~200bps) fall below the 700bps tradable threshold. This is a low-confidence directional read, not a tradable signal.",
+    "key_assumptions": [
+      "A sharp probability rise reflects genuine escalation information rather than market noise or thin liquidity",
+      "Markets interpret NPT withdrawal as raising conflict/supply-disruption risk",
+      "The move is not already fully priced into oil and gold"
+    ],
+    "failure_modes": [
+      "The treaty-market move is a long-horizon repricing with no immediate asset impact, so oil/gold do not react in 12h",
+      "News is already public and priced, leaving no tradable edge",
+      "Expected moves stay well under 700bps, making the mapping non-tradable by the stated threshold",
+      "Dollar strength or rising real yields offset gold's haven bid",
+      "Diplomatic de-escalation or official Iranian denial reverses any initial spike"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

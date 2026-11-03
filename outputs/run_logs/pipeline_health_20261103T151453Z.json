@@ -1,0 +1,19 @@
+{
+  "run_id": "20261103T151453Z",
+  "run_time_utc": "2026-11-03T15:14:53Z",
+  "card_mode": "live",
+  "stages": {
+    "select": true,
+    "screen": true,
+    "wallets": true,
+    "anomaly": true,
+    "cards": true,
+    "recommend": true,
+    "execution": true,
+    "newslag": true
+  },
+  "success": true,
+  "warnings": [],
+  "errors": [],
+  "last_updated_utc": "2026-11-03T15:24:31Z"
+}

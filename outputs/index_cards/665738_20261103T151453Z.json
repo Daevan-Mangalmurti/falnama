@@ -1,0 +1,99 @@
+{
+  "card_id": "665738_20261103T151453Z",
+  "card_version": "v1",
+  "card_hash": "698413bb9f22924de099ea0feca40979e7c982d0b45e7dbc452382c78855914a",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-03T15:14:53Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665738",
+    "market_slug": "ahmed-al-sharaa-out-as-leader-of-syria-before-2027",
+    "market_name": "Ahmed al-Sharaa out as leader of Syria by December 31, 2026?",
+    "market_url": "https://polymarket.com/market/ahmed-al-sharaa-out-as-leader-of-syria-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Ahmed al-Sharaa out as leader of Syria by December 31, 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Crude oil (geopolitical risk premium)",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.25,
+      "confidence_interval_bps": [
+        -150.0,
+        500.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any credible wire (Reuters/AP) reports on al-Sharaa; distinguish genuine coup/resignation news from market noise. Watch front-month Brent/WTI tick.",
+        "1h": "Compare oil move vs broad risk assets; if oil is flat while the market probability jumped, treat as noise, not leak.",
+        "2h": "Look for corroborating regional signals (Israeli/Turkish troop movements, Gulf spreads). Reassess whether a supply-relevant escalation is implied.",
+        "6h": "Re-evaluate against energy sector and VIX; fade the thesis if no public confirmation of Syrian instability.",
+        "12h": "Close out assessment: did oil hold any risk premium? Record whether the market move preceded any public reporting."
+      },
+      "reasoning": "A sharp rise in the implied probability that al-Sharaa is removed would signal renewed instability in post-Assad Syria. Syria is a negligible oil producer, so any effect runs through a broad Middle East risk premium (fear of regional contagion, Turkish/Israeli/Iranian involvement). That channel is real but weak and diffuse; oil typically needs a direct supply threat (Strait of Hormuz, Gulf producers) to move hundreds of bps. Expected move is well below the 700bps tradable bar."
+    },
+    {
+      "asset": "Turkey equity/currency risk",
+      "ticker": "TUR",
+      "tradable_instrument_name": "iShares MSCI Turkey ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -150.0,
+      "confidence": 0.22,
+      "confidence_interval_bps": [
+        -500.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether removal odds spiked on substantive reporting; check lira (USDTRY) and TUR premarket/intraday.",
+        "1h": "Assess if Turkish move is idiosyncratic to Syria or driven by broader EM/rate news.",
+        "2h": "Watch Turkish CDS and border-region reporting for escalation signs.",
+        "6h": "Reassess; fade if no concrete Syria development surfaces publicly.",
+        "12h": "Final review of whether TUR/lira reaction tracked the market signal or was coincidental."
+      },
+      "reasoning": "Turkey is the most exposed liquid market to Syrian political outcomes: Ankara backs the new Damascus government, hosts millions of refugees, and has troops/interests in northern Syria. A spike in removal odds implying chaos could pressure Turkish assets (refugee/security costs, border risk). But the link is indirect, Turkish markets are driven mainly by domestic monetary policy and lira dynamics, and a 12h 700bps move from Syrian headlines is unlikely. Low confidence, below tradable threshold."
+    }
+  ],
+  "evidence_used": [
+    "Market question on al-Sharaa remaining Syrian president through 2026",
+    "Syria's negligible role as an oil producer",
+    "Turkey's heavy political/security exposure to Syrian outcomes",
+    "General behavior of oil and EM assets to Middle East instability"
+  ],
+  "uncertainty_notes": [
+    "Syria has almost no direct liquid-market exposure; all channels are indirect",
+    "12h 700bps threshold is very high for diffuse geopolitical risk",
+    "Removal could be orderly/managed rather than chaotic, muting market impact",
+    "Prediction-market probability moves on this binary are often driven by speculation, not leaks"
+  ],
+  "llm_justification": {
+    "summary": "A jump in the implied probability that al-Sharaa loses power signals renewed Syrian/Middle East instability. Syria itself has essentially no tradable asset, so the only plausible liquid proxies are a modest crude-oil regional-risk premium (USO up) and pressure on Turkish assets (TUR down) given Ankara's deep exposure. Both channels are weak and indirect; expected 12h moves fall well short of the 700bps tradable bar, so this is best treated as a low-confidence, non-tradable mapping.",
+    "key_assumptions": [
+      "A market-probability spike reflects genuine instability rather than noise",
+      "Oil and Turkish assets are the least-weak liquid proxies",
+      "No direct Gulf oil-supply threat is implied by Syrian leadership change"
+    ],
+    "failure_modes": [
+      "Move already public \u2014 any al-Sharaa development would hit wires fast, erasing any leak edge",
+      "Weak proxy \u2014 Syria barely moves oil; oil dominated by OPEC/Hormuz, not Damascus",
+      "Reversal \u2014 prediction-market probability often mean-reverts on speculation",
+      "Orderly transition scenario produces no risk premium at all",
+      "Turkish assets driven by domestic monetary policy, swamping any Syria signal"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
