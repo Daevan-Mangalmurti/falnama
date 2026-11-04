@@ -1,0 +1,100 @@
+{
+  "run_id": "20261104T152906Z",
+  "run_time_utc": "2026-11-04T15:29:06Z",
+  "card_mode": "live",
+  "data_source": "live",
+  "market_selector": {
+    "input_markets": 500,
+    "selected_count": 152,
+    "rejected_count": 348,
+    "selected_file": "outputs/relevant_markets/relevant_markets_20261104T152906Z.csv"
+  },
+  "screen": {
+    "enabled": true,
+    "mode": "live",
+    "screened": 152,
+    "kept": 60,
+    "dropped": 92,
+    "error": "",
+    "screened_file": "outputs/relevant_markets/screened_markets_20261104T152906Z.csv"
+  },
+  "wallet_fingerprints": {
+    "enabled": true,
+    "markets_examined": 60,
+    "wallets_examined": 0,
+    "wallets_matched": 0,
+    "tiers": {
+      "unavailable": 60
+    },
+    "market_fingerprints_file": "outputs/wallets/market_fingerprints_20261104T152906Z.csv"
+  },
+  "price_history": {
+    "markets_requested": 60,
+    "markets_failed": 0,
+    "failures": []
+  },
+  "anomaly_detector": {
+    "markets_scored": 60,
+    "strong_count": 3,
+    "concentration_red_flags": 0,
+    "fingerprint_red_flags": 0,
+    "ranked_file": "outputs/anomalies/ranked_anomalies_20261104T152906Z.csv"
+  },
+  "cards": {
+    "card_mode": "live",
+    "cards_written": 5,
+    "cards_reused": 25,
+    "files": [
+      "outputs/index_cards/667068_20261104T152906Z.json",
+      "outputs/index_cards/666823_20261104T152906Z.json",
+      "outputs/index_cards/666824_20261104T152906Z.json",
+      "outputs/index_cards/666861_20261104T152906Z.json",
+      "outputs/index_cards/666827_20261104T152906Z.json"
+    ],
+    "reused_card_ids": [
+      "665495_20261031T134122Z",
+      "665484_20261030T141540Z",
+      "665485_20261029T142521Z",
+      "665738_20261103T151453Z",
+      "665727_20261103T151453Z",
+      "616908_20261102T170833Z",
+      "568117_20261101T141836Z",
+      "616913_20261031T134122Z",
+      "616912_20261102T170833Z",
+      "616911_20261102T170833Z",
+      "616902_20261101T141836Z",
+      "616914_20261030T141540Z",
+      "616907_20261102T170833Z",
+      "616906_20261102T170833Z",
+      "567690_20261101T141836Z",
+      "567621_20261101T141836Z",
+      "665353_20261029T142521Z",
+      "665474_20261031T134122Z",
+      "665480_20261030T141540Z",
+      "665374_20261029T142521Z",
+      "665410_20261029T142521Z",
+      "663583_20261031T134122Z",
+      "665243_20261031T134122Z",
+      "656313_20261103T151453Z",
+      "656312_20261103T151453Z"
+    ],
+    "hash_mismatch_card_ids": []
+  },
+  "recommender": {
+    "recommended_count": 0,
+    "rejected_count": 2,
+    "workbook": "outputs/recommended_trades/paper_recommendations_20261104T152906Z.xlsx",
+    "backfill_mode": false
+  },
+  "execution": {
+    "mode": "paper_sim",
+    "simulated_orders": 0
+  },
+  "newslag": {
+    "enabled": true,
+    "mode": "live",
+    "assessed": 3,
+    "unexplained_residual": 3,
+    "checker_errors": 0
+  }
+}

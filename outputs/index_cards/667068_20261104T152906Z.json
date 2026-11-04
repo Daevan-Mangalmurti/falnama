@@ -1,0 +1,99 @@
+{
+  "card_id": "667068_20261104T152906Z",
+  "card_version": "v1",
+  "card_hash": "d3f4e1fb3098edb06bee2ea7de35f31b59bce87594bf9af550b9f0753583e6e9",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-04T15:29:06Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "667068",
+    "market_slug": "will-trump-resign-before-2027",
+    "market_name": "Will Trump resign before 2027?",
+    "market_url": "https://polymarket.com/market/will-trump-resign-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Trump resign before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US large-cap equity index",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -400.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -1200.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability spike is backed by any credible wire/reporting or is isolated Polymarket flow; watch SPY/ES futures tick and VIX.",
+        "1h": "Confirm if other political markets (removal, 25th Amendment, succession) are co-moving; a lone market move suggests noise.",
+        "2h": "Reassess SPY vs its opening level; look for mainstream media pickup. Fade if no corroboration.",
+        "6h": "Evaluate whether risk-off persisted into cash-session or reverted; check cross-asset confirmation (gold, USD, Treasuries).",
+        "12h": "Close out assessment: did equities hold the decline on confirmed news, or mean-revert as a false signal?"
+      },
+      "reasoning": "A sharp rise in the implied probability of a Trump resignation announcement would signal an acute, unscheduled political-leadership crisis. Sudden executive-branch instability raises policy and succession uncertainty, typically triggering a risk-off repricing in broad US equities. The S&P 500 via SPY is the most liquid proxy for US political/macro risk. Absent a genuine confirming catalyst the move is noise; magnitude only reaches the 700bps tradable bar if credible reporting corroborates an imminent announcement."
+    },
+    {
+      "asset": "Gold (safe-haven)",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 250.0,
+      "confidence": 0.28,
+      "confidence_interval_bps": [
+        -100.0,
+        900.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm the odds move is corroborated and check gold spot/futures reaction versus the dollar.",
+        "1h": "Watch whether DXY weakens and real yields fall, which would reinforce the gold bid.",
+        "2h": "Reassess GLD move; distinguish genuine safe-haven flow from unrelated commodity drift.",
+        "6h": "Check durability of the haven bid and whether equity weakness is sustaining it.",
+        "12h": "Final check: did gold hold gains on confirmed political stress or fade with the false signal?"
+      },
+      "reasoning": "A credible jump in resignation odds implies US political instability and flight-to-safety demand. Gold is a classic hedge against domestic governance/uncertainty shocks and would likely bid alongside Treasuries while equities fall. GLD is the liquid proxy. The link is weaker and slower than the equity reaction, and gold also responds to rates/dollar, so confidence is modest."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns a sudden, unscheduled US presidential leadership change",
+    "Baseline probability of such an event is very low; any sharp move would be highly informative",
+    "Historical risk-off patterns: political-leadership shocks pressure equities and bid safe havens",
+    "SPY and GLD are the most liquid retail-accessible proxies for US political risk"
+  ],
+  "uncertainty_notes": [
+    "Polymarket probability moves on this market can be driven by thin liquidity and speculative flow rather than real information",
+    "The threshold of 700bps is only plausible if genuine corroborating reporting exists; most spikes will be noise",
+    "Resignation 'announcement' resolution criterion is loose and could be triggered by ambiguous statements",
+    "Equity reaction could be blunted if markets view a succession as orderly (Vance as VP) or even policy-neutral"
+  ],
+  "llm_justification": {
+    "summary": "The market tracks a rare, high-impact US leadership event. A sharp, corroborated rise in resignation odds would most plausibly produce a risk-off move in US equities (SPY down) and a safe-haven bid in gold (GLD up). However, the mapping is noisy: thin-market flow can move Polymarket odds without any real information, so the signal only becomes tradable with credible mainstream corroboration. Confidence is deliberately low and magnitudes wide.",
+    "key_assumptions": [
+      "A sharp odds move reflects new information about leadership instability, not thin-market noise",
+      "Markets interpret a potential resignation as destabilizing rather than orderly/neutral",
+      "SPY and GLD remain liquid and tradable within the 12h window"
+    ],
+    "failure_modes": [
+      "The probability spike is isolated speculative flow with no corroboration, and the signal is pure noise",
+      "News, if real, is already public and priced, so no further asset move occurs",
+      "Markets view succession as orderly/policy-continuous, muting the equity reaction",
+      "Gold is weakly exposed and dominated by rate/dollar moves, breaking the safe-haven link",
+      "Direction reverses if a resignation is read as reducing policy uncertainty (relief rally)"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

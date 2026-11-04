@@ -1,0 +1,98 @@
+{
+  "card_id": "666861_20261104T152906Z",
+  "card_version": "v1",
+  "card_hash": "e06696c89eac7ef2162b16232a86a5ba95fcb88519badeeaab9148913dbcbc2b",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-04T15:29:06Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "666861",
+    "market_slug": "trump-out-as-president-before-2027",
+    "market_name": "Trump out as President before 2027?",
+    "market_url": "https://polymarket.com/market/trump-out-as-president-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Trump out as President before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US equity volatility",
+      "ticker": "VIXY",
+      "tradable_instrument_name": "ProShares VIX Short-Term Futures ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 900.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -200.0,
+        2500.0
+      ],
+      "trade_eligibility": {
+        "eligible": true,
+        "reason": "Meets minimum expected move.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability spike coincides with a credible news catalyst (health, legal, political) or is thin/illiquid noise; confirm VIX futures are bidding.",
+        "1h": "Re-check SPX realized vs implied vol and whether equity futures are selling off in sympathy; gauge whether move is sustained or faded.",
+        "2h": "Assess headline flow from major outlets; if no corroborating reporting emerges, reduce conviction as likely false signal.",
+        "6h": "Evaluate whether vol spike has mean-reverted or extended; compare to overnight futures session depth.",
+        "12h": "Mark final VIXY return vs entry; note whether the prediction-market move preceded public confirmation or was noise."
+      },
+      "reasoning": "A sharp rise in the implied probability of Trump ceasing to be president before 2027 (resignation, removal, sustained 25th Amendment) would signal an abrupt, unscheduled discontinuity at the top of the US executive branch. Sudden, non-consensual leadership transitions are classic risk-off, uncertainty-spiking events; implied volatility (VIX) typically jumps hard on political-shock headlines. A vol-tracking ETF is the most directly and reliably exposed liquid proxy, and VIX moves of 10%+ in hours on genuine shocks are common."
+    },
+    {
+      "asset": "US large-cap equities",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -400.0,
+      "confidence": 0.35,
+      "confidence_interval_bps": [
+        -1200.0,
+        300.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm equity futures direction and whether the move is broad-based or sector-specific; check for a real catalyst.",
+        "1h": "Monitor whether selling broadens or dip-buyers emerge; watch USD and Treasuries for corroborating risk-off.",
+        "2h": "Check credible-reporting consensus; absent confirmation, treat as noise and expect reversal.",
+        "6h": "Reassess whether equities stabilize as succession clarity emerges.",
+        "12h": "Mark SPY return; document whether equity reaction confirmed or contradicted the vol thesis."
+      },
+      "reasoning": "An abrupt presidential removal/resignation would inject policy and governance uncertainty, typically pressuring broad US equities in the immediate reaction via risk-off flows. However, the net equity effect is genuinely ambiguous: markets could interpret some transitions as neutral or even relieving depending on succession and policy expectations, so magnitude is modest and uncertain. Direction leans down on pure shock/uncertainty, but this is a weaker, lower-conviction mapping and likely below the 700bps tradable bar in a 12h window absent a severe event."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves Yes on permanent removal/resignation/sustained 25th Amendment Section 4 by end of 2026",
+    "Topic is cabinet_government, US region \u2014 a core political-stability question",
+    "Historical pattern: sudden executive-leadership shocks spike implied volatility and pressure equities short term"
+  ],
+  "uncertainty_notes": [
+    "Base rate of this resolving Yes is very low; most probability moves are noise or thin liquidity",
+    "Equity direction on a genuine removal is ambiguous \u2014 could be risk-off or relief depending on succession/policy",
+    "A prediction-market move may lag rather than lead public news, or reflect a rumor that is quickly denied",
+    "Proxy (VIXY) carries roll/decay but captures the key uncertainty channel best"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability that Trump leaves office before 2027 would most reliably map to a spike in US equity-volatility proxies (VIXY/VIX up) via a risk-off uncertainty shock, and secondarily to modest downside in broad US equities (SPY). The volatility mapping is the cleaner, higher-magnitude signal; the equity-direction mapping is ambiguous and lower conviction. Both are only meaningful if the probability move is backed by a credible catalyst rather than thin noise.",
+    "key_assumptions": [
+      "A sharp probability increase reflects a real, unscheduled executive-transition risk, not illiquid noise",
+      "Markets treat sudden presidential removal as a risk-off uncertainty event",
+      "VIX-tracking ETFs remain the most liquid, exposed proxy for political-shock uncertainty"
+    ],
+    "failure_modes": [
+      "The probability spike is thin/illiquid noise with no public catalyst, and markets do not move",
+      "The move was already public (news already priced), so no leak/edge exists",
+      "Equities interpret the transition as neutral or relieving, reversing the risk-off thesis",
+      "VIXY underperforms spot VIX due to futures roll, muting realized return",
+      "A rumor is quickly denied, causing a rapid reversal within the 12h window"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "card_id": "666823_20261104T152906Z",
+  "card_version": "v1",
+  "card_hash": "bdb93a1b489dfb68eeb20c2e7fb6cf79aee18fae28405a175f579fb656139941",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-04T15:29:06Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "666823",
+    "market_slug": "us-agrees-to-a-new-trade-deal-with-argentina-before-2027",
+    "market_name": "U.S. agrees to a new trade deal with \"Argentina\" before 2027?",
+    "market_url": "https://polymarket.com/market/us-agrees-to-a-new-trade-deal-with-argentina-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "U.S. agrees to a new trade deal with \"Argentina\" before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Argentina equity (broad Argentine stock basket)",
+      "ticker": "ARGT",
+      "tradable_instrument_name": "Global X MSCI Argentina ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 250.0,
+      "confidence": 0.33,
+      "confidence_interval_bps": [
+        -200.0,
+        700.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether ARGT shows any abnormal volume/price gap versus SPY; confirm the prediction-market probability move is real and not thin-liquidity noise.",
+        "1h": "Scan newswires (Reuters, Bloomberg) for any US-Argentina trade statement, Milei/White House meeting, or tariff announcement that could explain the move.",
+        "2h": "Compare ARGT move against EEM/ILF (LatAm) to isolate Argentina-specific alpha versus broad EM beta.",
+        "6h": "Reassess whether the probability shift held; check Argentine ADRs (YPF, GGAL, BMA) for corroborating direction.",
+        "12h": "Evaluate total ARGT move versus the 700bps tradable threshold; log whether the prediction-market signal led, lagged, or was unrelated to price."
+      },
+      "reasoning": "A sharp rise in the implied probability of a US-Argentina trade agreement becoming law would signal warming bilateral economic ties, improved market access for Argentine exporters, and broader risk-on sentiment toward Argentine assets. ARGT is the most liquid single vehicle expressing Argentine equity beta and would be the natural beneficiary. However, a full FTA requires US Congressional action, which is politically difficult, so even a probability jump may be discounted by markets as low base-rate; the asset response is likely muted relative to the headline."
+    },
+    {
+      "asset": "Argentine sovereign/peso risk proxy via Argentine bank ADR",
+      "ticker": "GGAL",
+      "tradable_instrument_name": "Grupo Financiero Galicia ADR",
+      "asset_class": "equity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 300.0,
+      "confidence": 0.28,
+      "confidence_interval_bps": [
+        -300.0,
+        800.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm GGAL price/volume reaction and that it is not driven by a company-specific earnings or dividend event.",
+        "1h": "Cross-check with peso NDF levels and other Argentine ADRs (BMA, YPF) for a consistent country-risk re-rating.",
+        "2h": "Separate Argentina-specific move from broad LatAm/EM risk tone using ILF.",
+        "6h": "Reassess durability of the move and whether any official trade news emerged.",
+        "12h": "Measure cumulative move against 700bps threshold and record lead/lag relationship to the prediction market."
+      },
+      "reasoning": "Argentine bank ADRs are high-beta expressions of Argentina country risk and investor confidence. A credible trade-deal signal would improve the perceived reform/stability trajectory under the current administration, lifting financials. This is a more leveraged (and noisier) play than the ETF, so magnitude could exceed threshold but confidence is lower given idiosyncratic single-name risk."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies a US-Argentina trade agreement enacted into US law by end-2026",
+    "Primary topic trade_policy, region united_states",
+    "ARGT and Argentine bank ADRs are the most liquid listed proxies for Argentine economic/country risk",
+    "Full FTAs require US Congressional action, historically slow and politically constrained"
+  ],
+  "uncertainty_notes": [
+    "A full trade agreement becoming US law is a high bar; markets likely assign a low base rate, muting asset response to probability shifts",
+    "No deep-liquid direct peso FX ETF available to US retail, forcing reliance on equity proxies",
+    "Argentine ADRs are dominated by domestic macro (inflation, FX regime, IMF) far more than US trade policy, making the proxy linkage weak",
+    "12h window is short; trade-policy news tends to diffuse slowly"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability of a US-Argentina trade agreement becoming law would modestly favor Argentine equity exposure (ARGT) and higher-beta Argentine ADRs (GGAL) as a warming-ties, risk-on signal. However, the linkage is weak: a full FTA requires difficult US Congressional action, Argentine assets are driven far more by domestic macro than US trade policy, and no clean liquid peso proxy exists. Expected moves are below the 700bps tradable threshold with only tail scenarios reaching it, so confidence is low and the mapping is better treated as monitoring than as a high-conviction trade.",
+    "key_assumptions": [
+      "A prediction-market probability jump reflects genuine new information about US-Argentina trade progress",
+      "Argentine equity proxies would respond positively to improved trade-access expectations",
+      "ARGT and GGAL remain the most practical liquid vehicles for this exposure"
+    ],
+    "failure_modes": [
+      "The probability move is prediction-market noise with no real catalyst, so proxies do not move",
+      "Any news is already public and fully priced into ADRs before the signal",
+      "Argentine ADRs move on domestic macro (inflation prints, FX/IMF news) swamping any trade-deal effect, breaking the mapping",
+      "Base rate for a full FTA enacted into US law is so low that even a doubling of odds is immaterial to prices",
+      "The weak proxy linkage means direction could be mixed or inverted versus expectation"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

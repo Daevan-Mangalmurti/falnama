@@ -1,0 +1,70 @@
+{
+  "card_id": "666824_20261104T152906Z",
+  "card_version": "v1",
+  "card_hash": "d98fa22759cb262ffda3bc14582149159d20ad52c757dbdeb7157bb0ae405ae4",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-04T15:29:06Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "666824",
+    "market_slug": "us-agrees-to-a-new-trade-deal-with-vietnam-before-2027",
+    "market_name": "U.S. agrees to a new trade deal with \"Vietnam\" before 2027?",
+    "market_url": "https://polymarket.com/market/us-agrees-to-a-new-trade-deal-with-vietnam-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "U.S. agrees to a new trade deal with \"Vietnam\" before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Vietnam equity (VanEck Vietnam ETF)",
+      "ticker": "VNM",
+      "tradable_instrument_name": "VanEck Vietnam ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 250.0,
+      "confidence": 0.35,
+      "confidence_interval_bps": [
+        -200.0,
+        700.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket probability move is accompanied by any wire headline on US-Vietnam trade talks; if none, treat as noise.",
+        "1h": "Compare VNM move versus broad EM ETF (EEM) to isolate Vietnam-specific signal from general risk-on moves.",
+        "2h": "Scan for US Trade Representative or White House statements confirming negotiation progress.",
+        "6h": "Reassess whether move persists or fades; check Vietnam-exposed names (NKE, apparel/electronics supply chain) for corroboration.",
+        "12h": "Evaluate whether VNM held direction into Asia session open; mark whether the 700bps threshold was realistically reached."
+      },
+      "reasoning": "A sharp rise in the implied probability of a formal US-Vietnam trade agreement would signal easing tariff/trade friction, which directly benefits Vietnam-domiciled exporters and the local market. VNM is the most liquid, direct proxy for Vietnamese equity. However, a 'free trade agreement becoming law' is a very high bar requiring Congressional action, so even a probability spike more likely reflects incremental negotiation progress (e.g., a tariff framework) than imminent legal enactment, dampening the realistic 12h equity move."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves Yes only if an FTA becomes US law by Dec 31 2026 \u2014 a legally demanding, slow-moving condition",
+    "US-Vietnam trade/tariff relations have been an active policy theme under the current administration",
+    "VNM (VanEck Vietnam ETF) is the primary liquid public-market proxy for Vietnamese equity"
+  ],
+  "uncertainty_notes": [
+    "The legal bar (law enacted via Congress) is far higher than a negotiated tariff deal, weakening the link between probability moves and near-term asset moves",
+    "VNM is thinly traded relative to major ETFs, so moves can be idiosyncratic/illiquid rather than information-driven",
+    "A probability move could simply reflect speculative repricing without new public information"
+  ],
+  "llm_justification": {
+    "summary": "A sharp increase in the implied probability of a US-Vietnam trade deal would most plausibly lift Vietnamese equities via the VNM ETF, reflecting reduced tariff/trade friction. But the resolution criterion (an FTA becoming US law) is a high legal bar, so realistic 12h magnitude is modest and uncertain. This is a weak-to-moderate mapping: direction up, but unlikely to clear the 700bps tradable threshold with confidence.",
+    "key_assumptions": [
+      "Probability moves in this market reflect genuine trade-policy information rather than noise",
+      "Easing US-Vietnam trade friction is net positive for Vietnamese exporters/equity",
+      "VNM adequately tracks Vietnam-specific sentiment over a 12h window"
+    ],
+    "failure_modes": [
+      "The news may already be public (tariff frameworks widely reported), so no residual edge in VNM",
+      "A 'deal' headline could be a tariff imposition or threat rather than liberalization, reversing the direction",
+      "VNM illiquidity and overnight gaps can swamp the signal with idiosyncratic noise",
+      "The legal-enactment resolution bar means probability can rise without any near-term fundamental asset catalyst"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

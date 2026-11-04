@@ -1,0 +1,98 @@
+{
+  "card_id": "666827_20261104T152906Z",
+  "card_version": "v1",
+  "card_hash": "0fdbb2949cdc6f69c0dea9b202704090f7e0320a98cd4707a5105b92c8723de3",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-04T15:29:06Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "666827",
+    "market_slug": "us-agrees-to-a-new-trade-deal-with-south-korea-before-2027",
+    "market_name": "U.S. agrees to a new trade deal with \"South Korea\" before 2027?",
+    "market_url": "https://polymarket.com/market/us-agrees-to-a-new-trade-deal-with-south-korea-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "U.S. agrees to a new trade deal with \"South Korea\" before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "South Korea equity (broad)",
+      "ticker": "EWY",
+      "tradable_instrument_name": "iShares MSCI South Korea ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.33,
+      "confidence_interval_bps": [
+        -150.0,
+        400.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check EWY pre/post-market tick and whether any Reuters/Bloomberg trade-talk headline coincides with the Polymarket move.",
+        "1h": "Compare EWY move to broad EM (EEM) and Asia proxies to isolate Korea-specific vs beta.",
+        "2h": "Monitor USD/KRW and KOSPI futures for confirmation of a genuine Korea-specific catalyst.",
+        "6h": "Reassess whether news has become public; if no credible report emerges, fade the signal as noise.",
+        "12h": "Evaluate whether EWY held any gain into US close; log realized move vs predicted and note if driven by trade headlines."
+      },
+      "reasoning": "A sharp rise in the implied probability of a new US-Korea trade agreement becoming law signals reduced tariff/trade friction risk for Korea's heavily export-dependent economy (autos, semis, steel). That is a tailwind for Korean large-caps captured by EWY. However, a bilateral trade law affects earnings over quarters/years, not hours, so any 12h repricing would be modest and sentiment-driven rather than a step-change."
+    },
+    {
+      "asset": "Korean won (USD/KRW, won strength)",
+      "ticker": "KRW=X",
+      "tradable_instrument_name": "US Dollar / Korean Won spot (won appreciation)",
+      "asset_class": "fx_proxy",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -120.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check USD/KRW spot direction and whether DXY is driving it rather than Korea-specific flow.",
+        "1h": "Cross-check with other Asia FX (TWD, JPY) to separate broad dollar from Korea idiosyncratic move.",
+        "2h": "Look for official statements from USTR or Korean trade ministry.",
+        "6h": "Reassess if the probability move persists or reverses; fade if no public confirmation.",
+        "12h": "Log realized USD/KRW change vs prediction and attribute to trade news vs macro."
+      },
+      "reasoning": "An improved trade outlook typically supports the won via stronger expected export flows and risk-on sentiment toward Korean assets. 'Up' here denotes won appreciation (USD/KRW lower). FX reaction to a probability shift on a multi-year legislative event is small and easily swamped by DXY and global risk moves, so confidence and magnitude are low."
+    }
+  ],
+  "evidence_used": [
+    "Market question: new US-South Korea trade deal becoming law by end-2026",
+    "Resolution requires US legal enactment (ratification or Congressional-Executive Agreement)",
+    "South Korea is a highly export-dependent economy; EWY and KRW are the most liquid Korea-specific proxies",
+    "A US-Korea FTA (KORUS) already exists and was renegotiated in 2018, limiting incremental impact of a 'new' deal"
+  ],
+  "uncertainty_notes": [
+    "Legislative trade outcomes play out over years; a 12h window captures mostly sentiment, not fundamentals",
+    "The 700bps tradable threshold is far above any plausible 12h move for these liquid, diversified proxies",
+    "Korea already has KORUS, so a 'new deal' may be incremental and ambiguously defined, muting asset response"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability of a new US-South Korea trade agreement becoming law would modestly favor Korean equities (EWY) and the Korean won (USD/KRW lower) via reduced trade friction and improved export outlook. But because the event is a multi-year legislative matter and an FTA already exists, any 12-hour repricing is small and sentiment-driven \u2014 well below the 700bps tradable bar. Treat as a weak, low-confidence signal.",
+    "key_assumptions": [
+      "A probability move reflects genuine new information about trade-deal progress, not noise",
+      "EWY and KRW are the cleanest liquid proxies for Korea-specific trade news",
+      "Trade de-escalation is net positive for Korean export-linked assets"
+    ],
+    "failure_modes": [
+      "Move is noise/low-liquidity on Polymarket with no real catalyst",
+      "Information already public and priced, so no asset follow-through",
+      "KORUS already exists; a 'new deal' adds little, weakening the EWY/KRW linkage",
+      "Broad dollar or global risk sentiment dominates Korea-specific FX/equity moves",
+      "12h magnitude far below 700bps, so neither prediction is tradable"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
