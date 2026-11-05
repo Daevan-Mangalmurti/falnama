@@ -1,0 +1,98 @@
+{
+  "card_id": "666831_20261105T153223Z",
+  "card_version": "v1",
+  "card_hash": "49c2e3a57c7009c8f266214d6aa22254f995432d747b54f5d416cf2537e3731d",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-05T15:32:23Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "666831",
+    "market_slug": "us-agrees-to-a-new-trade-deal-with-russia-before-2027",
+    "market_name": "U.S. agrees to a new trade deal with \"Russia\" before 2027?",
+    "market_url": "https://polymarket.com/market/us-agrees-to-a-new-trade-deal-with-russia-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "U.S. agrees to a new trade deal with \"Russia\" before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -120.0,
+      "confidence": 0.25,
+      "confidence_interval_bps": [
+        -500.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any Ukraine ceasefire / sanctions-relief headline accompanies the market move; re-check WTI front-month and USO tick.",
+        "1h": "Compare Brent-WTI and Russian Urals discount commentary; confirm move isn't just broad risk-off noise.",
+        "2h": "Look for confirmation from energy desk notes or OPEC+ reaction; reassess direction if oil is rising instead.",
+        "6h": "Evaluate whether the probability move persisted or reverted; recheck USO vs broad commodity index.",
+        "12h": "Final read: did oil weaken on sanctions-relief narrative or was signal noise? Mark outcome and calibration."
+      },
+      "reasoning": "A US-Russia free trade agreement becoming law is a near-impossible tail that would only be conceivable alongside an end to the Ukraine war and broad sanctions relief. A sharp jump in this market's implied probability would signal that traders anticipate Russian barrels returning to global markets more freely, which is bearish for crude. USO is a liquid proxy for front-month WTI. The linkage is indirect and the move would likely be muted in a 12h window absent a concrete headline."
+    },
+    {
+      "asset": "Defense / aerospace equities",
+      "ticker": "ITA",
+      "tradable_instrument_name": "iShares U.S. Aerospace & Defense ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -80.0,
+      "confidence": 0.2,
+      "confidence_interval_bps": [
+        -400.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check for de-escalation headlines; observe ITA vs SPY relative move to isolate geopolitical component.",
+        "1h": "Assess whether European defense names (Rheinmetall) are moving in sympathy, confirming a de-escalation read.",
+        "2h": "Re-check if defense weakness is sustained or reverting; watch for contradicting conflict news.",
+        "6h": "Evaluate persistence; compare to broad market beta to strip out general drift.",
+        "12h": "Final assessment of whether a de-escalation narrative held; record calibration."
+      },
+      "reasoning": "Any pathway to a US-Russia trade deal implies de-escalation of the Russia-Ukraine conflict and reduced geopolitical tension, which historically pressures defense names that have rallied on elevated military spending. ITA is a liquid defense proxy. The exposure is weak and second-order: defense budgets are sticky and driven by multiple theaters (China, Middle East), so a Russia-specific thaw would only partially dent the thesis."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies a legally-enacted US-Russia free trade agreement by end-2026, currently a near-zero-probability tail event",
+    "US-Russia trade is heavily sanctioned; any deal presupposes end of Ukraine war and sanctions removal",
+    "Oil and defense are the most geopolitically sensitive liquid proxies to a Russia thaw"
+  ],
+  "uncertainty_notes": [
+    "The base rate of this market resolving Yes is extremely low; most probability moves are likely noise or thin-liquidity artifacts",
+    "Proxies are second-order and indirect \u2014 neither oil nor defense is cleanly driven by a US-Russia trade legal event",
+    "A move could reflect broad risk sentiment unrelated to Russia",
+    "If a real de-escalation headline exists it is likely already public, eroding any leak-based edge"
+  ],
+  "llm_justification": {
+    "summary": "A US-Russia free trade agreement becoming US law by 2027 is a deep tail requiring an end to the Ukraine war and sanctions relief. If this market's implied odds jumped sharply, the most coherent downstream read is anticipation of Russian supply/geopolitical de-escalation: mildly bearish crude oil (more Russian barrels) and mildly bearish defense equities (reduced conflict premium). Both linkages are weak, indirect, and unlikely to clear the 700bp tradable threshold in 12 hours, so confidence is low and directions tentative.",
+    "key_assumptions": [
+      "A probability jump reflects genuine de-escalation expectations rather than thin-market noise",
+      "Sanctions relief and conflict de-escalation would accompany any realistic trade-deal pathway",
+      "USO and ITA retain their historical geopolitical sensitivity"
+    ],
+    "failure_modes": [
+      "The market move is illiquid noise with no informational content",
+      "Any de-escalation driver is already public and priced, leaving no edge",
+      "Oil could rise instead if the deal narrative coincides with broader risk-on or supply-constraint news",
+      "Defense budgets are multi-theater and sticky, so the proxy barely responds to a Russia-specific thaw",
+      "The event is so improbable that even a large percentage move in odds corresponds to negligible asset repricing"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

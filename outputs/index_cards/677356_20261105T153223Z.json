@@ -1,0 +1,99 @@
+{
+  "card_id": "677356_20261105T153223Z",
+  "card_version": "v1",
+  "card_hash": "975295562493ce856c22bdb5c5b87775b677685b0fdfbd6c11fdf019280167d5",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-05T15:32:23Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "677356",
+    "market_slug": "will-india-strike-pakistan-by-december-31-2026",
+    "market_name": "Will India strike Pakistan by December 31, 2026?",
+    "market_url": "https://polymarket.com/market/will-india-strike-pakistan-by-december-31-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will India strike Pakistan by December 31, 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "India equity risk",
+      "ticker": "INDA",
+      "tradable_instrument_name": "iShares MSCI India ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -250.0,
+      "confidence": 0.42,
+      "confidence_interval_bps": [
+        -800.0,
+        80.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the market move is corroborated by newswire headlines (Reuters/AP) on India-Pakistan tensions or if it is isolated prediction-market noise; look at USD/INR (via INR NDF) and Nifty futures for confirmation.",
+        "1h": "Compare INDA pre/post-move vs broad EM (EEM) to isolate India-specific risk; watch for official statements from either government.",
+        "2h": "Assess whether escalation language is intensifying or de-escalating; re-check gold and oil for corroborating risk-off flow.",
+        "6h": "Evaluate whether Indian cash market (if open) confirmed weakness; decide if thesis is playing out or move was a false positive.",
+        "12h": "Mark final INDA return vs entry; log whether prediction-market move led public reporting (leakage) or merely tracked it."
+      },
+      "reasoning": "A sharp jump in the implied probability of an Indian strike on Pakistani territory signals rising cross-border conflict risk. Military escalation on the subcontinent raises Indian equity risk premia, pressures the rupee, and hurts foreign-held liquid proxies like INDA. The directional sign is clear (escalation is risk-off for Indian assets), but broad EM country ETFs rarely move 700bps in 12h absent a confirmed large-scale conflict, so magnitude is modest and uncertain. INDA trades US hours, so the reaction may lag the Indian cash session."
+    },
+    {
+      "asset": "Safe-haven gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "commodity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.38,
+      "confidence_interval_bps": [
+        -60.0,
+        450.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether the probability shift is accompanied by real escalation headlines; check DXY and real yields that may dominate gold.",
+        "1h": "Compare GLD move to other safe havens (JPY, Treasuries) to verify genuine risk-off versus idiosyncratic noise.",
+        "2h": "Reassess whether geopolitical premium is building or fading; watch for diplomatic de-escalation.",
+        "6h": "Check if gold strength persisted or reverted as macro drivers reasserted.",
+        "12h": "Record final GLD return and whether the geopolitical risk premium materialized."
+      },
+      "reasoning": "A rising probability of a nuclear-capable South Asia strike is a classic geopolitical risk-off catalyst that supports gold as a safe haven. However, India-Pakistan tensions are regionally contained and historically produce only muted global gold moves unless escalation threatens broader conflict; gold is also driven primarily by rates and the dollar, making this a weak, noisy proxy."
+    }
+  ],
+  "evidence_used": [
+    "Market question on India initiating an aerial/drone/missile strike on Pakistani territory by end-2026",
+    "Topic classification: military_conflict",
+    "Historical pattern: India-Pakistan military escalations are regionally contained with limited global asset spillover",
+    "Liquid proxies: INDA for Indian equity risk, GLD for safe-haven demand, USD/INR for FX"
+  ],
+  "uncertainty_notes": [
+    "A long-dated (Dec-2026) resolution window means a probability move need not imply imminent action, weakening the 12h linkage",
+    "Broad ETFs like INDA rarely move 700bps intraday without confirmed, large-scale conflict",
+    "Prediction-market moves may be thin-liquidity noise rather than genuine information leakage",
+    "Gold is dominated by rates/dollar, so geopolitical signal can be swamped"
+  ],
+  "llm_justification": {
+    "summary": "A sharp increase in the implied probability of an Indian strike on Pakistan signals rising subcontinental conflict risk, which is risk-off for Indian equities (INDA down, rupee weaker) and mildly supportive of safe-haven gold (GLD up). Directions are defensible but magnitudes are likely well below the 700bps tradable threshold given the long resolution horizon, the historically contained nature of India-Pakistan escalations, and the noisiness of prediction markets. Neither mapping is tradable at the specified bar; both are low-confidence research signals.",
+    "key_assumptions": [
+      "A probability jump reflects genuine escalation risk rather than market noise",
+      "Escalation is risk-off for Indian assets and risk-on for safe havens",
+      "Liquid US-listed proxies (INDA, GLD) capture the relevant exposure within the 12h window"
+    ],
+    "failure_modes": [
+      "The probability move is already-public news fully priced into Indian equities, so no further asset move follows",
+      "The move reverses as de-escalation/diplomacy headlines emerge, common in India-Pakistan standoffs",
+      "INDA and GLD are weakly exposed to a contained regional conflict; macro drivers (Fed, dollar) dominate and swamp the signal",
+      "Long 2026 horizon means a probability shift implies no near-term action, breaking the 12h causal link",
+      "Thin prediction-market liquidity produces a false signal with no corresponding public-market information"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "card_id": "677367_20261105T153223Z",
+  "card_version": "v1",
+  "card_hash": "1b6ba044148ee565d92bf6e901a6c07d9d2e3ad4fbbd2c991a6d9f3842a3cbaf",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-05T15:32:23Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "677367",
+    "market_slug": "china-coup-attempt-before-2027",
+    "market_name": "China coup attempt before 2027?",
+    "market_url": "https://polymarket.com/market/china-coup-attempt-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "China coup attempt before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "China large-cap equity (US-listed proxy)",
+      "ticker": "FXI",
+      "tradable_instrument_name": "iShares China Large-Cap ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -650.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -2500.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move is corroborated by any newswire (Reuters/Bloomberg/AP) China-politics headline or is isolated to the prediction market. Confirm FXI/overnight China futures reaction.",
+        "1h": "Assess CNH offshore yuan and HSI futures for confirmation; if no mainstream reporting and no FX move, treat as noise and fade conviction.",
+        "2h": "Re-evaluate whether the signal is spreading to gold, USD, and Taiwan proxies (EWT); consistent cross-asset risk-off strengthens the thesis.",
+        "6h": "Check for official Chinese state media denials or silence, troop/internet reports; reassess whether move has persisted or reversed.",
+        "12h": "At window close, mark whether FXI materially moved and whether any public reporting validated the market; log outcome for calibration."
+      },
+      "reasoning": "A sharp rise in the implied probability of a Chinese coup attempt signals acute political-leadership instability. Political instability in an authoritarian, state-directed economy is a first-order risk for Chinese equities: capital flight, uncertainty over policy continuity, and potential disruption raise the equity risk premium. FXI is a liquid US-listed proxy that trades during US hours and would gap lower on credible instability headlines. Magnitude is highly state-dependent: a genuine, widely-reported coup event could move FXI well beyond 700bps (tail), but a modest probability drift is mostly noise."
+    },
+    {
+      "asset": "Safe-haven gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 250.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -150.0,
+        1200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify any mainstream corroboration of instability; check gold spot and DXY reaction simultaneously.",
+        "1h": "Determine if gold's move is coincident with broader risk-off (equities down, VIX up) rather than idiosyncratic.",
+        "2h": "Reassess whether USD strength is capping gold; if USD surges on safe-haven flows, gold upside may be muted.",
+        "6h": "Check for follow-through and any official confirmation/denial out of Beijing; adjust conviction.",
+        "12h": "Mark final gold move and whether it tracked the coup-risk signal; record for calibration."
+      },
+      "reasoning": "Geopolitical instability in a major power typically drives safe-haven demand into gold. If a coup-risk signal is genuine and corroborated, gold would bid as a hedge against systemic/geopolitical shock and potential yuan debasement. However, gold's exposure to China-specific political risk is indirect and diluted by macro drivers (rates, USD), so this is a weaker, lower-magnitude proxy than Chinese equities."
+    }
+  ],
+  "evidence_used": [
+    "Prediction market question on China coup attempt before 2027 and its resolution criteria requiring widely-reported, independently-characterized coup events",
+    "General mapping: political instability in China -> higher equity risk premium, capital flight, weaker yuan, safe-haven bid",
+    "FXI and GLD as liquid US-listed proxies tradable during the window"
+  ],
+  "uncertainty_notes": [
+    "A probability drift in a long-dated (through end-2026) market is a very noisy sensor for a 12h window; most moves are illiquidity/speculation, not information.",
+    "The market has a long horizon, so even a real probability jump need not imply imminent 12h asset moves.",
+    "Without mainstream corroboration, cross-asset exposure is weak and the signal should be heavily discounted.",
+    "Gold's China-specific exposure is diffuse and dominated by rates/USD."
+  ],
+  "llm_justification": {
+    "summary": "A sharp increase in the implied probability of a Chinese coup attempt would signal acute political-leadership instability, which maps most directly to downside in Chinese equities (FXI) via a higher risk premium and capital-flight fears, and secondarily to a modest safe-haven bid in gold (GLD). Both mappings are state-dependent: only a genuinely corroborated event would produce >700bps moves, while probability drift in this long-dated, speculative market is largely noise. Confidence is modest and should be faded quickly absent mainstream reporting.",
+    "key_assumptions": [
+      "A material move in the market's implied probability reflects some genuine information rather than pure speculation/illiquidity.",
+      "Chinese political instability translates to measurable risk-off in liquid China proxies within 12h.",
+      "FXI and GLD trade and respond during the prediction window."
+    ],
+    "failure_modes": [
+      "The probability move is noise in a thin, long-dated market with no real information content, so no asset reaction occurs.",
+      "Any genuine news is already public and priced before the card acts, eliminating edge.",
+      "FXI/GLD are weakly or indirectly exposed; macro drivers (Fed, USD, broad risk sentiment) dominate the 12h move.",
+      "Mean reversion: an instability spike reverses as Beijing denies or no event materializes, snapping equities back up.",
+      "Direction could invert if markets read a leadership change as reform-positive, though this is unlikely on initial shock."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
