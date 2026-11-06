@@ -1,0 +1,98 @@
+{
+  "card_id": "665484_20261106T150717Z",
+  "card_version": "v1",
+  "card_hash": "2777a39cb04015f51719acad71ef830b042b2a175e91662f3cd2103269072525",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-06T15:07:17Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665484",
+    "market_slug": "israel-x-turkey-military-clash-before-2027",
+    "market_name": "Israel x Turkey military clash before 2027?",
+    "market_url": "https://polymarket.com/market/israel-x-turkey-military-clash-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Israel x Turkey military clash before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Turkey equity risk",
+      "ticker": "TUR",
+      "tradable_instrument_name": "iShares MSCI Turkey ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -300.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -1200.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any Reuters/AP/Al Jazeera headline accompanies the probability move; if none, treat as noise. Check USDTRY and TUR premarket/intraday tape.",
+        "1h": "Compare TUR move vs broad EM (EEM) to isolate idiosyncratic Turkey beta vs global risk-off; look for lira CDS or offshore TRY moves.",
+        "2h": "Reassess whether the prediction-market move persists or mean-reverts; check for official Israeli/Turkish MoD statements or denials.",
+        "6h": "Evaluate whether oil/defense names corroborate escalation; if Turkey-specific assets moved without corroboration, fade the thesis.",
+        "12h": "Mark TUR and USDTRY vs entry; confirm whether a real incident materialized or the probability spike was unsubstantiated."
+      },
+      "reasoning": "A sharp upward repricing in the probability of a direct Israel-Turkey military clash signals escalation risk that would hit Turkish risk assets hardest. Turkey has outsized exposure: lira fragility, foreign-investor sensitivity, and dependence on external financing mean geopolitical shock premia show up quickly in TUR and USDTRY. If this normally near-zero-probability tail market moved sharply, it implies something concrete (incident in Syria, naval friction in the eastern Med, or diplomatic rupture), which would pressure Turkish equities and the lira."
+    },
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "commodity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 150.0,
+      "confidence": 0.25,
+      "confidence_interval_bps": [
+        -300.0,
+        700.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check Brent/WTI tape and whether any shipping/Strait-of-Hormuz or eastern-Med chokepoint narrative is attached.",
+        "1h": "Assess whether oil move is escalation-driven or coincidental with inventory/macro data.",
+        "2h": "Look for corroborating gold (GLD) and VIX moves indicating genuine risk-off.",
+        "6h": "If oil failed to firm despite the probability spike, downgrade the escalation read as market noise.",
+        "12h": "Mark oil vs entry; conclude whether geopolitical premium was real or faded."
+      },
+      "reasoning": "Any credible escalation involving two major regional militaries in the eastern Mediterranean/Middle East adds a geopolitical risk premium to oil. However, neither Israel nor Turkey is a major crude producer, so the channel is indirect (regional contagion, shipping/strait risk, broader Mideast war fears). The expected move is modest and highly uncertain."
+    }
+  ],
+  "evidence_used": [
+    "Market question: probability of direct Israel-Turkey military clash before 2027",
+    "Turkey's structural vulnerability (lira, external financing, foreign-investor sensitivity)",
+    "Neither party is a major crude producer, so oil channel is indirect",
+    "Long-dated horizon (end-2026) vs 12h trading window mismatch"
+  ],
+  "uncertainty_notes": [
+    "This is a long-dated tail market; short-term probability moves may reflect thin liquidity or a single headline rather than genuine information leakage",
+    "A 12h window rarely captures the full repricing of a slow-burn geopolitical risk",
+    "700bps tradable threshold is unlikely to be met absent an actual confirmed incident",
+    "Proxy exposure (TUR, USO) to this specific bilateral risk is partial and contaminated by global macro beta"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability of a direct Israel-Turkey military clash would most cleanly pressure Turkish risk assets (TUR, lira) and add a modest geopolitical premium to oil. But the horizon (end-2026) is far longer than the 12h window, the proxies carry heavy non-specific macro beta, and without a corroborating confirmed incident a probability spike is more likely noise than leaked information. Both mappings are low-confidence and probably below the tradable threshold.",
+    "key_assumptions": [
+      "A sharp probability move reflects real escalation information rather than thin-market noise",
+      "Turkish equities/lira are the most directly exposed liquid proxy",
+      "Oil carries only an indirect, modest geopolitical premium from Mideast contagion"
+    ],
+    "failure_modes": [
+      "The probability move reverses within hours as a single headline is denied or clarified",
+      "The underlying development was already public and priced into TUR/oil",
+      "TUR and USO are weakly specific proxies dominated by EM/global macro beta, swamping any Turkey-Israel signal",
+      "Long-dated tail market moves need not produce any measurable 12h asset reaction at all"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

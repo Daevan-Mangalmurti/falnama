@@ -1,0 +1,100 @@
+{
+  "card_id": "665480_20261106T150717Z",
+  "card_version": "v1",
+  "card_hash": "15ffcaab8d2f57c155d6079a20e23c2d29a44f16820391d320f9aa75769d94e8",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-06T15:07:17Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665480",
+    "market_slug": "will-us-withdraw-from-nato-before-2027-348-975-598-224-737",
+    "market_name": "Will US withdraw from NATO before 2027?",
+    "market_url": "https://polymarket.com/market/will-us-withdraw-from-nato-before-2027-348-975-598-224-737",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will US withdraw from NATO before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "European defense sector",
+      "ticker": "EUAD",
+      "tradable_instrument_name": "Select STOXX Europe Aerospace & Defense ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 350.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -150.0,
+        900.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move is corroborated by any credible headline (official denunciation language) or is an isolated low-liquidity Polymarket tick; cross-check European defense name pre-market/after-hours quotes.",
+        "1h": "Assess whether European defense primes are diverging positively from broad European indices, which would confirm the rearmament-beneficiary thesis versus pure risk-off.",
+        "2h": "Re-evaluate volume and spread on EUAD constituents; look for sell-side notes or official statements from NATO/US State Department.",
+        "6h": "Check if the probability shift persisted or mean-reverted; reassess whether defense outperformance is holding into the European close.",
+        "12h": "Mark final move against the 700bps tradable threshold; document whether the signal led public confirmation or was noise."
+      },
+      "reasoning": "A sharp rise in the implied probability of US withdrawal from NATO would force European governments to accelerate indigenous defense procurement to fill the gap left by the US security umbrella. European defense primes (Rheinmetall, BAE, Leonardo, Thales) are the most direct structural beneficiaries of this reallocation, and the market already prices this 'rearmament' narrative aggressively. Near-term, however, a genuine NATO-rupture headline could trigger broad risk-off that temporarily drags even these names, so direction is up but noisy."
+    },
+    {
+      "asset": "Euro FX",
+      "ticker": "FXE",
+      "tradable_instrument_name": "Invesco CurrencyShares Euro Trust",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -200.0,
+      "confidence": 0.35,
+      "confidence_interval_bps": [
+        -700.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify the probability spike is real and check EUR/USD spot reaction versus DXY to see if it is a euro-specific or broad-dollar move.",
+        "1h": "Monitor safe-haven flows (CHF, gold, Bunds) to confirm risk-off interpretation rather than idiosyncratic noise.",
+        "2h": "Check for official denials or confirmations from the White House/NATO that would reverse or amplify the move.",
+        "6h": "Reassess whether euro weakness persisted into European/US session overlap and whether rate-differential moves support it.",
+        "12h": "Record final EUR move; note that the broad proxy likely stayed well below the 700bps threshold, keeping this non-tradable research signal."
+      },
+      "reasoning": "A credible increase in US-NATO-withdrawal risk removes the implicit US security guarantee for Europe, raising European geopolitical risk premia and pressuring the euro as capital seeks safety (USD, CHF, gold). The effect is partially offset because a weaker US alliance commitment could also be read as USD-negative over the longer horizon, muddying the 12h FX read. Magnitude is unlikely to reach the 700bps tradable threshold absent a confirmed formal denunciation."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves Yes only on formal Article 13 denunciation notice, a high-bar tail event",
+    "Primary topic military_conflict, region United States",
+    "US NATO withdrawal would restructure European defense spending and security guarantees",
+    "Known market sensitivity of European defense equities to rearmament narratives",
+    "FX safe-haven dynamics around European geopolitical shocks"
+  ],
+  "uncertainty_notes": [
+    "Polymarket probability moves on illiquid political tail markets are frequently noise, not information",
+    "A 700bps move in broad liquid proxies within 12h is unlikely absent a confirmed formal denunciation",
+    "The thesis could be fully priced already given ongoing transatlantic-tension headlines",
+    "Direction of EUR is genuinely ambiguous: European risk premium vs USD credibility erosion"
+  ],
+  "llm_justification": {
+    "summary": "The market prices the tail risk of a formal US NATO denunciation by end-2026. A sharp upward move in implied probability would most plausibly benefit European defense equities (rearmament beneficiaries) and pressure the euro (rising European security risk premium). However, both mappings are weak-to-moderate: broad liquid proxies are unlikely to move the required 700bps in 12h without confirmed public news, and much of the rearmament narrative is already priced. Treat as a low-confidence research signal, not a tradable setup.",
+    "key_assumptions": [
+      "A probability spike reflects genuine incremental information rather than thin-market noise",
+      "European defense primes remain the primary structural beneficiaries of reduced US commitment",
+      "Near-term market reaction is dominated by rearmament (defense up) and risk premium (euro down) rather than pure flight dynamics"
+    ],
+    "failure_modes": [
+      "The Polymarket move is low-liquidity noise with no public follow-through, so proxies do not move",
+      "The news is already public/priced, making any asset reaction muted or absent",
+      "Broad risk-off could temporarily drag even European defense names, inverting the expected direction",
+      "Euro direction reverses if markets read reduced US global commitment as USD-negative",
+      "Magnitude falls far short of the 700bps tradable threshold, rendering the signal non-actionable"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

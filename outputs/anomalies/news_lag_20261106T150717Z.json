@@ -1,0 +1,38 @@
+[
+  {
+    "market_name": "Netanyahu out by end of 2026?",
+    "market_id": "567688",
+    "anomaly_trigger_time_utc": "2026-10-28T11:00:24Z",
+    "lookback_hours": 48.0,
+    "public_information_score": 0.0,
+    "residual_anomaly_score": 96.6,
+    "information_state": "none",
+    "evidence": [],
+    "uncertainty_note": "No relevant pre-trigger coverage found \u2014 this is weak evidence (retrieval may be incomplete), not proof the move was non-public.",
+    "mode": "live"
+  },
+  {
+    "market_name": "Will Iran withdraw from the NPT before 2027?",
+    "market_id": "665727",
+    "anomaly_trigger_time_utc": "2026-10-29T18:00:35Z",
+    "lookback_hours": 48.0,
+    "public_information_score": 0.0,
+    "residual_anomaly_score": 92.5,
+    "information_state": "none",
+    "evidence": [],
+    "uncertainty_note": "No relevant pre-trigger coverage found \u2014 this is weak evidence (retrieval may be incomplete), not proof the move was non-public.",
+    "mode": "live"
+  },
+  {
+    "market_name": "Will Trump cut long term capital gains tax before 2027?",
+    "market_id": "665483",
+    "anomaly_trigger_time_utc": "2026-10-29T18:00:32Z",
+    "lookback_hours": 48.0,
+    "public_information_score": 0.0,
+    "residual_anomaly_score": 87.3,
+    "information_state": "none",
+    "evidence": [],
+    "uncertainty_note": "No relevant pre-trigger coverage found \u2014 this is weak evidence (retrieval may be incomplete), not proof the move was non-public.",
+    "mode": "live"
+  }
+]

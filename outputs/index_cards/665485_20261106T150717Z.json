@@ -1,0 +1,98 @@
+{
+  "card_id": "665485_20261106T150717Z",
+  "card_version": "v1",
+  "card_hash": "1772931b9c7c7e49578c4425ba54075f6148b8fd935e8e7b8e54c459431d8848",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-06T15:07:17Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665485",
+    "market_slug": "us-forces-in-gaza-before-2027",
+    "market_name": "U.S. forces in Gaza before 2027?",
+    "market_url": "https://polymarket.com/market/us-forces-in-gaza-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "U.S. forces in Gaza before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Israel equity risk",
+      "ticker": "EIS",
+      "tradable_instrument_name": "iShares MSCI Israel ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.12,
+      "confidence_interval_bps": [
+        -150.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move coincided with a concrete Gaza headline (ceasefire deal, troop announcement) versus pure market noise.",
+        "1h": "Compare EIS premarket/ADR-linked moves and ILS (USD/ILS) to see if any correlated reaction exists.",
+        "2h": "Assess defense names (ITA) and oil (BNO) for corroborating geopolitical repricing.",
+        "6h": "Re-evaluate whether news flow has clarified escalation vs. peacekeeping interpretation.",
+        "12h": "Mark whether any proxy moved >700bps; if not, log as non-tradable noise confirming low-confidence prior."
+      },
+      "reasoning": "A shift in the implied probability of US regular forces entering Gaza is a slow-moving, long-horizon geopolitical question (resolves end-2026). Even a sharp move in this market reflects marginal repositioning on a scenario years away, with ambiguous asset implications: US boots on the ground could signal either escalation (risk-off) or a stabilization/ceasefire enforcement role (risk-on). The mapping to any liquid proxy over a 12h window is weak and the net sign is genuinely ambiguous."
+    },
+    {
+      "asset": "US defense contractors",
+      "ticker": "ITA",
+      "tradable_instrument_name": "iShares U.S. Aerospace & Defense ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.1,
+      "confidence_interval_bps": [
+        -120.0,
+        180.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check for any US DoD/White House statement on Gaza deployment accompanying the market move.",
+        "1h": "Look at ITA and individual primes (LMT, RTX) for any directional premarket drift.",
+        "2h": "Gauge whether broad risk sentiment (SPY) is driving any move rather than Gaza-specific news.",
+        "6h": "Reassess if credible reporting emerges on troop plans.",
+        "12h": "Record final move; expect sub-threshold, non-tradable."
+      },
+      "reasoning": "Higher implied odds of US ground involvement could marginally support defense spending expectations, but the timeline (through 2026) is far too distant to move a diversified defense ETF in a 12h window. The exposure is diffuse and the signal-to-noise is poor; defense stocks respond to budget cycles and large conflicts, not a speculative Polymarket probability shift."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns US regular forces entering Gaza by end-2026, a long-horizon resolution",
+    "Strict resolution criteria exclude advisors, contractors, special ops, diplomatic entourage \u2014 making 'Yes' a high bar",
+    "Primary topic military_conflict, region United States",
+    "12h prediction window vs. multi-year resolution horizon"
+  ],
+  "uncertainty_notes": [
+    "Direction is genuinely ambiguous: US ground forces could mean escalation (risk-off) or ceasefire enforcement (risk-on)",
+    "No liquid proxy has tight exposure to this specific scenario",
+    "A probability move may reflect thin-market noise rather than real information"
+  ],
+  "llm_justification": {
+    "summary": "This market asks a multi-year geopolitical question with strict resolution criteria, mapping only weakly to any liquid 12h-horizon asset. Even a sharp implied-probability move carries ambiguous sign (escalation vs. peacekeeping) and diffuse exposure. The most plausible proxies \u2014 Israel equity (EIS) and US defense (ITA) \u2014 are both low-confidence, unclear-direction, and almost certainly sub-threshold for the 700bps tradable bar. This is best logged as a weak-mapping, non-tradable signal.",
+    "key_assumptions": [
+      "The 12h asset reaction, if any, would come via Gaza headlines, not the Polymarket move itself",
+      "No imminent concrete troop-deployment announcement is embedded in the market shift",
+      "Liquid ETFs are the appropriate proxy given no single clean name exists"
+    ],
+    "failure_modes": [
+      "The move was triggered by a real, already-public ceasefire/deployment headline \u2014 asset already repriced, no edge",
+      "Direction assumption fails: escalation and stabilization interpretations push proxies opposite ways",
+      "Proxies (EIS, ITA) have weak, diluted exposure to this specific Gaza scenario",
+      "Long resolution horizon means a probability shift carries negligible 12h asset impact",
+      "Prediction-market liquidity is thin, so the 'sharp move' may be noise, not information"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

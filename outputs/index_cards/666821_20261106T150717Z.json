@@ -1,0 +1,99 @@
+{
+  "card_id": "666821_20261106T150717Z",
+  "card_version": "v1",
+  "card_hash": "f97fed979141d9eea0e6d52a2dddf85c69c8facc3768cde0de263c6e7c59060e",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-06T15:07:17Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "666821",
+    "market_slug": "us-agrees-to-a-new-trade-deal-with-japan-before-2027",
+    "market_name": "U.S. agrees to a new trade deal with \"Japan\" before 2027?",
+    "market_url": "https://polymarket.com/market/us-agrees-to-a-new-trade-deal-with-japan-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "U.S. agrees to a new trade deal with \"Japan\" before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Japan equity (large-cap exporters)",
+      "ticker": "EWJ",
+      "tradable_instrument_name": "iShares MSCI Japan ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.28,
+      "confidence_interval_bps": [
+        -80.0,
+        180.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether EWJ and Nikkei futures show any directional reaction; scan newswires for any concrete U.S.-Japan trade-deal headline that could explain a probability jump.",
+        "1h": "Compare EWJ move vs SPY to isolate Japan-specific vs broad-market beta; watch USDJPY for confirming risk-on in Japan assets.",
+        "2h": "Re-check if any official readout (USTR, METI, White House) corroborates the market signal; fade if move looks like noise.",
+        "6h": "Assess Tokyo cash-session open reaction (if within window) and auto/exporter single names for sector confirmation.",
+        "12h": "Evaluate whether EWJ sustained any move and whether a credible trade-deal catalyst emerged; log outcome vs expectation."
+      },
+      "reasoning": "A sharply higher implied probability of a new, enacted U.S.-Japan trade agreement would reduce tariff/trade-friction risk for Japanese exporters (autos, machinery, electronics), supporting Japanese equities. EWJ is the most liquid broad proxy for that exposure. However, the market resolves anytime before end-2026, so a probability move carries little near-term, dated information, and the equity impact over a 12h window is small and easily swamped by USDJPY, BOJ, and global risk flows."
+    },
+    {
+      "asset": "Japanese yen",
+      "ticker": "FXY",
+      "tradable_instrument_name": "Invesco CurrencyShares Japanese Yen Trust",
+      "asset_class": "fx_proxy",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.15,
+      "confidence_interval_bps": [
+        -90.0,
+        90.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check USDJPY spot for any reaction aligned with the probability move.",
+        "1h": "Determine whether any move is risk-driven (DXY, UST yields) rather than Japan-trade specific.",
+        "2h": "Look for official confirmation; absent a catalyst, treat as noise.",
+        "6h": "Reassess during Tokyo session for BOJ/MOF commentary overlap.",
+        "12h": "Record whether FXY showed any trade-linked move; likely no tradable signal."
+      },
+      "reasoning": "A trade deal's FX effect on the yen is ambiguous: improved trade relations and risk-on could weaken JPY (risk-off haven unwind) or strengthen it via improved export outlook and capital flows. With no clear directional mechanism and a long resolution horizon, this is a weak mapping. USDJPY is dominated by rate differentials and BOJ policy, not a dated trade-deal probability."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns an enacted U.S.-Japan free trade agreement by Dec 31 2026",
+    "Long resolution horizon (any time before 2027) dilutes near-term informational content",
+    "Japan is a major exporter to the U.S.; trade-friction reduction benefits exporters",
+    "EWJ and FXY are the most liquid public proxies for Japan equity and yen exposure"
+  ],
+  "uncertainty_notes": [
+    "A probability shift on a 14+ month-dated market implies little about the next 12 hours of asset prices",
+    "Trade-deal FX impact on yen is directionally ambiguous",
+    "EWJ moves are dominated by USDJPY, BOJ policy, and global risk, diluting the trade-deal signal",
+    "Resolution requires actual enactment into U.S. law, a high and slow bar unlikely to be imminent"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability of an enacted U.S.-Japan trade deal would modestly favor Japanese exporter equities (EWJ) by reducing tariff risk, with an ambiguous yen effect. But the market's long, open-ended horizon means any probability move carries weak near-term information, so the expected 12h magnitude is well below the 700bps tradable threshold and confidence is low. Treat as a noisy, non-tradable signal absent a concrete corroborating headline.",
+    "key_assumptions": [
+      "A higher deal probability reflects genuine reduced trade friction for Japanese exporters",
+      "EWJ adequately proxies the exporter-sensitive Japan equity basket",
+      "Market probability moves can occasionally lead public reporting of trade negotiations"
+    ],
+    "failure_modes": [
+      "The probability move reflects speculation or liquidity, not real negotiation progress",
+      "Any catalyst is already public, so assets have already repriced",
+      "The long resolution horizon means no 12h asset reaction materializes",
+      "EWJ/FXY are too diluted by macro factors to express the trade-specific thesis",
+      "Yen direction reverses expectation (risk-on weakens rather than strengthens JPY)"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
