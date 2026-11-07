@@ -1,0 +1,97 @@
+{
+  "card_id": "665495_20261107T140618Z",
+  "card_version": "v1",
+  "card_hash": "4d2629574070459e1404b2ccdf110844b5960594b5724807e8980ee042956e95",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-07T14:06:18Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665495",
+    "market_slug": "ukraine-joins-nato-before-2027",
+    "market_name": "Ukraine joins NATO before 2027?",
+    "market_url": "https://polymarket.com/market/ukraine-joins-nato-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Ukraine joins NATO before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Defense sector equities (US/EU primes)",
+      "ticker": "ITA",
+      "tradable_instrument_name": "iShares U.S. Aerospace & Defense ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.2,
+      "confidence_interval_bps": [
+        -400.0,
+        400.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket move is accompanied by a concrete headline (summit, treaty, Article 5 trigger) vs. thin-liquidity noise; without a named catalyst treat as noise.",
+        "1h": "Compare ITA move vs. European defense (Rheinmetall, EUAD) and broad SPY to isolate any defense-specific signal.",
+        "2h": "Reassess whether the prediction-market move persisted or reverted; a revert confirms noise.",
+        "6h": "Look for official NATO/government statements that would disambiguate escalation vs. peace framing.",
+        "12h": "Close out assessment: did defense equities move >700bps in a direction tied to the market? If not, log as non-tradable."
+      },
+      "reasoning": "A sharp repricing in the probability of Ukraine joining NATO would signal a major shift in the Russia-Ukraine conflict. But the direction is genuinely ambiguous: NATO accession would most plausibly follow either a negotiated end to the war (de-escalation, bearish for defense names) OR a dramatic escalation that triggers formal alignment (bullish). Because the two scenarios push defense equities in opposite directions, the net 12h impact is unclear and unlikely to clear the 700bps tradable threshold on this signal alone."
+    },
+    {
+      "asset": "European natural gas / energy risk",
+      "ticker": "UNG",
+      "tradable_instrument_name": "United States Natural Gas Fund",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.18,
+      "confidence_interval_bps": [
+        -500.0,
+        500.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify if TTF/Brent are moving in sympathy with any headline behind the Polymarket shift.",
+        "1h": "Check Brent and European gas proxies rather than UNG for a cleaner read.",
+        "2h": "Determine whether the probability move holds; fade if it was a liquidity air-pocket.",
+        "6h": "Scan for Russian government or Kremlin response, which would set escalation vs. de-escalation framing.",
+        "12h": "Final check: any sustained energy move >700bps attributable to this market? Likely not; record as weak mapping."
+      },
+      "reasoning": "Energy (European gas, oil risk premium) is the most conflict-sensitive liquid complex. A credible path to Ukraine NATO membership tied to war resolution would ease Russian supply-disruption risk (bearish gas), while an escalation path would raise it (bullish). UNG is only a weak proxy for European TTF dynamics and US gas is largely decoupled, so exposure is diluted. Given the directional ambiguity and weak proxy linkage, this does not constitute a confident tradable signal."
+    }
+  ],
+  "evidence_used": [
+    "Market question: Ukraine joins NATO before 2027, a very low base-rate event given Russia's stated red lines and NATO consensus requirements",
+    "Topic: military_conflict, region russia_ukraine \u2014 high geopolitical sensitivity",
+    "Settlement via official NATO membership roster \u2014 binary, slow-moving institutional event",
+    "12h prediction window with 700bps tradable threshold"
+  ],
+  "uncertainty_notes": [
+    "NATO accession is a slow, consensus-based institutional process; it almost never happens on a 12h horizon, so near-term probability spikes are more likely rumor/noise than leaked fact.",
+    "The same event (accession becoming likely) can be bullish OR bearish for the same asset depending on whether it reflects peace or escalation \u2014 the core mapping is directionally unstable.",
+    "Proxy quality is weak: UNG tracks US gas, not European TTF; ITA blends many non-Ukraine revenue streams."
+  ],
+  "llm_justification": {
+    "summary": "A sharp move in the 'Ukraine joins NATO before 2027' market would flag a major shift in the Russia-Ukraine conflict, but the downstream asset implication is fundamentally ambiguous because NATO accession could accompany either war resolution (de-escalation) or dramatic escalation. The two scenarios drive defense equities and energy in opposite directions. Combined with weak proxy linkages and a very low base rate for near-term accession, this is a low-confidence, likely non-tradable signal best treated as noise unless a concrete named catalyst accompanies the move.",
+    "key_assumptions": [
+      "A prediction-market probability spike is the trigger being studied.",
+      "Liquid proxies (ITA, UNG) carry only partial exposure to the underlying geopolitical shift.",
+      "No prior public confirmation of imminent NATO membership exists at signal time."
+    ],
+    "failure_modes": [
+      "The move reverses \u2014 thin Polymarket liquidity produces a transient spike with no real information.",
+      "Directional miss \u2014 assuming escalation when the market is pricing a peace deal, or vice versa.",
+      "Already public \u2014 any genuine accession news would hit mainstream wires and assets simultaneously, leaving no lead time.",
+      "Weak proxy \u2014 UNG decoupled from European gas; ITA diluted by unrelated revenue, muting any true signal below the 700bps threshold."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

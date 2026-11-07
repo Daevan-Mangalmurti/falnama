@@ -1,0 +1,99 @@
+{
+  "card_id": "665473_20261107T140618Z",
+  "card_version": "v1",
+  "card_hash": "4d49cfe1a4f04421d8fcb1faca3a1374ac410febe2fe7d0d5a3e6dde151a86ad",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-07T14:06:18Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665473",
+    "market_slug": "will-lebanon-join-the-abraham-accords-before-2027",
+    "market_name": "Will Lebanon join the Abraham Accords before 2027?",
+    "market_url": "https://polymarket.com/market/will-lebanon-join-the-abraham-accords-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Lebanon join the Abraham Accords before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Israel equity (broad)",
+      "ticker": "EIS",
+      "tradable_instrument_name": "iShares MSCI Israel ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.25,
+      "confidence_interval_bps": [
+        -120.0,
+        300.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move coincides with any Reuters/AP headline on Lebanon-Israel talks or a Hezbollah disarmament development; if none, treat as noise.",
+        "1h": "Compare EIS/TA-35 futures drift vs regional peers to see if move is Israel-specific or broad risk-on.",
+        "2h": "Re-check oil and gold for corroborating de-escalation signal; divergence weakens thesis.",
+        "6h": "Assess whether any official Lebanese/Israeli government statement emerged; absent that, fade expectation.",
+        "12h": "Evaluate whether EIS actually moved beyond normal daily range; log outcome vs. pre-commit."
+      },
+      "reasoning": "A sharp rise in the implied probability of Lebanon normalizing with Israel would signal broad Middle East de-escalation, which is modestly bullish for Israeli risk assets by lowering regional conflict premium and improving the regional investment outlook. But Lebanon's normalization is heavily constrained by Hezbollah's domestic veto, so even a market move is a weak, low-probability signal that is unlikely to produce large asset moves within a 12h window."
+    },
+    {
+      "asset": "Crude oil (geopolitical risk premium)",
+      "ticker": "BNO",
+      "tradable_instrument_name": "United States Brent Oil Fund",
+      "asset_class": "commodity",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -40.0,
+      "confidence": 0.2,
+      "confidence_interval_bps": [
+        -250.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check Brent tape for any reaction and screen for competing oil-specific headlines (OPEC, inventories).",
+        "1h": "Confirm whether broader MidEast risk gauges (gold, defense stocks) move consistently.",
+        "2h": "If oil is flat or rising, downgrade thesis \u2014 the normalization signal is not driving price.",
+        "6h": "Reassess with any official confirmation; absent catalyst, expect mean reversion.",
+        "12h": "Record whether Brent closed lower and whether move exceeded noise; document."
+      },
+      "reasoning": "Middle East normalization headlines tend to compress the geopolitical risk premium in oil. A credible jump in Lebanon-Israel normalization odds would nominally push Brent lower. However, Lebanon is not an oil producer and the link to a 12h oil move is very weak and easily swamped by OPEC, inventory, and macro drivers, so confidence is low."
+    }
+  ],
+  "evidence_used": [
+    "Market question: probability of Lebanon formally joining the Abraham Accords by end-2026",
+    "Lebanon's political structure gives Hezbollah effective veto over normalization, making Yes a low base-rate outcome",
+    "General pattern that MidEast de-escalation supports Israeli equities and compresses oil risk premium",
+    "12h prediction window is short relative to a 2026-resolution diplomatic event"
+  ],
+  "uncertainty_notes": [
+    "Resolution date is Dec 2026; short 12h asset reactions to probability shifts are weak and noisy",
+    "Lebanon is not an oil producer, so oil linkage is indirect at best",
+    "A probability move could reflect speculative repositioning rather than genuine information leakage",
+    "Israeli equity ETF liquidity/timezone mismatch can mute 12h reactions"
+  ],
+  "llm_justification": {
+    "summary": "This market tracks the low-probability prospect of Lebanon normalizing with Israel by end-2026. A sharp rise in implied odds would signal regional de-escalation, nominally bullish for Israeli equities (EIS) and bearish for oil's geopolitical risk premium (Brent). However, Lebanon's Hezbollah-constrained politics make the event a long shot, and both proxies are weakly and indirectly exposed over a 12h window, so neither prediction is tradable at the 700bps threshold. This is a low-confidence, noisy mapping.",
+    "key_assumptions": [
+      "A probability move reflects genuine shifts in de-escalation expectations rather than pure noise",
+      "Israeli equities and oil remain the most liquid proxies for MidEast normalization sentiment",
+      "No dominant competing macro catalyst overwhelms the signal within 12h"
+    ],
+    "failure_modes": [
+      "The probability move is speculative noise with no underlying information and reverses quickly",
+      "Lebanon normalization news, if real, may already be public and priced, leaving no edge",
+      "Oil proxy is weakly exposed since Lebanon is not a producer and OPEC/macro dominate",
+      "Israeli ETF reaction is muted by timezone/liquidity and fails to clear the 700bps tradable bar",
+      "Regional escalation (rather than de-escalation) could coincide, inverting the expected direction"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

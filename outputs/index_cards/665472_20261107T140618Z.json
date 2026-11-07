@@ -1,0 +1,98 @@
+{
+  "card_id": "665472_20261107T140618Z",
+  "card_version": "v1",
+  "card_hash": "5aed1fa061c95c2b036db9e4b85fd4aa7883430001aa4916f18d2a8854b32ce1",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-07T14:06:18Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665472",
+    "market_slug": "will-syria-join-the-abraham-accords-before-2027",
+    "market_name": "Will Syria join the Abraham Accords before 2027?",
+    "market_url": "https://polymarket.com/market/will-syria-join-the-abraham-accords-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Syria join the Abraham Accords before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Israeli equities",
+      "ticker": "EIS",
+      "tradable_instrument_name": "iShares MSCI Israel ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.32,
+      "confidence_interval_bps": [
+        -80.0,
+        400.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether EIS/TASE-linked names show any abnormal move and scan newswires for any Syria-Israel normalization headline that would explain the market shift.",
+        "1h": "Compare EIS move to broader EM/global equity beta to isolate idiosyncratic Israel signal; verify shekel (USD/ILS) co-movement.",
+        "2h": "Reassess whether the prediction-market move persisted or reverted; if reverted, downgrade thesis to noise.",
+        "6h": "Look for official government statements or credible reporting corroborating normalization progress; absence weakens the leak hypothesis.",
+        "12h": "Final read on EIS cumulative return vs regional peers; log whether move met the 700bps tradable bar (likely not)."
+      },
+      "reasoning": "A sharp rise in the implied probability of Syria normalizing with Israel would signal broad Middle East de-escalation and expanding diplomatic/economic integration for Israel, which is modestly supportive of Israeli equity risk sentiment. EIS is the most liquid broad proxy for the Israeli market. However, a single speculative long-dated diplomacy market is a weak, indirect driver versus macro and domestic factors."
+    },
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "commodity",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -90.0,
+      "confidence": 0.25,
+      "confidence_interval_bps": [
+        -350.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check Brent/WTI for any abnormal move and whether any Syria-Israel headline is circulating.",
+        "1h": "Separate oil move from USD and broad commodity beta to test geopolitical-premium channel.",
+        "2h": "Reassess persistence of the prediction-market shift and oil response.",
+        "6h": "Scan for confirming diplomatic reporting; absence means treat as noise.",
+        "12h": "Final read on USO cumulative return; document that magnitude almost certainly below tradable threshold."
+      },
+      "reasoning": "Middle East normalization implies a lower regional geopolitical risk premium, which can soften crude. But Syria is not a major oil producer and the risk-premium channel is diffuse and dominated by OPEC+, inventories, and demand; the mapping is weak and easily swamped."
+    }
+  ],
+  "evidence_used": [
+    "Market question: Syria joining Abraham Accords (Israel normalization) by end-2026",
+    "Region: Middle East; topic: diplomacy_treaty",
+    "General mapping: Israel normalization -> supportive Israeli equities, lower regional risk premium -> softer oil"
+  ],
+  "uncertainty_notes": [
+    "Syria normalization is a long-shot, long-dated event; a 12h probability spike is more likely rumor than confirmed leak.",
+    "Proxies (EIS, USO) have many stronger drivers than a single speculative diplomacy market.",
+    "Expected magnitudes are well below the 700bps tradable threshold, so neither is actionable.",
+    "No category/timestamp context provided to anchor whether a move actually occurred."
+  ],
+  "llm_justification": {
+    "summary": "A sharp upward move in the probability of Syria joining the Abraham Accords would signal Middle East de-escalation: mildly bullish for Israeli equities (EIS) and mildly bearish for crude oil via a lower geopolitical risk premium. Both channels are weak and indirect, dominated by macro factors, and expected moves fall short of the 700bps tradable bar. Treat as a low-confidence research signal, not a trade.",
+    "key_assumptions": [
+      "A prediction-market move reflects genuine information rather than thin-market noise.",
+      "Normalization progress is read by markets as risk-positive for Israel and risk-premium-negative for oil.",
+      "EIS and USO are adequate liquid proxies for these channels."
+    ],
+    "failure_modes": [
+      "The probability move is noise/manipulation in a thin long-dated market and reverts quickly.",
+      "The development is already public, so no fresh market impact.",
+      "Syria is not an oil producer, so the oil linkage is tenuous and may not materialize.",
+      "Israeli equity reaction is swamped by domestic/macro factors, producing no detectable idiosyncratic move.",
+      "Direction could invert if normalization is read as destabilizing for other regional actors."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

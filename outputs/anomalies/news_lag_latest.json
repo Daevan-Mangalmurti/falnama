@@ -4,8 +4,118 @@
     "market_id": "567688",
     "anomaly_trigger_time_utc": "2026-10-28T11:00:24Z",
     "lookback_hours": 48.0,
+    "public_information_score": 75.0,
+    "residual_anomaly_score": 24.2,
+    "information_state": "speculation",
+    "evidence": [
+      {
+        "snippet": "The Anti - Bibi Candidate who Has Netanyahu on His Heels",
+        "source": "drudge.com",
+        "url": "https://drudge.com/news/295181/anti-bibi-candidate-has-netanyahu",
+        "published_time_utc": "2026-10-27T05:15:00Z",
+        "information_state": "speculation"
+      },
+      {
+        "snippet": "Israel Elections",
+        "source": "politicaldog101.com",
+        "url": "https://politicaldog101.com/tag/israel-elections/",
+        "published_time_utc": "2026-10-27T05:15:00Z",
+        "information_state": "market_commentary"
+      },
+      {
+        "snippet": "\u0395\u03ba\u03bb\u03bf\u03b3\u03ad\u03c2 \u03c3\u03c4\u03bf \u0399\u03c3\u03c1\u03b1\u03ae\u03bb : \u03a4\u03b9 \u03b8\u03b1 \u03c3\u03b7\u03bc\u03ac\u03bd\u03b5\u03b9 \u03c4\u03bf \u03c4\u03ad\u03bb\u03bf\u03c2 \u03c4\u03b7\u03c2 \u03b5\u03c0\u03bf\u03c7\u03ae\u03c2 \u039d\u03b5\u03c4\u03b1\u03bd\u03b9\u03ac\u03c7\u03bf\u03c5 ; ",
+        "source": "lifo.gr",
+        "url": "https://www.lifo.gr/stiles/optiki-gonia/ekloges-sto-israil-ti-tha-simanei-telos-tis-epohis-netaniahoy",
+        "published_time_utc": "2026-10-27T05:15:00Z",
+        "information_state": "speculation"
+      },
+      {
+        "snippet": "Alegeri \u00een Israel : Benjamin Netanyahu \u00ee\u0219i joac\u0103 ultima carte politic\u0103",
+        "source": "stiripesurse.ro",
+        "url": "https://www.stiripesurse.ro/alegeri-israel-benjamin-netanyahu-gadi-eisenkot-parlamentare_3931582",
+        "published_time_utc": "2026-10-27T05:15:00Z",
+        "information_state": "speculation"
+      },
+      {
+        "snippet": "  This time I wont vote for Likud , Netanyahu cousin says , citing October 7",
+        "source": "jpost.com",
+        "url": "http://www.jpost.com/israel-election-2026/article-912988",
+        "published_time_utc": "2026-10-27T05:15:00Z",
+        "information_state": "rumor"
+      },
+      {
+        "snippet": "  This time I wont vote for Likud , PM Netanyahu cousin says , citing October 7",
+        "source": "jpost.com",
+        "url": "https://www.jpost.com/israel-election-2026/article-912988",
+        "published_time_utc": "2026-10-27T05:15:00Z",
+        "information_state": "rumor"
+      }
+    ],
+    "uncertainty_note": "The articles published Oct 27, roughly 30 hours before the market trigger, all concern Israeli elections and political pressure on Netanyahu. Article [0] explicitly frames an 'Anti-Bibi Candidate' as a threat; articles [2]\u2013[3] ask whether the 'Netanyahu era' is ending; articles [4]\u2013[5] report his own cousin refusing to vote for Likud. This is credible pre-trigger reporting on electoral threat to Netanyahu's political survival, which directly supports a downward move in 'Netanyahu out by end of 2026' probability. However, these are framed as speculative election scenarios and familial dissent, not confirmations of his imminent removal. The absence of fuller text and the exact timing (all published simultaneously) raises modest concern about retrieval completeness, but the directional alignment and topical relevance are clear.",
+    "mode": "live"
+  },
+  {
+    "market_name": "Anthropic IPO before 2027?",
+    "market_id": "676792",
+    "anomaly_trigger_time_utc": "2026-11-06T08:00:32Z",
+    "lookback_hours": 48.0,
+    "public_information_score": 72.0,
+    "residual_anomaly_score": 26.8,
+    "information_state": "speculation",
+    "evidence": [
+      {
+        "snippet": "Is Anthropic About To Delay The Biggest IPO Ever ? ",
+        "source": "zerohedge.com",
+        "url": "https://www.zerohedge.com/ai/anthropic-about-delay-biggest-ipo-ever",
+        "published_time_utc": "2026-11-06T04:00:00Z",
+        "information_state": "speculation"
+      },
+      {
+        "snippet": "Will AI backlash delay Anthropic IPO ? Investors raise doubts",
+        "source": "thehindubusinessline.com",
+        "url": "https://www.thehindubusinessline.com/markets/will-ai-backlash-delay-anthropic-ipo-investors-raise-doubts/article71672682.ece",
+        "published_time_utc": "2026-11-06T04:30:00Z",
+        "information_state": "speculation"
+      },
+      {
+        "snippet": "Major investors are skeptical Anthropic IPO can achieve $1 . 5 trillion valuation",
+        "source": "livemint.com",
+        "url": "https://www.livemint.com/global/major-investors-are-skeptical-anthropic-ipo-can-achieve-1-5-trillion-valuation-11793927272641.html",
+        "published_time_utc": "2026-11-06T03:30:00Z",
+        "information_state": "speculation"
+      },
+      {
+        "snippet": "AI backlash could threaten Anthropic IPO timing , potential investors say",
+        "source": "bdnews24.com",
+        "url": "https://bdnews24.com/technology/nfg3n2d05b",
+        "published_time_utc": "2026-11-06T05:30:00Z",
+        "information_state": "speculation"
+      },
+      {
+        "snippet": "AI backlash could threaten Anthropic IPO timing , potential investors say",
+        "source": "economictimes.indiatimes.com",
+        "url": "https://economictimes.indiatimes.com/markets/us-stocks/news/ai-backlash-could-threaten-anthropic-ipo-timing-potential-investors-say/articleshow/135589533.cms",
+        "published_time_utc": "2026-11-06T02:00:00Z",
+        "information_state": "speculation"
+      },
+      {
+        "snippet": "Exclusive - AI backlash could threaten Anthropic IPO timing , potential investors say",
+        "source": "lufkindailynews.com",
+        "url": "https://lufkindailynews.com/news_reuters/business/exclusive-ai-backlash-could-threaten-anthropic-ipo-timing-potential-investors-say/article_22d4851b-7bce-5e54-8c08-5ef01fb3b25d.html",
+        "published_time_utc": "2026-11-06T04:00:00Z",
+        "information_state": "speculation"
+      }
+    ],
+    "uncertainty_note": "All relevant articles are pure speculation about potential delays, not confirmations or official announcements. They express investor doubts and 'could threaten' phrasing rather than reporting a decision or concrete setback. The market moved sharply downward ~3.5 hours after the earliest speculation began, suggesting some informational weight, but the gap between speculation and the 90-point decline is notable. Articles may contain more substance in full text than snippets reveal.",
+    "mode": "live"
+  },
+  {
+    "market_name": "U.S. agrees to a new trade deal with \"South Korea\" before 2027?",
+    "market_id": "666827",
+    "anomaly_trigger_time_utc": "2026-10-30T02:00:23Z",
+    "lookback_hours": 48.0,
     "public_information_score": 0.0,
-    "residual_anomaly_score": 96.6,
+    "residual_anomaly_score": 94.9,
     "information_state": "none",
     "evidence": [],
     "uncertainty_note": "No relevant pre-trigger coverage found \u2014 this is weak evidence (retrieval may be incomplete), not proof the move was non-public.",
@@ -17,7 +127,7 @@
     "anomaly_trigger_time_utc": "2026-10-29T18:00:35Z",
     "lookback_hours": 48.0,
     "public_information_score": 0.0,
-    "residual_anomaly_score": 92.5,
+    "residual_anomaly_score": 94.1,
     "information_state": "none",
     "evidence": [],
     "uncertainty_note": "No relevant pre-trigger coverage found \u2014 this is weak evidence (retrieval may be incomplete), not proof the move was non-public.",

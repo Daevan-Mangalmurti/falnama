@@ -1,0 +1,38 @@
+{
+  "selected_count": 158,
+  "rejected_count": 342,
+  "by_primary_topic": {
+    "elections": 81,
+    "military_conflict": 26,
+    "trade_policy": 15,
+    "corporate_action": 14,
+    "cabinet_government": 11,
+    "diplomacy_treaty": 8,
+    "central_bank_macro": 2,
+    "energy": 1
+  },
+  "by_country_or_region": {
+    "unknown": 60,
+    "united_states": 52,
+    "middle_east": 17,
+    "russia_ukraine": 15,
+    "korea": 5,
+    "europe": 4,
+    "china_taiwan": 4,
+    "latin_america": 1
+  },
+  "rejection_reasons": {
+    "diversity cap: country_or_region=united_states": 105,
+    "relevance score 20.0 < 60.0": 84,
+    "diversity cap: country_or_region=unknown": 77,
+    "already resolved (close_time 2026-11-04 is in the past)": 34,
+    "already resolved (close_time 2025-11-24 is in the past)": 18,
+    "hard reject (keyword or topic)": 6,
+    "diversity cap: primary_topic=elections": 5,
+    "relevance score 0.0 < 60.0": 4,
+    "diversity cap: event_family=which-countries-will-trump-make-new-trade-deals-with-before-2027-921": 4,
+    "diversity cap: event_family=how-many-fed-rate-cuts-in-2026": 3,
+    "volume 684.273 < 1000": 1,
+    "volume 935.628 < 1000": 1
+  }
+}

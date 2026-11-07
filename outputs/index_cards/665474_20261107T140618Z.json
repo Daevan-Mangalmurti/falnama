@@ -1,0 +1,100 @@
+{
+  "card_id": "665474_20261107T140618Z",
+  "card_version": "v1",
+  "card_hash": "bae96fadcd4cbaf8dba545bb93312bcbbecc6111615ebe1ee56d2d4b5173dfdc",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-07T14:06:18Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665474",
+    "market_slug": "will-saudi-arabia-join-the-abraham-accords-before-2027",
+    "market_name": "Will Saudi Arabia join the Abraham Accords before 2027?",
+    "market_url": "https://polymarket.com/market/will-saudi-arabia-join-the-abraham-accords-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Saudi Arabia join the Abraham Accords before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Israeli equities",
+      "ticker": "EIS",
+      "tradable_instrument_name": "iShares MSCI Israel ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -80.0,
+        450.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move is accompanied by any credible diplomatic headlines (White House, Riyadh, Jerusalem). If purely market-driven with no news, treat as noise.",
+        "1h": "Compare EIS/TA-35 futures reaction vs broad EM and US equity drift to isolate idiosyncratic Israel move.",
+        "2h": "Reassess if any official denial or confirmation appears; denials would reverse the thesis.",
+        "6h": "Check overnight Israeli session open and whether move persists or fades.",
+        "12h": "Evaluate whether EIS held direction; mark thesis as confirmed/failed based on persistence and news flow."
+      },
+      "reasoning": "A sharp rise in the implied probability of Saudi-Israel normalization would signal regional de-escalation and improved trade/investment prospects for Israel, lifting Israeli equity sentiment. EIS is the most liquid broad proxy. However, absent a confirmed signing, a probability move alone is a weak, noisy signal and unlikely to drive a large, fast move."
+    },
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "commodity",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": -60.0,
+      "confidence": 0.25,
+      "confidence_interval_bps": [
+        -300.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check if oil is reacting at all; isolate from inventory data or OPEC headlines.",
+        "1h": "Look for any linkage commentary tying normalization to production policy.",
+        "2h": "Reassess risk-premium narrative vs supply narrative.",
+        "6h": "Check whether broader risk sentiment (not this market) is driving oil.",
+        "12h": "Mark as noise unless a clear risk-premium repricing emerged."
+      },
+      "reasoning": "Saudi-Israel normalization could modestly reduce the Middle East geopolitical risk premium in oil (bearish), but the deal is historically linked to US security guarantees and Saudi production/pricing decisions, which cut the other way. Net effect is genuinely ambiguous, so direction is unclear and confidence low."
+    }
+  ],
+  "evidence_used": [
+    "Market question on Saudi Arabia joining Abraham Accords by end-2026",
+    "Diplomacy/treaty topic, Middle East region",
+    "Historical association of normalization deals with regional de-escalation and Israeli market optimism",
+    "General relationship between Middle East geopolitical risk and oil risk premium"
+  ],
+  "uncertainty_notes": [
+    "A probability shift on a long-dated (end-2026) market is a weak near-term catalyst for a 12h window",
+    "Prediction-market moves often reflect speculation/liquidity, not leaked information",
+    "Saudi-Israel deal effect on oil is bidirectional and uncertain",
+    "EIS exposure to a diplomatic probability change is diffuse and slow-building"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in implied probability that Saudi Arabia joins the Abraham Accords would most plausibly be mildly bullish for Israeli equities (EIS) via improved regional de-escalation and investment sentiment, and ambiguously bearish for oil via a reduced geopolitical risk premium. Both mappings are weak over a 12h horizon, below the 700bps tradable threshold, and should be treated as research signals rather than actionable trades absent corroborating diplomatic headlines.",
+    "key_assumptions": [
+      "The market's implied probability moved sharply enough to be an anomaly",
+      "No confirmed signing has occurred yet (otherwise already public)",
+      "Israeli equity sentiment responds positively to normalization prospects",
+      "Liquid ETF/commodity proxies capture the relevant exposure"
+    ],
+    "failure_modes": [
+      "The probability move is pure speculation/noise with no information content",
+      "Any normalization news is already public and priced, so no move follows",
+      "EIS is only weakly exposed to a long-dated diplomatic probability change over 12h",
+      "Oil moves the opposite direction if the deal is read as tied to production/pricing cooperation or US security escalation",
+      "An official denial reverses the move entirely"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
