@@ -61,7 +61,11 @@ data:
   # Polymarket read-only endpoints (used only when source: live).
   gamma_base_url: https://gamma-api.polymarket.com
   clob_base_url: https://clob.polymarket.com
-  data_api_base_url: https://data-api.polymarket.com  # trades feed for wallet concentration
+  data_api_base_url: https://data-api.polymarket.com  # Data API (v2 routes) for trades + wallet histories
+  # The wallet sensors (concentration, fingerprints) fail open per market. If one
+  # can read fewer than this share of the markets it was asked about, the run's
+  # pipeline_health gets a WARNING — an outage must not look like a quiet day.
+  min_sensor_availability: 0.5
   user_agent: "falnama-research/0.1 (read-only)"
   request_timeout_seconds: 30
   # A request that times out, drops, or meets a busy server (429/5xx) is retried

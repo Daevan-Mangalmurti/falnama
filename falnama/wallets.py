@@ -55,13 +55,14 @@ import time
 
 import pandas as pd
 
+from . import polymarket
 from .config import Settings
 from .io import RunContext
 
-# The data API refuses to page past this many trades for one query, so a very busy
-# market's window may be truncated to its most recent 10,000 qualifying trades.
-_MAX_TRADE_OFFSET = 10000
-_PAGE = 500
+# At most this many qualifying trades are read per market (newest first), so a very
+# busy market's window may be truncated to its most recent 10,000 qualifying trades.
+_MAX_TRADE_ROWS = 10000
+_PAGE = 1000  # the Data API's largest page
 
 # Columns of the two output tables — fixed so empty runs still write a header.
 EVIDENCE_COLUMNS = [
@@ -247,41 +248,32 @@ def _fetch_trades(settings: Settings, market: dict, start: pd.Timestamp | None,
             return df
         return df[df["market_id"].astype(str) == str(market.get("market_id"))].reset_index(drop=True)
 
-    import requests
-
     condition = market.get("condition_id")
     if not isinstance(condition, str) or not condition.startswith("0x"):
         # The data API keys markets by their on-chain conditionId; Gamma's numeric
         # market id silently returns nothing, so refuse rather than report "none".
         raise LookupError("market has no conditionId")
-    cfg, data = settings.section("wallets"), settings.data
-    base = str(data.get("data_api_base_url", "https://data-api.polymarket.com")).rstrip("/")
-    params = {"market": condition, "limit": _PAGE, "filterType": "CASH",
-              "filterAmount": float(cfg.get("min_trade_usd", 500))}
-    if start is not None:
-        params["start"] = int(start.timestamp())
-    if end is not None:
-        params["end"] = int(end.timestamp())
+    cfg = settings.section("wallets")
+    params = {"condition": condition, "limit": _PAGE, "filter_type": "CASH",
+              "filter_amount": float(cfg.get("min_trade_usd", 500))}
+    # v2 ignores start/end when selecting by market, so the window is applied here:
+    # pages arrive newest first, so skip trades after `end` and stop at the first
+    # page that reaches back before `start`.
+    lo = int(start.timestamp()) if start is not None else None
+    hi = int(end.timestamp()) if end is not None else None
     rows: list[dict] = []
-    offset = 0
-    while offset < _MAX_TRADE_OFFSET:
-        resp = requests.get(f"{base}/trades", params={**params, "offset": offset},
-                            timeout=int(data.get("request_timeout_seconds", 30)))
-        resp.raise_for_status()
-        page = resp.json()
-        if not isinstance(page, list) or not page:
+    for page in polymarket.data_api_pages(settings, "trades", params, max_rows=_MAX_TRADE_ROWS):
+        stamps = [int(t["timestamp"]) for t in page if t.get("timestamp")]
+        rows.extend(t for t in page if t.get("timestamp")
+                    and (lo is None or int(t["timestamp"]) >= lo) and (hi is None or int(t["timestamp"]) <= hi))
+        if lo is not None and stamps and min(stamps) < lo:
             break
-        rows.extend(page)
-        offset += len(page)
-        if len(page) < _PAGE:
-            break
-        time.sleep(0.1)  # be polite to the public API
     return pd.DataFrame([{
-        "wallet": t.get("proxyWallet"), "wallet_name": t.get("name") or t.get("pseudonym"),
+        "wallet": t.get("proxy_wallet"), "wallet_name": t.get("name") or t.get("pseudonym"),
         "side": t.get("side", ""), "outcome": t.get("outcome"),
         "price": float(t.get("price") or 0), "size": float(t.get("size") or 0),
         "timestamp": pd.Timestamp(int(t["timestamp"]), unit="s", tz="UTC"),
-    } for t in rows if t.get("proxyWallet") and t.get("timestamp")],
+    } for t in rows if t.get("proxy_wallet")],
         columns=["wallet", "wallet_name", "side", "outcome", "price", "size", "timestamp"])
 
 
@@ -295,20 +287,18 @@ def _fetch_profile(settings: Settings, wallet: str) -> dict:
         hit = df[df["wallet"] == wallet] if not df.empty else df
         return hit.iloc[0].to_dict() if not hit.empty else {"error": "no profile in fixtures"}
 
-    import requests
-
-    data = settings.data
-    base = str(data.get("data_api_base_url", "https://data-api.polymarket.com")).rstrip("/")
-    timeout = int(data.get("request_timeout_seconds", 30))
     profile: dict = {}
     try:
-        first = requests.get(f"{base}/activity", params={"user": wallet, "limit": 1, "sortBy": "TIMESTAMP",
-                                                         "sortDirection": "ASC"}, timeout=timeout).json()
-        if isinstance(first, list) and first:
+        # Oldest activity first; start=1 asks for full history (v2 otherwise floors
+        # the window at three years back).
+        first = polymarket.data_api_get(settings, "activity", {
+            "user": wallet, "limit": 1, "sort_by": "TIMESTAMP", "sort_direction": "ASC", "start": 1})["data"]
+        if first:
             profile["first_activity_utc"] = pd.Timestamp(int(first[0]["timestamp"]), unit="s", tz="UTC")
-        traded = requests.get(f"{base}/traded", params={"user": wallet}, timeout=timeout).json()
-        if isinstance(traded, dict) and traded.get("traded") is not None:
-            profile["markets_traded"] = int(traded["traded"])
+        # v1's /traded is now /v2/user-stats; `trades` there is the distinct-market count.
+        stats = polymarket.data_api_get(settings, "user-stats", {"user": wallet})["data"]
+        if isinstance(stats, dict) and stats.get("trades") is not None:
+            profile["markets_traded"] = int(stats["trades"])
     except Exception as exc:
         profile["error"] = f"profile fetch failed: {type(exc).__name__}: {exc}"
     time.sleep(0.1)
@@ -343,6 +333,10 @@ def run(ctx: RunContext) -> pd.DataFrame:
     window_end = None if settings.data_source == "fixtures" else pd.Timestamp(ctx.run_time_utc)
     evidence, table = fingerprint_universe(settings, markets, window_end)
     table.insert(0, "run_id", ctx.run_id)
+    if not table.empty:
+        dark = table[~table["fingerprint_available"].astype(bool)]
+        io.warn_if_sensor_dark(ctx, "wallet fingerprints", int(len(table) - len(dark)), int(len(table)),
+                               dark["fingerprint_reason"].astype(str).tolist())
 
     io.write_table(evidence, out_dir, "wallet_evidence", ctx.run_id, also_latest=False)
     path = io.write_table(table, out_dir, "market_fingerprints", ctx.run_id)

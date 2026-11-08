@@ -8,7 +8,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from falnama import backtest, wallets
+from falnama import backtest, polymarket, wallets
 from falnama.config import load_config
 
 S = load_config()
@@ -148,3 +148,24 @@ def test_wallet_sensor_runs_beside_the_price_detector(monkeypatch):
     _patch(monkeypatch, [0.10] * 5)  # far too little price history to score...
     thin = backtest.run_case(backtest.BacktestCase(event="x", label="positive"), S)
     assert "too few" in thin.error and thin.fingerprint_tier == "cluster"  # ...wallets still judged
+
+
+def test_resolution_anchor_is_the_last_trade_on_the_v2_feed(monkeypatch):
+    sent = []
+
+    def fake(settings, route, params):
+        sent.append((route, params))
+        return {"data": [{"timestamp": 1772236800}], "pagination": {"next_cursor": None}}
+
+    monkeypatch.setattr(polymarket, "data_api_get", fake)
+    anchor = backtest._resolution_anchor({"conditionId": "0xc", "endDate": "2030-01-01T00:00:00Z"}, S)
+    assert anchor == pd.Timestamp(1772236800, unit="s", tz="UTC")
+    assert sent == [("trades", {"condition": "0xc", "limit": 1})]
+
+
+def test_resolution_anchor_falls_back_to_end_date(monkeypatch):
+    def down(*a, **k):
+        raise ConnectionError("down")
+    monkeypatch.setattr(polymarket, "data_api_get", down)
+    anchor = backtest._resolution_anchor({"conditionId": "0xc", "endDate": "2026-03-01T00:00:00Z"}, S)
+    assert anchor == pd.Timestamp("2026-03-01T00:00:00Z")

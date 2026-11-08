@@ -47,7 +47,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from . import anomaly, io, wallets
+from . import anomaly, io, polymarket, wallets
 from .config import Settings, load_config
 from .io import RunContext
 
@@ -155,16 +155,12 @@ def _resolution_anchor(market: dict, settings: Settings) -> pd.Timestamp:
     Gamma's `endDate` is unreliable for dated sub-markets, so we prefer the most
     recent trade timestamp (the market stops trading at resolution) and fall back
     to endDate only if the trades feed is unavailable."""
-    import requests
-
     condition = market.get("conditionId")
     if condition:
         try:
-            resp = requests.get(f"{settings.data.get('data_api_base_url', 'https://data-api.polymarket.com')}/trades",
-                                params={"market": condition, "limit": 1},
-                                timeout=int(settings.data.get("request_timeout_seconds", 30)))
-            trades = resp.json() if resp.ok else []
-            if isinstance(trades, list) and trades and trades[0].get("timestamp"):
+            # The Data API serves trades newest first, so one row is the last trade.
+            trades = polymarket.data_api_get(settings, "trades", {"condition": condition, "limit": 1})["data"]
+            if trades and trades[0].get("timestamp"):
                 return pd.Timestamp(int(trades[0]["timestamp"]), unit="s", tz="UTC")
         except Exception:
             pass

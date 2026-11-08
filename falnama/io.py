@@ -174,6 +174,26 @@ def update_manifest(ctx: RunContext, section: str, updates: dict[str, Any]) -> P
     return write_json(path, manifest)
 
 
+def warn_if_sensor_dark(ctx: RunContext, sensor: str, available: int, total: int,
+                        reasons: list[str]) -> None:
+    """Add a health warning when a best-effort sensor saw too few markets.
+
+    The wallet sensors fail open — a market they cannot read is marked
+    'unavailable' and never penalized — which is right for one market but hides
+    an outage: when Polymarket retired the v1 trades API, both sensors went 100%
+    dark for days while the run still reported success with no warnings. Below
+    `data.min_sensor_availability` (default half) of the markets asked about, the
+    run says so, naming the most common reason a market was unavailable."""
+    floor = float(ctx.settings.data.get("min_sensor_availability", 0.5))
+    if total <= 0 or available / total >= floor:
+        return
+    # requests' HTTP errors end "... for url: <the full URL>", unique per market.
+    reasons = [str(r).split(" for url:")[0] for r in reasons]
+    reason = max(set(reasons), key=reasons.count) if reasons else "no reason recorded"
+    ctx.warnings.append(f"WARNING: {sensor} available for only {available} of {total} markets "
+                        f"(below {floor:.0%}); most common reason: {reason[:200]}")
+
+
 def write_health(ctx: RunContext, stage_status: dict[str, bool]) -> Path:
     """Write this run's health report: per-stage success plus accumulated
     warnings and errors. Answers "did the run work, and what should I look at?"

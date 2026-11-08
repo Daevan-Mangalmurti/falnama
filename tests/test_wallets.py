@@ -130,36 +130,122 @@ def test_live_path_refuses_a_numeric_market_id():
     assert rec["fingerprint_tier"] == "unavailable" and "conditionId" in rec["fingerprint_reason"]
 
 
-def test_live_trade_fetch_pages_and_windows(monkeypatch):
+class _Resp:
+    status_code = 200
+
+    def __init__(self, payload):
+        self.payload = payload
+
+    def raise_for_status(self):
+        pass
+
+    def json(self):
+        return self.payload
+
+
+def _page(rows, cursor=None):
+    return _Resp({"data": rows, "pagination": {"limit": 1000, "offset": 0, "has_more": cursor is not None,
+                                               "next_cursor": cursor}})
+
+
+def _live_settings():
+    live = load_config()
+    live.raw["data"]["source"] = "live"
+    live.raw["wallets"] = S.raw["wallets"]
+    return live
+
+
+def test_live_trade_fetch_follows_cursors_and_windows(monkeypatch):
+    """Data API v2 pages by cursor and ignores start/end for a market query, so
+    the window is applied here: newest-first pages, trades after `end` dropped,
+    and paging stops at the first page that reaches back before `start`."""
+    end = pd.Timestamp("2026-02-28T00:00:00Z")
+    lo, hi = int((end - pd.Timedelta(hours=168)).timestamp()), int(end.timestamp())
+    pages = {
+        None: _page([_trade(i, hi + 100) for i in range(2)] + [_trade(i, hi - 1000) for i in range(998)], "c1"),
+        "c1": _page([_trade(i, lo + 10) for i in range(5)] + [_trade(i, lo - 10) for i in range(3)], "c2"),
+        "c2": _page([_trade(0, lo - 99)]),  # must never be fetched
+    }
     calls = []
 
-    class Resp:
-        def __init__(self, payload):
-            self.payload = payload
+    def fake_get(url, params, **kw):
+        calls.append((url, dict(params)))
+        return pages[params.get("cursor")]
 
-        def raise_for_status(self):
-            pass
+    import requests
+    monkeypatch.setattr(requests, "get", fake_get)
+    monkeypatch.setattr(wallets.polymarket.time, "sleep", lambda s: None)
+    df = wallets._fetch_trades(_live_settings(), {"condition_id": "0xdead"}, end - pd.Timedelta(hours=168), end)
+    assert len(df) == 998 + 5 and len(calls) == 2
+    url, first = calls[0]
+    assert url == "https://data-api.polymarket.com/v2/trades"
+    assert first["condition"] == "0xdead" and first["filter_type"] == "CASH" and first["filter_amount"] == 500
+    assert not {"market", "offset", "start", "end"} & set(first)  # v2 rejects market/offset, ignores start/end
+    assert calls[1][1]["cursor"] == "c1"
+    assert df["timestamp"].between(pd.Timestamp(lo, unit="s", tz="UTC"), end).all()
 
-        def json(self):
-            return self.payload
 
-    def fake_get(url, params, timeout):
-        calls.append(params)
-        n = 500 if params["offset"] == 0 else 3
-        return Resp([{"proxyWallet": f"0x{i}", "side": "BUY", "outcome": "Yes", "price": 0.1,
-                      "size": 1000, "timestamp": 1772200000} for i in range(n)])
+def _trade(i, ts):
+    return {"proxy_wallet": f"0x{i}", "side": "BUY", "outcome": "Yes", "price": 0.1, "size": 10000,
+            "timestamp": ts, "name": f"w{i}"}
+
+
+def test_live_profile_uses_v2_activity_and_user_stats(monkeypatch):
+    calls = {}
+
+    def fake_get(url, params, **kw):
+        route = url.rsplit("/v2/", 1)[1]
+        calls[route] = params
+        if route == "activity":
+            return _page([{"timestamp": 1772000000, "type": "TRADE"}])
+        return _Resp({"data": {"proxy_wallet": params["user"], "trades": 7, "join_date": None}})
 
     import requests
     monkeypatch.setattr(requests, "get", fake_get)
     monkeypatch.setattr(wallets.time, "sleep", lambda s: None)
-    live = load_config()
-    live.raw["data"]["source"] = "live"
-    live.raw["wallets"] = S.raw["wallets"]
-    end = pd.Timestamp("2026-02-28T00:00:00Z")
-    df = wallets._fetch_trades(live, {"condition_id": "0xdead"}, end - pd.Timedelta(hours=168), end)
-    assert len(df) == 503 and len(calls) == 2  # a short page is the last page
-    assert calls[0]["market"] == "0xdead" and calls[0]["filterType"] == "CASH"
-    assert calls[0]["end"] - calls[0]["start"] == 168 * 3600
+    profile = wallets._fetch_profile(_live_settings(), "0xabc")
+    assert profile == {"first_activity_utc": pd.Timestamp(1772000000, unit="s", tz="UTC"), "markets_traded": 7}
+    assert calls["activity"]["sort_direction"] == "ASC" and calls["activity"]["start"] == 1  # full history
+    assert set(calls) == {"activity", "user-stats"}
+
+
+def test_a_retired_profile_route_is_an_error_not_a_blank(monkeypatch):
+    """v1 answered 410 with an error body; reading it as JSON used to leave the
+    profile silently empty. A failure must be recorded on the profile."""
+    import requests
+
+    class Gone:
+        status_code = 410
+
+        def raise_for_status(self):
+            raise requests.HTTPError("410 Client Error: Gone")
+
+    monkeypatch.setattr(requests, "get", lambda url, **kw: Gone())
+    monkeypatch.setattr(wallets.time, "sleep", lambda s: None)
+    profile = wallets._fetch_profile(_live_settings(), "0xabc")
+    assert "410" in profile["error"] and "markets_traded" not in profile
+
+
+def test_stage_warns_when_most_markets_are_dark(monkeypatch, tmp_path):
+    import copy
+
+    from falnama import screen
+    from falnama.config import Settings
+    from falnama.io import RunContext
+
+    settings = Settings(raw=copy.deepcopy(S.raw), project_root=tmp_path)
+    universe = tmp_path / "universe.csv"
+    pd.DataFrame({"market_id": ["m1", "m2", "m3"], "market_name": ["A", "B", "C"]}).to_csv(universe, index=False)
+    monkeypatch.setattr(screen, "universe_path", lambda s: universe)
+
+    def boom(*a, **k):
+        raise ConnectionError("data API down")
+    monkeypatch.setattr(wallets, "_fetch_trades", boom)
+    ctx = RunContext.start(settings)
+    table = wallets.run(ctx)
+    assert (table["fingerprint_tier"] == "unavailable").all()
+    assert len(ctx.warnings) == 1 and "wallet fingerprints available for only 0 of 3" in ctx.warnings[0]
+    assert "data API down" in ctx.warnings[0]
 
 
 # ---- the fixture universe exercises every tier -----------------------------

@@ -76,9 +76,16 @@ def test_red_flag_promotes_composite_by_exactly_the_bonus():
     assert with_flag["anomaly_score"] == min(100.0, without["anomaly_score"] + BONUS)
 
 
+def _live():
+    live = load_config()
+    live.raw["data"]["source"] = "live"
+    return live
+
+
 def test_live_fetch_sends_the_condition_id_not_the_market_id(monkeypatch):
     """Regression: the trades API answers Gamma's numeric id with an empty list,
-    which silently kept this overlay dark on every live run until 2026-09."""
+    which silently kept this overlay dark on every live run until 2026-09. It
+    must also use the v2 route and `condition` (v1 retired 2026-11-02)."""
     import requests
 
     from falnama import polymarket
@@ -86,15 +93,46 @@ def test_live_fetch_sends_the_condition_id_not_the_market_id(monkeypatch):
     sent = []
 
     class Resp:
+        status_code = 200
+
         def raise_for_status(self):
             pass
 
         def json(self):
-            return [{"proxyWallet": "0xa", "size": 10}, {"proxyWallet": "0xb", "size": 30}]
+            return {"data": [{"proxy_wallet": "0xa", "size": 10}, {"proxy_wallet": "0xb", "size": 30}],
+                    "pagination": {"limit": 1000, "offset": 0, "has_more": False, "next_cursor": None}}
 
-    monkeypatch.setattr(requests, "get", lambda url, params, timeout: sent.append(params) or Resp())
+    monkeypatch.setattr(requests, "get", lambda url, params, **kw: sent.append((url, params)) or Resp())
     monkeypatch.setattr(polymarket.time, "sleep", lambda s: None)
-    out = polymarket._fetch_live_concentration(S, ["540843", "999"], {"540843": "0xcond"})
-    assert sent == [{"market": "0xcond", "limit": 1000}]      # only the market with a conditionId
+    out = polymarket._fetch_live_concentration(_live(), ["540843", "999"], {"540843": "0xcond"})
+    # only the market with a conditionId is asked about, on the v2 route
+    assert sent == [("https://data-api.polymarket.com/v2/trades", {"condition": "0xcond", "limit": 1000})]
     assert out["540843"]["available"] and out["540843"]["top1_share"] == 0.75
     assert out["999"] == {"available": False, "reason": "no conditionId for this market"}
+
+
+def test_a_dead_trades_api_reads_unavailable_and_warns(monkeypatch):
+    """The 2026-11 outage: every call answered 410 Gone, every market read
+    'unavailable' (correct: never a penalty) — but the run reported success with
+    no warning. Now the dark sensor shows up in pipeline_health."""
+    import requests
+
+    from falnama import polymarket
+    from falnama.io import RunContext
+
+    class Gone:
+        status_code = 410
+
+        def raise_for_status(self):
+            raise requests.HTTPError("410 Client Error: Gone for url: https://data-api.polymarket.com/trades?x")
+
+    monkeypatch.setattr(requests, "get", lambda url, **kw: Gone())
+    monkeypatch.setattr(polymarket.time, "sleep", lambda s: None)
+    live = _live()
+    ctx = RunContext.start(live)
+    out = polymarket.fetch_trade_concentration(live, ["1", "2"], ctx, {"1": "0x1", "2": "0x2"})
+    assert all(not r["available"] for r in out.values())
+    assert concentration_overlay(THICK, out["1"], CFG)["concentration_bonus"] == 0.0  # fail open, never penalize
+    assert len(ctx.warnings) == 1
+    assert "wallet concentration available for only 0 of 2" in ctx.warnings[0]
+    assert "410 Client Error: Gone" in ctx.warnings[0] and "for url" not in ctx.warnings[0]

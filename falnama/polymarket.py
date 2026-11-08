@@ -2,7 +2,7 @@
 
 WHAT:     Fetches markets and price history from Polymarket's public APIs, and —
           when data.source is 'fixtures' — reads committed sample data instead.
-CONSUMES: Polymarket Gamma/CLOB APIs (live) or data/fixtures/*.csv (fixtures)
+CONSUMES: Polymarket Gamma/CLOB/Data (v2) APIs (live) or data/fixtures/*.csv (fixtures)
 PRODUCES: pandas DataFrames; on a live run also freezes the raw pull under
           data/snapshots/<run_id>/ so the run is reproducible from frozen inputs.
 REVIEWER: anyone debugging data quality or reproducing a past run
@@ -117,7 +117,12 @@ def fetch_trade_concentration(settings: Settings, market_ids: list[str],
             str(r["market_id"]): {"available": True, **{k: r.get(k) for k in fields}}
             for r in df.to_dict(orient="records") if str(r["market_id"]) in wanted
         }
-    return _fetch_live_concentration(settings, market_ids, condition_ids or {})
+    out = _fetch_live_concentration(settings, market_ids, condition_ids or {})
+    if ctx is not None:
+        from . import io
+        io.warn_if_sensor_dark(ctx, "wallet concentration", sum(bool(r.get("available")) for r in out.values()),
+                               len(out), [r.get("reason", "") for r in out.values() if not r.get("available")])
+    return out
 
 
 def load_fixture(settings: Settings, name: str) -> pd.DataFrame:
@@ -273,6 +278,51 @@ def _get(requests, settings: Settings, url: str, **kwargs):
 
 
 # ---------------------------------------------------------------------------
+# Data API v2 — trades and wallet histories (shared by wallets.py, backtest.py)
+# ---------------------------------------------------------------------------
+# Polymarket retired Data API v1 (bare /trades, /activity, /traded) on 2026-11-02;
+# every v1 call now answers 410 Gone. v2 lives under /v2 on the same host and
+# differs in four ways that matter here: markets are selected with `condition`
+# (sending the old `market` is a 400), pages follow an opaque `cursor` (sending
+# `offset` is a 400), every answer is wrapped as {"data": ..., "pagination": ...},
+# and fields are snake_case (`proxy_wallet`, not `proxyWallet`).
+# Guide: https://docs.polymarket.com/migrate/data-api-v1-to-v2.md
+def data_api_get(settings: Settings, route: str, params: dict) -> dict:
+    """One GET against a Data API v2 route (e.g. "trades"), retried like every
+    other call here. Returns the whole {data, pagination} envelope; raises if the
+    request fails or the answer is not that envelope, so callers can record the
+    market as unavailable instead of mistaking an error body for "no trades"."""
+    import requests
+
+    cfg = settings.data
+    base = str(cfg.get("data_api_base_url", "https://data-api.polymarket.com")).rstrip("/")
+    resp = _get(requests, settings, f"{base}/v2/{route}", params=params,
+                headers={"User-Agent": str(cfg.get("user_agent", "falnama-research/0.1 (read-only)"))},
+                timeout=int(cfg.get("request_timeout_seconds", 30)))
+    body = resp.json()
+    if not isinstance(body, dict) or "data" not in body:
+        raise ValueError(f"unexpected Data API answer from /v2/{route}: {str(body)[:200]}")
+    return body
+
+
+def data_api_pages(settings: Settings, route: str, params: dict, max_rows: int):
+    """Yield the rows of a paginated v2 route one page at a time, following
+    `next_cursor` until the feed ends or `max_rows` rows have been read. A caller
+    that has seen enough simply stops iterating — no further pages are fetched."""
+    params, seen = dict(params), 0
+    while True:
+        body = data_api_get(settings, route, params)
+        rows = [r for r in body.get("data") or [] if isinstance(r, dict)]
+        yield rows
+        seen += len(rows)
+        cursor = (body.get("pagination") or {}).get("next_cursor")
+        if not rows or not cursor or seen >= max_rows:
+            return
+        params["cursor"] = cursor
+        time.sleep(0.1)  # be polite to the public API
+
+
+# ---------------------------------------------------------------------------
 # Wallet concentration — the pure math, plus a best-effort live fetch
 # ---------------------------------------------------------------------------
 def compute_concentration(trades: pd.DataFrame, wallet_col: str = "wallet",
@@ -321,11 +371,6 @@ def _fetch_live_concentration(settings: Settings, market_ids: list[str],
     Gamma's numeric market id instead, which the API accepts but answers with an
     empty list — so every live market read 'unavailable' and the overlay never
     ran. A market with no conditionId is now recorded as unavailable, explicitly."""
-    import requests
-
-    cfg = settings.data
-    base = str(cfg.get("data_api_base_url", "https://data-api.polymarket.com")).rstrip("/")
-    timeout = int(cfg.get("request_timeout_seconds", 30))
     out: dict[str, dict] = {}
     for market_id in market_ids:
         condition = condition_ids.get(str(market_id))
@@ -333,14 +378,12 @@ def _fetch_live_concentration(settings: Settings, market_ids: list[str],
             out[str(market_id)] = {"available": False, "reason": "no conditionId for this market"}
             continue
         try:
-            resp = requests.get(f"{base}/trades", params={"market": condition, "limit": 1000}, timeout=timeout)
-            resp.raise_for_status()
-            raw = resp.json()
-            records = raw if isinstance(raw, list) else raw.get("data", [])
+            # One page: the market's 1,000 most recent trades (v2 serves newest first).
+            records = data_api_get(settings, "trades", {"condition": condition, "limit": 1000})["data"] or []
             trades = pd.DataFrame([{
-                "wallet": t.get("proxyWallet") or t.get("maker") or t.get("taker"),
-                "size": float(t.get("size") or t.get("usdcSize") or 0),
-            } for t in records if isinstance(t, dict)])
+                "wallet": t.get("proxy_wallet"),
+                "size": float(t.get("size") or 0),
+            } for t in records if isinstance(t, dict) and t.get("proxy_wallet")])
             out[str(market_id)] = compute_concentration(trades)
         except Exception as exc:  # network / rate-limit / parse — record, don't crash
             out[str(market_id)] = {"available": False, "reason": f"trade fetch failed: {exc}"}

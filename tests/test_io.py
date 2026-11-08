@@ -7,6 +7,7 @@ CSV that the next stage then reads."""
 from __future__ import annotations
 
 from falnama import io
+from falnama.config import load_config
 
 
 def test_clean_id_coerces_numeric_to_string():
@@ -27,3 +28,14 @@ def test_read_table_tolerates_missing_and_empty(tmp_path):
     empty = tmp_path / "empty.csv"
     empty.write_text("")  # a 0-anomaly run writes a header-less, empty file
     assert io.read_table(empty).empty
+
+
+def test_sensor_warning_fires_only_below_the_availability_floor():
+    ctx = io.RunContext.start(load_config())
+    ctx.settings.raw["data"]["min_sensor_availability"] = 0.5
+    io.warn_if_sensor_dark(ctx, "s", 0, 0, [])                 # asked about nothing: no verdict
+    io.warn_if_sensor_dark(ctx, "s", 5, 10, ["x"] * 5)          # exactly half: fine
+    assert ctx.warnings == []
+    io.warn_if_sensor_dark(ctx, "s", 1, 3, ["timeout", "410 Gone", "410 Gone"])
+    assert ctx.warnings == ["WARNING: s available for only 1 of 3 markets (below 50%); "
+                            "most common reason: 410 Gone"]
