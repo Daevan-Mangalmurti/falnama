@@ -1,0 +1,98 @@
+{
+  "card_id": "616909_20261108T142029Z",
+  "card_version": "v1",
+  "card_hash": "41ff1be0edabfd840b5fbcfe3f1163db423416f853d8dc48ef9b089105539b05",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-08T14:20:29Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616909",
+    "market_slug": "will-7-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 7 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-7-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 7 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-dated US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -80.0,
+        350.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability shift is a real jump or thin-liquidity noise; cross-check 2y Treasury yield and fed funds futures for confirmation.",
+        "1h": "Confirm TLT direction vs move in 2y/10y yields; look for any Fed speaker headlines or data surprise driving the shift.",
+        "2h": "Assess whether risk assets (SPY) are falling in tandem (recession read) or rising (liquidity read) to interpret the easing signal.",
+        "6h": "Re-evaluate magnitude vs realized TLT move; check if dollar and gold corroborate the dovish thesis.",
+        "12h": "Final check: did TLT hold its move into the close of the window; note any mean reversion in the prediction-market probability."
+      },
+      "reasoning": "A sharp rise in the implied probability of 7 Fed cuts in 2026 (175bps of easing) signals a dramatically more dovish rate path, most likely driven by recession/crisis fears. Falling expected policy rates pull Treasury yields down and bond prices up; long-duration TLT is the cleanest liquid proxy for a dovish repricing. Magnitude is modest over 12h because this is a slow-moving macro story and much of the easing path is already priced in rates markets."
+    },
+    {
+      "asset": "US Dollar",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -60.0,
+      "confidence": 0.35,
+      "confidence_interval_bps": [
+        -200.0,
+        90.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify DXY and EURUSD reaction; distinguish genuine dovish repricing from risk-off dollar bid.",
+        "1h": "Check whether the move is US-specific (rate differential) versus global risk sentiment driving safe-haven USD demand.",
+        "2h": "Reassess UUP vs TLT consistency; if dollar rises despite dovish bets, thesis is compromised by risk-off flows.",
+        "6h": "Review any overseas central-bank headlines shifting relative policy expectations.",
+        "12h": "Final check on UUP direction and whether the prediction-market probability held."
+      },
+      "reasoning": "Aggressive expected Fed easing narrows US rate differentials versus other economies, typically weakening the dollar. A surge in 7-cut probability is dollar-negative. The proxy is noisier than Treasuries because FX also depends on relative central-bank paths abroad and risk-off flows can paradoxically support the dollar."
+    }
+  ],
+  "evidence_used": [
+    "Market question asks about 7 (175bps) of Fed cuts in 2026, an extreme dovish scenario",
+    "Standard macro linkage: lower expected policy rates lift bond prices and weaken the dollar",
+    "Rate-cut expectations typically accompany recession/risk-off conditions"
+  ],
+  "uncertainty_notes": [
+    "The 'military_conflict' topic tag appears mislabeled; this is a monetary-policy market",
+    "Prediction markets on multi-cut tail scenarios are often thin and noisy",
+    "Much of the Fed path is already priced into liquid rates markets, limiting fresh signal",
+    "A dovish shift could be driven by either benign (soft landing) or crisis dynamics, which have opposite equity implications"
+  ],
+  "llm_justification": {
+    "summary": "This market tracks the tail probability of an aggressively dovish Fed (7 cuts = 175bps in 2026). A sharp rise in that probability signals expectations of deep easing, typically recession-driven. The cleanest liquid implications are long Treasuries up (TLT) and the dollar down (UUP). Both moves are expected to be modest over a 12h window and well below the 700bps tradable threshold, so neither is tradable; confidence is low because the easing path is largely pre-priced and the signal is noisy.",
+    "key_assumptions": [
+      "A probability move in this market reflects genuine shift in Fed easing expectations, not thin-market noise",
+      "Lower expected rates transmit to lower Treasury yields and a softer dollar",
+      "The move is not already fully reflected in bond and FX markets"
+    ],
+    "failure_modes": [
+      "The anomaly is thin-liquidity noise in a low-probability tail market with no real information",
+      "Dovish repricing coincides with risk-off flows that bid up the dollar, reversing the UUP thesis",
+      "Rate path is already priced, so Treasuries barely react",
+      "Market is mislabeled/misinterpreted and the move reflects unrelated flows",
+      "12h magnitude far below 700bps, so no tradable signal even if direction is correct"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

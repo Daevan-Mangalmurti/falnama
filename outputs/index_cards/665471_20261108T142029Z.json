@@ -1,0 +1,72 @@
+{
+  "card_id": "665471_20261108T142029Z",
+  "card_version": "v1",
+  "card_hash": "6b2e852d4496fa029991d398be15c7f8a75aa99cad36a0ad108838db9ff6c085",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-08T14:20:29Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665471",
+    "market_slug": "will-kuwait-join-the-abraham-accords-before-2027",
+    "market_name": "Will Kuwait join the Abraham Accords before 2027?",
+    "market_url": "https://polymarket.com/market/will-kuwait-join-the-abraham-accords-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Kuwait join the Abraham Accords before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Israel equity (broad)",
+      "ticker": "EIS",
+      "tradable_instrument_name": "iShares MSCI Israel ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.12,
+      "confidence_interval_bps": [
+        -120.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any credible newswire (Reuters, Axios, Israeli/Gulf press) corroborates a Kuwait-Israel diplomatic development; if none, treat the market move as noise.",
+        "1h": "Compare EIS/Israel ADR price action vs. broader EM and regional ETFs to isolate any idiosyncratic Israel move.",
+        "2h": "Scan Kuwaiti official sources (KUNA, foreign ministry) and parliament commentary for any shift; absence confirms low-signal.",
+        "6h": "Reassess whether implied probability reverts; a fade suggests the spike was speculative.",
+        "12h": "Close out assessment: confirm whether any public confirmation emerged; if not, log as non-tradable noise event."
+      },
+      "reasoning": "Kuwait is historically among the most anti-normalization Gulf states, with an elected parliament deeply hostile to Israel ties; its joining the Abraham Accords is a very low-probability tail event. Even a sharp move in this market's implied probability would more likely reflect thin-market noise or chatter than genuine diplomatic progress. The only reasonably liquid, logically connected proxy is Israeli equity (EIS), which would benefit marginally from broader normalization optimism \u2014 but Kuwait specifically carries little direct economic linkage to Israeli listed companies, so the mapping is weak and the expected move is well below the 700bps tradable threshold."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns Kuwait formally joining the Abraham Accords by end-2026",
+    "Kuwait's well-documented historical and parliamentary opposition to normalization with Israel",
+    "Lack of a liquid, directly Kuwait-exposed tradable instrument accessible to retail/paper trading",
+    "Israeli equity ETF (EIS) as the nearest liquid proxy for normalization sentiment"
+  ],
+  "uncertainty_notes": [
+    "The link between a Kuwait-specific normalization market and any liquid public asset is tenuous.",
+    "Prediction-market moves on low-probability tail events are often noise, bots, or thin liquidity.",
+    "If genuine, breaking diplomatic news would likely hit mainstream wires nearly simultaneously, eliminating any leakage edge.",
+    "Israeli equities respond to many stronger drivers (security situation, rates, tech sector) that would swamp this signal."
+  ],
+  "llm_justification": {
+    "summary": "This market asks whether Kuwait \u2014 one of the Gulf's most normalization-averse states \u2014 will join the Abraham Accords by 2027. The base rate is very low and the connection to liquid public assets is weak. The best available proxy, the iShares MSCI Israel ETF (EIS), would tilt mildly positive on real normalization progress, but Kuwait has minimal direct economic linkage to Israeli listed firms. We treat any sharp move here as more likely market noise than leaked information, assign an 'unclear' direction with low confidence, and note the expected move falls far short of the 700bps tradable bar.",
+    "key_assumptions": [
+      "No concrete, confirmed Kuwait-Israel diplomatic breakthrough has occurred publicly.",
+      "EIS is the most liquid asset with a plausible (if weak) causal link.",
+      "Prediction-market moves on this question are dominated by speculative/thin-liquidity dynamics."
+    ],
+    "failure_modes": [
+      "The event is genuinely materializing and mainstream news already reflects it, so no leakage edge exists.",
+      "The probability move reverses quickly as a speculative spike, generating a false signal.",
+      "EIS is a weak proxy \u2014 Israeli equities are driven by unrelated macro/security factors that dominate any normalization sentiment.",
+      "Kuwait has negligible direct exposure to any tradable Israeli instrument, breaking the causal chain entirely."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
