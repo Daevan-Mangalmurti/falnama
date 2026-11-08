@@ -71,7 +71,7 @@ about a minute, even with only a moderate coding background.
 | `execution.py`  | 4      | Optional **paper-simulation** seam (config-gated). No real broker. |
 | `newslag.py`    | 5      | News-lag assessment: was the move already public? (research module) |
 | `pipeline.py`   | —      | Orchestrator: run the stages in order, write the run manifest and health. |
-| `review.py`     | —      | Load a run's artifacts + the cross-run history for the analyst notebook. |
+| `review.py`     | —      | Load a run's artifacts + the cross-run history from a script (the notebook is self-contained and no longer imports it). |
 
 ## Configuration
 
@@ -84,18 +84,25 @@ is heavily commented. The settings you are most likely to change:
 
 ## Reviewing a run
 
-Rather than reading raw files in an editor, open the analyst notebook:
+Rather than reading raw files in an editor, use the analyst notebook,
+[`notebooks/analyst_review.ipynb`](notebooks/analyst_review.ipynb). It is
+self-contained: it needs only `pandas` and `matplotlib` (both ship with Anaconda),
+not this package or its config. **Put the notebook in the same folder as the
+outputs and run all cells.** It finds the files by name, so any of these works:
 
-```bash
-pip install -e ".[viz]"
-jupyter notebook notebooks/analyst_review.ipynb
-```
+- next to a downloaded `falnama-outputs-<id>.zip` artifact (no need to unzip it);
+- inside or next to the unzipped artifact folder;
+- anywhere in a clone of this repo (including `notebooks/`);
+- next to several downloads at once (their runs are merged into one history).
 
-It loads the latest run (or any past `run_id`) and shows a compiled view: the run
-summary, the selected universe by topic/region, the ranked anomalies and
-concentration flags, recommendations and rejections, and cross-run trends. All
-the parsing is in [`falnama/review.py`](falnama/review.py), so you can also use it
-from a plain script: `from falnama import review; review.run_history()`.
+It shows the latest run by default (set `RUN` in the first cell to a date or run id
+for another). Sections: the run funnel; a **sensor-health** check that flags any
+data source that silently went dark; Stage 1 selection and the LLM screen's two
+axes; anomaly sub-scores; wallet concentration and fingerprints; news-lag
+residuals; scenario-card predictions with recommendations and rejected signals; a
+one-page **dossier** per strong anomaly that joins every stage; cross-run trends;
+and backtest results if present. It never writes anything unless you set
+`EXPORT_EXCEL = True`.
 
 ## What an "index card" is (and the next milestone)
 
