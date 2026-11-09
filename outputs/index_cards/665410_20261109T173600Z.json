@@ -1,0 +1,96 @@
+{
+  "card_id": "665410_20261109T173600Z",
+  "card_version": "v1",
+  "card_hash": "eb27f5e3ff1d467940ebf767b3162f6cc5f88039a1ec7b24f3fef10413aabeda",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-09T17:36:00Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665410",
+    "market_slug": "will-ukraine-agree-to-give-up-the-rest-of-donbas-before-2027",
+    "market_name": "Will Ukraine agree to give up the rest of Donbas by December 31, 2026?",
+    "market_url": "https://polymarket.com/market/will-ukraine-agree-to-give-up-the-rest-of-donbas-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Ukraine agree to give up the rest of Donbas by December 31, 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "European/regional equity risk (Poland proxy)",
+      "ticker": "EPOL",
+      "tradable_instrument_name": "iShares MSCI Poland ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 180.0,
+      "confidence": 0.33,
+      "confidence_interval_bps": [
+        -150.0,
+        500.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether Polymarket odds move is corroborated by any wire headlines (Reuters/Bloomberg) on talks; confirm EPOL pre-market/intraday is not just tracking broad EM beta.",
+        "1h": "Compare EPOL move vs EEM/broad EM to isolate Ukraine-specific component; watch EUR and Polish zloty for confirmation.",
+        "2h": "Reassess if any official Ukrainian/Russian denial emerges, which would reverse the premium compression.",
+        "6h": "Check European defense names and natural gas for corroborating de-escalation signal; fade if no cross-asset confirmation.",
+        "12h": "Mark final EPOL return vs EM benchmark; log whether move persisted or reversed and whether any public news eventually surfaced."
+      },
+      "reasoning": "A sharp rise in the implied probability that Ukraine cedes the rest of Donbas would signal real progress toward a negotiated settlement/ceasefire. Peace de-risks frontline-adjacent economies; Poland, the most exposed liquid EM-Europe proxy, typically rallies on de-escalation news as regional war-risk premium compresses and reconstruction/trade optimism rises. EPOL is liquid and directly geared to Russia-Ukraine tail risk."
+    },
+    {
+      "asset": "Aerospace & Defense equity",
+      "ticker": "ITA",
+      "tradable_instrument_name": "iShares U.S. Aerospace & Defense ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -120.0,
+      "confidence": 0.28,
+      "confidence_interval_bps": [
+        -400.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify defense weakness coincides with the odds shift and isn't broad-market risk-off; European defense (Rheinmetall) is more exposed but less liquid for us.",
+        "1h": "Check whether ITA underperforms S&P 500 specifically.",
+        "2h": "Reassess on any official denial or escalation that would reverse.",
+        "6h": "Cross-check with EPOL/natural gas direction for a coherent peace narrative.",
+        "12h": "Record final ITA relative return and note weak-proxy caveat."
+      },
+      "reasoning": "A credible Donbas-cession/peace signal reduces expectations of prolonged European rearmament demand and Ukraine-support spending, a modest headwind for defense names. However US defense spend is driven by many factors beyond Ukraine, so exposure is diluted and the proxy is weak; move likely small."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns a diplomatic Donbas cession deal, i.e. a peace/ceasefire proxy for the Russia-Ukraine war",
+    "Peace/de-escalation historically compresses regional war-risk premia (Polish equities, EUR, gas) and softens European defense demand expectations",
+    "Long resolution horizon (end-2026) means a 12h probability jump is an early/soft signal, not a confirmed event"
+  ],
+  "uncertainty_notes": [
+    "A far-dated resolution means intraday odds moves may be noise or reflect low-liquidity Polymarket repricing, not genuine information leakage",
+    "Proxies are only loosely geared to this specific question; broad macro/EM beta can dominate the 12h window",
+    "A Yes-direction odds spike could equally be driven by pessimism about Ukraine's battlefield position rather than genuine diplomacy, muddying the equity-risk read"
+  ],
+  "llm_justification": {
+    "summary": "This market is effectively a Russia-Ukraine peace/ceasefire proxy. A sharp rise in the odds of a Donbas-cession deal would plausibly compress regional war-risk premium\u2014lifting liquid EM-Europe equity (EPOL) and modestly pressuring defense exposure (ITA)\u2014but the resolution horizon is far (end-2026), proxies are diluted, and both effects are likely small and well below the 700bps tradable threshold over 12h. We flag this as a low-confidence, non-tradable mapping.",
+    "key_assumptions": [
+      "A probability jump reflects genuine diplomatic-progress information rather than low-liquidity noise or battlefield pessimism",
+      "EPOL remains the cleanest liquid proxy for regional de-escalation",
+      "Defense demand expectations are at least partly tied to the Ukraine conflict"
+    ],
+    "failure_modes": [
+      "Move reverses within hours on official Ukrainian/Russian denial\u2014peace headlines are frequently walked back",
+      "The information is already public (reported talks), so no asset edge remains",
+      "Proxies are weakly exposed: EPOL/ITA driven by global macro, dwarfing the Ukraine-specific signal",
+      "A Yes-odds spike could signal Ukrainian weakness/coercion rather than benign peace, which could be risk-off for the region and flip the sign"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

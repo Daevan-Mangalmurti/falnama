@@ -1,0 +1,98 @@
+{
+  "card_id": "666665_20261109T173600Z",
+  "card_version": "v1",
+  "card_hash": "1e1ce54ecbadd756220c8829f55fada735b6bc250d533c1333f5fb17aa2948f4",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-09T17:36:00Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "666665",
+    "market_slug": "will-howard-lutnick-leave-the-trump-administration-before-2027",
+    "market_name": "Will Howard Lutnick leave the Trump administration before 2027?",
+    "market_url": "https://polymarket.com/market/will-howard-lutnick-leave-the-trump-administration-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Howard Lutnick leave the Trump administration before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Cantor-linked / crypto risk proxy (Bitcoin ETF)",
+      "ticker": "IBIT",
+      "tradable_instrument_name": "iShares Bitcoin Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.2,
+      "confidence_interval_bps": [
+        -250.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any credible resignation/removal headline has hit official channels or major wires; compare Polymarket implied-probability jump to news flow.",
+        "1h": "Monitor IBIT and BTC spot for any directional break beyond intraday noise; check crypto-sector X/news for Lutnick mentions.",
+        "2h": "Reassess if move is holding; look for confirmation from Reuters/Bloomberg rather than market-only signal.",
+        "6h": "Evaluate whether broader risk sentiment or trade-policy headlines are driving any move instead of the Lutnick question.",
+        "12h": "Close the window: record whether any asset moved materially and whether it was attributable to this market or unrelated macro flow."
+      },
+      "reasoning": "Howard Lutnick (Commerce Secretary, ex-Cantor Fitzgerald CEO) is closely tied to the crypto ecosystem via Cantor's custody relationship with Tether and its Bitcoin-related SPAC dealings. His presence in the administration is seen as crypto-friendly. A sharp rise in his departure probability could modestly dent sentiment around a pro-crypto regulatory stance, but the linkage is indirect, policy is institutionalized beyond one official, and the direction is genuinely ambiguous (a departure could be read either way). Magnitude far below the 700bps tradable threshold."
+    },
+    {
+      "asset": "US trade-policy / broad equity uncertainty",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.15,
+      "confidence_interval_bps": [
+        -200.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Scan for official announcement vs. pure market move; distinguish leak from rumor.",
+        "1h": "Check VIX and SPY for any abnormal reaction; verify no coincident macro catalyst (CPI, Fed, tariff news).",
+        "2h": "Reassess whether trade-sensitive sectors (industrials, semis) show differentiated moves.",
+        "6h": "Determine if any move persisted or mean-reverted, indicating noise.",
+        "12h": "Finalize: log whether the probability shift had any detectable broad-market footprint."
+      },
+      "reasoning": "As Commerce Secretary, Lutnick is a central figure in tariff and trade negotiations. A surprise departure could raise short-term uncertainty about trade-policy continuity, but Trump sets trade direction himself, so a single secretary's exit is a weak driver of the broad index. Mapping is too diffuse to produce a reliable directional 12h signal, and well below tradable magnitude."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns Commerce Secretary Howard Lutnick's tenure through 2026",
+    "Lutnick's background as Cantor Fitzgerald CEO and ties to Tether/Bitcoin custody",
+    "Commerce Secretary's role in tariff and trade policy",
+    "12h window and 700bps tradability threshold"
+  ],
+  "uncertainty_notes": [
+    "Personnel-departure markets rarely map cleanly to liquid assets",
+    "Direction of any crypto or equity reaction to a Lutnick exit is ambiguous",
+    "Policy continuity is driven by Trump, diluting single-official impact",
+    "Market may already reflect public speculation, making it non-predictive"
+  ],
+  "llm_justification": {
+    "summary": "This market asks whether Commerce Secretary Howard Lutnick leaves before 2027. The only plausible public-market linkages run through his crypto-industry ties (via Cantor/Tether) and his role in trade policy, but both channels are indirect and directionally ambiguous. A sharp probability move would be a weak, noisy signal; expected asset moves are far below the 700bps tradable threshold. Best characterized as unclear with low confidence \u2014 this is research, not an actionable edge.",
+    "key_assumptions": [
+      "Lutnick remains materially associated with crypto-friendly policy perception",
+      "Trade/tariff policy continuity is partly attributed to his presence",
+      "Prediction-market probability shifts here can precede public confirmation"
+    ],
+    "failure_modes": [
+      "Departure news is already public, so no information leakage to trade",
+      "Proxy exposure (IBIT/SPY) to one cabinet official is very weak",
+      "Direction reverses \u2014 a Lutnick exit could be read as bullish or bearish for crypto",
+      "Any observed asset move is driven by unrelated macro catalysts, creating false attribution"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

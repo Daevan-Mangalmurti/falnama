@@ -1,0 +1,99 @@
+{
+  "card_id": "665459_20261109T173600Z",
+  "card_version": "v1",
+  "card_hash": "be606d604b4a7777f10b9c9d1cdc3535b4c92f07f5971a60c21661888de49ea2",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-09T17:36:00Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665459",
+    "market_slug": "will-north-korea-invade-south-korea-before-2027",
+    "market_name": "Will North Korea invade South Korea before 2027?",
+    "market_url": "https://polymarket.com/market/will-north-korea-invade-south-korea-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will North Korea invade South Korea before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "South Korea equity",
+      "ticker": "EWY",
+      "tradable_instrument_name": "iShares MSCI South Korea ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -650.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -2500.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability jump coincides with any wire headlines (Yonhap, Reuters) on DMZ incidents, missile launches, or troop movements; confirm EWY/overnight KOSPI futures direction.",
+        "1h": "Compare EWY move to broad EM/ACWI to isolate Korea-specific component; check USD/KRW and CDS spreads for corroboration.",
+        "2h": "Assess whether the signal is persisting or mean-reverting; look for official statements from Seoul, Pyongyang, or US forces Korea.",
+        "6h": "Re-evaluate whether any public confirmation emerged; if nothing credible, treat the market move as noise and expect EWY reversion.",
+        "12h": "Mark final EWY return vs entry; document whether probability spike preceded any public news (leak hypothesis) or faded."
+      },
+      "reasoning": "A sharp rise in the implied probability of a North Korean invasion would signal rising Korean-peninsula war risk. The most direct liquid public-market proxy is Korean equity exposure. A genuine escalation scare would trigger foreign capital flight, risk-premium repricing, and a sell-off in EWY. However, the baseline probability of this tail event is extremely low, so only a large, information-driven probability spike (not noise) would translate into a meaningful equity move; most moves in this illiquid, long-dated market are noise and will not move assets at all."
+    },
+    {
+      "asset": "Korean won weakness",
+      "ticker": "KRW=X",
+      "tradable_instrument_name": "USD/KRW spot (won depreciation)",
+      "asset_class": "fx_proxy",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 400.0,
+      "confidence": 0.35,
+      "confidence_interval_bps": [
+        -100.0,
+        1500.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check USD/KRW spot and NDF moves against DXY to see if KRW is underperforming peers.",
+        "1h": "Cross-check with JPY and gold for a coherent risk-off signal; look for Bank of Korea or MOF commentary.",
+        "2h": "Determine if won weakness is Korea-specific or dollar-wide; fade if purely macro.",
+        "6h": "Re-check for any official escalation confirmation; absent news, expect reversion.",
+        "12h": "Record final USD/KRW move and whether it tracked the prediction-market signal."
+      },
+      "reasoning": "Escalation fears would drive safe-haven flows out of the won into USD/JPY, pushing USD/KRW higher. FX often reacts faster than equities to geopolitical risk. But the won is also driven by global dollar and rate dynamics, so exposure is diluted; a modest probability move would be swamped by macro factors. Only a credible, large escalation signal would produce the 700bp+ move needed for tradability, which is unlikely from this noisy long-dated market."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns a binary North Korea invasion of South Korea before 2027",
+    "Primary topic military_conflict, region korea",
+    "Korean peninsula risk maps most directly to Korean equity (EWY) and the won (USD/KRW)",
+    "Long-dated, low-base-rate tail market where most probability movement is likely noise"
+  ],
+  "uncertainty_notes": [
+    "Base rate of invasion is extremely low; most probability moves are liquidity/noise, not information",
+    "12h window is short for a multi-year resolution market, so asset passthrough is weak unless tied to live escalation news",
+    "Proxies EWY and KRW are also driven by global macro (dollar, rates, EM flows), diluting signal",
+    "Threshold of 700bps is unlikely to be met absent a genuine, publicly-confirmed escalation"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability of a North Korean invasion of South Korea would most directly imply risk-off moves in Korean assets: EWY (South Korea equity ETF) lower and the won weaker (USD/KRW higher). However, this is a long-dated, low-base-rate tail market where almost all probability movement is noise rather than leaked information. Only a large, news-corroborated spike would produce tradable (>700bps) moves, which is improbable within a 12h window. Confidence is modest and directional conviction hinges on whether any genuine escalation headline accompanies the market move.",
+    "key_assumptions": [
+      "A meaningful probability spike reflects genuine escalation risk rather than thin-market noise",
+      "Korean equity and FX are the fastest, most liquid channels for peninsula-risk repricing",
+      "Global macro conditions remain roughly stable so the Korea-specific signal is detectable"
+    ],
+    "failure_modes": [
+      "The probability move is pure noise in an illiquid long-dated market and no asset moves",
+      "Any escalation news is already public and priced, so no fresh asset reaction",
+      "EWY/KRW moves are dominated by dollar/EM macro, making the geopolitical signal undetectable",
+      "Direction reverses as markets dismiss a false-alarm incident within hours",
+      "The 700bps tradability threshold is never reached, rendering the signal non-actionable"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

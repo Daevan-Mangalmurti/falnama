@@ -1,0 +1,97 @@
+{
+  "card_id": "665464_20261109T173600Z",
+  "card_version": "v1",
+  "card_hash": "2df92741722b9963587cd7b2ff320e04314097eee9032a21b006a36ac59a724b",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-09T17:36:00Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665464",
+    "market_slug": "kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027",
+    "market_name": "Kim Jong Un out as Supreme Leader of North Korea by December 31, 2026?",
+    "market_url": "https://polymarket.com/market/kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Kim Jong Un out as Supreme Leader of North Korea by December 31, 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "South Korea equity risk",
+      "ticker": "EWY",
+      "tradable_instrument_name": "iShares MSCI South Korea ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -600.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -1500.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket probability move is corroborated by any newswire (Yonhap, Reuters, KCNA) or is isolated; confirm EWY/KRW moving in sympathy.",
+        "1h": "Compare EWY move vs broad EM (EEM) to isolate Korea-specific risk premium; watch USD/KRW offshore.",
+        "2h": "Reassess whether the market spike holds or mean-reverts; look for official denial from Pyongyang which would unwind the move.",
+        "6h": "Check Seoul futures/overnight KOSPI indications and defense-sector reaction; gauge whether move is durable.",
+        "12h": "Evaluate whether EWY has repriced a persistent risk premium or recovered; close out thesis if no corroborating news emerged."
+      },
+      "reasoning": "A sharp jump in the implied probability that Kim Jong Un ceases to be Supreme Leader would most plausibly reflect leaked signs of leadership instability, incapacitation, or a succession/regime event in North Korea. Such an event raises acute geopolitical tail risk directly on South Korea's border, triggering risk-off selling of the most liquid foreign proxy for Korean equities (EWY), especially via US-listed ADR/ETF flows when Seoul is closed."
+    },
+    {
+      "asset": "Safe-haven gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 150.0,
+      "confidence": 0.35,
+      "confidence_interval_bps": [
+        -50.0,
+        500.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether a genuine news catalyst accompanies the probability move; check gold spot and GLD reaction vs DXY.",
+        "1h": "Separate gold's geopolitical bid from rates/USD moves; watch Treasuries for corroborating flight-to-safety.",
+        "2h": "Assess whether the safe-haven bid persists or fades as details clarify.",
+        "6h": "Re-check gold vs equities to confirm risk-off regime still intact.",
+        "12h": "Determine if gold held a geopolitical premium or reverted; close thesis absent confirmation."
+      },
+      "reasoning": "An abrupt rise in the probability of a North Korean leadership change implies elevated geopolitical uncertainty, which typically bids safe-haven assets. Gold is the most liquid, broadly-traded hedge and tends to catch a modest flight-to-safety bid during Korean peninsula shocks, though the effect is usually smaller and noisier than the equity risk-off reaction."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns removal/incapacitation of Kim Jong Un as North Korean Supreme Leader by end-2026",
+    "Resolution triggers on announcement, detention, or effective removal",
+    "North Korea leadership instability is a known tail risk for South Korean assets and regional safe havens"
+  ],
+  "uncertainty_notes": [
+    "The market window runs through end-2026, so a probability move need not imply an imminent 12h event",
+    "A probability drift could reflect speculative repositioning rather than leaked information",
+    "South Korean markets may be closed during the window, muting direct price discovery and concentrating reaction in US-listed proxies"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability of Kim Jong Un losing power would most plausibly signal leaked North Korean leadership instability, a classic geopolitical tail risk for the Korean peninsula. The cleanest liquid expressions are risk-off in South Korean equities (EWY down) and a modest safe-haven bid in gold (GLD up). Both mappings are moderate-confidence at best: the market resolves anytime through 2026, so without a corroborating news catalyst a probability move is noise, and the equity reaction only clears the 700bps tradable bar in a genuine acute-event scenario.",
+    "key_assumptions": [
+      "A sharp probability spike reflects real new information about leadership instability, not speculative churn",
+      "EWY and GLD remain liquid and tradable during the window",
+      "Markets would interpret a Kim removal as destabilizing (raising escalation risk) rather than as a de-escalation"
+    ],
+    "failure_modes": [
+      "The probability move is pure speculation or a thin-market artifact with no underlying event, so proxies do not move",
+      "News is already public and priced, so no fresh asset reaction occurs",
+      "A leadership change could be read as de-escalatory, reversing the risk-off direction",
+      "EWY is a broad Korea proxy whose moves are dominated by semis/global tech beta, diluting the NK-specific signal",
+      "The 2026 horizon means even a correct probability shift may not produce a 12h asset move"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
