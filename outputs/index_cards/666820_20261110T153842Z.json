@@ -1,0 +1,100 @@
+{
+  "card_id": "666820_20261110T153842Z",
+  "card_version": "v1",
+  "card_hash": "50d2303f099254d7ab446d3ea687c7019358306fa39ad544e85be692e921a559",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-10T15:38:42Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "666820",
+    "market_slug": "us-agrees-to-a-new-trade-deal-with-brazil-before-2027",
+    "market_name": "U.S. agrees to a new trade deal with \"Brazil\" before 2027?",
+    "market_url": "https://polymarket.com/market/us-agrees-to-a-new-trade-deal-with-brazil-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "U.S. agrees to a new trade deal with \"Brazil\" before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Brazil equities",
+      "ticker": "EWZ",
+      "tradable_instrument_name": "iShares MSCI Brazil ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -80.0,
+        400.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move is accompanied by any headline (White House, USTR, Brazilian government) \u2014 distinguish genuine news from noise. Watch EWZ premarket/intraday vs SPY to isolate Brazil-specific move.",
+        "1h": "Confirm persistence of the implied-probability shift and EWZ direction; check BRL spot and Brazilian ADRs (VALE, ITUB, PBR) for confirmation.",
+        "2h": "Assess whether broad EM (EEM) is moving too \u2014 if so, the Brazil signal is diluted by a macro/risk factor rather than the trade story.",
+        "6h": "Re-evaluate against any official statements or Reuters/Bloomberg reporting; fade the position if no corroborating flow emerges.",
+        "12h": "Mark final EWZ return vs entry; log whether the prediction-market move led, lagged, or was unrelated to public price action."
+      },
+      "reasoning": "A sharp rise in the implied probability of a U.S.-Brazil trade agreement \u2014 particularly in the context of the 2025 U.S. tariff disputes with Brazil \u2014 would signal relief from tariff risk and improved trade/export outlook for Brazilian exporters (materials, commodities, financials). EWZ is the most liquid broad proxy for Brazilian equity risk. A credible leak toward 'Yes' lifts EWZ; a drop toward 'No' (tariffs entrenched) pressures it."
+    },
+    {
+      "asset": "Brazilian real",
+      "ticker": "BZF",
+      "tradable_instrument_name": "WisdomTree Brazilian Real Strategy Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.35,
+      "confidence_interval_bps": [
+        -60.0,
+        220.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check USD/BRL spot directly (more liquid than BZF) alongside the implied-probability move.",
+        "1h": "Compare BRL move to broad DXY and EM FX (CEW) to separate idiosyncratic from dollar-driven moves.",
+        "2h": "Look for confirmation in Brazilian rates/local bond sentiment; reassess if dollar is the real driver.",
+        "6h": "Re-check for official trade headlines; reduce conviction if move has mean-reverted.",
+        "12h": "Record final USD/BRL vs entry and whether the prediction market led public FX action."
+      },
+      "reasoning": "Trade normalization and removal of tariff threats would be modestly BRL-positive via improved trade balance and capital-inflow expectations. BZF is a thin but direct USD/BRL proxy. The FX reaction to a long-dated, uncertain legislative event is smaller than the equity reaction and heavily dominated by rates/global-dollar dynamics."
+    }
+  ],
+  "evidence_used": [
+    "Market question: U.S.-Brazil trade deal becoming law before end-2026",
+    "2025 context of U.S. tariffs and trade friction with Brazil, making a deal a meaningful relief catalyst",
+    "EWZ and USD/BRL as standard liquid proxies for Brazil country risk",
+    "Long resolution horizon (Dec 2026) implies limited near-term price sensitivity"
+  ],
+  "uncertainty_notes": [
+    "Resolution is far off (end-2026); a 12h probability wiggle carries little information for same-day asset moves",
+    "A formal FTA 'becoming law' is a high bar requiring Congressional action \u2014 markets may discount this regardless of chatter",
+    "Expected 12h moves (~60-120 bps) are well below the 700 bps tradable threshold; this is not an actionable signal",
+    "EWZ and BRL are dominated by commodity prices (iron ore, oil), Fed/dollar dynamics, and domestic Brazilian politics, diluting the trade-deal signal"
+  ],
+  "llm_justification": {
+    "summary": "A sharp move in the U.S.-Brazil trade-deal probability most plausibly maps to Brazilian equity risk (EWZ) and the real (BRL), up on rising 'Yes' odds via tariff-relief and trade-normalization logic. However, the resolution horizon is distant and the proxies are macro-dominated, so expected 12h magnitudes are modest and below the tradable threshold. This is a weak, low-confidence mapping treated as research rather than a trade.",
+    "key_assumptions": [
+      "A rising 'Yes' probability reflects genuine progress toward reducing U.S.-Brazil trade friction/tariffs",
+      "Trade normalization is net-positive for Brazilian exporters and currency",
+      "Prediction-market moves can lead public assets, if only marginally",
+      "The move is Brazil-specific rather than a broad EM/dollar factor"
+    ],
+    "failure_modes": [
+      "The probability move is noise or already-public information, so assets do not react",
+      "EWZ/BRL are driven by commodities, the Fed, or Brazilian domestic politics, swamping the trade signal",
+      "A long 2026 horizon means markets ignore near-term odds shifts entirely",
+      "Direction could invert: a 'deal' framed with concessions or conditions could be read as negative for specific sectors",
+      "Expected magnitude is far below the 700 bps bar, so even a correct directional call is not tradable"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

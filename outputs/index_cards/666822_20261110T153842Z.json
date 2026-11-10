@@ -1,0 +1,97 @@
+{
+  "card_id": "666822_20261110T153842Z",
+  "card_version": "v1",
+  "card_hash": "476bc3628a22fb383b26f906201330cfb4541535669b87ee132278f58b42c33a",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-10T15:38:42Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "666822",
+    "market_slug": "us-agrees-to-a-new-trade-deal-with-indonesia-before-2027",
+    "market_name": "U.S. agrees to a new trade deal with \"Indonesia\" before 2027?",
+    "market_url": "https://polymarket.com/market/us-agrees-to-a-new-trade-deal-with-indonesia-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "U.S. agrees to a new trade deal with \"Indonesia\" before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Indonesia equity risk",
+      "ticker": "EIDO",
+      "tradable_instrument_name": "iShares MSCI Indonesia ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -150.0,
+        400.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any Reuters/Bloomberg headline on US-Indonesia trade talks has crossed; confirm EIDO and broad EM (EEM) are not simply moving together on macro.",
+        "1h": "Compare EIDO move versus EEM and the US dollar to isolate any Indonesia-specific component.",
+        "2h": "Re-check Polymarket implied probability for persistence; fade if it round-trips with no news.",
+        "6h": "Look for official USTR or Indonesian trade ministry statements; assess whether move is news-driven or noise.",
+        "12h": "Evaluate whether EIDO retained any idiosyncratic outperformance versus EM; record outcome for calibration."
+      },
+      "reasoning": "A sharp rise in the implied probability of a US-Indonesia trade agreement would signal improved export access and lower tariff risk for Indonesian exporters, which would modestly support Indonesian equities as proxied by EIDO. However, the pathway from a prediction-market probability shift to a ratified FTA is long and uncertain, so any realized asset move over 12 hours is likely small and swamped by global EM beta, US rates, and commodity (coal/palm oil/nickel) prices that dominate EIDO. The 700bps tradable threshold is very unlikely to be met."
+    },
+    {
+      "asset": "Indonesian rupiah (USD/IDR)",
+      "ticker": "IDR=X",
+      "tradable_instrument_name": "USD/IDR spot (rupiah proxy)",
+      "asset_class": "fx_proxy",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.25,
+      "confidence_interval_bps": [
+        -120.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check DXY and broad Asia FX to see if any IDR move is idiosyncratic.",
+        "1h": "Verify Bank Indonesia has not intervened or changed stance; isolate trade-news component.",
+        "2h": "Re-check whether prediction-market move persisted and whether USD/IDR tracked it.",
+        "6h": "Scan for official trade-deal confirmations or denials; reassess direction.",
+        "12h": "Record net USD/IDR change versus Asia FX basket for calibration."
+      },
+      "reasoning": "An improved US-Indonesia trade outlook would be marginally rupiah-supportive via expected trade/investment flows, implying rupiah appreciation (IDR strengthens). But IDR is a managed, relatively illiquid EM currency driven mostly by Bank Indonesia policy, the broad dollar (DXY), and risk sentiment; a prediction-market probability shift carries little direct FX information over 12 hours."
+    }
+  ],
+  "evidence_used": [
+    "Prediction market question on US-Indonesia trade deal resolving by end-2026",
+    "Most liquid Indonesia-exposed public proxies: EIDO ETF and USD/IDR",
+    "General knowledge that trade-deal optimism supports a country's equities and currency",
+    "Knowledge that FTA ratification is a slow legislative process, not a 12h catalyst"
+  ],
+  "uncertainty_notes": [
+    "A probability shift on a 2026 deadline event is unlikely to produce a large 12h asset move.",
+    "EIDO and IDR are dominated by global EM beta, dollar, and commodity prices, diluting Indonesia-specific trade signal.",
+    "If the probability move reflects already-public reporting, markets would have already priced it."
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability of a US-Indonesia trade agreement would be mildly bullish for Indonesian equities (EIDO) and the rupiah via improved export/investment outlook. But the transmission is weak and slow: FTA ratification is a multi-step legislative process with a 2026 deadline, and both proxies are dominated by global macro factors. Expected 12h moves are small and well below the 700bps tradable threshold, so neither prediction is tradable and confidence is low.",
+    "key_assumptions": [
+      "A prediction-market probability shift reflects genuine new information rather than noise.",
+      "Trade-deal optimism maps positively to Indonesian equities and currency.",
+      "No offsetting global macro shock dominates the 12h window."
+    ],
+    "failure_modes": [
+      "The probability move is noise or reflects already-public news, so no asset reaction occurs.",
+      "EIDO/IDR move is driven by EM beta, dollar, or commodities, not Indonesia trade news (weak proxy).",
+      "A 2026-deadline event has negligible near-term cash-flow impact, so the 12h move is essentially zero.",
+      "Direction could reverse if the 'deal' involves tariff concessions perceived as harmful to specific Indonesian sectors."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "card_id": "666828_20261110T153842Z",
+  "card_version": "v1",
+  "card_hash": "7cbe2e97260c6815ca2dbbff35b0b66ac26656c3db12fe91fed61b3e15d9ef90",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-10T15:38:42Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "666828",
+    "market_slug": "us-agrees-to-a-new-trade-deal-with-israel-before-2027",
+    "market_name": "U.S. agrees to a new trade deal with \"Israel\" before 2027?",
+    "market_url": "https://polymarket.com/market/us-agrees-to-a-new-trade-deal-with-israel-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "U.S. agrees to a new trade deal with \"Israel\" before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Israel equity risk",
+      "ticker": "EIS",
+      "tradable_instrument_name": "iShares MSCI Israel ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 30.0,
+      "confidence": 0.12,
+      "confidence_interval_bps": [
+        -120.0,
+        180.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any credible headline (USTR, White House, Knesset) accompanies the probability move; absent news, treat as noise.",
+        "1h": "Compare EIS and TA-35 futures move vs regional peers to isolate Israel-specific signal from broad EM/Mideast beta.",
+        "2h": "Re-check shekel (USD/ILS) and Israeli bond spreads for corroboration; divergence weakens the thesis.",
+        "6h": "Scan for official trade-policy statements or congressional calendar items that would make a deal more concrete.",
+        "12h": "Assess whether EIS closed with any abnormal return attributable to trade-deal news; log outcome for calibration."
+      },
+      "reasoning": "A new US-Israel trade deal would, at the margin, be modestly positive for Israeli exporters and broad Israeli equity sentiment, which EIS proxies. But the US and Israel have had a bilateral free trade agreement since 1985, so the incremental economic value of a 'new' deal is ambiguous and likely small. More importantly, a slow-moving legislative/diplomatic process resolving by end-2026 has essentially no clean 12-hour catalyst; an implied-probability move on Polymarket is a weak and noisy sensor for near-term EIS flows. Direction is genuinely unclear and magnitude far below the 700bps tradable threshold."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns a US-Israel free trade agreement becoming law by Dec 31 2026",
+    "Resolution is legislative/executive, inherently slow-moving with long horizon",
+    "US and Israel already have a bilateral FTA dating to 1985, reducing incremental impact",
+    "EIS and USD/ILS are the most liquid public-market proxies for Israel-specific exposure"
+  ],
+  "uncertainty_notes": [
+    "No obvious 12-hour catalyst for a multi-year horizon market",
+    "Probability moves here are likely driven by low-liquidity speculation, not information leakage",
+    "Existing FTA means a 'new' deal's economic content is undefined and possibly marginal",
+    "Israeli equity moves are dominated by geopolitical/security and global tech beta, not trade policy"
+  ],
+  "llm_justification": {
+    "summary": "The market asks whether a new US-Israel trade deal becomes law before 2027. The cleanest liquid proxy is the iShares MSCI Israel ETF (EIS), with USD/ILS as secondary. However, the US already has a 1985 FTA with Israel, making the incremental value of a 'new' deal ambiguous, and the multi-year resolution horizon provides no sharp 12-hour catalyst. The mapping is weak: expected move is small, direction unclear, and well below the 700bps tradable bar. Treat the prediction-market signal as noise unless accompanied by concrete official reporting.",
+    "key_assumptions": [
+      "EIS and USD/ILS are the relevant liquid proxies for Israel trade-policy news",
+      "A probability move reflects genuine information rather than thin-market speculation",
+      "Trade-deal news would transmit to Israeli equities within the 12h window"
+    ],
+    "failure_modes": [
+      "The economic impact is negligible because a US-Israel FTA already exists since 1985",
+      "The horizon to end-2026 means no near-term asset move regardless of probability shifts",
+      "EIS is dominated by global tech and security factors, making it a weak trade-policy proxy",
+      "The Polymarket move could be thin-liquidity noise with no underlying information",
+      "Direction could reverse as 'new deal' details prove symbolic rather than substantive"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

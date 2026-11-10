@@ -1,0 +1,99 @@
+{
+  "card_id": "666819_20261110T153842Z",
+  "card_version": "v1",
+  "card_hash": "f57ee82b44f8eab6c72328add7ecea540d4bd91d1b613ff43fc9e8ca6057090f",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-10T15:38:42Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "666819",
+    "market_slug": "us-agrees-to-a-new-trade-deal-with-canada-before-2027",
+    "market_name": "U.S. agrees to a new trade deal with \"Canada\" before 2027?",
+    "market_url": "https://polymarket.com/market/us-agrees-to-a-new-trade-deal-with-canada-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "U.S. agrees to a new trade deal with \"Canada\" before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Canadian dollar (vs USD)",
+      "ticker": "FXC",
+      "tradable_instrument_name": "Invesco CurrencyShares Canadian Dollar Trust",
+      "asset_class": "fx_proxy",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 30.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -40.0,
+        120.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any USMCA/trade-deal headline accompanies the probability move; confirm FXC/USDCAD direction and whether move is idiosyncratic vs broad USD.",
+        "1h": "Compare CAD move to DXY and other commodity FX (AUD, NOK) to isolate Canada-specific signal vs general dollar move.",
+        "2h": "Reassess whether news flow (Reuters/Bloomberg on US-Canada talks) is corroborating; fade if no concrete catalyst.",
+        "6h": "Check for official statements from USTR, PMO, or Congress; evaluate persistence of the move.",
+        "12h": "Mark final USDCAD level vs entry; log whether magnitude stayed in sub-100bps noise band as expected."
+      },
+      "reasoning": "A sharp rise in the implied probability of a new US-Canada trade deal becoming law would reduce cross-border trade/tariff uncertainty, which is CAD-supportive. The loonie is the most direct, liquid proxy to trade-policy risk between the two economies, and reduced tariff risk tends to lift CAD modestly. However, FX responses to legislative-process questions resolving over multi-month horizons are small; a 12h move approaching 700bps is implausible barring an actual concrete deal headline."
+    },
+    {
+      "asset": "Canadian equities",
+      "ticker": "EWC",
+      "tradable_instrument_name": "iShares MSCI Canada ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 25.0,
+      "confidence": 0.25,
+      "confidence_interval_bps": [
+        -60.0,
+        120.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether Canadian equity move is trade-specific or tracking broad risk/oil; check EWC vs SPY.",
+        "1h": "Look at sector composition of any move \u2014 exporters/industrials outperforming would support the thesis.",
+        "2h": "Reassess against commodity backdrop (oil, metals) which dominate EWC.",
+        "6h": "Check for corroborating deal reporting and Canadian index (TSX) behavior.",
+        "12h": "Record final EWC return; confirm move stayed within noise and was not tradable under the 700bps rule."
+      },
+      "reasoning": "Reduced trade friction and tariff certainty would modestly benefit Canadian exporters and broad Canadian equity sentiment, making EWC a secondary proxy. But EWC is dominated by financials, energy, and materials whose prices are driven far more by oil, rates, and global risk than by the legislative status of a trade pact resolving by end-2026. The exposure is weak and the 12h move will almost certainly fall far short of 700bps."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns a US-Canada free trade agreement becoming US law by end-2026",
+    "Resolution hinges on a slow legislative/executive process, not an immediate event",
+    "CAD (FXC/USDCAD) and Canadian equities (EWC) are the most liquid, directly-exposed public-market proxies to US-Canada trade policy",
+    "Trade-policy uncertainty reduction is generally supportive of CAD and Canadian risk assets"
+  ],
+  "uncertainty_notes": [
+    "A probability move on a multi-month legislative question rarely maps to large 12h asset moves",
+    "USMCA already governs US-Canada-Mexico trade; a 'new deal' may be renegotiation, altering the sign of the signal",
+    "CAD and EWC are driven far more by oil prices, the Fed/BoC rate differential, and broad USD than by this specific question",
+    "If the probability spiked on news of tariff threats rather than a deal, direction could reverse (CAD down)"
+  ],
+  "llm_justification": {
+    "summary": "A sharp move in the implied probability of a new US-Canada trade deal becoming law would most directly affect the Canadian dollar (FXC) and, secondarily, Canadian equities (EWC), with reduced trade uncertainty being modestly positive for both. However, because resolution depends on a slow legislative process stretching to end-2026, and because both proxies are dominated by macro and commodity factors, expected 12h moves are small (tens of bps) and fall well below the 700bps tradability threshold. This mapping is directionally plausible but not tradable; confidence is low.",
+    "key_assumptions": [
+      "A probability rise reflects progress toward a deal (tariff reduction), not new tariff/trade-war threats",
+      "CAD and EWC retain their historical sensitivity to US-Canada trade policy",
+      "No overwhelming competing macro driver (oil shock, Fed surprise) dominates the 12h window"
+    ],
+    "failure_modes": [
+      "The move reverses or is noise \u2014 a slow legislative question rarely produces 12h asset moves of meaningful size",
+      "Information already public: incremental trade-talk news is widely reported, so no leak/edge exists",
+      "Weak proxy: EWC and even CAD are dominated by oil, rates, and global risk, diluting any trade-deal signal",
+      "Sign error: if the probability moved on tariff threats or a breakdown rather than a deal, CAD and EWC would fall, not rise",
+      "Magnitude far below 700bps threshold, making this research-only and non-tradable"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

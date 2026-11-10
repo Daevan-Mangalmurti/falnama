@@ -1,0 +1,72 @@
+{
+  "card_id": "666829_20261110T153842Z",
+  "card_version": "v1",
+  "card_hash": "af38d9eacd3f7ffe828a57153b7c16bdf7ce5593c3f9f9e919d54f2ef46c98a4",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-10T15:38:42Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "666829",
+    "market_slug": "us-agrees-to-a-new-trade-deal-with-pakistan-before-2027",
+    "market_name": "U.S. agrees to a new trade deal with \"Pakistan\" before 2027?",
+    "market_url": "https://polymarket.com/market/us-agrees-to-a-new-trade-deal-with-pakistan-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "U.S. agrees to a new trade deal with \"Pakistan\" before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Pakistan equity risk",
+      "ticker": "PAK",
+      "tradable_instrument_name": "Global X MSCI Pakistan ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.12,
+      "confidence_interval_bps": [
+        -150.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket implied probability actually moved sharply and whether any wire headline (USTR, State Dept) accompanies it; confirm PAK is even trading/liquid.",
+        "1h": "Compare PAK and any Pakistan-linked ADR/close-end fund move versus broader EM (EEM) to isolate country-specific vs beta drift.",
+        "2h": "Look for official U.S. or Pakistani government statements on trade talks; reassess if this is genuinely new information or already public.",
+        "6h": "Re-evaluate whether the prediction-market move persisted or reverted; a reversion signals noise rather than leak.",
+        "12h": "Close the window: record realized PAK move vs expectation, note liquidity gaps, and flag that proxy weakness likely dominated any signal."
+      },
+      "reasoning": "A U.S.-Pakistan trade agreement would modestly favor Pakistani exporters and improve capital-flow sentiment, so the most directly exposed liquid proxy would be a Pakistan equity ETF. However, the only broad proxy (Global X MSCI Pakistan ETF) has very thin liquidity and has faced delisting/winding-down issues, making it a weak and unreliable instrument. Even a sharp move in this far-dated (end-2026), low-base-rate political question would be a soft, slow-burning catalyst rather than a 12-hour market mover. The mapping is tenuous."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns a U.S.-Pakistan free trade agreement becoming law before end-2026",
+    "Far-dated resolution (Dec 31, 2026) reduces near-term catalyst strength",
+    "Pakistan's main equity ETF proxy (PAK) is historically illiquid and has had delisting issues",
+    "Trade-policy topic typically affects exporter sentiment and FX, but Pakistan has limited liquid U.S.-listed exposure"
+  ],
+  "uncertainty_notes": [
+    "No liquid, reliable U.S.-listed Pakistan proxy currently trades well, undermining any tradable signal",
+    "A legislative trade deal is a slow process; probability shifts rarely map to same-day asset moves",
+    "Direction is genuinely ambiguous because benefits are gradual and diffuse"
+  ],
+  "llm_justification": {
+    "summary": "A U.S.-Pakistan trade deal question maps only weakly to public markets: the natural proxy would be a Pakistan equity ETF, but that instrument is illiquid and possibly non-functional, and the catalyst is far-dated and gradual. This is a low-confidence, non-tradable mapping where proxy weakness and the multi-year horizon make any 12-hour signal unreliable; direction is left unclear.",
+    "key_assumptions": [
+      "Any probability move reflects genuine new information rather than noise",
+      "Pakistan equity sentiment is the most exposed liquid channel",
+      "A trade agreement would be marginally positive for Pakistani exporters/capital flows"
+    ],
+    "failure_modes": [
+      "The main proxy (PAK) is delisted/illiquid, so no clean instrument exists to express the view",
+      "The prediction-market move could be noise and revert within hours",
+      "The information may already be public via USTR/State Department reporting",
+      "A far-dated legislative outcome has negligible 12-hour asset impact even if probability shifts",
+      "Direction could be positive for Pakistan equities but negative for certain U.S. import-competing sectors, muddying the net effect"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
