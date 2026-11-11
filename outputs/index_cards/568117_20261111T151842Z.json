@@ -1,0 +1,99 @@
+{
+  "card_id": "568117_20261111T151842Z",
+  "card_version": "v1",
+  "card_hash": "a9fd9b679737706bcd90533a650aff8bc3796a4b4a85f1054a36f848228c15d5",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-11T15:18:42Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "568117",
+    "market_slug": "will-trump-resign-by-december-31-2026",
+    "market_name": "Will Trump resign by December 31, 2026?",
+    "market_url": "https://polymarket.com/market/will-trump-resign-by-december-31-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Trump resign by December 31, 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US large-cap equities",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -120.0,
+      "confidence": 0.28,
+      "confidence_interval_bps": [
+        -500.0,
+        120.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether SPY futures (ES) show any gap vs prior close and whether VIX is bid; confirm the Polymarket move is accompanied by any credible newswire headline rather than a single wallet.",
+        "1h": "Look for corroboration across other political markets (impeachment, '25th Amendment', 2026 control) and mainstream reporting; a genuine signal should show cross-market correlation.",
+        "2h": "Re-assess equity direction \u2014 if risk-off persists with gold up and dollar mixed, treat as real; if SPY has round-tripped, flag as noise.",
+        "6h": "Evaluate whether any official White House statement, health disclosure, or legal development emerged; update confidence sharply up or down.",
+        "12h": "Mark outcome: did SPY move beyond the 120bps threshold and in the predicted direction? Record whether the prediction-market move preceded public reporting."
+      },
+      "reasoning": "A sharp rise in the implied probability of a Trump resignation would signal acute political instability or an undisclosed scandal/health event. Markets dislike sudden executive-branch uncertainty, so the first-order reaction would be modest equity risk-off. However, a disorderly resignation could also be read as reducing tariff/trade-policy tail risk, muddying the sign. Base rate of actual resignation is extremely low, so most movement in this market is likely noise or speculative froth rather than leaked information, capping conviction."
+    },
+    {
+      "asset": "Gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 90.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -120.0,
+        400.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check spot gold and GLD against DXY and 10y real yields; a genuine haven bid should coincide with a softer dollar or lower yields.",
+        "1h": "Confirm move isn't just a broad commodity/dollar swing unrelated to US politics.",
+        "2h": "Reassess whether gold's bid is sustained or fading as the prediction-market spike mean-reverts.",
+        "6h": "Check for any official or credible reporting corroborating political stress; scale view accordingly.",
+        "12h": "Record whether GLD gained and whether it tracked the prediction-market signal or ambient macro drivers."
+      },
+      "reasoning": "Gold is the cleanest safe-haven proxy for a sudden US governance/political-crisis shock. If the resignation probability spiked on real information, a flight-to-safety bid would push gold higher alongside falling real yields. This is a more direct hedge than equities because its exposure to 'US political uncertainty' is one-directional (up), avoiding the ambiguous tariff-relief offset that clouds the equity read. Still, the base rate for this event is tiny and gold is driven predominantly by rates and the dollar, so a 12h move attributable to this specific catalyst is small and low-confidence."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies an extreme, low-base-rate political event (sitting president resigning)",
+    "Resolution hinges only on an announcement, making it sensitive to rumor and headline risk",
+    "Primary topic cabinet_government, region United States \u2014 maps to broad US risk assets and safe havens",
+    "General principle that political-instability shocks produce equity risk-off and safe-haven bids"
+  ],
+  "uncertainty_notes": [
+    "Base rate of an actual or announced Trump resignation by end-2026 is very low; most market movement is likely speculative noise",
+    "Sign on equities is ambiguous \u2014 a resignation could be read as policy-uncertainty-reducing (less tariff risk) as easily as destabilizing",
+    "Prediction-market thin liquidity means a single large order can move implied probability without any real information",
+    "12h window is short; even a real catalyst may be slow to transmit to asset prices"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability of a Trump resignation would, if information-driven, signal acute US political instability \u2014 mapping to modest equity risk-off (SPY down) and a safe-haven bid (gold up). But the event has an extremely low base rate, the equity sign is genuinely ambiguous (destabilizing vs. tariff-relief), and thin prediction-market liquidity makes most moves noise. Both mappings are therefore low-confidence and below the 700bps tradable threshold.",
+    "key_assumptions": [
+      "A meaningful move in this market reflects some information rather than pure speculation",
+      "Political-instability shocks default to equity risk-off and gold bid",
+      "Proxies (SPY, GLD) are liquid and responsive within a 12h window"
+    ],
+    "failure_modes": [
+      "The prediction-market spike is noise/manipulation with no public follow-through, so assets don't move",
+      "The event is read as policy-positive (reduced tariff/trade tail risk), reversing the equity sign to up",
+      "Information was already public and priced, so no residual asset move occurs",
+      "Gold's move is dominated by rates/dollar and unrelated to US politics, making the proxy a weak attribution",
+      "Magnitude far below the 700bps tradable threshold \u2014 likely untradable even if direction is right"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

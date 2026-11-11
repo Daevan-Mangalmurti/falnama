@@ -1,0 +1,96 @@
+{
+  "card_id": "665727_20261111T151842Z",
+  "card_version": "v1",
+  "card_hash": "8406a9b8d1e77d94228c1d07ed479b9f33cce51920ea1ed1867711ca6bc35274",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-11T15:18:42Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665727",
+    "market_slug": "will-iran-withdraw-from-the-npt-before-2027",
+    "market_name": "Will Iran withdraw from the NPT before 2027?",
+    "market_url": "https://polymarket.com/market/will-iran-withdraw-from-the-npt-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Iran withdraw from the NPT before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 450.0,
+      "confidence": 0.45,
+      "confidence_interval_bps": [
+        -150.0,
+        1400.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether oil futures (Brent/WTI) are reacting and whether any wire headlines on Iran NPT or IAEA have broken; confirm the probability move isn't noise.",
+        "1h": "Look for confirmation from official Iranian statements or IAEA/UN channels; gauge whether the premium is building or fading.",
+        "2h": "Assess follow-through in energy complex and tanker/freight signals; watch for OPEC or US State Department commentary.",
+        "6h": "Re-evaluate if move has sustained; check gold and defense stocks for corroborating risk-off tone.",
+        "12h": "Mark final move; determine if escalation narrative held or reverted, and whether it was already-public news."
+      },
+      "reasoning": "An Iranian move toward NPT withdrawal signals sharp nuclear/geopolitical escalation in the Middle East, raising the probability of confrontation with Israel/US, sanctions tightening, and potential Strait of Hormuz disruption. Oil carries the clearest geopolitical risk premium; a credible spike in withdrawal odds would push crude higher. Magnitude depends heavily on whether the move is seen as imminent versus distant posturing, so expected value is positive but below the 700bps tradable bar in the base case."
+    },
+    {
+      "asset": "Gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 200.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -120.0,
+        700.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm gold spot ticking up and whether USD/Treasuries show risk-off; verify the probability shift is real.",
+        "1h": "Check for corroborating headlines; distinguish genuine escalation from rumor.",
+        "2h": "Watch whether safe-haven bid persists across gold, JPY, CHF, Treasuries.",
+        "6h": "Assess if gold held gains or mean-reverted as market digested.",
+        "12h": "Record final move and whether safe-haven thesis was validated."
+      },
+      "reasoning": "Gold is a classic safe-haven that benefits from Middle East nuclear escalation fears. A jump in Iran NPT-withdrawal odds implies higher geopolitical tail risk, supporting gold bids. The reaction is typically more muted than oil and often fades quickly unless accompanied by concrete conflict, so the expected magnitude is modest and well below the tradable threshold."
+    }
+  ],
+  "evidence_used": [
+    "Market question on Iran formally notifying UN of NPT withdrawal under Article X",
+    "Primary topic diplomacy_treaty, region middle_east",
+    "General mapping of Middle East nuclear escalation to oil risk premium and safe-haven demand"
+  ],
+  "uncertainty_notes": [
+    "NPT withdrawal is a formal diplomatic act that may be heavily telegraphed and already partly priced",
+    "A probability move in a thinly-traded prediction market is a noisy sensor and may not reflect new information",
+    "Oil and gold respond to many factors; Iran-specific signal can be swamped by macro drivers"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability that Iran formally withdraws from the NPT would signal escalating Middle East nuclear/geopolitical risk. The most liquid and exposed proxies are crude oil (geopolitical risk premium, Hormuz disruption risk) and gold (safe-haven demand), both expected to move up. However, base-case magnitudes fall below the 700bps tradable threshold, and the mapping is uncertain because such a diplomatic move is often telegraphed and the prediction market is a noisy signal.",
+    "key_assumptions": [
+      "A probability spike reflects genuinely new escalation information, not noise",
+      "Markets interpret NPT withdrawal as raising conflict/sanctions/Hormuz risk",
+      "Oil and gold retain their standard geopolitical risk-premium behavior"
+    ],
+    "failure_modes": [
+      "The news is already public and priced, producing no incremental move or a reversal",
+      "The prediction-market move is illiquid noise unrelated to real developments",
+      "Oil/gold are driven by stronger concurrent macro forces, drowning the Iran signal",
+      "Withdrawal is viewed as symbolic/distant with no near-term operational consequence, muting any asset reaction"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

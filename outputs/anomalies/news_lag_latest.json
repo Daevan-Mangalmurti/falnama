@@ -2,56 +2,56 @@
   {
     "market_name": "Netanyahu out by end of 2026?",
     "market_id": "567688",
-    "anomaly_trigger_time_utc": "2026-10-28T17:00:28Z",
+    "anomaly_trigger_time_utc": "2026-11-06T02:00:46Z",
     "lookback_hours": 48.0,
-    "public_information_score": 10.0,
-    "residual_anomaly_score": 90.0,
-    "information_state": "speculation",
+    "public_information_score": 74.0,
+    "residual_anomaly_score": 25.2,
+    "information_state": "official_announcement",
     "evidence": [
       {
-        "snippet": "The Anti - Bibi Candidate who Has Netanyahu on His Heels",
-        "source": "drudge.com",
-        "url": "https://drudge.com/news/295181/anti-bibi-candidate-has-netanyahu",
-        "published_time_utc": "2026-10-27T05:15:00Z",
-        "information_state": "speculation"
+        "snippet": "\u041d\u0435\u0442\u0430\u043d\u0458\u0430\u0445\u0443 \u0441\u00e8 \u043f\u043e\u0434\u0430\u043b\u0435\u043a\u0443 \u043e\u0434 \u0444\u043e\u0440\u043c\u0438\u0440\u0430\u045a\u0435 \u043d\u043e\u0432\u0430 \u0432\u043b\u0430\u0434\u0430",
+        "source": "mkd.mk",
+        "url": "https://mkd.mk/svet/netanjahu-se-podaleku-od-formiranje-nova-vlada/",
+        "published_time_utc": "2026-11-05T23:30:00Z",
+        "information_state": "retrospective"
       },
       {
-        "snippet": "Israel Elections",
-        "source": "politicaldog101.com",
-        "url": "https://politicaldog101.com/tag/israel-elections/",
-        "published_time_utc": "2026-10-27T05:15:00Z",
-        "information_state": "none"
+        "snippet": "Israel president to pick candidate to form government",
+        "source": "illawarramercury.com.au",
+        "url": "https://www.illawarramercury.com.au/story/9386830/israel-president-to-pick-candidate-to-form-government/",
+        "published_time_utc": "2026-11-06T01:00:00Z",
+        "information_state": "official_announcement"
       },
       {
-        "snippet": "\u0395\u03ba\u03bb\u03bf\u03b3\u03ad\u03c2 \u03c3\u03c4\u03bf \u0399\u03c3\u03c1\u03b1\u03ae\u03bb : \u03a4\u03b9 \u03b8\u03b1 \u03c3\u03b7\u03bc\u03ac\u03bd\u03b5\u03b9 \u03c4\u03bf \u03c4\u03ad\u03bb\u03bf\u03c2 \u03c4\u03b7\u03c2 \u03b5\u03c0\u03bf\u03c7\u03ae\u03c2 \u039d\u03b5\u03c4\u03b1\u03bd\u03b9\u03ac\u03c7\u03bf\u03c5 ; ",
-        "source": "lifo.gr",
-        "url": "https://www.lifo.gr/stiles/optiki-gonia/ekloges-sto-israil-ti-tha-simanei-telos-tis-epohis-netaniahoy",
-        "published_time_utc": "2026-10-27T05:15:00Z",
-        "information_state": "speculation"
+        "snippet": "Israel president to pick candidate to form government",
+        "source": "dailyliberal.com.au",
+        "url": "https://www.dailyliberal.com.au/story/9386830/israel-president-to-pick-candidate-to-form-government/",
+        "published_time_utc": "2026-11-06T01:00:00Z",
+        "information_state": "official_announcement"
       },
       {
-        "snippet": "Alegeri \u00een Israel : Benjamin Netanyahu \u00ee\u0219i joac\u0103 ultima carte politic\u0103",
-        "source": "stiripesurse.ro",
-        "url": "https://www.stiripesurse.ro/alegeri-israel-benjamin-netanyahu-gadi-eisenkot-parlamentare_3931582",
-        "published_time_utc": "2026-10-27T05:15:00Z",
-        "information_state": "speculation"
+        "snippet": "Israel president pledges to pick candidate on Sunday to form government",
+        "source": "al-monitor.com",
+        "url": "https://www.al-monitor.com/originals/2026/11/israels-president-pledges-pick-candidate-sunday-form-government",
+        "published_time_utc": "2026-11-06T02:00:00Z",
+        "information_state": "official_announcement"
       },
       {
-        "snippet": "  This time I wont vote for Likud , Netanyahu cousin says , citing October 7",
-        "source": "jpost.com",
-        "url": "http://www.jpost.com/israel-election-2026/article-912988",
-        "published_time_utc": "2026-10-27T05:15:00Z",
-        "information_state": "speculation"
+        "snippet": "\u0907\u091c\u0930\u093e\u092f\u0932 \u092e\u0947\u0902 \u0906\u0907\u0938\u0947\u0928\u0915\u094b\u091f \u0915\u0947 \u092a\u094d\u0930\u0927\u093e\u0928\u092e\u0902\u0924\u094d\u0930\u0940 \u092c\u0928\u0928\u0947 \u0915\u093e \u0930\u093e\u0938\u094d\u0924\u093e \u0938\u093e\u092b , \u0928\u0947\u0924\u0928\u094d\u092f\u093e\u0939\u0942 \u0915\u093e \u0938\u0924\u094d\u0924\u093e \u0938\u0947 \u091c\u093e\u0928\u093e \u0932\u0917\u092d\u0917 \u0924\u092f ; \u092f\u0942\u091f\u0940\u091c\u0947\u0921 \u0928\u0947 \u0938\u093e\u0925 \u091b\u094b\u0921\u093c\u093e - path cleared for eisenkot to become prime minister in israel netanyahu hold on power faces a crisis",
+        "source": "jagran.com",
+        "url": "https://www.jagran.com/world/middle-east-path-cleared-for-eisenkot-to-become-prime-minister-in-israel-netanyahu-hold-on-power-faces-a-crisis-40428925.html",
+        "published_time_utc": "2026-11-06T01:00:00Z",
+        "information_state": "confirmation"
       },
       {
-        "snippet": "  This time I wont vote for Likud , PM Netanyahu cousin says , citing October 7",
-        "source": "jpost.com",
-        "url": "https://www.jpost.com/israel-election-2026/article-912988",
-        "published_time_utc": "2026-10-27T05:15:00Z",
-        "information_state": "speculation"
+        "snippet": "  Like a bolt from the blue : Israel president shocked by Trump announcing end of aid",
+        "source": "kvia.com",
+        "url": "https://kvia.com/news/us-world/cnn-world/2026/11/05/like-a-bolt-from-the-blue-israels-president-shocked-by-trump-announcing-end-of-aid/",
+        "published_time_utc": "2026-11-06T01:00:00Z",
+        "information_state": "official_announcement"
       }
     ],
-    "uncertainty_note": "All pre-trigger articles are election-campaign speculation about threats TO Netanyahu, which would push the 'out' probability UP, not down; the market moved DOWN, so these do not explain the move. The actual catalyst (likely election postponement, coalition news, or a dropped challenge) is probably a retrieval gap and may have broken on social media or in Hebrew-language outlets.",
+    "uncertainty_note": "Multiple pre-trigger reports within hours describe Netanyahu failing to form a government and the president moving to pick an alternative candidate, strongly matching the upward move; exact timing of the market reaction vs these reports is close enough that full-text confirmation could refine the score.",
     "mode": "live"
   },
   {
@@ -73,18 +73,6 @@
     "lookback_hours": 48.0,
     "public_information_score": 0.0,
     "residual_anomaly_score": 87.3,
-    "information_state": "none",
-    "evidence": [],
-    "uncertainty_note": "No relevant pre-trigger coverage found \u2014 this is weak evidence (retrieval may be incomplete), not proof the move was non-public.",
-    "mode": "live"
-  },
-  {
-    "market_name": "U.S. agrees to a new trade deal with \"Vietnam\" before 2027?",
-    "market_id": "666824",
-    "anomaly_trigger_time_utc": "2026-11-02T14:00:21Z",
-    "lookback_hours": 48.0,
-    "public_information_score": 0.0,
-    "residual_anomaly_score": 85.7,
     "information_state": "none",
     "evidence": [],
     "uncertainty_note": "No relevant pre-trigger coverage found \u2014 this is weak evidence (retrieval may be incomplete), not proof the move was non-public.",

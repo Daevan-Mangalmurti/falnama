@@ -1,0 +1,97 @@
+{
+  "card_id": "616913_20261111T151842Z",
+  "card_version": "v1",
+  "card_hash": "3fa24aa94ffa2e396290b066e2dc5ceab75c8651c21a5b985a24132b03fc583b",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-11T15:18:42Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616913",
+    "market_slug": "will-11-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 11 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-11-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 11 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-duration US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -60.0,
+        180.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether 2y and 10y yields are actually falling and whether the move coincides with any macro headline (jobless claims, bank stress) rather than idiosyncratic market noise.",
+        "1h": "Compare TLT move vs fed funds futures (ZQ/SOFR) to confirm a genuine dovish repricing rather than a curve-steepening supply story.",
+        "2h": "Reassess whether the prediction-market move persisted or mean-reverted; a reversal invalidates the leak thesis.",
+        "6h": "Look for confirmation across risk assets (credit spreads, VIX) consistent with a stress-driven easing narrative.",
+        "12h": "Evaluate net TLT return vs expectation; log whether the extreme-cut probability shift had any durable rate-market footprint."
+      },
+      "reasoning": "An 11-cut (275bps) scenario in 2026 is a deep-easing / recession or financial-stress tail. A sharp rise in the implied probability of such extreme easing would imply the market is pricing a dramatically lower fed funds path, which pulls down the front end and, via expectations, long yields \u2014 bullish long-duration Treasuries. TLT is the most direct liquid proxy for a dovish repricing of the Fed path."
+    },
+    {
+      "asset": "US large-cap equities",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "mixed",
+      "expected_return_12h_bps": -30.0,
+      "confidence": 0.22,
+      "confidence_interval_bps": [
+        -200.0,
+        120.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether equities are selling off on the same catalyst that would drive extreme-easing bets; absence of a shared catalyst weakens the link.",
+        "1h": "Monitor VIX and credit (HYG/LQD) for stress confirmation versus a benign 'Fed put' rally.",
+        "2h": "Determine whether the equity tape is trading risk-off (recession read) or risk-on (liquidity read).",
+        "6h": "Reassess direction; if no stress materializes, treat the signal as noise.",
+        "12h": "Record net SPY return and whether the extreme-cut repricing carried any equity information."
+      },
+      "reasoning": "11 cuts in a year is historically associated with crisis easing. The equity reaction is genuinely ambiguous: aggressive Fed support is a tailwind, but the underlying recession/stress cause is a headwind. Direction is therefore mixed and the net 12h move is likely small unless an actual stress catalyst is present."
+    }
+  ],
+  "evidence_used": [
+    "Market strike of 11 cuts implies ~275bps of 2026 easing, an extreme deep-easing/recession tail",
+    "Deep-easing scenarios historically coincide with lower yields and elevated equity/credit stress",
+    "TLT and SPY are the most liquid proxies for Fed-path and risk sentiment repricing"
+  ],
+  "uncertainty_notes": [
+    "11 cuts is a very low-probability tail; its implied probability is tiny and noisy, so moves may be illiquid artifacts",
+    "The prediction market is thinly traded and may not lead public markets at all",
+    "Equity direction is fundamentally ambiguous under aggressive easing"
+  ],
+  "llm_justification": {
+    "summary": "The market prices an extreme 11-cut (275bps) Fed easing path for 2026, essentially a recession/crisis tail. A sharp rise in its implied probability would most cleanly map to a dovish rate repricing \u2014 bullish long-duration Treasuries (TLT up) \u2014 while equities (SPY) are directionally ambiguous because the cause (stress) offsets the support (easing). Both mappings are low-confidence and well below the 700bps tradable threshold over 12h; this is a weak, noisy signal.",
+    "key_assumptions": [
+      "A probability move in this market reflects genuine shifts in expected Fed easing rather than thin-market noise",
+      "Deep easing expectations transmit to lower long yields",
+      "The 12h window is long enough to capture rate-market reaction"
+    ],
+    "failure_modes": [
+      "The 11-cut tail is so improbable that any probability shift is microscopic and uninformative",
+      "Information is already public (macro data releases) so no leak/edge exists",
+      "Equity proxy is ambiguously exposed \u2014 easing can be bullish or bearish, netting to noise",
+      "The prediction-market move reverses within the window",
+      "Long yields could rise despite front-end cuts (steepening/supply), breaking the TLT thesis"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
