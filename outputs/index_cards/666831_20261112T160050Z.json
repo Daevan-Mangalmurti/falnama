@@ -1,0 +1,97 @@
+{
+  "card_id": "666831_20261112T160050Z",
+  "card_version": "v1",
+  "card_hash": "a42fb536c33fb3151a026579a9278cd81b89231e96ebdb42fbb1c5ba01b1c8a7",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-12T16:00:50Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "666831",
+    "market_slug": "us-agrees-to-a-new-trade-deal-with-russia-before-2027",
+    "market_name": "U.S. agrees to a new trade deal with \"Russia\" before 2027?",
+    "market_url": "https://polymarket.com/market/us-agrees-to-a-new-trade-deal-with-russia-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "U.S. agrees to a new trade deal with \"Russia\" before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "European natural gas / energy risk premium",
+      "ticker": "UNG",
+      "tradable_instrument_name": "United States Natural Gas Fund",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.12,
+      "confidence_interval_bps": [
+        -400.0,
+        400.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the market probability actually moved sharply (>10pts) or is just thin-book noise; cross-check for any Russia sanctions/diplomacy headlines.",
+        "1h": "Look at European TTF gas futures and Brent for any corroborating move in the energy complex.",
+        "2h": "Reassess whether a credible diplomatic catalyst (ceasefire, summit) exists; if none, treat as noise.",
+        "6h": "Compare UNG move versus baseline energy volatility to see if any signal is distinguishable from noise.",
+        "12h": "Close the card: record whether UNG/energy moved materially and whether it tied to any Russia-US news."
+      },
+      "reasoning": "A US-Russia free trade agreement becoming law would imply a dramatic geopolitical thaw and sanctions unwind, which would reduce the war-risk premium in energy, pressuring European gas (and by weak extension US nat gas) lower. But the linkage from a near-impossible, long-dated Polymarket question to a US-listed nat gas ETF is extremely weak: UNG tracks US Henry Hub, not European TTF, and a 12h window reaction to a tail-probability market shift is unlikely. Direction is genuinely unclear and magnitude far below the 700bps tradable bar."
+    },
+    {
+      "asset": "European equity risk (geopolitical thaw proxy)",
+      "ticker": "EZU",
+      "tradable_instrument_name": "iShares MSCI Eurozone ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.1,
+      "confidence_interval_bps": [
+        -300.0,
+        500.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify the probability move is real and not a single-wallet thin-market print.",
+        "1h": "Scan for any actual diplomatic news; absent that, downweight to noise.",
+        "2h": "Check EZU and DAX/CAC futures for corroboration against broad risk sentiment.",
+        "6h": "Separate any EZU move from general US/EU market beta.",
+        "12h": "Record outcome; expect no material, attributable move."
+      },
+      "reasoning": "A genuine US-Russia trade normalization would signal reduced conflict risk on Europe's doorstep, cheaper energy, and lower risk premia \u2014 a tailwind for Eurozone equities. However, the proxy is weak and diffuse: EZU is driven by dozens of macro factors, and a longshot prediction market inching up carries almost no information for a 12h equity move. This is included only to document a plausible second-order channel, not because a tradable signal exists."
+    }
+  ],
+  "evidence_used": [
+    "Market question asks about a US-Russia free trade agreement becoming US law by end-2026 \u2014 a geopolitically near-impossible event given active sanctions and war context",
+    "No liquid pure-play Russia proxy exists for US investors (VanEck Russia ETF RSX was delisted/liquidated; ruble not freely tradable)",
+    "Trade-policy/sanctions thaw would primarily transmit through energy (European gas, oil) and European risk premia"
+  ],
+  "uncertainty_notes": [
+    "Polymarket questions on tail events are thinly traded; implied-probability moves are often noise, not information",
+    "Best-exposed assets (Russian equities, ruble, European TTF gas) are not cleanly tradable via the allowed liquid US proxies",
+    "12h window is far too short for a long-dated 2026 resolution market to produce a clean asset reaction"
+  ],
+  "llm_justification": {
+    "summary": "The market concerns an extraordinarily unlikely US-Russia free trade agreement becoming law by end-2026. A sharp upward move would imply a major geopolitical/sanctions thaw, whose cleanest asset channels are lower energy risk premium (European gas, oil) and higher European equities. But direct Russia proxies are not liquidly tradable for US investors, the chosen ETFs (UNG, EZU) are weak and diffuse proxies, and a thin tail-probability market carries little information over a 12h horizon. No prediction clears the 700bps tradable threshold; confidence is low and direction largely unclear.",
+    "key_assumptions": [
+      "A rising probability would reflect genuine diplomatic thaw rather than market noise or manipulation",
+      "Energy and European equities are the primary transmission channels for a US-Russia normalization",
+      "No pre-existing public catalyst already prices this in"
+    ],
+    "failure_modes": [
+      "The probability move is thin-book noise with zero informational content",
+      "The event is so improbable that even a real move in the market has negligible asset impact",
+      "Chosen proxies (UNG tracks US Henry Hub, EZU is broad macro) are only weakly exposed to Russia-specific news",
+      "Any real diplomatic headline would already be public, so no leak/edge exists",
+      "Direction could reverse: thaw optimism could fade within hours if contradicted by officials"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

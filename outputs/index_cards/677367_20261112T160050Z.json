@@ -1,0 +1,98 @@
+{
+  "card_id": "677367_20261112T160050Z",
+  "card_version": "v1",
+  "card_hash": "6a876093609859b5e02c4d3b3111ab40849a22696e99a62642d099ab6cef7b5a",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-12T16:00:50Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "677367",
+    "market_slug": "china-coup-attempt-before-2027",
+    "market_name": "China coup attempt before 2027?",
+    "market_url": "https://polymarket.com/market/china-coup-attempt-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "China coup attempt before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "China large-cap equity",
+      "ticker": "FXI",
+      "tradable_instrument_name": "iShares China Large-Cap ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -900.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -2500.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": true,
+        "reason": "Meets minimum expected move.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether FXI/KWEB pre- or regular-market quotes show any dislocation; scan wire headlines (Reuters, Bloomberg, Xinhua) for any China leadership/military news.",
+        "1h": "Compare CNH offshore moves and HSI futures; confirm whether the prediction-market move is isolated or corroborated by FX/vol.",
+        "2h": "Assess whether any credible independent reporting has emerged; if none, treat as noise and fade conviction.",
+        "6h": "Re-evaluate during Asia session open \u2014 HSI and mainland A-share reaction is the real tell; check gold and USDCNH.",
+        "12h": "Close window: determine if move persisted or fully reversed; log whether any public event materialized to validate or refute the leak hypothesis."
+      },
+      "reasoning": "A sharp rise in the implied probability of a Chinese coup attempt signals perceived political/regime instability. Chinese equities are acutely sensitive to CCP stability and policy continuity; any credible instability signal would trigger heavy foreign selling and risk premium repricing in US-listed China proxies like FXI. The move could easily exceed 700bps if the signal reflects real, imminent developments, but such events are extraordinarily rare and the market is a noisy sensor dominated by speculation."
+    },
+    {
+      "asset": "Gold (safe haven)",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "commodity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 250.0,
+      "confidence": 0.25,
+      "confidence_interval_bps": [
+        -100.0,
+        900.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check spot gold and GLD for any bid; confirm against DXY and US Treasury yields.",
+        "1h": "Determine if gold move is China-driven or coincidental with broader macro (Fed, yields).",
+        "2h": "Look for corroborating risk-off signals (VIX, JPY, CHF) to validate safe-haven interpretation.",
+        "6h": "Reassess during Asia session; gauge whether flight-to-safety broadens or fades.",
+        "12h": "Close window: record whether gold held gains and whether the instability narrative gained public corroboration."
+      },
+      "reasoning": "Major-power political instability (a coup in a nuclear-armed state) is a classic safe-haven catalyst. Gold would typically catch a bid on a credible China instability shock. However, gold's reaction to China-specific political risk is less direct than China equities, so the exposure is weaker and the magnitude likely below the 700bps tradable threshold under most scenarios."
+    }
+  ],
+  "evidence_used": [
+    "Prediction market question on China coup attempt probability through end-2026",
+    "China equities (FXI/KWEB) historical sensitivity to CCP stability and political risk",
+    "Offshore yuan (CNH) and gold as standard risk-off/instability proxies",
+    "Base-rate knowledge that coups in China are extraordinarily rare"
+  ],
+  "uncertainty_notes": [
+    "Base rate of a Chinese coup is extremely low; most prediction-market movement is likely speculation, rumor, or thin-liquidity noise rather than genuine information leakage.",
+    "The 12h window rarely coincides with a confirmed public event, so proxy moves may be driven by unrelated macro.",
+    "This is a tail-risk binary; mapping to a continuous 12h asset move is inherently weak unless accompanied by corroborating reporting."
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability of a China coup attempt would, if credible, signal perceived regime instability and trigger risk-off repricing: China equity ETFs (FXI/KWEB) down, offshore yuan weaker, and safe havens like gold up. The strongest, most liquid proxy is FXI to the downside. However, given the extreme rarity of the event and the noisiness of low-probability geopolitical prediction markets, confidence is low and most movement is likely speculative noise rather than leaked information.",
+    "key_assumptions": [
+      "A sharp move in the market's implied probability reflects some genuine information rather than pure speculation.",
+      "China equity ETFs remain the most direct liquid proxy for Chinese political-stability risk.",
+      "Markets would price regime instability as risk-off (equities down, gold up)."
+    ],
+    "failure_modes": [
+      "The prediction-market move is noise/rumor with no public corroboration, and asset proxies do not move (most likely outcome).",
+      "The event, if any, is already public and priced, so no residual 12h move.",
+      "Gold is a weak, indirect proxy for China-specific political risk and may be dominated by unrelated macro drivers.",
+      "Chinese authorities suppress information, so even a real event produces delayed or muted public-market reaction within 12h.",
+      "A move could reverse quickly as the market fades a false rumor."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

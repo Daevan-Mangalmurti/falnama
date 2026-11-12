@@ -1,0 +1,99 @@
+{
+  "card_id": "667068_20261112T160050Z",
+  "card_version": "v1",
+  "card_hash": "356575056a050717ab8f49a36af0534aaceb3b082b2f7624d62e561833565f79",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-12T16:00:50Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "667068",
+    "market_slug": "will-trump-resign-before-2027",
+    "market_name": "Will Trump resign before 2027?",
+    "market_url": "https://polymarket.com/market/will-trump-resign-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Trump resign before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US large-cap equity index",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -250.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -900.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket probability jump is corroborated by any credible newswire (Reuters/AP/Bloomberg) or is isolated/thin-liquidity noise; watch SPY and ES futures tick.",
+        "1h": "Compare SPY move to VIX and Treasury futures; confirm whether a cross-asset risk-off pattern is forming or the equity dip is already fading.",
+        "2h": "Assess if any official government statement or White House denial has emerged; if denied, expect mean-reversion and fade the short.",
+        "6h": "Re-evaluate whether the political signal persisted into cash-session volume; measure realized move vs the 700bps tradable threshold.",
+        "12h": "Close window: tally net SPY return, note whether the prediction-market signal led or lagged public reporting, and log calibration error."
+      },
+      "reasoning": "A sharp rise in the implied probability that Trump resigns would signal an acute political-stability shock not yet in the public narrative. Sudden regime/leadership uncertainty at the top of the US executive typically triggers risk-off repricing: equities sell off on headline/uncertainty even though constitutional succession (VP) is orderly. The magnitude depends heavily on whether the market move reflects genuine leaked information versus noise; a confirmed resignation announcement could drive a much larger drawdown, while a modest probability drift would move SPY only marginally."
+    },
+    {
+      "asset": "Gold (safe-haven)",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 180.0,
+      "confidence": 0.28,
+      "confidence_interval_bps": [
+        -120.0,
+        700.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether the probability move is corroborated news vs thin-market noise; watch GLD and spot gold alongside DXY.",
+        "1h": "Check if gold is moving with Treasuries (genuine haven bid) or being capped by a stronger dollar.",
+        "2h": "Look for official denial/confirmation; a denial likely reverses any haven bid.",
+        "6h": "Measure persistence of the safe-haven move and whether real yields are driving it.",
+        "12h": "Close window: record net GLD return and whether it confirmed or contradicted the equity risk-off signal."
+      },
+      "reasoning": "Acute US political/leadership uncertainty tends to bid safe havens. If the resignation probability spikes on real information, gold would likely catch a flight-to-safety bid alongside Treasuries. However, gold's reaction to US political drama is historically inconsistent (the dollar can also catch a haven bid, offsetting gold), so this is a weaker, lower-conviction mapping than the equity leg."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns resignation of a sitting US president before end of 2026",
+    "Resolution triggers on mere announcement, not actual resignation \u2014 lowers the bar and raises headline sensitivity",
+    "Base rate for a voluntary presidential resignation is extremely low historically",
+    "Constitutional succession (Vice President) provides institutional continuity, dampening market reaction"
+  ],
+  "uncertainty_notes": [
+    "Base probability of this event is very low; most probability moves will be noise, not leaked truth",
+    "Orderly VP succession could mute or even neutralize the market reaction",
+    "A denial or walk-back would sharply reverse any initial move",
+    "Dollar may act as a competing safe haven, muddying the gold thesis"
+  ],
+  "llm_justification": {
+    "summary": "This market maps to a US political-stability shock. A sharp rise in the implied probability of a Trump resignation would, if driven by real information, produce classic risk-off: US equities (SPY) lower and safe havens (gold) higher. But the base rate is tiny, constitutional succession limits the damage, and most probability moves in such a tail market are thin-liquidity noise rather than leaked fact. Both mappings are therefore low-confidence, and only a corroborated, genuine announcement would plausibly clear the 700bps tradable bar.",
+    "key_assumptions": [
+      "A material probability spike reflects some real information rather than pure market noise",
+      "US markets treat sudden presidential leadership change as a risk-off event",
+      "Liquidity and session timing allow the proxy to actually move within the 12h window"
+    ],
+    "failure_modes": [
+      "The probability move is thin-market noise with no underlying event \u2014 proxies do not move",
+      "News is already public and priced, so no incremental asset reaction",
+      "Orderly VP succession reassures markets, producing a muted or even relief rally",
+      "Dollar absorbs the haven bid, leaving gold flat or lower and breaking that leg",
+      "A rapid official denial reverses any initial move before the window closes"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

@@ -1,0 +1,3 @@
+kind,market_name,market_id,anomaly_score,anomaly_trigger_time_utc,reason
+rejected,"Israel and Syria normalize relations by December 31, 2026?",677273,98.7,2026-10-30T20:00:31Z,no scenario card for this market
+rejected,Will Iran withdraw from the NPT before 2027?,665727,91.1,2026-10-30T18:00:42Z,only ex-post cards exist (created after the trigger)

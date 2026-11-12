@@ -1,0 +1,101 @@
+{
+  "card_id": "666861_20261112T160050Z",
+  "card_version": "v1",
+  "card_hash": "2a1f2fc28c6cbb53697ef1ad87f90003121a357bdb3481fd9b27711fbcba675b",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-12T16:00:50Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "666861",
+    "market_slug": "trump-out-as-president-before-2027",
+    "market_name": "Trump out as President before 2027?",
+    "market_url": "https://polymarket.com/market/trump-out-as-president-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Trump out as President before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US large-cap equities",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -150.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -600.0,
+        80.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket move is corroborated by any newswire/health or political headline; if no news, treat as noise and lower conviction. Watch SPY futures (ES) and VIX for confirmation.",
+        "1h": "Assess breadth of the move across ES, NQ, and VIX; confirm whether safe-haven assets (gold, Treasuries, USD) are moving in the correlated risk-off pattern. Divergence argues the signal is spurious.",
+        "2h": "Look for official confirmation or denial. If still rumor-only and equities stable, fade the thesis. If confirmed, size expectation toward the lower CI bound.",
+        "6h": "Re-evaluate whether the shock is transitory (markets often recover once succession clarity emerges) or escalating. Track whether VIX term structure is inverting.",
+        "12h": "Mark final return vs expectation. Determine whether move persisted or mean-reverted; note whether information clearly led public reporting (the research question)."
+      },
+      "reasoning": "A sharp rise in the implied probability that Trump leaves office before 2027 would signal an unexpected shock to the executive branch \u2014 sudden health event, resignation pressure, assassination attempt, or a credible 25th-Amendment move. Any of these injects acute political/policy uncertainty and would most plausibly trigger a risk-off reaction in broad US equities. However, markets have historically shown resilience to political transitions, and a clear line of succession (Vice President) limits systemic damage, so the magnitude is uncertain and may not reach the 700bps tradable threshold. The direction (down) is more reliable than the size."
+    },
+    {
+      "asset": "Gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.38,
+      "confidence_interval_bps": [
+        -60.0,
+        500.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether the probability move coincides with real news; check spot gold and the DXY for simultaneous moves that would clarify the safe-haven interpretation.",
+        "1h": "Check if gold's move is consistent with Treasury yields falling and VIX rising (coherent risk-off). Incoherence suggests noise.",
+        "2h": "Reassess after any official confirmation/denial; a denial should unwind the safe-haven bid quickly.",
+        "6h": "Evaluate persistence; gold often gives back gains once initial panic fades and succession clarity emerges.",
+        "12h": "Record final move, compare to equity reaction, and note whether gold led or lagged public confirmation."
+      },
+      "reasoning": "A credible spike in the probability of an abrupt presidential departure is a textbook safe-haven catalyst. Gold typically bids on acute US political-instability shocks as investors hedge policy uncertainty and potential volatility. The move is usually smaller than the equity drawdown and could be muted if the dollar simultaneously strengthens on safe-haven flows, which partially offsets gold. Weak proxy exposure and offsetting USD dynamics keep confidence modest."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns permanent removal/resignation of a sitting US President before end of 2026",
+    "Presidential-removal shocks historically correlate with short-term equity risk-off and safe-haven bids",
+    "Clear constitutional succession (Vice President) limits systemic/structural damage",
+    "Polymarket implied probability as a potentially leading but noisy sensor"
+  ],
+  "uncertainty_notes": [
+    "Baseline probability of this event is low; most sharp moves in such a market are noise, speculation, or liquidity-driven rather than information leaks",
+    "Market reaction to political transitions is historically muted when succession is orderly",
+    "Safe-haven flows could strengthen USD, offsetting gold gains",
+    "A confirmed removal could paradoxically rally equities if markets view the successor's policies more favorably \u2014 direction is not guaranteed"
+  ],
+  "llm_justification": {
+    "summary": "The market prices the odds of Trump leaving office before 2027. A sharp upward move in this probability would most plausibly signal an acute executive-branch shock (health event, resignation, 25th-Amendment action), which maps to a short-term risk-off reaction: broad US equities (SPY) lower and safe havens (gold/GLD) higher. Both mappings are directionally plausible but low-confidence because baseline odds are tiny, such market moves are usually noise, orderly succession limits damage, and the reaction could even reverse if markets favor the successor.",
+    "key_assumptions": [
+      "A sharp probability spike reflects genuine new information rather than speculation or thin-market noise",
+      "The shock, if real, is perceived as destabilizing rather than market-positive",
+      "Succession uncertainty generates at least transient risk-off flows",
+      "SPY and GLD are adequately liquid proxies for the risk-off reaction"
+    ],
+    "failure_modes": [
+      "The probability move is pure noise/manipulation in a thin market with no underlying information",
+      "The event is already public and priced in, so no asset move follows",
+      "Markets rally on removal if the successor is viewed as more market-friendly, reversing the thesis",
+      "Safe-haven USD strength offsets gold, muting or reversing GLD move",
+      "Expected magnitude falls well short of the 700bps tradable threshold, making both non-tradable",
+      "Equity resilience to orderly political transitions means SPY barely moves"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
