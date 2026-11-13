@@ -1,0 +1,99 @@
+{
+  "card_id": "666827_20261113T152722Z",
+  "card_version": "v1",
+  "card_hash": "6afa594c618ce70a4885a1a32b994ab8b7fb12de024cc1c2f3761e21b1a416a8",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-13T15:27:22Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "666827",
+    "market_slug": "us-agrees-to-a-new-trade-deal-with-south-korea-before-2027",
+    "market_name": "U.S. agrees to a new trade deal with \"South Korea\" before 2027?",
+    "market_url": "https://polymarket.com/market/us-agrees-to-a-new-trade-deal-with-south-korea-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "U.S. agrees to a new trade deal with \"South Korea\" before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "South Korea equity (MSCI South Korea ETF)",
+      "ticker": "EWY",
+      "tradable_instrument_name": "iShares MSCI South Korea ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -150.0,
+        450.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check EWY pre/post-market tick and whether any Reuters/Bloomberg headline on US-Korea trade talks has crossed; confirm the prediction-market move is not just thin-liquidity noise.",
+        "1h": "Compare EWY move vs broad EM/Asia ETFs (EEM, AAXJ) to isolate Korea-specific signal from regional beta.",
+        "2h": "Re-check KRW spot and Kospi futures for corroboration; divergence weakens the thesis.",
+        "6h": "Scan for official USTR/Korean trade ministry statements; assess whether probability move was information-driven or random.",
+        "12h": "Evaluate whether EWY sustained direction; if no news emerged and move faded, mark as noise and down-weight proxy."
+      },
+      "reasoning": "A sharp rise in the implied probability of a new US-Korea trade agreement would reduce tariff/export uncertainty for Korean exporters (autos, semiconductors, steel), which are heavily weighted in EWY. Reduced trade friction is net positive for Korean large-caps. However, this is a slow-moving, long-dated political question (resolves end-2026), so any 12h asset move should be modest and noisy rather than a sharp repricing."
+    },
+    {
+      "asset": "Korean won (USD/KRW FX proxy)",
+      "ticker": "KRW=X",
+      "tradable_instrument_name": "USD/KRW spot (won strength)",
+      "asset_class": "fx_proxy",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.25,
+      "confidence_interval_bps": [
+        -120.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check USD/KRW spot and whether BOK or MOF commentary coincides; verify not driven by broad dollar move (DXY).",
+        "1h": "Cross-check against DXY and JPY to separate dollar-wide moves from Korea-specific flow.",
+        "2h": "Look at Kospi and EWY for confirmation of a consistent Korea-positive narrative.",
+        "6h": "Search for concrete trade-negotiation reporting; absent news, treat FX drift as noise.",
+        "12h": "Assess whether won strength persisted and aligned with equity signal; if not, down-weight."
+      },
+      "reasoning": "A credible path to a formalized US-Korea trade deal tends to support the won (KRW appreciation / lower USD/KRW) via improved export outlook and capital inflows. Direction 'up' here denotes won strength. FX is a cleaner macro channel but a long-dated ratification question carries little immediate FX information, so magnitude is small and confidence low."
+    }
+  ],
+  "evidence_used": [
+    "Market question on US-South Korea trade deal becoming law before 2027",
+    "South Korea's export-heavy economy (autos, semis, steel) sensitivity to US trade terms",
+    "Standard FX/equity channels: trade deals support local equities and currency",
+    "Existing KORUS FTA context means a 'new' deal is incremental, not a first-time opening"
+  ],
+  "uncertainty_notes": [
+    "This is a long-dated resolution (Dec 2026); near-term 12h asset impact is likely minimal",
+    "Prediction-market probability moves on low-liquidity political questions are often noise",
+    "The US and Korea already have KORUS FTA, so marginal economic impact of a 'new' deal may be small and largely priced",
+    "Proxy exposure (EWY, KRW) is broad and driven mostly by global/dollar factors, diluting any Korea-trade-specific signal"
+  ],
+  "llm_justification": {
+    "summary": "A sharp upward move in the implied probability of a new US-Korea trade deal would plausibly be mildly positive for Korean equities (EWY) and the won, by reducing tariff/export uncertainty. But the question is long-dated, the underlying trade relationship is already governed by KORUS, and the chosen proxies are dominated by global beta \u2014 so expected 12h moves are small and well below the 700bps tradable threshold. This is a weak, low-confidence mapping best treated as research, not a trade.",
+    "key_assumptions": [
+      "A probability spike reflects genuine new information about an imminent/likely deal",
+      "Korean equities and won respond positively to reduced US trade friction",
+      "Market participants have not already priced the deal outlook"
+    ],
+    "failure_modes": [
+      "The market move is thin-liquidity noise with no underlying news",
+      "Deal news is already public and priced, so no asset reaction",
+      "EWY/KRW moves are dominated by dollar and global EM flows, swamping any Korea-trade signal",
+      "A 'new' deal is largely symbolic given existing KORUS, producing negligible economic repricing",
+      "Move reverses within the window as traders fade an unsubstantiated probability shift"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

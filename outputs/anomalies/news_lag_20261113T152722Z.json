@@ -1,0 +1,14 @@
+[
+  {
+    "market_name": "U.S. agrees to a new trade deal with \"South Korea\" before 2027?",
+    "market_id": "666827",
+    "anomaly_trigger_time_utc": "2026-11-05T15:00:33Z",
+    "lookback_hours": 48.0,
+    "public_information_score": 0.0,
+    "residual_anomaly_score": 89.9,
+    "information_state": "none",
+    "evidence": [],
+    "uncertainty_note": "No relevant pre-trigger coverage found \u2014 this is weak evidence (retrieval may be incomplete), not proof the move was non-public.",
+    "mode": "live"
+  }
+]

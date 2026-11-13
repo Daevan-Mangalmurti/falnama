@@ -1,0 +1,99 @@
+{
+  "card_id": "666826_20261113T152722Z",
+  "card_version": "v1",
+  "card_hash": "21edcadf52be2368dac7b189fa9839eb862ab17e61ace5bfedf35bd92428aa27",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-13T15:27:22Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "666826",
+    "market_slug": "us-agrees-to-a-new-trade-deal-with-mexico-before-2027",
+    "market_name": "U.S. agrees to a new trade deal with \"Mexico\" before 2027?",
+    "market_url": "https://polymarket.com/market/us-agrees-to-a-new-trade-deal-with-mexico-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "U.S. agrees to a new trade deal with \"Mexico\" before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Mexican equities",
+      "ticker": "EWW",
+      "tradable_instrument_name": "iShares MSCI Mexico ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -200.0,
+        450.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check for trade-policy headlines (USTR, White House, Sheinbaum administration) that could explain a probability shift; confirm EWW is moving with the news rather than broad EM beta.",
+        "1h": "Compare EWW move vs EEM/SPY to isolate Mexico-specific component; watch USD/MXN for corroboration.",
+        "2h": "Re-check whether the prediction-market move persisted or faded; reassess if it was a stale-liquidity blip.",
+        "6h": "Look for official statements or denials from US/Mexican trade officials; adjust conviction.",
+        "12h": "Mark final EWW return vs entry; evaluate whether signal preceded public confirmation or was noise."
+      },
+      "reasoning": "A sharp rise in the implied probability of a new US-Mexico trade deal becoming law would reduce tariff/trade-war tail risk for Mexico's export-heavy economy, benefiting Mexican equities. EWW is the most liquid broad proxy. However, this market has a long horizon (through end-2026) and resolution requires a formal agreement becoming US law \u2014 a high, slow-moving bar \u2014 so any probability jump is unlikely to translate into a large same-day move. The move direction is clearer than its magnitude."
+    },
+    {
+      "asset": "Mexican peso",
+      "ticker": "FXM",
+      "tradable_instrument_name": "Invesco CurrencyShares Mexican Peso Trust",
+      "asset_class": "fx_proxy",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 80.0,
+      "confidence": 0.28,
+      "confidence_interval_bps": [
+        -150.0,
+        300.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Scan Banxico/USTR newsflow and USD/MXN spot for a catalyst consistent with the market move.",
+        "1h": "Check whether MXN strength is idiosyncratic vs broad USD (DXY) moves.",
+        "2h": "Assess persistence of the move; distinguish signal from thin-market noise.",
+        "6h": "Monitor for trade-negotiation confirmations or denials; revise direction if contradicted.",
+        "12h": "Record final FXM return and whether prediction-market move led spot FX."
+      },
+      "reasoning": "Progress toward a durable US-Mexico trade agreement would be peso-supportive by lowering tariff risk and supporting trade/investment flows; FXM (long MXN vs USD) would rise. The peso is a highly liquid, sensitive barometer of US-Mexico relations. But 12h FX moves of this magnitude are rare absent a concrete headline, and a long-dated legislative-resolution market is a weak trigger for an immediate currency repricing."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns a formal US-Mexico trade agreement becoming US law by end-2026",
+    "Mexico is a trade-dependent economy highly sensitive to US trade/tariff policy",
+    "EWW and the Mexican peso are the most liquid public proxies for Mexico-specific trade risk",
+    "Long resolution horizon and high legal bar (law enacted) weaken same-day market sensitivity"
+  ],
+  "uncertainty_notes": [
+    "A probability move may reflect speculation or thin liquidity rather than genuine information leakage",
+    "The 12h window is far too short relative to the multi-year, legislative resolution criterion",
+    "Neither proxy is likely to reach the 700bps tradable threshold absent a major concrete headline",
+    "Direction could invert if the news is a breakdown in talks rather than progress"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability of a new US-Mexico trade deal becoming law would modestly favor Mexican risk assets \u2014 Mexican equities (EWW) and the peso (FXM) \u2014 by reducing trade/tariff tail risk. But the market's long horizon and demanding legal resolution bar mean any 12h move is likely small and well below the 700bps tradable threshold. Direction is plausible; magnitude and immediacy are not. Treat as a low-confidence, non-tradable research signal.",
+    "key_assumptions": [
+      "A probability jump reflects genuine positive trade-negotiation news, not noise",
+      "Mexican assets price trade-deal progress positively and promptly",
+      "EWW and FXM remain the cleanest liquid proxies for Mexico trade risk"
+    ],
+    "failure_modes": [
+      "The market move is already-public information fully priced into EWW/MXN",
+      "Thin prediction-market liquidity produces a false signal that reverses",
+      "The news is actually negative (talks collapse), inverting the direction",
+      "Broad EM/USD macro moves dominate, swamping any Mexico-specific signal",
+      "Move magnitude stays far below 700bps, making the mapping untradable"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

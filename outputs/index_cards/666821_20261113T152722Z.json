@@ -1,0 +1,100 @@
+{
+  "card_id": "666821_20261113T152722Z",
+  "card_version": "v1",
+  "card_hash": "b249fda6d7be100e89b0f0183875cb73be880441443466c8a8d1037fcac46c08",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-13T15:27:22Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "666821",
+    "market_slug": "us-agrees-to-a-new-trade-deal-with-japan-before-2027",
+    "market_name": "U.S. agrees to a new trade deal with \"Japan\" before 2027?",
+    "market_url": "https://polymarket.com/market/us-agrees-to-a-new-trade-deal-with-japan-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "U.S. agrees to a new trade deal with \"Japan\" before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Japan equity (large-cap, export-heavy)",
+      "ticker": "EWJ",
+      "tradable_instrument_name": "iShares MSCI Japan ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -80.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any Reuters/Nikkei/Bloomberg headline on US-Japan trade talks has crossed; confirm if the Polymarket move is news-driven or noise.",
+        "1h": "Compare EWJ (or Nikkei futures if session open) move vs broad developed-market ETFs (EFA) to isolate Japan-specific reaction.",
+        "2h": "Reassess whether Japanese auto names (Toyota ADR TM) and the Nikkei are confirming the direction; fade if no corroborating flow.",
+        "6h": "Check Tokyo cash session open reaction and official MOF/METI or USTR statements.",
+        "12h": "Evaluate whether the prediction-market probability held and whether EWJ sustained any move; log realized vs expected."
+      },
+      "reasoning": "A rising implied probability of a US-Japan trade agreement becoming law would reduce tariff and trade-friction risk for Japanese exporters (autos, machinery, electronics), which dominate the MSCI Japan index. Lower trade-barrier uncertainty is modestly positive for Japanese equities. However, the effect size over a 12h window is small: trade deals are slow-moving, largely priced incrementally, and a probability shift on a thin prediction market rarely translates into a sharp same-day equity repricing."
+    },
+    {
+      "asset": "Japanese yen",
+      "ticker": "FXY",
+      "tradable_instrument_name": "Invesco CurrencyShares Japanese Yen Trust",
+      "asset_class": "fx_proxy",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.15,
+      "confidence_interval_bps": [
+        -120.0,
+        120.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check USD/JPY spot vs the headline; determine if rate-differential drivers (US yields, BoJ commentary) are the actual mover.",
+        "1h": "Assess whether any yen move is trade-linked or dominated by macro rate flows.",
+        "2h": "Compare yen vs other G10 crosses to see if move is yen-specific or broad USD.",
+        "6h": "Re-check into Tokyo session for BoJ or MOF intervention chatter.",
+        "12h": "Log whether FXY showed any coherent directional response; likely confirm no clean signal."
+      },
+      "reasoning": "A trade deal's FX implication is genuinely ambiguous: improved trade relations could support the yen via better current-account/sentiment, but a deal that boosts risk appetite and Japanese equity inflows can be yen-negative, and USD/JPY is dominated by BoJ/Fed rate differentials, not trade-deal headlines. The mapping is weak and bidirectional, so we flag it as unclear with low confidence rather than manufacture a signal."
+    }
+  ],
+  "evidence_used": [
+    "Market question: US-Japan trade deal becoming law before 2027",
+    "Resolution requires an enacted free-trade agreement, a slow legislative/executive process",
+    "Japan's economy is export-driven; MSCI Japan is heavily weighted to autos, machinery, electronics",
+    "Trade-policy topic, US region",
+    "12h window with a demanding 700bps tradability threshold"
+  ],
+  "uncertainty_notes": [
+    "A probability move on this market most likely reflects news that is already public (USTR/White House statements), limiting leakage alpha.",
+    "Trade agreements are gradual and largely priced incrementally, so sharp 12h equity moves are unlikely.",
+    "FX reaction to trade deals is directionally ambiguous and dominated by rate differentials.",
+    "Prediction-market liquidity is thin; probability moves can be noise rather than information."
+  ],
+  "llm_justification": {
+    "summary": "A rising implied probability of a US-Japan trade deal becoming law is modestly bullish for Japanese export-heavy equities (EWJ) via reduced tariff/trade-friction risk, but the effect over a 12-hour window is small and well below the 700bps tradability threshold. The yen implication is genuinely ambiguous and flagged unclear. Neither mapping is tradable at the required magnitude; this is a weak, slow-moving fundamental linkage best treated as low-confidence research.",
+    "key_assumptions": [
+      "A probability spike reflects genuine progress toward a trade agreement rather than noise.",
+      "Japanese exporters benefit from reduced trade barriers with the US.",
+      "Markets had not fully priced the development already."
+    ],
+    "failure_modes": [
+      "The news is already public and fully priced, so no asset move follows.",
+      "Trade-deal progress is incremental and causes no measurable 12h equity move (magnitude far below 700bps).",
+      "EWJ is a broad proxy diluted by non-exporters and dominated by macro/BoJ/Fed factors unrelated to the deal.",
+      "Yen direction reverses expectation (risk-on equity inflows can weaken the yen).",
+      "Prediction-market move is thin-liquidity noise with no informational content."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
