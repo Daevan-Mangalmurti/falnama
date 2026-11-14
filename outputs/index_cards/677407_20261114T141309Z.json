@@ -1,0 +1,98 @@
+{
+  "card_id": "677407_20261114T141309Z",
+  "card_version": "v1",
+  "card_hash": "948824cf2014a10692039f63259a3b82a1ef18d3befcc74623669b1fadc72ce4",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-14T14:13:09Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "677407",
+    "market_slug": "china-x-taiwan-military-clash-before-2027",
+    "market_name": "China x Taiwan military clash before 2027?",
+    "market_url": "https://polymarket.com/market/china-x-taiwan-military-clash-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "China x Taiwan military clash before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Taiwan equity",
+      "ticker": "EWT",
+      "tradable_instrument_name": "iShares MSCI Taiwan ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -900.0,
+      "confidence": 0.6,
+      "confidence_interval_bps": [
+        -2500.0,
+        -100.0
+      ],
+      "trade_eligibility": {
+        "eligible": true,
+        "reason": "Meets minimum expected move.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket probability jump is sustained or a thin-liquidity spike; cross-check PHLX/overnight TSM ADR and USD/TWD NDF for confirmation.",
+        "1h": "Look for corroborating headlines (PLA activity, missile/ship incidents) and whether Nikkei/KOSPI futures and SOXX futures are also weakening (contagion signal).",
+        "2h": "Reassess if EWT (or TSM ADR as US-hours proxy) has moved >300bps; if no spot confirmation, downgrade conviction \u2014 market may be noise.",
+        "6h": "Evaluate VIX, USD/JPY, gold co-movement for a coherent risk-off regime vs isolated Taiwan move; check official denials/confirmations.",
+        "12h": "Close window: tally realized EWT/TSM move vs prediction; note whether probability shift preceded public confirmation (leak hypothesis) or faded."
+      },
+      "reasoning": "A sharp rise in the implied probability of a China-Taiwan military clash is the most direct threat to Taiwanese assets. EWT is heavily weighted toward TSMC and Taiwan financials/industrials, which are existentially exposed to cross-strait conflict. Capital flight, insurance repricing, and shipping/supply-chain disruption fears would drive a rapid, large repricing. The move is asymmetric: tail risk going from remote to plausible can trigger outsized drawdowns."
+    },
+    {
+      "asset": "Gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "commodity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 250.0,
+      "confidence": 0.45,
+      "confidence_interval_bps": [
+        -50.0,
+        800.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check if gold futures tick up concurrently with the probability move and whether DXY/JPY confirm risk-off.",
+        "1h": "Compare gold's response to EWT's; if gold is flat while Taiwan assets fall, the haven bid is absent \u2014 reduce conviction.",
+        "2h": "Reassess against real yields and dollar; isolate whether any gold move is geopolitical or macro.",
+        "6h": "Review for sustained haven demand (gold + JPY + Treasuries) vs mean reversion.",
+        "12h": "Close window: record realized gold move; note that likely below 700bps tradable threshold, so treat as corroborating rather than standalone trade."
+      },
+      "reasoning": "Escalation risk in the Taiwan Strait is a classic safe-haven catalyst. A credible jump in clash probability would push flows toward gold alongside USD and JPY. However, gold's move to a single regional geopolitical signal is typically smaller and noisier than the directly-exposed Taiwan equity hit, and competing macro drivers (rates, dollar) dilute the signal \u2014 hence lower confidence and likely sub-threshold magnitude."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies a sharp conditional repricing of China-Taiwan military clash risk through end-2026",
+    "Taiwan equity (EWT) is dominated by TSMC and highly sensitive to cross-strait conflict",
+    "Geopolitical tail-risk events historically drive risk-off into gold, USD, and JPY while hitting regionally-exposed equities hardest"
+  ],
+  "uncertainty_notes": [
+    "Prediction markets on multi-year tail events are thinly traded; probability spikes can be noise or single-trader driven, not information",
+    "If the probability move reflects already-public news, assets may have already priced it",
+    "12h window during non-overlapping Asian/US hours complicates proxy timing; EWT trades US hours while the underlying event is Asia-based",
+    "Magnitude depends heavily on whether the signal reflects an actual incident vs a marginal probability nudge"
+  ],
+  "llm_justification": {
+    "summary": "A sharp increase in the implied probability of a China-Taiwan military clash maps most directly to a sell-off in Taiwan equities (EWT, TSMC-heavy) and secondarily to a safe-haven bid in gold. EWT is the cleanest, most exposed liquid proxy and can plausibly exceed the 700bps tradable threshold under a genuine escalation signal; gold is a weaker, likely sub-threshold corroborator. The prediction market is a noisy sensor, so confirmation via spot FX (USD/TWD), TSM ADR, and regional index futures is essential before treating any move as informative.",
+    "key_assumptions": [
+      "The relevant signal is a sharp, sustained rise in clash probability, not routine fluctuation",
+      "EWT remains the dominant liquid Western proxy for Taiwan tail risk",
+      "A probability jump plausibly leads rather than lags public confirmation (the leak hypothesis being tested)"
+    ],
+    "failure_modes": [
+      "The probability spike is thin-liquidity noise with no fundamental basis and reverses within hours",
+      "The escalation is already public and fully priced into EWT/TSM before the window",
+      "Gold's move is swamped by macro drivers (rates/dollar) and shows no geopolitical signal",
+      "Market-hours mismatch means EWT cannot react in the 12h window, muting the measured move",
+      "A de-escalation or official denial reverses the probability and the asset move mid-window"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

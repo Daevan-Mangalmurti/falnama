@@ -1,0 +1,100 @@
+{
+  "card_id": "677403_20261114T141309Z",
+  "card_version": "v1",
+  "card_hash": "0fd01c8295e5f7142f0ef8d5962295c6f334d9660141962cb5a33440541139bb",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-14T14:13:09Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "677403",
+    "market_slug": "us-recognizes-russian-sovereignty-over-ukraine-before-2027",
+    "market_name": "US recognizes Russian sovereignty over Ukraine by December 31, 2026?",
+    "market_url": "https://polymarket.com/market/us-recognizes-russian-sovereignty-over-ukraine-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "US recognizes Russian sovereignty over Ukraine by December 31, 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US aerospace & defense equity",
+      "ticker": "ITA",
+      "tradable_instrument_name": "iShares U.S. Aerospace & Defense ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -120.0,
+      "confidence": 0.28,
+      "confidence_interval_bps": [
+        -450.0,
+        120.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether a concrete news catalyst (official statement, leaked diplomatic plan) accompanies the market move versus pure probability drift; confirm ITA pre/post move.",
+        "1h": "Compare ITA to European defense names (e.g. Rheinmetall, EUAD) which are more Ukraine-sensitive; divergence tells you if signal is real.",
+        "2h": "Re-check Polymarket probability persistence and any Reuters/AP/Bloomberg confirmation; fade if probability reverts.",
+        "6h": "Assess whether broader risk assets (gas, EUR, European equity) corroborate a peace-easing narrative.",
+        "12h": "Evaluate net move vs 700bps threshold; document that move almost certainly fell short and was non-tradable."
+      },
+      "reasoning": "A sharp rise in the implied probability that the US formally recognizes Russian sovereignty over Ukrainian territory would signal a major US-Russia rapprochement and movement toward ending the conflict. De-escalation and peace expectations tend to pressure defense names, which have been bid on sustained European rearmament and Ukraine support. However, US primes (the bulk of ITA) are driven more by US DoD budgets than by Ukraine specifically, so exposure is partial and the long 2026 horizon blunts any immediate 12h repricing."
+    },
+    {
+      "asset": "European natural gas / energy-transition risk",
+      "ticker": "BOIL",
+      "tradable_instrument_name": "ProShares Ultra Bloomberg Natural Gas",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -150.0,
+      "confidence": 0.2,
+      "confidence_interval_bps": [
+        -600.0,
+        300.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify whether any sanctions-relief language accompanies the recognition narrative; without it the energy channel is dormant.",
+        "1h": "Cross-check European TTF futures and EUR/USD for corroboration rather than relying on Henry Hub proxy.",
+        "2h": "Confirm Polymarket move durability and official reporting; most moves here are noise.",
+        "6h": "Reassess whether crude (Russian oil supply) is moving, a better barometer than US gas.",
+        "12h": "Record net move; expect well below the 700bps tradable threshold and flag proxy weakness."
+      },
+      "reasoning": "US recognition of Russian territorial gains would likely be paired with sanctions relief and a path for Russian energy to re-enter Western markets, which is bearish for global gas/energy prices. But US-listed natural gas proxies track Henry Hub, which is largely insulated from European/Russian supply dynamics, making this a weak proxy. European TTF would be the cleaner read but is not in the allowed liquid US set. The 12h window and multi-year resolution horizon make a large immediate move unlikely."
+    }
+  ],
+  "evidence_used": [
+    "Market question: US official recognition of Russian sovereignty over Ukrainian territory by end-2026",
+    "Recognition would imply major US-Russia d\u00e9tente, likely paired with sanctions relief and conflict de-escalation",
+    "Golan Heights precedent cited implies a formal executive act, not just rhetoric",
+    "Long resolution horizon (through Dec 31 2026) vs 12h prediction window",
+    "700bps tradable threshold is high relative to plausible 12h macro moves"
+  ],
+  "uncertainty_notes": [
+    "A probability shift on a 2026-resolution market rarely produces large same-day asset moves; the horizon mismatch is severe",
+    "Recognition of territory does not mechanically imply sanctions relief, which is the actual asset-moving channel",
+    "US-listed proxies (ITA defense primes, Henry Hub gas) are weakly exposed to Ukraine-specific dynamics",
+    "If the move is already public (a Trump statement), markets will have repriced before any Polymarket leak"
+  ],
+  "llm_justification": {
+    "summary": "A sharp increase in the implied odds of US recognition of Russian sovereignty over Ukrainian territory would signal US-Russia rapprochement, potential sanctions relief, and conflict de-escalation. The cleanest asset reads are lower defense equities and lower European energy prices, but the best liquid US proxies (ITA, Henry Hub gas) are only partially exposed, and the multi-year resolution horizon versus a 12h window makes a large immediate move improbable. Both mappings are low-confidence and likely below the 700bps tradable threshold.",
+    "key_assumptions": [
+      "A rise in recognition odds is read by markets as de-escalation plus eventual sanctions relief",
+      "Defense and energy are the primary transmission channels",
+      "The probability move reflects new information rather than noise or a headline already in prices"
+    ],
+    "failure_modes": [
+      "Horizon mismatch: a 2026-resolution shift simply does not move 12h asset prices meaningfully",
+      "Recognition without sanctions relief leaves the energy channel inert",
+      "US defense primes are DoD-budget driven, not Ukraine-driven, so ITA barely reacts",
+      "The catalyst is already public and priced before any Polymarket signal",
+      "Direction could invert: recognition seen as emboldening Russia could raise, not lower, European security/defense bids"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

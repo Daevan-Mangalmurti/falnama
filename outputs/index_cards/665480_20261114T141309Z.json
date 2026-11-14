@@ -1,0 +1,99 @@
+{
+  "card_id": "665480_20261114T141309Z",
+  "card_version": "v1",
+  "card_hash": "45ca702c38a2dbf580665943a71e705e88a7600ecc085488f74e3d242d96a09a",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-14T14:13:09Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665480",
+    "market_slug": "will-us-withdraw-from-nato-before-2027-348-975-598-224-737",
+    "market_name": "Will US withdraw from NATO before 2027?",
+    "market_url": "https://polymarket.com/market/will-us-withdraw-from-nato-before-2027-348-975-598-224-737",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will US withdraw from NATO before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "European equities (risk-off)",
+      "ticker": "FEZ",
+      "tradable_instrument_name": "SPDR EURO STOXX 50 ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -250.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -900.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability jump is corroborated by credible reporting (official denunciation notice) or is isolated market noise; confirm FEZ/Euro Stoxx futures reaction.",
+        "1h": "Compare FEZ move vs S&P futures to isolate Europe-specific risk premium; watch EUR/USD and Bund yields.",
+        "2h": "Reassess if any official US/NATO statement has emerged; if the probability reverts, expect FEZ to retrace.",
+        "6h": "Evaluate whether European defense names are diverging (rising) from broad index (falling); check for policy headlines.",
+        "12h": "Mark final move vs 700bps threshold; determine whether signal was information leakage or noise and whether it persisted."
+      },
+      "reasoning": "A sharp rise in the implied probability that the US formally initiates NATO withdrawal would remove the core European security guarantee, raising the defense/fiscal burden and tail risk for the continent. European large-cap equities are the most directly exposed liquid proxy and would likely sell off on heightened geopolitical/security risk. Only a genuinely large probability jump would produce a >700bps move; absent that, the move is likely modest and noisy."
+    },
+    {
+      "asset": "Gold (safe haven)",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.35,
+      "confidence_interval_bps": [
+        -150.0,
+        600.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether the probability move is backed by reporting; check gold spot and DXY reaction.",
+        "1h": "Assess whether dollar is strengthening (which could cap gold) or weakening; watch Treasury yields.",
+        "2h": "Re-evaluate if the market probability sustains or fades; gold response may lag equities.",
+        "6h": "Check for official confirmations/denials and whether safe-haven flows persist across gold, Treasuries, CHF/JPY.",
+        "12h": "Record final gold move; judge whether it reflected genuine risk repricing versus transient noise."
+      },
+      "reasoning": "An abrupt increase in US-NATO withdrawal odds signals elevated geopolitical uncertainty and potential fracturing of the Western security order, which historically supports safe-haven demand for gold. Gold is a liquid, broadly-traded hedge. However the reaction is typically smaller and slower than equity risk-off moves, and competing dollar/rate dynamics could offset it, so magnitude and even sign are uncertain within 12h."
+    }
+  ],
+  "evidence_used": [
+    "Market question framing: formal US initiation of NATO withdrawal / Article 13 denunciation notice before 2027",
+    "Primary topic military_conflict, region United States",
+    "Historical pattern that major Western security shocks drive European equity risk-off and safe-haven bids",
+    "Liquidity of FEZ and GLD as broad proxies"
+  ],
+  "uncertainty_notes": [
+    "Most intraday probability fluctuations in a long-dated tail-risk market are noise and will not move public assets at all.",
+    "A >700bps 12h move requires an extreme, likely headline-confirmed probability jump; baseline expectation is sub-threshold.",
+    "Direction could invert: European defense stocks could rally even as broad index falls, and a formal US pullback could paradoxically strengthen USD/US assets.",
+    "Gold's reaction can be muted or offset by a stronger dollar in a risk-off episode."
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied odds of a formal US NATO withdrawal would most plausibly hit European equities (removal of the US security umbrella, higher fiscal/defense burden, elevated tail risk), with a secondary safe-haven bid for gold. Both mappings are directionally reasonable but modest in expected magnitude and likely below the 700bps tradable threshold unless the probability move is extreme and headline-confirmed; this is a noisy, low-confidence signal.",
+    "key_assumptions": [
+      "A material, non-noise jump in the market's implied probability actually occurs.",
+      "Markets interpret rising withdrawal odds as net-negative for European risk assets rather than already-priced.",
+      "FEZ and GLD remain liquid and representative proxies during the window."
+    ],
+    "failure_modes": [
+      "The probability move is market noise with no underlying information, producing no asset reaction.",
+      "The news is already public/priced, so assets do not move on the market signal.",
+      "Reaction concentrates in European defense equities (upside) rather than the broad index, making FEZ a weak proxy.",
+      "Risk-off manifests as USD strength that suppresses gold, inverting the GLD call.",
+      "A formal withdrawal could be read as US-centric isolation that benefits US assets, decoupling from the European proxy."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

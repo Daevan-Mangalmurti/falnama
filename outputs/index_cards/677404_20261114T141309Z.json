@@ -1,0 +1,99 @@
+{
+  "card_id": "677404_20261114T141309Z",
+  "card_version": "v1",
+  "card_hash": "65f0fcb0e68b2ec5cb1cd7f46626ace33806cf0850c916a4b0459156db15097e",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-14T14:13:09Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "677404",
+    "market_slug": "china-x-india-military-clash-by-december-31-2026",
+    "market_name": "China x India military clash by December 31, 2026?",
+    "market_url": "https://polymarket.com/market/china-x-india-military-clash-by-december-31-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "China x India military clash by December 31, 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "India equity risk",
+      "ticker": "INDA",
+      "tradable_instrument_name": "iShares MSCI India ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -120.0,
+      "confidence": 0.34,
+      "confidence_interval_bps": [
+        -500.0,
+        80.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether Indian headlines/defense ministry wires confirm any LAC incident; compare INDA pre-market/ADR proxies and USDINR move against the market's probability jump.",
+        "1h": "Assess whether the probability move is sustained or mean-reverting; look for Nifty futures and SGX-linked India futures direction.",
+        "2h": "Cross-check gold and defense names for corroborating risk-off; determine if a single trade moved the Polymarket price (noise) vs broad repricing.",
+        "6h": "Re-evaluate against Asian equity session open; confirm whether any official statement from either government has appeared.",
+        "12h": "Mark final INDA/USDINR move vs expectation; record whether the signal led or lagged public reporting."
+      },
+      "reasoning": "A sharp rise in the implied probability of a China-India military encounter would raise geopolitical risk premia on Indian assets, the smaller and more import-dependent of the two economies. Border clashes historically pressure the rupee and foreign-held Indian equities (INDA is USD-denominated, so it compounds equity and FX weakness). However, prior incidents (Galwan 2020, Yangtse 2022) were tightly contained and produced minimal durable market impact, so the expected move is modest unless escalation is unusually large."
+    },
+    {
+      "asset": "Gold safe-haven",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "commodity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -80.0,
+        300.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check spot gold and GLD for any bid coincident with the probability move; confirm it isn't just a USD/rates move.",
+        "1h": "Compare gold reaction with other haven proxies (JPY, Treasuries) for consistency.",
+        "2h": "Determine if move is geopolitics-driven or macro-driven; fade if no corroborating news.",
+        "6h": "Reassess into US/Asia session handoff for sustained haven demand.",
+        "12h": "Record final GLD move and whether it tracked the market signal."
+      },
+      "reasoning": "Rising probability of armed conflict between two nuclear-armed Asian powers would typically support safe havens like gold. The effect is diluted because a localized border skirmish is not a global systemic shock, and gold is driven primarily by rates and the dollar; geopolitical bids from contained Asian clashes tend to be small and short-lived."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns a binary China-India military encounter through end-2026",
+    "Historical analogues (Galwan 2020, Yangtse 2022) had limited, contained market impact",
+    "India is the more market-sensitive, foreign-capital-dependent economy of the two",
+    "Standard risk-off channels: EM equity down, safe havens up"
+  ],
+  "uncertainty_notes": [
+    "The market has a long resolution horizon (through Dec 2026), so a probability jump need not imply an imminent 12h-relevant event",
+    "Polymarket probability moves can be driven by single low-liquidity trades, not genuine information",
+    "Contained skirmishes historically produce sub-700bps asset moves, likely below the tradable threshold",
+    "If news is already public, the asset move will have preceded the signal"
+  ],
+  "llm_justification": {
+    "summary": "A sharp upward move in the China-India military clash probability most directly implies risk-off pressure on Indian equities/rupee (INDA) and a mild safe-haven bid in gold (GLD). Both mappings are plausible but weak in magnitude: historical border clashes were contained and barely moved broad markets, and the market's 2026 horizon means a probability jump need not signal a 12h-tradable event. Expected moves fall well below the 700bps tradable bar, so this is low-confidence, non-tradable research signal rather than an actionable edge.",
+    "key_assumptions": [
+      "A probability jump reflects genuine escalation risk, not liquidity noise",
+      "India is the asset most negatively exposed; gold benefits as haven",
+      "Any clash is border-localized, not a full-scale war (which would change magnitudes drastically)"
+    ],
+    "failure_modes": [
+      "Move reverses as a single-trader artifact on a thin Polymarket book",
+      "Any genuine incident is already in public reporting, so assets moved first",
+      "Contained skirmish produces negligible asset impact (proxy weakly exposed)",
+      "USD/rates dominate gold and INDA, drowning any geopolitical signal",
+      "Full-scale escalation would far exceed these modest estimates, making the magnitude wrong in the opposite direction"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

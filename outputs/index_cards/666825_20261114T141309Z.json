@@ -1,0 +1,98 @@
+{
+  "card_id": "666825_20261114T141309Z",
+  "card_version": "v1",
+  "card_hash": "19ada06270b7c27835b40287c86bd895b8e693d65964a44b57e65129cebd82ab",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-14T14:13:09Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "666825",
+    "market_slug": "us-agrees-to-a-new-trade-deal-with-australia-before-2027",
+    "market_name": "U.S. agrees to a new trade deal with \"Australia\" before 2027?",
+    "market_url": "https://polymarket.com/market/us-agrees-to-a-new-trade-deal-with-australia-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "U.S. agrees to a new trade deal with \"Australia\" before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Australia equity (iShares MSCI Australia)",
+      "ticker": "EWA",
+      "tradable_instrument_name": "iShares MSCI Australia ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 15.0,
+      "confidence": 0.18,
+      "confidence_interval_bps": [
+        -60.0,
+        90.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check for any Reuters/Bloomberg headline on US-Australia trade talks or a signed agreement; check EWA premarket/overnight tick vs AUD.",
+        "1h": "Compare EWA move to broad EM/developed ETFs to isolate any Australia-specific component vs beta.",
+        "2h": "Look for sector-specific news (critical minerals, beef, pharma) that would give a cleaner proxy than broad EWA.",
+        "6h": "Reassess whether the prediction-market probability move persisted or reverted; check ASX futures open.",
+        "12h": "Evaluate if any public confirmation emerged; if none, treat the signal as noise and close the thesis."
+      },
+      "reasoning": "A new US-Australia trade deal would nominally benefit Australian exporters and improve bilateral access, which could modestly lift Australian equities. But the US and Australia already have a comprehensive free trade agreement (AUSFTA, in force since 2005), so a 'new' deal would be marginal and likely sector-specific (e.g. critical minerals, defense/AUKUS-adjacent). The macro move for a broad Australia ETF over a 12h window from a shift in this market's implied probability is tiny and noisy \u2014 EWA is dominated by banks and miners whose prices track iron ore/China demand far more than US tariff policy. This is a weak mapping."
+    },
+    {
+      "asset": "Australian dollar vs USD",
+      "ticker": "FXA",
+      "tradable_instrument_name": "Invesco CurrencyShares Australian Dollar Trust",
+      "asset_class": "fx_proxy",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 10.0,
+      "confidence": 0.15,
+      "confidence_interval_bps": [
+        -50.0,
+        70.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check AUD/USD spot and any trade-deal headlines; note USD DXY backdrop.",
+        "1h": "Isolate AUD move from broad USD move by checking EUR/USD and USD/JPY.",
+        "2h": "Watch China data/commodity moves that dominate AUD to avoid misattribution.",
+        "6h": "Reassess whether prediction-market probability and AUD moved together or diverged.",
+        "12h": "Close thesis if no public confirmation; log as weak/noisy mapping."
+      },
+      "reasoning": "A new trade agreement could be mildly AUD-positive via improved trade flows and sentiment, so FXA might tick up. However, AUD/USD is overwhelmingly driven by US rate differentials, China growth/commodity demand, and global risk appetite \u2014 not US-Australia bilateral trade policy, since the two already have free trade. A shift in this low-probability prediction market carries almost no identifiable FX signal over 12h."
+    }
+  ],
+  "evidence_used": [
+    "Market question: new US-Australia FTA becoming law before 2027",
+    "US and Australia already have a comprehensive FTA (AUSFTA) in force since 2005, limiting marginal impact",
+    "Liquid proxies for Australia exposure: EWA (equity ETF) and FXA/AUD (fx proxy)",
+    "EWA composition is dominated by financials and miners tied to China/commodities, not US trade policy"
+  ],
+  "uncertainty_notes": [
+    "A pre-existing FTA means a 'new' deal is marginal; magnitude of any real move is small",
+    "Broad proxies (EWA, FXA) are dominated by China/commodity and US-rate factors, diluting any trade-deal signal",
+    "12h window is too short to capture a legislative/ratification process that unfolds over months",
+    "Prediction market is a noisy sensor; a probability move may reflect speculation rather than leaked information"
+  ],
+  "llm_justification": {
+    "summary": "The market asks whether a new US-Australia trade deal becomes law before 2027. Because the two countries already have a comprehensive free trade agreement, any new deal would be marginal and sector-specific, and the most liquid proxies (EWA for Australian equities, FXA/AUD for FX) are dominated by China/commodity and US-rate factors rather than bilateral US trade policy. Both mappings are weak, with expected 12h moves far below the 700bps tradable threshold. We assign low confidence and 'unclear' direction rather than manufacture a signal.",
+    "key_assumptions": [
+      "A prediction-market probability move on this question would, if anything, be mildly positive for Australian risk assets",
+      "No major unrelated macro catalyst (China data, Fed, risk-off) dominates the window",
+      "Any real trade news would surface via credible reporting quickly"
+    ],
+    "failure_modes": [
+      "The deal is already substantially covered by existing AUSFTA, so markets ignore it entirely (already public / no marginal effect)",
+      "EWA and FXA are weakly exposed to US-Australia bilateral trade and move on China/commodity/USD factors instead",
+      "A probability move reflects speculative repricing, not leaked information, and reverts",
+      "Direction could be reversed if a 'new deal' implies tariffs or concessions perceived as negative for Australian exporters"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
