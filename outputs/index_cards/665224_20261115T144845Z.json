@@ -1,0 +1,99 @@
+{
+  "card_id": "665224_20261115T144845Z",
+  "card_version": "v1",
+  "card_hash": "a8534bcfe0dd51f23ef4dbf073e64258b53f645eefa826341e7ee5eba83cfc1a",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-15T14:48:45Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665224",
+    "market_slug": "ukraine-signs-peace-deal-with-russia-before-2027",
+    "market_name": "Ukraine signs peace deal with Russia by December 31, 2026?",
+    "market_url": "https://polymarket.com/market/ukraine-signs-peace-deal-with-russia-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Ukraine signs peace deal with Russia by December 31, 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Defense sector equities",
+      "ticker": "ITA",
+      "tradable_instrument_name": "iShares U.S. Aerospace & Defense ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -150.0,
+      "confidence": 0.38,
+      "confidence_interval_bps": [
+        -600.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move is corroborated by any newswire headline (negotiation, summit) versus isolated Polymarket drift; look at European defense names (Rheinmetall, BAE, Leonardo) pre-market/intraday for confirmation.",
+        "1h": "Confirm ITA direction aligns with European defense basket; if European defense is falling >1% but ITA flat, downgrade the US proxy.",
+        "2h": "Reassess whether the prediction-market move persists or mean-reverts; check VIX and broad risk tone to separate idiosyncratic peace signal from macro beta.",
+        "6h": "Look for official confirmation/denial from Kyiv or Moscow; if none, expect fade. Compare cumulative ITA move to defense-ETF beta to market.",
+        "12h": "Final read: did ITA underperform the broad market? Record whether move reached tradable threshold and whether any public news eventually validated the market signal."
+      },
+      "reasoning": "A sharp rise in the implied probability of a Ukraine-Russia peace/ceasefire framework reduces the expected trajectory of European (and secondarily US) defense procurement, which has been a structural tailwind for defense names since 2022. Peace de-escalation compresses the war-driven order-book premium. ITA is a liquid, broadly-traded proxy, but it is US-centric and its backlog is dominated by multi-year US programs rather than Ukraine-specific demand, so exposure is partial and the 12h reaction to a long-dated (end-2026) resolution would be muted."
+    },
+    {
+      "asset": "Central/Eastern Europe equity risk",
+      "ticker": "EPOL",
+      "tradable_instrument_name": "iShares MSCI Poland ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.33,
+      "confidence_interval_bps": [
+        -250.0,
+        550.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify the probability spike is news-driven; check EURPLN and German DAX for corroborating risk-on in European hours.",
+        "1h": "Compare EPOL to broad EM (EEM) to isolate the Ukraine-specific component versus global risk beta.",
+        "2h": "Check energy complex (European gas/TTF proxies, oil) for a parallel risk-premium unwind that would validate the de-escalation read.",
+        "6h": "Look for official statements; absent confirmation, expect partial reversal. Re-check zloty strength.",
+        "12h": "Final assessment of EPOL relative outperformance and whether the signal was corroborated or faded as noise."
+      },
+      "reasoning": "A credible rise in peace-deal odds reduces the geopolitical risk premium embedded in frontline-proximate markets; Poland is the most liquid listed proxy for Eastern European de-escalation and tends to rally on Ukraine good-news. Lower regional war risk also supports the zloty and reduces European energy risk. However, the market resolves only by end-2026 and allows a mere 'framework' to count, so a probability move is a weak, long-dated signal with limited immediate cash-flow implications; the 12h magnitude is likely small and easily swamped by EM/EU macro beta."
+    }
+  ],
+  "evidence_used": [
+    "Market question: probability that Ukraine signs a peace/ceasefire or framework instrument with Russia by Dec 31, 2026",
+    "Broad resolution criteria (any framework/roadmap, only Ukraine's signature required) lowers the bar, making the market sensitive to negotiation headlines",
+    "Structural link between the war and elevated European defense spending and regional risk premia since 2022",
+    "Liquid proxies: ITA for defense, EPOL for Eastern European de-escalation"
+  ],
+  "uncertainty_notes": [
+    "Resolution horizon is end-2026, so a probability move today is a long-dated signal with weak 12h cash-flow implications.",
+    "Defense ETFs (ITA) are dominated by multi-year US programs, diluting Ukraine-specific sensitivity.",
+    "Prediction-market drift can be liquidity/noise rather than genuine information leakage.",
+    "Macro beta (global risk tone, rates, oil) can easily dominate any Ukraine-specific signal over 12h."
+  ],
+  "llm_justification": {
+    "summary": "A sharp increase in the implied odds of a Ukraine-Russia peace or ceasefire framework would, in theory, compress the war-risk premium: defense equities (ITA) soften as the procurement tailwind fades, while frontline-adjacent markets like Poland (EPOL) and European risk assets firm. But the market's long (end-2026) horizon, loose 'framework' resolution bar, and the US-centric/beta-diluted nature of the proxies make these mappings weak and unlikely to clear the 700bps/12h tradable threshold. Both predictions are low-confidence and primarily research signals to monitor, not actionable moves.",
+    "key_assumptions": [
+      "A probability move reflects genuine new information about near-term negotiations rather than noise.",
+      "Defense backlogs and regional risk premia react, at least partially, to peace-deal expectations.",
+      "No offsetting macro shock dominates the 12h window."
+    ],
+    "failure_modes": [
+      "The move was already public (summit/negotiation headline) and fully priced, so no residual asset move.",
+      "Prediction-market drift is illiquid noise with no informational content.",
+      "Proxies are weakly exposed: ITA is driven by US defense budgets, EPOL by EM/EU beta, so Ukraine-specific signal is diluted.",
+      "Peace odds rise but war continues/talks collapse, reversing any move within hours.",
+      "A 'framework' can be signed without ending hostilities, so even a real peace signal may not materially change defense or energy fundamentals."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

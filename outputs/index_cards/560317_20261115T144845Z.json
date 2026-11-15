@@ -1,0 +1,99 @@
+{
+  "card_id": "560317_20261115T144845Z",
+  "card_version": "v1",
+  "card_hash": "c69d27abc5bba215572db9fee55edea8646af57999353d296aeb8bced663b817",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-15T14:48:45Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "560317",
+    "market_slug": "putin-out-before-2027-346",
+    "market_name": "Putin out as President of Russia by December 31, 2026?",
+    "market_url": "https://polymarket.com/market/putin-out-before-2027-346",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Putin out as President of Russia by December 31, 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 450.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -400.0,
+        1200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket probability spike is corroborated by any credible newswire (Reuters/Interfax/TASS) or is isolated speculation; check WTI front-month and USO tick reaction.",
+        "1h": "Assess whether oil has broken out of its prior range; compare with Brent and natural gas to confirm a coordinated Russia-risk move versus noise.",
+        "2h": "Look for official Kremlin statements or denials; if denied/no corroboration, fade the thesis. Re-evaluate whether move is instability (oil up) vs peace-hope (oil down).",
+        "6h": "Reassess the risk premium durability; check sanctions/OPEC commentary and whether equity risk assets confirm risk-off.",
+        "12h": "Mark final 12h return on USO; document whether the signal was real information leakage, already-public news, or noise, and whether direction matched."
+      },
+      "reasoning": "A sharp jump in the implied probability that Putin ceases to be president would signal acute political instability in a top-3 global oil/gas exporter. Sudden regime-change uncertainty typically triggers a geopolitical risk premium in crude as traders fear supply disruption, sanctions chaos, or escalation. USO is a liquid, broadly-traded proxy for front-month WTI. Direction is genuinely two-sided, however: markets could alternatively read Putin's exit as a path to de-escalation/peace in Ukraine and sanctions relief, which would push oil DOWN. On balance the immediate reflex to an abrupt removal of a nuclear-armed autocrat is risk-off/supply-fear, hence a modest upward tilt, but confidence is low and the move may not clear the 700bps tradable bar."
+    },
+    {
+      "asset": "European natural gas / European equity risk",
+      "ticker": "EZU",
+      "tradable_instrument_name": "iShares MSCI Eurozone ETF",
+      "asset_class": "etf",
+      "expected_direction": "mixed",
+      "expected_return_12h_bps": 300.0,
+      "confidence": 0.25,
+      "confidence_interval_bps": [
+        -700.0,
+        700.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify the probability move is real and check European index futures / TTF gas futures reaction.",
+        "1h": "Determine the narrative driving any move \u2014 escalation (risk-off) vs peace-hope (risk-on) \u2014 via headlines.",
+        "2h": "Check EUR and European bank/energy sector moves to disambiguate direction.",
+        "6h": "Reassess whether a coherent directional story has formed; if still two-sided, keep flat.",
+        "12h": "Record final EZU return and classify the episode; note that mixed/unclear mapping likely means no tradable edge."
+      },
+      "reasoning": "Russian political upheaval is highly salient for Europe via energy supply and the Ukraine war. A Putin-out shock is ambiguous for European equities: instability/escalation risk and a gas price spike would hurt (EZU down), while a credible path to war-end and sanctions normalization would be strongly bullish (EZU up). Because the two interpretations roughly offset in the first 12 hours and the ETF's sensitivity to this specific headline is diffuse, the mapping is weak and direction unclear. Included to flag the channel, not as a high-conviction trade."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies a sudden shift in Putin's hold on power, a tail geopolitical event",
+    "Russia is a top global exporter of crude oil and natural gas",
+    "Ukraine war and sanctions regime make Russian political stability central to European energy and risk assets",
+    "Polymarket probability is a noisy sensor that can move on speculation or thin liquidity"
+  ],
+  "uncertainty_notes": [
+    "The core ambiguity: Putin removal could mean chaos/escalation (oil up, risk-off) OR peace/sanctions-relief (oil down, risk-on)",
+    "A probability spike may reflect rumor, thin-market noise, or coordinated speculation rather than leaked information",
+    "12h window may be too short for a political event to fully transmit into asset prices",
+    "Proxies (USO, EZU) are diffusely exposed, not cleanly tied to this one event"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability of Putin leaving office would signal acute instability in a major energy exporter and the central actor in the Ukraine war. The cleanest liquid channel is crude oil, which should carry a geopolitical risk premium on abrupt instability \u2014 but the direction is genuinely two-sided because the same event could be read as a path to peace and sanctions relief, pushing oil lower. European equity risk is similarly ambiguous. Overall this is a low-confidence, mostly-unclear mapping; the oil-up tilt is the modal first reaction but may not clear the 700bps tradable threshold.",
+    "key_assumptions": [
+      "A material move in the market probability actually occurred and is detectable",
+      "Traders interpret sudden Putin removal as a supply/geopolitical risk event in the near term",
+      "Oil and European assets remain the primary transmission channels for Russia risk"
+    ],
+    "failure_modes": [
+      "Direction reverses if the event is framed as peace/de-escalation, sending oil down and European equities up",
+      "The probability move is noise/speculation with no real information, producing no asset reaction",
+      "News may already be public and priced in, so no incremental 12h move",
+      "USO and EZU are weakly and diffusely exposed; idiosyncratic oil/equity drivers could swamp any Russia-risk signal",
+      "Move fails to reach the 700bps tradable bar, making it research-only"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

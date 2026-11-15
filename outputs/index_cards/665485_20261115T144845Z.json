@@ -1,0 +1,99 @@
+{
+  "card_id": "665485_20261115T144845Z",
+  "card_version": "v1",
+  "card_hash": "78b7626656152a547dbf6b5cfe8ae39e3434a2da7f1657c236133b8090c475c4",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-15T14:48:45Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665485",
+    "market_slug": "us-forces-in-gaza-before-2027",
+    "market_name": "U.S. forces in Gaza before 2027?",
+    "market_url": "https://polymarket.com/market/us-forces-in-gaza-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "U.S. forces in Gaza before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "commodity",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.22,
+      "confidence_interval_bps": [
+        -250.0,
+        450.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability shift coincides with a concrete headline (ceasefire plan, troop announcement) and whether Brent/WTI futures ticked at all.",
+        "1h": "Compare oil move to broader risk sentiment (SPX, DXY) to isolate any Gaza-specific premium vs general macro drift.",
+        "2h": "Reassess whether the move is escalatory (premium building) or de-escalatory (stabilization narrative); update sign.",
+        "6h": "Check wire services for confirmation/denial from US/Israel officials; fade if no corroboration.",
+        "12h": "Mark outcome vs baseline; log that most 12h oil variance was macro, not this market."
+      },
+      "reasoning": "A sharp rise in the implied probability of US ground forces entering Gaza signals changing Middle East conflict dynamics. The directional effect on oil is genuinely ambiguous: direct US military involvement could mean escalation (risk premium up) OR a stabilization/ceasefire enforcement role (de-escalation, premium down). Gaza itself is not an oil producer, so transmission runs only through broader regional-conflict and Iran/Hormuz spillover risk, which is diffuse. Over a 12h window the link to a 700bps move is very unlikely."
+    },
+    {
+      "asset": "US defense sector",
+      "ticker": "ITA",
+      "tradable_instrument_name": "iShares U.S. Aerospace & Defense ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.2,
+      "confidence_interval_bps": [
+        -120.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "See if ITA constituents move on any accompanying deployment or escalation headline.",
+        "1h": "Separate defense move from overall equity tape; check relative strength vs SPY.",
+        "2h": "Look for official statements on force posture that would validate a procurement/ops narrative.",
+        "6h": "Reassess whether news is already public (then move is faded/priced).",
+        "12h": "Record final vs baseline; note weak proxy exposure."
+      },
+      "reasoning": "Higher odds of US boots on the ground in Gaza imply increased US military operational tempo and potential procurement, a mild tailwind for defense primes. But the exclusions (contractors, advisors, special forces, diplomatic entourage don't count) narrow the trigger to a large-footprint regular deployment, which is a low-probability tail event. Defense names are also driven far more by budget cycles and existing conflicts than a single Gaza-deployment probability tick, so expected 12h move is small."
+    }
+  ],
+  "evidence_used": [
+    "Market question on US regular forces physically entering Gaza terrestrial territory before 2027",
+    "Strict resolution criteria excluding maritime, airspace, buffer zones, contractors, advisors, special forces, and diplomatic personnel",
+    "Gaza is not an oil producer; transmission to markets is indirect via regional conflict risk",
+    "Long-dated horizon (through end-2026) vs a 12h prediction window"
+  ],
+  "uncertainty_notes": [
+    "Direction of oil depends on whether US entry signals escalation or stabilization \u2014 genuinely two-sided",
+    "Long resolution horizon means intraday probability moves are weakly tied to imminent asset-moving events",
+    "Strict resolution exclusions make the triggering event a narrow tail, dampening market relevance",
+    "A 700bps threshold is implausible for these liquid, diversified proxies within 12h"
+  ],
+  "llm_justification": {
+    "summary": "This market tracks a low-probability, narrowly-defined tail event (US regular ground troops physically in Gaza) over a multi-year horizon, making its 12h public-market signal weak and ambiguous. The most plausible proxies are crude oil (via Middle East risk premium, but direction is two-sided between escalation and stabilization) and US defense equities (mild upside bias). Both mappings are low-confidence and well below the 700bps tradable threshold; this is a noisy sensor best treated as non-tradable.",
+    "key_assumptions": [
+      "A sharp implied-probability move reflects new information about US-Gaza force posture rather than market noise",
+      "Oil responds to Middle East escalation/de-escalation risk premium",
+      "Defense equities get a mild bid from higher US operational-tempo expectations"
+    ],
+    "failure_modes": [
+      "The probability move is noise or reflects already-public reporting, so assets don't react",
+      "Oil direction is wrong because the event is de-escalatory (stabilization force) rather than escalatory",
+      "Gaza has no direct commodity exposure; the oil proxy is only weakly linked",
+      "Defense ETF is dominated by budget/other-conflict drivers, so this specific catalyst is immaterial",
+      "The strict resolution exclusions mean the market can move without any real-world deployment that would move assets"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "card_id": "665495_20261115T144845Z",
+  "card_version": "v1",
+  "card_hash": "34c7cc4778d2a972524dfa85c77b9180d80ce4f48ccfb5b8e420c550ca8a60e1",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-15T14:48:45Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665495",
+    "market_slug": "ukraine-joins-nato-before-2027",
+    "market_name": "Ukraine joins NATO before 2027?",
+    "market_url": "https://polymarket.com/market/ukraine-joins-nato-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Ukraine joins NATO before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "European natural gas",
+      "ticker": "UNG",
+      "tradable_instrument_name": "United States Natural Gas Fund",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": -150.0,
+      "confidence": 0.22,
+      "confidence_interval_bps": [
+        -600.0,
+        400.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket probability move is corroborated by newswire headlines on a ceasefire/security-guarantee framework; distinguish peace vs escalation narrative.",
+        "1h": "Compare TTF/European gas futures reaction vs UNG; confirm proxy is tracking.",
+        "2h": "Reassess whether the prediction-market move persists or mean-reverts as noise.",
+        "6h": "Check for official NATO/US/EU statements that would validate or kill the thesis.",
+        "12h": "Evaluate net move vs the 700bps tradable threshold; record whether signal leaked ahead of public confirmation."
+      },
+      "reasoning": "A sharp upward move in the implied probability of Ukraine joining NATO would most plausibly reflect a credible peace framework or war-termination path (since full membership is essentially impossible while active war continues). Peace would ease European energy supply fears and pressure gas prices lower. But the opposite reading\u2014NATO membership as an escalation trigger with Russia\u2014would spike risk premia higher, so direction is genuinely ambiguous. UNG (US Henry Hub) is also an imperfect proxy for European TTF dynamics."
+    },
+    {
+      "asset": "European equities",
+      "ticker": "EZU",
+      "tradable_instrument_name": "iShares MSCI Eurozone ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.2,
+      "confidence_interval_bps": [
+        -400.0,
+        450.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify the probability move against credible diplomatic headlines before attributing any equity signal.",
+        "1h": "Check Euro Stoxx 50 futures and EUR/USD for confirming risk-on/off tone.",
+        "2h": "Assess persistence vs reversal of the market move.",
+        "6h": "Scan for official statements from NATO members or Kremlin that reprice the scenario.",
+        "12h": "Measure cumulative EZU move vs threshold; log whether anomaly preceded public news."
+      },
+      "reasoning": "European equity risk premium is tightly linked to Russia-Ukraine war outcomes. A credible path to Ukraine NATO membership via a peace settlement would be risk-on for Eurozone equities (lower energy costs, reduced tail risk). However, membership obtained amid escalation/direct NATO-Russia confrontation would be sharply risk-off. The prediction market itself is a noisy sensor and the base rate of actual membership by 2026 is near zero, so most probability moves are likely noise rather than information."
+    }
+  ],
+  "evidence_used": [
+    "Market question: Ukraine full NATO membership before 2027",
+    "Base rate: full NATO membership during an active war is effectively impossible without a settlement or dramatic geopolitical shift",
+    "Linkage of Russia-Ukraine outcomes to European energy (TTF/gas) and Eurozone equity risk premium",
+    "Polymarket implied probability as a noisy leading sensor"
+  ],
+  "uncertainty_notes": [
+    "Direction is fundamentally two-sided: NATO membership could signal either peace (risk-on) or escalation (risk-off).",
+    "The underlying event has an extremely low base rate, so most probability moves are likely noise.",
+    "UNG is a weak proxy for European gas (TTF); EZU captures broad Eurozone beta, not the specific catalyst."
+  ],
+  "llm_justification": {
+    "summary": "The question maps to Russia-Ukraine war-outcome risk. A sharp probability increase most plausibly signals a peace/settlement framework (bearish European gas, bullish European equities) but could equally signal escalation (opposite), making direction genuinely ambiguous. Given the near-zero base rate of actual membership, most moves are likely noise. Both mappings carry low confidence and expected magnitudes that mostly fall below the 700bps tradable threshold.",
+    "key_assumptions": [
+      "A credible upward probability move reflects a real diplomatic/geopolitical development rather than thin-market noise.",
+      "Full membership would only occur via a broader settlement, tying the market to war-outcome risk.",
+      "European energy and equity proxies respond to Russia-Ukraine de-escalation/escalation."
+    ],
+    "failure_modes": [
+      "The probability move is pure prediction-market noise with no public-market information content.",
+      "The event was already public (headline-driven), so assets have already repriced.",
+      "Weak proxies: UNG tracks US not European gas; EZU is broad beta diluting the specific catalyst.",
+      "Direction reverses because NATO membership is read as escalation rather than peace."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

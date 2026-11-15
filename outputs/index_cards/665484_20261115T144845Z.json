@@ -1,0 +1,99 @@
+{
+  "card_id": "665484_20261115T144845Z",
+  "card_version": "v1",
+  "card_hash": "abde6510628d687734a278b355b542e64ff49ee0b9834d9176da8e5fde25df49",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-15T14:48:45Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665484",
+    "market_slug": "israel-x-turkey-military-clash-before-2027",
+    "market_name": "Israel x Turkey military clash before 2027?",
+    "market_url": "https://polymarket.com/market/israel-x-turkey-military-clash-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Israel x Turkey military clash before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Turkish equity risk",
+      "ticker": "TUR",
+      "tradable_instrument_name": "iShares MSCI Turkey ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -350.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -1200.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move is accompanied by any wire headlines (Reuters/AP) on Israel-Turkey friction over Syria; confirm TUR/lira are reacting and the move isn't idle market noise.",
+        "1h": "Compare TUR move vs broad EM ETF (EEM) to isolate Turkey-specific risk; watch USDTRY for confirmation of FX channel.",
+        "2h": "Re-assess if probability move holds or fades; check Turkish CDS and Borsa Istanbul futures for corroboration.",
+        "6h": "Look for official statements from Ankara/Jerusalem; if no escalation confirmation, expect mean reversion in TUR.",
+        "12h": "Evaluate whether the signal translated into a durable Turkey-specific repricing or was noise; close out thesis assessment."
+      },
+      "reasoning": "A sharp rise in the implied probability of a direct Israel-Turkey military clash would raise Turkish geopolitical/escalation risk premia. Turkish assets (lira, equities) are already fragile and highly sensitive to geopolitical stress; an escalation signal would pressure TUR lower via risk-off, FX weakness (TUR is USD-denominated so lira depreciation compounds losses), and foreign outflows. TUR is the most liquid pure Turkey proxy. Most realistic moves from a probability shift alone are modest (sub-700bps) unless an actual kinetic incident occurs, so this likely falls below the tradable threshold."
+    },
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "commodity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 200.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -300.0,
+        900.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check if Brent/WTI are moving in tandem with the probability shift or driven by unrelated inventory/OPEC news.",
+        "1h": "Assess whether broader Middle East risk assets (gold, VIX) confirm a risk premium story vs isolated noise.",
+        "2h": "Look for tanker-route or Eastern Mediterranean shipping disruption reports that would justify a supply premium.",
+        "6h": "Re-evaluate whether oil premium persists or fades absent a concrete incident.",
+        "12h": "Determine whether the oil move was conflict-driven or coincidental; finalize assessment."
+      },
+      "reasoning": "A material rise in Israel-Turkey conflict probability adds to Middle East war-risk premium, which can bid crude on supply-disruption fears (shipping lanes, broader regional spillover). However Turkey and Israel are not major oil producers, so the direct supply linkage is weak; the channel is sentiment/regional-contagion rather than physical barrels. This makes the signal noisy and low-confidence, likely sub-700bps unless an actual incident materializes."
+    }
+  ],
+  "evidence_used": [
+    "Market question on direct Israel-Turkey military clash by end-2026",
+    "Known fragility and geopolitical sensitivity of Turkish lira and equities",
+    "General pattern of Middle East escalation risk boosting oil and gold",
+    "Liquidity profiles of TUR and USO as the most accessible proxies"
+  ],
+  "uncertainty_notes": [
+    "This is a long-dated (through 2026) market; a 12h probability move may reflect speculation rather than imminent events.",
+    "Prediction-market probability shifts rarely map to >700bps ETF moves absent an actual kinetic incident.",
+    "Turkey and Israel are minor oil producers, so the crude linkage is contagion/sentiment-based and weak.",
+    "The signal could already be public (news-driven) rather than leaked information."
+  ],
+  "llm_justification": {
+    "summary": "A sharp increase in the implied probability of a direct Israel-Turkey military clash would most cleanly pressure Turkish risk assets (TUR lower via equity decline and lira weakness) and secondarily add a modest Middle East war-risk premium to oil. Both channels are real but likely sub-700bps unless an actual military incident occurs, so neither clears the tradable threshold on a probability move alone. Confidence is moderate-to-low given the long horizon and the market's role as a noisy sensor.",
+    "key_assumptions": [
+      "A probability move is sharp and conflict-specific, not general EM/risk noise.",
+      "Turkish assets remain the most directly exposed liquid proxy.",
+      "No prior public news has already fully priced the escalation risk."
+    ],
+    "failure_modes": [
+      "The probability move reverses quickly as speculation fades, with no real-world corroboration.",
+      "The information is already public (news-driven), so assets have already repriced before the signal.",
+      "TUR/USO are weak or mis-specified proxies\u2014Turkey-Israel tensions may hit specific names (defense, airlines) or FX more than broad ETFs.",
+      "Oil shows no reaction because neither country is a material producer and no supply route is threatened.",
+      "Risk-off could paradoxically strengthen USD/safe havens in ways that offset expected directional moves."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
