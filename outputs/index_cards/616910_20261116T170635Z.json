@@ -1,0 +1,98 @@
+{
+  "card_id": "616910_20261116T170635Z",
+  "card_version": "v1",
+  "card_hash": "67c142ff8e40b545026a12f7912e5fb1ab6e4464e0dd3e5925c683636d999623",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-16T17:06:35Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "616910",
+    "market_slug": "will-8-fed-rate-cuts-happen-in-2026",
+    "market_name": "Will 8 Fed rate cuts happen in 2026?",
+    "market_url": "https://polymarket.com/market/will-8-fed-rate-cuts-happen-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will 8 Fed rate cuts happen in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Long-dated US Treasuries",
+      "ticker": "TLT",
+      "tradable_instrument_name": "iShares 20+ Year Treasury Bond ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -60.0,
+        160.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the implied odds move persists or reverses; cross-check 2y Treasury yield and Fed funds futures for a corroborating drop.",
+        "1h": "Confirm with SOFR/Fed funds futures 2026 strip; verify no stale-print or thin-liquidity artifact in the Polymarket quote.",
+        "2h": "Look for a news catalyst (jobs shock, credit event, geopolitical escalation) that would justify a dovish repricing; if none, fade confidence.",
+        "6h": "Re-assess TLT vs intraday range; check whether equities are selling off (risk-off easing) or rallying (goldilocks easing) to disambiguate.",
+        "12h": "Evaluate whether the rate-cut repricing held into the window close and whether TLT direction matched; log outcome for calibration."
+      },
+      "reasoning": "A rising implied probability of 8 Fed cuts in 2026 (200bps of easing) signals markets pricing much more aggressive policy accommodation, typically driven by recession/deflation fear or a financial shock. Higher expected cumulative easing pulls the whole rate path lower, which mechanically bids up long-duration Treasuries. TLT is the most liquid direct proxy for this rate-path repricing."
+    },
+    {
+      "asset": "US Dollar Index",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": 25.0,
+      "confidence": 0.33,
+      "confidence_interval_bps": [
+        -70.0,
+        90.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check DXY and EURUSD for immediate reaction consistent with dovish repricing.",
+        "1h": "Determine whether move is risk-off (dollar could rally as haven, contradicting thesis) or orderly easing; adjust.",
+        "2h": "Cross-check with front-end rate differentials and gold for confirmation.",
+        "6h": "Reassess dollar direction against equity/credit tone to confirm the easing-not-panic interpretation.",
+        "12h": "Log whether UUP weakened as expected or whether haven flows dominated."
+      },
+      "reasoning": "More expected Fed cuts narrows US rate differentials versus other G10 currencies, typically weakening the dollar. A sharp rise in the 8-cut probability would be consistent with a dovish shift that pressures the greenback. UUP is a liquid dollar proxy, though the relationship is noisy and can invert in acute risk-off episodes when the dollar strengthens as a haven."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies 200bps of 2026 Fed easing (8 cuts), an extreme-dovish tail outcome",
+    "Standard macro linkage: higher expected cumulative cuts lower the rate path, bidding duration and pressuring the dollar",
+    "12h window and 700bps tradable threshold are very demanding for rates/FX proxies"
+  ],
+  "uncertainty_notes": [
+    "The 700bps threshold is almost never met by TLT or UUP in a 12h window, so neither is 'tradable' by the stated rule",
+    "Direction depends critically on WHY cuts are being priced: a recession/credit shock produces risk-off dollar strength, breaking the FX thesis",
+    "Polymarket odds on a far-tail 2026 outcome are illiquid and noisy; a single quote move may be artifact not signal",
+    "Market's 'primary topic: military_conflict' tag is likely mislabeled; treat as a pure macro/rates question"
+  ],
+  "llm_justification": {
+    "summary": "This is a macro rates question, not a geopolitical one. A sharp rise in the implied probability of 8 Fed cuts in 2026 would signal markets pricing far more aggressive easing, consistent with recession or shock risk. The cleanest liquid implications are higher long-duration Treasuries (TLT up) and a softer dollar (UUP down), both via a lower expected rate path. However, magnitudes in a 12h window fall far short of the 700bps tradable bar, confidence is modest, and the dollar leg can invert in a genuine risk-off panic.",
+    "key_assumptions": [
+      "A rise in the 8-cut probability reflects a genuine dovish repricing of the Fed path rather than market noise",
+      "The easing is interpreted as policy accommodation, not an acute haven-driven panic",
+      "Standard duration and rate-differential linkages hold over the 12h window"
+    ],
+    "failure_modes": [
+      "Move reverses as an illiquid far-tail Polymarket quote mean-reverts with no real information",
+      "Dovish repricing is driven by a crisis, causing risk-off dollar strength that breaks the UUP-down thesis",
+      "Information is already public (FOMC guidance, data) and fully priced into Treasuries and FX, leaving no edge",
+      "Proxies (TLT, UUP) are only weakly and noisily tied to a 2026-specific cut count over a 12h horizon",
+      "Neither move reaches the 700bps threshold, so predictions are non-tradable research signals only"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

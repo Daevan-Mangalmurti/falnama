@@ -1,0 +1,98 @@
+{
+  "card_id": "665243_20261116T170635Z",
+  "card_version": "v1",
+  "card_hash": "69f740da2af484713b16565d84f57309146cb843c03abecf346e961889acf12c",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-16T17:06:35Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665243",
+    "market_slug": "nato-article-5-before-2027",
+    "market_name": "NATO article 5 before 2027?",
+    "market_url": "https://polymarket.com/market/nato-article-5-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "NATO article 5 before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Aerospace & defense equities",
+      "ticker": "ITA",
+      "tradable_instrument_name": "iShares U.S. Aerospace & Defense ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 250.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -150.0,
+        900.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket probability jump coincides with a concrete headline (border incident, missile strike on NATO soil) or is thin-volume noise. Compare ITA pre-market/intraday tick vs SPY to isolate defense-specific move.",
+        "1h": "Confirm defense names (LMT, RTX, NOC) are moving in unison; if only ITA moved, treat as noise. Check European defense (Rheinmetall) for corroboration.",
+        "2h": "Assess whether broader risk-off (VIX up, bonds bid) accompanies the defense bid, which would validate the escalation thesis vs a sector-specific catalyst.",
+        "6h": "Re-check if NATO/government officials have made any public statement; if the probability reverts without news, fade the signal.",
+        "12h": "Evaluate whether defense outperformance persisted into the close of the window; log realized vs expected and whether the probability move was ultimately information-bearing."
+      },
+      "reasoning": "A sharp rise in the implied probability of a NATO Article 5 invocation signals escalating risk of direct NATO-Russia military conflict in Europe. Historically, escalation scares drive defense procurement expectations higher, benefiting aerospace & defense primes. ITA is a liquid, broad proxy. The direction is high-conviction conditional on a genuine probability jump, but 12h magnitude is usually modest unless the news is dramatic and fresh."
+    },
+    {
+      "asset": "European equities",
+      "ticker": "EZU",
+      "tradable_instrument_name": "iShares MSCI Eurozone ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -200.0,
+      "confidence": 0.38,
+      "confidence_interval_bps": [
+        -800.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether EUR/USD and Euro Stoxx futures are selling off concurrently with the market move; isolate from global macro drivers.",
+        "1h": "Verify the move is Europe-specific (EZU underperforming SPY) rather than a global risk-off day.",
+        "2h": "Watch European energy (gas) and gold for corroborating safe-haven/disruption signals.",
+        "6h": "Reassess if any official NATO communication emerges; absent news, expect mean reversion.",
+        "12h": "Log realized EZU return vs expectation and whether the prediction-market signal led price action."
+      },
+      "reasoning": "An Article 5 invocation would mean direct conflict on or near European soil, a severe risk-off shock for Eurozone equities via higher risk premia, energy disruption, and growth fears. EZU is the most directly exposed liquid proxy. However, markets may already discount a low base-rate tail, so only a large, credible probability jump would move EZU meaningfully in 12h."
+    }
+  ],
+  "evidence_used": [
+    "Market question: probability of a NATO Article 5 invocation between Nov 2025 and end-2026",
+    "Article 5 invocation implies collective-defense response to an armed attack on a member \u2014 a major European military escalation",
+    "Historical pattern: escalation scares lift defense equities and pressure European risk assets, bid safe havens"
+  ],
+  "uncertainty_notes": [
+    "A probability move on a thin, speculative prediction market may be noise, not leaked information",
+    "Base rate of Article 5 invocation is very low; the market may trade on narrative rather than concrete intelligence",
+    "12h window rarely produces 700bps moves in broad ETFs absent a dramatic headline, so most outcomes here are below the tradable threshold",
+    "Direction is clear conditional on genuine escalation, but timing and magnitude are highly uncertain"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability of a NATO Article 5 invocation maps to an escalation/risk-off regime: defense equities (ITA) higher and European equities (EZU) lower, with safe-haven and energy corroboration. The directional logic is sound but the base rate is tiny and prediction-market moves are noisy; 12h magnitudes typically fall short of the 700bps tradable bar unless accompanied by a concrete, fresh escalation headline. Treat as a monitor-and-confirm signal rather than a high-conviction trade.",
+    "key_assumptions": [
+      "A meaningful, sharp upward move in the market's implied probability has occurred (not flat baseline)",
+      "The move reflects escalation risk rather than market mechanics or thin liquidity",
+      "ITA and EZU remain liquid and representative proxies for defense upside and European risk-off"
+    ],
+    "failure_modes": [
+      "The probability move is thin-volume noise with no underlying information, and reverts within hours",
+      "The escalation is already public and priced, so no residual asset move follows the market signal",
+      "ETF proxies are weakly exposed over 12h \u2014 ITA/EZU dominated by macro (rates, broad equity beta) rather than the geopolitical tail",
+      "Direction reverses: a de-escalation or clarifying statement follows, and risk assets rally instead",
+      "Magnitude far below the 700bps threshold, making the mapping directionally correct but not tradable"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
