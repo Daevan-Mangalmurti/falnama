@@ -1,0 +1,99 @@
+{
+  "card_id": "665472_20261117T165540Z",
+  "card_version": "v1",
+  "card_hash": "b15a05c19a4f0fefa1fd9132df49ccfafdd645fbe6bcf45176e6902df95550a9",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-17T16:55:40Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665472",
+    "market_slug": "will-syria-join-the-abraham-accords-before-2027",
+    "market_name": "Will Syria join the Abraham Accords before 2027?",
+    "market_url": "https://polymarket.com/market/will-syria-join-the-abraham-accords-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Syria join the Abraham Accords before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Israel equity market",
+      "ticker": "EIS",
+      "tradable_instrument_name": "iShares MSCI Israel ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -80.0,
+        400.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether Polymarket odds move coincided with any wire headlines (Reuters/AP) on Syria-Israel talks; confirm EIS/TA-35 pre-market reaction.",
+        "1h": "Compare EIS move vs broad EM (EEM) to isolate Israel-specific signal from beta.",
+        "2h": "Look for official statements from Israeli/Syrian/US sources corroborating normalization progress.",
+        "6h": "Reassess whether move is sustained or mean-reverting; check Israeli shekel (USD/ILS) for confirmation.",
+        "12h": "Final read: did any formal diplomatic confirmation emerge, or was the market move noise? Record outcome vs expectation."
+      },
+      "reasoning": "A sharp rise in the implied probability of Syria normalizing relations with Israel would signal reduced regional conflict risk and a broadening of Israel's diplomatic/economic integration in the Middle East. That is modestly bullish for Israeli equities via lower geopolitical risk premium and improved investment sentiment. However, Syria\u2013Israel normalization is a distant, low-base-rate event (Syria remains fragmented post-Assad with heavy Iranian/Turkish and HTS-linked dynamics), so even a large move in a thin prediction market maps only weakly to a broad equity ETF over 12h. Expected magnitude is well below the 700bp tradable threshold."
+    },
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "commodity",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -60.0,
+      "confidence": 0.22,
+      "confidence_interval_bps": [
+        -300.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check Brent/WTI tick reaction and whether any broader Middle East risk headline accompanied the odds move.",
+        "1h": "Isolate whether oil move is driven by this event vs inventory/OPEC newsflow.",
+        "2h": "Monitor regional risk gauges (gold, defense names) for corroboration of de-risking narrative.",
+        "6h": "Reassess persistence; weak proxy means reversion likely.",
+        "12h": "Final read: confirm whether any oil move was attributable to Syria normalization or unrelated drivers."
+      },
+      "reasoning": "Middle East normalization progress theoretically lowers the regional geopolitical risk premium embedded in oil prices, implying mild downside. But Syria is not a meaningful oil producer and this specific diplomatic track has a very weak and noisy link to global crude pricing, which is dominated by OPEC+ decisions, demand, and broader supply dynamics. The signal is weak; direction is plausible but low-conviction and far below tradable threshold."
+    }
+  ],
+  "evidence_used": [
+    "Market question: Syria joining Abraham Accords before 2027",
+    "Region: Middle East; topic: diplomacy_treaty",
+    "Syria's unstable political situation post-Assad transition",
+    "General relationship between Middle East normalization and geopolitical risk premia"
+  ],
+  "uncertainty_notes": [
+    "Syria\u2013Israel normalization is a very low-base-rate, long-dated event; prediction market is likely thin and noisy",
+    "12h window is too short for a distant 2027-resolution treaty question to produce large, clean asset moves",
+    "Proxies (EIS, USO) are broad and only weakly exposed to this specific diplomatic track",
+    "A probability move could reflect speculation or a single rumor rather than genuine information leakage"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability of Syria joining the Abraham Accords would signal reduced Middle East geopolitical risk and deeper regional integration, modestly favoring Israeli equities (EIS) and slightly pressuring oil's risk premium (USO). However, Syria is politically fragmented and not an oil producer, the event is distant (2027 resolution), and the proxies are broadly exposed, so the mapping is weak. Neither prediction is expected to clear the 700bp tradable threshold within 12h; both are low-confidence research signals.",
+    "key_assumptions": [
+      "A prediction-market move reflects genuine diplomatic information rather than noise or manipulation",
+      "Normalization progress reduces regional geopolitical risk premium",
+      "Israeli equities and oil are at least marginally sensitive to this diplomatic track"
+    ],
+    "failure_modes": [
+      "The odds move is pure speculation/noise with no underlying information to leak",
+      "Any underlying news is already public and priced, so no residual asset move",
+      "EIS and USO are too broad/weakly exposed to register a Syria-specific diplomatic signal",
+      "Normalization could be interpreted as destabilizing for Syria internally, producing mixed or opposite reactions",
+      "12h window too short for a 2027-dated treaty question to move liquid assets at all"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

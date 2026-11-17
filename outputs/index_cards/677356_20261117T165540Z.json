@@ -1,0 +1,99 @@
+{
+  "card_id": "677356_20261117T165540Z",
+  "card_version": "v1",
+  "card_hash": "e643bc47daae546486f4683f42c175ac42ddcd02b4802d3f3ff4b2676cffc3ae",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-17T16:55:40Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "677356",
+    "market_slug": "will-india-strike-pakistan-by-december-31-2026",
+    "market_name": "Will India strike Pakistan by December 31, 2026?",
+    "market_url": "https://polymarket.com/market/will-india-strike-pakistan-by-december-31-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will India strike Pakistan by December 31, 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Indian equity (broad)",
+      "ticker": "INDA",
+      "tradable_instrument_name": "iShares MSCI India ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -200.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -700.0,
+        50.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability jump coincides with a concrete news catalyst (LoC incident, terror attack, official statement) or is pure market noise; check INDA/Nifty futures reaction.",
+        "1h": "Compare INDA move vs broad EM (EEM) to isolate India-specific risk premium; watch USD/INR.",
+        "2h": "Assess whether Indian VIX / option skew is pricing escalation; look for official government/military commentary.",
+        "6h": "Re-check if move persists or mean-reverts; monitor headlines from credible Indian/Pakistani outlets for confirmation or de-escalation.",
+        "12h": "Evaluate close: did INDA sustain weakness or reverse? Was there any real-world qualifying event? Log whether the market anticipated public news."
+      },
+      "reasoning": "A sharp rise in the implied probability that India strikes Pakistan signals elevated regional-war risk. Indian equities are the largest, most liquid regional risk asset and would sell off on escalation fears (higher risk premium, foreign outflows, insurance/defense repricing). INDA is a liquid, broadly-traded proxy. However, Indian markets have historically shown muted, short-lived reactions to limited cross-border strikes (e.g., Balakot 2019 saw Nifty largely shrug it off within days), so a full 700bps move in 12h is unlikely absent an actual confirmed strike with escalation."
+    },
+    {
+      "asset": "Indian rupee",
+      "ticker": "INR=X",
+      "tradable_instrument_name": "USD/INR spot (rupee depreciation)",
+      "asset_class": "fx_proxy",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 80.0,
+      "confidence": 0.35,
+      "confidence_interval_bps": [
+        -30.0,
+        350.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check if USD/INR offshore (NDF) is gapping; confirm catalyst vs noise.",
+        "1h": "Compare INR vs other Asian EM FX to isolate India-specific risk.",
+        "2h": "Watch for RBI intervention signals that would cap the move.",
+        "6h": "Reassess whether escalation narrative is strengthening or fading in reporting.",
+        "12h": "Log net USD/INR change and whether it tracked the prediction-market signal."
+      },
+      "reasoning": "Escalation risk typically pressures the rupee via safe-haven flows to USD and foreign portfolio outflows from Indian assets. USD/INR rising (rupee weaker) is a classic geopolitical risk response. The RBI actively manages INR, dampening volatility, so moves tend to be small and smoothed \u2014 well below the 700bps tradable threshold over 12h."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies rising conditional probability of an Indian aerial/missile/drone strike on Pakistani territory",
+    "Historical precedent: Balakot (Feb 2019) and 2025 cross-border episodes produced sharp but short-lived Indian equity and INR reactions",
+    "India and Pakistan are not major global commodity producers, so oil/gas transmission is weak",
+    "RBI actively manages rupee volatility"
+  ],
+  "uncertainty_notes": [
+    "A prediction-market probability move is a noisy sensor and may reflect speculation, not leaked information",
+    "Indian equities have repeatedly shrugged off limited strikes within days",
+    "Threshold of 700bps is unlikely to be met in 12h absent an actual confirmed strike with escalation",
+    "Direction could reverse if the strike is seen as a contained, 'war-risk-cleared' event (buy-the-news)"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability of India striking Pakistan maps most directly to downside risk in Indian equities (INDA) and mild rupee depreciation (USD/INR up) via elevated geopolitical risk premium and potential foreign outflows. However, both proxies historically show muted, mean-reverting reactions to limited cross-border strikes, and the RBI smooths INR, so expected 12h magnitudes fall well below the 700bps tradable threshold. This is a low-to-moderate confidence, non-tradable signal under the stated bar.",
+    "key_assumptions": [
+      "A move in the market reflects genuinely higher near-term escalation odds, not noise",
+      "Indian equities and INR are the dominant liquid transmission channels",
+      "No immediate, large-scale war that would produce an outsized gap"
+    ],
+    "failure_modes": [
+      "The probability move was already public/priced \u2014 no fresh asset reaction",
+      "'Buy the news': a contained strike removes uncertainty and Indian equities rally instead of fall",
+      "INDA/INR are only weakly exposed to a far-dated (end-2026) conditional event, so a shift in that long-horizon probability barely moves spot assets",
+      "RBI intervention fully absorbs the INR signal",
+      "Reversal: markets fade geopolitical headlines within hours as has happened repeatedly"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
