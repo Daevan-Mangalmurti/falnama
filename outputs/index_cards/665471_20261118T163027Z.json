@@ -1,0 +1,97 @@
+{
+  "card_id": "665471_20261118T163027Z",
+  "card_version": "v1",
+  "card_hash": "ae8026dd22fb579bf4e4100e9abf1b4c1eef0eb0f2b51eea7cbf00becbb938d5",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-18T16:30:27Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665471",
+    "market_slug": "will-kuwait-join-the-abraham-accords-before-2027",
+    "market_name": "Will Kuwait join the Abraham Accords before 2027?",
+    "market_url": "https://polymarket.com/market/will-kuwait-join-the-abraham-accords-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Kuwait join the Abraham Accords before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Israel equity (MSCI Israel)",
+      "ticker": "EIS",
+      "tradable_instrument_name": "iShares MSCI Israel ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.22,
+      "confidence_interval_bps": [
+        -150.0,
+        500.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check EIS and Israeli shekel (USD/ILS) for any directional move; scan wires for Kuwait/Gulf-Israel diplomacy headlines to see if news is already public.",
+        "1h": "Compare EIS move vs broad EM/MSCI world to isolate Israel-specific signal; verify the Polymarket probability shift is sustained, not a single-trade blip.",
+        "2h": "Re-check for official Kuwaiti or Israeli government statements; if none, downgrade confidence that the market is leaking real information.",
+        "6h": "Assess whether any move persisted into US session; look for analyst/desk commentary tying regional diplomacy to Israeli assets.",
+        "12h": "Final read: did EIS hold a directional move attributable to diplomacy, or did it revert to global-beta noise? Record outcome vs 700bp tradable threshold."
+      },
+      "reasoning": "A sharp rise in the implied probability of Kuwait \u2014 the most entrenched Gulf holdout on normalization \u2014 joining the Abraham Accords would signal a broad regional diplomatic thaw and reduced Israel-Gulf tail risk, modestly supportive of Israeli equities. But Kuwait normalizing is a low-base-rate, long-horizon (through 2026) event, so even a big probability move translates weakly and slowly into a liquid US-listed proxy over just 12 hours."
+    },
+    {
+      "asset": "Crude oil (geopolitical risk premium)",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "commodity",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": -40.0,
+      "confidence": 0.12,
+      "confidence_interval_bps": [
+        -300.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check WTI/Brent and USO for any reaction; confirm whether broader Gulf news (OPEC, production) is driving oil independently.",
+        "1h": "Isolate oil move from USD and inventory data; treat Kuwait-accords signal as low priority unless corroborated.",
+        "2h": "Look for any supply-related Kuwait/OPEC headlines that would dominate the diplomacy angle.",
+        "6h": "Reassess whether any oil move has a plausible geopolitical-premium explanation vs macro drivers.",
+        "12h": "Record whether oil moved at all in a direction consistent with de-escalation; expect no tradable signal."
+      },
+      "reasoning": "Broad Middle East de-escalation implied by Gulf-Israel normalization could trim the oil geopolitical risk premium, but Kuwait-Israel diplomacy is not materially tied to near-term supply/output and the linkage to crude is very weak and noisy. Direction is genuinely ambiguous on a 12h window."
+    }
+  ],
+  "evidence_used": [
+    "Polymarket question on Kuwait joining Abraham Accords before 2027",
+    "Kuwait's long-standing public position as the most anti-normalization Gulf state",
+    "General mapping: Israel-Gulf normalization supports Israeli equities and trims oil geopolitical premium"
+  ],
+  "uncertainty_notes": [
+    "Kuwait normalizing is a low-probability, long-dated event; a probability move rarely implies imminent signing.",
+    "US-listed proxies (EIS, USO) are diffuse and dominated by global/macro beta over a 12h window.",
+    "No evidence the prediction market has actually moved; this is a forward mapping, not a response to an anomaly.",
+    "Diplomatic normalization typically becomes public via official channels, limiting pre-public information leakage."
+  ],
+  "llm_justification": {
+    "summary": "A sharp upward move in the Kuwait-Abraham-Accords market would notionally signal regional diplomatic thaw, mildly supporting Israeli equities (EIS) and mildly compressing oil's geopolitical risk premium (USO). However, Kuwait is the hardest Gulf holdout and the event horizon runs through 2026, so the linkage to liquid assets over 12 hours is weak and well below the 700bp tradable bar. Treat as low-confidence research signal, not a trade.",
+    "key_assumptions": [
+      "A probability move reflects genuine new information about Gulf-Israel diplomacy rather than noise.",
+      "Israeli equities respond positively to normalization headlines.",
+      "Oil carries a geopolitical risk premium sensitive to Middle East de-escalation."
+    ],
+    "failure_modes": [
+      "The market move is noise/thin liquidity on a niche long-dated question with no real information.",
+      "Any diplomatic development would be publicly announced, so no pre-public leakage to exploit.",
+      "EIS and USO are weakly and indirectly exposed; global beta and macro dominate the 12h window.",
+      "Direction could reverse \u2014 normalization optimism often fades without concrete signings, especially for Kuwait."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

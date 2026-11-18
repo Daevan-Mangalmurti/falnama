@@ -1,0 +1,99 @@
+{
+  "card_id": "665473_20261118T163027Z",
+  "card_version": "v1",
+  "card_hash": "bd9dd4a1421e9be019c8b6eb3e6aaf5eca807cd15a7897509b27ebacec784834",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-18T16:30:27Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665473",
+    "market_slug": "will-lebanon-join-the-abraham-accords-before-2027",
+    "market_name": "Will Lebanon join the Abraham Accords before 2027?",
+    "market_url": "https://polymarket.com/market/will-lebanon-join-the-abraham-accords-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Lebanon join the Abraham Accords before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Israeli equity",
+      "ticker": "EIS",
+      "tradable_instrument_name": "iShares MSCI Israel ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.28,
+      "confidence_interval_bps": [
+        -150.0,
+        450.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether EIS/TA-35 futures and USD/ILS show any coincident move; scan newswires for Lebanon-Israel normalization headlines.",
+        "1h": "Compare Polymarket probability shift against any Reuters/AP reporting; if no news, treat as noise.",
+        "2h": "Re-check shekel and Israeli CDS/bank names for confirmation of risk-premium compression.",
+        "6h": "Assess whether move persists or fully reverses; look for official Lebanese/Israeli government denials.",
+        "12h": "Final read: did EIS hold a positive drift and did any corroborating diplomacy news emerge? Log outcome."
+      },
+      "reasoning": "A sharp rise in the implied probability of Lebanon normalizing with Israel would signal major regional de-escalation (implicitly a weakened Hezbollah and reduced northern-border war risk). That lowers Israel's geopolitical risk premium and would modestly support Israeli equities via EIS. But the resolution horizon is end-2026, so even a credible leak maps weakly into a 12-hour move; most of the repricing would be diffuse and slow."
+    },
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "commodity",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -80.0,
+      "confidence": 0.2,
+      "confidence_interval_bps": [
+        -350.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check Brent/WTI for any move coincident with the probability shift; scan for Middle East headlines.",
+        "1h": "Determine if any geopolitical risk-premium compression is visible across oil and gold together.",
+        "2h": "Re-evaluate against OPEC/inventory news that could dominate.",
+        "6h": "Check whether any oil move is attributable to this story or unrelated macro.",
+        "12h": "Final read on crude; log whether de-escalation narrative had measurable effect."
+      },
+      "reasoning": "Middle East normalization reduces the regional conflict/supply-disruption premium embedded in oil. A credible step toward Lebanon-Israel peace would marginally ease that premium, pressuring crude. However, Lebanon is not an oil producer and the deal is distant and highly improbable, so the mapping is weak and easily swamped by OPEC, inventory, and macro drivers."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns Lebanon formally joining the Abraham Accords by end-2026",
+    "Lebanon-Israel normalization implies reduced northern-border conflict risk and weakened Hezbollah",
+    "Resolution horizon is long-dated (Dec 2026), diluting 12h signal strength",
+    "Israel-exposed ETF (EIS) and oil are the most liquid proxies for regional risk premium"
+  ],
+  "uncertainty_notes": [
+    "Base rate of Lebanon joining the Accords is very low given Hezbollah's political role; probability moves may be speculative noise",
+    "Long resolution horizon means even genuine leaks map weakly into a 12h window",
+    "Oil and Israeli equities are driven predominantly by macro/OPEC/global factors, not this specific event",
+    "A probability spike could reflect rumor, manipulation, or thin liquidity rather than real information"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied odds of Lebanon joining the Abraham Accords would signal Middle East de-escalation, modestly supporting Israeli equities (EIS up) and easing oil's geopolitical risk premium (crude down). But the event is improbable, the resolution horizon is end-2026, and both proxies are dominated by other drivers, so the mapping is weak and neither prediction credibly clears the 700bps tradable threshold within 12 hours. Treat any correlated move as low-confidence.",
+    "key_assumptions": [
+      "A probability move reflects real information rather than thin-market noise",
+      "De-escalation would compress Israel's risk premium and oil's conflict premium",
+      "EIS and USO are the best available liquid proxies for this scenario"
+    ],
+    "failure_modes": [
+      "The probability move is speculative noise with no underlying news, so no asset reaction occurs",
+      "Any underlying diplomacy news is already public and priced, leaving no edge",
+      "Proxies are only weakly exposed: Lebanon is not an oil producer and Israeli equities track global tech/macro more than regional diplomacy",
+      "The move reverses quickly as official denials emerge given Hezbollah's veto over Lebanese normalization",
+      "Magnitude far below the 700bps tradable bar, making this non-actionable"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

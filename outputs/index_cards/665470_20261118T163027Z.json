@@ -1,0 +1,99 @@
+{
+  "card_id": "665470_20261118T163027Z",
+  "card_version": "v1",
+  "card_hash": "a986434beca5f94369e71c97929b9a8106caafe28d73f40546400c85d0e855a7",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-18T16:30:27Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665470",
+    "market_slug": "will-oman-join-the-abraham-accords-before-2027",
+    "market_name": "Will Oman join the Abraham Accords before 2027?",
+    "market_url": "https://polymarket.com/market/will-oman-join-the-abraham-accords-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Oman join the Abraham Accords before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Israel equity market",
+      "ticker": "EIS",
+      "tradable_instrument_name": "iShares MSCI Israel ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.25,
+      "confidence_interval_bps": [
+        -80.0,
+        180.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any credible normalization headline (Reuters/Axios/official Omani or Israeli statement) has surfaced to explain a probability jump; confirm EIS/TASE pre-market reaction direction.",
+        "1h": "Compare EIS move versus broad EM/global equity beta to isolate any Israel-specific component.",
+        "2h": "Reassess whether move persists or fades; look for official denials which frequently follow such rumors in the region.",
+        "6h": "Check Israeli shekel (USD/ILS) and TA-35 for corroboration; divergence would weaken the thesis.",
+        "12h": "Evaluate whether the probability shift held and whether EIS closed with any durable Israel-specific drift; log outcome for calibration."
+      },
+      "reasoning": "A sharp jump in the implied probability of Oman normalizing with Israel would signal regional diplomatic de-escalation and expanded trade/investment openings, modestly supportive of Israeli risk assets. However, a single Gulf state's accession is incremental, largely symbolic for broad equity indices, and EIS is a thin, slow-moving proxy. Effect on a 12h window is small and easily swamped by macro and security headlines."
+    },
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "commodity",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": -20.0,
+      "confidence": 0.15,
+      "confidence_interval_bps": [
+        -120.0,
+        90.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Scan for any accompanying regional security news that would move the oil risk premium more than a diplomatic rumor.",
+        "1h": "Check Brent/WTI versus DXY to separate dollar effects from any geopolitical premium change.",
+        "2h": "Reassess whether oil reaction is even detectable; if noise dominates, treat as no-signal.",
+        "6h": "Review OPEC/inventory headlines that could overwhelm any diplomacy-driven drift.",
+        "12h": "Log whether oil showed any measurable response; likely conclude the proxy is too weakly exposed."
+      },
+      "reasoning": "Gulf-Israel normalization signals marginally lower Middle East geopolitical risk premium, which could nudge oil down. But Oman is a small producer, the diplomatic step carries little direct supply implication, and oil is dominated by OPEC+ decisions, demand data, and larger geopolitical flashpoints. The mapping is weak and the sign is ambiguous over 12h."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns Oman formally joining the Abraham Accords (Israel normalization) by end-2026",
+    "Primary topic diplomacy_treaty, Middle East region",
+    "Abraham Accords historically correlate with incremental regional de-escalation narratives",
+    "Liquid proxies: EIS (Israel equities), USO (oil) as regional risk gauges"
+  ],
+  "uncertainty_notes": [
+    "A 700bps tradable threshold is implausible for a slow diplomatic market mapped to broad proxies over 12h; neither prediction reaches it.",
+    "Prediction-market probability moves on normalization are often rumor-driven and frequently reversed by official denials.",
+    "Proxies (EIS, USO) have weak, indirect exposure to a single Gulf state's accession.",
+    "Macro factors (rates, dollar, OPEC, broader conflict) dominate these instruments over any diplomacy signal."
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability of Oman joining the Abraham Accords would signal incremental Gulf-Israel normalization and modest regional de-escalation. The cleanest liquid proxies are Israeli equities (EIS, slight upside) and crude oil (USO, ambiguous/slight downside via lower risk premium). Both mappings are weak: Oman is a small player, the step is largely symbolic for broad indices, and these instruments are driven by much larger forces. Expected 12h moves are small and well below the 700bps tradable bar, so this is a research-only, non-tradable signal.",
+    "key_assumptions": [
+      "A probability jump reflects genuine leaked progress rather than noise or a denied rumor",
+      "Israeli equities and oil are the most liquid available proxies for Gulf-Israel normalization",
+      "12h horizon is too short for diplomatic developments to produce large asset moves"
+    ],
+    "failure_modes": [
+      "The probability move reverses after an official denial, a common pattern in Middle East normalization rumors",
+      "Any normalization progress may already be publicly reported and priced, leaving no edge",
+      "EIS and USO are weakly exposed to a single small Gulf state's accession; moves will be dominated by macro noise",
+      "Direction on oil is genuinely ambiguous and could move opposite to the thesis",
+      "The event is long-dated (end-2026) so near-term probability shifts carry little immediate asset relevance"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
