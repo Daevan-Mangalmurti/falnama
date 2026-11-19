@@ -1,0 +1,70 @@
+{
+  "card_id": "666831_20261119T163723Z",
+  "card_version": "v1",
+  "card_hash": "57b88ebe6886b314064940a5aa348376464eac189e5b00022a876d2b850a544a",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-19T16:37:23Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "666831",
+    "market_slug": "us-agrees-to-a-new-trade-deal-with-russia-before-2027",
+    "market_name": "U.S. agrees to a new trade deal with \"Russia\" before 2027?",
+    "market_url": "https://polymarket.com/market/us-agrees-to-a-new-trade-deal-with-russia-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "U.S. agrees to a new trade deal with \"Russia\" before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -150.0,
+      "confidence": 0.18,
+      "confidence_interval_bps": [
+        -600.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket probability move is corroborated by any newswire on U.S.-Russia diplomacy or sanctions; if purely a thin-market tick, discard.",
+        "1h": "Watch Brent/WTI futures and energy headlines for any confirming d\u00e9tente or sanctions-relief reporting.",
+        "2h": "Reassess oil tape vs. baseline energy drivers (inventories, OPEC) to isolate any Russia-specific signal.",
+        "6h": "Check European gas (TTF) and defense-sector moves as cross-confirmation of a geopolitical regime shift.",
+        "12h": "Evaluate whether oil actually moved and whether any public reporting emerged; log as noise if no corroboration."
+      },
+      "reasoning": "A sharp rise in the implied probability of a U.S.-Russia trade deal would signal major geopolitical d\u00e9tente and likely sanctions relief, which would ease constraints on Russian oil exports and increase effective global supply, pressuring crude prices lower. This is the most liquid, tradable transmission channel given that direct U.S.-listed Russia equity proxies (e.g. RSX) were delisted/liquidated post-2022. However the link is indirect and a 12h move of this magnitude from an obscure, low-probability market is unlikely."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves Yes only if a U.S.-Russia free trade agreement becomes U.S. law by Dec 31 2026 \u2014 an extremely low base-rate, politically implausible event given current sanctions regime",
+    "Post-2022 sanctions eliminated most liquid U.S.-listed direct Russia proxies (RSX delisted), leaving commodities as the cleanest transmission channel",
+    "Russian oil exports are a major swing factor in global crude supply; sanctions relief would be bearish for oil prices"
+  ],
+  "uncertainty_notes": [
+    "The underlying event is a near-zero probability, so a probability move is more likely thin-market noise than genuine information leakage",
+    "Even genuine d\u00e9tente progress would be slow and partial; a formal FTA becoming law is far removed from near-term oil pricing",
+    "Direction could invert: a deal narrative could coincide with a Ukraine settlement that reduces war-risk premium in unpredictable ways"
+  ],
+  "llm_justification": {
+    "summary": "This market asks whether a U.S.-Russia free trade agreement becomes U.S. law before 2027 \u2014 an extremely low-probability, politically improbable event. A sharp upward move in its implied probability would most plausibly signal U.S.-Russia d\u00e9tente and sanctions relief, whose cleanest liquid public-market expression is lower crude oil (more Russian supply). But the transmission is weak and indirect, liquid Russia proxies are largely gone, and any probability move is far more likely to be thin-market noise than real leaked information. Not tradable under the 700bp threshold; low confidence.",
+    "key_assumptions": [
+      "A rising probability reflects real d\u00e9tente/sanctions-relief expectations rather than market thinness",
+      "Crude oil is the most liquid available proxy for a Russia-exposure shift",
+      "Markets would price incremental geopolitical normalization into commodities faster than equities"
+    ],
+    "failure_modes": [
+      "The event is so improbable that any probability tick is noise, not signal \u2014 mapping has no real content",
+      "Oil is only weakly and ambiguously exposed; a d\u00e9tente narrative could be interpreted as risk-on and lift broad equities instead",
+      "The move may already be public (reaction to a headline) rather than leaked, removing any edge",
+      "Expected magnitude is well below the 700bp tradable threshold, so even a correct directional read is not actionable"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

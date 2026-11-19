@@ -1,0 +1,99 @@
+{
+  "card_id": "678747_20261119T163723Z",
+  "card_version": "v1",
+  "card_hash": "cd69bf22e03e5e7772caf3707d25330489e321799cb2e09affe1579dff2fd710",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-19T16:37:23Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "678747",
+    "market_slug": "will-israel-strike-4-countries-in-november-2025",
+    "market_name": "Will Israel strike 4 countries in 2026?",
+    "market_url": "https://polymarket.com/market/will-israel-strike-4-countries-in-november-2025",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Israel strike 4 countries in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 350.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -150.0,
+        900.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether crude futures (Brent/WTI) and USO gapped on any concurrent headline; confirm the prediction-market move isn't just thin-book noise.",
+        "1h": "Compare oil move to VIX and gold to see if a broad risk-off/geopolitical bid is forming versus an isolated oil tick.",
+        "2h": "Look for wire confirmation of any specific strike or escalation; if none, fade confidence as the market signal may be speculative repositioning.",
+        "6h": "Reassess whether the oil premium is holding into the US session; check tanker/freight and Gulf shipping headlines.",
+        "12h": "Evaluate whether crude closed higher and whether the prediction-market probability sustained; log whether leak hypothesis held or reverted."
+      },
+      "reasoning": "A sharp jump in the implied probability that Israel strikes a fourth country in 2026 signals rising expectations of regional escalation across the Middle East. Oil carries a geopolitical risk premium tied to Gulf supply and transit (Hormuz, Red Sea). Expanded Israeli strikes \u2014 especially implying Iran, Yemen, or Gulf-adjacent states \u2014 would raise perceived supply-disruption risk, pushing crude higher. Oil is the most liquid and direct macro proxy for Middle East conflict risk."
+    },
+    {
+      "asset": "Gold (safe haven)",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 180.0,
+      "confidence": 0.35,
+      "confidence_interval_bps": [
+        -120.0,
+        500.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm gold is rising alongside, not against, oil and against a falling equity tape to validate a risk-off read.",
+        "1h": "Check real yields and DXY; if gold's move is just rate-driven, discount the geopolitical attribution.",
+        "2h": "Scan for corroborating escalation reporting; absent it, treat the gold tick as noise.",
+        "6h": "Reassess whether safe-haven bid persists into US session or fades.",
+        "12h": "Evaluate close; record whether gold held a geopolitical premium consistent with the market signal."
+      },
+      "reasoning": "Rising probability of broader Israeli military action increases geopolitical tail risk, which tends to bid safe havens like gold. The effect is smaller and slower than oil's, and gold is also driven by rates and the dollar, making it a noisier proxy. A genuine escalation signal would produce a modest flight-to-safety bid."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves on Israel initiating strikes on a fourth country's soil in 2026 \u2014 a direct escalation-breadth indicator",
+    "Middle East conflict historically carries an oil risk premium via Gulf supply and chokepoints",
+    "Safe-haven assets (gold) typically bid during geopolitical tail-risk spikes",
+    "Prediction-market probability moves can front-run or reflect positioning ahead of public confirmation"
+  ],
+  "uncertainty_notes": [
+    "This is a full-year 2026 cumulative market, so an intraday probability move maps weakly to any single 12h asset move",
+    "Oil and gold are driven by many unrelated factors (OPEC, inventories, Fed, dollar), diluting signal attribution",
+    "A probability jump could reflect speculation or thin liquidity rather than genuine information leakage",
+    "Threshold of 700bps for 'tradable' is unlikely to be met in a typical 12h window absent a concrete strike event"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability that Israel strikes a fourth country in 2026 is a Middle East escalation-breadth signal. The cleanest liquid proxies are crude oil (up, geopolitical risk premium) and secondarily gold (up, safe-haven bid). Both mappings are directionally plausible but noisy: this is a long-horizon cumulative market, so a 12h asset move is unlikely to be large or cleanly attributable. Confidence is moderate-to-low; neither prediction reliably clears the 700bps tradable bar absent a concrete, confirmed strike.",
+    "key_assumptions": [
+      "A probability spike reflects genuinely increased escalation expectations, not book noise",
+      "Escalation implied involves oil-relevant geography (Gulf/Iran/Yemen/Red Sea corridor)",
+      "Macro backdrop does not overwhelm the geopolitical signal in the 12h window"
+    ],
+    "failure_modes": [
+      "The escalation is already public (strike already reported), so assets have already repriced and no edge remains",
+      "The probability move is thin-liquidity noise with no informational content",
+      "Implied strikes target non-oil-relevant geography, breaking the oil proxy linkage",
+      "Oil and gold moves are dominated by unrelated macro drivers (Fed, inventories, dollar), masking or reversing the thesis",
+      "A cumulative-year market moves for reasons unrelated to any imminent 12h-horizon event"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

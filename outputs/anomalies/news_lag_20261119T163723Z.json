@@ -1,0 +1,167 @@
+[
+  {
+    "market_name": "Anthropic IPO before 2027?",
+    "market_id": "676792",
+    "anomaly_trigger_time_utc": "2026-11-07T06:00:29Z",
+    "lookback_hours": 48.0,
+    "public_information_score": 15.0,
+    "residual_anomaly_score": 84.1,
+    "information_state": "speculation",
+    "evidence": [
+      {
+        "snippet": "Is Anthropic About To Delay The Biggest IPO Ever ? ",
+        "source": "zerohedge.com",
+        "url": "https://www.zerohedge.com/ai/anthropic-about-delay-biggest-ipo-ever",
+        "published_time_utc": "2026-11-06T04:00:00Z",
+        "information_state": "speculation"
+      },
+      {
+        "snippet": "Will AI backlash delay Anthropic IPO ? Investors raise doubts",
+        "source": "thehindubusinessline.com",
+        "url": "https://www.thehindubusinessline.com/markets/will-ai-backlash-delay-anthropic-ipo-investors-raise-doubts/article71672682.ece",
+        "published_time_utc": "2026-11-06T04:30:00Z",
+        "information_state": "speculation"
+      },
+      {
+        "snippet": "Major investors are skeptical Anthropic IPO can achieve $1 . 5 trillion valuation",
+        "source": "livemint.com",
+        "url": "https://www.livemint.com/global/major-investors-are-skeptical-anthropic-ipo-can-achieve-1-5-trillion-valuation-11793927272641.html",
+        "published_time_utc": "2026-11-06T03:30:00Z",
+        "information_state": "speculation"
+      },
+      {
+        "snippet": "AI backlash could threaten Anthropic IPO timing , potential investors say",
+        "source": "economictimes.indiatimes.com",
+        "url": "https://economictimes.indiatimes.com/markets/us-stocks/news/ai-backlash-could-threaten-anthropic-ipo-timing-potential-investors-say/articleshow/135589533.cms",
+        "published_time_utc": "2026-11-06T02:00:00Z",
+        "information_state": "speculation"
+      },
+      {
+        "snippet": "AI backlash could threaten Anthropic IPO timing , potential investors say",
+        "source": "bdnews24.com",
+        "url": "https://bdnews24.com/technology/nfg3n2d05b",
+        "published_time_utc": "2026-11-06T05:30:00Z",
+        "information_state": "speculation"
+      },
+      {
+        "snippet": "Anthropic IPO Could Make Hundreds Of Employees Millionaires As CEO Dario Amodei Worries About Mission",
+        "source": "freepressjournal.in",
+        "url": "https://www.freepressjournal.in/tech/anthropic-ipo-could-make-hundreds-of-employees-millionaires-as-ceo-dario-amodei-worries-about-mission",
+        "published_time_utc": "2026-11-06T08:30:00Z",
+        "information_state": "speculation"
+      }
+    ],
+    "uncertainty_note": "All pre-trigger articles point toward delay/skepticism (downward pressure), yet the market moved UP sharply; the catalyst for the upward move is not present in these snippets and may be a retrieval gap (e.g. a filing or announcement breaking elsewhere).",
+    "mode": "live"
+  },
+  {
+    "market_name": "Netanyahu out by end of 2026?",
+    "market_id": "567688",
+    "anomaly_trigger_time_utc": "2026-11-06T18:00:29Z",
+    "lookback_hours": 48.0,
+    "public_information_score": 85.0,
+    "residual_anomaly_score": 14.4,
+    "information_state": "official_announcement",
+    "evidence": [
+      {
+        "snippet": "Netanyahu devrinin sonu ! Kap\u0131lar bir bir kapand\u0131",
+        "source": "hurriyet.com.tr",
+        "url": "https://www.hurriyet.com.tr/dunya/netanyahu-devrinin-sonu-kapilar-bir-bir-kapandi-43367804",
+        "published_time_utc": "2026-11-06T08:30:00Z",
+        "information_state": "speculation"
+      },
+      {
+        "snippet": "Duminic\u0103 , cap\u0103t de linie pentru Netanyahu ? Da sau nu ? ",
+        "source": "bursa.ro",
+        "url": "https://www.bursa.ro/duminica-capat-de-linie-pentru-netanyahu-da-sau-nu-89649064",
+        "published_time_utc": "2026-11-06T09:30:00Z",
+        "information_state": "speculation"
+      },
+      {
+        "snippet": "M\u00f6glicher Machtwechsel ? Israel unter Eisenkot \u2013 was sich \u00e4ndern k\u00f6nnte",
+        "source": "rundschau-online.de",
+        "url": "https://www.rundschau-online.de:443/politik/moeglicher-machtwechsel-israel-unter-eisenkot-was-sich-aendern-koennte-1410663",
+        "published_time_utc": "2026-11-06T09:30:00Z",
+        "information_state": "speculation"
+      },
+      {
+        "snippet": "M\u00f6glicher Machtwechsel ?: Israel unter Eisenkot : Was sich \u00e4ndern k\u00f6nnte",
+        "source": "oz-online.de",
+        "url": "https://www.oz-online.de/artikel/1701247/Israel-unter-Eisenkot-Was-sich-aendern-koennte",
+        "published_time_utc": "2026-11-06T08:30:00Z",
+        "information_state": "speculation"
+      },
+      {
+        "snippet": "Israel Opposition Figure Makes U - Turn on Ultra - Orthodox Draft to Oust Netanyahu",
+        "source": "english.aawsat.com",
+        "url": "https://english.aawsat.com/world/5338232-israel-opposition-figure-makes-u-turn-ultra-orthodox-draft-oust-netanyahu",
+        "published_time_utc": "2026-11-06T11:00:00Z",
+        "information_state": "confirmation"
+      },
+      {
+        "snippet": "Israel president to announce Sunday who will form new government - Breaking News",
+        "source": "dailymirror.lk",
+        "url": "https://www.dailymirror.lk/breaking-news/Israel-president-to-announce-Sunday-who-will-form-new-government/108-354352",
+        "published_time_utc": "2026-11-06T12:00:00Z",
+        "information_state": "official_announcement"
+      }
+    ],
+    "uncertainty_note": "Article [5] signals an imminent presidential announcement on government formation, which is consistent with the market move up. However, the snippets are thin and do not explicitly state Netanyahu's removal\u2014only that a NEW government will be formed. The timing (announcement on Sunday, trigger on Friday 18:00 UTC) and the convergence of opposition moves and institutional signals strongly support the move, but full text would confirm whether Netanyahu's departure was explicitly announced or merely implied by the formation process.",
+    "mode": "live"
+  },
+  {
+    "market_name": "Will Israel strike 4 countries in 2026?",
+    "market_id": "678747",
+    "anomaly_trigger_time_utc": "2026-11-10T13:00:18Z",
+    "lookback_hours": 48.0,
+    "public_information_score": 10.0,
+    "residual_anomaly_score": 83.5,
+    "information_state": "market_commentary",
+    "evidence": [
+      {
+        "snippet": "\u0635\u064f\u0646\u0639 \u0641\u064a \u0627\u0644\u0647\u0646\u062f .. \u0643\u064a\u0641 \u0635\u0627\u0631\u062a \u0646\u064a\u0648\u062f\u0644\u0647\u064a \u0645\u0635\u0646\u0639\u0627 \u0644\u0644\u0633\u0644\u0627\u062d \u0627\u0644\u0625\u0633\u0631\u0627\u0626\u064a\u0644\u064a \u061f ",
+        "source": "aljazeera.net",
+        "url": "https://www.aljazeera.net/politics/2026/11/8/%D8%B5%D9%86%D8%B9-%D9%81%D9%8A-%D8%A7%D9%84%D9%87%D9%86%D8%AF-%D9%83%D9%8A%D9%81-%D8%B5%D8%A7%D8%B1%D8%AA-%D9%86%D9%8A%D9%88%D8%AF%D9%84%D9%87%D9%8A-%D9%85%D8%B5%D9%86%D8%B9%D8%A7",
+        "published_time_utc": "2026-11-08T19:30:00Z",
+        "information_state": "retrospective"
+      },
+      {
+        "snippet": "\u041f\u044f\u0442\u044c \u043e\u0441\u0442\u0430\u0432\u0448\u0438\u0445\u0441\u044f \u0443 \u0422\u0440\u0430\u043c\u043f\u0430 \u0441\u043f\u043e\u0441\u043e\u0431\u043e\u0432 \u0438\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u043c\u0438\u0440 ( Bloomberg , \u0421\u0428\u0410 ) ",
+        "source": "inosmi.ru",
+        "url": "https://inosmi.ru/20261110/tramp-281098250.html",
+        "published_time_utc": "2026-11-10T05:30:00Z",
+        "information_state": "market_commentary"
+      },
+      {
+        "snippet": "Vliv Donalda Trumpa sl\u00e1bne . Co bude d\u00e1l s Ruskem , Izraelem \u2013 a s n\u00e1mi ostatn\u00edmi ? | 9 . 11 . 2026",
+        "source": "blisty.cz",
+        "url": "https://www.blisty.cz/art/137312-vliv-donalda-trumpa-slabne-co-bude-dal-s-ruskem-izraelem-a-s-nami-ostatnimi.html",
+        "published_time_utc": "2026-11-09T01:00:00Z",
+        "information_state": "market_commentary"
+      },
+      {
+        "snippet": "Guerre hybride en Europe : qui pirate les frigos ? ",
+        "source": "libnanews.com",
+        "url": "https://libnanews.com/guerre-hybride-en-europe-qui-pirate-les-frigos/",
+        "published_time_utc": "2026-11-10T00:30:00Z",
+        "information_state": "retrospective"
+      },
+      {
+        "snippet": "War On Iran : \u2013 Khamenei Order To End Ambiguous Situation \u2013 Moon of Alabama",
+        "source": "moonofalabama.org",
+        "url": "https://www.moonofalabama.org/2026/11/war-on-iran-khamenei-order-to-end-ambiguous-situation.html/comment-page-2",
+        "published_time_utc": "2026-11-10T03:30:00Z",
+        "information_state": "speculation"
+      },
+      {
+        "snippet": "Nahost - Liveblog : Eisenkot : Israel \u201e an extrem gef\u00e4hrlichem Punkt  - Politik",
+        "source": "sueddeutsche.de",
+        "url": "https://www.sueddeutsche.de/politik/liveblog-nahost-israel-eisenkot-regierungsbildung-notstand-li.3571386",
+        "published_time_utc": "2026-11-08T18:30:00Z",
+        "information_state": "market_commentary"
+      }
+    ],
+    "uncertainty_note": "None of the pre-trigger snippets report a concrete development that would lower the probability of Israel striking a fourth country; coverage is tangential or commentary, and the sharp drop may reflect news that broke on social media or non-indexed outlets, so this could be a retrieval gap.",
+    "mode": "live"
+  }
+]

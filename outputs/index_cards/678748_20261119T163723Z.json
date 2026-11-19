@@ -1,0 +1,99 @@
+{
+  "card_id": "678748_20261119T163723Z",
+  "card_version": "v1",
+  "card_hash": "2145215489e6978e492091fb92bd54c67e7d0ea5c7b96640633edf0d6b2cb739",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-19T16:37:23Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "678748",
+    "market_slug": "will-israel-strike-5-countries-in-november-2025",
+    "market_name": "Will Israel strike 5 countries in 2026?",
+    "market_url": "https://polymarket.com/market/will-israel-strike-5-countries-in-november-2025",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Israel strike 5 countries in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 150.0,
+      "confidence": 0.33,
+      "confidence_interval_bps": [
+        -150.0,
+        500.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any breaking headline (named country, imminent strike) is driving the market move versus a slow drift; check Brent/WTI front-month tick reaction.",
+        "1h": "Compare USO move against broad risk sentiment (SPX, VIX) to isolate geopolitical premium from macro noise.",
+        "2h": "Look for confirmation in energy equity complex (XLE) and tanker/shipping names; fade if no corroborating flow.",
+        "6h": "Reassess whether crude held any premium into the session; check OPEC/Gulf official commentary.",
+        "12h": "Evaluate if move persisted or reverted to pre-signal level; log outcome for calibration."
+      },
+      "reasoning": "A sharp rise in the implied probability that Israel strikes five different countries in 2026 signals markets pricing broader Middle East military escalation. Escalation across multiple sovereign territories raises geopolitical risk premium on crude via threats to regional supply, shipping lanes (Strait of Hormuz, Red Sea), and possible Iran/Gulf involvement. Oil is the most direct liquid proxy. But this is a full-year, multi-country resolution question \u2014 not a specific imminent strike \u2014 so the mapping to a 12h oil move is weak and noisy; a probability shift reflects diffuse expectations rather than a dated catalyst."
+    },
+    {
+      "asset": "Defense & aerospace equities",
+      "ticker": "ITA",
+      "tradable_instrument_name": "iShares U.S. Aerospace & Defense ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 80.0,
+      "confidence": 0.28,
+      "confidence_interval_bps": [
+        -120.0,
+        300.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check for any specific escalation headline that would move defense names; watch pre-market/intraday ITA ticks.",
+        "1h": "Compare ITA against broad market beta to separate idiosyncratic defense bid.",
+        "2h": "Scan individual primes (LMT, RTX, NOC) and Israeli defense names for leadership.",
+        "6h": "Reassess whether any sustained defense bid is present or just noise.",
+        "12h": "Record close-of-window outcome versus baseline; note whether signal had predictive value."
+      },
+      "reasoning": "Rising odds of expanded Israeli strike activity across multiple countries implies sustained regional conflict, supporting defense procurement/munitions demand expectations, which modestly benefits defense primes. However, ITA responds mainly to US budget and large procurement cycles, not a single prediction-market probability; the exposure is weak and slow-moving, making a meaningful 12h move unlikely."
+    }
+  ],
+  "evidence_used": [
+    "Market question measures Israeli strikes on 5 different foreign countries' soil during calendar 2026",
+    "Resolution excludes intercepted missiles, SAMs, ground operations \u2014 i.e. tracks genuine cross-border aerial escalation",
+    "Primary topic military_conflict, region middle_east",
+    "Historical pattern: Middle East escalation adds geopolitical risk premium to crude and modest bid to defense equities"
+  ],
+  "uncertainty_notes": [
+    "This is a year-long, multi-country aggregate question, not a dated single-strike catalyst, so probability moves map weakly to any 12h asset move",
+    "Oil's reaction depends heavily on whether escalation threatens actual supply/transit chokepoints",
+    "A probability shift may reflect already-public news, offering no leak edge",
+    "Neither proxy is likely to reach the 700bps tradable threshold in 12h"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability that Israel strikes five different countries in 2026 is a diffuse signal of expected broadening Middle East military escalation. The most defensible liquid implications are a modest geopolitical risk premium in crude oil (USO up) and a slight bid in defense/aerospace equities (ITA up). Both mappings are weak and noisy because this is a full-year aggregate resolution rather than a dated imminent-strike event; neither is likely to clear the 700bps tradable bar in 12 hours. Treat as low-confidence research signals, not actionable trades.",
+    "key_assumptions": [
+      "A probability jump reflects new expectations of regional escalation rather than noise or stale news",
+      "Escalation across multiple countries plausibly implicates oil-supply-relevant geographies (Iran, Gulf, Red Sea)",
+      "Oil and defense are the cleanest liquid proxies for Middle East conflict risk"
+    ],
+    "failure_modes": [
+      "The move reverses as a transient prediction-market blip with no real-world driver",
+      "The escalation news is already public and fully priced into oil/defense",
+      "Strikes are on non-oil-relevant countries (e.g. Syria, Lebanon, Yemen) with minimal supply impact, so crude barely reacts",
+      "Macro factors (Fed, growth data, inventories) dominate oil over the 12h window, swamping the geopolitical signal",
+      "ITA is driven by US budget cycles and has only tenuous exposure to a single foreign conflict probability"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

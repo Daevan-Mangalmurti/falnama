@@ -1,0 +1,99 @@
+{
+  "card_id": "678749_20261119T163723Z",
+  "card_version": "v1",
+  "card_hash": "4f581e98dde3b80ac0139cdeb74d3d19e5c4e0145b6570900077e7c92edd8051",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-19T16:37:23Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "678749",
+    "market_slug": "will-israel-strike-6-countries-in-2026",
+    "market_name": "Will Israel strike 6 countries in 2026?",
+    "market_url": "https://polymarket.com/market/will-israel-strike-6-countries-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Israel strike 6 countries in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "commodity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 250.0,
+      "confidence": 0.33,
+      "confidence_interval_bps": [
+        -200.0,
+        900.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability jump coincides with a concrete breaking-news strike headline (Reuters/AP) vs. pure market drift; look at Brent front-month tick reaction.",
+        "1h": "Compare USO/Brent move to baseline energy volatility; check if OPEC-region names (XLE) confirm risk-on-energy.",
+        "2h": "Reassess whether any named country (Iran, Yemen, Iraq) is mentioned in reporting; widen or cut thesis if no corroboration.",
+        "6h": "Evaluate whether oil move persisted or mean-reverted; check tanker/freight rate chatter and gold for corroborating risk bid.",
+        "12h": "Mark final return vs. prediction; note if move was noise-dominated and whether the probability shift preceded any public strike."
+      },
+      "reasoning": "A sharp rise in the implied probability that Israel strikes six different countries in 2026 signals expected broad regional escalation across the Middle East, raising supply-disruption risk premia for oil (especially if Iran, Iraq, Yemen, or Gulf shipping lanes are implicated). Oil is the most direct liquid proxy for Middle East war risk. However, this is a full-year, broad-count market, so a probability shift is diffuse and rarely maps to an imminent 12h catalyst; the big 700bps+ moves only occur on an actual strike headline, not a slow repricing."
+    },
+    {
+      "asset": "Israeli equities",
+      "ticker": "EIS",
+      "tradable_instrument_name": "iShares MSCI Israel ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -150.0,
+      "confidence": 0.28,
+      "confidence_interval_bps": [
+        -600.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check EIS/TA-35 reaction and whether a specific strike headline is driving the probability move.",
+        "1h": "Compare to shekel (USD/ILS) move for corroboration of risk-off.",
+        "2h": "Assess whether market reads escalation as destabilizing vs. decisive/contained.",
+        "6h": "Check persistence and whether global risk sentiment (SPX) is confounding.",
+        "12h": "Mark final return; note weak proxy exposure and possible resilience/rally reversal."
+      },
+      "reasoning": "Escalation to strikes across many countries raises Israeli geopolitical/war-risk premium, pressuring Israeli equity and the shekel. EIS is a liquid proxy. But Israeli markets have historically been resilient and sometimes rally on decisive military action, so direction is genuinely ambiguous; a broad 2026 escalation count is also slow-moving and weakly tied to a 12h window. Confidence is low and the move is unlikely to reach the 700bps tradable threshold."
+    }
+  ],
+  "evidence_used": [
+    "Market question measures Israel initiating strikes on 6 different countries' soil in 2026 \u2014 a broad regional escalation indicator",
+    "Primary topic military_conflict, region middle_east",
+    "Oil and gold are standard liquid proxies for Middle East war-risk premia",
+    "Israeli equity ETF EIS as direct national exposure"
+  ],
+  "uncertainty_notes": [
+    "Full-year 2026 count market is diffuse; probability shifts rarely map to a concrete 12h catalyst",
+    "700bps threshold almost certainly not met absent an actual strike headline",
+    "Israeli equities can rise on decisive military action, making direction ambiguous",
+    "A probability move may reflect general sentiment or low-liquidity noise rather than leaked information"
+  ],
+  "llm_justification": {
+    "summary": "A sharp upward move in this market implies expected broad Middle East escalation, which most cleanly maps to higher oil risk premia (USO up) and modest pressure on Israeli equities (EIS down). But the market is a diffuse full-year count, poorly tied to a 12h window, so expected moves are small, confidence is low, and neither prediction is likely tradable unless accompanied by an actual breaking strike event.",
+    "key_assumptions": [
+      "A probability jump reflects anticipated real escalation rather than noise",
+      "Oil carries a Middle East supply-risk premium that reprices on escalation expectations",
+      "The repricing is roughly contemporaneous with tradable-hours liquidity"
+    ],
+    "failure_modes": [
+      "The probability move is slow drift or thin-market noise with no public-market echo",
+      "Escalation news was already public and priced, so no fresh move",
+      "Oil fails to react because named targets lack supply relevance (e.g., Syria, Lebanon)",
+      "Israeli equities rally on decisive action, reversing the down thesis",
+      "Move reverses within 12h as risk premium fades without a confirmed strike"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
