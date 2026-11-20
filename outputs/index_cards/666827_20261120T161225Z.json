@@ -1,0 +1,99 @@
+{
+  "card_id": "666827_20261120T161225Z",
+  "card_version": "v1",
+  "card_hash": "db4ced768b67d42856d26bc15b5a6370b40c64786a7387abf9c595b43460625d",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-20T16:12:25Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "666827",
+    "market_slug": "us-agrees-to-a-new-trade-deal-with-south-korea-before-2027",
+    "market_name": "U.S. agrees to a new trade deal with \"South Korea\" before 2027?",
+    "market_url": "https://polymarket.com/market/us-agrees-to-a-new-trade-deal-with-south-korea-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "U.S. agrees to a new trade deal with \"South Korea\" before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "South Korea equity",
+      "ticker": "EWY",
+      "tradable_instrument_name": "iShares MSCI South Korea ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -80.0,
+        400.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket probability move coincides with any wire reporting (Reuters/Yonhap) on USTR-Korea talks; confirm EWY/overnight KOSPI futures direction.",
+        "1h": "Compare EWY move to broad EM (EEM) to isolate Korea-specific vs beta; watch KRW spot.",
+        "2h": "Reassess if move is holding or fading; check options-implied vol on EWY for confirmation.",
+        "6h": "Look for official statements from USTR, Korean trade ministry, or Blue House; reassess probability durability.",
+        "12h": "Evaluate whether EWY sustained the move into US/Asia session handoff; if no news surfaced, treat as noise."
+      },
+      "reasoning": "A sharp rise in the implied probability of a new US-Korea trade deal becoming law would signal reduced tariff/trade friction for Korea's export-heavy economy. EWY is the most liquid single-country proxy for Korean large caps (Samsung, SK Hynix, Hyundai) that benefit from tariff certainty and improved access to US markets. However, the US and Korea already have KORUS FTA in force, so a 'new' deal is incremental, limiting magnitude."
+    },
+    {
+      "asset": "Korean won",
+      "ticker": null,
+      "tradable_instrument_name": "USD/KRW spot (won strengthening)",
+      "asset_class": "fx_proxy",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.35,
+      "confidence_interval_bps": [
+        -60.0,
+        220.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check USD/KRW spot and NDF for any immediate reaction to the probability move.",
+        "1h": "Compare KRW to DXY and broad Asian FX (CNH, TWD) to isolate idiosyncratic Korea signal.",
+        "2h": "Reassess whether move persists; check Bank of Korea or MOF commentary.",
+        "6h": "Scan for trade headline confirmation; reassess if KRW move was news-driven or beta.",
+        "12h": "Evaluate whether KRW held gains; absent confirming news, downgrade signal to noise."
+      },
+      "reasoning": "Improved trade relations and reduced tariff risk typically support the Korean won via stronger export outlook and risk sentiment. A deal probability jump could nudge KRW stronger (USD/KRW lower). FX moves are modest for incremental trade news and the won is heavily driven by global USD/semiconductor cycle, so exposure is diluted."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns a US-South Korea trade deal becoming law by end-2026",
+    "Korea is export-oriented with large exposure to US tariff policy",
+    "EWY is the primary liquid US-listed proxy for Korean equities",
+    "KORUS FTA already exists, making a 'new' deal incremental"
+  ],
+  "uncertainty_notes": [
+    "A probability move may reflect political/procedural chatter rather than economically material terms",
+    "Korean assets are dominated by the global semiconductor cycle and USD, diluting trade-specific signal",
+    "The resolution requires enactment into US law by end-2026 \u2014 a long horizon that weakens near-term 12h asset impact",
+    "Prediction markets are noisy and may already reflect public reporting"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability of a new US-South Korea trade deal becoming law would be mildly bullish for Korean equities (EWY) and the Korean won, reflecting reduced tariff risk and improved export access. However, because KORUS FTA already exists and the resolution horizon runs through 2026, the near-term 12h asset impact is likely modest and below the 700bps tradable threshold. Both mappings carry meaningful uncertainty given that Korean assets are dominated by the semiconductor cycle and global USD moves.",
+    "key_assumptions": [
+      "A probability move reflects genuine new information about deal progress, not noise",
+      "A deal would materially improve Korea's trade/export outlook",
+      "EWY and KRW are reasonable proxies for Korea trade sentiment"
+    ],
+    "failure_modes": [
+      "The move was already public via trade-talk reporting, so assets have priced it",
+      "Magnitude far below 700bps threshold \u2014 not tradable, correctly flagged",
+      "Korean assets dominated by chip cycle/USD, so trade news is a weak driver",
+      "Probability jump reflects procedural/political speculation with no economic substance",
+      "Direction could reverse if a 'deal' includes concessions unfavorable to Korean exporters"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

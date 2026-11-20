@@ -1,0 +1,96 @@
+{
+  "card_id": "666826_20261120T161225Z",
+  "card_version": "v1",
+  "card_hash": "460f9cbf08746a44621877b9431019d4c5a23bab4023062691d40102e3235982",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-20T16:12:25Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "666826",
+    "market_slug": "us-agrees-to-a-new-trade-deal-with-mexico-before-2027",
+    "market_name": "U.S. agrees to a new trade deal with \"Mexico\" before 2027?",
+    "market_url": "https://polymarket.com/market/us-agrees-to-a-new-trade-deal-with-mexico-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "U.S. agrees to a new trade deal with \"Mexico\" before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Mexican peso (USD/MXN proxy)",
+      "ticker": "FXM",
+      "tradable_instrument_name": "Invesco CurrencyShares Mexican Peso Trust",
+      "asset_class": "fx_proxy",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -120.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether USD/MXN spot moved and whether any Reuters/Bloomberg trade headline accompanies the Polymarket shift.",
+        "1h": "Compare FXM move vs broad USD (DXY) to isolate peso-specific vs dollar-wide moves.",
+        "2h": "Look for confirming official statements from USTR, Mexican economy ministry, or White House.",
+        "6h": "Reassess whether probability move held or reverted; check EWW (Mexico equity ETF) for corroboration.",
+        "12h": "Evaluate whether any public news materialized; if not, treat the Polymarket move as noise."
+      },
+      "reasoning": "A higher implied probability of a new U.S.-Mexico trade deal reduces tariff/trade-war risk premium on the peso, which is highly sensitive to U.S. trade policy. FXM tracks peso appreciation vs USD. However this is an FX proxy with modest sensitivity and the 12h move from a probability shift alone would be small, well under the 700bps tradable threshold."
+    },
+    {
+      "asset": "Mexico equities",
+      "ticker": "EWW",
+      "tradable_instrument_name": "iShares MSCI Mexico ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 50.0,
+      "confidence": 0.28,
+      "confidence_interval_bps": [
+        -150.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check EWW premarket/intraday against S&P 500 to isolate Mexico-specific move.",
+        "1h": "Scan for tariff-related headlines (autos, steel) that could drive the market.",
+        "2h": "Confirm whether peso and EWW are moving in the same risk-on direction.",
+        "6h": "Reassess if the Polymarket probability shift persisted or faded.",
+        "12h": "Judge whether a credible trade-policy catalyst emerged; otherwise classify as weak/noise."
+      },
+      "reasoning": "Reduced trade/tariff risk from a prospective deal is broadly positive for Mexican equities, which are heavily exposed to U.S. trade access. EWW is a liquid proxy. But USMCA already exists, so a 'new deal' resolution is ambiguous and likely incremental; magnitude in 12h would be small and far below tradable threshold."
+    }
+  ],
+  "evidence_used": [
+    "Market question on a new U.S.-Mexico trade agreement becoming law by end-2026",
+    "Mexican peso and Mexican equities are known to be highly sensitive to U.S. trade policy and tariff risk",
+    "Resolution depends on a formal law/agreement, a slow legislative process unlikely to resolve in a 12h window"
+  ],
+  "uncertainty_notes": [
+    "USMCA already governs U.S.-Mexico trade, so what counts as a 'new deal' is ambiguous and may blunt market reaction",
+    "A probability shift on a 2026 resolution does not imply imminent public news within 12h",
+    "FX and equity proxies have modest, noisy sensitivity to prediction-market probability changes"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability of a new U.S.-Mexico trade deal would most plausibly support the Mexican peso (FXM) and Mexican equities (EWW) by reducing tariff/trade-war risk premium. However, USMCA already exists, the resolution horizon is end-2026, and legislative processes are slow, so any 12h asset move would likely be small and well below the 700bps tradable threshold. Low confidence; treat as weak mapping.",
+    "key_assumptions": [
+      "Peso and Mexican equities react positively to lower trade-policy uncertainty",
+      "A Polymarket probability jump partly reflects non-public information rather than pure noise",
+      "No offsetting dollar-wide or global risk factor dominates the 12h window"
+    ],
+    "failure_modes": [
+      "The probability move is noise with no public catalyst, producing no asset move",
+      "A 'new deal' is just a USMCA review/extension already priced in, so no reaction",
+      "Peso and EWW moves are driven by broad USD or Fed/global risk factors, not Mexico-specific trade news",
+      "Direction could reverse if a 'deal' is accompanied by new tariff concessions hurting Mexican exporters"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
