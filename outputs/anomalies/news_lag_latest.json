@@ -4,8 +4,8 @@
     "market_id": "567688",
     "anomaly_trigger_time_utc": "2026-11-20T16:00:26Z",
     "lookback_hours": 48.0,
-    "public_information_score": 18.0,
-    "residual_anomaly_score": 80.0,
+    "public_information_score": 12.0,
+    "residual_anomaly_score": 84.1,
     "information_state": "speculation",
     "evidence": [
       {
@@ -34,7 +34,7 @@
         "source": "record-bee.com",
         "url": "https://www.record-bee.com/2026/11/19/the-2028-presidential-election-has-started/",
         "published_time_utc": "2026-11-19T17:15:00Z",
-        "information_state": "market_commentary"
+        "information_state": "none"
       },
       {
         "snippet": "\u05d5\u05de\u05d4 \u05d9\u05e7\u05e8\u05d4 \u05d1\u05ea\u05d9\u05e7 \u05d4\u05e4\u05dc\u05d9\u05dc\u05d9 \u05d4\u05d1\u05d0 ? ",
@@ -51,7 +51,7 @@
         "information_state": "rumor"
       }
     ],
-    "uncertainty_note": "No pre-trigger article reports Netanyahu actually resigning, calling elections, or losing power; coverage is topical (elections, legal cases, Iran) but non-confirmatory. A sharp 13.5pt up-move likely tracks a specific development (coalition/legal/election news) that may have broken on social media or non-English outlets not captured here \u2014 treat absence as a possible retrieval gap.",
+    "uncertainty_note": "None of the pre-trigger snippets report an actual resignation, coalition collapse, or confirmed exit date; coverage is topical (elections, legal cases, Iran) but non-moving. A 13.5pt jump suggests a specific catalyst (possibly breaking on social media or non-English outlets) not captured here, so absent confirmation may be a retrieval gap.",
     "mode": "live"
   },
   {
@@ -60,10 +60,30 @@
     "anomaly_trigger_time_utc": "2026-11-10T13:00:18Z",
     "lookback_hours": 48.0,
     "public_information_score": 0.0,
-    "residual_anomaly_score": 93.4,
+    "residual_anomaly_score": 92.9,
     "information_state": "none",
     "evidence": [],
     "uncertainty_note": "No relevant pre-trigger coverage found \u2014 this is weak evidence (retrieval may be incomplete), not proof the move was non-public.",
+    "mode": "live"
+  },
+  {
+    "market_name": "U.S. agrees to a new trade deal with \"Mexico\" before 2027?",
+    "market_id": "666826",
+    "anomaly_trigger_time_utc": "2026-11-20T22:00:17Z",
+    "lookback_hours": 48.0,
+    "public_information_score": 5.0,
+    "residual_anomaly_score": 82.7,
+    "information_state": "none",
+    "evidence": [
+      {
+        "snippet": "The Latest : Trump hosts reception on the White House new South Lawn helipad | Politics & Elections",
+        "source": "goskagit.com",
+        "url": "http://www.goskagit.com/news/politics/the-latest-trump-hosts-reception-on-the-white-house-s-new-south-lawn-helipad/article_9d822b98-3eec-59f8-8f36-87d1c95c0ce0.html",
+        "published_time_utc": "2026-11-20T21:45:00Z",
+        "information_state": "none"
+      }
+    ],
+    "uncertainty_note": "The single article is about a White House reception/helipad and has no apparent connection to a US-Mexico trade deal; no pre-trigger news explaining the upward move was found, but this may reflect a retrieval gap rather than true absence of coverage.",
     "mode": "live"
   }
 ]

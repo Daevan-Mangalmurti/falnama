@@ -1,0 +1,99 @@
+{
+  "card_id": "665475_20261121T152524Z",
+  "card_version": "v1",
+  "card_hash": "86f6369dc70e9b498fc4d9aa0440cea1bcbf5028e4743c57d68e539b89bfc0a6",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-21T15:25:24Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665475",
+    "market_slug": "will-azerbaijan-join-the-abraham-accords-before-2027",
+    "market_name": "Will Azerbaijan join the Abraham Accords before 2027?",
+    "market_url": "https://polymarket.com/market/will-azerbaijan-join-the-abraham-accords-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Azerbaijan join the Abraham Accords before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Israel equity",
+      "ticker": "EIS",
+      "tradable_instrument_name": "iShares MSCI Israel ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.18,
+      "confidence_interval_bps": [
+        -80.0,
+        180.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check for any credible wire reporting or official Azerbaijani/Israeli statement corroborating the probability move; confirm EIS premarket/intraday reaction versus broad EM.",
+        "1h": "Compare EIS move to MSCI EM and S&P 500 to isolate idiosyncratic vs beta moves; watch shekel (USD/ILS).",
+        "2h": "Reassess whether the prediction-market move is holding or fading; look for denial/confirmation from either government.",
+        "6h": "Evaluate whether any diplomatic headline has crossed mainstream outlets; if purely speculative, fade the thesis.",
+        "12h": "Close out assessment: did EIS sustain any move? Record whether the signal preceded public confirmation or was noise."
+      },
+      "reasoning": "A sharp rise in the implied probability that Azerbaijan normalizes with Israel under the Abraham Accords framework would be a mild positive for Israeli diplomatic/regional standing and could modestly support Israeli equities via reduced regional isolation. However, Azerbaijan and Israel already maintain deep de facto ties (energy, defense), so a formal accord adds limited incremental economic value. The effect on a broad liquid proxy like EIS is weak and likely swamped by macro and domestic-conflict factors."
+    },
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "commodity",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.08,
+      "confidence_interval_bps": [
+        -120.0,
+        120.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm no concurrent genuine energy-supply headline is driving crude; check Brent/WTI spread.",
+        "1h": "Compare USO to broad risk sentiment; discount any move not tied to inventories or OPEC.",
+        "2h": "Reassess whether any Caucasus/energy-corridor narrative is emerging.",
+        "6h": "Check whether crude move is macro-driven (dollar, equities) rather than this event.",
+        "12h": "Record outcome; expect negligible attributable impact."
+      },
+      "reasoning": "Azerbaijan is a notable oil/gas exporter (BTC pipeline, SOCAR) and deeper Israel-Azerbaijan alignment could marginally affect regional energy-geopolitics perceptions. But a formal Abraham Accords signing has essentially no near-term impact on global oil supply/demand balances, which dominate crude pricing. The mapping is very weak and directionally ambiguous."
+    }
+  ],
+  "evidence_used": [
+    "Market question: Azerbaijan formally joining Abraham Accords before 2027",
+    "Azerbaijan and Israel already maintain extensive de facto economic, energy, and defense ties",
+    "Abraham Accords normalization is primarily a diplomatic/symbolic event with limited direct listed-asset exposure",
+    "Most liquid proxies (EIS, USO) are dominated by macro and non-event-specific factors"
+  ],
+  "uncertainty_notes": [
+    "No single liquid instrument has clean, direct exposure to Azerbaijan-Israel normalization",
+    "A probability move may reflect speculation/noise rather than leaked information",
+    "If a genuine signing were imminent, the market reaction would likely still be muted given existing ties",
+    "The 700bps tradable threshold is almost certainly not met by either proxy"
+  ],
+  "llm_justification": {
+    "summary": "A move in the Azerbaijan Abraham Accords market maps only weakly to liquid public assets. Azerbaijan and Israel already have deep practical ties, so a formal accord is largely symbolic with minimal incremental economic impact. The best (still weak) proxy is Israeli equities (EIS) with a slight upward bias, and crude oil (USO) as a very tenuous energy-geopolitics link that is directionally unclear. Neither reaches the 700bps tradable threshold; confidence is low and this is best treated as a non-signal.",
+    "key_assumptions": [
+      "A sharp probability move, if real, reflects diplomatic progress not already fully priced",
+      "EIS and USO are the most accessible liquid proxies despite weak exposure",
+      "Normalization news has only marginal effect on these broad instruments"
+    ],
+    "failure_modes": [
+      "The relationship is already deeply established, so any accord is pre-priced and non-market-moving (mapping is redundant)",
+      "Prediction-market move is speculation/liquidity noise with no informational content",
+      "EIS and USO are weakly exposed and dominated by macro beta, overwhelming any idiosyncratic signal",
+      "Expected moves fall far below the 700bps tradable threshold, making this non-actionable",
+      "Direction could reverse if normalization raises regional-tension or Iran-related risk premia rather than reducing them"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "card_id": "666821_20261121T152524Z",
+  "card_version": "v1",
+  "card_hash": "265bdfccf5d11ba5999b1b9fbffd157bcc6bb72215b9e670ddf2fa19d2c2b311",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-21T15:25:24Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "666821",
+    "market_slug": "us-agrees-to-a-new-trade-deal-with-japan-before-2027",
+    "market_name": "U.S. agrees to a new trade deal with \"Japan\" before 2027?",
+    "market_url": "https://polymarket.com/market/us-agrees-to-a-new-trade-deal-with-japan-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "U.S. agrees to a new trade deal with \"Japan\" before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Japan equity (broad)",
+      "ticker": "EWJ",
+      "tradable_instrument_name": "iShares MSCI Japan ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.35,
+      "confidence_interval_bps": [
+        -80.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any trade-deal headline (USTR, METI, White House) coincides with the probability move; confirm EWJ and Nikkei futures tick direction.",
+        "1h": "Compare EWJ move vs SPY/ACWI to isolate Japan-specific vs broad risk beta; watch USD/JPY.",
+        "2h": "Reassess if move is holding or fading; check Japanese auto/machinery names (TM, Nikkei exporters) for confirmation.",
+        "6h": "Re-evaluate against Tokyo cash session open reaction and any official statements.",
+        "12h": "Mark final EWJ return vs expectation; note whether the probability shift was news-driven or noise, and whether it was already public."
+      },
+      "reasoning": "A sharp rise in the implied probability of a US-Japan trade agreement becoming law signals reduced tariff risk and improved market access for Japanese exporters, which is broadly supportive of Japanese equities. EWJ is the most liquid, diversified US-listed proxy for the Japanese market and captures this exporter/trade sentiment. However, the resolution bar here (an FTA becoming US law via ratification or Congressional-Executive Agreement before end-2026) is high and slow-moving; a probability move is unlikely to translate into a large same-day equity move."
+    },
+    {
+      "asset": "Japanese yen (USD/JPY)",
+      "ticker": "FXY",
+      "tradable_instrument_name": "Invesco CurrencyShares Japanese Yen Trust",
+      "asset_class": "fx_proxy",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 0.0,
+      "confidence": 0.2,
+      "confidence_interval_bps": [
+        -120.0,
+        120.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether USD/JPY reacts at all to the probability move.",
+        "1h": "Separate rate-driven (UST/JGB yields) from trade-driven yen moves.",
+        "2h": "Check if BoJ or MOF commentary is interfering with the signal.",
+        "6h": "Reassess against broader dollar index (DXY) to avoid attributing dollar moves to the trade headline.",
+        "12h": "Mark final FXY move; most likely conclude the mapping was weak/noisy."
+      },
+      "reasoning": "A trade deal's FX impact is ambiguous: reduced trade friction could support the yen via improved Japanese export outlook, but risk-on sentiment typically weakens the yen as a funding/safe-haven currency. These offset, so direction is genuinely unclear and the signal is weak. FXY is the liquid US-listed yen proxy but exposure to this specific catalyst is tenuous."
+    }
+  ],
+  "evidence_used": [
+    "Market question: US-Japan trade deal becoming US law before 2027",
+    "High legal resolution bar (ratification or Congressional-Executive Agreement signed into law)",
+    "Japan's export-driven economy and sensitivity to US tariff/trade policy",
+    "EWJ and FXY as the most liquid US-listed Japan proxies"
+  ],
+  "uncertainty_notes": [
+    "A probability shift in a multi-year legislative market rarely produces a large same-day move in broad equity ETFs.",
+    "Trade-deal news may already be public and priced, making any anomaly stale.",
+    "FX direction is theoretically ambiguous (risk-on yen weakness vs export-supportive yen strength)."
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability of a US-Japan trade agreement becoming law would modestly favor Japanese equities (EWJ up) on reduced tariff risk, while the yen (FXY) direction is genuinely ambiguous. Both mappings are weak over a 12h horizon because the market resolves on a slow, high-bar legislative outcome; expected moves fall well short of the 700bps tradable threshold, so this is a low-confidence, non-tradable research signal.",
+    "key_assumptions": [
+      "A probability move reflects genuine new information about trade-deal prospects rather than noise or liquidity.",
+      "EWJ meaningfully captures Japan-specific trade sentiment on a same-day basis.",
+      "No offsetting macro/monetary shock dominates the tape during the window."
+    ],
+    "failure_modes": [
+      "The trade-deal development is already public and fully priced, so no asset move follows.",
+      "Broad risk-on/risk-off or dollar moves swamp the Japan-specific signal, misattributing the cause.",
+      "The proxies (EWJ, FXY) are only weakly exposed to a slow legislative outcome, producing noise below the 700bps threshold.",
+      "The probability move reverses as the headline is clarified or denied."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

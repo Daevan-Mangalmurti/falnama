@@ -1,0 +1,99 @@
+{
+  "card_id": "665427_20261121T152524Z",
+  "card_version": "v1",
+  "card_hash": "9cd0f922be0f8ed80353f1801248863092949b67edd317dd1e9bd4f1e7c9f04e",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-21T15:25:24Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665427",
+    "market_slug": "will-a-new-country-join-the-abraham-accords-before-2027",
+    "market_name": "Will a new country join the Abraham Accords before 2027?",
+    "market_url": "https://polymarket.com/market/will-a-new-country-join-the-abraham-accords-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will a new country join the Abraham Accords before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Israeli equities",
+      "ticker": "EIS",
+      "tradable_instrument_name": "iShares MSCI Israel ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.32,
+      "confidence_interval_bps": [
+        -150.0,
+        450.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any diplomatic headline (Saudi/Israel normalization, US-brokered talks) accompanies the market move; confirm EIS is trading and gauge initial reaction versus broad EM ETFs.",
+        "1h": "Compare EIS move to ACWI/EEM to isolate Israel-specific signal; watch TA-35 futures if available and USD/ILS.",
+        "2h": "Reassess whether the prediction-market move persists or reverses; look for official government statements or credible reporting.",
+        "6h": "Evaluate whether any confirming diplomatic news emerged; if none, fade the thesis and note likely noise.",
+        "12h": "Final check: did EIS realize directional move >100bps attributable to normalization news? Record outcome and whether market led public reporting."
+      },
+      "reasoning": "A sharp rise in the implied probability that a new country (most plausibly Saudi Arabia, or a state like Indonesia/Mauritania) joins the Abraham Accords would signal a lower regional-conflict risk premium and expanded trade/investment access for Israel, modestly supportive of Israeli equities. EIS is the most direct liquid proxy. However, this is a long-dated market (resolves end-2026), so a probability shift today rarely maps to an imminent catalyst; the 12h asset move is likely small and diluted by broader EM and global risk factors."
+    },
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "commodity",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -80.0,
+      "confidence": 0.22,
+      "confidence_interval_bps": [
+        -400.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Identify whether the implied country is a Gulf/oil-relevant state; check Brent/WTI spot reaction to any headline.",
+        "1h": "Compare oil move to DXY and broad risk sentiment to avoid attributing macro moves to this diplomacy signal.",
+        "2h": "Watch for OPEC or supply headlines that would dominate any geopolitical-premium effect.",
+        "6h": "Reassess whether de-escalation narrative is holding or whether unrelated supply news drives price.",
+        "12h": "Record whether oil showed any premium compression tied to normalization; likely conclude signal is too weak to attribute."
+      },
+      "reasoning": "Broader Arab-Israeli normalization (especially involving a Gulf state) would be read as a de-escalation of Middle East geopolitical risk, trimming the oil risk premium. But the linkage is weak and highly conditional on which country joins; a non-oil state (e.g., Indonesia) carries almost no oil implication, and oil is dominated by OPEC+ supply, demand and inventory factors over a 12h window."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns a long-dated diplomatic event (resolves Dec 31, 2026)",
+    "Abraham Accords normalization historically correlated with reduced regional risk premium and improved Israeli trade/investment",
+    "Most liquid Israel proxy is EIS; most liquid oil proxy is USO/Brent",
+    "No explicit catalyst or imminent signing specified in the prompt"
+  ],
+  "uncertainty_notes": [
+    "The identity of the joining country drives asset relevance (Gulf oil state vs. non-oil state) and is unknown",
+    "Long resolution horizon weakens any 12h asset mapping",
+    "Prediction-market probability moves can be driven by speculation or thin liquidity, not information leakage",
+    "Israeli equity and oil moves are dominated by broader macro/geopolitical factors over 12h"
+  ],
+  "llm_justification": {
+    "summary": "This long-dated diplomacy market maps only weakly to 12h public-market moves. A sharp rise in the probability of a new Abraham Accords member would modestly favor Israeli equities (EIS) via a lower regional risk premium and could trim the oil geopolitical premium (USO down) if a Gulf/oil state is involved. Both links are diffuse, conditional on which country joins, and heavily diluted by the long resolution window and dominant macro drivers, so neither reaches the 700bps tradable threshold with meaningful confidence.",
+    "key_assumptions": [
+      "A probability move reflects genuine new information about an imminent-ish normalization, not noise",
+      "Normalization is interpreted by markets as regional de-escalation",
+      "EIS and USO are adequate liquid proxies for Israel exposure and oil risk premium"
+    ],
+    "failure_modes": [
+      "The move is already public (diplomatic talks widely reported), so no asset reaction",
+      "The joining country is a non-oil, low-trade state, making both proxies nearly irrelevant",
+      "Prediction-market shift is speculative/thin-liquidity noise with no asset follow-through",
+      "Macro factors (DXY, OPEC, global risk) dominate and swamp any diplomacy signal",
+      "Direction reverses if normalization raises rather than lowers near-term tensions (e.g., regional backlash)"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

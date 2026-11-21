@@ -1,0 +1,99 @@
+{
+  "card_id": "665459_20261121T152524Z",
+  "card_version": "v1",
+  "card_hash": "210cfd66567b7d914d2d7f76dac8785b47949a301d46f211e0341669db48560a",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-21T15:25:24Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665459",
+    "market_slug": "will-north-korea-invade-south-korea-before-2027",
+    "market_name": "Will North Korea invade South Korea before 2027?",
+    "market_url": "https://polymarket.com/market/will-north-korea-invade-south-korea-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will North Korea invade South Korea before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "South Korea equity",
+      "ticker": "EWY",
+      "tradable_instrument_name": "iShares MSCI South Korea ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -900.0,
+      "confidence": 0.6,
+      "confidence_interval_bps": [
+        -2500.0,
+        100.0
+      ],
+      "trade_eligibility": {
+        "eligible": true,
+        "reason": "Meets minimum expected move.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket probability move is sustained or a single-print spike; scan newswires (Yonhap, Reuters) for any DMZ/artillery/mobilization headlines; check EWY pre/after-hours and KOSPI futures.",
+        "1h": "Confirm if KRW (USDKRW) and KOSPI futures corroborate the stress; distinguish real escalation from market noise or a large speculative bet.",
+        "2h": "Assess whether official sources (South Korea MND, US Forces Korea, UN) have commented; gauge whether safe-haven flows (gold, USD, JGBs) are also firing.",
+        "6h": "Re-evaluate whether the move has broadened to Japan (EWJ) and regional risk; check if the prediction-market move has reverted, suggesting a false signal.",
+        "12h": "Mark EWY return vs. entry; determine if the leak preceded any public confirmation or fully reversed, and log calibration outcome."
+      },
+      "reasoning": "A sharp upward move in the implied probability of a North Korean invasion would signal rising Korean Peninsula conflict risk. South Korean equities are the most directly exposed liquid asset: war risk crushes valuations, hits exporters, and triggers capital flight. EWY is the deepest US-listed proxy for the KOSPI. The move is asymmetric \u2014 this is a persistent near-zero-probability tail, so any genuine jump in the market implies a material, under-priced escalation, which would produce an outsized equity selloff."
+    },
+    {
+      "asset": "Gold (safe haven)",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "commodity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 250.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -100.0,
+        900.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm the prediction-market jump is real; check spot gold and GLD for any immediate bid.",
+        "1h": "Watch whether USD, JPY, and Treasuries also catch a bid, confirming a genuine risk-off impulse rather than idiosyncratic noise.",
+        "2h": "Assess magnitude \u2014 gold often needs confirmed escalation to move meaningfully; downgrade if no corroboration.",
+        "6h": "Check if gold move persists or fades as headlines clarify; compare to EWY move for internal consistency.",
+        "12h": "Record GLD return vs. entry and whether safe-haven thesis held or the signal was noise."
+      },
+      "reasoning": "A credible rise in Korean war-risk probability would drive safe-haven demand into gold, USD, and Treasuries. Gold is a liquid, globally traded hedge against geopolitical shock. However, the mapping is weaker and smaller than the Korea-equity link because gold responds to a broad basket of global risks and a single regional scare may not move it much unless escalation looks imminent."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns a binary tail-risk event (NK invasion of SK before 2027) in the military_conflict category, Korea region",
+    "Resolution relies on official confirmation or credible-reporting consensus \u2014 a genuine escalation would be a major market-moving public event",
+    "South Korean equities (KOSPI/EWY) are the most directly exposed liquid asset to Korean Peninsula conflict",
+    "Safe-haven assets (gold, USD, Treasuries) historically rally on geopolitical war scares"
+  ],
+  "uncertainty_notes": [
+    "This is a persistent near-zero-probability tail; most probability moves are likely speculative noise or thin-liquidity prints rather than real information",
+    "A probability move without corroborating newswire or FX/futures confirmation is probably a false signal",
+    "The 12h window may not capture the asset reaction if the leak precedes public confirmation by days",
+    "Magnitude estimates assume a genuine, sizeable escalation signal \u2014 a minor probability tick would imply near-zero asset move"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability of a North Korean invasion of South Korea would signal rising Korean Peninsula conflict risk. The cleanest, most liquid public-market expression is a selloff in South Korean equities (EWY), with a secondary safe-haven bid in gold (GLD). The equity link is strong and directionally reliable; the gold link is weaker and smaller. Because this is a persistent tail-risk market, the dominant caveat is that most probability moves are noise \u2014 only a sustained move corroborated by newswires and FX/futures should be treated as a real signal.",
+    "key_assumptions": [
+      "A material upward move in the market's implied probability reflects genuine escalation information, not thin-market noise",
+      "South Korean equity and KRW markets are open or have tradable proxies (EWY, USDKRW) during the window",
+      "The escalation signal is not already fully priced into Korean assets"
+    ],
+    "failure_modes": [
+      "The probability move is a single large speculative bet or low-liquidity artifact that reverts, with no real asset impact",
+      "The event is already public, so EWY and gold have already repriced before the prediction-market signal",
+      "GLD is a weak proxy \u2014 gold responds to many global factors and may not move on a single regional scare",
+      "Korean markets or ETF trading are closed/illiquid during the window, muting or delaying the measurable move",
+      "Base rate is extremely low; even a notable probability jump may still imply a tiny absolute risk, producing sub-threshold asset moves"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

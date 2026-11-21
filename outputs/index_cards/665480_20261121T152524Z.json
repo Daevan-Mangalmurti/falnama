@@ -1,0 +1,99 @@
+{
+  "card_id": "665480_20261121T152524Z",
+  "card_version": "v1",
+  "card_hash": "c5846eaba7a740272cf863b180ab9c1564d4c3ef6b74af79a70c95a6ec0fc0fb",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-21T15:25:24Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665480",
+    "market_slug": "will-us-withdraw-from-nato-before-2027-348-975-598-224-737",
+    "market_name": "Will US withdraw from NATO before 2027?",
+    "market_url": "https://polymarket.com/market/will-us-withdraw-from-nato-before-2027-348-975-598-224-737",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will US withdraw from NATO before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "European defense equities",
+      "ticker": "EUAD",
+      "tradable_instrument_name": "Select STOXX Europe Aerospace & Defense ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 450.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -200.0,
+        1500.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket probability shift coincides with any credible news wire (Reuters/Bloomberg) on NATO or White House statements; if purely market noise, discount heavily.",
+        "1h": "Compare EUAD/Rheinmetall pre-market or intraday move vs STOXX 600 to isolate defense-specific beta.",
+        "2h": "Reassess whether move is sustained or mean-reverting; watch European defense primes individually for confirmation.",
+        "6h": "Check for official US/NATO denials or confirmations and any EU defense-spending commentary.",
+        "12h": "Evaluate whether defense outperformance held into close; mark prediction outcome vs 700bps threshold."
+      },
+      "reasoning": "A sharp rise in the implied probability that the US formally initiates NATO withdrawal would force European nations to accelerate independent defense spending, structurally bullish for European primes (Rheinmetall, BAE, Leonardo, Thales). This is the cleanest beneficiary: a credible US security-guarantee withdrawal boosts European sovereign defense procurement. Could overshoot well past 700bps on a genuine denunciation signal, but a mere probability drift is unlikely to clear that bar."
+    },
+    {
+      "asset": "Euro FX",
+      "ticker": "FXE",
+      "tradable_instrument_name": "Invesco CurrencyShares Euro Trust",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -150.0,
+      "confidence": 0.25,
+      "confidence_interval_bps": [
+        -600.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify whether EUR/USD is actually moving and whether it is the euro leg or dollar leg driving it.",
+        "1h": "Cross-check against gold and Treasury yields to confirm a risk-off/safe-haven interpretation vs dollar-weakness interpretation.",
+        "2h": "Reassess directionality; if EUR is strengthening, flip to 'unclear'.",
+        "6h": "Check for ECB/EU official commentary and broader risk sentiment.",
+        "12h": "Mark outcome; note that the dollar-leg ambiguity likely kept the move below the tradable threshold."
+      },
+      "reasoning": "A credible US NATO exit removes the US security umbrella over Europe, a risk-negative shock for European assets and the euro via higher fiscal/defense burden and geopolitical risk premium. Safe-haven flows would favor USD and gold. However, the euro could also rally if markets read US isolationism as dollar-negative structurally; direction is genuinely two-sided, hence low confidence and wide interval."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns formal US NATO withdrawal/denunciation by end-2026",
+    "Primary topic military_conflict, region US",
+    "NATO withdrawal would shift defense-spending burden to Europe (fundamental linkage)",
+    "Safe-haven and risk-premium channels for FX and gold"
+  ],
+  "uncertainty_notes": [
+    "A probability drift on a low-liquidity prediction market is a weak signal and often noise, not leaked information",
+    "The 12h window is far too short for an actual Article 13 denunciation to crystallize; most moves would be sentiment, not fact",
+    "EUR direction is genuinely ambiguous (risk-off supports USD, but US isolationism can be structurally dollar-negative)",
+    "Threshold of 700bps is unlikely to be met absent an actual confirmed headline"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability of US NATO withdrawal would most cleanly benefit European defense equities (self-reliance spending) and pressure the euro/European risk assets via a higher geopolitical risk premium. The defense-equity link is the strongest fundamental channel and could overshoot past the 700bps threshold on a genuine denunciation signal, but a mere probability drift on a thin market is noisy and unlikely to produce a tradable move within 12h. The FX leg is directionally ambiguous. Overall this mapping is plausible but low-confidence.",
+    "key_assumptions": [
+      "A market probability move reflects new information rather than noise/liquidity",
+      "Markets would price European defense self-reliance as net-bullish for European defense primes",
+      "The move is observable in liquid proxies within the 12h window"
+    ],
+    "failure_modes": [
+      "The probability shift is noise on a thin prediction market with no underlying news",
+      "Any real NATO-exit risk is already widely discussed/public, so no incremental asset move",
+      "EUAD/European defense may already price substantial rearmament, blunting further upside",
+      "Euro direction reverses if US isolationism is read as dollar-negative, invalidating the FX call",
+      "12h is too short for a formal denunciation to materialize, so magnitudes stay far below the 700bps tradable threshold"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
