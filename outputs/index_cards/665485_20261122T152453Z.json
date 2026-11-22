@@ -1,0 +1,98 @@
+{
+  "card_id": "665485_20261122T152453Z",
+  "card_version": "v1",
+  "card_hash": "93a63e4c11a8d8b0edc24dfaf49a538bef98d0fac7bc626c5229b8b81c8ad538",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-22T15:24:53Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665485",
+    "market_slug": "us-forces-in-gaza-before-2027",
+    "market_name": "U.S. forces in Gaza before 2027?",
+    "market_url": "https://polymarket.com/market/us-forces-in-gaza-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "U.S. forces in Gaza before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 150.0,
+      "confidence": 0.25,
+      "confidence_interval_bps": [
+        -300.0,
+        500.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check for any breaking wire (Reuters/AP) on US deployment plans to Gaza and whether Polymarket move coincides with a headline vs. thin-liquidity noise.",
+        "1h": "Compare USO/Brent move against broad risk assets (SPY) to isolate oil-specific vs. general risk-off; watch for Gulf/OPEC commentary.",
+        "2h": "Reassess whether the narrative is escalation (peacekeeping-negative premium builds) vs. ceasefire enforcement (premium fades).",
+        "6h": "Verify if probability move persisted or reverted; re-rate confidence if no corroborating public reporting emerged.",
+        "12h": "Final check: did oil hold any premium into window close? Record whether the market signal led public news or was noise."
+      },
+      "reasoning": "A sharp rise in the implied probability of US boots on the ground in Gaza signals deeper direct US entanglement in a Middle East conflict, which historically carries a risk premium for crude via regional instability and supply-security fears. However, US entry could equally reflect a post-ceasefire stabilization/peacekeeping deployment, which would be de-escalatory and oil-negative. Gaza itself produces no oil and is far from Gulf export chokepoints, so the transmission is indirect and the sign is genuinely ambiguous."
+    },
+    {
+      "asset": "Israel equity",
+      "ticker": "EIS",
+      "tradable_instrument_name": "iShares MSCI Israel ETF",
+      "asset_class": "etf",
+      "expected_direction": "mixed",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.22,
+      "confidence_interval_bps": [
+        -400.0,
+        400.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Scan Israeli press (Haaretz/Times of Israel) and US defense statements; check EIS and USD/ILS proxy for directional lead.",
+        "1h": "Determine whether framing is ceasefire-enforcement (bullish) or escalation (bearish); gauge volume behind any EIS move.",
+        "2h": "Cross-check TA-35 futures/after-hours sentiment if available for confirmation.",
+        "6h": "Reassess whether Polymarket probability shift was corroborated by credible reporting; downgrade if purely speculative.",
+        "12h": "Close-out: log net EIS/ILS move and whether prediction-market signal preceded any public confirmation."
+      },
+      "reasoning": "US ground forces entering Gaza directly bears on Israeli security dynamics. Direction is ambiguous: a US-backed stabilization force following a ceasefire would likely be read as risk-reducing and bullish for Israeli equities and the shekel, while US entry amid active escalation would raise war-risk and pressure the market. EIS is a reasonable liquid proxy but is thin and tech/financial-heavy, so its sensitivity to this specific geopolitical headline is modest and the mapping is weak."
+    }
+  ],
+  "evidence_used": [
+    "Market question resolves Yes only on regular US troops physically in Gaza by end-2026, excluding advisors/SOF/diplomatic/maritime/airspace",
+    "Primary topic military_conflict, region United States",
+    "Gaza has no direct oil production and is distant from Gulf export routes",
+    "Historical pattern that direct US Middle East military involvement can add a geopolitical risk premium to oil and move regional equities"
+  ],
+  "uncertainty_notes": [
+    "Direction hinges entirely on context: peacekeeping/ceasefire deployment is de-escalatory, active-combat entry is escalatory \u2014 opposite asset implications",
+    "This is a long-dated (end-2026) question; a probability move need not imply imminent action within the 12h window",
+    "Prediction-market liquidity on this niche question is likely thin, so moves may be noise rather than information"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability of US regular forces entering Gaza would signal deeper direct US involvement in the Israel/Gaza theater, with plausible but weak transmission to crude oil (risk premium) and Israeli equities. Crucially, the sign is ambiguous because US entry could be either escalatory (combat) or de-escalatory (post-ceasefire stabilization), and Gaza itself is not an oil producer. Given the long-dated horizon, likely thin market liquidity, and indirect proxies, I rate both mappings low-confidence and unlikely to clear the 700bps tradable threshold.",
+    "key_assumptions": [
+      "A probability move reflects genuine new information about near-term US deployment rather than speculative repricing",
+      "Oil and Israeli equities are the most liquid assets with any exposure to this specific event",
+      "Market participants would interpret US entry through a geopolitical risk-premium lens"
+    ],
+    "failure_modes": [
+      "The move was already public (a telegraphed stabilization-force plan), so assets already priced it and do not move further",
+      "Direction reverses because entry is peacekeeping/de-escalatory rather than combat \u2014 oil and EIS move opposite to a risk-off assumption",
+      "Proxies are weakly exposed: Gaza produces no oil and EIS is tech-heavy, so headline sensitivity is small",
+      "Thin prediction-market liquidity produced a false signal with no underlying information",
+      "Expected magnitude falls well short of the 700bps tradable bar, making this non-actionable"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

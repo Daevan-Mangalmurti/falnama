@@ -1,0 +1,97 @@
+{
+  "card_id": "665484_20261122T152453Z",
+  "card_version": "v1",
+  "card_hash": "ead2e90a6efd8444cf3d177ed9964e3761aa9a62609833eeb626adac0cbd75bd",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-22T15:24:53Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665484",
+    "market_slug": "israel-x-turkey-military-clash-before-2027",
+    "market_name": "Israel x Turkey military clash before 2027?",
+    "market_url": "https://polymarket.com/market/israel-x-turkey-military-clash-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Israel x Turkey military clash before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Turkish equity risk",
+      "ticker": "TUR",
+      "tradable_instrument_name": "iShares MSCI Turkey ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -650.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -2000.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move coincides with a concrete headline (Syria/airspace incident) or is pure market drift; scan USD/TRY and Borsa Istanbul futures for confirmation.",
+        "1h": "Compare TUR pre-market/ADR behavior and lira NDFs to the prediction-market move; fade if no corroborating newswire.",
+        "2h": "Assess whether broader EM risk (EEM) is also weak \u2014 if so, the signal is macro not idiosyncratic to Turkey.",
+        "6h": "Re-evaluate against official Israeli/Turkish government statements and whether de-escalation language appears.",
+        "12h": "Mark TUR return vs entry; note whether move persisted or mean-reverted, and log calibration error for the card."
+      },
+      "reasoning": "A sharp rise in the implied probability of a direct Israel-Turkey military encounter is a negative shock to Turkish risk assets. Turkey runs persistent external financing needs and a fragile lira; escalation with a militarily superior, US-backed adversary would trigger capital flight, risk-premium repricing, and lira depreciation that flows directly into dollar-denominated Turkish equity via TUR. Of the two parties, Turkish assets are the more fragile and foreign-capital-sensitive, making TUR the cleaner liquid proxy than Israeli equities."
+    },
+    {
+      "asset": "Safe-haven gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "commodity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -80.0,
+        500.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether gold, UST futures, and VIX are moving together (genuine risk-off) or gold is flat.",
+        "1h": "Check real yields and DXY \u2014 if the dollar is also bid, the geopolitical gold signal is likely swamped.",
+        "2h": "Re-check whether oil (a more direct regional-conflict proxy) is also rising to corroborate a true escalation read.",
+        "6h": "Reassess if any ceasefire/denial headlines unwind the safe-haven bid.",
+        "12h": "Record gold return and whether it tracked the prediction-market signal at all."
+      },
+      "reasoning": "Rising odds of a new Middle East interstate conflict typically bid safe havens. Gold is the most liquid, broadly-traded hedge and would catch a flight-to-safety bid if a NATO member (Turkey) and Israel were credibly heading toward direct force. However the sensitivity is small and gold is driven overwhelmingly by rates/USD, so this is a weak, low-conviction mapping well below the tradable threshold."
+    }
+  ],
+  "evidence_used": [
+    "Market question on a direct Israel-Turkey military encounter by end-2026, low-base-rate tail event",
+    "Turkey's structural external-financing fragility and lira sensitivity to geopolitical risk",
+    "Israel-Turkey friction channels (Syria, Eastern Med, airspace) as plausible escalation pathways",
+    "General pattern that Middle East interstate escalation bids oil and safe havens while hurting EM assets of the weaker-balance-sheet party"
+  ],
+  "uncertainty_notes": [
+    "A probability shift in a long-dated (end-2026) market need not imply any near-term 12h asset move; timing mismatch is severe.",
+    "Prediction-market liquidity is thin; an implied-probability move may be noise, not information.",
+    "Turkey-Israel are not contiguous; actual direct force is hard, so even a probability jump may reflect rhetoric rather than imminent conflict."
+  ],
+  "llm_justification": {
+    "summary": "A sharp increase in the implied probability of a direct Israel-Turkey military clash would most cleanly pressure Turkish risk assets (TUR lower via lira/risk-premium repricing) and provide a modest safe-haven bid to gold. Turkey, as the more externally-fragile, foreign-capital-sensitive party, is the better liquid proxy than Israeli equities. Both mappings are low-conviction given the long (end-2026) horizon versus a 12h window, thin prediction-market liquidity, and the geographic difficulty of actual direct engagement.",
+    "key_assumptions": [
+      "A material, sharp upward move in the market's implied probability occurred, not just background drift.",
+      "The move reflects genuine escalation information rather than prediction-market noise.",
+      "Turkish assets react more than Israeli assets due to balance-of-payments fragility."
+    ],
+    "failure_modes": [
+      "The event horizon is end-2026; a probability change may have zero 12h public-market impact (timing mismatch), so the move fails to materialize or reverses.",
+      "The information may already be public (a known Syria/airspace flare-up), so assets already repriced before the market signal.",
+      "TUR is only weakly exposed to a binary, hard-to-execute interstate clash; moves may be dominated by US rates, EM beta, and USD rather than this geopolitical factor.",
+      "Gold's geopolitical sensitivity is tiny relative to rates/dollar drivers, making the safe-haven leg likely indistinguishable from noise."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

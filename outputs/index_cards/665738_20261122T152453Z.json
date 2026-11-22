@@ -1,0 +1,99 @@
+{
+  "card_id": "665738_20261122T152453Z",
+  "card_version": "v1",
+  "card_hash": "5d26ab80a161f081368b41384b344c2ad2003bc4aeece32c0bede10018576cd6",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-22T15:24:53Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665738",
+    "market_slug": "ahmed-al-sharaa-out-as-leader-of-syria-before-2027",
+    "market_name": "Ahmed al-Sharaa out as leader of Syria by December 31, 2026?",
+    "market_url": "https://polymarket.com/market/ahmed-al-sharaa-out-as-leader-of-syria-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Ahmed al-Sharaa out as leader of Syria by December 31, 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Crude oil (Middle East risk premium)",
+      "ticker": "BNO",
+      "tradable_instrument_name": "United States Brent Oil Fund",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.2,
+      "confidence_interval_bps": [
+        -150.0,
+        500.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check Brent futures tick and whether any wire (Reuters/AP) confirms a concrete removal, coup, or al-Sharaa security event versus pure market noise.",
+        "1h": "Compare BNO move to broad oil complex (WTI, OVX implied vol) to separate Syria-specific premium from general oil beta.",
+        "2h": "Reassess whether regional actors (Israel, Turkey) have reacted; look for escalation headlines that would justify a sustained premium.",
+        "6h": "Check if the probability move held or reverted on Polymarket; fade the oil premium if no corroborating news emerged.",
+        "12h": "Evaluate whether crude held any premium at window close; log realized move versus 120bps estimate for calibration."
+      },
+      "reasoning": "A sharp jump in the implied probability that al-Sharaa is removed would signal renewed instability in Syria's fragile post-Assad transition. Regional destabilization \u2014 potential renewed civil conflict, spillover involving Turkey, Israel, Iran-aligned factions, and Gulf states \u2014 tends to add a small risk premium to crude via Brent. However, Syria itself is not a material oil producer or chokepoint operator, so the mechanical supply effect is negligible; any move is sentiment/geopolitical-premium driven and typically small and quickly faded unless escalation is confirmed."
+    },
+    {
+      "asset": "Turkey equity/FX risk (al-Sharaa's principal external backer)",
+      "ticker": "TUR",
+      "tradable_instrument_name": "iShares MSCI Turkey ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": -150.0,
+      "confidence": 0.15,
+      "confidence_interval_bps": [
+        -500.0,
+        250.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether any actual removal event occurred and Ankara's initial reaction; otherwise treat as noise.",
+        "1h": "Check USDTRY and TUR relative to broader EM ETF (EEM) to isolate Turkey-specific signal.",
+        "2h": "Look for Turkish government statements on Syria; gauge border/refugee escalation risk.",
+        "6h": "Reassess whether the prediction-market move persisted and whether Turkish assets showed any correlated reaction.",
+        "12h": "Record realized TUR move versus thesis; most likely outcome is no meaningful Syria-driven move, confirming weak mapping."
+      },
+      "reasoning": "Turkey has been the key external patron of al-Sharaa's HTS-led government. His sudden removal could undermine Ankara's influence over northern Syria and raise refugee/security risks on Turkey's border, a mild negative for Turkish risk assets. But the channel is indirect and TUR is dominated by domestic monetary policy, lira dynamics, and global EM flows, so Syria leadership news is a very weak driver and direction is genuinely ambiguous \u2014 a stabilizing Turkish-backed successor could even be neutral-to-positive."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns removal/resignation of Syria's transitional president Ahmed al-Sharaa by end-2026",
+    "Syria is not a significant global oil producer or transit chokepoint",
+    "al-Sharaa (ex-HTS) government is heavily backed by Turkey; regional stakeholders include Israel, Iran-aligned groups, Gulf states",
+    "No direct liquid Syrian financial instruments exist, forcing use of indirect regional proxies"
+  ],
+  "uncertainty_notes": [
+    "Mapping is inherently weak: no direct tradable Syrian asset and Syria lacks material global commodity footprint",
+    "A probability move could reflect rumor/noise rather than leaked true information",
+    "Direction on regional proxies is ambiguous \u2014 instability vs. orderly managed transition have opposite implications",
+    "12h window unlikely to capture a 700bps move in any liquid proxy, so neither prediction is 'tradable' under the threshold"
+  ],
+  "llm_justification": {
+    "summary": "The market tracks whether Syria's transitional leader Ahmed al-Sharaa is removed. Because Syria has no liquid traded assets and is not a material oil producer, the only plausible public-market channels are indirect: a small geopolitical risk premium in Brent crude from Middle East destabilization, and ambiguous pressure on Turkey (al-Sharaa's main backer) via TUR/lira. Both channels are weak, low-confidence, and below the 700bps tradability bar; the expected moves are small and prone to rapid reversion absent confirmed escalation.",
+    "key_assumptions": [
+      "A sharp probability jump reflects genuine escalation risk rather than pure speculation",
+      "Syria instability adds only a modest, sentiment-driven premium to crude, not a supply shock",
+      "Turkey is the dominant external stakeholder whose risk assets are marginally exposed"
+    ],
+    "failure_modes": [
+      "Move already public/priced: Syrian transition risk is widely reported, so leakage adds little new information to liquid markets",
+      "Weak proxy exposure: neither Brent nor TUR is meaningfully driven by Syrian leadership; dominant drivers (OPEC, Fed, lira policy) swamp the signal",
+      "Reversal: prediction-market spikes on Syria often fade as rumors are denied",
+      "Wrong sign: an orderly, Turkish-brokered succession could be stability-positive, flipping the assumed direction",
+      "Magnitude far below 700bps threshold, making any trade untradable and noise-dominated"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

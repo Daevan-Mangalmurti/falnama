@@ -1,0 +1,99 @@
+{
+  "card_id": "665495_20261122T152453Z",
+  "card_version": "v1",
+  "card_hash": "6d95d942c376f3fc9b35ceaaba25cb493f4e4f6d4d3b08c9c1508581a700cdf1",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-22T15:24:53Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665495",
+    "market_slug": "ukraine-joins-nato-before-2027",
+    "market_name": "Ukraine joins NATO before 2027?",
+    "market_url": "https://polymarket.com/market/ukraine-joins-nato-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Ukraine joins NATO before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "European equities (broad risk sentiment on Russia-Ukraine de-escalation)",
+      "ticker": "EZU",
+      "tradable_instrument_name": "iShares MSCI Eurozone ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.22,
+      "confidence_interval_bps": [
+        -250.0,
+        450.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket move coincides with a concrete headline (ceasefire talks, summit, security guarantee) vs. illiquid single-order noise; confirm EZU/SX5E futures reaction.",
+        "1h": "Compare with European nat-gas (TTF) and EUR/USD to see if a coherent de-escalation narrative is forming across assets.",
+        "2h": "Reassess direction: if gas falls and EUR rises alongside equities, lean risk-on; if defense names rally but broad equities don't, lean escalation.",
+        "6h": "Check for official statements from NATO/EU/US or Kremlin denials that would reverse the implied probability.",
+        "12h": "Mark whether the prediction-market move persisted or mean-reverted; note realized EZU move vs. interval and whether a public catalyst emerged."
+      },
+      "reasoning": "A credible, sharp rise in the implied probability of Ukraine joining NATO would most plausibly accompany a ceasefire/peace framework, since NATO is extremely unlikely to admit a country in active full-scale war. A durable end to the war would be risk-on for Eurozone equities (lower energy/war-risk premium). But the same probability spike could also reflect escalation/security-guarantee pathways that keep risk elevated, so the sign is genuinely ambiguous. Base rate of actual membership before 2027 is very low, so most moves are noise or repricing of peace odds rather than membership per se."
+    },
+    {
+      "asset": "European defense contractors",
+      "ticker": "EUAD",
+      "tradable_instrument_name": "Select STOXX Europe Aerospace & Defense ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 150.0,
+      "confidence": 0.2,
+      "confidence_interval_bps": [
+        -300.0,
+        500.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify whether the market move is tied to a real catalyst and whether defense futures/pre-market move at all.",
+        "1h": "Check if defense moves opposite to broad equities (peace trade) or with them (rearmament trade) to infer the dominant narrative.",
+        "2h": "Reassess; downgrade confidence further if no cross-asset confirmation.",
+        "6h": "Scan official NATO/EU communiqu\u00e9s and major-power statements for substance behind the move.",
+        "12h": "Record realized EUAD move vs. interval and whether the prediction-market shift held or reverted."
+      },
+      "reasoning": "Any path toward Ukraine's NATO membership implies continued or expanded alliance defense commitments, which is structurally supportive for European defense names. However, if the probability spike is driven by a peace-deal narrative, markets could instead price lower future defense demand, pressuring the sector. The mapping is weak and two-sided, and the actual membership event is near-impossible in the window, so this is a sentiment proxy at best, not a membership bet."
+    }
+  ],
+  "evidence_used": [
+    "Market question: Ukraine full NATO membership before Dec 31 2026",
+    "Settlement via official NATO membership list",
+    "Base-rate knowledge that NATO does not admit states in active full-scale war, so a probability spike most likely signals a peace/ceasefire or security-guarantee development",
+    "Standard cross-asset linkages: Russia-Ukraine de-escalation -> Eurozone equities up, European gas down; continued alliance commitments -> defense sector support"
+  ],
+  "uncertainty_notes": [
+    "Direction is fundamentally two-sided: a 'Yes' probability spike could reflect peace (risk-on) or escalation/security-guarantee dynamics (risk mixed).",
+    "Actual membership before 2027 is extremely unlikely, so most probability moves are noise, thin-market distortions, or repricing of adjacent events.",
+    "Proxies (EZU, EUAD) are only loosely exposed to this specific question; any move would be diluted by global macro factors.",
+    "A confirmed public catalyst would mean the information is already priced and no leak-based edge exists."
+  ],
+  "llm_justification": {
+    "summary": "The question maps most plausibly onto a Russia-Ukraine de-escalation/peace narrative, since NATO cannot realistically admit a country in active war; a sharp rise in 'Yes' odds would therefore likely coincide with ceasefire or security-guarantee news. The cleanest liquid proxies are Eurozone equities (de-escalation = risk-on) and European defense (ambiguous: rearmament support vs. peace-dividend drag). Both mappings are weak and two-sided, so direction is marked unclear with low confidence; neither comfortably clears the 700bps tradable threshold in a 12h window.",
+    "key_assumptions": [
+      "A probability spike reflects a genuine geopolitical development rather than Polymarket illiquidity/noise.",
+      "NATO membership in active war is near-impossible, so the market is really a proxy for peace/escalation odds.",
+      "Eurozone equities and European defense are the most liquid available proxies for this geopolitical theme."
+    ],
+    "failure_modes": [
+      "The prediction-market move is thin-order noise with no real information, so no asset reaction occurs.",
+      "The catalyst is already public (announced summit/ceasefire), so assets have already priced it and there is no leak edge.",
+      "Direction reverses: a move interpreted as 'peace' is actually escalation (or vice versa), flipping the sign on both proxies.",
+      "Proxies are too diluted by global macro (rates, USD, oil) for the geopolitical signal to dominate the 12h return.",
+      "Expected magnitudes fall well short of the 700bps tradable bar, making this non-actionable."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
