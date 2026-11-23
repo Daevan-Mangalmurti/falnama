@@ -1,0 +1,21 @@
+{
+  "mode": "live",
+  "screened": 170,
+  "kept": 79,
+  "dropped": 91,
+  "min_economic_salience": 60.0,
+  "min_information_asymmetry": 45.0,
+  "dropped_by_topic": {
+    "elections": 20,
+    "other": 16,
+    "diplomacy_treaty": 14,
+    "corporate_action": 11,
+    "cabinet_government": 9,
+    "legal_judicial": 7,
+    "trade_policy": 6,
+    "regulatory_policy": 3,
+    "entertainment": 3,
+    "central_bank_macro": 2
+  },
+  "error": ""
+}

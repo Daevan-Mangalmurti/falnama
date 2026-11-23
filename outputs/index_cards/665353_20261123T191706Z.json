@@ -1,0 +1,99 @@
+{
+  "card_id": "665353_20261123T191706Z",
+  "card_version": "v1",
+  "card_hash": "307043381904e0f692cf94484940f364c9cabd00c93e51bc58c55351f10958ac",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-23T19:17:06Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665353",
+    "market_slug": "ukraine-agrees-not-to-join-nato-by-december-31-2026",
+    "market_name": "Ukraine agrees not to join NATO by December 31, 2026?",
+    "market_url": "https://polymarket.com/market/ukraine-agrees-not-to-join-nato-by-december-31-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Ukraine agrees not to join NATO by December 31, 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "European natural gas / energy risk premium",
+      "ticker": "UNG",
+      "tradable_instrument_name": "United States Natural Gas Fund",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -300.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -900.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the market move is corroborated by any Reuters/AP headline or is pure Polymarket drift; watch TTF and UNG tape for confirmation.",
+        "1h": "Reassess if European gas futures are moving in the same direction; if not, treat as noise.",
+        "2h": "Look for official Ukrainian or US statements; gauge whether a broader peace framework is implied vs. an isolated NATO clause.",
+        "6h": "Evaluate follow-through in energy and whether risk premium compression is holding or fading.",
+        "12h": "Mark final move vs. expectation; note whether the signal preceded public reporting (leak test)."
+      },
+      "reasoning": "A sharp rise in the probability that Ukraine pledges not to join NATO \u2014 a central Russian precondition \u2014 would read as de-escalation progress toward a settlement, easing the war-risk premium embedded in European (and by correlation global) gas. UNG is an imperfect US-centric proxy; the cleaner exposure is European TTF, which historically swings 5-15% on Ukraine war headlines. A credible NATO-renunciation step could compress the geopolitical premium."
+    },
+    {
+      "asset": "Defense / aerospace equities",
+      "ticker": "ITA",
+      "tradable_instrument_name": "iShares U.S. Aerospace & Defense ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -150.0,
+      "confidence": 0.28,
+      "confidence_interval_bps": [
+        -600.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether the probability jump is real news-driven; check Rheinmetall/European defense pre-market if available.",
+        "1h": "Compare ITA vs. European defense names \u2014 European should lead if thesis holds.",
+        "2h": "Assess whether commentary frames this as genuine peace progress or a symbolic clause with no ceasefire.",
+        "6h": "Check durability; peace headlines often reverse, re-inflating defense.",
+        "12h": "Record final move and whether US proxy showed any reaction at all."
+      },
+      "reasoning": "A Ukraine NATO-renunciation pledge signals movement toward a negotiated settlement, which at the margin reduces expectations of sustained elevated European defense spending. European pure-plays (Rheinmetall) are most sensitive; ITA is a weakly-exposed US proxy whose order book is dominated by US procurement, so the move is likely small and noisy. Included at low confidence because the mapping is real but diluted."
+    }
+  ],
+  "evidence_used": [
+    "Market question: Ukraine pledging not to join NATO, a known core Russian demand in any settlement",
+    "Historical sensitivity of European natural gas (TTF) to Russia-Ukraine de-escalation/escalation news",
+    "Defense equities' (esp. Rheinmetall and European primes) documented reaction to war-trajectory headlines",
+    "Resolution criteria allow partial/preliminary agreements, raising odds a move reflects early peace-process signaling"
+  ],
+  "uncertainty_notes": [
+    "A NATO clause is only one component of a settlement; markets may not react until a ceasefire/territorial deal is credible.",
+    "Polymarket probability moves can be driven by liquidity/noise rather than genuine information.",
+    "US-listed proxies (UNG, ITA) are weakly exposed vs. European TTF and Rheinmetall, muting the signal.",
+    "700bps threshold is unlikely to be met by these diversified ETFs in 12h; cleaner exposure is non-US instruments."
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability that Ukraine agrees not to join NATO would be read as incremental progress toward a negotiated end to the war, easing the geopolitical risk premium. The cleanest public-market implications are lower European energy (gas) risk premium and modestly weaker defense equities. US-listed proxies (UNG, ITA) capture this only weakly, so expected moves are below the tradable threshold and confidence is low; the sharper, more direct instruments are European TTF gas and European defense primes like Rheinmetall.",
+    "key_assumptions": [
+      "The probability move reflects genuine information about peace-process progress, not noise.",
+      "A NATO-renunciation pledge is interpreted as de-escalatory rather than as capitulation prolonging conflict.",
+      "Energy and defense remain the most war-sensitive liquid sectors."
+    ],
+    "failure_modes": [
+      "The pledge is symbolic/isolated with no ceasefire, so assets barely move.",
+      "News is already public and priced, leaving no edge.",
+      "Chosen US ETFs are too diversified/weakly exposed to register a 700bps move.",
+      "Move reverses as peace optimism fades or Russia rejects other terms.",
+      "A NATO clause could paradoxically signal escalation if framed as a forced concession, inverting the reaction."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "card_id": "665410_20261123T191706Z",
+  "card_version": "v1",
+  "card_hash": "6937fe0cc5a0a2e91544e0e95352e5e1fa1267ab35b718b22eccd8a8162ef0f0",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-23T19:17:06Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665410",
+    "market_slug": "will-ukraine-agree-to-give-up-the-rest-of-donbas-before-2027",
+    "market_name": "Will Ukraine agree to give up the rest of Donbas by December 31, 2026?",
+    "market_url": "https://polymarket.com/market/will-ukraine-agree-to-give-up-the-rest-of-donbas-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Ukraine agree to give up the rest of Donbas by December 31, 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Poland equities (proxy for Central/Eastern Europe peace dividend)",
+      "ticker": "EWP",
+      "tradable_instrument_name": "iShares MSCI Poland ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 450.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -200.0,
+        1200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the market probability jump coincides with any wire headline (Reuters/Bloomberg) on talks; if purely market-internal, treat as weak leak signal.",
+        "1h": "Compare EWP/ADR premarket or intraday against DAX and broad EU to isolate idiosyncratic peace-dividend move vs beta.",
+        "2h": "Re-check European gas (TTF) and defense stocks for corroborating risk-off-to-risk-on rotation; divergence weakens thesis.",
+        "6h": "Assess whether official Ukrainian/Russian statements emerge; fade if denials appear.",
+        "12h": "Mark final EWP return vs regional benchmark; log whether move persisted or reverted, and whether news became public."
+      },
+      "reasoning": "A sharp rise in the implied probability that Ukraine agrees to cede Donbas would signal imminent or likely negotiated end to the war. Poland is the frontline NATO/EU economy most exposed to Ukraine risk; a credible peace path lowers the regional risk premium, boosts reconstruction-linked sentiment and reduces the geopolitical discount on CEE equities. EWP is the most liquid single-country proxy. Move is directional but unlikely to clear the 700bps tradable bar on its own within 12h absent a confirmed headline."
+    },
+    {
+      "asset": "Crude oil / European energy risk premium",
+      "ticker": "BNO",
+      "tradable_instrument_name": "United States Brent Oil Fund",
+      "asset_class": "commodity",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -300.0,
+      "confidence": 0.35,
+      "confidence_interval_bps": [
+        -900.0,
+        300.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check Brent/TTF tick reaction and whether any ceasefire/sanctions-relief headline accompanies the probability move.",
+        "1h": "Isolate energy move from broad commodity/dollar moves; confirm it is Ukraine-specific.",
+        "2h": "Watch European TTF gas futures as the cleaner but less accessible signal; confirm directional agreement.",
+        "6h": "Re-assess if OPEC/inventory news is confounding; fade if oil move is macro-driven.",
+        "12h": "Record final Brent return and whether a peace headline materialized; note reversal if probability faded."
+      },
+      "reasoning": "A credible Russia-Ukraine settlement that cedes Donbas would reduce the war risk premium embedded in energy prices and open the door to eventual normalization of Russian export flows and sanctions relief, pressuring Brent and especially European natural gas. BNO is a liquid Brent proxy. However oil is driven by many global factors (OPEC, demand, dollar), so the exposure is diluted and the 12h move is likely modest unless an explicit ceasefire headline lands."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies a negotiated Ukrainian cession of Donbas cities (Kramatorsk, Sloviansk, Pokrovsk, etc.) by end-2026",
+    "Resolution tied to publicly announced mutual agreement or overwhelming reporting consensus",
+    "Russia-Ukraine war is the dominant geopolitical driver of European energy risk premium and CEE equity discount",
+    "Liquid proxies: EWP for CEE equities, BNO/Brent for energy risk premium"
+  ],
+  "uncertainty_notes": [
+    "This is a long-dated (end-2026) market; a probability move does not imply a 12h catalyst",
+    "Much of the peace-negotiation narrative may already be public via ongoing 2025 diplomacy, limiting surprise",
+    "Oil and equities have many confounding drivers, diluting the Ukraine-specific signal",
+    "Direction could invert: a deal perceived as Russian victory could spike defense stocks and uncertainty rather than pure risk-on"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability that Ukraine agrees to cede Donbas would signal progress toward a negotiated end to the war, implying a reduced geopolitical risk premium: Central/Eastern European equities (Poland, EWP) up and energy prices (Brent, BNO; European gas) down as supply-disruption and war premia unwind. Both mappings are directionally reasonable but diluted by confounding macro drivers and the market's long-dated horizon, so confidence is moderate-to-low and neither clearly clears the 700bps tradable threshold within 12h absent a confirming public headline.",
+    "key_assumptions": [
+      "A probability jump reflects genuine new information about an imminent/likely deal, not noise",
+      "A Donbas cession is read by markets as de-escalation (risk-on) rather than destabilizing capitulation",
+      "EWP and BNO retain meaningful exposure to Russia-Ukraine outcomes",
+      "News is not already fully public and priced"
+    ],
+    "failure_modes": [
+      "The probability move is noise or liquidity-driven and reverts within hours",
+      "The information is already public (ongoing peace talks), so assets have already repriced",
+      "Markets interpret a forced cession as a NATO-credibility blow, pushing defense/risk-off the opposite way",
+      "Oil and Polish equities move on unrelated macro (OPEC, ECB, dollar), swamping the Ukraine signal",
+      "Proxies are weakly exposed; the cleanest instrument (European TTF gas) is not in the liquid ETF set used"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

@@ -1,0 +1,77 @@
+[
+  {
+    "market_name": "U.S. agrees to a new trade deal with \"Mexico\" before 2027?",
+    "market_id": "666826",
+    "anomaly_trigger_time_utc": "2026-11-21T22:00:19Z",
+    "lookback_hours": 48.0,
+    "public_information_score": 0.0,
+    "residual_anomaly_score": 97.0,
+    "information_state": "none",
+    "evidence": [
+      {
+        "snippet": "The Latest : Trump hosts reception on the White House new South Lawn helipad | Politics & Elections",
+        "source": "goskagit.com",
+        "url": "http://www.goskagit.com/news/politics/the-latest-trump-hosts-reception-on-the-white-house-s-new-south-lawn-helipad/article_9d822b98-3eec-59f8-8f36-87d1c95c0ce0.html",
+        "published_time_utc": "2026-11-20T21:45:00Z",
+        "information_state": "none"
+      }
+    ],
+    "uncertainty_note": "Only one article provided, concerning a Trump White House reception on the South Lawn helipad. The snippet contains no substantive information about U.S.-Mexico trade negotiations, deal status, or policy shifts that would explain a sharp downward move in the probability of a new U.S.-Mexico trade deal. The article appears to be a brief event notice with no bearing on trade policy. The absence of relevant pre-trigger coverage could reflect a genuine information gap (news may have broken on social media, behind paywalls, or in non-English outlets) or retrieval limitations.",
+    "mode": "live"
+  },
+  {
+    "market_name": "Netanyahu out by end of 2026?",
+    "market_id": "567688",
+    "anomaly_trigger_time_utc": "2026-11-20T16:00:26Z",
+    "lookback_hours": 48.0,
+    "public_information_score": 15.0,
+    "residual_anomaly_score": 80.8,
+    "information_state": "speculation",
+    "evidence": [
+      {
+        "snippet": "Where What When - Israel 2026 Elections : Biblical Problems , Biblical Solutions",
+        "source": "wherewhatwhen.com",
+        "url": "https://www.wherewhatwhen.com/article/israel-s-2026-elections-biblical-problems-biblical-solutions",
+        "published_time_utc": "2026-11-19T19:30:00Z",
+        "information_state": "speculation"
+      },
+      {
+        "snippet": "\u0546\u0565\u0569\u0561\u0576\u0575\u0561\u0570\u0578\u0582\u056b\u0581 \u0570\u0565\u057f\u0578 \u056f\u0561\u057e\u0561\u0580\u057f\u057e\u056b \u055e \u0561\u0580\u0564\u0575\u0578\u0584 \u053b\u0580\u0561\u0576\u056b \u0564\u0565\u0574 \u057a\u0561\u057f\u0565\u0580\u0561\u0566\u0574\u0568",
+        "source": "azg.am",
+        "url": "https://azg.am/am/%D5%B6%D5%A5%D5%A9%D5%A1%D5%B6%D5%B5%D5%A1%D5%B0%D5%B8%D6%82%D5%AB%D6%81-%D5%B0%D5%A5%D5%BF%D5%B8-%D5%AF%D5%A1%D5%BE%D5%A1%D6%80%D5%BF%D5%BE%D5%AB%D5%9E-%D5%A1%D6%80%D5%A4%D5%B5%D5%B8%D6%84-%D5%AB/",
+        "published_time_utc": "2026-11-20T00:30:00Z",
+        "information_state": "speculation"
+      },
+      {
+        "snippet": "Is another US - Iran war looming ? ",
+        "source": "middleeaststar.com",
+        "url": "http://www.middleeaststar.com/news/279440849/is-another-us-iran-war-looming",
+        "published_time_utc": "2026-11-18T17:30:00Z",
+        "information_state": "speculation"
+      },
+      {
+        "snippet": "The 2028 presidential election has started",
+        "source": "record-bee.com",
+        "url": "https://www.record-bee.com/2026/11/19/the-2028-presidential-election-has-started/",
+        "published_time_utc": "2026-11-19T17:15:00Z",
+        "information_state": "none"
+      },
+      {
+        "snippet": "\u05d5\u05de\u05d4 \u05d9\u05e7\u05e8\u05d4 \u05d1\u05ea\u05d9\u05e7 \u05d4\u05e4\u05dc\u05d9\u05dc\u05d9 \u05d4\u05d1\u05d0 ? ",
+        "source": "ynet.co.il",
+        "url": "https://www.ynet.co.il/news/article/rk6r2tsczg",
+        "published_time_utc": "2026-11-20T04:30:00Z",
+        "information_state": "speculation"
+      },
+      {
+        "snippet": "Jocuri de putere la Ierusalim : Netanyahu ar fi cerut Mossad - ului o opera\u021biune sub acoperire \u00eempotriva Iranului f\u0103r\u0103 a implica IDF - ul",
+        "source": "ziarulprofit.ro",
+        "url": "https://www.ziarulprofit.ro/jocuri-de-putere-la-ierusalim-netanyahu-ar-fi-cerut-mossad-ului-o-operatiune-sub-acoperire-impotriva-iranului-fara-a-implica-idf-ul/",
+        "published_time_utc": "2026-11-20T03:15:00Z",
+        "information_state": "rumor"
+      }
+    ],
+    "uncertainty_note": "Pre-trigger coverage is topical (elections, criminal case, Iran power games) but none report a scheduled exit, resignation, or election call; snippets are thin and in multiple languages, so a retrieval gap or a breaking development on social media not captured here is plausible.",
+    "mode": "live"
+  }
+]

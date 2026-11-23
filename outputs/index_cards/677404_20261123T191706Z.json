@@ -1,0 +1,98 @@
+{
+  "card_id": "677404_20261123T191706Z",
+  "card_version": "v1",
+  "card_hash": "5e8e1cae2faec87bdfaf5d99aea48f9f9e265c76e00d5b6193bbc9a8283fb38a",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-23T19:17:06Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "677404",
+    "market_slug": "china-x-india-military-clash-by-december-31-2026",
+    "market_name": "China x India military clash by December 31, 2026?",
+    "market_url": "https://polymarket.com/market/china-x-india-military-clash-by-december-31-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "China x India military clash by December 31, 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "India equity (large-cap, USD)",
+      "ticker": "INDA",
+      "tradable_instrument_name": "iShares MSCI India ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -150.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -500.0,
+        80.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any Reuters/PTI/Xinhua headline corroborates an actual LAC incident; if none, treat market move as noise.",
+        "1h": "Watch INR (USDINR NDF) and Nifty futures for confirming risk-off; divergence weakens the thesis.",
+        "2h": "Reassess whether the Polymarket move is sustained or mean-reverting; fade if it retraces.",
+        "6h": "Compare INDA/EPI intraday to EEM broad EM to isolate India-specific risk premium.",
+        "12h": "Mark-to-market: confirm whether any public report of a clash emerged; if not, the signal was likely noise."
+      },
+      "reasoning": "A sharp rise in the implied probability of a China-India military clash signals rising border-conflict risk. Indian equities (and the rupee) are the more sensitive side given India's smaller, more risk-premium-prone market. Historically, however, Himalayan border clashes (Galwan 2020, Yangtse 2022) produced only muted, short-lived equity reactions because they were localized and did not threaten broad economic activity. So the directional bias is down but the magnitude is modest and well under the 700bps tradable threshold."
+    },
+    {
+      "asset": "Gold (safe haven)",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "commodity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -60.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check gold spot vs DXY and real yields to ensure any move is risk-driven, not rates-driven.",
+        "1h": "Confirm whether broader risk-off (VIX, Treasuries) accompanies the move.",
+        "2h": "Reassess if gold move is isolated to geopolitical premium or macro-wide.",
+        "6h": "Evaluate persistence; geopolitical gold bids typically fade fast without escalation.",
+        "12h": "Final mark; attribute any residual move to confirmed news vs noise."
+      },
+      "reasoning": "Escalating risk between two nuclear-armed Asian powers would modestly bid safe havens like gold. But gold is driven far more by rates/USD/global macro than a localized Himalayan border skirmish, so the exposure is weak and the expected move tiny \u2014 nowhere near tradable."
+    }
+  ],
+  "evidence_used": [
+    "Market question defines a kinetic China-India clash, resolution via consensus reporting",
+    "Historical precedents cited (Galwan 2020, Yangtse 2022) had limited, transient market impact",
+    "India equity and INR are the more risk-sensitive side of the pair",
+    "Gold as a conventional geopolitical safe haven"
+  ],
+  "uncertainty_notes": [
+    "A probability move on a 2026-horizon market may reflect slow repricing, not an imminent event, so no 12h asset impact is likely",
+    "Border clashes historically localized and economically immaterial, muting equity reactions",
+    "Proxies (INDA, GLD) are dominated by macro/rate factors, diluting any geopolitical signal"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied odds of a China-India military clash would nominally pressure India-sensitive equities (INDA) lower and bid safe havens (gold) higher, with India being the more risk-premium-exposed side. But precedent (Galwan, Yangtse) shows such Himalayan clashes produce muted, short-lived market reactions, and both proxies are dominated by macro factors. Expected 12h moves are well below the 700bps tradable threshold; confidence is low and the mapping is weak.",
+    "key_assumptions": [
+      "A market-probability jump reflects genuine escalation risk rather than noise or slow long-horizon repricing",
+      "India equities and INR are more reactive than Chinese assets to a bilateral border clash",
+      "Any clash resembles past localized incidents rather than broad war"
+    ],
+    "failure_modes": [
+      "The event is already public/priced \u2014 border tensions are widely reported, so no information leakage edge",
+      "Localized clashes historically move markets little, so direction may be right but magnitude ~0",
+      "Proxy weakness: INDA and GLD are driven by Fed/USD/global macro, swamping geopolitical signal",
+      "Move could reverse quickly as markets shrug off a non-escalatory incident",
+      "A 2026-dated market can move on sentiment without any near-term catalyst, breaking the 12h linkage"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

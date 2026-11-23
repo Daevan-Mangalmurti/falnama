@@ -1,0 +1,100 @@
+{
+  "card_id": "665374_20261123T191706Z",
+  "card_version": "v1",
+  "card_hash": "69e25d1a2278556bd76303b3bb2155bf0bada6554fb5caf50b368ee299a11c16",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-23T19:17:06Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665374",
+    "market_slug": "will-the-us-invade-iran-before-2027",
+    "market_name": "Will the U.S. invade Iran before 2027?",
+    "market_url": "https://polymarket.com/market/will-the-us-invade-iran-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will the U.S. invade Iran before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "commodity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 650.0,
+      "confidence": 0.5,
+      "confidence_interval_bps": [
+        150.0,
+        1800.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket probability move is sustained or a thin-liquidity blip; cross-check Brent/WTI futures and any Reuters/Bloomberg headlines on US-Iran posture.",
+        "1h": "Confirm oil futures direction, watch tanker-tracking and Hormuz shipping chatter, and whether official statements (White House, CENTCOM) corroborate escalation.",
+        "2h": "Assess whether the move is spreading to gold and defense names (confirmation of a genuine risk-on-conflict regime) versus isolated noise.",
+        "6h": "Re-evaluate whether the oil premium is holding or fading; check for official denials that would reverse the premium.",
+        "12h": "Measure realized USO move versus the 700bps tradable threshold; note whether the prediction-market signal led or lagged public news."
+      },
+      "reasoning": "A sharp upward repricing in the probability of a US invasion of Iran signals rising escalation risk in the Persian Gulf, which threatens roughly a fifth of global seaborne oil throughput (Strait of Hormuz). Markets price a geopolitical risk premium into crude almost immediately on credible conflict escalation. USO is a liquid, directly exposed proxy. Magnitude depends heavily on how large and credible the implied-probability move is; a decisive jump could produce a double-digit-percent spike, a modest drift much less."
+    },
+    {
+      "asset": "Gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 250.0,
+      "confidence": 0.42,
+      "confidence_interval_bps": [
+        -50.0,
+        900.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify the probability move is real and durable, not a liquidity artifact; check spot gold and DXY simultaneously.",
+        "1h": "Watch whether Treasuries and gold rally together (genuine haven bid) versus a dollar-led move that could cap gold.",
+        "2h": "Confirm cross-asset coherence: oil up + equities down + gold up would validate the escalation regime.",
+        "6h": "Reassess whether haven bid persists or mean-reverts on any de-escalation headlines.",
+        "12h": "Compare realized GLD move to expectation; likely below the 700bps tradable threshold, so treat as confirming signal rather than standalone trade."
+      },
+      "reasoning": "Rising probability of a major US military offensive against Iran is a classic safe-haven catalyst: gold tends to bid on war-risk escalation alongside a flight from risk assets. GLD is a highly liquid proxy. The move is typically smaller and noisier than oil's, and can be offset if a risk-off dollar rally dominates, so confidence and magnitude are lower."
+    }
+  ],
+  "evidence_used": [
+    "Market question implies escalation risk of direct US military action against Iran",
+    "Iran/Persian Gulf proximity to Strait of Hormuz, a critical global oil chokepoint",
+    "Historical pattern: geopolitical conflict escalation lifts crude and gold, pressures broad equities",
+    "Liquidity of USO and GLD as broadly traded proxies"
+  ],
+  "uncertainty_notes": [
+    "This card is pre-commitment; it does not assume the probability actually moved \u2014 it maps what WOULD move if it did",
+    "Prediction markets are noisy and thin; a probability jump may reflect low-liquidity speculation rather than leaked information",
+    "Magnitude is highly sensitive to the size and credibility of the implied-probability change",
+    "If the escalation were already public (news-driven), the asset move may already be priced and reverse"
+  ],
+  "llm_justification": {
+    "summary": "A sharp upward move in the implied probability of a US invasion of Iran maps most directly to a higher oil risk premium (USO up) via Strait of Hormuz supply-disruption fears, and secondarily to a safe-haven bid in gold (GLD up). Crude is the strongest, most liquid proxy and could plausibly exceed the 700bps tradable threshold on a decisive, credible repricing; gold is a weaker, noisier confirming signal. Both depend on the probability move being genuine and not already public.",
+    "key_assumptions": [
+      "The prediction-market probability moved sharply and credibly, not as thin-market noise",
+      "Escalation risk is not already fully priced into oil and gold",
+      "Strait of Hormuz / Gulf supply disruption remains the dominant transmission channel",
+      "No simultaneous offsetting macro shock (e.g., demand collapse) dominates oil"
+    ],
+    "failure_modes": [
+      "The probability spike is a liquidity artifact or speculative blip that reverses, taking any asset move with it",
+      "The escalation is already public via headlines, so oil/gold have already moved and mean-revert within the window",
+      "A dollar-led risk-off move offsets the gold haven bid, flattening GLD",
+      "Oil fails to react if markets judge the invasion probability still too low to warrant a sustained premium",
+      "US-Iran de-escalation or official denial reverses the premium quickly"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
