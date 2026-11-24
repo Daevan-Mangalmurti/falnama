@@ -1,0 +1,97 @@
+{
+  "card_id": "665243_20261124T185619Z",
+  "card_version": "v1",
+  "card_hash": "61c9dcc73f21cb4a897c8fc0eaae3ce51f95e3078663e2aba7c9ac83d2ae37cf",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-24T18:56:19Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665243",
+    "market_slug": "nato-article-5-before-2027",
+    "market_name": "NATO article 5 before 2027?",
+    "market_url": "https://polymarket.com/market/nato-article-5-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "NATO article 5 before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "European defense equities",
+      "ticker": "EUAD",
+      "tradable_instrument_name": "Select STOXX Europe Aerospace & Defense ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 450.0,
+      "confidence": 0.5,
+      "confidence_interval_bps": [
+        -100.0,
+        1200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move coincides with a concrete headline (drone/missile strike, airspace breach). If no news, treat as noise and reduce conviction.",
+        "1h": "Compare EUAD/ITA pre-market or futures vs broad index; confirm defense is outperforming, not just moving with beta.",
+        "2h": "Assess whether NATO officials or member governments issue statements; escalation confirmation strengthens thesis, de-escalation language reverses it.",
+        "6h": "Re-evaluate whether move is sustained or faded; watch US/EU defense sector breadth and options skew.",
+        "12h": "Mark final move; if Article 5 talk receded without event, expect mean reversion toward baseline."
+      },
+      "reasoning": "A sharp rise in the implied probability of a NATO Article 5 invocation signals a material escalation of armed conflict involving a NATO member (e.g., a Russian attack spilling into NATO territory, Baltic/Poland incursion). Defense procurement expectations rise immediately on such news, and aerospace/defense names are the most direct beneficiary. European defense is especially geared since the fiscal and rearmament impulse would be centered on the continent."
+    },
+    {
+      "asset": "European equity index",
+      "ticker": "FEZ",
+      "tradable_instrument_name": "SPDR EURO STOXX 50 ETF",
+      "asset_class": "equity_index",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -350.0,
+      "confidence": 0.55,
+      "confidence_interval_bps": [
+        -1000.0,
+        100.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify the probability spike is driven by a real conflict escalation headline rather than low-liquidity market noise.",
+        "1h": "Check EUR/USD, Bund futures, and VSTOXX for corroborating risk-off; equity-only moves without rates/FX confirmation are suspect.",
+        "2h": "Watch for official NATO/EU response; a confirmed escalation deepens the drawdown.",
+        "6h": "Reassess whether selloff is broadening to US indices (SPX) or contained to Europe.",
+        "12h": "Record final level; if the scare fades, expect partial recovery and lower realized move than headline threshold."
+      },
+      "reasoning": "An Article 5 scenario implies direct NATO-Russia military engagement on or near European soil, a severe risk-off shock. Broad European equities would sell off on growth, energy-supply, and war-risk premia, with the euro area most directly exposed. This is the clearest macro directional implication of a jump in war probability."
+    }
+  ],
+  "evidence_used": [
+    "Market question ties resolution to an actual NATO Article 5 invocation, which requires an armed attack on a member \u2014 a major escalation event",
+    "Primary topic military_conflict, region Europe",
+    "Historical pattern: war-escalation shocks lift defense stocks and safe havens while pressuring European risk assets"
+  ],
+  "uncertainty_notes": [
+    "Probability moves on Polymarket can be thin/noisy and may not reflect genuine new information",
+    "A true Article 5 event is a tail scenario; most probability moves will be marginal and produce sub-threshold asset moves",
+    "12h window may not capture the full reaction if the triggering headline arrives outside market hours"
+  ],
+  "llm_justification": {
+    "summary": "A sharp increase in the implied probability of a NATO Article 5 invocation would reflect escalation toward direct NATO-Russia conflict in Europe. The cleanest liquid mappings are: defense equities higher (procurement/rearmament bid) and broad European equities lower (risk-off, war premium). Both moves scale with the severity of the underlying trigger; absent a concrete escalation headline, the market signal is likely noise and moves will fall short of the 700bps tradable threshold.",
+    "key_assumptions": [
+      "A material probability rise is accompanied by a genuine conflict-escalation catalyst",
+      "Defense ETFs and European indices retain their historical sensitivity to war-risk news",
+      "The information is not already fully priced into public markets"
+    ],
+    "failure_modes": [
+      "Probability move is low-liquidity noise with no real-world catalyst, so assets barely react",
+      "The escalation news is already public and priced, leaving no edge",
+      "De-escalation/diplomatic resolution reverses the move within the window",
+      "Defense and index moves stay below the 700bps tradable bar for ordinary escalation headlines",
+      "Proxy mismatch: broad indices may be cushioned by central-bank or fiscal response expectations, muting the downside"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "card_id": "665224_20261124T185619Z",
+  "card_version": "v1",
+  "card_hash": "70c7150e51f4e4746d1b100f989af2168b0a72dd9e83e88e70db5186e4ce7079",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-24T18:56:19Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665224",
+    "market_slug": "ukraine-signs-peace-deal-with-russia-before-2027",
+    "market_name": "Ukraine signs peace deal with Russia by December 31, 2026?",
+    "market_url": "https://polymarket.com/market/ukraine-signs-peace-deal-with-russia-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Ukraine signs peace deal with Russia by December 31, 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Energy risk premium (crude oil)",
+      "ticker": "BNO",
+      "tradable_instrument_name": "United States Brent Oil Fund",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -150.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -500.0,
+        120.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether oil futures and TTF gas tick lower alongside the probability jump; confirm the market move is not stale/already-reported headline.",
+        "1h": "Compare Brent vs WTI and European gas reaction; look for corroborating diplomatic newswire reporting.",
+        "2h": "Assess whether sanctions-relief chatter (OFAC/EU) is surfacing, which would amplify energy downside.",
+        "6h": "Re-check if move held or faded; monitor Russian ESPN/Urals discount narrowing.",
+        "12h": "Evaluate net 12h move vs 700bps threshold; document whether signal persisted or reversed."
+      },
+      "reasoning": "A sharp rise in the implied probability of a Ukraine-Russia peace instrument would deflate the geopolitical/supply-disruption risk premium embedded in oil and (more acutely) European gas. Prospective easing of sanctions and restored Russian energy flows is bearish for crude. Brent is the cleanest liquid global proxy; the effect on European TTF gas would be larger but is harder to trade via US-listed liquid instruments."
+    },
+    {
+      "asset": "European defense/aerospace equities",
+      "ticker": "ITA",
+      "tradable_instrument_name": "iShares U.S. Aerospace & Defense ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -120.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -450.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check defense names' pre/after-hours reaction; verify the probability move is genuine, not noise.",
+        "1h": "Compare US ITA vs European defense ADRs for directional confirmation.",
+        "2h": "Scan for official statements that would validate or kill the peace narrative.",
+        "6h": "Reassess whether defense selloff holds; watch budget-commitment headlines.",
+        "12h": "Record net move vs threshold; note proxy weakness as a key caveat."
+      },
+      "reasoning": "Peace-deal momentum reduces the perceived need for sustained European/NATO defense rearmament, a modest headwind for defense names. ITA is US-centric (weak proxy for the European rearmament theme that would move most), so exposure is diluted and the reaction is likely small and noisy. European defense names (Rheinmetall, BAE) would move more but lack a single liquid US instrument."
+    }
+  ],
+  "evidence_used": [
+    "Market question: Ukraine signs any peace/ceasefire/framework instrument with Russia by Dec 31 2026",
+    "Broad resolution criteria (only Ukraine's signature required; framework/roadmap qualifies) make Yes relatively easy to satisfy",
+    "Russia-Ukraine war's established impact on energy (gas/oil) and grain risk premia, plus European rearmament spending"
+  ],
+  "uncertainty_notes": [
+    "A 12h window rarely produces 700bps+ moves in broad ETFs absent a confirmed headline; these mappings are likely NOT tradable on magnitude.",
+    "US-listed proxies (BNO, ITA) are diluted vs the true European exposures (TTF gas, Rheinmetall/BAE).",
+    "If the probability move reflects already-public diplomatic news, the asset repricing has likely already occurred."
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability of a Ukraine-Russia peace instrument signals de-escalation, which should compress energy supply-risk premia (bearish oil/European gas) and modestly weigh on defense/rearmament equities. The cleanest liquid proxies are Brent oil (BNO) down and defense (ITA) down, but both are imperfect US-listed stand-ins for the European assets most exposed, and 12h moves are unlikely to reach the 700bps tradable bar.",
+    "key_assumptions": [
+      "A probability jump reflects genuine, not-yet-fully-public progress toward a signed instrument.",
+      "Peace momentum reduces supply-disruption and rearmament premia in the mapped directions.",
+      "Markets have not already repriced the news."
+    ],
+    "failure_modes": [
+      "The move is already public (diplomatic headline), so assets have repriced\u2014no leak edge.",
+      "Peace optimism reverses within hours (talks collapse), snapping premia back up.",
+      "Proxies are weakly exposed: BNO and ITA are US-centric, muting the European-specific reaction.",
+      "Sanctions relief may be slow/uncertain even with a framework, limiting the energy downside.",
+      "Magnitude falls far short of 700bps, making the signal non-tradable despite correct direction."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

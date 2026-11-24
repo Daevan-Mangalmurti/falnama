@@ -1,0 +1,97 @@
+{
+  "card_id": "666661_20261124T185619Z",
+  "card_version": "v1",
+  "card_hash": "084a7d716f6a53ee961ab0fb259341101b820c84d5a1943ac97dce2a2e9a3c5a",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-24T18:56:19Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "666661",
+    "market_slug": "will-scott-bessent-leave-the-trump-administration-before-2027",
+    "market_name": "Will Scott Bessent leave the Trump administration before 2027?",
+    "market_url": "https://polymarket.com/market/will-scott-bessent-leave-the-trump-administration-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Scott Bessent leave the Trump administration before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US large-cap equities",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -60.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -250.0,
+        40.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check for any official Treasury/White House statement or credible press report confirming a Bessent departure; if none, treat the market move as noise. Watch SPY and ES futures tick.",
+        "1h": "Compare SPY move vs VIX and broad macro tape to isolate idiosyncratic policy-risk signal from general market beta.",
+        "2h": "Re-check wire services (Reuters/Bloomberg) for confirmation; assess whether move is reversing, indicating a false signal.",
+        "6h": "Evaluate whether equities have stabilized; if no confirmation emerged, fade the thesis.",
+        "12h": "Close assessment: did a departure materialize or was the market noise? Record realized SPY move vs prediction."
+      },
+      "reasoning": "Scott Bessent, Treasury Secretary, is widely regarded as a market-friendly, fiscally pragmatic voice who reassures investors on tariffs, debt issuance, and tax policy. A sharp jump in the implied probability of his departure would likely be read as a loss of a stabilizing moderate and raise policy-uncertainty premia, pressuring broad equities modestly risk-off. However, a prediction-market probability shift alone, absent an actual confirmed resignation headline, is a weak and noisy driver; equity reaction to a single cabinet official \u2014 even Treasury \u2014 is typically muted and well below the 700bps tradable threshold."
+    },
+    {
+      "asset": "US dollar",
+      "ticker": "UUP",
+      "tradable_instrument_name": "Invesco DB US Dollar Index Bullish Fund",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -40.0,
+      "confidence": 0.25,
+      "confidence_interval_bps": [
+        -180.0,
+        60.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether any official departure announcement exists; check DXY and UUP against Treasury yields for direction.",
+        "1h": "Assess whether dollar move is driven by Bessent story or broader macro flows.",
+        "2h": "Look for credible reporting; if none, downgrade conviction toward unclear.",
+        "6h": "Check for reversal \u2014 a fading move implies the market signal was noise.",
+        "12h": "Final check: realized UUP/DXY move vs thesis and whether any personnel news confirmed."
+      },
+      "reasoning": "Treasury Secretary turnover introduces uncertainty around debt management, FX policy stance, and fiscal credibility, which can modestly weaken the dollar on a confirmed exit. But the link is weak and second-order; absent a confirmed resignation the prediction-market move carries little informational force, and dollar reaction to cabinet rumors is usually negligible. Direction is tentative \u2014 in some scenarios safe-haven flows could even support the dollar, making this genuinely mixed."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns departure of Scott Bessent, current US Treasury Secretary, before 2027",
+    "Bessent's public reputation as a market-friendly, moderate steward on tariffs, debt issuance and tax policy",
+    "General empirical pattern that single-cabinet-official rumors produce muted, sub-1% moves in broad US assets absent confirmation"
+  ],
+  "uncertainty_notes": [
+    "A prediction-market probability shift is not a confirmed event; without an official announcement the informational content is low",
+    "Direction of dollar reaction is genuinely ambiguous (policy-uncertainty weakness vs safe-haven strength)",
+    "Magnitude almost certainly below the 700bps tradable threshold, so neither prediction is actionable under the stated rule"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the implied probability that Treasury Secretary Scott Bessent leaves the administration would plausibly be mildly risk-off for US equities and modestly dollar-negative, since Bessent is viewed as a stabilizing, market-friendly policymaker. But the mapping is weak: absent a confirmed resignation headline the prediction-market move is a noisy sensor, and historical cabinet-rumor reactions in liquid US assets are small \u2014 well under the 700bps tradable bar. Both predictions are low-confidence and effectively non-tradable research signals.",
+    "key_assumptions": [
+      "Bessent remains perceived as a net-stabilizing, market-friendly figure whose exit raises policy uncertainty",
+      "A probability spike reflects genuine leaked information rather than market noise or manipulation",
+      "Broad ETFs (SPY, UUP) are the cleanest liquid proxies for the diffuse policy-uncertainty channel"
+    ],
+    "failure_modes": [
+      "The departure may already be public/priced, so no fresh asset move occurs",
+      "The prediction-market move could be noise or thin-liquidity manipulation with no underlying news",
+      "A single Treasury Secretary change may have negligible effect on broad indices, making the proxy exposure too weak to register",
+      "Direction could reverse if a market-friendly successor is simultaneously signaled, or if safe-haven flows support the dollar rather than weaken it",
+      "Magnitude expected far below 700bps, so treating this as tradable would be a false signal"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
