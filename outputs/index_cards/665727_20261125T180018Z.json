@@ -1,0 +1,99 @@
+{
+  "card_id": "665727_20261125T180018Z",
+  "card_version": "v1",
+  "card_hash": "89b5b84bd39ec178e6d76162dfe20f4bde6771a39259e3009e15733b07317116",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-25T18:00:18Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "665727",
+    "market_slug": "will-iran-withdraw-from-the-npt-before-2027",
+    "market_name": "Will Iran withdraw from the NPT before 2027?",
+    "market_url": "https://polymarket.com/market/will-iran-withdraw-from-the-npt-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Iran withdraw from the NPT before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 250.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -150.0,
+        900.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether crude futures and the market probability moved together; scan newswires for any official Iranian statement or IAEA/UN headlines.",
+        "1h": "Confirm move is not a broad risk-on/off macro move unrelated to Iran; compare Brent-WTI spread and tanker/freight chatter.",
+        "2h": "Assess whether any sovereign or IAEA confirmation emerged; re-evaluate whether the probability spike is sticky or fading.",
+        "6h": "Review US/European session reaction, options skew on oil, and any diplomatic denials that would reverse the premium.",
+        "12h": "Mark final move vs expectation; determine if escalation was substantiated publicly or if the signal was noise and crude mean-reverted."
+      },
+      "reasoning": "A sharp rise in the implied probability of Iran formally exiting the NPT would signal escalation of the nuclear standoff and raise the perceived risk of military confrontation and Strait of Hormuz supply disruption. Iran is a major producer and sits astride ~20% of seaborne oil flows, so a credible escalation premium typically bids crude. USO is a liquid, broadly-traded proxy for front-month WTI."
+    },
+    {
+      "asset": "Gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.38,
+      "confidence_interval_bps": [
+        -120.0,
+        500.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm gold and real-yield/dollar backdrop; check if gold move coincides with the probability spike rather than a Fed/macro catalyst.",
+        "1h": "Compare gold vs silver and DXY to isolate the haven bid from dollar effects.",
+        "2h": "Look for corroborating risk-off signals (equity index futures down, VIX up) consistent with a genuine geopolitical shock.",
+        "6h": "Re-check whether escalation narrative is confirmed or walked back; haven bid often fades on denials.",
+        "12h": "Mark final move; judge whether gold held a geopolitical premium or reverted with no public confirmation."
+      },
+      "reasoning": "NPT withdrawal implies a step-change in Middle East nuclear risk, a classic safe-haven catalyst. Gold tends to catch a bid on geopolitical escalation and nuclear-proliferation fears. GLD is the most liquid gold proxy. The move is typically smaller than oil's and easily swamped by rates/dollar dynamics, hence modest magnitude and confidence."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns Iran formally withdrawing from the NPT under Article X before 2027, a major nuclear-escalation signal",
+    "Iran is a large oil producer and controls access to the Strait of Hormuz, a critical oil chokepoint",
+    "Geopolitical nuclear-proliferation shocks historically bid crude oil and gold as risk/haven assets",
+    "Topic tagged diplomacy_treaty, region middle_east"
+  ],
+  "uncertainty_notes": [
+    "A rise in a long-dated (before-2027) probability need not imply imminent action, so the 12h asset impact may be muted",
+    "Oil and gold are driven by many unrelated macro factors (OPEC, inventories, Fed, dollar) that can dominate any Iran signal",
+    "If the probability move reflects already-public reporting, markets may have pre-priced it, leaving little residual move",
+    "The 700bps tradability threshold is unlikely to be met absent a confirmed, imminent escalation"
+  ],
+  "llm_justification": {
+    "summary": "A sharp increase in the implied probability of Iran withdrawing from the NPT would signal escalating nuclear crisis and heightened Middle East conflict risk, which maps most directly to higher crude oil (Hormuz supply-disruption premium) and secondarily to higher gold (safe-haven bid). Both mappings are directionally plausible but modest in expected 12h magnitude and low-to-moderate confidence, likely below the 700bps tradable bar unless escalation is confirmed and imminent.",
+    "key_assumptions": [
+      "A probability spike reflects genuinely new escalation information, not re-rating of old news",
+      "Markets interpret NPT withdrawal as raising near-term conflict/supply-disruption risk",
+      "Oil and gold respond to Middle East nuclear escalation as they have historically"
+    ],
+    "failure_modes": [
+      "The move was already public and fully priced, so no residual asset reaction",
+      "A before-2027 (long-horizon) probability shift does not translate to a 12h move in spot oil/gold",
+      "Oil/gold moves driven by unrelated macro (OPEC, inventories, rates, dollar) swamp or reverse any Iran signal",
+      "Iranian or UN denial quickly deflates the risk premium, reversing the trade",
+      "Prediction-market move is thin-liquidity noise, not an information leak"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "card_id": "666824_20261125T180018Z",
+  "card_version": "v1",
+  "card_hash": "4c85c9c0c6f0c50783454ba76cd70f95e4b723674e582b196231600394020d96",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-25T18:00:18Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "666824",
+    "market_slug": "us-agrees-to-a-new-trade-deal-with-vietnam-before-2027",
+    "market_name": "U.S. agrees to a new trade deal with \"Vietnam\" before 2027?",
+    "market_url": "https://polymarket.com/market/us-agrees-to-a-new-trade-deal-with-vietnam-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "U.S. agrees to a new trade deal with \"Vietnam\" before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Vietnam equity",
+      "ticker": "VNM",
+      "tradable_instrument_name": "VanEck Vietnam ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -150.0,
+        450.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability shift coincides with any trade-policy headline (USTR, White House, Vietnam govt) to distinguish leak from noise.",
+        "1h": "Compare VNM move vs broad EM ETF (EEM) to isolate Vietnam-specific signal from macro beta.",
+        "2h": "Watch Vietnam ADRs/large exporters and USD/VND proxy for confirmation of direction.",
+        "6h": "Reassess whether Asian session price action in Vietnam-linked names confirms or fades the implied-probability move.",
+        "12h": "Evaluate whether any official statement materialized; if no news, treat the move as noise and flatten the thesis."
+      },
+      "reasoning": "A rising implied probability of a US-Vietnam free trade agreement becoming law would reduce tariff/market-access risk for Vietnamese exporters and signal improved bilateral relations, supportive for Vietnamese equities. VNM is the most liquid, directly exposed proxy. However, the market resolution criterion is strict (a ratified/enacted FTA by end-2026), which is a high bar and historically slow-moving, so even a sharp probability shift maps to only a modest near-term equity move within a 12h window."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns a legally-enacted US-Vietnam free trade agreement by end-2026",
+    "trade_policy topic, US region",
+    "VNM is the primary liquid US-listed proxy for Vietnamese equity exposure"
+  ],
+  "uncertainty_notes": [
+    "Resolution requires an enacted FTA (law), a very high and slow bar; probability can move on political signals without near-term asset impact",
+    "12h window is too short for a trade-deal narrative to fully transmit to equities",
+    "700bps threshold is unlikely to be met absent a concrete, confirmed agreement headline"
+  ],
+  "llm_justification": {
+    "summary": "A rising implied probability of a US-Vietnam FTA is mildly bullish for Vietnamese equities (VNM), the cleanest liquid proxy, as it lowers tariff and market-access risk. But the strict legal-enactment resolution bar and short 12h window make a large, tradable move unlikely; expected magnitude sits well below the 700bps threshold, so this is a low-confidence, non-tradable signal.",
+    "key_assumptions": [
+      "A probability move reflects genuine new information about trade-deal odds",
+      "VNM remains the dominant exposed proxy and is liquid during the window",
+      "No offsetting macro shock dominates price action"
+    ],
+    "failure_modes": [
+      "The probability move was already public/priced, so no asset reaction",
+      "FTA enactment is politically remote regardless of short-term odds shifts, limiting fundamental impact",
+      "VNM is only weakly sensitive to FTA headlines vs broad EM/USD macro flows",
+      "The move reverses as speculative noise without any official confirmation"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

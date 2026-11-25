@@ -1,0 +1,98 @@
+{
+  "card_id": "666825_20261125T180018Z",
+  "card_version": "v1",
+  "card_hash": "3430ec0c50ffcded4ca8604a1ad317b45acebbde553fe625dc9844acc9da4b02",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-25T18:00:18Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "666825",
+    "market_slug": "us-agrees-to-a-new-trade-deal-with-australia-before-2027",
+    "market_name": "U.S. agrees to a new trade deal with \"Australia\" before 2027?",
+    "market_url": "https://polymarket.com/market/us-agrees-to-a-new-trade-deal-with-australia-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "U.S. agrees to a new trade deal with \"Australia\" before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Australian dollar (AUD/USD proxy)",
+      "ticker": "FXA",
+      "tradable_instrument_name": "Invesco CurrencyShares Australian Dollar Trust",
+      "asset_class": "fx_proxy",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 15.0,
+      "confidence": 0.12,
+      "confidence_interval_bps": [
+        -60.0,
+        90.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any trade-deal headline is actually crossing wires; if none, treat market move as noise.",
+        "1h": "Compare AUD/USD spot vs DXY to see if any move is Australia-specific or broad USD.",
+        "2h": "Scan for official USTR/Australian government statements confirming negotiations.",
+        "6h": "Reassess whether iron ore/commodity moves better explain any AUD drift.",
+        "12h": "Mark whether AUD moved materially; expect it did not, confirming weak linkage."
+      },
+      "reasoning": "A new US-Australia trade agreement would marginally improve trade terms and be modestly AUD-supportive at the margin. However, the US and Australia already have a comprehensive free trade agreement (AUSFTA, in force since 2005), so a 'new' deal is economically incremental and largely symbolic. FX markets price Australia primarily on China growth, commodity prices, and rate differentials \u2014 not on a bilateral US deal. A shift in this niche prediction market has very weak, slow transmission to AUD, and nothing like a 700bps move is credible on a 12h horizon."
+    },
+    {
+      "asset": "Australia equity",
+      "ticker": "EWA",
+      "tradable_instrument_name": "iShares MSCI Australia ETF",
+      "asset_class": "etf",
+      "expected_direction": "unclear",
+      "expected_return_12h_bps": 10.0,
+      "confidence": 0.1,
+      "confidence_interval_bps": [
+        -50.0,
+        80.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify no concrete deal announcement; if present, check which sectors benefit.",
+        "1h": "Look at EWA vs broad EM/DM ETFs to isolate any Australia-specific signal.",
+        "2h": "Check Australian export-heavy names (miners, agriculture) for any outperformance.",
+        "6h": "Reassess against overnight ASX futures direction.",
+        "12h": "Record whether EWA showed any deal-attributable move; expect negligible."
+      },
+      "reasoning": "EWA tracks large-cap Australian equities dominated by banks and miners, whose earnings are driven by domestic rates, housing, and China commodity demand rather than US bilateral trade terms. A new US-Australia trade deal would be a minor positive for a small set of exporters but immaterial to index-level earnings. Given an existing FTA already covers most goods trade, the incremental information in this market is low and its equity transmission is very weak. Not tradable at the 700bps threshold."
+    }
+  ],
+  "evidence_used": [
+    "Market question on US-Australia trade deal resolving by end-2026",
+    "Known fact: AUSFTA (US-Australia FTA) already in force since 2005",
+    "Standard drivers of AUD and Australian equities (China demand, commodities, rate differentials)",
+    "Liquidity characteristics of FXA and EWA as proxies"
+  ],
+  "uncertainty_notes": [
+    "The US and Australia already have a comprehensive FTA, so a 'new' deal is largely symbolic and economically marginal.",
+    "Prediction-market probability shifts on this question have weak, slow transmission to liquid assets.",
+    "No evidence of imminent deal; market move could be pure noise or thin-market mispricing.",
+    "A 700bps 12h move is not plausible for these diversified proxies on this catalyst."
+  ],
+  "llm_justification": {
+    "summary": "The question maps most directly to the Australian dollar (FXA) and Australian equities (EWA), but the linkage is weak: the US and Australia already share a long-standing free trade agreement, making any 'new' deal economically incremental and symbolic. These proxies are driven far more by China growth, commodities, and rate differentials than by US bilateral trade terms. Any move in this niche prediction market would transmit only faintly and slowly, far below the 700bps tradable threshold. Direction is marginally positive-to-unclear with low confidence.",
+    "key_assumptions": [
+      "AUD and Australian equities are the closest liquid proxies to a US-Australia trade outcome.",
+      "A new deal would be mildly AUD/exporter positive but economically marginal given existing FTA.",
+      "Prediction-market probability is a noisy, low-signal sensor here."
+    ],
+    "failure_modes": [
+      "Thesis overstates relevance: an FTA already exists, so the 'new deal' catalyst is near-meaningless for assets.",
+      "The market move may already be public/priced or simply thin-market noise with no information content.",
+      "AUD and EWA are weakly exposed proxies dominated by China/commodity/rate factors, swamping any deal signal.",
+      "Direction could be wrong if a 'deal' implies US-imposed concessions or tariffs that are AUD-negative."
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
