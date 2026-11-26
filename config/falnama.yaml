@@ -60,8 +60,9 @@ data:
 
   # Polymarket read-only endpoints (used only when source: live).
   gamma_base_url: https://gamma-api.polymarket.com
-  clob_base_url: https://clob.polymarket.com
-  data_api_base_url: https://data-api.polymarket.com  # Data API (v2 routes) for trades + wallet histories
+  # Data API v2: price history, trades, and wallet histories. (Price history moved
+  # here from clob.polymarket.com; see the note above fetch_token_history.)
+  data_api_base_url: https://data-api.polymarket.com
   # The wallet sensors (concentration, fingerprints) fail open per market. If one
   # can read fewer than this share of the markets it was asked about, the run's
   # pipeline_health gets a WARNING — an outage must not look like a quiet day.

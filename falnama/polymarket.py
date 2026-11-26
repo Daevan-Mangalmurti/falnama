@@ -2,7 +2,7 @@
 
 WHAT:     Fetches markets and price history from Polymarket's public APIs, and —
           when data.source is 'fixtures' — reads committed sample data instead.
-CONSUMES: Polymarket Gamma/CLOB/Data (v2) APIs (live) or data/fixtures/*.csv (fixtures)
+CONSUMES: Polymarket Gamma + Data API v2 (live) or data/fixtures/*.csv (fixtures)
 PRODUCES: pandas DataFrames; on a live run also freezes the raw pull under
           data/snapshots/<run_id>/ so the run is reproducible from frozen inputs.
 REVIEWER: anyone debugging data quality or reproducing a past run
@@ -47,7 +47,7 @@ MARKET_COLUMNS = [
 _GAMMA_MAX_PAGE = 100
 
 # Price history: this many markets failing in a row (each after its retries) is
-# treated as a CLOB outage and stops the run, rather than skipping market after
+# treated as a price-history outage and stops the run, rather than skipping market after
 # market until the workflow times out.
 _OUTAGE_AFTER = 3
 
@@ -79,7 +79,7 @@ def fetch_price_history(settings: Settings, market_ids: list[str],
     if settings.data_source == "fixtures":
         history = load_fixture(settings, "price_history")
         return history[history["market_id"].astype(str).isin({str(m) for m in market_ids})].copy()
-    df, failures = _fetch_clob_history(settings, market_ids, markets)
+    df, failures = _fetch_live_history(settings, market_ids, markets)
     if ctx is not None:
         if failures:
             ctx.warnings.append(f"price history unavailable for {len(failures)} of "
@@ -185,9 +185,9 @@ def _fetch_gamma_markets(settings: Settings) -> pd.DataFrame:
     return pd.DataFrame(normalized, columns=MARKET_COLUMNS)
 
 
-def _fetch_clob_history(settings: Settings, market_ids: list[str],
+def _fetch_live_history(settings: Settings, market_ids: list[str],
                         universe: pd.DataFrame | None = None) -> tuple[pd.DataFrame, list[dict]]:
-    """Fetch price history for each market's first (Yes) CLOB token. Live-only.
+    """Fetch price history for each market's first (Yes) outcome token. Live-only.
 
     Returns (history, failures). One call per market, ~100 per run, so a single
     unanswered request is near-certain on some day: each call is retried, and a
@@ -197,11 +197,6 @@ def _fetch_clob_history(settings: Settings, market_ids: list[str],
     Several failures IN A ROW mean an outage, not bad luck: it raises then, both
     because an empty history would read as a quiet day ("no anomalies") and
     because retrying ~100 dead calls would run past the workflow's time limit."""
-    import requests
-
-    cfg = settings.data
-    base = str(cfg.get("clob_base_url", "https://clob.polymarket.com")).rstrip("/")
-    timeout = int(cfg.get("request_timeout_seconds", 30))
     lookback_days = int(settings.anomaly.get("price_history_lookback_days", 14))
 
     # We need each market's Yes token id + name. Use the universe the caller
@@ -217,27 +212,19 @@ def _fetch_clob_history(settings: Settings, market_ids: list[str],
         token_ids = _parse_json(m.get("clob_token_ids"), [])
         if not token_ids:
             continue
-        # CLOB /prices-history: `fidelity` is the resolution in MINUTES (60 = hourly)
-        # and startTs/endTs bound the window. (Do NOT use interval=1h — there
-        # `interval` means the time RANGE, so 1h returns only the last hour.)
         end_ts = int(time.time())
-        params = {"market": token_ids[0], "startTs": end_ts - lookback_days * 86400,
-                  "endTs": end_ts, "fidelity": 60}
         try:
-            resp = _get(requests, settings, f"{base}/prices-history", params=params, timeout=timeout)
-            points = resp.json().get("history", [])
+            hist = fetch_token_history(settings, token_ids[0], end_ts - lookback_days * 86400, end_ts)
         except Exception as exc:  # retries exhausted, or an unusable body — skip this market
             failures.append({"market_id": str(m["market_id"]), "error": f"{type(exc).__name__}: {exc}"})
             in_a_row += 1
             if in_a_row >= _OUTAGE_AFTER:
-                raise RuntimeError(f"CLOB price history failed for {in_a_row} markets in a row — "
+                raise RuntimeError(f"Price history failed for {in_a_row} markets in a row — "
                                    f"treating it as an outage (last error: {failures[-1]['error']})") from exc
             continue
         in_a_row = 0
-        if not points:
+        if hist.empty:
             continue
-        hist = pd.DataFrame(points).rename(columns={"t": "timestamp", "p": "price"})
-        hist["timestamp"] = pd.to_datetime(hist["timestamp"], unit="s", utc=True)
         hist["market_id"] = str(m["market_id"])  # str whether the universe came from Gamma or a CSV
         hist["market_name"] = m["market_name"]
         hist["volume"] = m.get("volume")
@@ -250,6 +237,48 @@ def _fetch_clob_history(settings: Settings, market_ids: list[str],
     out = pd.concat(frames, ignore_index=True)
     cutoff = out["timestamp"].max() - pd.Timedelta(days=lookback_days)
     return out[out["timestamp"] >= cutoff].reset_index(drop=True), failures
+
+
+# Price history comes from the Data API's /v2/prices-history, which replaced the
+# CLOB-hosted /prices-history (changelog, 2026-09-04). Two of its limits shape
+# how we call it:
+#   * Hourly buckets, explicitly. The anomaly scorer's references (MOVE_REFERENCE,
+#     SPEED_REFERENCE, the unusualness floor) were calibrated on HOURLY steps, so
+#     the width is fixed here, not left to the server, which would otherwise pick
+#     30-minute buckets for a 14-day window. Checked against the old route on four
+#     live markets (2026-11-25): 98-99% of hours carry the identical price.
+#   * A start/end window spans at most 15 days (a longer one is a 400), which is
+#     why price_history_lookback_days must stay <= 15.
+# Fine-grained buckets are kept for a limited time only (30-minute data for at
+# least 90 days, then 3-hour buckets permanently); with an explicit width, an
+# older window comes back EMPTY rather than coarsened. That is fine for the live
+# pipeline (always the last 14 days) but is why backtest.py, which replays
+# months-old markets hourly, still reads the old CLOB route.
+# Spec: https://data-api.polymarket.com/v2/openapi.json (GET /v2/prices-history)
+_PRICE_BUCKET_SECONDS = 3600
+_MAX_PRICE_WINDOW_DAYS = 15
+
+
+def fetch_token_history(settings: Settings, token_id: str, start_ts: int, end_ts: int) -> pd.DataFrame:
+    """Hourly price history of one outcome token over [start_ts, end_ts), as a
+    frame of (timestamp UTC, price), oldest first.
+
+    The series ends with a 'terminal point': the latest real trade in the window,
+    which can fall between hour marks; it is kept, since it is the freshest
+    price there is. Raises if the window is too long or the request fails, so the
+    caller can record the market as unavailable rather than as quiet."""
+    if end_ts - start_ts > _MAX_PRICE_WINDOW_DAYS * 86400:
+        raise ValueError(f"price-history window longer than {_MAX_PRICE_WINDOW_DAYS} days "
+                         "(the Data API refuses it); lower anomaly.price_history_lookback_days")
+    params = {"token_id": token_id, "start": int(start_ts), "end": int(end_ts),
+              "bucket_seconds": _PRICE_BUCKET_SECONDS}
+    points = [p for page in data_api_pages(settings, "prices-history", params, max_rows=100_000) for p in page]
+    if not points:
+        return pd.DataFrame(columns=["timestamp", "price"])
+    return pd.DataFrame({
+        "timestamp": pd.to_datetime([int(p["timestamp"]) for p in points], unit="s", utc=True),
+        "price": [float(p["price"]) for p in points],
+    })
 
 
 # HTTP statuses that mean "try again shortly", not "your request is wrong".

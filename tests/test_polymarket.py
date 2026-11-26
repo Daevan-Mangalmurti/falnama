@@ -81,9 +81,9 @@ class _Timeout(Exception):
     pass
 
 
-class _FlakyClob:
-    """Stands in for `requests` against CLOB /prices-history. `plan` maps a token
-    id to how many calls time out before it answers (None = never answers)."""
+class _FlakyPrices:
+    """Stands in for `requests` against Data API /v2/prices-history. `plan` maps a
+    token id to how many calls time out before it answers (None = never answers)."""
 
     Timeout = _Timeout
     ConnectionError = ConnectionError
@@ -93,12 +93,14 @@ class _FlakyClob:
         self.calls: dict[str, int] = {}
 
     def get(self, url, params=None, headers=None, timeout=None):
-        token = params["market"]
+        assert url.endswith("/v2/prices-history") and params["bucket_seconds"] == 3600
+        token = params["token_id"]
         self.calls[token] = self.calls.get(token, 0) + 1
         fails = self.plan.get(token, 0)
         if fails is None or self.calls[token] <= fails:
             raise _Timeout("The read operation timed out")
-        return _FakeResponse({"history": [{"t": 1_761_000_000, "p": 0.4}]})
+        return _FakeResponse({"data": [{"timestamp": 1_761_000_000, "price": 0.4, "resolution_seconds": 3600}],
+                              "pagination": {"next_cursor": None}})
 
 
 def _universe(*tokens):
@@ -108,7 +110,7 @@ def _universe(*tokens):
 
 
 def _flaky(monkeypatch, plan):
-    stub = _FlakyClob(plan)
+    stub = _FlakyPrices(plan)
     monkeypatch.setitem(sys.modules, "requests", stub)
     monkeypatch.setattr(polymarket.time, "sleep", lambda s: None)  # no real backoff waits
     return stub
@@ -116,14 +118,14 @@ def _flaky(monkeypatch, plan):
 
 def test_a_timeout_is_retried_then_succeeds(monkeypatch):
     stub = _flaky(monkeypatch, {"a": 1})  # first call times out, second answers
-    history, failures = polymarket._fetch_clob_history(_settings(10), ["0"], _universe("a"))
+    history, failures = polymarket._fetch_live_history(_settings(10), ["0"], _universe("a"))
     assert failures == [] and len(history) == 1 and stub.calls["a"] == 2
 
 
 def test_a_market_that_never_answers_is_skipped_not_fatal(monkeypatch):
-    # The 2026-10-27 failure: one CLOB read timeout used to end the whole run.
+    # The 2026-10-27 failure: one price-history read timeout used to end the whole run.
     stub = _flaky(monkeypatch, {"b": None})
-    history, failures = polymarket._fetch_clob_history(_settings(10), ["0", "1", "2"], _universe("a", "b", "c"))
+    history, failures = polymarket._fetch_live_history(_settings(10), ["0", "1", "2"], _universe("a", "b", "c"))
     assert sorted(history["market_id"]) == ["0", "2"]
     assert [f["market_id"] for f in failures] == ["1"] and "timed out" in failures[0]["error"]
     assert stub.calls["b"] == 3  # the first try plus max_retries (2)
@@ -133,12 +135,78 @@ def test_several_failures_in_a_row_are_an_outage(monkeypatch):
     import pytest
     _flaky(monkeypatch, {"a": None, "b": None, "c": None, "d": 0})
     with pytest.raises(RuntimeError, match="outage"):
-        polymarket._fetch_clob_history(_settings(10), ["0", "1", "2", "3"], _universe("a", "b", "c", "d"))
+        polymarket._fetch_live_history(_settings(10), ["0", "1", "2", "3"], _universe("a", "b", "c", "d"))
 
 
 def test_the_passed_universe_avoids_a_second_gamma_pull(monkeypatch):
     stub = _flaky(monkeypatch, {})
     monkeypatch.setattr(polymarket, "_fetch_gamma_markets",
                         lambda s: (_ for _ in ()).throw(AssertionError("re-pulled Gamma")))
-    history, _ = polymarket._fetch_clob_history(_settings(10), ["0"], _universe("a"))
+    history, _ = polymarket._fetch_live_history(_settings(10), ["0"], _universe("a"))
     assert len(history) == 1 and stub.calls == {"a": 1}
+
+
+# ---------------------------------------------------------------------------
+# Data API /v2/prices-history — the envelope, paging, and the 15-day cap
+# ---------------------------------------------------------------------------
+class _PagedPrices:
+    """Serves a two-page price series the way /v2/prices-history does: a
+    {data, pagination} envelope, the terminal tick only on the last page."""
+
+    Timeout = _Timeout
+    ConnectionError = ConnectionError
+
+    def __init__(self):
+        self.params: list[dict] = []
+
+    def get(self, url, params=None, headers=None, timeout=None):
+        self.params.append(dict(params))
+        if "cursor" not in params:
+            return _FakeResponse({"data": [{"timestamp": 1_795_640_400, "price": 0.55, "resolution_seconds": 3600}],
+                                  "pagination": {"next_cursor": "p2"}})
+        return _FakeResponse({"data": [{"timestamp": 1_795_644_000, "price": 0.57, "resolution_seconds": 3600},
+                                       {"timestamp": 1_795_645_931, "price": 0.58, "resolution_seconds": 0}],
+                              "pagination": {"next_cursor": None}})
+
+
+def test_token_history_follows_the_cursor_and_keeps_the_terminal_tick(monkeypatch):
+    stub = _PagedPrices()
+    monkeypatch.setitem(sys.modules, "requests", stub)
+    monkeypatch.setattr(polymarket.time, "sleep", lambda s: None)
+    hist = polymarket.fetch_token_history(_settings(10), "tok", 1_795_000_000, 1_795_650_000)
+    assert list(hist["price"]) == [0.55, 0.57, 0.58]         # both pages, terminal tick last
+    assert str(hist["timestamp"].dt.tz) == "UTC"
+    assert stub.params[0] == {"token_id": "tok", "start": 1_795_000_000, "end": 1_795_650_000,
+                              "bucket_seconds": 3600}          # hourly, never left to the server
+    assert stub.params[1]["cursor"] == "p2"
+
+
+def test_token_history_refuses_a_window_the_api_would_reject():
+    import pytest
+    with pytest.raises(ValueError, match="15 days"):
+        polymarket.fetch_token_history(_settings(10), "tok", 0, 16 * 86400)
+
+
+def test_an_error_body_is_a_failure_not_a_quiet_market(monkeypatch):
+    # A 200 that is not the {data, pagination} envelope must not read as "no prices".
+    class _Odd(_FlakyPrices):
+        def get(self, url, params=None, headers=None, timeout=None):
+            return _FakeResponse({"error": "something changed"})
+    monkeypatch.setitem(sys.modules, "requests", _Odd({}))
+    monkeypatch.setattr(polymarket.time, "sleep", lambda s: None)
+    history, failures = polymarket._fetch_live_history(_settings(10), ["0"], _universe("a"))
+    assert history.empty and len(failures) == 1 and "unexpected Data API answer" in failures[0]["error"]
+
+
+def test_config_rejects_a_lookback_over_fifteen_days(tmp_path):
+    import pytest
+    import yaml
+
+    from falnama.config import ConfigError, find_project_root
+
+    raw = yaml.safe_load((find_project_root() / "config" / "falnama.yaml").read_text())
+    raw["anomaly"]["price_history_lookback_days"] = 21
+    path = tmp_path / "falnama.yaml"
+    path.write_text(yaml.safe_dump(raw))
+    with pytest.raises(ConfigError, match="price_history_lookback_days"):
+        load_config(path)

@@ -58,6 +58,13 @@ SETTLED_LO = 0.10
 # The CLOB history request's hard span cap at hourly resolution (see module note).
 _MAX_WINDOW_DAYS = 14
 _GAMMA = "https://gamma-api.polymarket.com"
+# The backtest deliberately stays on the OLD CLOB price-history route. Its
+# replacement (Data API /v2/prices-history, used by the live pipeline) keeps
+# hourly-or-finer data only for a few months, then 3-hour buckets: on 2026-11-25
+# it returned NOTHING hourly for the Feb-2026 Iran strike market, while this
+# route still served 334 hourly points. The scorer is calibrated on hourly steps,
+# so 3-hour data would not be comparable. If this route is ever retired, the
+# historical cases need an archived copy of their hourly histories.
 _CLOB = "https://clob.polymarket.com"
 
 

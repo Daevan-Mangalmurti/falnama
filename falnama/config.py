@@ -192,6 +192,12 @@ def _validate(settings: Settings) -> None:
     if newslag_mode not in _VALID_SCREENER_MODES:  # same mock|live set
         errors.append(f"newslag.mode must be one of {sorted(_VALID_SCREENER_MODES)}.")
 
+    # The Data API refuses a price-history window longer than 15 days.
+    lookback = settings.anomaly.get("price_history_lookback_days", 14)
+    if not isinstance(lookback, (int, float)) or not 1 <= lookback <= 15:
+        errors.append("anomaly.price_history_lookback_days must be between 1 and 15 "
+                      "(Polymarket's price-history API caps a window at 15 days).")
+
     # If real cards, a live screen, or live news-lag are requested, the model and
     # key var must be named.
     needs_llm = (settings.card_mode == "live"
