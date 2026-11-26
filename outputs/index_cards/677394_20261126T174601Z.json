@@ -1,0 +1,99 @@
+{
+  "card_id": "677394_20261126T174601Z",
+  "card_version": "v1",
+  "card_hash": "11a3e2588d3c13263415179e77fe6d79e6afeab6031353fc11346bde62b19ba8",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-26T17:46:01Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "677394",
+    "market_slug": "modi-out-before-2027",
+    "market_name": "Modi out by December 31, 2026?",
+    "market_url": "https://polymarket.com/market/modi-out-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Modi out by December 31, 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "India equity (large-cap) via US-listed ETF",
+      "ticker": "INDA",
+      "tradable_instrument_name": "iShares MSCI India ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -900.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -2500.0,
+        300.0
+      ],
+      "trade_eligibility": {
+        "eligible": true,
+        "reason": "Meets minimum expected move.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket probability jump is corroborated by any wire/credible reporting (Reuters, PTI, Bloomberg) or is isolated/thin-volume noise. Check INDA pre/after-hours and Nifty futures (SGX/GIFT Nifty) for confirmation.",
+        "1h": "Assess GIFT Nifty and USD/INR NDF moves; look for official Indian government or PMO statements denying/confirming. If no corroboration, downgrade conviction sharply.",
+        "2h": "Re-evaluate whether move is sustaining or mean-reverting; check Indian bank ADRs (HDB, IBN) and broad EM ETF (EEM) to separate India-specific from EM-wide risk.",
+        "6h": "Check Indian market open reaction (if during IST session) in Nifty/Sensex and rupee; confirm whether narrative is becoming public and priced.",
+        "12h": "Assess whether INDA move held, reversed, or the market question probability normalized; document whether leak preceded public confirmation."
+      },
+      "reasoning": "Modi is perceived by global investors as a pro-business, pro-reform, stability-providing leader; the 'Modi premium' is embedded in Indian equity valuations. A sharp spike in the implied probability that he ceases to be PM (resignation, removal, detention, incapacitation) would signal elevated political/succession uncertainty, which historically triggers a de-rating of Indian equities and foreign outflows. INDA is the most liquid US-listed proxy for Indian large-caps and would gap down on a credible leadership-risk signal. The move only clears the 700bps tradable bar if the probability shift reflects a genuine, imminent, credible event rather than noise."
+    },
+    {
+      "asset": "Indian rupee (weakness vs USD)",
+      "ticker": null,
+      "tradable_instrument_name": "USD/INR (NDF) / rupee proxy",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -400.0,
+      "confidence": 0.28,
+      "confidence_interval_bps": [
+        -1200.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check USD/INR NDF quote and whether any move is corroborated by credible reporting; assess liquidity/noise.",
+        "1h": "Watch for RBI commentary or intervention signals; compare rupee move to broad USD (DXY) to isolate India-specific stress.",
+        "2h": "Reassess whether rupee weakness is sustaining; cross-check with INDA and Indian bond yields if available.",
+        "6h": "Check onshore INR open and RBI reference rate behavior.",
+        "12h": "Document whether rupee weakness materialized and whether it preceded or followed public confirmation."
+      },
+      "reasoning": "Political leadership uncertainty in India typically pressures the rupee via capital-flight risk and a higher risk premium, pushing USD/INR up (rupee down). A credible 'Modi out' signal would likely coincide with rupee weakness. However, the RBI actively manages the rupee and intervenes to dampen volatility, so FX moves tend to be smaller and slower than equity moves, making 700bps unlikely within 12h \u2014 hence lower expected magnitude and this is likely NOT tradable under the bar."
+    }
+  ],
+  "evidence_used": [
+    "Market question asks whether Modi ceases to be PM before 2027, including resignation, removal, detention, or incapacitation",
+    "Modi/BJP widely viewed by markets as pro-business and stability-providing ('Modi premium' in Indian equities)",
+    "INDA is a liquid, broadly-traded US-listed proxy for Indian large-cap equities",
+    "Historical pattern: Indian political uncertainty pressures equities and the rupee, with RBI dampening FX volatility"
+  ],
+  "uncertainty_notes": [
+    "Base rate of a sitting, popular PM with a governing coalition leaving within the window is low; most probability spikes will be noise or speculation",
+    "Polymarket on such a market is often thin and driven by rumor rather than information leakage",
+    "If the probability move is small or not corroborated, there is no tradable signal",
+    "A move could already be public (news-driven) by the time it appears, eliminating any leak edge"
+  ],
+  "llm_justification": {
+    "summary": "The market tests the risk that Modi ceases to be India's PM. Because Modi embodies a market-perceived stability/reform premium, a sharp credible rise in his 'out' probability would most plausibly push Indian equities (INDA) down and the rupee weaker. INDA is the cleanest liquid proxy and the only one that could plausibly clear the 700bps bar \u2014 and only on a genuinely credible, near-term, corroborated signal. Base rates are low and the sensor is noisy, so confidence is modest and most probability spikes should be treated as noise until corroborated.",
+    "key_assumptions": [
+      "A probability spike reflects genuine leadership-risk information rather than thin-market noise",
+      "Markets price a 'Modi premium' such that his departure is net-negative for Indian risk assets",
+      "INDA and USD/INR are exposed enough to react within 12h"
+    ],
+    "failure_modes": [
+      "The probability move is noise/speculation with no real event, and assets do not move (most likely case)",
+      "The event is already public before it shows in the market, so no leak edge exists",
+      "A Modi departure could be interpreted as orderly succession within BJP, limiting the equity de-rating",
+      "RBI intervention mutes the rupee move, and index-level moves stay below the 700bps tradable threshold",
+      "INDA tracks broad EM/USD flows, so an India-specific political signal could be swamped by global factors"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

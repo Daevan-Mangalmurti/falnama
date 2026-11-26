@@ -2,10 +2,10 @@
   {
     "market_name": "U.S. agrees to a new trade deal with \"Mexico\" before 2027?",
     "market_id": "666826",
-    "anomaly_trigger_time_utc": "2026-11-21T22:00:19Z",
+    "anomaly_trigger_time_utc": "2026-11-21T22:00:00Z",
     "lookback_hours": 48.0,
-    "public_information_score": 3.0,
-    "residual_anomaly_score": 95.2,
+    "public_information_score": 2.0,
+    "residual_anomaly_score": 95.0,
     "information_state": "none",
     "evidence": [
       {
@@ -16,86 +16,105 @@
         "information_state": "none"
       }
     ],
-    "uncertainty_note": "The single provided article is unrelated to US-Mexico trade negotiations; absence of relevant coverage likely reflects a retrieval gap rather than genuine absence, so deeper review with better sources is warranted.",
-    "mode": "live"
+    "uncertainty_note": "The single provided article is about a White House helipad reception and has no bearing on a US-Mexico trade deal; absence of relevant coverage here likely reflects a retrieval gap rather than genuine absence of news driving this downward move.",
+    "mode": "live",
+    "news_source_status": "ok"
   },
   {
     "market_name": "Netanyahu out by end of 2026?",
     "market_id": "567688",
-    "anomaly_trigger_time_utc": "2026-11-20T16:00:26Z",
+    "anomaly_trigger_time_utc": "2026-11-26T17:49:00Z",
     "lookback_hours": 48.0,
-    "public_information_score": 15.0,
-    "residual_anomaly_score": 79.9,
-    "information_state": "speculation",
+    "public_information_score": 85.0,
+    "residual_anomaly_score": 14.1,
+    "information_state": "official_announcement",
     "evidence": [
       {
-        "snippet": "Where What When - Israel 2026 Elections : Biblical Problems , Biblical Solutions",
-        "source": "wherewhatwhen.com",
-        "url": "https://www.wherewhatwhen.com/article/israel-s-2026-elections-biblical-problems-biblical-solutions",
-        "published_time_utc": "2026-11-19T19:30:00Z",
+        "snippet": "Anti - Netanyahu bloc vows to swear in Israel new government by end of week - 26 - Nov - 2026",
+        "source": "home.nzcity.co.nz",
+        "url": "https://home.nzcity.co.nz/news/article.aspx?id=458800&fm=psp,tsf",
+        "published_time_utc": "2026-11-26T05:15:00Z",
+        "information_state": "official_announcement"
+      },
+      {
+        "snippet": "Anti - Netanyahu bloc vows to swear in Israel new government by end of week - 26 - Nov - 2026",
+        "source": "home.nzcity.co.nz",
+        "url": "https://home.nzcity.co.nz/news/article.aspx?id=458800&fm=psp,tst",
+        "published_time_utc": "2026-11-26T05:15:00Z",
+        "information_state": "official_announcement"
+      },
+      {
+        "snippet": "Anti - Netanyahu bloc vows to swear in Israel new government by end of week",
+        "source": "abc.net.au",
+        "url": "https://www.abc.net.au/news/2026-11-26/eisenkot-vows-to-form-israeli-government-by-end-of-week/107429976",
+        "published_time_utc": "2026-11-26T05:15:00Z",
+        "information_state": "official_announcement"
+      },
+      {
+        "snippet": "Israel , Netanyahu aims to be prime minister until 2028 . Eisenkot wants a law to block his way",
+        "source": "odnako.org",
+        "url": "https://www.odnako.org/israel-netanyahu-aims-to-be-prime-minister-until-2028-eisenkot-wants-a-law-to-block-his-way/",
+        "published_time_utc": "2026-11-26T06:15:00Z",
+        "information_state": "confirmation"
+      },
+      {
+        "snippet": "\u062c\u0648 24 : \u0627\u0644\u0645\u0646\u0627\u0637\u0642 \u0627\u0644\u0639\u0627\u0632\u0644\u0629 .. \u0645\u0627 \u0627\u0644\u0630\u064a \u0633\u064a\u062a\u063a\u064a\u0631 \u0628\u062a\u063a\u064a\u0631 \u0627\u0644\u062d\u0643\u0648\u0645\u0629 \u0627\u0644\u0625\u0633\u0631\u0627\u0626\u064a\u0644\u064a\u0629 \u061f ",
+        "source": "jo24.net",
+        "url": "https://jo24.net/article/584056",
+        "published_time_utc": "2026-11-26T12:45:00Z",
         "information_state": "speculation"
       },
       {
-        "snippet": "\u0546\u0565\u0569\u0561\u0576\u0575\u0561\u0570\u0578\u0582\u056b\u0581 \u0570\u0565\u057f\u0578 \u056f\u0561\u057e\u0561\u0580\u057f\u057e\u056b \u055e \u0561\u0580\u0564\u0575\u0578\u0584 \u053b\u0580\u0561\u0576\u056b \u0564\u0565\u0574 \u057a\u0561\u057f\u0565\u0580\u0561\u0566\u0574\u0568",
-        "source": "azg.am",
-        "url": "https://azg.am/am/%D5%B6%D5%A5%D5%A9%D5%A1%D5%B6%D5%B5%D5%A1%D5%B0%D5%B8%D6%82%D5%AB%D6%81-%D5%B0%D5%A5%D5%BF%D5%B8-%D5%AF%D5%A1%D5%BE%D5%A1%D6%80%D5%BF%D5%BE%D5%AB%D5%9E-%D5%A1%D6%80%D5%A4%D5%B5%D5%B8%D6%84-%D5%AB/",
-        "published_time_utc": "2026-11-20T00:30:00Z",
-        "information_state": "speculation"
-      },
-      {
-        "snippet": "Is another US - Iran war looming ? ",
-        "source": "middleeaststar.com",
-        "url": "http://www.middleeaststar.com/news/279440849/is-another-us-iran-war-looming",
-        "published_time_utc": "2026-11-18T17:30:00Z",
-        "information_state": "speculation"
-      },
-      {
-        "snippet": "The 2028 presidential election has started",
-        "source": "record-bee.com",
-        "url": "https://www.record-bee.com/2026/11/19/the-2028-presidential-election-has-started/",
-        "published_time_utc": "2026-11-19T17:15:00Z",
-        "information_state": "none"
-      },
-      {
-        "snippet": "\u05d5\u05de\u05d4 \u05d9\u05e7\u05e8\u05d4 \u05d1\u05ea\u05d9\u05e7 \u05d4\u05e4\u05dc\u05d9\u05dc\u05d9 \u05d4\u05d1\u05d0 ? ",
-        "source": "ynet.co.il",
-        "url": "https://www.ynet.co.il/news/article/rk6r2tsczg",
-        "published_time_utc": "2026-11-20T04:30:00Z",
-        "information_state": "speculation"
-      },
-      {
-        "snippet": "Jocuri de putere la Ierusalim : Netanyahu ar fi cerut Mossad - ului o opera\u021biune sub acoperire \u00eempotriva Iranului f\u0103r\u0103 a implica IDF - ul",
-        "source": "ziarulprofit.ro",
-        "url": "https://www.ziarulprofit.ro/jocuri-de-putere-la-ierusalim-netanyahu-ar-fi-cerut-mossad-ului-o-operatiune-sub-acoperire-impotriva-iranului-fara-a-implica-idf-ul/",
-        "published_time_utc": "2026-11-20T03:15:00Z",
+        "snippet": "UNITY ULTIMATUM : Golan Democrats Demand Eisenkot Rule Out Government With Netanyahu \u2013 The Yeshiva World",
+        "source": "theyeshivaworld.com",
+        "url": "https://www.theyeshivaworld.com/news/israel-news/2628261/unity-ultimatum-golans-democrats-demand-eisenkot-rule-out-government-with-netanyahu.html",
+        "published_time_utc": "2026-11-26T01:15:00Z",
         "information_state": "rumor"
       }
     ],
-    "uncertainty_note": "Snippets are multilingual and thin; several are topical to Netanyahu's politics and legal troubles but none report a concrete event (resignation, coalition collapse, election call) that would explain a sharp upward move. Absence of a clear trigger may reflect a retrieval gap rather than true absence of news.",
-    "mode": "live"
+    "uncertainty_note": "Articles [0], [1], [2] appear to be duplicates or near-duplicates reporting the same breaking news. The timing (05:15 UTC on 26-Nov) is ~12.5 hours before the market trigger, providing substantial lead time. Article [3] reports Netanyahu's stated goal to remain until 2028, which is counter-directional but provides context. Article [4] is in Arabic and discusses potential policy changes under a new government, suggesting anticipation of government change. Article [5] reports opposition demands. The core narrative \u2014 an anti-Netanyahu bloc moving to form a government \u2014 directly explains the upward move in Netanyahu-out-by-end-2026 odds.",
+    "mode": "live",
+    "news_source_status": "ok"
   },
   {
     "market_name": "U.S. agrees to a new trade deal with \"Vietnam\" before 2027?",
     "market_id": "666824",
-    "anomaly_trigger_time_utc": "2026-11-16T01:00:23Z",
+    "anomaly_trigger_time_utc": "2026-11-16T01:00:00Z",
     "lookback_hours": 48.0,
     "public_information_score": 0.0,
-    "residual_anomaly_score": 87.0,
+    "residual_anomaly_score": 87.6,
     "information_state": "none",
     "evidence": [],
     "uncertainty_note": "No relevant pre-trigger coverage found \u2014 this is weak evidence (retrieval may be incomplete), not proof the move was non-public.",
-    "mode": "live"
+    "mode": "live",
+    "news_source_status": "ok"
   },
   {
     "market_name": "Will Israel strike 4 countries in 2026?",
     "market_id": "678747",
-    "anomaly_trigger_time_utc": "2026-11-12T19:00:42Z",
+    "anomaly_trigger_time_utc": "2026-11-14T14:00:00Z",
     "lookback_hours": 48.0,
-    "public_information_score": 0.0,
-    "residual_anomaly_score": 85.3,
-    "information_state": "none",
-    "evidence": [],
-    "uncertainty_note": "No relevant pre-trigger coverage found \u2014 this is weak evidence (retrieval may be incomplete), not proof the move was non-public.",
-    "mode": "live"
+    "public_information_score": 15.0,
+    "residual_anomaly_score": 73.2,
+    "information_state": "retrospective",
+    "evidence": [
+      {
+        "snippet": "Israel hits Gaza hospital and France turns away a settler leader , and other Mideast news",
+        "source": "krmg.com",
+        "url": "https://krmg.com/2026/11/12/israel-hits-gaza-hospital-and-france-turns-away-a-settler-leader-and-other-mideast-news/",
+        "published_time_utc": "2026-11-13T00:45:00Z",
+        "information_state": "retrospective"
+      },
+      {
+        "snippet": "\u0418\u0440\u0430\u043d \u0437\u0430\u044f\u0432\u043b\u044f\u0435\u0442 , \u0447\u0442\u043e \u043d\u0430\u043d\u0435\u0441 \u0443\u0434\u0430\u0440 \u043f\u043e \u0430\u043c\u0435\u0440\u0438\u043a\u0430\u043d\u0441\u043a\u043e\u0439 \u0420\u041b\u0421 \u0432 \u0411\u0430\u0445\u0440\u0435\u0439\u043d\u0435 ( Al Jazeera , \u041a\u0430\u0442\u0430\u0440 ) ",
+        "source": "inosmi.ru",
+        "url": "https://inosmi.ru/20261113/iran_ssha-281176909.html",
+        "published_time_utc": "2026-11-13T18:00:00Z",
+        "information_state": "retrospective"
+      }
+    ],
+    "uncertainty_note": "Neither snippet documents Israel striking a 4th distinct country, which is the specific threshold the market tracks; coverage of regional escalation may exist elsewhere (paywalled/non-English/social) and could be a retrieval gap.",
+    "mode": "live",
+    "news_source_status": "ok"
   }
 ]

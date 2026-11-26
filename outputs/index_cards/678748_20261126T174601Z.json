@@ -1,0 +1,97 @@
+{
+  "card_id": "678748_20261126T174601Z",
+  "card_version": "v1",
+  "card_hash": "2d517a700e31ed4cd0bc1d6ac1f15b6922125669efaa9854d2f21c45c7e69f84",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-26T17:46:01Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "678748",
+    "market_slug": "will-israel-strike-5-countries-in-november-2025",
+    "market_name": "Will Israel strike 5 countries in 2026?",
+    "market_url": "https://polymarket.com/market/will-israel-strike-5-countries-in-november-2025",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Israel strike 5 countries in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "commodity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 180.0,
+      "confidence": 0.28,
+      "confidence_interval_bps": [
+        -150.0,
+        600.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability move coincides with a concrete headline (Iran, Lebanon, Yemen); if purely market-driven with no news, treat as noise. Re-check Brent/WTI front-month and USO tick.",
+        "1h": "Compare oil move to broad risk tone (SPY, DXY) to isolate geopolitics from macro. Look for tanker/shipping headlines.",
+        "2h": "Assess whether energy move is holding or fading; check OVX (oil vol) for confirmation of risk repricing.",
+        "6h": "Re-evaluate against overnight Mideast news flow; confirm no intercepted-only incidents (which don't qualify) are driving sentiment.",
+        "12h": "Mark final oil return vs. entry; judge whether the prediction-market signal led, lagged, or was unrelated to spot oil."
+      },
+      "reasoning": "A sharp rise in the implied probability that Israel strikes five different countries in 2026 signals expectations of broad regional escalation across the Middle East. Wider Israeli kinetic action raises the risk premium on crude via threats to supply routes (Strait of Hormuz, Gulf producers, Iran) and shipping. Oil is the most direct liquid macro proxy for Mideast conflict escalation. However, this is a slow year-long count market, not a tactical event signal, so the move is modest and noisy over 12h."
+    },
+    {
+      "asset": "Gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "commodity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 90.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -80.0,
+        350.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether gold is moving with real-rate/DXY changes or genuine haven demand; cross-check the probability spike against news.",
+        "1h": "Check gold vs. TIPS/real yields to separate haven flow from rates.",
+        "2h": "Look for persistence; haven bids from genuine escalation tend to hold, macro-driven ones reverse.",
+        "6h": "Reassess with fresh Mideast reporting; verify no de-escalation headlines.",
+        "12h": "Record final GLD return and whether it tracked the oil/geopolitical signal."
+      },
+      "reasoning": "Rising probability of broad Israeli military action is a safe-haven catalyst. Gold typically bids on Mideast escalation risk alongside oil. It is highly liquid and a cleaner haven proxy than regional equities. The exposure is real but diluted \u2014 gold responds to many macro drivers, and a 2026 count market is a weak, slow-moving trigger, so expected 12h magnitude is small and below the tradable threshold."
+    }
+  ],
+  "evidence_used": [
+    "Market measures count of distinct countries Israel strikes in 2026 \u2014 a breadth-of-escalation indicator",
+    "Primary topic military_conflict, region middle_east",
+    "Strict definition (only landed bombs/drones/missiles count; intercepts and artillery excluded) means resolution tracks genuine kinetic escalation",
+    "Oil and gold are the standard liquid macro proxies for Mideast conflict risk"
+  ],
+  "uncertainty_notes": [
+    "This is a year-long cumulative count market, not a single-event signal, so probability shifts map weakly to 12h asset moves",
+    "A probability move may reflect repricing of already-public news rather than leaked information",
+    "Haven/oil responses are frequently dominated by macro (rates, USD, OPEC) rather than geopolitics"
+  ],
+  "llm_justification": {
+    "summary": "The market gauges breadth of Israeli military escalation in 2026. A sharp rise in its implied probability would plausibly lift the Mideast risk premium, biasing crude oil and gold higher as the most liquid proxies. But because this is a slow, cumulative year-long count rather than a tactical event, the signal-to-asset linkage over a 12h window is weak and noisy; expected magnitudes fall below the 700bps tradable bar and confidence is low.",
+    "key_assumptions": [
+      "A probability spike reflects new escalation expectations, not mechanical market noise",
+      "Broader Israeli strikes would threaten regional energy supply and spur haven demand",
+      "Oil and gold remain the dominant liquid channels for Mideast risk over short horizons"
+    ],
+    "failure_modes": [
+      "The probability move is already-public news, so assets have repriced and no edge exists",
+      "Oil/gold moves are driven by macro factors (OPEC, Fed, DXY) that swamp the geopolitical signal",
+      "A year-long count market is too diffuse to move spot assets within 12h \u2014 proxy is weakly exposed",
+      "Escalation fears de-escalate quickly (ceasefire/diplomacy), reversing any initial haven/oil bid"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "card_id": "677367_20261126T174601Z",
+  "card_version": "v1",
+  "card_hash": "e01ad275f2abbdd13c0df4fef8f39629053aed3eb042a9ec0a85a507f89b046c",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-26T17:46:01Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "677367",
+    "market_slug": "china-coup-attempt-before-2027",
+    "market_name": "China coup attempt before 2027?",
+    "market_url": "https://polymarket.com/market/china-coup-attempt-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "China coup attempt before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "China large-cap equity risk",
+      "ticker": "FXI",
+      "tradable_instrument_name": "iShares China Large-Cap ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -900.0,
+      "confidence": 0.6,
+      "confidence_interval_bps": [
+        -2500.0,
+        100.0
+      ],
+      "trade_eligibility": {
+        "eligible": true,
+        "reason": "Meets minimum expected move.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket probability move is sustained or a single-print spike; scan newswires (Reuters, Bloomberg, Xinhua) for any China leadership/PLA headlines; check FXI/KWEB pre/post-market quote and USD/CNH.",
+        "1h": "Confirm if other China proxies (ASHR, KWEB, Hong Kong HSI futures) are moving in sympathy; verify no benign explanation (rumor debunked, thin-market manipulation).",
+        "2h": "Assess breadth: is USD/CNH, gold, and VIX corroborating a risk-off China story, or is FXI isolated? Reassess confidence.",
+        "6h": "Check Asian session open reaction (if applicable) and official Chinese state-media silence/denial; look for government stability signals.",
+        "12h": "Evaluate whether move held, reversed, or faded; mark whether the prediction-market signal preceded any public reporting (the core research question)."
+      },
+      "reasoning": "A sharp rise in the implied probability of a coup attempt in China signals acute political-stability risk at the top of the CCP/PLA. Chinese equities are highly sensitive to perceived regime and policy continuity; a credible instability signal would trigger rapid de-risking, capital-flight fears, and a repricing of Chinese ADRs/H-shares. FXI is the most liquid, broadly-traded proxy for China equity risk and would gap down. The move only clears the 700bps tradable bar if the probability shift is large and credible, not noise."
+    },
+    {
+      "asset": "Offshore Chinese yuan weakness (USD/CNH)",
+      "ticker": "CYB",
+      "tradable_instrument_name": "WisdomTree Chinese Yuan Strategy Fund (inverse proxy via USD strength)",
+      "asset_class": "fx_proxy",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -400.0,
+      "confidence": 0.5,
+      "confidence_interval_bps": [
+        -1200.0,
+        100.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check USD/CNH offshore spot move and whether it diverges from onshore CNY; confirm the coup-probability spike is credible.",
+        "1h": "Watch for PBOC fixing/intervention signals and whether CNH weakness is orderly or disorderly.",
+        "2h": "Cross-check with gold, USD index (DXY), and regional FX (TWD, KRW) for a coherent risk-off China theme.",
+        "6h": "Reassess after any official Chinese denial or state-media coverage; gauge whether FX reaction is building or fading.",
+        "12h": "Mark final CNH level and whether the FX move corroborated or contradicted the equity signal."
+      },
+      "reasoning": "Political-stability shocks in China typically drive capital flight and a weaker yuan (USD/CNH higher), as investors seek safe havens and the PBOC's grip on the managed float is questioned. CNH is the cleaner offshore gauge of foreign sentiment. However, the PBOC actively manages the fixing and could intervene to dampen moves, so magnitude is capped and less likely to clear 700bps on its own within 12h."
+    }
+  ],
+  "evidence_used": [
+    "Prediction-market question on a China coup attempt (Polymarket), topic military_conflict, region china_taiwan",
+    "General market relationship: China political-stability shocks drive Chinese equity de-risking and yuan weakness",
+    "Liquidity of FXI and CNH as the most tradable China-risk proxies"
+  ],
+  "uncertainty_notes": [
+    "Base rate of an actual coup in China is extremely low; most probability moves in this market are likely noise, manipulation, or speculative chatter rather than real leaked information",
+    "Prediction markets like this are thin and prone to single-trader distortion",
+    "If any instability were already widely public, the asset move would precede the market signal, breaking the leakage thesis",
+    "PBOC intervention can suppress yuan moves; capital controls limit clean price discovery"
+  ],
+  "llm_justification": {
+    "summary": "A sharp, credible increase in the implied probability of a China coup attempt would map to acute China political-stability risk: Chinese equities (FXI) selling off and the offshore yuan weakening (USD/CNH higher), with safe-haven flows. FXI is the cleanest liquid proxy and could clear the 700bps bar on a large move; the FX leg is smaller and PBOC-dampened. The dominant caveat is that this market is thin and the base rate of an actual coup is near zero, so most probability moves are likely noise rather than leaked signal.",
+    "key_assumptions": [
+      "The probability shift being mapped is large, sustained, and not a thin-market artifact",
+      "China equity and FX markets would react to credible regime-instability signals with risk-off moves",
+      "FXI and CNH remain liquid and tradable during the window"
+    ],
+    "failure_modes": [
+      "The probability spike is manipulation/noise in a thin market with no underlying information, so no asset move materializes",
+      "Any real instability is already public, meaning assets moved first and the market lagged (no leakage)",
+      "Chinese state censorship and PBOC intervention suppress the expected asset reaction, muting FXI/CNH moves",
+      "Broad global risk sentiment dominates and swamps the China-specific signal, making the proxy weakly attributable",
+      "Government quickly and credibly denies/debunks, reversing the probability and any initial asset move"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

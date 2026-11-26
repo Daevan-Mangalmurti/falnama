@@ -1,0 +1,99 @@
+{
+  "card_id": "678749_20261126T174601Z",
+  "card_version": "v1",
+  "card_hash": "32d341dcd239bb8cdb9732b3d8e3bdc65a5153686f11324424de3b788e9f3edf",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-26T17:46:01Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "678749",
+    "market_slug": "will-israel-strike-6-countries-in-2026",
+    "market_name": "Will Israel strike 6 countries in 2026?",
+    "market_url": "https://polymarket.com/market/will-israel-strike-6-countries-in-2026",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Will Israel strike 6 countries in 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "commodity",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.4,
+      "confidence_interval_bps": [
+        -150.0,
+        500.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether oil futures and USO are moving with the market signal; scan headlines for any specific named strike or Iran-related flashpoint.",
+        "1h": "Compare crude move to broad risk assets to isolate geopolitical premium vs. general risk-off; verify no OPEC/inventory news is driving oil independently.",
+        "2h": "Reassess whether the prediction-market move is sustained or mean-reverting; check Brent-WTI spread and tanker/freight signals.",
+        "6h": "Look for official Israeli acknowledgement or credible reporting of a qualifying strike on a new country; update if premium is fading.",
+        "12h": "Evaluate whether oil held the geopolitical premium into window close; mark result and note whether the market led or lagged public reporting."
+      },
+      "reasoning": "A sharp rise in the implied probability that Israel strikes 6 different countries in 2026 signals broadening regional escalation (likely involving Iran, Yemen, Iraq, Syria, Lebanon). Wider Middle East conflict raises supply-disruption and Strait-of-Hormuz risk premia, which transmit most directly and liquidly into crude oil. Oil is the cleanest macro proxy for MENA escalation risk."
+    },
+    {
+      "asset": "Gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.35,
+      "confidence_interval_bps": [
+        -120.0,
+        300.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check gold spot/GLD reaction alongside DXY and real yields to confirm haven bid rather than rate-driven move.",
+        "1h": "Assess correlation between the market signal and gold; distinguish Fed/rate noise from geopolitical premium.",
+        "2h": "Reassess whether the safe-haven bid is persisting or has already faded; watch VIX for broader risk-off confirmation.",
+        "6h": "Check for concrete strike confirmation; update if gold premium decays without news.",
+        "12h": "Mark whether gold retained any haven premium at window close and whether the prediction market anticipated public reporting."
+      },
+      "reasoning": "Rising odds of a multi-country Israeli strike campaign is a safe-haven catalyst. Gold typically bids on Middle East escalation as investors seek a geopolitical hedge. It is a deeper, more liquid haven than EIS or regional equity, though its response to any single escalation headline is muted and often transient."
+    }
+  ],
+  "evidence_used": [
+    "Market measures cumulative count of distinct countries Israel strikes in 2026 \u2014 a broad escalation thermometer",
+    "Primary topic military_conflict, region middle_east",
+    "Historical pattern that MENA escalation drives oil risk premia and safe-haven gold bids",
+    "12h prediction window with 700bps tradability threshold"
+  ],
+  "uncertainty_notes": [
+    "This is a year-long aggregate count, so a short-term probability move maps only loosely to any single 12h asset move",
+    "Oil and gold responses to geopolitical headlines are frequently transient and quickly faded",
+    "Neither predicted move reaches the 700bps tradable threshold in a 12h window \u2014 mapping is weak/non-tradable",
+    "Prediction-market liquidity on such a niche question is thin; price moves may be noise not information"
+  ],
+  "llm_justification": {
+    "summary": "A sharp rise in the odds of Israel striking 6 countries in 2026 would signal broadening Middle East conflict, whose most liquid public-market expressions are higher crude oil (supply-disruption premium) and modestly higher gold (safe-haven bid). However, because the market tracks a full-year cumulative count, the link to any specific 12h asset move is loose, both expected moves fall well below the 700bps tradable bar, and responses to escalation headlines are typically small and transient \u2014 so this is a low-confidence, non-tradable research mapping.",
+    "key_assumptions": [
+      "A rising probability reflects genuine escalation expectations rather than thin-market noise",
+      "Oil and gold remain the primary liquid transmission channels for MENA conflict risk",
+      "No offsetting macro news (OPEC, Fed, inventories) dominates the 12h window"
+    ],
+    "failure_modes": [
+      "The probability move is already priced into oil/gold because the underlying escalation news is public",
+      "The market move reverses as a false alarm, leaving assets flat or lower",
+      "Oil/gold are weakly exposed to a single incremental strike on a minor country, producing negligible moves",
+      "Thin prediction-market liquidity makes the signal noise, not leaked information",
+      "Escalation could paradoxically be read as de-escalation-via-deterrence by markets, muting or reversing the oil bid"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
