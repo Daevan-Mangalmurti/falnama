@@ -6,8 +6,9 @@ WHAT:     Replays a curated list of ALREADY-RESOLVED Polymarket markets through
           And did the wallet-fingerprint sensor see a cluster of fresh, focused
           wallets making large long-shot bets in the week before?
 CONSUMES: config/backtest_markets.yaml (the curated cases) + Polymarket's public
-          read-only APIs (Gamma for metadata, CLOB for price history, the data
-          API for trades and wallet histories)
+          read-only APIs (Gamma for metadata, the data API for trades and wallet
+          histories) + price history, read from the committed archive in
+          data/backtest_archive/ when it covers the case, else live from CLOB
 PRODUCES: outputs/backtest/detection_<run_id>.csv (one row per case), a summary
           (recall on the documented insider cases and false-positive rate on
           controls, per sensor), and wallet_evidence_<run_id>.csv (every wallet
@@ -64,7 +65,8 @@ _GAMMA = "https://gamma-api.polymarket.com"
 # it returned NOTHING hourly for the Feb-2026 Iran strike market, while this
 # route still served 334 hourly points. The scorer is calibrated on hourly steps,
 # so 3-hour data would not be comparable. If this route is ever retired, the
-# historical cases need an archived copy of their hourly histories.
+# historical cases need an archived copy of their hourly histories — which is
+# what data/backtest_archive/ is (see the archive section below).
 _CLOB = "https://clob.polymarket.com"
 
 
@@ -101,6 +103,7 @@ class BacktestOutcome:
     fingerprint_matched_usd: float | None = None
     fingerprint_outcome: str | None = None    # the side the matched wallets bet
     fingerprint_reason: str = ""
+    history_source: str | None = None         # "archive" | "clob" — where the prices came from
 
 
 # ---------------------------------------------------------------------------
@@ -136,6 +139,131 @@ def _clob_history(token_id: str, start_ts: int, end_ts: int, settings: Settings)
         "timestamp": [pd.Timestamp(p["t"], unit="s", tz="UTC") for p in points],
         "price": [float(p["p"]) for p in points],
     })
+
+
+# ---------------------------------------------------------------------------
+# The price archive — hourly histories frozen while the CLOB route still serves them
+# ---------------------------------------------------------------------------
+# The backtest's ground truth is hourly price history of months-old markets. Only
+# the old CLOB route still serves that (its v2 replacement keeps hourly data for a
+# few months), and if Polymarket retires the route the cases cannot be replayed.
+# So scripts/archive_backtest_history.py freezes each case's history into
+# data/backtest_archive/ (committed): price_history.csv (token_id, timestamp,
+# price) and manifest.json (per token: the case, the market, the resolution anchor
+# at archive time, and the exact window archived).
+#
+# The archive covers a band WIDER than the 14 days scored — 28 days before the
+# resolution anchor to 2 days after — so a small shift in the anchor (it is the
+# latest trade, read live) still falls inside it, and longer baselines are there
+# for later research. The CLOB route refuses long hourly windows, so the band is
+# fetched in 7-day pieces. A case whose requested window is not fully covered is
+# read live, never served a partial archive.
+ARCHIVE_DIR = Path("data") / "backtest_archive"
+_ARCHIVE_DAYS_BEFORE = 28
+_ARCHIVE_DAYS_AFTER = 2
+_ARCHIVE_CHUNK_DAYS = 7
+
+
+def _archive_paths(settings: Settings) -> tuple[Path, Path]:
+    directory = settings.project_root / ARCHIVE_DIR
+    return directory / "price_history.csv", directory / "manifest.json"
+
+
+def load_archive(settings: Settings) -> tuple[pd.DataFrame, dict]:
+    """The archived histories and their manifest (empty when no archive exists)."""
+    csv_path, manifest_path = _archive_paths(settings)
+    if not manifest_path.exists() or not csv_path.exists():
+        return pd.DataFrame(columns=["token_id", "timestamp", "price"]), {"tokens": {}, "failures": []}
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    history = pd.read_csv(csv_path, dtype={"token_id": str})
+    history["timestamp"] = pd.to_datetime(history["timestamp"], utc=True)
+    return history, manifest
+
+
+def _price_history(token_id: str, start_ts: int, end_ts: int, settings: Settings) -> tuple[pd.DataFrame, str]:
+    """Hourly history for [start_ts, end_ts]: from the archive when it covers the
+    whole window, else live from CLOB. Returns (history, source)."""
+    archived, manifest = load_archive(settings)
+    entry = (manifest.get("tokens") or {}).get(token_id)
+    if entry and entry["window_start_ts"] <= start_ts and entry["window_end_ts"] >= end_ts:
+        rows = archived[(archived["token_id"] == token_id)
+                        & (archived["timestamp"] >= pd.Timestamp(start_ts, unit="s", tz="UTC"))
+                        & (archived["timestamp"] <= pd.Timestamp(end_ts, unit="s", tz="UTC"))]
+        return rows[["timestamp", "price"]].sort_values("timestamp").reset_index(drop=True), "archive"
+    return _clob_history(token_id, start_ts, end_ts, settings), "clob"
+
+
+def archive_histories(cases: list[BacktestCase], settings: Settings, *, refresh: bool = False,
+                      now: pd.Timestamp | None = None) -> dict:
+    """Fetch and freeze the hourly history of every case into the archive. Tokens
+    already archived are kept as they are unless `refresh` is set: the point is
+    a FROZEN record. Returns the updated manifest; a case that fails is listed
+    under "failures" (with its error) and archived on a later run if it can be."""
+    archived, manifest = load_archive(settings)
+    tokens = dict(manifest.get("tokens") or {})
+    failures = []
+    frames = [archived]
+    now = pd.Timestamp(now or pd.Timestamp.now(tz="UTC"))
+    for case in cases:
+        try:
+            event = _gamma_event(case.event, settings)
+            market = _pick_market(event, case.market_contains)
+            token_ids = market.get("clobTokenIds")
+            token_ids = json.loads(token_ids) if isinstance(token_ids, str) else token_ids
+            if not token_ids:
+                raise LookupError("market has no CLOB token")
+            token = str(token_ids[0])
+            if token in tokens and not refresh:
+                continue
+            anchor = _resolution_anchor(market, settings)
+            if pd.isna(anchor):
+                raise LookupError("no resolution time for this market")
+            start = anchor - pd.Timedelta(days=_ARCHIVE_DAYS_BEFORE)
+            end = min(anchor + pd.Timedelta(days=_ARCHIVE_DAYS_AFTER), now)
+            pieces, cursor = [], start
+            while cursor < end:  # the route refuses long hourly windows: fetch in pieces
+                piece_end = min(cursor + pd.Timedelta(days=_ARCHIVE_CHUNK_DAYS), end)
+                pieces.append(_clob_history(token, int(cursor.timestamp()), int(piece_end.timestamp()), settings))
+                cursor = piece_end
+            pieces = [p for p in pieces if not p.empty]  # a quiet week returns nothing
+            history = (pd.concat(pieces, ignore_index=True).drop_duplicates("timestamp").sort_values("timestamp")
+                       if pieces else pd.DataFrame(columns=["timestamp", "price"]))
+        except Exception as exc:  # recorded, never fatal: one bad case must not stop the rest
+            failures.append({"event": case.event, "market_contains": case.market_contains,
+                             "error": f"{type(exc).__name__}: {exc}"})
+            continue
+        frames = [f[f["token_id"] != token] for f in frames]  # a refresh replaces, never duplicates
+        frames.append(history.assign(token_id=token)[["token_id", "timestamp", "price"]])
+        tokens[token] = {
+            "event": case.event, "market_contains": case.market_contains, "label": case.label,
+            "market_id": io.clean_id(market.get("id")), "condition_id": market.get("conditionId"),
+            "market_name": str(market.get("question") or event.get("title")),
+            "resolved_outcome": _outcome(market),
+            "resolution_anchor_utc": anchor.strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "window_start_ts": int(start.timestamp()), "window_end_ts": int(end.timestamp()),
+            "window_start_utc": start.strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "window_end_utc": end.strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "points": int(len(history)),
+            "archived_at_utc": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "source": f"{_CLOB}/prices-history (fidelity=60, fetched in {_ARCHIVE_CHUNK_DAYS}-day pieces)",
+        }
+
+    frames = [f for f in frames if not f.empty]
+    history = (pd.concat(frames, ignore_index=True) if frames
+               else pd.DataFrame(columns=["token_id", "timestamp", "price"]))
+    manifest = {
+        "description": ("Hourly price histories of the backtest cases, frozen from Polymarket's CLOB "
+                        "/prices-history route. Read by falnama/backtest.py before any live fetch; "
+                        "written by scripts/archive_backtest_history.py. Do not edit by hand."),
+        "tokens": dict(sorted(tokens.items(), key=lambda kv: (kv[1]["event"], kv[1]["market_name"]))),
+        "failures": failures,
+    }
+    csv_path, manifest_path = _archive_paths(settings)
+    csv_path.parent.mkdir(parents=True, exist_ok=True)
+    out = history.sort_values(["token_id", "timestamp"])
+    out.assign(timestamp=out["timestamp"].dt.strftime("%Y-%m-%dT%H:%M:%SZ")).to_csv(csv_path, index=False)
+    io.write_json(manifest_path, manifest)
+    return manifest
 
 
 # ---------------------------------------------------------------------------
@@ -248,7 +376,8 @@ def _score_price(out: BacktestOutcome, market: dict, anchor, settings: Settings)
         return
 
     end_ts = int(anchor.timestamp())
-    history = _clob_history(str(token_ids[0]), end_ts - _MAX_WINDOW_DAYS * 86400, end_ts, settings)
+    history, out.history_source = _price_history(str(token_ids[0]), end_ts - _MAX_WINDOW_DAYS * 86400,
+                                                 end_ts, settings)
     out.history_points = int(len(history))
     if history.empty:
         out.error = "no price history (likely pruned — market too old)"
