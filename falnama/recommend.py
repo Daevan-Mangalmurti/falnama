@@ -17,6 +17,15 @@ seeing the move. If the only cards for a market were created after the trigger,
 the candidate is rejected as ex-post, UNLESS backfill_mode is set (in which case
 the recommendation is produced but flagged non-live).
 
+Two more rules keep the paper record honest:
+  * Mode match: a live run only accepts live cards; a mock placeholder card can
+    never justify a live recommendation.
+  * Once per signal: a move (market + trigger time) is recommended at most once.
+    The anomaly stage keeps re-reporting a move for as long as it sits in the
+    price-history window; later sightings go to the rejection log as repeats.
+    The top-half eligibility cut is taken BEFORE repeats are removed, so an
+    older strong move still sets the bar a new one must clear.
+
 Position size blends the card's confidence, expected magnitude, and the anomaly
 strength — each capped so no single factor dominates — then scales to
 recommend.max_position_usd.
@@ -66,10 +75,21 @@ def evaluate_candidate(anomaly: dict, cards_for_market: list[dict], settings: Se
               "anomaly_score": anomaly.get("anomaly_score"),
               "anomaly_trigger_time_utc": anomaly.get("anomaly_trigger_time_utc")}
 
-    card, is_live = _pick_card(cards_for_market, trigger, settings.backfill_mode)
+    # Only cards of the run's own mode count. A mock card is a placeholder: in a
+    # live run it must never justify a recommendation (and a live card is not
+    # what a mock run is exercising). Same rule as card reuse in cards.py.
+    mock_run = settings.card_mode == "mock"
+    same_mode = [c for c in cards_for_market if bool(c.get("mock_mode")) == mock_run]
+    card, is_live = _pick_card(same_mode, trigger, settings.backfill_mode)
     if card is None:
-        return {**reject, "reason": ("no scenario card for this market" if not cards_for_market
-                                     else "only ex-post cards exist (created after the trigger)")}
+        if not cards_for_market:
+            reason = "no scenario card for this market"
+        elif not same_mode:
+            reason = (f"only {'live' if mock_run else 'mock'} cards exist; "
+                      f"a {settings.card_mode} run needs a {settings.card_mode} card")
+        else:
+            reason = "only ex-post cards exist (created after the trigger)"
+        return {**reject, "reason": reason}
 
     prediction = card["predictions"][0]  # the primary asset implication
     if not prediction["trade_eligibility"]["eligible"]:
@@ -144,14 +164,31 @@ def _size_position(prediction: dict, anomaly_score: float, settings: Settings) -
 # Evaluating the whole batch
 # ---------------------------------------------------------------------------
 def recommend(anomalies: pd.DataFrame, cards: list[dict], settings: Settings,
-              ctx: RunContext) -> RecommendationResult:
+              ctx: RunContext, prior: dict[str, str] | None = None) -> RecommendationResult:
     """Evaluate every eligible anomaly against its cards; split into recommended
-    and rejected; write the workbook and rejection log."""
+    and rejected; write the workbook and rejection log.
+
+    `prior` maps signal keys (io.signal_key) to the run that already recommended
+    them; it is read from earlier runs' recommendation files when not supplied.
+    A signal is recommended at most ONCE: the anomaly stage re-reports the same
+    move every run for up to two weeks, and re-recommending it each time would
+    stack duplicate paper positions on one piece of evidence.
+    """
     eligible = _eligible(anomalies, settings)
     by_market = _cards_by_market(cards)
+    prior = already_recommended(settings) if prior is None else prior
 
     recommended, rejected = [], []
     for anomaly in eligible.to_dict(orient="records"):
+        key = io.signal_key(anomaly.get("market_id"), anomaly.get("anomaly_trigger_time_utc"))
+        if key in prior:
+            # Recorded, not silently dropped: the rejection log shows the repeat.
+            rejected.append({"kind": "rejected", "market_name": io.clean_id(anomaly.get("market_name")),
+                             "market_id": io.clean_id(anomaly.get("market_id")),
+                             "anomaly_score": anomaly.get("anomaly_score"),
+                             "anomaly_trigger_time_utc": anomaly.get("anomaly_trigger_time_utc"),
+                             "reason": f"already recommended in run {prior[key]} (same move)"})
+            continue
         market_cards = by_market.get(str(anomaly.get("market_id")), [])
         decision = evaluate_candidate(anomaly, market_cards, settings,
                                       run_id=ctx.run_id, run_time_utc=ctx.run_time_utc)
@@ -166,6 +203,22 @@ def recommend(anomalies: pd.DataFrame, cards: list[dict], settings: Settings,
 
     workbook = _write_workbook(recommended, rejected, cards, settings, ctx)
     return RecommendationResult(recommended=recommended, rejected=rejected, workbook_path=workbook)
+
+
+def already_recommended(settings: Settings) -> dict[str, str]:
+    """Signal key -> the first run that recommended it, from earlier runs'
+    recommendation files. Only recommendations of the current mode count, so the
+    placeholder recommendations an old mock run made cannot block a live one."""
+    mock_run = settings.card_mode == "mock"
+    seen: dict[str, str] = {}
+    for run_id, recs in io.run_stamped_json(settings.output_dir("recommended_trades"), "recommendations"):
+        for rec in recs if isinstance(recs, list) else []:
+            if bool(rec.get("mock_mode")) != mock_run:
+                continue
+            key = io.signal_key(rec.get("market_id"), rec.get("anomaly_trigger_time_utc"))
+            if key:
+                seen.setdefault(key, run_id)
+    return seen
 
 
 def _eligible(anomalies: pd.DataFrame, settings: Settings) -> pd.DataFrame:
@@ -239,6 +292,8 @@ def _write_workbook(recommended: list[dict], rejected: list[dict], cards: list[d
     io.update_manifest(ctx, "recommender", {
         "recommended_count": len(recommended),
         "rejected_count": len(rejected),
+        "repeat_signals_skipped": sum(str(r.get("reason", "")).startswith("already recommended")
+                                      for r in rejected),
         "workbook": str(workbook_path.relative_to(settings.project_root)),
         "backfill_mode": settings.backfill_mode,
     })

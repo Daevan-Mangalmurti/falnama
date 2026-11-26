@@ -244,8 +244,8 @@ def test_gdelt_retries_through_both_throttle_forms(monkeypatch):
 
 
 def test_gdelt_gives_up_safely_after_exhausting_retries(monkeypatch):
-    # Persistent throttle → return [] (fail-safe: assess reports "no coverage"),
-    # never crash the stage.
+    # Persistent throttle → the source is reported UNAVAILABLE (None, distinct from
+    # [] = "answered, no coverage"), never a crash of the stage.
     import sys
     import time as _time
 
@@ -257,4 +257,79 @@ def test_gdelt_gives_up_safely_after_exhausting_retries(monkeypatch):
                         type("R", (), {"get": staticmethod(lambda *a, **k: _FakeResp(429, ""))}))
 
     a = {"market_name": "US strike Iran", "anomaly_trigger_time_utc": "2026-07-29T00:00:00Z"}
-    assert newslag._fetch_gdelt(a, live) == []
+    with pytest.raises(newslag.NewsSourceUnavailable):
+        newslag._fetch_gdelt(a, live)
+    assert newslag._fetch_news(a, live) is None
+
+
+# ---------------------------------------------------------------------------
+# Reuse: each move is checked once, not once per run
+# ---------------------------------------------------------------------------
+def _ctx(tmp_path, monkeypatch, mode: str = "mock", run_id: str = "20260728T000000Z"):
+    from falnama.io import RunContext
+
+    s = load_config()
+    s.raw["newslag"] = {**S.raw["newslag"], "enabled": True, "mode": mode}
+    monkeypatch.setattr(type(s), "output_dir", lambda self, key: tmp_path)
+    return RunContext(settings=s, run_id=run_id, run_time_utc="2026-07-28T00:00:00Z")
+
+
+def _counting_fetch(monkeypatch, result=None):
+    calls = []
+
+    def fetch(anomaly, settings):
+        calls.append(anomaly["market_id"])
+        return newslag._mock_news(anomaly) if result == "mock" else result
+    monkeypatch.setattr(newslag, "_fetch_news", fetch)
+    return calls
+
+
+def test_a_repeat_move_reuses_the_earlier_check(tmp_path, monkeypatch):
+    calls = _counting_fetch(monkeypatch, "mock")
+    first = newslag.run(_ctx(tmp_path, monkeypatch, run_id="20260728T000000Z"), pd.DataFrame([ANOMALY]))
+    # Next run: same move, but the anomaly score drifted down.
+    drifted = {**ANOMALY, "anomaly_score": 45.0}
+    second = newslag.run(_ctx(tmp_path, monkeypatch, run_id="20260729T000000Z"), pd.DataFrame([drifted]))
+
+    assert calls == ["42"]                                   # news fetched (and judged) once
+    a1, a2 = first[0].assessment, second[0].assessment
+    assert a2["reused_from_run_id"] == "20260728T000000Z"
+    assert a2["public_information_score"] == a1["public_information_score"]
+    assert a2["residual_anomaly_score"] == round(45.0 * (1 - a1["public_information_score"] / 100), 1)
+    assert validate(a2, "news_lag") == []
+
+
+def test_reuse_chains_point_at_the_original_check(tmp_path, monkeypatch):
+    _counting_fetch(monkeypatch, "mock")
+    for run_id in ("20260728T000000Z", "20260729T000000Z", "20260730T000000Z"):
+        out = newslag.run(_ctx(tmp_path, monkeypatch, run_id=run_id), pd.DataFrame([ANOMALY]))
+    assert out[0].assessment["reused_from_run_id"] == "20260728T000000Z"
+
+
+def test_a_failed_news_fetch_is_checked_again_next_run(tmp_path, monkeypatch):
+    calls = _counting_fetch(monkeypatch, None)              # source unavailable
+    ctx = _ctx(tmp_path, monkeypatch, run_id="20260728T000000Z")
+    first = newslag.run(ctx, pd.DataFrame([ANOMALY]))
+    assert first[0].assessment["news_source_status"] == "unavailable"
+    assert first[0].assessment["residual_anomaly_score"] == ANOMALY["anomaly_score"]   # fail-safe
+    assert ctx.errors == [] and any("news source unavailable" in w for w in ctx.warnings)
+
+    newslag.run(_ctx(tmp_path, monkeypatch, run_id="20260729T000000Z"), pd.DataFrame([ANOMALY]))
+    assert calls == ["42", "42"]
+
+
+def test_checks_from_before_the_status_field_are_not_reused(tmp_path, monkeypatch):
+    import json
+    # An old-format assessment cannot tell us whether its GDELT fetch worked.
+    old = {**newslag.assess(ANOMALY, [], S)}
+    old.pop("news_source_status")
+    (tmp_path / "news_lag_20260720T000000Z.json").write_text(json.dumps([old]))
+    calls = _counting_fetch(monkeypatch, "mock")
+    newslag.run(_ctx(tmp_path, monkeypatch), pd.DataFrame([ANOMALY]))
+    assert calls == ["42"]
+
+
+def test_a_mock_check_is_not_reused_by_a_live_run(tmp_path, monkeypatch):
+    _counting_fetch(monkeypatch, "mock")
+    newslag.run(_ctx(tmp_path, monkeypatch, mode="mock", run_id="20260728T000000Z"), pd.DataFrame([ANOMALY]))
+    assert newslag.prior_assessments(_ctx(tmp_path, monkeypatch, mode="live").settings) == {}

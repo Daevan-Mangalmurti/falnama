@@ -179,13 +179,17 @@ def _build_user_prompt(anomaly: dict[str, Any], articles: list[dict[str, Any]]) 
 # ---------------------------------------------------------------------------
 # Assess one anomaly (the pure-ish core: timing filter -> rank -> judge -> score)
 # ---------------------------------------------------------------------------
-def assess(anomaly: dict[str, Any], articles: list[dict[str, Any]], settings: Settings) -> dict[str, Any]:
+def assess(anomaly: dict[str, Any], articles: list[dict[str, Any]] | None, settings: Settings) -> dict[str, Any]:
     """Assess one anomaly against candidate articles. Returns a schema-valid dict.
 
     Enforces the anti-ex-post timing rule (only pre-trigger articles can explain a
     move), ranks the survivors, routes mock/live, scores, and validates. The one
     network boundary in the live path is the LLM seam, mocked in tests.
+    `articles=None` means the news source could not be read: assessed as no
+    coverage (fail-safe) but marked, so a later run checks again.
     """
+    news_ok = articles is not None
+    articles = articles or []
     cfg = settings.newslag
     mode = str(cfg.get("mode", "mock"))
     lookback_hours = float(cfg.get("lookback_hours", 48))
@@ -207,7 +211,8 @@ def assess(anomaly: dict[str, Any], articles: list[dict[str, Any]], settings: Se
     else:
         analysis, error = _live_analysis(anomaly, ranked, settings)
 
-    return _build_assessment(anomaly, ranked, analysis, settings, mode=mode, error=error)
+    return _build_assessment(anomaly, ranked, analysis, settings, mode=mode, error=error,
+                             news_ok=news_ok)
 
 
 def _strictly_before(articles: list[dict], trigger, window_start) -> list[dict]:
@@ -225,7 +230,7 @@ def _strictly_before(articles: list[dict], trigger, window_start) -> list[dict]:
 
 
 def _build_assessment(anomaly: dict, ranked: list[dict], analysis: dict, settings: Settings,
-                      *, mode: str, error: str) -> dict[str, Any]:
+                      *, mode: str, error: str, news_ok: bool = True) -> dict[str, Any]:
     """Turn an analysis into the schema-valid assessment: scores + evidence."""
     anomaly_score = _as_float(anomaly.get("anomaly_score"), 0.0)
     public = max(0.0, min(100.0, _as_float(analysis.get("public_information_score"), 0.0)))
@@ -246,7 +251,9 @@ def _build_assessment(anomaly: dict, ranked: list[dict], analysis: dict, setting
 
     note = str(analysis.get("uncertainty_note") or _default_uncertainty(bool(ranked)))
     if error:
-        note = f"News-lag checker unavailable ({error}); move left UNEXPLAINED pending review. {note}"
+        note = f"{_UNAVAILABLE} ({error}); move left UNEXPLAINED pending review. {note}"
+    if not news_ok:
+        note = f"News source unavailable; no coverage could be checked, move left UNEXPLAINED. {note}"
 
     assessment = {
         "market_name": str(anomaly.get("market_name") or "Unknown market"),
@@ -259,6 +266,9 @@ def _build_assessment(anomaly: dict, ranked: list[dict], analysis: dict, setting
         "evidence": evidence,
         "uncertainty_note": note,
         "mode": mode,
+        # "ok" = the news source answered (even with nothing). Only an "ok" check
+        # with no LLM error may be reused by later runs; see prior_assessments.
+        "news_source_status": "ok" if news_ok else "unavailable",
     }
     validate_or_raise(assessment, "news_lag")  # never emit an off-contract assessment
     return assessment
@@ -267,15 +277,24 @@ def _build_assessment(anomaly: dict, ranked: list[dict], analysis: dict, setting
 # ---------------------------------------------------------------------------
 # Layer 1 — retrieval (the news source seam) + ranking
 # ---------------------------------------------------------------------------
-def _fetch_news(anomaly: dict[str, Any], settings: Settings) -> list[dict[str, Any]]:
+class NewsSourceUnavailable(RuntimeError):
+    """The news source could not be read (throttled past every retry, or down)."""
+
+
+def _fetch_news(anomaly: dict[str, Any], settings: Settings) -> list[dict[str, Any]] | None:
     """Return candidate articles in the anomaly's lookback window. Routes mock/live.
-    The single retrieval boundary — mock it (or run mock mode) to keep CI offline."""
+    The single retrieval boundary — mock it (or run mock mode) to keep CI offline.
+
+    Returns None when the source could not be read, which is different from []
+    (the source answered: no coverage). Both are assessed as "nothing explains the
+    move" (fail-safe), but only a real answer may be reused by later runs.
+    """
     if str(settings.newslag.get("mode", "mock")) == "mock":
         return _mock_news(anomaly)
     try:
         return _fetch_gdelt(anomaly, settings)
-    except Exception:  # network / parse / rate-limit — degrade to no candidates
-        return []      # assess() then reports "no coverage found" (fail-safe: not "explained")
+    except Exception:  # network / parse / rate-limit / NewsSourceUnavailable
+        return None
 
 
 def _fetch_gdelt(anomaly: dict[str, Any], settings: Settings) -> list[dict[str, Any]]:
@@ -308,8 +327,8 @@ def _fetch_gdelt(anomaly: dict[str, Any], settings: Settings) -> list[dict[str, 
     # an HTTP 429, OR — its soft throttle — a 200 whose body is a plain-text warning
     # instead of JSON. Both must be retried; since we make one call per anomaly,
     # a polite backoff is worth it rather than fail-safing to "no coverage" on a
-    # transient throttle. A real error (bad query -> 4xx) still raises and is caught
-    # upstream; exhausting the retries returns [] (fail-safe: no coverage found).
+    # transient throttle. A real error (bad query -> 4xx) still raises, and so does
+    # exhausting the retries (NewsSourceUnavailable); _fetch_news catches both.
     retries = int(cfg.get("gdelt_max_retries", 3))
     backoff = float(cfg.get("gdelt_retry_backoff_seconds", 5.0))
     headers = {"User-Agent": "falnama-research/0.1 (read-only)"}
@@ -320,7 +339,7 @@ def _fetch_gdelt(anomaly: dict[str, Any], settings: Settings) -> list[dict[str, 
             if attempt < retries:
                 time.sleep(backoff * (attempt + 1))
                 continue
-            return []  # exhausted -> fail-safe, don't crash the stage
+            raise NewsSourceUnavailable(f"GDELT HTTP {resp.status_code} after {retries} retries")
         resp.raise_for_status()
         try:
             articles = resp.json().get("articles", []) if resp.text.strip() else []
@@ -329,7 +348,7 @@ def _fetch_gdelt(anomaly: dict[str, Any], settings: Settings) -> list[dict[str, 
             if attempt < retries:
                 time.sleep(backoff * (attempt + 1))
                 continue
-            return []
+            raise NewsSourceUnavailable(f"GDELT throttled after {retries} retries") from None
     return [{
         "title": a.get("title"),
         "snippet": a.get("title"),           # DOC ArtList gives titles, not bodies
@@ -554,12 +573,21 @@ def run(ctx: RunContext, anomalies: pd.DataFrame | None = None) -> list[NewsLagR
     if anomalies is None:
         anomalies = io.read_table(settings.output_dir("anomalies") / "strong_anomalies_latest.csv")
 
-    results, errors = [], 0
+    prior = prior_assessments(settings)
+    results, errors, reused, news_down = [], 0, 0, 0
     for record in anomalies.to_dict(orient="records"):
+        key = io.signal_key(record.get("market_id"), record.get("anomaly_trigger_time_utc"))
+        if key in prior:
+            run_id, earlier = prior[key]
+            results.append(NewsLagResult(reuse_assessment(record, earlier, run_id)))
+            reused += 1
+            continue
         articles = _fetch_news(record, settings)
         assessment = assess(record, articles, settings)
-        if "unavailable" in assessment["uncertainty_note"]:
+        if assessment["uncertainty_note"].startswith(_UNAVAILABLE):
             errors += 1
+        if assessment["news_source_status"] != "ok":
+            news_down += 1
         results.append(NewsLagResult(assessment))
 
     out_dir = settings.output_dir("anomalies")
@@ -569,13 +597,78 @@ def run(ctx: RunContext, anomalies: pd.DataFrame | None = None) -> list[NewsLagR
 
     if errors:
         ctx.errors.append(f"newslag: {errors} assessment(s) left unexplained (checker unavailable)")
+    if news_down:
+        # A warning, not an error: the move is safely left unexplained, and a news
+        # outage should not stop the run from committing its evidence trail.
+        ctx.warnings.append(f"newslag: news source unavailable for {news_down} anomaly(ies); "
+                            "left unexplained, will be re-checked next run")
     io.update_manifest(ctx, "newslag", {
         "enabled": True, "mode": str(settings.newslag.get("mode", "mock")),
         "assessed": len(results),
+        "newly_assessed": len(results) - reused,
+        "reused_from_earlier_runs": reused,
+        "news_source_unavailable": news_down,
         "unexplained_residual": int(sum(r.assessment["residual_anomaly_score"] >= 50 for r in results)),
         "checker_errors": errors,
     })
     return results
+
+
+# ---------------------------------------------------------------------------
+# Reuse — assess each move once, not once per run
+# ---------------------------------------------------------------------------
+# The anomaly stage re-reports a market's biggest move on every run while it sits
+# in the 14-day price window, so without reuse the same move is re-checked (GDELT
+# + Haiku, sometimes Opus) every run. Reuse is sound because the inputs cannot
+# change: only news from the fixed window before the trigger counts, so a second
+# check would read the same evidence. Re-checked instead: an earlier check whose
+# news fetch or LLM call failed, one made in the other mode (mock vs live), one
+# made with a different lookback window, and one written before checks recorded
+# news_source_status (we cannot tell whether its fetch worked).
+_UNAVAILABLE = "News-lag checker unavailable"
+
+
+def prior_assessments(settings: Settings) -> dict[str, tuple[str, dict[str, Any]]]:
+    """Signal key -> (run_id, assessment) for the newest usable earlier assessment
+    of each move, read from the run-stamped news_lag files."""
+    mode = str(settings.newslag.get("mode", "mock"))
+    lookback = float(settings.newslag.get("lookback_hours", 48))
+    found: dict[str, tuple[str, dict[str, Any]]] = {}
+    for run_id, batch in io.run_stamped_json(settings.output_dir("anomalies"), "news_lag"):
+        for item in batch if isinstance(batch, list) else []:
+            if not isinstance(item, dict) or item.get("mode") != mode:
+                continue
+            if _as_float(item.get("lookback_hours"), -1) != lookback:
+                continue
+            if item.get("news_source_status") != "ok":
+                continue  # news fetch failed (or a check from before this field existed)
+            if str(item.get("uncertainty_note", "")).startswith(_UNAVAILABLE):
+                continue  # the LLM checker failed
+            key = io.signal_key(item.get("market_id"), item.get("anomaly_trigger_time_utc"))
+            if key:
+                # A reused copy points at the run that did the real check, so
+                # every chain of reuse leads back to one original assessment.
+                found[key] = (str(item.get("reused_from_run_id") or run_id), item)  # newest wins
+    return found
+
+
+def reuse_assessment(anomaly: dict[str, Any], earlier: dict[str, Any], run_id: str) -> dict[str, Any]:
+    """Carry an earlier assessment of the same move into this run.
+
+    The news verdict (public score, information state, evidence) is kept as is.
+    The residual is recomputed from TODAY's anomaly score, which can drift between
+    runs (e.g. a wallet cluster appears), so the ranking stays current.
+    """
+    public = _as_float(earlier.get("public_information_score"), 0.0)
+    anomaly_score = _as_float(anomaly.get("anomaly_score"), 0.0)
+    assessment = {
+        **earlier,
+        "market_name": str(anomaly.get("market_name") or earlier.get("market_name") or "Unknown market"),
+        "residual_anomaly_score": round(anomaly_score * (1.0 - public / 100.0), 1),
+        "reused_from_run_id": run_id,
+    }
+    validate_or_raise(assessment, "news_lag")
+    return assessment
 
 
 def _as_float(value, default: float = 0.0) -> float:

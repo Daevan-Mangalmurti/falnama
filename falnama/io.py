@@ -71,6 +71,40 @@ def clean_id(value) -> str | None:
     return None if text.lower() in ("", "nan", "none") else text
 
 
+def signal_key(market_id, trigger_time) -> str | None:
+    """The identity of one anomaly SIGNAL: which market moved, and when the move
+    began. None when either part is missing.
+
+    The anomaly stage scores each market's single biggest move over the whole
+    price-history window (14 days), so the same move is reported again on every
+    run until it ages out. Stages that SPEND (news-lag's LLM calls) or ACT
+    (recommendations) use this key to handle a move once, not once per run. A
+    genuinely new move in the same market has a different trigger time, so it is
+    a new signal.
+    """
+    market = clean_id(market_id)
+    trigger = pd.to_datetime(trigger_time, utc=True, errors="coerce")
+    if market is None or pd.isna(trigger):
+        return None
+    return f"{market}@{trigger.strftime('%Y-%m-%dT%H:%M:%SZ')}"
+
+
+def run_stamped_json(directory: Path, basename: str) -> list[tuple[str, Any]]:
+    """Every '<basename>_<run_id>.json' in `directory` as (run_id, data), oldest
+    first. Skips the '_latest' pointer and any file that does not parse, so one
+    damaged artifact cannot stop a run."""
+    found = []
+    for path in sorted(directory.glob(f"{basename}_*.json")):
+        run_id = path.stem[len(basename) + 1:]
+        if run_id == "latest":
+            continue
+        try:
+            found.append((run_id, json.loads(path.read_text(encoding="utf-8"))))
+        except (json.JSONDecodeError, OSError):
+            continue
+    return found
+
+
 # ---------------------------------------------------------------------------
 # RunContext — the small bundle of identity that flows through the pipeline
 # ---------------------------------------------------------------------------

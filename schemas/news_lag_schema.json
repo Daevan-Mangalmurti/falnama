@@ -53,6 +53,8 @@
       "description": "Article snippets considered, each strictly before the trigger time."
     },
     "uncertainty_note": {"type": "string"},
-    "mode": {"enum": ["mock", "live"], "description": "Whether this assessment was produced by the mock or the live LLM path."}
+    "mode": {"enum": ["mock", "live"], "description": "Whether this assessment was produced by the mock or the live LLM path."},
+    "news_source_status": {"enum": ["ok", "unavailable"], "description": "Whether the news source answered. 'unavailable' means no coverage could be checked (the move is left unexplained) and a later run checks again."},
+    "reused_from_run_id": {"type": ["string", "null"], "description": "Set when this run carried forward an earlier run's assessment of the same move (same market and trigger time) instead of checking again; the residual is recomputed from the current anomaly score."}
   }
 }
