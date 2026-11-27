@@ -1,0 +1,2 @@
+kind,market_name,market_id,anomaly_score,anomaly_trigger_time_utc,card_id,reason
+rejected,"U.S. agrees to a new trade deal with ""Mexico"" before 2027?",666826,96.5,2026-11-21T22:00:00Z,666826_20261120T161225Z,card marks the asset ineligible: Below minimum expected move or unclear direction.

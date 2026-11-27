@@ -1,0 +1,98 @@
+{
+  "card_id": "666831_20261127T173017Z",
+  "card_version": "v1",
+  "card_hash": "9b99e299d2a3018f502934f637b1e764d787d7e294b691db3fc9c4cde1f3a368",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-27T17:30:17Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "666831",
+    "market_slug": "us-agrees-to-a-new-trade-deal-with-russia-before-2027",
+    "market_name": "U.S. agrees to a new trade deal with \"Russia\" before 2027?",
+    "market_url": "https://polymarket.com/market/us-agrees-to-a-new-trade-deal-with-russia-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "U.S. agrees to a new trade deal with \"Russia\" before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Crude oil",
+      "ticker": "USO",
+      "tradable_instrument_name": "United States Oil Fund",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -150.0,
+      "confidence": 0.22,
+      "confidence_interval_bps": [
+        -600.0,
+        200.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether crude futures/USO show any directional drift coincident with the market move; confirm no competing OPEC/inventory headline.",
+        "1h": "Scan credible wire services for any US-Russia diplomatic or sanctions-relief reporting that would justify the probability shift.",
+        "2h": "Re-assess whether oil weakness is sustained or noise; compare against Brent and energy equities for corroboration.",
+        "6h": "Evaluate if the prediction-market move persisted or reverted; if reverted, treat as noise.",
+        "12h": "Final check on crude level and any official statements; close research observation."
+      },
+      "reasoning": "A US-Russia free trade agreement becoming law would require a radical geopolitical thaw and the dismantling of the current sanctions architecture. If this market's implied probability spiked sharply, the most plausible mechanism is a signal of imminent sanctions relief on Russian energy, which would return barrels to global markets and pressure crude prices lower. The chain is long and speculative, so the expected move is modest and the proxy exposure is indirect."
+    },
+    {
+      "asset": "European equities (sanctions/energy thaw beneficiary)",
+      "ticker": "EWG",
+      "tradable_instrument_name": "iShares MSCI Germany ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 120.0,
+      "confidence": 0.18,
+      "confidence_interval_bps": [
+        -250.0,
+        500.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check EWG/German DAX futures for any coincident uptick; verify no unrelated macro catalyst.",
+        "1h": "Look for Ukraine ceasefire or sanctions-easing reporting tied to the probability move.",
+        "2h": "Compare European energy-sensitive names versus broad index to isolate the thaw signal.",
+        "6h": "Judge persistence of any move; fade if purely speculative market noise.",
+        "12h": "Final assessment of European equity drift and any confirmed diplomatic news."
+      },
+      "reasoning": "A US-Russia trade normalization would likely accompany broader Western-Russia de-escalation, reducing European energy-input costs and geopolitical risk premia. German industrials are highly sensitive to energy costs and Russian trade, so a genuine thaw signal would be mildly supportive. The link is weak and conditional on a wholesale policy reversal that is currently implausible."
+    }
+  ],
+  "evidence_used": [
+    "Market question references a US-Russia free trade agreement becoming law before 2027",
+    "Current reality: comprehensive US/Western sanctions on Russia make any FTA near-impossible without a major geopolitical reversal",
+    "Russian energy supply dynamics drive global oil/gas pricing",
+    "European (notably German) economy is energy- and Russia-trade sensitive"
+  ],
+  "uncertainty_notes": [
+    "The base rate of a US-Russia FTA becoming law by end-2026 is extremely low; a probability spike is more likely noise or thin-market mispricing than genuine information",
+    "Direct Russian asset proxies (e.g., RSX) are delisted/untradable, forcing reliance on weak second-order proxies",
+    "A thaw could paradoxically support oil if it signals broader risk-on or reduced war premium, making the sign ambiguous"
+  ],
+  "llm_justification": {
+    "summary": "The market asks whether a US-Russia free trade agreement becomes US law before 2027 \u2014 an event that presupposes a dramatic collapse of the current sanctions regime. A sharp rise in its implied probability would most plausibly signal sanctions-relief and geopolitical de-escalation, implying modestly lower crude oil (returning Russian barrels) and mildly higher European energy-sensitive equities. Both mappings are long, speculative chains with weak proxy exposure, so confidence and expected magnitudes are low and below the 700bps tradable threshold.",
+    "key_assumptions": [
+      "A probability spike reflects genuine de-escalation information rather than thin-market noise",
+      "Sanctions relief on Russian energy is the dominant transmission channel",
+      "Liquid proxies (USO, EWG) retain meaningful but indirect exposure to a Russia thaw"
+    ],
+    "failure_modes": [
+      "The move is pure prediction-market noise with no public-market counterpart",
+      "Any such diplomatic development would already be widely reported and priced before this market moves",
+      "Oil could rise rather than fall if the thaw is read as broad risk-on or war-premium removal with offsetting dynamics",
+      "Chosen proxies are only weakly exposed to US-Russia trade policy specifically",
+      "The event is so low-probability that no sustained asset response materializes within 12h"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

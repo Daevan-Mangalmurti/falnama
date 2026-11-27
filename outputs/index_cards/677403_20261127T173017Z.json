@@ -1,0 +1,99 @@
+{
+  "card_id": "677403_20261127T173017Z",
+  "card_version": "v1",
+  "card_hash": "995ec4d55247338d68298c121f233f68b619d09ff422c94c131273c1234b3cf0",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-27T17:30:17Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "677403",
+    "market_slug": "us-recognizes-russian-sovereignty-over-ukraine-before-2027",
+    "market_name": "US recognizes Russian sovereignty over Ukraine by December 31, 2026?",
+    "market_url": "https://polymarket.com/market/us-recognizes-russian-sovereignty-over-ukraine-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "US recognizes Russian sovereignty over Ukraine by December 31, 2026?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US aerospace & defense equities",
+      "ticker": "ITA",
+      "tradable_instrument_name": "iShares U.S. Aerospace & Defense ETF",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -120.0,
+      "confidence": 0.28,
+      "confidence_interval_bps": [
+        -400.0,
+        120.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the probability jump coincides with a concrete news catalyst (summit, leaked term sheet) versus thin low-liquidity noise on the market; look at ITA pre/post tick and volume.",
+        "1h": "Compare ITA move to broad market (SPY) to isolate sector-specific vs beta move; check European defense names (Rheinmetall, BAE) for confirmation.",
+        "2h": "Re-check if any wire (Reuters/AP) corroborates a US policy shift; fade signal if purely speculative market move with no headline.",
+        "6h": "Assess whether defense weakness persists into US cash session or mean-reverts; review options skew on ITA.",
+        "12h": "Mark final ITA return vs prediction; log whether any public confirmation emerged and whether magnitude stayed well below the 700bps tradable bar."
+      },
+      "reasoning": "A sharp rise in the implied probability that the US formally recognizes Russian sovereignty over Ukrainian territory would signal a broad US-Russia rapprochement and movement toward a negotiated settlement of the war. A durable peace framework reduces the perceived urgency of sustained Western defense procurement and the war-driven order backlog narrative, pressuring defense-sector multiples. ITA is a liquid, broad proxy for that theme. However, structural US defense spending is driven by many factors beyond Ukraine (China, Middle East, budget cycles), so the exposure is diluted and a 12h move is unlikely to reach the 700bps threshold."
+    },
+    {
+      "asset": "European natural gas / energy risk",
+      "ticker": "UNG",
+      "tradable_instrument_name": "United States Natural Gas Fund",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -80.0,
+      "confidence": 0.18,
+      "confidence_interval_bps": [
+        -500.0,
+        300.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Verify any simultaneous move in European gas benchmarks or sanctions-relief headlines; note UNG is a poor transmission channel.",
+        "1h": "Check Henry Hub vs TTF spread chatter; if move is weather-driven rather than geopolitical, discard.",
+        "2h": "Look for explicit sanctions/energy language in any reporting tied to the recognition narrative.",
+        "6h": "Reassess whether gas weakness is geopolitical or seasonal; weight accordingly.",
+        "12h": "Record UNG outcome, acknowledge weak proxy link, and note confidence should stay low regardless of realized direction."
+      },
+      "reasoning": "US recognition of Russian territorial gains would plausibly accompany sanctions easing and partial normalization of Russian energy flows to Europe, a bearish signal for European gas (TTF) and, to a much weaker degree, global gas sentiment. UNG is a US-centric Henry Hub proxy that is only loosely tied to European supply dynamics, so this is a deliberately weak mapping flagged as low confidence. The cleaner instrument (TTF futures) is outside the liquid retail-ETF set and the US recognition act alone does not mechanically restore pipeline flows."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns formal US recognition of Russian sovereignty over Ukrainian territory by end-2026",
+    "Primary topic classified as military_conflict involving US and Russia/Ukraine",
+    "Historical analog cited (Golan Heights recognition) implies a concrete diplomatic act, not mere statement",
+    "Recognition would most plausibly occur as part of a broader negotiated settlement / US-Russia rapprochement"
+  ],
+  "uncertainty_notes": [
+    "This is a long-dated (end-2026) political market; even a sharp implied-probability move need not produce immediate 12h asset moves",
+    "Defense and energy proxies have diluted exposure to this specific event",
+    "A probability spike could reflect illiquid, low-volume prediction-market noise rather than real information leakage",
+    "Direction could invert: recognition tied to a peace deal could also be read as US weakness, boosting defense spending fears in Europe"
+  ],
+  "llm_justification": {
+    "summary": "A sharp increase in the implied probability of US recognition of Russian sovereignty over Ukrainian territory would most plausibly signal US-Russia rapprochement and a path to a negotiated end of the war. The cleanest liquid public-market reads are modestly bearish defense equities (ITA) on reduced war-premium and weakly bearish European/global gas (UNG) on potential sanctions easing. Both links are diluted and noisy; neither is expected to reach the 700bps tradable threshold in 12 hours, so this is flagged as low-confidence research rather than an actionable signal.",
+    "key_assumptions": [
+      "A probability jump reflects genuine new information about US policy, not market noise",
+      "Recognition is bundled with a broader de-escalation/sanctions-relief narrative",
+      "Defense multiples carry a meaningful Ukraine-war risk premium that would compress on peace signals"
+    ],
+    "failure_modes": [
+      "The prediction-market move is thin, speculative, or already reflects public reporting, so no asset edge exists",
+      "Defense spending stays elevated due to China/Middle East, breaking the ITA link",
+      "Peace-deal interpretation could be bullish risk assets broadly, swamping the sector signal",
+      "UNG is a US Henry Hub proxy with little sensitivity to Russian/European supply, making the energy mapping unreliable",
+      "Direction reverses as markets price political backlash or deal failure rather than clean normalization"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

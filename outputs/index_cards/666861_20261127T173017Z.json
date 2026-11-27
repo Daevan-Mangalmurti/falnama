@@ -1,0 +1,99 @@
+{
+  "card_id": "666861_20261127T173017Z",
+  "card_version": "v1",
+  "card_hash": "4420d9adb7e1c3f8e4eeb9af0be6561f43900bcdf033f6c928e4ecb78843e1b2",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-27T17:30:17Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "666861",
+    "market_slug": "trump-out-as-president-before-2027",
+    "market_name": "Trump out as President before 2027?",
+    "market_url": "https://polymarket.com/market/trump-out-as-president-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "Trump out as President before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "US large-cap equities",
+      "ticker": "SPY",
+      "tradable_instrument_name": "SPDR S&P 500 ETF Trust",
+      "asset_class": "etf",
+      "expected_direction": "down",
+      "expected_return_12h_bps": -120.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -500.0,
+        150.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether the Polymarket probability move is corroborated by any breaking headline (health, legal, resignation); if no news, treat as noise.",
+        "1h": "Compare SPY/ES futures reaction and VIX; confirm whether risk-off is broad-based or isolated.",
+        "2h": "Assess whether bond yields fell (flight to safety) consistent with equity weakness, or whether equities stabilized.",
+        "6h": "Re-evaluate if the prediction-market move persisted or reverted; fade the thesis if probability retraced.",
+        "12h": "Mark final SPY return vs entry; log whether any public confirmation emerged to validate the leak hypothesis."
+      },
+      "reasoning": "A sharp upward move in the implied probability of Trump leaving office before 2027 would most plausibly reflect a sudden, non-public shock \u2014 a serious health event, resignation threat, or acute political crisis. Such regime/continuity uncertainty typically triggers a risk-off reflex: equities sell, volatility rises. However the sign is genuinely ambiguous because some market participants view a change in leadership (and associated tariff/trade-policy posture) as neutral-to-positive, which caps both the magnitude and the confidence of a directional call."
+    },
+    {
+      "asset": "Gold",
+      "ticker": "GLD",
+      "tradable_instrument_name": "SPDR Gold Shares",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 90.0,
+      "confidence": 0.28,
+      "confidence_interval_bps": [
+        -120.0,
+        400.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Confirm whether the prob move coincides with any wire report; gold should lead if it is a genuine risk event.",
+        "1h": "Check DXY and real-yield direction; gold rally is more convincing if the dollar is not simultaneously surging.",
+        "2h": "Watch for follow-through vs a quick fade in gold; political noise often mean-reverts intraday.",
+        "6h": "Reassess whether safe-haven bid broadened (bonds, JPY, CHF) or gold move was idiosyncratic.",
+        "12h": "Record final GLD return and whether the prediction-market signal was validated by public reporting."
+      },
+      "reasoning": "Gold is the cleaner safe-haven proxy for sudden US political/continuity shocks. A credible spike in Trump-removal odds \u2014 especially if driven by instability or a health event \u2014 would plausibly bid safe havens as investors hedge policy and governance uncertainty. The exposure is indirect and the base rate of such events is very low, so magnitude and confidence are modest."
+    }
+  ],
+  "evidence_used": [
+    "Market resolves Yes on permanent removal/resignation/death of Trump before end-2026",
+    "Resolution relies on consensus credible reporting, i.e. a public news event",
+    "Topic is US cabinet/government continuity, a systemic political-risk theme",
+    "Base rate of a sitting president leaving office mid-term is very low"
+  ],
+  "uncertainty_notes": [
+    "Direction of equities is genuinely ambiguous: leadership change could be read risk-off or policy-positive depending on cause",
+    "Most Polymarket probability drift on this question is likely noise, not leaked information",
+    "If a move is driven by a health/death event vs a legal/political event, asset reactions differ materially",
+    "Proxies (SPY, GLD) are only weakly and indirectly exposed to this specific binary"
+  ],
+  "llm_justification": {
+    "summary": "The market prices the probability Trump permanently leaves office before 2027. A sharp upward spike would most plausibly reflect a sudden continuity shock (health, resignation, acute crisis), implying a risk-off reflex: modest downside in US equities (SPY) and modest upside in safe havens (gold/GLD). But the sign is ambiguous, the proxies are weakly exposed, and most probability drift is noise \u2014 so confidence and magnitudes are low and below the 700bps tradable threshold.",
+    "key_assumptions": [
+      "A material anomaly in this market reflects a real, near-term continuity event rather than idle speculation",
+      "Such an event would register as broad political-risk uncertainty for US assets",
+      "Safe havens respond more cleanly than equities, whose direction depends on the cause"
+    ],
+    "failure_modes": [
+      "The probability move is pure noise with no underlying event, so no asset reaction occurs",
+      "The event is already public by the time it hits prediction markets, leaving no tradable edge",
+      "Equities rally instead of fall if markets view leadership change as policy-friendly, inverting the thesis",
+      "Gold fails to respond if the dollar simultaneously spikes on the same risk event",
+      "Low base rate means false positives dominate; the signal is more likely wrong than right"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}

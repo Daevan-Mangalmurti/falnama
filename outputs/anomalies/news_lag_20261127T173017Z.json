@@ -1,0 +1,37 @@
+[
+  {
+    "market_name": "U.S. agrees to a new trade deal with \"Mexico\" before 2027?",
+    "market_id": "666826",
+    "anomaly_trigger_time_utc": "2026-11-21T22:00:00Z",
+    "lookback_hours": 48.0,
+    "public_information_score": 2.0,
+    "residual_anomaly_score": 94.6,
+    "information_state": "none",
+    "evidence": [
+      {
+        "snippet": "The Latest : Trump hosts reception on the White House new South Lawn helipad | Politics & Elections",
+        "source": "goskagit.com",
+        "url": "http://www.goskagit.com/news/politics/the-latest-trump-hosts-reception-on-the-white-house-s-new-south-lawn-helipad/article_9d822b98-3eec-59f8-8f36-87d1c95c0ce0.html",
+        "published_time_utc": "2026-11-20T21:45:00Z",
+        "information_state": "none"
+      }
+    ],
+    "uncertainty_note": "The single provided article is about a White House helipad reception and has no bearing on a US-Mexico trade deal; absence of relevant coverage here likely reflects a retrieval gap rather than genuine absence of news driving this downward move.",
+    "mode": "live",
+    "news_source_status": "ok",
+    "reused_from_run_id": "20261126T174601Z"
+  },
+  {
+    "market_name": "Netanyahu out by end of 2026?",
+    "market_id": "567688",
+    "anomaly_trigger_time_utc": "2026-11-26T17:00:00Z",
+    "lookback_hours": 48.0,
+    "public_information_score": 0.0,
+    "residual_anomaly_score": 95.5,
+    "information_state": "none",
+    "evidence": [],
+    "uncertainty_note": "News source unavailable; no coverage could be checked, move left UNEXPLAINED. No relevant pre-trigger coverage found \u2014 this is weak evidence (retrieval may be incomplete), not proof the move was non-public.",
+    "mode": "live",
+    "news_source_status": "unavailable"
+  }
+]

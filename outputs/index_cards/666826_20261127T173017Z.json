@@ -1,0 +1,98 @@
+{
+  "card_id": "666826_20261127T173017Z",
+  "card_version": "v1",
+  "card_hash": "4df7950513eaf27ff8330e052c20c5983dec811a1a5705083510400b64b26b8b",
+  "do_not_revise": true,
+  "created_time_utc": "2026-11-27T17:30:17Z",
+  "mock_mode": false,
+  "source": {
+    "market_id": "666826",
+    "market_slug": "us-agrees-to-a-new-trade-deal-with-mexico-before-2027",
+    "market_name": "U.S. agrees to a new trade deal with \"Mexico\" before 2027?",
+    "market_url": "https://polymarket.com/market/us-agrees-to-a-new-trade-deal-with-mexico-before-2027",
+    "source_market_file": "screened_markets_latest.csv"
+  },
+  "market_name": "U.S. agrees to a new trade deal with \"Mexico\" before 2027?",
+  "prediction_window": "12h",
+  "predictions": [
+    {
+      "asset": "Mexico equity (iShares MSCI Mexico ETF)",
+      "ticker": "EWW",
+      "tradable_instrument_name": "iShares MSCI Mexico ETF",
+      "asset_class": "etf",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 60.0,
+      "confidence": 0.33,
+      "confidence_interval_bps": [
+        -120.0,
+        260.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check whether any trade-policy headline (USMCA renegotiation, tariff announcement) coincides with the market move; confirm EWW is trading with elevated volume versus baseline.",
+        "1h": "Compare EWW move to broad EM ETF (EEM) to isolate Mexico-specific signal versus global risk beta.",
+        "2h": "Watch USD/MXN and Mexican rate markets for corroboration; if peso is not moving, treat the equity signal as noise.",
+        "6h": "Reassess against US session flows and any official statements from USTR, Mexican government, or White House on trade.",
+        "12h": "Evaluate whether EWW held direction into window close; log realized vs expected and whether prediction-market move preceded any public news."
+      },
+      "reasoning": "A sharp rise in the implied probability of a new US-Mexico trade agreement would reduce tariff/trade-war tail risk for Mexico's export-driven economy, supporting Mexican equities. EWW is the most liquid single proxy for Mexican risk sentiment. However, 'trade deal becomes law by 2026' is a slow-moving political variable with weak near-term, 12-hour transmission to markets, so the expected move is modest and well below the 700bps tradable threshold."
+    },
+    {
+      "asset": "Mexican peso (FX proxy)",
+      "ticker": "FXM",
+      "tradable_instrument_name": "Invesco CurrencyShares Mexican Peso Trust",
+      "asset_class": "fx_proxy",
+      "expected_direction": "up",
+      "expected_return_12h_bps": 40.0,
+      "confidence": 0.3,
+      "confidence_interval_bps": [
+        -90.0,
+        180.0
+      ],
+      "trade_eligibility": {
+        "eligible": false,
+        "reason": "Below minimum expected move or unclear direction.",
+        "minimum_expected_move_bps": 700.0
+      },
+      "time_plan": {
+        "30m": "Check USD/MXN spot and whether any trade-related wire crossed; confirm FXM volume.",
+        "1h": "Separate peso move from broad USD (DXY) direction to isolate Mexico-specific component.",
+        "2h": "Cross-check with EWW; divergence between peso and equities weakens the thesis.",
+        "6h": "Monitor for official trade commentary and Banxico/Fed-related noise that could dominate.",
+        "12h": "Log realized FXM move vs expected and note any lead/lag versus the prediction-market shift."
+      },
+      "reasoning": "Progress toward a durable US-Mexico trade framework lowers tariff risk premium on the peso, a currency highly sensitive to US trade policy. A rising probability would, at the margin, support MXN. But the horizon (end-2026) and policy nature of the event make 12-hour FX transmission weak; move is small and sub-threshold, reflecting that the prediction market is a noisy sensor here."
+    }
+  ],
+  "evidence_used": [
+    "Market question concerns a US-Mexico free trade agreement becoming law by end-2026",
+    "Mexico is highly exposed to US trade policy via USMCA and export dependence",
+    "EWW and FXM are the most liquid public proxies for Mexican risk and the peso",
+    "Resolution horizon is long-dated (2026), implying weak short-term transmission"
+  ],
+  "uncertainty_notes": [
+    "A long-dated political resolution maps poorly to a 12-hour asset window",
+    "The prediction market may move on general trade-policy sentiment already priced into FX/equities",
+    "Direction could reverse if a 'deal' probability rise is accompanied by tariff threats used as leverage",
+    "Global risk-off/on and USD moves can dominate Mexico-specific signal"
+  ],
+  "llm_justification": {
+    "summary": "The market asks whether a new US-Mexico trade deal becomes law by end-2026. A sharp rise in implied probability would modestly favor Mexican equities (EWW) and the peso (FXM) by reducing tariff/trade-war risk. But the long resolution horizon and policy nature imply weak 12-hour transmission, so expected moves are small, low-confidence, and below the 700bps tradable threshold. Treat as a weak, non-tradable mapping.",
+    "key_assumptions": [
+      "Higher deal probability reduces perceived tariff risk for Mexico",
+      "EWW and FXM reflect Mexico-specific trade sentiment on short horizons",
+      "No offsetting macro shock dominates the window"
+    ],
+    "failure_modes": [
+      "Move already public/priced; prediction market lags rather than leads news",
+      "Weak proxy exposure: a 2026-dated legal event barely moves 12h asset prices",
+      "Reversal: 'deal talk' often coincides with tariff brinkmanship that hurts peso/equities",
+      "Global USD or risk beta swamps the Mexico-specific signal, producing false attribution"
+    ],
+    "why_not_ex_post": "The card is timestamped, content-hashed, and never overwritten. Execution must reject any card created after an anomaly's trigger time."
+  }
+}
